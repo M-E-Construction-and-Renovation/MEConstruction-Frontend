@@ -1,0 +1,172 @@
+{
+  "upperHeader": {
+    "subtext": "Llámanos hoy"
+  },
+  "home": {
+    "hero": {
+      "badge": "Con la confianza de más de 50,000 propietarios",
+      "headline": "Transforma tu baño en solo <accent>un día</accent>",
+      "subtext": "Experimenta la combinación perfecta de estilo y funcionalidad con nuestras soluciones premium de renovación de baños. Sin demolición, sin desorden, solo resultados hermosos.",
+      "buttons": {
+        "quote": "Obtén una cotización gratis",
+        "design": "Comienza tu diseño"
+      },
+      "features": {
+        "lifetimeWarranty": "Garantía de por vida",
+        "oneDayInstall": "Instalación en 1 día",
+        "noDemolition": "Sin demolición"
+      },
+      "rating": {
+        "title": "Calificación excelente",
+        "subtitle": "Más de 12,000 reseñas"
+      },
+      "imageAlt": "Baño renovado y hermoso"
+    },
+
+    "features": {
+      "title": "Nuestras características principales",
+      "items": [
+        {
+          "title": "Garantía de por vida",
+          "description": "Cada instalación está respaldada por nuestra garantía de por vida integral."
+        },
+        {
+          "title": "Instalación en un día",
+          "description": "Transformación completa de tu baño en solo 24 horas."
+        },
+        {
+          "title": "Impermeable y sin juntas",
+          "description": "La tecnología avanzada de impermeabilización evita el moho y los hongos."
+        },
+        {
+          "title": "Fácil mantenimiento",
+          "description": "Superficies no porosas que se mantienen limpias con un esfuerzo mínimo."
+        }
+      ]
+    },
+
+    "solutions": {
+      "sectionTitle": "Soluciones de baño para cada necesidad",
+      "sectionSubtitle": "Elige entre nuestra gama de soluciones premium de renovación de baños diseñadas para adaptarse a tu estilo y presupuesto.",
+      "cards": [
+        {
+          "tag": "Más popular",
+          "title": "Remodelación completa del baño",
+          "description": "Transforma todo tu baño con nuestro paquete integral de renovación.",
+          "features": [
+            "Instalación personalizada de tina o ducha",
+            "Revestimientos y paneles de pared",
+            "Accesorios y grifería",
+            "Instalación profesional"
+          ],
+          "button": "Más información",
+          "imageAlt": "Baño moderno con bañera y azulejos elegantes"
+        },
+        {
+          "tag": "Solución rápida",
+          "title": "Soluciones de ducha",
+          "description": "Actualiza a un sistema de ducha hermoso y de bajo mantenimiento en solo un día.",
+          "features": [
+            "Múltiples opciones de estilo",
+            "Soluciones de almacenamiento integradas",
+            "Pisos antideslizantes",
+            "Incluye garantía de por vida"
+          ],
+          "button": "Más información",
+          "imageAlt": "Ducha moderna con puerta de vidrio y azulejos"
+        },
+        {
+          "tag": "Opción de lujo",
+          "title": "Soluciones de bañera",
+          "description": "Disfruta del baño perfecto con nuestras opciones premium de reemplazo de bañera.",
+          "features": [
+            "Acabados en acrílico y piedra",
+            "Diseños ergonómicos",
+            "Superficies de fácil limpieza",
+            "Opciones de color personalizadas"
+          ],
+          "button": "Más información",
+          "imageAlt": "Bañera independiente de lujo en baño moderno"
+        }
+      ]
+    },
+
+    "advantages": {
+      "sectionTitle": "Por qué elegir M&E Construction and Renovation",
+      "sectionSubtitle": "Nos comprometemos a ofrecer renovaciones de baño excepcionales que superen tus expectativas.",
+      "items": [
+        {
+          "title": "Equipo de instalación experto",
+          "description": "Nuestros profesionales certificados aportan décadas de experiencia a cada proyecto, garantizando resultados impecables."
+        },
+        {
+          "title": "Garantía líder en la industria",
+          "description": "Respaldamos nuestro trabajo con una garantía de por vida integral en todas las instalaciones."
+        },
+        {
+          "title": "Materiales premium",
+          "description": "Solo utilizamos materiales de la más alta calidad, duraderos y resistentes al moho, los hongos y el desgaste diario."
+        },
+        {
+          "title": "Aumenta el valor de tu hogar",
+          "description": "Una renovación de baño hermosa puede aumentar significativamente el valor y la atracción de tu propiedad."
+        }
+      ]
+    },
+
+    "gallery": {
+      "sectionTitle": "Galería de inspiración",
+      "sectionSubtitle": "Explora cientos de transformaciones de baños impresionantes y encuentra el estilo perfecto para tu hogar.",
+      "button": "Ver galería completa",
+      "images": [
+        {
+          "alt": "Instalación de ducha moderna"
+        },
+        {
+          "alt": "Diseño elegante de tocador"
+        },
+        {
+          "alt": "Bañera de lujo"
+        },
+        {
+          "alt": "Baño contemporáneo"
+        }
+      ]
+    },
+
+    "reviews": {
+      "sectionTitle": "Lo que dicen nuestros clientes",
+      "rating": {
+        "score": "5.0",
+        "summary": "de más de 12,000 reseñas"
+      },
+      "items": [
+        {
+          "name": "Sarah Johnson",
+          "location": "Austin, TX",
+          "text": "El equipo fue profesional, eficiente y los resultados superaron nuestras expectativas. ¡Nuestra nueva ducha se ve increíble!"
+        },
+        {
+          "name": "Michael Chen",
+          "location": "Seattle, WA",
+          "text": "Desde la consulta hasta la instalación, todo fue perfecto. Realmente completaron el trabajo en un solo día como prometieron."
+        },
+        {
+          "name": "Emily Rodriguez",
+          "location": "Miami, FL",
+          "text": "Calidad y servicio excepcionales. La garantía de por vida nos da total tranquilidad. ¡Altamente recomendado!"
+        }
+      ]
+    },
+
+    "cta": {
+      "headline": "¿Listo para transformar tu baño?",
+      "subtext": "Comienza hoy con una consulta gratuita. Nuestros expertos te ayudarán a diseñar la solución de baño perfecta adaptada a tus necesidades y presupuesto.",
+      "button": "Agenda una consulta gratuita",
+      "contact": {
+        "phoneLabel": "Llámanos",
+        "emailLabel": "Envíanos un correo"
+      }
+    }
+  }
+}

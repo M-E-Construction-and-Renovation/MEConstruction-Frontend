@@ -1,0 +1,172 @@
+{
+  "upperHeader": {
+    "subtext": "Call us today"
+  },
+  "home": {
+    "hero": {
+      "badge": "Trusted by 50,000+ Homeowners",
+      "headline": "Transform Your Bathroom in Just <accent>One Day</accent>",
+      "subtext": "Experience the perfect blend of style and functionality with our premium bathroom renovation solutions. No demolition, no mess, just beautiful results.",
+      "buttons": {
+        "quote": "Get Free Quote",
+        "design": "Start Your Design"
+      },
+      "features": {
+        "lifetimeWarranty": "Lifetime Warranty",
+        "oneDayInstall": "1-Day Install",
+        "noDemolition": "No Demolition"
+      },
+      "rating": {
+        "title": "Excellent Rating",
+        "subtitle": "12,000+ Reviews"
+      },
+      "imageAlt": "Beautiful renovated bathroom"
+    },
+
+    "features": {
+      "title": "Our Key Features",
+      "items": [
+        {
+          "title": "Lifetime Warranty",
+          "description": "Every installation backed by our comprehensive lifetime warranty."
+        },
+        {
+          "title": "One Day Installation",
+          "description": "Complete bathroom transformation in just 24 hours."
+        },
+        {
+          "title": "Waterproof & Seamless",
+          "description": "Advanced waterproofing technology prevents mold and mildew."
+        },
+        {
+          "title": "Easy Maintenance",
+          "description": "Non-porous surfaces that stay clean with minimal effort."
+        }
+      ]
+    },
+
+    "solutions": {
+      "sectionTitle": "Bathroom Solutions for Every Need",
+      "sectionSubtitle": "Choose from our range of premium bathroom renovation solutions designed to fit your style and budget.",
+      "cards": [
+        {
+          "tag": "Most Popular",
+          "title": "Complete Bathroom Remodel",
+          "description": "Transform your entire bathroom with our comprehensive renovation package.",
+          "features": [
+            "Custom tub or shower installation",
+            "Wall surrounds & panels",
+            "Fixtures & accessories",
+            "Professional installation"
+          ],
+          "button": "Learn More",
+          "imageAlt": "Modern bathroom with bathtub and elegant tile"
+        },
+        {
+          "tag": "Quick Solution",
+          "title": "Shower Solutions",
+          "description": "Upgrade to a beautiful, low-maintenance shower system in just one day.",
+          "features": [
+            "Multiple style options",
+            "Built-in storage solutions",
+            "Slip-resistant flooring",
+            "Lifetime warranty included"
+          ],
+          "button": "Learn More",
+          "imageAlt": "Modern walk-in shower with glass door and tile"
+        },
+        {
+          "tag": "Luxury Option",
+          "title": "Bathtub Solutions",
+          "description": "Enjoy the perfect soak with our premium bathtub replacement options.",
+          "features": [
+            "Acrylic & stone finishes",
+            "Ergonomic designs",
+            "Easy-clean surfaces",
+            "Custom color options"
+          ],
+          "button": "Learn More",
+          "imageAlt": "Luxury freestanding bathtub in modern bathroom"
+        }
+      ]
+    },
+
+    "advantages": {
+      "sectionTitle": "Why Choose M&E Construction and Renovation",
+      "sectionSubtitle": "We're committed to delivering exceptional bathroom renovations that exceed your expectations.",
+      "items": [
+        {
+          "title": "Expert Installation Team",
+          "description": "Our certified professionals bring decades of experience to every project, ensuring flawless results."
+        },
+        {
+          "title": "Industry-Leading Warranty",
+          "description": "We stand behind our work with a comprehensive lifetime warranty on all installations."
+        },
+        {
+          "title": "Premium Materials",
+          "description": "Only the highest quality, durable materials that resist mold, mildew, and everyday wear."
+        },
+        {
+          "title": "Increase Home Value",
+          "description": "A beautiful bathroom renovation can significantly boost your property value and appeal."
+        }
+      ]
+    },
+
+    "gallery": {
+      "sectionTitle": "Inspiration Gallery",
+      "sectionSubtitle": "Explore hundreds of stunning bathroom transformations and find the perfect style for your home.",
+      "button": "View Full Gallery",
+      "images": [
+        {
+          "alt": "Modern shower installation"
+        },
+        {
+          "alt": "Elegant vanity design"
+        },
+        {
+          "alt": "Luxury bathtub"
+        },
+        {
+          "alt": "Contemporary bathroom"
+        }
+      ]
+    },
+
+    "reviews": {
+      "sectionTitle": "What Our Customers Say",
+      "rating": {
+        "score": "5.0",
+        "summary": "from 12,000+ reviews"
+      },
+      "items": [
+        {
+          "name": "Sarah Johnson",
+          "location": "Austin, TX",
+          "text": "The team was professional, efficient, and the results exceeded our expectations. Our new shower looks amazing!"
+        },
+        {
+          "name": "Michael Chen",
+          "location": "Seattle, WA",
+          "text": "From consultation to installation, everything was seamless. They truly completed the job in one day as promised."
+        },
+        {
+          "name": "Emily Rodriguez",
+          "location": "Miami, FL",
+          "text": "Outstanding quality and service. The lifetime warranty gives us complete peace of mind. Highly recommend!"
+        }
+      ]
+    },
+
+    "cta": {
+      "headline": "Ready to Transform Your Bathroom?",
+      "subtext": "Get started today with a free consultation. Our experts will help you design the perfect bathroom solution tailored to your needs and budget.",
+      "button": "Book a Free Consultation",
+      "contact": {
+        "phoneLabel": "Call Us",
+        "emailLabel": "Email Us"
+      }
+    }
+  }
+}
