@@ -26,7 +26,7 @@ export function AdvantagesHero() {
   }, []);
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-secondary/30 to-background">
+    <section className="relative overflow-hidden bg-gradient-to-br from-accent/5 via-primary/10 to-accent/5">
       <div className="container mx-auto px-4 py-16 md:py-24 lg:py-32">
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 items-center">
           <div className="flex flex-col gap-6">
@@ -89,7 +89,7 @@ export function AdvantagesHero() {
 
           <div className="relative">
             <div
-              className={`aspect-[4/3] overflow-hidden rounded-2xl bg-muted transition-all duration-1000 ease-out ${
+              className={`aspect-[4/3] overflow-hidden rounded-2xl bg-muted transition-all duration-1000 ease-out shadow-lg ${
                 isImageVisible
                   ? "translate-x-0 opacity-100"
                   : "translate-x-full opacity-0"

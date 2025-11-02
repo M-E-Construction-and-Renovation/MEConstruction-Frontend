@@ -9,6 +9,27 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { Check, Clock, Shield } from "lucide-react";
 
+const items = [
+  {
+    key: "lifetimeWarranty",
+    icon: Shield,
+    bg: "bg-accent/10",
+    iconColor: "text-accent",
+  },
+  {
+    key: "oneDayInstall",
+    icon: Clock,
+    bg: "bg-accent-secondary/20",
+    iconColor: "text-accent-secondary",
+  },
+  {
+    key: "noDemolition",
+    icon: Check,
+    bg: "bg-accent/10",
+    iconColor: "text-accent",
+  },
+];
+
 export function Hero() {
   const dispatch = useDispatch();
 
@@ -33,29 +54,8 @@ export function Hero() {
     };
   }, []);
 
-  const items = [
-    {
-      key: "lifetimeWarranty",
-      icon: Shield,
-      bg: "bg-accent/10",
-      iconColor: "text-accent",
-    },
-    {
-      key: "oneDayInstall",
-      icon: Clock,
-      bg: "bg-accent-secondary/20",
-      iconColor: "text-accent-secondary",
-    },
-    {
-      key: "noDemolition",
-      icon: Check,
-      bg: "bg-accent/10",
-      iconColor: "text-accent",
-    },
-  ];
-
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-secondary/30 to-background">
+    <section className="relative overflow-hidden bg-gradient-to-br from-primary/5 via-accent/10 to-accent/5">
       <div className="container mx-auto px-4 py-16 md:py-24 lg:py-32">
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 items-center">
           <div className="flex flex-col gap-6">
@@ -115,7 +115,7 @@ export function Hero() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="gap-2 text-base bg-transparent border-primary/20 hover:bg-primary/5"
+                  className="gap-2 text-base bg-transparent border-primary/20 hover:bg-primary"
                 >
                   <Palette className="h-5 w-5" />
                   {t("buttons.design")}
@@ -149,7 +149,7 @@ export function Hero() {
 
           <div className="relative">
             <div
-              className={`aspect-[4/3] overflow-hidden rounded-2xl bg-muted transition-all duration-1000 ease-out ${
+              className={`aspect-[4/3] overflow-hidden rounded-2xl bg-muted transition-all duration-1000 ease-out shadow-lg ${
                 isImageVisible
                   ? "translate-x-0 opacity-100"
                   : "translate-x-full opacity-0"

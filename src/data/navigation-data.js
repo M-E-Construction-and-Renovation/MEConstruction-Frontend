@@ -4,7 +4,7 @@ export const aboutMenuItems = [
     href: "/advantages",
     detail: "See our work and it's advantages",
   },
-  { label: "Our Story", href: "#", detail: "Learn about us" },
+  { label: "Our Story", href: "/our-story", detail: "Learn about us" },
   // { label: "Careers", href: "#" },
   {
     label: "Testimonials",
@@ -23,7 +23,7 @@ export const aboutMenuItems = [
 export const solutionsMenuItems = [
   {
     label: "Bathroom Remodel",
-    href: "#",
+    href: "/bathroom-remodel",
     detail: "See our services for complete bathroom remodel",
   },
   {
