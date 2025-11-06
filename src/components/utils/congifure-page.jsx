@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
 import { ChevronLeft, RotateCcw, Save, Share2, Check } from "lucide-react";
+import BathroomConfigurator from "./bathroom-configurator";
 
 const ConfigurePage = ({
   handleResetDesign = () => {},
@@ -18,6 +19,8 @@ const ConfigurePage = ({
   activeTier = "",
   setActiveTier = () => {},
   handleProductSelect = () => {},
+  plumbing = "",
+  shape = "",
 }) => {
   const router = useRouter();
 
@@ -30,12 +33,17 @@ const ConfigurePage = ({
 
         <div className="w-full lg:w-2/3 flex items-center justify-center bg-muted relative">
           <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[calc(100vh-70px)] flex items-center justify-center">
-            <Image
+            {/* <Image
               src="/placeholder.svg?height=600&width=700"
               alt="Design Preview"
               fill
               className="object-cover"
               priority
+            /> */}
+            <BathroomConfigurator
+              selectedProducts={selectedProducts}
+              plumbing={plumbing}
+              shape={shape}
             />
           </div>
         </div>

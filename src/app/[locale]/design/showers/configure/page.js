@@ -11,10 +11,7 @@ function ShowerDesignTool() {
   const plumbing = searchParams.get("plumbing") || "left";
   const shape = searchParams.get("shape") || "unknown";
 
-  console.log(plumbing);
-  console.log(shape);
-
-  const [activeTab, setActiveTab] = useState("shower-enclosures");
+  const [activeTab, setActiveTab] = useState("showerBases");
   const [activeTier, setActiveTier] = useState("basic");
   const [selectedProducts, setSelectedProducts] = useState({});
 
@@ -24,7 +21,7 @@ function ShowerDesignTool() {
     alert("Design shared! Link copied to clipboard.");
 
   const currentCategory =
-    categories.find((c) => c.id === activeTab) || "shower-enclosures";
+    categories.find((c) => c.id === activeTab) || "showerBases";
 
   const handleCategoryChange = (categoryId) => {
     setActiveTab(categoryId);

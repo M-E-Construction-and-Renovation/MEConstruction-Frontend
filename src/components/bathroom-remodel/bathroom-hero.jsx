@@ -114,7 +114,7 @@ export function BathroomHero() {
               }`}
             >
               <img
-                src="/modern-bathroom-remodel-with-elegant-fixtures-and-.jpg"
+                src="/images/renovated-bathroom.jpg"
                 alt="Beautiful renovated bathroom"
                 className="h-full w-full object-cover"
               />

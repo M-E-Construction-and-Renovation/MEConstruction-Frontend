@@ -7,8 +7,6 @@ import config from "../../../next-intl.config";
 export default async function LocaleLayout({ children, params }) {
   const { locale } = await params;
 
-  console.log(locale);
-
   if (!config.locales.includes(locale)) notFound();
 
   const messages = await getMessages({ locale });

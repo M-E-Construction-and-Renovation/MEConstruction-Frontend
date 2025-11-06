@@ -28,12 +28,12 @@ export const solutionsMenuItems = [
   },
   {
     label: "Shower Solutions",
-    href: "#",
+    href: "/shower-solutions",
     detail: "See our services for showers",
   },
   {
     label: "Bathtub Solutions",
-    href: "#",
+    href: "/bathtub-solutions",
     detail: "See our services for bathtubs",
   },
 ];
@@ -41,12 +41,12 @@ export const solutionsMenuItems = [
 export const inspirationMenuItems = [
   {
     label: "Photo Gallery",
-    href: "#",
+    href: "/gallery",
     detail: "Be inspired for some of designs from our inspiration gallery",
   },
   {
     label: "Before & After",
-    href: "#",
+    href: "/before-after",
     detail: "Take a look at some of our works",
   },
   // "Photo Gallery",
@@ -62,17 +62,17 @@ export const inspirationMenuItems = [
 export const resourcesMenuItems = [
   {
     label: "Buying Guide",
-    href: "#",
+    href: "/buying-guide",
     detail: "Use our guide",
   },
   {
     label: "Maintenance Tips",
-    href: "#",
+    href: "/maintenance-tips",
     detail: "Refer to some of our tips",
   },
   {
     label: "Installation Process",
-    href: "#",
+    href: "/installation-process",
     detail: "Know our process",
   },
   // "Blog",

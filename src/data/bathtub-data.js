@@ -1,6 +1,6 @@
 const bathtubCategories = [
   {
-    id: "tub-fronts",
+    id: "tubFronts",
     label: "Tub Fronts",
     products: [
       {
@@ -276,7 +276,7 @@ const bathtubCategories = [
     ],
   },
   {
-    id: "doors-rods",
+    id: "doorRods",
     label: "Doors/Rods",
     products: [
       {

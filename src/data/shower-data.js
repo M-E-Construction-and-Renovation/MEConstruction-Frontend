@@ -1,7 +1,7 @@
 const showerCategories = [
   {
-    id: "shower-enclosures",
-    label: "Enclosures",
+    id: "showerBases",
+    label: "Shower Bases",
     products: [
       {
         id: "se1",
@@ -69,7 +69,7 @@ const showerCategories = [
     ],
   },
   {
-    id: "shower-walls",
+    id: "showerWalls",
     label: "Walls",
     products: [
       {
@@ -138,8 +138,8 @@ const showerCategories = [
     ],
   },
   {
-    id: "shower-heads",
-    label: "Shower Heads",
+    id: "faucets",
+    label: "Faucets",
     products: [
       {
         id: "sh1",
@@ -207,7 +207,7 @@ const showerCategories = [
     ],
   },
   {
-    id: "shower-accessories",
+    id: "showerAccessories",
     label: "Accessories",
     products: [
       {
@@ -276,7 +276,7 @@ const showerCategories = [
     ],
   },
   {
-    id: "shower-doors",
+    id: "showerDoors",
     label: "Doors",
     products: [
       {
@@ -345,139 +345,70 @@ const showerCategories = [
     ],
   },
   {
-    id: "shower-flooring",
-    label: "Flooring",
+    id: "wainscotings",
+    label: "Wainscotings",
     products: [
       {
-        id: "sf1",
-        name: "Slip-Resistant Tile",
+        id: "wc1",
+        name: "Beadboard",
         image: "/placeholder.svg?height=200&width=200",
-        colors: ["Gray", "Beige", "Brown"],
+        colors: ["White", "Cream", "Gray"],
         tier: "basic",
       },
       {
-        id: "sf2",
-        name: "Natural Stone",
+        id: "wc2",
+        name: "Shaker Style",
         image: "/placeholder.svg?height=200&width=200",
-        colors: ["Slate", "Granite", "Marble"],
+        colors: ["White", "Gray", "Navy"],
         tier: "basic",
       },
       {
-        id: "sf3",
-        name: "Pebble",
+        id: "wc3",
+        name: "Modern Panel",
         image: "/placeholder.svg?height=200&width=200",
-        colors: ["Gray", "Brown", "Black"],
+        colors: ["White", "Black", "Gray"],
         tier: "basic",
       },
       {
-        id: "sf4",
-        name: "Premium Tile",
+        id: "wc4",
+        name: "Raised Panel",
         image: "/placeholder.svg?height=200&width=200",
-        colors: ["Gray", "Beige", "Brown"],
+        colors: ["White", "Cream", "Gray"],
         tier: "standard",
       },
       {
-        id: "sf5",
-        name: "Luxury Stone",
+        id: "wc5",
+        name: "Board and Batten",
         image: "/placeholder.svg?height=200&width=200",
-        colors: ["Slate", "Granite", "Marble"],
+        colors: ["White", "Gray", "Navy"],
         tier: "standard",
       },
       {
-        id: "sf6",
-        name: "Designer Pebble",
+        id: "wc6",
+        name: "Tongue and Groove",
         image: "/placeholder.svg?height=200&width=200",
-        colors: ["Gray", "Brown", "Black"],
+        colors: ["White", "Black", "Gray"],
         tier: "standard",
       },
       {
-        id: "sf7",
-        name: "Ultra Premium Tile",
+        id: "wc7",
+        name: "Premium Beadboard",
         image: "/placeholder.svg?height=200&width=200",
-        colors: ["Gray", "Beige", "Brown"],
+        colors: ["White", "Cream", "Gray"],
         tier: "premium",
       },
       {
-        id: "sf8",
-        name: "Luxury Marble",
+        id: "wc8",
+        name: "Luxury Shaker",
         image: "/placeholder.svg?height=200&width=200",
-        colors: ["Slate", "Granite", "Marble"],
+        colors: ["White", "Gray", "Navy"],
         tier: "premium",
       },
       {
-        id: "sf9",
-        name: "Designer Collection",
+        id: "wc9",
+        name: "Designer Panel",
         image: "/placeholder.svg?height=200&width=200",
-        colors: ["Gray", "Brown", "Black"],
-        tier: "premium",
-      },
-    ],
-  },
-  {
-    id: "shower-lighting",
-    label: "Lighting",
-    products: [
-      {
-        id: "sl1",
-        name: "Recessed Lights",
-        image: "/placeholder.svg?height=200&width=200",
-        colors: ["Warm White", "Cool White", "RGB"],
-        tier: "basic",
-      },
-      {
-        id: "sl2",
-        name: "Wall Sconces",
-        image: "/placeholder.svg?height=200&width=200",
-        colors: ["Chrome", "Brushed Nickel", "Gold"],
-        tier: "basic",
-      },
-      {
-        id: "sl3",
-        name: "Mirror Lights",
-        image: "/placeholder.svg?height=200&width=200",
-        colors: ["Warm White", "Cool White", "Daylight"],
-        tier: "basic",
-      },
-      {
-        id: "sl4",
-        name: "Premium Recessed",
-        image: "/placeholder.svg?height=200&width=200",
-        colors: ["Warm White", "Cool White", "RGB"],
-        tier: "standard",
-      },
-      {
-        id: "sl5",
-        name: "Luxury Sconces",
-        image: "/placeholder.svg?height=200&width=200",
-        colors: ["Chrome", "Brushed Nickel", "Gold"],
-        tier: "standard",
-      },
-      {
-        id: "sl6",
-        name: "Designer Mirror Lights",
-        image: "/placeholder.svg?height=200&width=200",
-        colors: ["Warm White", "Cool White", "Daylight"],
-        tier: "standard",
-      },
-      {
-        id: "sl7",
-        name: "Ultra Premium Lighting",
-        image: "/placeholder.svg?height=200&width=200",
-        colors: ["Warm White", "Cool White", "RGB"],
-        tier: "premium",
-      },
-      {
-        id: "sl8",
-        name: "Luxury LED System",
-        image: "/placeholder.svg?height=200&width=200",
-        colors: ["Chrome", "Brushed Nickel", "Gold"],
-        tier: "premium",
-      },
-      {
-        id: "sl9",
-        name: "Designer Smart Lights",
-        image: "/placeholder.svg?height=200&width=200",
-        colors: ["Warm White", "Cool White", "Daylight"],
+        colors: ["White", "Black", "Gray"],
         tier: "premium",
       },
     ],

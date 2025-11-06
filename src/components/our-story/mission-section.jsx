@@ -31,7 +31,7 @@ const MissionSection = () => {
           </div>
           <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-lg">
             <img
-              src="/modern-luxury-bathroom-with-walk-in-shower.jpg"
+              src="/images/bathtub-simple-elegant.jpg"
               alt="Home renovation"
               className="w-full h-full object-cover"
             />

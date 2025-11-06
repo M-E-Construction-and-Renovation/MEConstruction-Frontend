@@ -20,8 +20,7 @@ const OurStoryHero = () => {
     <section
       className="relative w-full flex items-center overflow-hidden bg-cover bg-center"
       style={{
-        backgroundImage:
-          "url('/modern-luxury-bathroom-with-walk-in-shower.jpg')",
+        backgroundImage: "url('/images/our-story-hero-bg.jpg')",
       }}
     >
       <div className="absolute inset-0 bg-black/50" />

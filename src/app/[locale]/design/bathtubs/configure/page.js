@@ -9,13 +9,11 @@ function DesignTool() {
   const searchParams = useSearchParams();
   const plumbing = searchParams.get("plumbing") || "left";
 
-  console.log(plumbing);
+  const shape = "tub";
 
-  const [activeTab, setActiveTab] = useState("tub-fronts");
+  const [activeTab, setActiveTab] = useState("tubFronts");
   const [activeTier, setActiveTier] = useState("basic");
   const [selectedProducts, setSelectedProducts] = useState({});
-
-  console.log(selectedProducts);
 
   const handleResetDesign = () => setSelectedProducts({});
   const handleSaveDesign = () => alert("Design saved successfully!");
@@ -23,7 +21,7 @@ function DesignTool() {
     alert("Design shared! Link copied to clipboard.");
 
   const currentCategory =
-    categories.find((c) => c.id === activeTab) || "tub-fronts";
+    categories.find((c) => c.id === activeTab) || "tubFronts";
 
   const handleCategoryChange = (categoryId) => {
     setActiveTab(categoryId);
@@ -63,6 +61,8 @@ function DesignTool() {
       activeTier={activeTier}
       setActiveTier={setActiveTier}
       handleProductSelect={handleProductSelect}
+      plumbing={plumbing}
+      shape={shape}
     />
   );
 }
