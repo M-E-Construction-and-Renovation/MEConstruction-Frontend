@@ -4,8 +4,9 @@ import { UpperHeader } from "../../../components/upperHeader";
 import { Footer } from "../../../components/footer";
 
 export const metadata = {
-  title: "Terms and Conditions | M&E Construction & Renovation",
-  description: "Terms and Conditions for M&E Construction & Renovation LLC",
+  title: "Terms and Conditions | M&E Construction and Renovations LLC",
+  description:
+    "Read the terms and conditions for using the M&E Construction and Renovations LLC website and services. Learn about our policies, agreements, and user responsibilities.",
 };
 
 export default function RootLayout({ children }) {

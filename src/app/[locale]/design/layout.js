@@ -2,9 +2,10 @@ import "../../globals.css";
 import { Header } from "../../../components/header";
 
 export const metadata = {
-  title: "M&E Construction and Renovation LLC",
+  title:
+    "Interactive Bathroom Design Tool | M&E Construction and Renovations LLC",
   description:
-    "Construction and Renovation company that provides best and fast construction and renovations.",
+    "Design your dream bathroom with M&E Construction and Renovations LLC’s interactive design tool. Customize showers, bathtubs, and layouts in real time before starting your renovation project.",
 };
 
 export default function RootLayout({ children }) {
