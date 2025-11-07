@@ -5,14 +5,17 @@ import { Button } from "../ui/button";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import Link from "next/link";
+import { useToast } from "../ui/use-toast";
 
 export default function QuoteForm({ onSuccess }) {
+  const { toast } = useToast();
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     email: "",
     phone: "",
-    zipCode: "",
+    zip: "",
     consent: false,
   });
 
@@ -37,21 +40,49 @@ export default function QuoteForm({ onSuccess }) {
     e.preventDefault();
 
     if (!formData.consent) {
-      alert("Please accept the consent notice to continue.");
+      toast.error("Please accept the consent notice to continue.");
       return;
     }
 
     setIsSubmitting(true);
 
     try {
-      // Simulate form submission
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      console.log("Form submitted:", formData);
-      alert("Thank you! We will contact you shortly.");
+      // Remove consent before sending to API
+      const { consent, ...payload } = formData;
+
+      const res = await fetch("/api/mailchimp/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        if (data.error?.title?.includes("Member Exists")) {
+          toast.info("This email is already subscribed.");
+        } else {
+          toast.error(data.error?.title ?? "Something went wrong.");
+        }
+        throw new Error(data.error?.title ?? "Something went wrong.");
+      }
+
+      toast.success("Thank you! You're successfully subscribed.");
+
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        zip: "",
+        consent: false,
+      });
+
       onSuccess();
     } catch (error) {
-      console.error("Error submitting form:", error);
-      alert("There was an error submitting the form. Please try again.");
+      console.log(error);
     } finally {
       setIsSubmitting(false);
     }
@@ -125,8 +156,8 @@ export default function QuoteForm({ onSuccess }) {
           </label>
           <input
             type="text"
-            name="zipCode"
-            value={formData.zipCode}
+            name="zip"
+            value={formData.zip}
             onChange={handleInputChange}
             required
             className="w-full px-4 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background"

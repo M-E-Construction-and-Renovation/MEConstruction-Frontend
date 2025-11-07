@@ -10,8 +10,54 @@ import {
   aboutMenuItems,
   resourcesMenuItems,
 } from "@/data/navigation-data";
+import { useState } from "react";
+import { useToast } from "./ui/use-toast";
 
 export function Footer() {
+  const { toast } = useToast();
+
+  const [email, setEmail] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubscribe = async () => {
+    if (!email || !/\S+@\S+\.\S+/.test(email)) {
+      toast.error("Please enter a valid email address.");
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      const res = await fetch("/api/mailchimp/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          firstName: "",
+          lastName: "",
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        if (data.error?.title?.includes("Member Exists")) {
+          toast.info("This email is already subscribed.");
+        } else {
+          toast.error(data.error?.title ?? "Something went wrong.");
+        }
+        throw new Error(data.error?.title ?? "Something went wrong.");
+      }
+
+      toast.success("Thank you! You're successfully subscribed.");
+
+      setEmail("");
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <footer className="border-t bg-secondary/30">
       <div className="container mx-auto px-4 py-12 md:py-16">
@@ -112,9 +158,19 @@ export function Footer() {
               Get renovation tips and exclusive offers.
             </p>
             <div className="flex gap-2">
-              <Input placeholder="Your email" type="email" />
-              <Button className="bg-accent hover:bg-accent/90 text-accent-foreground">
-                Subscribe
+              <Input
+                placeholder="Your email"
+                type="email"
+                name="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <Button
+                className="bg-accent hover:bg-accent/90 text-accent-foreground"
+                disabled={isLoading}
+                onClick={handleSubscribe}
+              >
+                {isLoading ? "Submitting..." : "Subscribe"}
               </Button>
             </div>
           </div>

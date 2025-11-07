@@ -49,14 +49,6 @@ export const inspirationMenuItems = [
     href: "/before-after",
     detail: "Take a look at some of our works",
   },
-  // "Photo Gallery",
-  // "Before & After",
-  // "Design Ideas",
-  // "Color Options",
-  // "Style Guide",
-  // "Trending Designs",
-  // "Customer Stories",
-  // "Virtual Showroom",
 ];
 
 export const resourcesMenuItems = [
@@ -75,12 +67,4 @@ export const resourcesMenuItems = [
     href: "/installation-process",
     detail: "Know our process",
   },
-  // "Blog",
-  // "Buying Guide",
-  // "Maintenance Tips",
-  // "Installation Process",
-  // "Financing Options",
-  // "Promotions",
-  // "Download Brochure",
-  // "Request Consultation",
 ];
