@@ -16,7 +16,8 @@ export function DesignToolCards() {
 
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           <a
-            href="#"
+            href="/design"
+            target="_blank"
             className="group relative overflow-hidden rounded-2xl aspect-[4/3] bg-gradient-to-br from-accent/20 to-accent-secondary/20 hover:shadow-2xl transition-all duration-300"
           >
             <img
@@ -37,7 +38,8 @@ export function DesignToolCards() {
           </a>
 
           <a
-            href="#"
+            href="/bathroom-remodel"
+            target="_blank"
             className="group relative overflow-hidden rounded-2xl aspect-[4/3] bg-gradient-to-br from-accent-secondary/20 to-accent/20 hover:shadow-2xl transition-all duration-300"
           >
             <img

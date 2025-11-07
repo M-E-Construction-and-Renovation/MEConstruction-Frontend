@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Button } from "../ui/button";
 import { Card } from "../ui/card";
 import { ImageIcon, Pencil, ArrowRight } from "lucide-react";
@@ -15,6 +16,7 @@ export function ShowerInspiration() {
       cta: "Explore Gallery",
       image: "/images/modern-shower-design-gallery.jpg",
       color: "from-blue-500 to-cyan-500",
+      href: "/gallery",
     },
     {
       icon: Pencil,
@@ -24,6 +26,7 @@ export function ShowerInspiration() {
       cta: "Start Designing",
       image: "/images/shower-design-tool-interface.jpg",
       color: "from-cyan-500 to-teal-500",
+      href: "/design",
     },
   ];
 
@@ -77,14 +80,15 @@ export function ShowerInspiration() {
                 <p className="text-muted-foreground leading-relaxed">
                   {card.description}
                 </p>
-
-                <Button
-                  size="lg"
-                  className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold group"
-                >
-                  {card.cta}
-                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                </Button>
+                <Link href={card.href} target="_blank">
+                  <Button
+                    size="lg"
+                    className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold group"
+                  >
+                    {card.cta}
+                    <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </Link>
               </div>
             </Card>
           ))}

@@ -90,7 +90,7 @@ export function BathroomHero() {
                   Get a free quote
                   <ArrowRight className="h-5 w-5" />
                 </Button>
-                <Link href="/design">
+                <Link href="/design" target="_blank">
                   <Button
                     size="lg"
                     variant="outline"

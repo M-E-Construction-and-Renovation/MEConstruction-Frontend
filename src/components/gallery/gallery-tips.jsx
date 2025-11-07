@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "../ui/button";
+import Link from "next/link";
 
 export const GalleryTips = () => {
   return (
@@ -38,12 +39,14 @@ export const GalleryTips = () => {
           </div>
         </div>
         <div className="text-center">
-          <Button
-            size="lg"
-            className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold"
-          >
-            Try Our Design Tool
-          </Button>
+          <Link href="/design" target="_blank">
+            <Button
+              size="lg"
+              className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold"
+            >
+              Try Our Design Tool
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

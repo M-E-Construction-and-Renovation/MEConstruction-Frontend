@@ -2,8 +2,12 @@
 
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useDispatch } from "react-redux";
+import { openModal } from "@/store/quoteModalSlice";
 
 export function BathroomBeforeAfter() {
+  const dispatch = useDispatch();
+
   const [sliderPosition, setSliderPosition] = useState(50);
 
   const handleSliderChange = (e) => {
@@ -38,6 +42,7 @@ export function BathroomBeforeAfter() {
               <Button
                 size="lg"
                 className="bg-accent hover:bg-accent/90 text-accent-foreground gap-2 text-base w-fit"
+                onClick={() => dispatch(openModal())}
               >
                 BOOK A FREE CONSULTATION
               </Button>

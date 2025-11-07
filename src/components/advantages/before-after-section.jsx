@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { Button } from "../ui/button";
+import { useDispatch } from "react-redux";
+import { openModal } from "@/store/quoteModalSlice";
 
 const categories = [
   { id: "bathroom", label: "Bathroom" },
@@ -40,6 +42,8 @@ const beforeAfterImages = {
 };
 
 export function BeforeAfterSection() {
+  const dispatch = useDispatch();
+
   const [selectedCategory, setSelectedCategory] = useState("bathroom");
   const [sliderPosition, setSliderPosition] = useState(50);
 
@@ -141,6 +145,7 @@ export function BeforeAfterSection() {
           <Button
             size="lg"
             className="bg-accent hover:bg-accent/90 text-accent-foreground"
+            onClick={() => dispatch(openModal())}
           >
             Book a Free Consultation
           </Button>

@@ -3,6 +3,7 @@
 import { Card } from "../ui/card";
 import { Button } from "../ui/button";
 import { Palette, Settings, Zap } from "lucide-react";
+import Link from "next/link";
 
 export function BathtubPersonalization() {
   const customizationOptions = [
@@ -63,12 +64,14 @@ export function BathtubPersonalization() {
 
         <div className="text-center">
           <p className="text-lg text-white mb-6">We've got you covered.</p>
-          <Button
-            size="lg"
-            className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold"
-          >
-            Try Our Design Tool
-          </Button>
+          <Link href="/design" target="_blank">
+            <Button
+              size="lg"
+              className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold"
+            >
+              Try Our Design Tool
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

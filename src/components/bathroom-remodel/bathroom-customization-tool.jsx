@@ -33,7 +33,7 @@ export function BathroomCustomizationTool() {
             <p className="text-lg font-semibold text-primary mb-8">
               Your bath, your way.
             </p>
-            <Link href="/design">
+            <Link href="/design" target="_blank">
               <Button
                 size="lg"
                 className="bg-accent hover:bg-accent/90 text-accent-foreground gap-2 text-base px-8"

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Button } from "../ui/button";
 import { ArrowRight } from "lucide-react";
 
@@ -53,12 +54,14 @@ export function BathroomGallery() {
         </div>
 
         <div className="text-center">
-          <Button
-            size="lg"
-            className="bg-accent hover:bg-accent/90 text-accent-foreground gap-2 text-base px-8 mx-auto"
-          >
-            See Our Gallery <ArrowRight className="h-5 w-5" />
-          </Button>
+          <Link href="/before-after" target="_blank">
+            <Button
+              size="lg"
+              className="bg-accent hover:bg-accent/90 text-accent-foreground gap-2 text-base px-8 mx-auto"
+            >
+              See Our Gallery <ArrowRight className="h-5 w-5" />
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

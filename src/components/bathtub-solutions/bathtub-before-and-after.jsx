@@ -4,8 +4,12 @@ import { useState } from "react";
 import Image from "next/image";
 import { Button } from "../ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useDispatch } from "react-redux";
+import { openModal } from "@/store/quoteModalSlice";
 
 export function BathtubBeforeAfter() {
+  const dispatch = useDispatch();
+
   const [activeIndex, setActiveIndex] = useState(0);
 
   const transformations = [
@@ -21,12 +25,6 @@ export function BathtubBeforeAfter() {
       title: "Modern Upgrade",
       description: "Contemporary elegance",
     },
-    // {
-    //   before: "/small-tub-before.jpg",
-    //   after: "/spacious-bathtub-after.jpg",
-    //   title: "Space Enhancement",
-    //   description: "Expanded comfort",
-    // },
   ];
 
   return (
@@ -55,6 +53,7 @@ export function BathtubBeforeAfter() {
             <Button
               size="lg"
               className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold"
+              onClick={() => dispatch(openModal())}
             >
               Book a Free Consultation
             </Button>
@@ -62,7 +61,8 @@ export function BathtubBeforeAfter() {
             <p className="text-muted-foreground text-sm">
               Or check out the{" "}
               <a
-                href="#inspiration"
+                href="/gallery"
+                target="_blank"
                 className="text-accent hover:underline font-semibold"
               >
                 inspiration board

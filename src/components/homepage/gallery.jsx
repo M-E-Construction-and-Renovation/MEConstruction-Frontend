@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Button } from "../ui/button";
 import { ArrowRight } from "lucide-react";
 
@@ -51,13 +52,15 @@ export function Gallery() {
         </div>
 
         <div className="text-center">
-          <Button
-            size="lg"
-            className="bg-accent hover:bg-accent/90 text-accent-foreground gap-2"
-          >
-            View Full Gallery
-            <ArrowRight className="h-5 w-5" />
-          </Button>
+          <Link href="/gallery" target="_blank">
+            <Button
+              size="lg"
+              className="bg-accent hover:bg-accent/90 text-accent-foreground gap-2"
+            >
+              View Full Gallery
+              <ArrowRight className="h-5 w-5" />
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

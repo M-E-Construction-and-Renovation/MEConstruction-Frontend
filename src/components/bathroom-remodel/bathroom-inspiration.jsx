@@ -33,10 +33,12 @@ export function BathroomInspiration() {
                 View hundreds of bath and shower options to perfectly fit your
                 style.
               </p>
-              <Button className="bg-accent hover:bg-accent/90 text-accent-foreground gap-2 w-fit">
-                EXPLORE THE GALLERY
-                <ArrowRight className="h-5 w-5" />
-              </Button>
+              <Link href="/gallery" target="_blank">
+                <Button className="bg-accent hover:bg-accent/90 text-accent-foreground gap-2 w-fit">
+                  EXPLORE THE GALLERY
+                  <ArrowRight className="h-5 w-5" />
+                </Button>
+              </Link>
             </div>
           </div>
 
@@ -58,7 +60,7 @@ export function BathroomInspiration() {
                 Use our design tool to imagine the possibilities. Your perfect
                 bath is just a click away.
               </p>
-              <Link href="/design">
+              <Link href="/design" target="_blank">
                 <Button className="bg-accent hover:bg-accent/90 text-accent-foreground gap-2 w-fit">
                   START YOUR DESIGN
                   <ArrowRight className="h-5 w-5" />

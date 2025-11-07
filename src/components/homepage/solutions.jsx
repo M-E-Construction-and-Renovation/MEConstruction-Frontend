@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Button } from "../ui/button";
 import { Card, CardContent } from "../ui/card";
 import { ArrowRight, Check } from "lucide-react";
@@ -15,6 +16,7 @@ const solutions = [
       "Professional installation",
     ],
     image: "/images/modern-bathroom-with-bathtub-and-elegant-tile.jpg",
+    href: "/bathroom-remodel",
   },
   {
     tag: "Quick Solution",
@@ -28,6 +30,7 @@ const solutions = [
       "Lifetime warranty included",
     ],
     image: "/images/modern-walk-in-shower-with-glass-door-and-tile.jpg",
+    href: "/shower-solutions",
   },
   {
     tag: "Luxury Option",
@@ -41,6 +44,7 @@ const solutions = [
       "Custom color options",
     ],
     image: "/images/luxury-freestanding-bathtub-in-modern-bathroom.jpg",
+    href: "/bathtub-solutions",
   },
 ];
 
@@ -109,10 +113,12 @@ export function Solutions() {
                     </ul>
 
                     <div>
-                      <Button className="bg-accent hover:bg-accent/90 text-accent-foreground gap-2">
-                        Learn More
-                        <ArrowRight className="h-4 w-4" />
-                      </Button>
+                      <Link href={solution.href} target="_blank">
+                        <Button className="bg-accent hover:bg-accent/90 text-accent-foreground gap-2">
+                          Learn More
+                          <ArrowRight className="h-4 w-4" />
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </div>
