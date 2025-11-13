@@ -1,5 +1,4 @@
 import React from "react";
-import { useTranslations } from "next-intl";
 
 const MissionSection = ({ mission }) => {
   const { sectionTitle, sectionSubtitle, title, description, image } = mission;

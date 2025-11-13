@@ -1,5 +1,4 @@
 import React from "react";
-import { useTranslations } from "next-intl";
 
 const AwardsSection = ({ awards }) => {
   const { sectionTitle, sectionSubtitle, items } = awards;
