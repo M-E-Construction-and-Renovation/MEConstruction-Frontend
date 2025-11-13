@@ -6,11 +6,15 @@ import { Button } from "../ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useDispatch } from "react-redux";
 import { openModal } from "@/store/quoteModalSlice";
-import { useTranslations } from "next-intl";
 
-export function KitchenBeforeAfter() {
-  const t = useTranslations("kitchenSolutions.beforeAfter");
-  const transformations = t.raw("transformations");
+export function KitchenBeforeAfter({ beforeAfter }) {
+  const {
+    sectionTitle,
+    sectionSubtitle,
+    description,
+    labels,
+    transformations,
+  } = beforeAfter;
 
   const dispatch = useDispatch();
 
@@ -25,15 +29,15 @@ export function KitchenBeforeAfter() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6 animate-in fade-in slide-in-from-left duration-700">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground">
-              {t("sectionTitle")}
+              {sectionTitle}
             </h2>
 
             <p className="text-lg text-muted-foreground leading-relaxed">
-              {t("sectionSubtitle")}
+              {sectionSubtitle}
             </p>
 
             <p className="text-base text-muted-foreground leading-relaxed">
-              {t("description")}
+              {description}
             </p>
 
             <Button
@@ -41,21 +45,17 @@ export function KitchenBeforeAfter() {
               className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold"
               onClick={() => dispatch(openModal())}
             >
-              {t("labels.button")}
+              {labels.button}
             </Button>
 
             <p className="text-muted-foreground text-sm">
-              {t.rich("labels.link", {
-                accent: (chunks) => (
-                  <a
-                    href="/gallery"
-                    target="_blank"
-                    className="text-accent hover:underline font-semibold"
-                  >
-                    <span className="text-accent">{chunks}</span>
-                  </a>
-                ),
-              })}
+              <a
+                href="/gallery"
+                target="_blank"
+                className="text-accent hover:underline font-semibold"
+              >
+                <span className="text-accent">{labels.link}</span>
+              </a>
             </p>
           </div>
 
@@ -68,13 +68,13 @@ export function KitchenBeforeAfter() {
                       transformations[activeIndex].beforeImage ||
                       "/placeholder.svg"
                     }
-                    alt={transformations[activeIndex].beforeAlt}
+                    alt={transformations[activeIndex].title}
                     width={300}
                     height={400}
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute bottom-3 left-3 bg-slate-700 text-white px-3 py-1 rounded-lg text-sm font-semibold">
-                    {transformations[activeIndex].beforeAlt}
+                    {labels.before}
                   </div>
                 </div>
                 <div className="rounded-lg overflow-hidden">
@@ -83,13 +83,13 @@ export function KitchenBeforeAfter() {
                       transformations[activeIndex].afterImage ||
                       "/placeholder.svg"
                     }
-                    alt={transformations[activeIndex].afterAlt}
+                    alt={transformations[activeIndex].title}
                     width={300}
                     height={400}
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute bottom-3 right-3 bg-primary text-white px-3 py-1 rounded-lg text-sm font-semibold">
-                    {transformations[activeIndex].afterAlt}
+                    {labels.after}
                   </div>
                 </div>
               </div>

@@ -4,11 +4,9 @@ import { useState, useEffect } from "react";
 import { Button } from "../ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
 
-export function KitchenProcessCarousel() {
-  const t = useTranslations("kitchenSolutions.process");
-  const steps = t.raw("steps");
+export function KitchenProcessCarousel({ process }) {
+  const { sectionTitle, sectionSubtitle, badge, steps } = process;
 
   const [activeStep, setActiveStep] = useState(0);
   const [isAutoPlay, setIsAutoPlay] = useState(true);
@@ -41,16 +39,14 @@ export function KitchenProcessCarousel() {
           <div className="space-y-6 order-2 md:order-1">
             <div>
               <span className="text-sm font-semibold text-primary">
-                {t("badge")}
+                {badge}
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-2">
-                {t("sectionTitle")}
+                {sectionTitle}
               </h2>
             </div>
 
-            <p className="text-lg text-muted-foreground">
-              {t("sectionSubtitle")}
-            </p>
+            <p className="text-lg text-muted-foreground">{sectionSubtitle}</p>
 
             <div className="space-y-3">
               {steps.map((step, index) => (

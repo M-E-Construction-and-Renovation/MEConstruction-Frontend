@@ -1,9 +1,7 @@
 import React from "react";
-import { useTranslations } from "next-intl";
 
-const OurFoundationSetcion = () => {
-  const t = useTranslations("ourStory.foundation");
-  const items = t.raw("items");
+const OurFoundationSetcion = ({ foundation }) => {
+  const { sectionTitle, sectionSubtitle, items } = foundation;
 
   return (
     <section
@@ -13,10 +11,10 @@ const OurFoundationSetcion = () => {
       <div className="container mx-auto px-4 text-center">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
-            {t("sectionTitle")}
+            {sectionTitle}
           </h2>
           <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-8 font-semibold">
-            {t("sectionSubtitle")}
+            {sectionSubtitle}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             {items.map(({ title, description }) => (

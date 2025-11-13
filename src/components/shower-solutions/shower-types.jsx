@@ -1,15 +1,11 @@
-"use client";
-
 import { Card } from "../ui/card";
 import { Button } from "../ui/button";
 import * as LucideIcons from "lucide-react";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { useTranslations } from "next-intl";
 
-export function ShowerTypes() {
-  const t = useTranslations("showerSolutions.types");
-  const showerTypes = t.raw("cards");
+export function ShowerTypes({ types }) {
+  const { sectionTitle, sectionSubtitle, cards } = types;
 
   return (
     <section
@@ -19,15 +15,15 @@ export function ShowerTypes() {
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="text-center mb-12 md:mb-16 animate-in fade-in duration-700">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            {t("sectionTitle")}
+            {sectionTitle}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            {t("sectionSubtitle")}
+            {sectionSubtitle}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-          {showerTypes.map((type, index) => {
+          {cards.map((type, index) => {
             const Icon = LucideIcons[type.icon] || LucideIcons.HelpCircle;
 
             return (

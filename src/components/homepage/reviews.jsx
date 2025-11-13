@@ -1,17 +1,15 @@
 import { Card, CardContent } from "../ui/card";
 import { Star } from "lucide-react";
-import { useTranslations } from "next-intl";
 
-export function Reviews() {
-  const t = useTranslations("home.reviews");
-  const reviews = t.raw("items");
+export function Reviews({ reviews }) {
+  const { sectionTitle, rating, items } = reviews;
 
   return (
     <section id="reviews" className="py-16 md:py-24">
       <div className="container mx-auto px-4">
         <div className="mb-12 text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl mb-4 text-balance">
-            {t("sectionTitle")}
+            {sectionTitle}
           </h2>
           <div className="flex items-center justify-center gap-2 mb-4">
             <div className="flex">
@@ -19,13 +17,13 @@ export function Reviews() {
                 <Star key={i} className="h-5 w-5 fill-accent text-accent" />
               ))}
             </div>
-            <span className="text-lg font-semibold">{t("rating.score")}</span>
-            <span className="text-muted-foreground">{t("rating.summary")}</span>
+            <span className="text-lg font-semibold">{rating.score}</span>
+            <span className="text-muted-foreground">{rating.summary}</span>
           </div>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {reviews.map((review, index) => (
+          {items.map((review, index) => (
             <Card key={index}>
               <CardContent className="p-6">
                 <div className="mb-4 flex">

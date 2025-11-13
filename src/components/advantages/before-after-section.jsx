@@ -4,12 +4,10 @@ import { useState } from "react";
 import { Button } from "../ui/button";
 import { useDispatch } from "react-redux";
 import { openModal } from "@/store/quoteModalSlice";
-import { useTranslations } from "next-intl";
 
-export function BeforeAfterSection() {
-  const t = useTranslations("advantages.beforeAfter");
-  const categories = t.raw("categories");
-  const beforeAfterImages = t.raw("images");
+export function BeforeAfterSection({ beforeAfter }) {
+  const { sectionTitle, sectionSubtitle, labels, button, categories, images } =
+    beforeAfter;
 
   const dispatch = useDispatch();
 
@@ -20,7 +18,7 @@ export function BeforeAfterSection() {
     setSliderPosition(Number(e.target.value));
   };
 
-  const currentImages = beforeAfterImages[selectedCategory];
+  const currentImages = images[selectedCategory];
 
   return (
     <section
@@ -30,10 +28,10 @@ export function BeforeAfterSection() {
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            {t("sectionTitle")}
+            {sectionTitle}
           </h2>
           <p className="text-lg text-muted-foreground mb-8">
-            {t("sectionSubtitle")}
+            {sectionSubtitle}
           </p>
 
           <div className="flex flex-wrap justify-center gap-2 mb-8">
@@ -47,7 +45,7 @@ export function BeforeAfterSection() {
                 className={
                   selectedCategory === category.id
                     ? "bg-accent hover:bg-accent/90"
-                    : ""
+                    : "bg-white hover:bg-accent/70"
                 }
               >
                 {category.label}
@@ -81,10 +79,10 @@ export function BeforeAfterSection() {
 
             {/* Labels */}
             <div className="absolute top-4 left-4 bg-background/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium">
-              {t("labels.before")}
+              {labels.before}
             </div>
             <div className="absolute top-4 right-4 bg-background/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium">
-              {t("labels.after")}
+              {labels.after}
             </div>
 
             {/* Slider Line */}
@@ -118,7 +116,7 @@ export function BeforeAfterSection() {
             className="bg-accent hover:bg-accent/90 text-accent-foreground"
             onClick={() => dispatch(openModal())}
           >
-            {t("button")}
+            {button}
           </Button>
         </div>
       </div>

@@ -1,17 +1,10 @@
-"use client";
-
 import React from "react";
 import { Phone } from "lucide-react";
 import { contactNumber } from "@/data/contact-data";
 import LanguageSwitcher from "./utils/language-switcher";
-import { useTranslations } from "next-intl";
 import SiteSearch from "./utils/site-search";
 
-export function UpperHeader(params) {
-  const { locale } = params;
-
-  const t = useTranslations("upperHeader");
-
+export function UpperHeader({ locale, upperHeader }) {
   return (
     <div className="bg-primary/95 backdrop-blur-sm text-primary-foreground">
       <div className=" mx-auto px-4 md:px-10">
@@ -21,7 +14,7 @@ export function UpperHeader(params) {
             className="flex items-center gap-2 hover:opacity-80 transition-opacity"
           >
             <Phone className="h-4 w-4" />
-            {t("subtext")} {contactNumber.displayValue}
+            {upperHeader.subtext} {contactNumber.displayValue}
           </a>
 
           {/* Right: Contact Info */}

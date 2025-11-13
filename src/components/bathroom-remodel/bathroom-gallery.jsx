@@ -1,11 +1,9 @@
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { ArrowRight } from "lucide-react";
-import { useTranslations } from "next-intl";
 
-export function BathroomGallery() {
-  const t = useTranslations("bathroomRemodel.gallery");
-  const projects = t.raw("projects");
+export function BathroomGallery({ gallery }) {
+  const { sectionTitle, sectionSubtitle, projects, link } = gallery;
 
   return (
     <section
@@ -15,10 +13,10 @@ export function BathroomGallery() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            {t("sectionTitle")}
+            {sectionTitle}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            {t("sectionSubtitle")}
+            {sectionSubtitle}
           </p>
         </div>
 
@@ -50,7 +48,7 @@ export function BathroomGallery() {
               size="lg"
               className="bg-accent hover:bg-accent/90 text-accent-foreground gap-2 text-base px-8 mx-auto"
             >
-              {t("link")} <ArrowRight className="h-5 w-5" />
+              {link} <ArrowRight className="h-5 w-5" />
             </Button>
           </Link>
         </div>

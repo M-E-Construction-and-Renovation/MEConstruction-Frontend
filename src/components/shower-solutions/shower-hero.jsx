@@ -7,10 +7,10 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { openModal } from "@/store/quoteModalSlice";
 import Link from "next/link";
-import { useTranslations } from "next-intl";
 
-export function ShowerHero() {
-  const t = useTranslations("showerSolutions.hero");
+export function ShowerHero({ hero }) {
+  const { sectionTitle, sectionSubtitle, badge, image, labels, highlights } =
+    hero;
 
   const dispatch = useDispatch();
 
@@ -38,8 +38,8 @@ export function ShowerHero() {
         }`}
       >
         <Image
-          src={t("image.src")}
-          alt={t("image.alt")}
+          src={image.src}
+          alt={image.alt}
           fill
           className="object-cover absolute inset-0"
           priority
@@ -57,16 +57,14 @@ export function ShowerHero() {
           }`}
         >
           <div className="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-white text-sm font-medium">
-            {t("badge")}
+            {badge}
           </div>
 
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-            {t("sectionTitle")}
+            {sectionTitle}
           </h1>
 
-          <p className="text-lg text-white/90 max-w-xl">
-            {t("sectionSubtitle")}
-          </p>
+          <p className="text-lg text-white/90 max-w-xl">{sectionSubtitle}</p>
 
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
             <Link href="/design" target="_blank">
@@ -74,7 +72,7 @@ export function ShowerHero() {
                 size="lg"
                 className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold group"
               >
-                {t("labels.link")}
+                {labels.link}
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
@@ -85,26 +83,26 @@ export function ShowerHero() {
               className="border-white text-white hover:bg-white/10 bg-transparent"
               onClick={() => dispatch(openModal())}
             >
-              {t("labels.button")}
+              {labels.button}
             </Button>
           </div>
           <div className="flex gap-6 pt-8">
             <div className="flex flex-col gap-1">
               <span className="text-2xl font-bold text-white">
                 {" "}
-                {t("highlights.highlight1.title")}
+                {highlights.highlight1.title}
               </span>
               <span className="text-sm text-white/80">
-                {t("highlights.highlight1.description")}
+                {highlights.highlight1.description}
               </span>
             </div>
             <div className="h-12 w-px bg-white/30" />
             <div className="flex flex-col gap-1">
               <span className="text-2xl font-bold text-white">
-                {t("highlights.highlight2.title")}
+                {highlights.highlight2.title}
               </span>
               <span className="text-sm text-white/80">
-                {t("highlights.highlight1.description")}
+                {highlights.highlight1.description}
               </span>
             </div>
           </div>

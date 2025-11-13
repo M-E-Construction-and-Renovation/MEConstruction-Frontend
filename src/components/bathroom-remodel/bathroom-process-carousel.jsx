@@ -3,11 +3,9 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "../ui/button";
-import { useTranslations } from "next-intl";
 
-export function BathroomProcessCarousel() {
-  const t = useTranslations("bathroomRemodel.process");
-  const steps = t.raw("steps");
+export function BathroomProcessCarousel({ process }) {
+  const { sectionTitle, sectionSubtitle, description, steps } = process;
 
   const [currentStep, setCurrentStep] = useState(0);
 
@@ -29,13 +27,13 @@ export function BathroomProcessCarousel() {
           {/* Left Content */}
           <div className="text-white">
             <h2 className="text-4xl md:text-5xl font-bold mb-3">
-              {t("sectionTitle")}
+              {sectionTitle}
             </h2>
             <p className="text-accent text-lg mb-8 leading-relaxed">
-              {t("sectionSubtitle")}
+              {sectionSubtitle}
             </p>
             <p className="text-blue-100 text-lg mb-6 leading-relaxed">
-              {t("description")}
+              {description}
             </p>
           </div>
 

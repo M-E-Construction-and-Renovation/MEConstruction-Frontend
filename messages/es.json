@@ -4,137 +4,216 @@
   },
   "home": {
     "hero": {
+      "id": "#hero",
+      "path": "/",
       "badge": "Con la confianza de más de 50,000 propietarios",
-      "headline": "Transforma tu baño en solo <accent>un día</accent>",
-      "subtext": "Experimenta la combinación perfecta de estilo y funcionalidad con nuestras soluciones premium de renovación de baños. Sin demolición, sin desorden, solo resultados hermosos.",
+      "headline": "Haz que cada rincón de tu hogar trabaje para ti.",
+      "subtext": "Diseñamos un plan de remodelación personalizado que se adapta a tu estilo de vida y presupuesto. Nuestro equipo aporta años de experiencia, profesionalismo y pasión a cada proyecto. Ya sea que estés reimaginando tu espacio o ampliándolo para tus necesidades, te ayudaremos a construir algo hermoso, funcional y duradero.",
       "buttons": {
-        "quote": "Obtén una cotización gratis",
+        "quote": "Obtener cotización gratuita",
         "design": "Comienza tu diseño"
       },
-      "features": {
-        "lifetimeWarranty": "Garantía de por vida",
-        "oneDayInstall": "Instalación en 1 día",
-        "noDemolition": "Sin demolición"
-      },
+      "features": [
+        {
+          "label": "Remodelaciones de baño",
+          "icon": "Droplet",
+          "bg": "bg-accent/10",
+          "iconColor": "text-accent"
+        },
+        {
+          "label": "Renovaciones de cocina",
+          "icon": "Utensils",
+          "bg": "bg-accent-secondary/20",
+          "iconColor": "text-accent-secondary"
+        },
+        {
+          "label": "Terminación de sótano",
+          "icon": "Home",
+          "bg": "bg-accent/10",
+          "iconColor": "text-accent"
+        }
+      ],
       "rating": {
         "title": "Calificación excelente",
         "subtitle": "Más de 12,000 reseñas"
       },
-      "imageAlt": "Baño renovado y hermoso"
+      "images": [
+        {
+          "src": "/images/contemporary-bathroom-with-walk-in-shower.jpg",
+          "title": "Baño"
+        },
+        {
+          "src": "/images/home-page-hero-kitchen.jpg",
+          "title": "Cocina"
+        },
+        {
+          "src": "/images/home-page-hero-basement.jpg",
+          "title": "Sótano"
+        }
+      ]
     },
 
     "features": {
-      "title": "Nuestras características principales",
+      "id": "#features",
+      "path": "/",
+      "title": "Nuestras principales características",
       "items": [
         {
-          "title": "Garantía de por vida",
-          "description": "Cada instalación está respaldada por nuestra garantía de por vida integral."
+          "icon": "Bath",
+          "title": "Remodelaciones personalizadas de baño",
+          "description": "Transforma tu baño con diseños modernos, materiales duraderos y mano de obra experta."
         },
         {
-          "title": "Instalación en un día",
-          "description": "Transformación completa de tu baño en solo 24 horas."
+          "icon": "Utensils",
+          "title": "Renovaciones de cocina",
+          "description": "Mejora tu cocina con diseños elegantes, almacenamiento funcional y acabados de calidad."
         },
         {
-          "title": "Impermeable y sin juntas",
-          "description": "La tecnología avanzada de impermeabilización evita el moho y los hongos."
+          "icon": "Home",
+          "title": "Terminación de sótano",
+          "description": "Aprovecha al máximo tu hogar con un sótano completamente terminado, cómodo y funcional."
         },
         {
-          "title": "Fácil mantenimiento",
-          "description": "Superficies no porosas que se mantienen limpias con un esfuerzo mínimo."
+          "icon": "Hammer",
+          "title": "Mano de obra de calidad",
+          "description": "Desde el concepto hasta la finalización, ofrecemos resultados confiables y duraderos."
         }
       ]
     },
 
     "solutions": {
-      "sectionTitle": "Soluciones de baño para cada necesidad",
-      "sectionSubtitle": "Elige entre nuestra gama de soluciones premium de renovación de baños diseñadas para adaptarse a tu estilo y presupuesto.",
+      "id": "#solutions",
+      "path": "/",
+      "sectionTitle": "Soluciones de renovación para cada necesidad",
+      "sectionSubtitle": "Elige entre nuestras opciones premium de renovación de baño, cocina y sótano diseñadas para adaptarse a tu estilo y presupuesto.",
+      "buttonText": "Más información",
       "cards": [
         {
           "tag": "Más popular",
-          "title": "Remodelación completa del baño",
-          "description": "Transforma todo tu baño con nuestro paquete integral de renovación.",
+          "title": "Remodelación completa de baño",
+          "description": "Transforma tu baño por completo con nuestro paquete integral de renovación.",
           "features": [
-            "Instalación personalizada de tina o ducha",
+            "Instalación personalizada de bañera o ducha",
             "Revestimientos y paneles de pared",
-            "Accesorios y grifería",
+            "Accesorios y complementos",
             "Instalación profesional"
           ],
-          "button": "Más información",
-          "imageAlt": "Baño moderno con bañera y azulejos elegantes"
+          "image": "/images/modern-bathroom-with-bathtub-and-elegant-tile.jpg",
+          "href": "/bathroom-remodel"
         },
         {
           "tag": "Solución rápida",
-          "title": "Soluciones de ducha",
+          "title": "Soluciones para ducha",
           "description": "Actualiza a un sistema de ducha hermoso y de bajo mantenimiento en solo un día.",
           "features": [
             "Múltiples opciones de estilo",
             "Soluciones de almacenamiento integradas",
             "Pisos antideslizantes",
-            "Incluye garantía de por vida"
+            "Instalación rápida y profesional"
           ],
-          "button": "Más información",
-          "imageAlt": "Ducha moderna con puerta de vidrio y azulejos"
+          "image": "/images/modern-walk-in-shower-with-glass-door-and-tile.jpg",
+          "href": "/shower-solutions"
         },
         {
           "tag": "Opción de lujo",
-          "title": "Soluciones de bañera",
-          "description": "Disfruta del baño perfecto con nuestras opciones premium de reemplazo de bañera.",
+          "title": "Soluciones para bañera",
+          "description": "Disfruta de un baño perfecto con nuestras opciones premium de reemplazo de bañeras.",
           "features": [
             "Acabados en acrílico y piedra",
             "Diseños ergonómicos",
             "Superficies de fácil limpieza",
             "Opciones de color personalizadas"
           ],
-          "button": "Más información",
-          "imageAlt": "Bañera independiente de lujo en baño moderno"
+          "image": "/images/luxury-freestanding-bathtub-in-modern-bathroom.jpg",
+          "href": "/bathtub-solutions"
+        },
+        {
+          "tag": "Mejora del hogar",
+          "title": "Renovaciones de cocina",
+          "description": "Renueva tu cocina con diseños modernos, materiales de alta calidad y mayor funcionalidad.",
+          "features": [
+            "Gabinetes y encimeras personalizadas",
+            "Actualizaciones de iluminación y pisos",
+            "Electrodomésticos de bajo consumo",
+            "Gestión profesional de proyectos"
+          ],
+          "image": "/images/home-page-solutions-kitchen.jpg",
+          "href": "/kitchen-renovations"
+        },
+        {
+          "tag": "Proyecto de expansión",
+          "title": "Terminación de sótano",
+          "description": "Convierte tu sótano sin terminar en un espacio habitable funcional y acogedor.",
+          "features": [
+            "Sistemas completos de pisos y paredes",
+            "Aislamiento y protección contra la humedad",
+            "Diseños y iluminación personalizados",
+            "Opciones para sala de entretenimiento o habitación de invitados"
+          ],
+          "image": "/images/home-page-hero-basement.jpg",
+          "href": "/basement-finishing"
         }
       ]
     },
 
     "advantages": {
+      "id": "#advantages",
+      "path": "/",
       "sectionTitle": "Por qué elegir M&E Construction and Renovation",
-      "sectionSubtitle": "Nos comprometemos a ofrecer renovaciones de baño excepcionales que superen tus expectativas.",
+      "sectionSubtitle": "Nos comprometemos a ofrecer renovaciones excepcionales de baño, cocina y sótano que superen tus expectativas.",
       "items": [
         {
+          "icon": "Users",
           "title": "Equipo de instalación experto",
-          "description": "Nuestros profesionales certificados aportan décadas de experiencia a cada proyecto, garantizando resultados impecables."
+          "description": "Nuestros profesionales certificados aportan décadas de experiencia para garantizar resultados impecables."
         },
         {
-          "title": "Garantía líder en la industria",
-          "description": "Respaldamos nuestro trabajo con una garantía de por vida integral en todas las instalaciones."
+          "icon": "Award",
+          "title": "Calidad confiable",
+          "description": "Ofrecemos una mano de obra excepcional en todas nuestras renovaciones de baño, cocina y sótano."
         },
         {
+          "icon": "Wrench",
           "title": "Materiales premium",
-          "description": "Solo utilizamos materiales de la más alta calidad, duraderos y resistentes al moho, los hongos y el desgaste diario."
+          "description": "Utilizamos solo materiales de la más alta calidad, resistentes al moho, la humedad y el desgaste diario."
         },
         {
+          "icon": "TrendingUp",
           "title": "Aumenta el valor de tu hogar",
-          "description": "Una renovación de baño hermosa puede aumentar significativamente el valor y la atracción de tu propiedad."
+          "description": "Una hermosa remodelación puede incrementar significativamente el valor y la atracción de tu propiedad."
         }
       ]
     },
 
     "gallery": {
+      "id": "#gallery",
+      "path": "/",
       "sectionTitle": "Galería de inspiración",
-      "sectionSubtitle": "Explora cientos de transformaciones de baños impresionantes y encuentra el estilo perfecto para tu hogar.",
+      "sectionSubtitle": "Explora cientos de impresionantes renovaciones de baño, cocina y sótano para encontrar el estilo y la solución perfectos para tu hogar.",
       "button": "Ver galería completa",
       "images": [
         {
+          "src": "/images/modern-bathroom-shower-with-glass-enclosure.jpg",
           "alt": "Instalación de ducha moderna"
         },
         {
-          "alt": "Diseño elegante de tocador"
+          "src": "/images/home-page-solutions-kitchen.jpg",
+          "alt": "Diseño de cocina"
         },
         {
-          "alt": "Bañera de lujo"
+          "src": "/images/home-page-hero-basement.jpg",
+          "alt": "Terminación de sótano"
         },
         {
+          "src": "/images/contemporary-bathroom-with-walk-in-shower.jpg",
           "alt": "Baño contemporáneo"
         }
       ]
     },
 
     "reviews": {
+      "id": "#reviews",
+      "path": "/",
       "sectionTitle": "Lo que dicen nuestros clientes",
       "rating": {
         "score": "5.0",
@@ -144,29 +223,1584 @@
         {
           "name": "Sarah Johnson",
           "location": "Austin, TX",
+          "rating": 5,
           "text": "El equipo fue profesional, eficiente y los resultados superaron nuestras expectativas. ¡Nuestra nueva ducha se ve increíble!"
         },
         {
           "name": "Michael Chen",
           "location": "Seattle, WA",
-          "text": "Desde la consulta hasta la instalación, todo fue perfecto. Realmente completaron el trabajo en un solo día como prometieron."
+          "rating": 5,
+          "text": "Desde la consulta hasta la instalación, todo fue fluido. Cumplieron con su promesa de terminar en un solo día."
         },
         {
-          "name": "Emily Rodriguez",
+          "name": "Emily Rodríguez",
           "location": "Miami, FL",
-          "text": "Calidad y servicio excepcionales. La garantía de por vida nos da total tranquilidad. ¡Altamente recomendado!"
+          "rating": 5,
+          "text": "Excelente calidad y servicio. La garantía de por vida nos da total tranquilidad. ¡Altamente recomendado!"
+        }
+      ]
+    }
+  },
+
+  "cta": {
+    "id": "#cta",
+    "path": "/",
+    "headline": "¿Listo para transformar tu hogar?",
+    "subtext": "Comienza hoy tu proyecto de renovación con una consulta gratuita. Ya sea una mejora de baño, remodelación de cocina o terminación de sótano, nuestros expertos te ayudarán a diseñar un espacio que se adapte a tu estilo de vida y presupuesto.",
+    "button": "Reserva una consulta gratuita",
+    "contact": {
+      "phoneLabel": "Llámanos",
+      "emailLabel": "Envíanos un correo"
+    }
+  },
+  "advantages": {
+    "hero": {
+      "id": "#hero",
+      "path": "/advantages",
+      "badge": "Por qué elegir M&E Construction and Renovation",
+      "headline": "Las ventajas de M&E Construction and Renovation",
+      "subtext": "Descubre por qué miles de propietarios confían en M&E Construction and Renovation para sus necesidades de baño, cocina y sótano. Calidad, rapidez y servicio excepcional garantizados.",
+      "button": "Obtener cotización gratuita",
+      "image": {
+        "src": "/images/modern-luxury-bathroom-with-elegant-fixtures.jpg",
+        "alt": "Muestra de ventajas de M&E Construction and Renovation"
+      }
+    },
+    "carousel": {
+      "id": "#carousel",
+      "path": "/advantages",
+      "sectionTitle": "Por qué los propietarios eligen M&E Construction and Renovation",
+      "items": [
+        {
+          "icon": "Shield",
+          "title": "Construido para durar",
+          "description": "Cada proyecto se realiza con materiales duraderos y mano de obra experta para un rendimiento a largo plazo."
+        },
+        {
+          "icon": "Clock",
+          "title": "Cronograma eficiente",
+          "description": "Nuestro equipo trabaja de manera eficiente para completar tu renovación con mínima interrupción a tu rutina diaria."
+        },
+        {
+          "icon": "Sparkles",
+          "title": "Sin demolición necesaria",
+          "description": "Instalamos sobre tus accesorios existentes, reduciendo el desorden y el tiempo de instalación."
+        },
+        {
+          "icon": "Award",
+          "title": "Materiales de alta calidad",
+          "description": "Usamos materiales premium, duraderos, elegantes y construidos para durar."
+        },
+        {
+          "icon": "Users",
+          "title": "Equipo de instalación experto",
+          "description": "Profesionales capacitados aseguran una instalación perfecta en todo momento."
+        },
+        {
+          "icon": "Wrench",
+          "title": "Garantía de ajuste personalizado",
+          "description": "Medido y fabricado con precisión para que tu baño encaje perfectamente."
+        },
+        {
+          "icon": "Leaf",
+          "title": "Soluciones ecológicas",
+          "description": "Materiales y procesos sostenibles que cuidan el medio ambiente."
+        },
+        {
+          "icon": "DollarSign",
+          "title": "Precios competitivos",
+          "description": "Calidad premium a precios que se ajustan a tu presupuesto, con opciones de financiamiento flexibles."
+        },
+        {
+          "icon": "Star",
+          "title": "Más de 50,000 clientes satisfechos",
+          "description": "Únete a miles de propietarios que eligieron M&E Construction and Renovation para su renovación."
         }
       ]
     },
-
-    "cta": {
-      "headline": "¿Listo para transformar tu baño?",
-      "subtext": "Comienza hoy con una consulta gratuita. Nuestros expertos te ayudarán a diseñar la solución de baño perfecta adaptada a tus necesidades y presupuesto.",
-      "button": "Agenda una consulta gratuita",
-      "contact": {
-        "phoneLabel": "Llámanos",
-        "emailLabel": "Envíanos un correo"
+    "beforeAfter": {
+      "id": "#before-after",
+      "path": "/advantages",
+      "sectionTitle": "Transformaciones Antes y Después",
+      "sectionSubtitle": "Descubre las impresionantes transformaciones que hemos realizado para nuestros clientes. Desde remodelaciones modernas de baño y renovaciones de cocina hasta sótanos completamente terminados, nuestro equipo entrega resultados hermosos, funcionales y duraderos adaptados a tu hogar y estilo de vida. Explora cada categoría para inspirarte y ver cómo podemos hacer realidad tu visión.",
+      "labels": {
+        "before": "Antes",
+        "after": "Después"
+      },
+      "button": "Reserva una consulta gratuita",
+      "categories": [
+        { "id": "bathroom", "label": "Baño" },
+        { "id": "kitchen", "label": "Cocina" },
+        { "id": "basement", "label": "Sótano" }
+      ],
+      "images": {
+        "bathroom": {
+          "before": "/images/sdb-namur-avant.png",
+          "after": "/images/modern-renovated-bathroom-after.jpg"
+        },
+        "kitchen": {
+          "before": "/images/old-kitchen-before-renovation.jpg",
+          "after": "/images/modern-renovated-kitchen.png"
+        },
+        "basement": {
+          "before": "/images/unfinished-basement-before.jpg",
+          "after": "/images/finished-basement-after-renovation.jpg"
+        }
       }
+    },
+    "explore": {
+      "id": "#explore",
+      "path": "/advantages",
+      "sectionTitle": "Explora herramientas y opciones",
+      "sectionSubtitle": "Usa nuestra herramienta de diseño para visualizaciones interactivas y realistas, y explora opciones",
+      "cards": [
+        {
+          "title": "Prueba nuestra herramienta de diseño",
+          "description": "Visualiza tu baño ideal antes de la instalación",
+          "image": "/images/bathroom-design-tool-interface.jpg",
+          "alt": "Herramienta de diseño",
+          "icon": "Palette",
+          "bgGradient": "from-accent/20 to-accent-secondary/20"
+        },
+        {
+          "title": "Personalización y accesorios",
+          "description": "Explora nuestra amplia gama de opciones y mejoras",
+          "image": "/images/bathroom-accessories-and-customization-options.jpg",
+          "alt": "Personalización",
+          "icon": "Wrench",
+          "bgGradient": "from-accent-secondary/20 to-accent/20"
+        }
+      ]
+    },
+    "faq": {
+      "id": "#faq",
+      "path": "/advantages",
+      "sectionTitle": "Preguntas frecuentes",
+      "sectionSubtitle": "Encuentra respuestas a preguntas comunes sobre nuestros servicios de remodelación de baño, cocina y sótano, incluyendo opciones de diseño, mantenimiento y garantías.",
+      "faqs": [
+        {
+          "question": "¿Cuánto dura la renovación?",
+          "answer": "Los tiempos de proyecto varían según el tamaño y la complejidad de tu renovación. Las remodelaciones de baño suelen completarse en unos pocos días, las renovaciones de cocina pueden tardar una o dos semanas, y la terminación completa de un sótano puede tardar varias semanas. Proporcionamos un calendario detallado antes de comenzar, para que sepas exactamente qué esperar."
+        },
+        {
+          "question": "¿Retiran los accesorios o electrodomésticos existentes?",
+          "answer": "Sí, nuestro equipo maneja el proceso de demolición y retiro de manera segura y eficiente. Preparamos el área para las nuevas instalaciones minimizando el desorden y la interrupción en tu hogar."
+        },
+        {
+          "question": "¿Qué tipo de garantía ofrecen?",
+          "answer": "Todos nuestros proyectos cuentan con garantía de mano de obra. Respaldamos la calidad de nuestros materiales y el trabajo realizado, asegurando que cada renovación cumpla con los estándares profesionales y tu satisfacción."
+        },
+        {
+          "question": "¿Puedo personalizar el diseño y los materiales?",
+          "answer": "¡Absolutamente! Ofrecemos una amplia variedad de opciones de diseño, materiales, colores y acabados para adaptarse a tu estilo y presupuesto. Trabajamos contigo para crear un diseño personalizado para tu baño, cocina o sótano."
+        },
+        {
+          "question": "¿Cómo mantener mi nuevo baño, cocina o sótano?",
+          "answer": "Nuestras renovaciones están diseñadas para ser duraderas y fáciles de mantener. La limpieza regular con productos no abrasivos mantiene las superficies como nuevas. También proporcionamos instrucciones de cuidado específicas para los materiales seleccionados."
+        },
+        {
+          "question": "¿Ofrecen opciones ecológicas?",
+          "answer": "Sí, usamos materiales sostenibles y procesos respetuosos con el medio ambiente siempre que es posible, para baños, cocinas y sótanos."
+        },
+        {
+          "question": "¿Pueden mejorar la plomería y electricidad existentes?",
+          "answer": "Nuestro equipo puede evaluar y mejorar los sistemas de plomería, eléctricos y HVAC como parte de tu renovación, garantizando seguridad, eficiencia y cumplimiento con códigos locales."
+        },
+        {
+          "question": "¿Los materiales son duraderos y resistentes al moho?",
+          "answer": "Usamos materiales de alta calidad y durabilidad. Las superficies están diseñadas para resistir moho, humedad y desgaste diario, asegurando longevidad y seguridad."
+        },
+        {
+          "question": "¿Proporcionan un estimado del proyecto antes de comenzar?",
+          "answer": "Sí, brindamos estimaciones detalladas y transparentes para cada proyecto. Conocerás costos, materiales y tiempos de antemano antes de que comience el trabajo."
+        },
+        {
+          "question": "¿Puedo renovar varias áreas al mismo tiempo?",
+          "answer": "Sí, podemos coordinar renovaciones de baño, cocina y sótano simultáneamente o en fases, adaptándonos a tu horario y minimizando interrupciones."
+        }
+      ]
+    }
+  },
+
+  "ourStory": {
+    "hero": {
+      "id": "#hero",
+      "path": "/our-story",
+      "headline": "Nuestra Historia",
+      "title": "Construyendo Confianza desde 2022",
+      "description": "Establecida en 2022, M&E Construction & Renovations se ha convertido rápidamente en un nombre confiable en remodelaciones residenciales y comerciales, ofreciendo una mano de obra excepcional y soluciones innovadoras que transforman hogares y negocios.",
+      "button": "Obtener cotización gratuita"
+    },
+    "mission": {
+      "id": "#mission",
+      "path": "/our-story",
+      "sectionTitle": "Lo que más nos importa",
+      "sectionSubtitle": "En M&E Construction & Renovation, lo que más nos importa es transformar tu hogar en un espacio que brinde alegría, funcionalidad y valor. Nos apasiona maximizar el potencial de cada área, ya sea convertir un sótano en el sueño de un anfitrión, crear un baño tipo spa o diseñar una cocina hermosa y funcional.",
+      "title": "Construyendo Hogares con Corazón y Propósito",
+      "description": "Nos enorgullece ofrecer excelencia, combinando estilo y practicidad en cada proyecto. La confianza y el cuidado están en el corazón de todo lo que hacemos porque entendemos que tu hogar es tu santuario. Desde patios de concreto hasta pasarelas, nos enfocamos en mejorar tanto la estética como la funcionalidad de tus espacios, ayudándote a enamorarte de tu hogar una vez más.",
+      "image": {
+        "src": "/images/bathtub-simple-elegant.jpg",
+        "alt": "Renovación del hogar"
+      }
+    },
+    "foundation": {
+      "id": "#foundation",
+      "path": "/our-story",
+      "sectionTitle": "Nuestra Fundación",
+      "sectionSubtitle": "Desde 2022, nos hemos comprometido a transformar espacios residenciales y comerciales con mano de obra excepcional y soluciones de diseño innovadoras que superan las expectativas.",
+      "items": [
+        {
+          "title": "2022",
+          "description": "Empresa establecida"
+        },
+        {
+          "title": "500+",
+          "description": "Proyectos exitosos"
+        },
+        {
+          "title": "100%",
+          "description": "Satisfacción del cliente"
+        }
+      ]
+    },
+    "awards": {
+      "id": "#awards",
+      "path": "/our-story",
+      "sectionTitle": "Premios y Reconocimientos",
+      "sectionSubtitle": "Certificados, evaluados y aprobados por las principales autoridades en mejoras del hogar. Nuestro compromiso con la excelencia nos ha valido prestigiosos reconocimientos en la industria y miles de clientes satisfechos.",
+      "items": [
+        {
+          "title": "HomeAdvisor - Evaluado y Aprobado",
+          "src": "/images/home-advisor-screened-and-approved.png",
+          "alt": "Logo HomeAdvisor Evaluado y Aprobado",
+          "description": "Contratista evaluado y aprobado con un historial comprobado de trabajo de calidad."
+        },
+        {
+          "title": "HomeAdvisor - Servicio Mejor Calificado",
+          "src": "/images/home-advisor-top-rated.png",
+          "alt": "Logo HomeAdvisor Mejor Calificado",
+          "description": "Consistentemente clasificado entre los principales contratistas con excelentes calificaciones."
+        },
+        {
+          "title": "HomeAdvisor - Servicio Élite",
+          "src": "/images/home-advisor-elite-service.png",
+          "alt": "Logo HomeAdvisor Servicio Élite",
+          "description": "Reconocido por ofrecer de manera consistente calidad excepcional y satisfacción del cliente."
+        },
+        {
+          "title": "HomeAdvisor - 1 Año Evaluado y Aprobado",
+          "src": "/images/home-advisor-1-year.png",
+          "alt": "Logo HomeAdvisor Evaluado y Aprobado 1 Año",
+          "description": "Confiable y verificado por HomeAdvisor por más de un año."
+        },
+        {
+          "title": "Angi - Super Service Award 2023",
+          "src": "/images/angi-super-service-2023.png",
+          "alt": "Logo Angi Super Service Award 2023",
+          "description": "Premiado por calidad sobresaliente y satisfacción del cliente."
+        }
+      ]
+    },
+    "coreValues": {
+      "id": "#core-values",
+      "path": "/our-story",
+      "sectionTitle": "Nuestros Valores Fundamentales",
+      "sectionSubtitle": "Estos principios guían todo lo que hacemos y definen nuestro compromiso con un servicio excepcional.",
+      "values": [
+        {
+          "title": "Enfoque centrado en el cliente",
+          "description": "Priorizamos la comunicación clara, la transparencia y soluciones personalizadas para asegurar que cada proyecto se alinee con la visión, presupuesto y cronograma del cliente."
+        },
+        {
+          "title": "Integridad y responsabilidad",
+          "description": "Operamos con honestidad y responsabilidad, asegurando que cada promesa se cumpla, los plazos se respeten y el trabajo se complete con los más altos estándares."
+        },
+        {
+          "title": "Calidad en la mano de obra",
+          "description": "Entregamos una mano de obra excepcional utilizando materiales premium y técnicas probadas. Cada proyecto, desde remodelaciones hasta instalaciones de concreto, está diseñado para durar y superar las expectativas del cliente."
+        }
+      ]
+    }
+  },
+
+  "bathroomRemodel": {
+    "hero": {
+      "id": "#hero",
+      "path": "/bathroom-remodel",
+      "sectionTitle": "Renovación de Baños Personalizada y Sencilla",
+      "sectionSubtitle": "¿Cansado de tu baño antiguo y anticuado? Traemos comodidad y estilo modernos a tu espacio con una remodelación hecha a tu medida.",
+      "tagline": "BAÑOS PERSONALIZADOS",
+      "features": [
+        "Adaptado a ti",
+        "Diseñado para cada necesidad",
+        "Un nuevo aspecto hermoso sin desorden"
+      ],
+      "labels": {
+        "button": "Obtener una cotización gratuita",
+        "link": "Prueba nuestra herramienta de diseño"
+      },
+      "image": {
+        "src": "/images/renovated-bathroom.jpg",
+        "alt": "Hermoso baño renovado"
+      }
+    },
+    "features": {
+      "id": "#features",
+      "path": "/bathroom-remodel",
+      "sectionTitle": "Características del Baño",
+      "sectionSubtitle": "Descubre los beneficios de nuestras soluciones de renovación de baños modernas, diseñadas para estilo, durabilidad y comodidad.",
+      "features": [
+        {
+          "icon": "CheckCircle",
+          "title": "Sin demolición necesaria",
+          "description": "Nuestro innovador proceso se instala directamente sobre los accesorios existentes, ahorrando tiempo, costos y evitando el desorden de las renovaciones tradicionales."
+        },
+        {
+          "icon": "Package",
+          "title": "Duradero y fácil de limpiar",
+          "description": "Superficies acrílicas de alta calidad resistentes a manchas, moho y decoloración, haciendo que el mantenimiento sea sencillo."
+        },
+        {
+          "icon": "Zap",
+          "title": "Diseños personalizados",
+          "description": "Ofrecemos una variedad de estilos, colores y distribuciones para crear un baño que refleje tu gusto y se adapte perfectamente a tu espacio."
+        }
+      ]
+    },
+    "beforeAfter": {
+      "id": "#before-after",
+      "path": "/bathroom-remodel",
+      "sectionTitle": "Ideas de Bañera: Antes y Después",
+      "sectionSubtitle": "Explora transformaciones inspiradoras y descubre cómo M&E Construction & Renovations puede revitalizar tu baño con soluciones inteligentes y eficientes.",
+      "descriptions": [
+        "En M&E Construction & Renovations, nos especializamos en transformar baños con soluciones inteligentes y eficientes que evitan el desorden y el costo de las remodelaciones tradicionales. Nuestro proceso innovador funciona directamente sobre los accesorios existentes, permitiendo una renovación sin problemas y con resultados sorprendentes.",
+        "Desde bañeras anticuadas hasta superficies desgastadas, nuestro equipo puede revitalizar tu baño con un diseño moderno y fresco, adaptado a tu estilo de vida y gusto. Elige entre una amplia gama de materiales, colores y acabados para crear un baño elegante y funcional.",
+        "Ya sea que busques un cambio sutil o una remodelación completa, M&E ofrece orientación experta y soluciones personalizadas en cada paso. Explora nuestras ideas de bañeras, inspírate con transformaciones reales y descubre cómo podemos convertir tu baño en un espacio hermoso y práctico que amarás durante años."
+      ],
+      "button": "RESERVA UNA CONSULTA GRATUITA",
+      "labels": {
+        "before": "Antes",
+        "after": "Después"
+      },
+      "beforeAfterImages": {
+        "before": {
+          "src": "/images/bathroom-remodel-before.jpg",
+          "alt": "Antes de la remodelación"
+        },
+        "after": {
+          "src": "/images/bathroom-remodel-after.jpg",
+          "alt": "Después de la remodelación"
+        }
+      }
+    },
+    "inspiration": {
+      "id": "#inspiration",
+      "path": "/bathroom-remodel",
+      "sectionTitle": "Ideas de Renovación y Galería de Diseño",
+      "sectionSubtitle": "Explora nuestro portafolio de impresionantes transformaciones de baños y comienza a diseñar tu baño perfecto hoy.",
+      "cards": [
+        {
+          "title": "Galería",
+          "description": "Mira cientos de opciones de baño y ducha para que se adapten perfectamente a tu estilo.",
+          "image": {
+            "src": "/images/modern-luxury-bathroom-renovation-before-and-after.jpg",
+            "alt": "Galería de baños"
+          },
+          "cta": {
+            "text": "EXPLORA LA GALERÍA",
+            "href": "/gallery",
+            "target": "_blank"
+          }
+        },
+        {
+          "title": "Diseña tu baño",
+          "description": "Usa nuestra herramienta de diseño para imaginar las posibilidades. Tu baño perfecto está a solo un clic.",
+          "image": {
+            "src": "/images/bathroom-shower-door-and-accessories.jpg",
+            "alt": "Diseña tu baño"
+          },
+          "cta": {
+            "text": "COMIENZA TU DISEÑO",
+            "href": "/design",
+            "target": "_blank"
+          }
+        }
+      ]
+    },
+    "customization": {
+      "id": "#customization",
+      "path": "/bathroom-remodel",
+      "badge": "CIENTOS DE COMBINACIONES",
+      "sectionTitle": "Personaliza tu Baño",
+      "sectionSubtitle": "Descubre infinitas posibilidades para crear un baño que refleje perfectamente tu estilo y satisfaga tus necesidades. Desde moderno y minimalista hasta clásico y acogedor, nuestra amplia gama de estilos de paredes, grifos y accesorios te permite diseñar un espacio único.",
+      "description": "Con cientos de combinaciones para elegir, crear un baño que equilibre estilo, funcionalidad y durabilidad nunca ha sido tan fácil. Explora nuestras opciones, mezcla y combina elementos y da vida a tu visión con un espacio que amarás durante años.",
+      "highlight": "Tu baño, a tu manera.",
+      "image": {
+        "src": "/configurator/bathroom-tub-right.png",
+        "alt": "Personaliza tu bañera"
+      },
+      "link": "PRUEBA NUESTRA HERRAMIENTA DE DISEÑO"
+    },
+    "process": {
+      "id": "#process",
+      "path": "/bathroom-remodel",
+      "sectionTitle": "Nuestro Proceso",
+      "sectionSubtitle": "Un equipo de principio a fin",
+      "description": "En M&E Construction & Renovations, hacemos que la remodelación de tu baño sea sencilla y agradable. Desde la primera consulta hasta los toques finales, nuestro equipo te guía en cada paso con cuidado, experiencia y atención al detalle. Durante la consulta gratuita en tu hogar, uno de nuestros expertos te ayudará a explorar una amplia gama de estilos, colores y acabados para diseñar tu baño o ducha ideal. Una vez realizadas tus selecciones, nuestro probado proceso de tres pasos garantiza precisión, calidad y un resultado hermoso cada vez.",
+      "steps": [
+        {
+          "title": "FABRICAR",
+          "description": "Tu nueva bañera, paredes y accesorios se fabrican a medida en nuestra instalación de última generación.",
+          "image": "/images/luxury-bathroom-faucet-and-shower-head.jpg"
+        },
+        {
+          "title": "PREPARAR",
+          "description": "Las superficies existentes se limpian y reparan antes de la instalación.",
+          "image": "/images/modern-bathroom-remodel-with-elegant-fixtures-and-.jpg"
+        },
+        {
+          "title": "INSTALAR",
+          "description": "Sin estrés ni desorden: la instalación se completa en un solo día.",
+          "image": "/images/bathroom-remodel-install.jpg"
+        }
+      ]
+    },
+    "gallery": {
+      "id": "#gallery",
+      "path": "/bathroom-remodel",
+      "sectionTitle": "Galería Antes y Después",
+      "sectionSubtitle": "Mira cómo nuestras remodelaciones de baños transforman hogares. Cada proyecto se completa en un solo día sin demolición.",
+      "projects": [
+        {
+          "title": "Baño de Lujo Moderno",
+          "image": "/images/modern-luxury-bathroom-renovation-before-and-after.jpg",
+          "alt": "Baño de Lujo Moderno Antes y Después"
+        },
+        {
+          "title": "Baño Inspirado en Spa",
+          "image": "/images/spa-style-bathroom-remodel-with-stone.jpg",
+          "alt": "Baño Inspirado en Spa Antes y Después"
+        },
+        {
+          "title": "Diseño Contemporáneo",
+          "image": "/images/contemporary-bathroom-with-minimalist-design.jpg",
+          "alt": "Diseño Contemporáneo Antes y Después"
+        }
+      ],
+      "link": "Ver nuestra galería"
+    },
+    "faq": {
+      "id": "#faq",
+      "path": "/bathroom-remodel",
+      "sectionTitle": "Preguntas Frecuentes",
+      "sectionSubtitle": "Encuentra respuestas a preguntas comunes sobre nuestros servicios de remodelación de baños, incluyendo opciones de diseño, tiempos, materiales y mantenimiento.",
+      "faqs": [
+        {
+          "question": "¿Cuánto tiempo tarda una remodelación de baño?",
+          "answer": "La mayoría de las remodelaciones de baño se completan en una o dos semanas, dependiendo del tamaño, la complejidad del diseño y la disponibilidad de materiales. Proporcionaremos un cronograma claro antes de comenzar para que sepas exactamente qué esperar."
+        },
+        {
+          "question": "¿Se encargan del proceso de demolición y retirada?",
+          "answer": "Sí, nuestro equipo se encarga de retirar de manera segura y eficiente los accesorios, azulejos y materiales antiguos. Aseguramos una disposición adecuada y preparamos tu baño para la nueva instalación con mínimo desorden o interrupción."
+        },
+        {
+          "question": "¿Qué tipo de garantía ofrecen?",
+          "answer": "Todas las remodelaciones de baño incluyen garantía de mano de obra. Respaldamos nuestra calidad y aseguramos que cada proyecto cumpla con los estándares profesionales y tu completa satisfacción."
+        },
+        {
+          "question": "¿Puedo personalizar el diseño y la distribución?",
+          "answer": "¡Por supuesto! Puedes elegir entre una variedad de distribuciones, azulejos, lavabos, accesorios, opciones de iluminación y acabados. Nuestro equipo de diseño te ayudará a crear un baño que se adapte a tu estilo, espacio y presupuesto."
+        },
+        {
+          "question": "¿Cómo debo mantener mi nuevo baño?",
+          "answer": "Tu nuevo baño está diseñado para un fácil mantenimiento. La limpieza regular con productos suaves y no abrasivos mantendrá las superficies frescas y como nuevas. También proporcionaremos instrucciones de cuidado específicas para los materiales después de la instalación."
+        },
+        {
+          "question": "¿Ofrecen opciones ecológicas?",
+          "answer": "Sí, ofrecemos materiales sostenibles, accesorios que ahorran agua y opciones de iluminación eficiente para crear una remodelación de baño ecológica."
+        },
+        {
+          "question": "¿Pueden actualizar la plomería y la electricidad?",
+          "answer": "Sí, nuestros profesionales con licencia pueden actualizar la plomería, electricidad y ventilación de tu baño para cumplir con los estándares modernos de seguridad y mejorar el rendimiento."
+        },
+        {
+          "question": "¿Son resistentes al agua y al moho los materiales?",
+          "answer": "Usamos materiales premium resistentes a la humedad diseñados para prevenir moho, hongos y daños por agua, garantizando durabilidad y un baño más saludable."
+        },
+        {
+          "question": "¿Recibiré un presupuesto detallado antes de comenzar?",
+          "answer": "Sí, proporcionamos un presupuesto transparente y detallado antes de comenzar. Sabrás exactamente qué está incluido, incluyendo materiales, mano de obra y cronograma del proyecto."
+        },
+        {
+          "question": "¿Pueden remodelar varios baños al mismo tiempo?",
+          "answer": "Sí, podemos remodelar varios baños simultáneamente o en fases para ajustarnos a tu horario y minimizar inconvenientes durante el proceso de remodelación."
+        }
+      ]
+    }
+  },
+
+  "showerSolutions": {
+    "hero": {
+      "id": "#hero",
+      "path": "/shower-solutions",
+      "sectionTitle": "Tu Ducha de Ensueño Te Espera",
+      "sectionSubtitle": "Experimenta la combinación perfecta de lujo y funcionalidad con nuestras remodelaciones de ducha diseñadas por expertos. Nuestro innovador proceso transforma tu espacio existente sin problemas, evitando el desorden y las interrupciones de la demolición tradicional.",
+      "badge": "Soluciones de Ducha",
+      "image": {
+        "src": "/images/modern-luxury-shower-with-rainfall-showerhead-and-.jpg",
+        "alt": "Instalación de ducha de lujo"
+      },
+      "labels": {
+        "link": "Prueba nuestra Herramienta de Diseño",
+        "button": "Obtener una cotización gratuita"
+      },
+      "highlights": {
+        "highlight1": {
+          "title": "Sin complicaciones",
+          "description": "Proceso sin estrés"
+        },
+        "highlight2": {
+          "title": "Sin demolición",
+          "description": "Limpio y sencillo"
+        }
+      }
+    },
+    "types": {
+      "id": "#types",
+      "path": "/shower-solutions",
+      "sectionTitle": "Soluciones de Ducha para Cada Necesidad",
+      "sectionSubtitle": "Ya sea que busques un refresco, una conversión o mejoras de accesibilidad, tenemos la solución perfecta para ti.",
+      "cards": [
+        {
+          "icon": "Droplets",
+          "title": "Ducha Moderna",
+          "description": "Una ducha limpia y fresca diseñada para tus necesidades con acabados premium y estética moderna.",
+          "cta": "Explorar Galería",
+          "color": "from-blue-500 to-cyan-500",
+          "href": "/gallery"
+        },
+        {
+          "icon": "LogIn",
+          "title": "Conversión de Bañera a Ducha",
+          "description": "Convierte tu bañera existente en una ducha extra grande para máxima comodidad y lujo.",
+          "cta": "Ver Antes y Después",
+          "color": "from-teal-500 to-blue-500",
+          "href": "/before-after"
+        },
+        {
+          "icon": "Accessibility",
+          "title": "Ducha de Fácil Acceso",
+          "description": "Diseño de entrada sin escalón que proporciona un acceso seguro y conveniente, perfecto para todas las edades.",
+          "cta": "Descubrir Más",
+          "color": "from-cyan-500 to-sky-500",
+          "href": "/gallery"
+        }
+      ]
+    },
+    "features": {
+      "id": "#features",
+      "path": "/shower-solutions",
+      "sectionTitle": "Una Solución Moderna a un Problema Antiguo",
+      "sectionSubtitle": "M&E Construction and Renovation revoluciona la forma en que piensas sobre la remodelación de baños.",
+      "features": [
+        {
+          "icon": "CheckCircle2",
+          "title": "Sin demolición necesaria",
+          "description": "Instalación profesional sin el desorden, polvo o interrupciones de las remodelaciones tradicionales."
+        },
+        {
+          "icon": "Shield",
+          "title": "Duradera y de bajo mantenimiento",
+          "description": "Materiales premium, fáciles de limpiar, resistentes a manchas y construidos para durar años."
+        },
+        {
+          "icon": "Sparkles",
+          "title": "Soluciones Rentables",
+          "description": "Una alternativa inteligente a la demolición y reemplazo tradicional, ofreciendo resultados superiores a menor costo."
+        },
+        {
+          "icon": "Zap",
+          "title": "Diseños Personalizables",
+          "description": "Elige entre diversos estilos, acabados y distribuciones para crear una ducha que se ajuste perfectamente a tu espacio y gusto."
+        }
+      ]
+    },
+    "beforeAfter": {
+      "id": "#before-after",
+      "path": "/shower-solutions",
+      "sectionTitle": "Ideas de Ducha: Antes y Después",
+      "sectionSubtitle": "Transforma tu ducha sin el desorden, polvo o altos costos de las remodelaciones tradicionales. Nuestro proceso innovador funciona sin problemas con tus accesorios existentes, dando a tu baño una actualización moderna y funcional.",
+      "description": "M&E Construction & Renovations ofrece soluciones de ducha personalizadas para cualquier proyecto, ya sea refrescando tu baño o rediseñando por completo tu espacio de ducha. Explora nuestras ideas de diseño y descubre lo fácil que es crear una ducha elegante, duradera y personalizada que eleve tu baño.",
+      "labels": {
+        "button": "Reserva una Consulta Gratuita",
+        "link": "O consulta el <accent>tablero de inspiración</accent> para más ideas de diseño.",
+        "before": "Antes",
+        "after": "Después"
+      },
+      "transformations": [
+        {
+          "title": "Transformación de Ducha",
+          "beforeImage": "/images/old-bathroom-shower-before.jpg",
+          "afterImage": "/images/modern-luxury-shower-after.jpg"
+        },
+        {
+          "title": "Transformación de Bañera a Ducha",
+          "beforeImage": "/images/bathtub-before-conversion.jpg",
+          "afterImage": "/images/spacious-shower-after-conversion.jpg"
+        },
+        {
+          "title": "Instalación de Ducha Accesible",
+          "beforeImage": "/images/standard-shower-before.jpg",
+          "afterImage": "/images/accessible-walk-in-shower-after.jpg"
+        }
+      ]
+    },
+    "personalization": {
+      "id": "#personalization",
+      "path": "/shower-solutions",
+      "badge": "CIENTOS DE COMBINACIONES",
+      "sectionTitle": "Personaliza Tu Ducha",
+      "sectionSubtitle": "Con miles de opciones y accesorios, hay infinitas combinaciones para personalizar tu ducha y adaptarla a tu estilo.",
+      "features": [
+        {
+          "icon": "Palette",
+          "title": "Mejora Elegante",
+          "description": "Elige entre miles de combinaciones de estilos de pared, grifos y accesorios."
+        },
+        {
+          "icon": "Wrench",
+          "title": "Mayor Seguridad",
+          "description": "Diseños accesibles y sin escalón perfectos para todas las edades y necesidades de movilidad."
+        },
+        {
+          "icon": "Zap",
+          "title": "Adaptada a Tu Espacio",
+          "description": "Soluciones a medida diseñadas específicamente para las dimensiones y estilo de tu baño."
+        }
+      ],
+      "cta": {
+        "text": "Te tenemos cubierto.",
+        "button": "Prueba Nuestra Herramienta de Diseño"
+      }
+    },
+    "process": {
+      "id": "#process",
+      "path": "/shower-solutions",
+      "sectionTitle": "Instalación Experta de Ducha, Sin Complicaciones",
+      "sectionSubtitle": "M&E Construction and Renovation ofrece soluciones de ducha personalizadas para prácticamente cualquier escenario. Ya sea que busques un refresco, una conversión de bañera a ducha o una ducha de fácil acceso, te tenemos cubierto.",
+      "badge": "Nuestro Proceso",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Medir",
+          "description": "Nuestros expertos toman medidas precisas para asegurar que tu solución de ducha a medida encaje perfectamente en tu espacio.",
+          "image": "/images/professional-measurement-tools-bathroom.jpg",
+          "color": "from-blue-500 to-cyan-500"
+        },
+        {
+          "number": 2,
+          "title": "Fabricar",
+          "description": "Tu ducha, paredes y accesorios se fabrican con precisión láser en nuestra instalación de última generación para un ajuste y acabado perfectos.",
+          "image": "/images/manufacturing-shower-components.jpg",
+          "color": "from-cyan-500 to-teal-500"
+        },
+        {
+          "number": 3,
+          "title": "Preparar",
+          "description": "Las superficies existentes se limpian y reparan cuidadosamente para proporcionar una base impecable para tu nueva ducha.",
+          "image": "/images/bathroom-preparation-professional.jpg",
+          "color": "from-teal-500 to-emerald-500"
+        },
+        {
+          "number": 4,
+          "title": "Instalar",
+          "description": "Nuestros instaladores expertos dan vida a tu ducha, asegurando que cada detalle sea perfecto y tu espacio quede bellamente transformado.",
+          "image": "/images/professional-shower-installation.jpg",
+          "color": "from-emerald-500 to-green-500"
+        },
+        {
+          "number": 5,
+          "title": "Inspeccionar",
+          "description": "Un minucioso control de calidad e inspección final garantizan tu satisfacción y una instalación impecable.",
+          "image": "/images/quality-inspection-shower-installation.jpg",
+          "color": "from-green-500 to-blue-500"
+        }
+      ]
+    },
+    "inspiration": {
+      "id": "#inspiration",
+      "path": "/shower-solutions",
+      "sectionTitle": "Inspírate",
+      "sectionSubtitle": "Explora nuestra galería y herramienta de diseño interactiva para descubrir una amplia variedad de estilos, acabados y distribuciones de duchas.",
+      "cards": [
+        {
+          "icon": "ImageIcon",
+          "title": "Galería de Fotos",
+          "description": "Mira cientos de hermosos estilos y diseños de ducha para inspirar tu proyecto.",
+          "label": "Explorar Galería",
+          "href": "/gallery",
+          "image": "/images/modern-shower-design-gallery.jpg",
+          "color": "from-blue-500 to-cyan-500"
+        },
+        {
+          "icon": "Pencil",
+          "title": "Diseña Tu Ducha",
+          "description": "Usa nuestra herramienta de diseño interactiva para personalizar y visualizar tu ducha perfecta.",
+          "label": "Comenzar Diseño",
+          "href": "/design",
+          "image": "/images/shower-design-tool-interface.jpg",
+          "color": "from-cyan-500 to-teal-500"
+        }
+      ]
+    },
+    "faq": {
+      "id": "#faq",
+      "path": "/shower-solutions",
+      "sectionTitle": "Preguntas Frecuentes",
+      "sectionSubtitle": "Encuentra respuestas a preguntas comunes sobre nuestros servicios de remodelación de duchas, incluyendo instalación, personalización, materiales y mantenimiento.",
+      "faqs": [
+        {
+          "question": "¿Cuánto tiempo tarda una instalación de ducha?",
+          "answer": "La mayoría de las instalaciones de ducha se completan en uno o dos días, dependiendo del alcance del trabajo. Como nuestro proceso no requiere demolición completa, podrás disfrutar de tu nueva ducha con mínima interrupción."
+        },
+        {
+          "question": "¿Retiran mi ducha o bañera antigua?",
+          "answer": "Sí, nuestro equipo retira de manera segura tu ducha, bañera o accesorios existentes como parte del proceso de instalación. Nos encargamos de toda la preparación y limpieza para garantizar una experiencia sin problemas."
+        },
+        {
+          "question": "¿Puedo personalizar el diseño y distribución?",
+          "answer": "¡Absolutamente! Elige entre varios estilos de pared, acabados, accesorios y grifería para crear una ducha que se adapte a tu gusto, espacio y presupuesto. Ofrecemos personalización completa de diseño y funcionalidad."
+        },
+        {
+          "question": "¿Qué materiales se usan para sus duchas?",
+          "answer": "Usamos materiales de alta calidad, duraderos y de bajo mantenimiento, resistentes a manchas, moho y hongos. Nuestros sistemas de pared y bases están diseñados para larga duración y fácil limpieza."
+        },
+        {
+          "question": "¿Es necesaria la demolición para la instalación?",
+          "answer": "No: nuestros sistemas de ducha están diseñados para instalarse directamente sobre tu superficie existente, eliminando la necesidad de demolición y tiempos largos de renovación."
+        },
+        {
+          "question": "¿Son seguras y accesibles sus duchas?",
+          "answer": "Sí, ofrecemos opciones de accesibilidad incluyendo entradas sin escalón, barras de apoyo, asientos incorporados y superficies antideslizantes para garantizar comodidad y seguridad."
+        },
+        {
+          "question": "¿Ofrecen garantía en sus sistemas de ducha?",
+          "answer": "Sí, todas nuestras instalaciones cuentan con garantía de mano de obra y de materiales. Respaldamos nuestra calidad y aseguramos que tu nueva ducha funcione perfectamente durante años."
+        },
+        {
+          "question": "¿Cómo debo mantener mi nueva ducha?",
+          "answer": "Nuestras duchas están diseñadas para un mantenimiento sencillo. Simplemente limpia las superficies con un producto no abrasivo para mantenerlas impecables, sin necesidad de frotar fuerte o usar químicos agresivos."
+        },
+        {
+          "question": "¿Ofrecen presupuestos o consultas gratuitas?",
+          "answer": "Sí, ofrecemos consultas de diseño y presupuestos gratuitos. Nuestros especialistas evaluarán tu espacio, revisarán tus opciones y proporcionarán un presupuesto transparente antes de comenzar cualquier trabajo."
+        },
+        {
+          "question": "¿Pueden convertir mi bañera en ducha?",
+          "answer": "¡Por supuesto! Nos especializamos en conversiones de bañera a ducha que maximizan el espacio, mejoran la seguridad y modernizan tu baño, todo sin construcción mayor."
+        }
+      ]
+    }
+  },
+
+  "bathtubSolutions": {
+    "hero": {
+      "id": "#hero",
+      "path": "/bathtub-solutions",
+      "sectionTitle": "Experiencias de Bañera de Lujo",
+      "sectionSubtitle": "Transforma tu baño con soluciones de bañera premium. Disfruta de confort y elegancia estilo spa, instaladas rápidamente sin interrupciones. Experimenta la combinación perfecta de lujo y practicidad.",
+      "badge": "Soluciones de Bañera",
+      "image": {
+        "src": "/images/bathtub-solutions-hero.jpg",
+        "alt": "Instalación de bañera de lujo"
+      },
+      "labels": {
+        "link": "Prueba nuestra Herramienta de Diseño",
+        "button": "Obtener Cotización Gratuita"
+      },
+      "highlights": {
+        "highlight1": {
+          "title": "Sin complicaciones",
+          "description": "Proceso sin estrés"
+        },
+        "highlight2": {
+          "title": "Calidad Premium",
+          "description": "Confort duradero"
+        }
+      }
+    },
+    "types": {
+      "id": "#types",
+      "path": "/bathtub-solutions",
+      "sectionTitle": "Soluciones de Bañera para Cada Estilo de Vida",
+      "sectionSubtitle": "Elige entre nuestra selección premium de bañeras diseñadas para confort, seguridad y estilo.",
+      "cards": [
+        {
+          "icon": "Waves",
+          "title": "Bañera de Lujo",
+          "description": "Disfruta del máximo confort con nuestras profundas y espaciosas bañeras diseñadas para la relajación y la elegancia.",
+          "cta": "Explorar Bañeras",
+          "color": "from-blue-500 to-cyan-500",
+          "href": "/gallery"
+        },
+        {
+          "icon": "User",
+          "title": "Bañera con Entrada Fácil",
+          "description": "Diseño seguro y conveniente con fácil entrada y salida, perfecto para todas las edades y niveles de movilidad.",
+          "cta": "Ver Antes y Después",
+          "color": "from-teal-500 to-blue-500",
+          "href": "/before-after"
+        },
+        {
+          "icon": "Accessibility",
+          "title": "Bañera Terapéutica",
+          "description": "Con jets de hidroterapia y diseño ergonómico para masajes relajantes y beneficios de bienestar.",
+          "cta": "Descubrir Más",
+          "color": "from-cyan-500 to-sky-500",
+          "href": "/gallery"
+        }
+      ]
+    },
+    "features": {
+      "id": "#features",
+      "path": "/bathtub-solutions",
+      "sectionTitle": "Por Qué Elegir Nuestras Bañeras",
+      "sectionSubtitle": "Disfruta de los beneficios de nuestras soluciones premium de bañeras, diseñadas para la vida moderna.",
+      "cards": [
+        {
+          "icon": "🛁",
+          "title": "Confort Superior",
+          "description": "Diseño profundo y ergonómico para la máxima relajación y una experiencia estilo spa en tu propio hogar."
+        },
+        {
+          "icon": "⭐",
+          "title": "Materiales Duraderos",
+          "description": "Acrílico premium y acabados construidos para durar, ofreciendo un atractivo atemporal y fácil mantenimiento."
+        },
+        {
+          "icon": "🧼",
+          "title": "Mantenimiento Sencillo",
+          "description": "Superficies lisas y no porosas que facilitan la limpieza, manteniendo tu bañera impecable durante años."
+        },
+        {
+          "icon": "🎨",
+          "title": "Diseños Personalizables",
+          "description": "Elige entre distintos tamaños, colores y funciones para crear una bañera que combine perfectamente con tu baño."
+        },
+        {
+          "icon": "✓",
+          "title": "Funciones de Seguridad",
+          "description": "Superficies antideslizantes y opciones de accesibilidad para un baño seguro para toda la familia."
+        },
+        {
+          "icon": "💎",
+          "title": "Valor Añadido",
+          "description": "Mejora tu baño con una bañera premium que aporta confort y aumenta el valor a largo plazo de tu hogar."
+        }
+      ]
+    },
+    "beforeAfter": {
+      "id": "#before-after",
+      "path": "/bathtub-solutions",
+      "sectionTitle": "Ideas de Bañera: Antes y Después",
+      "sectionSubtitle": "Una actualización de bañera puede realizarse en tan solo un día, sin importar el material de tu bañera original, sin el desorden de la demolición ni los costos de una remodelación tradicional.",
+      "description": "La actualización de una bañera puede completarse en tan solo un día con nuestras soluciones. Ya busques una renovación económica o un reemplazo completo, tenemos la solución perfecta. Explora estas ideas de diseño de baños y descubre lo fácil que puede ser la transformación.",
+      "labels": {
+        "button": "Reserva una Consulta Gratuita",
+        "link": "O consulta el <accent>tablero de inspiración</accent> para más ideas de diseño.",
+        "before": "Antes",
+        "after": "Después"
+      },
+      "transformations": [
+        {
+          "title": "Transformación de Bañera",
+          "beforeImage": "/images/bathroom-remodel-before.jpg",
+          "afterImage": "/images/bathroom-remodel-after.jpg"
+        },
+        {
+          "title": "Actualización Moderna",
+          "beforeImage": "/images/bathtub-solutions-before-1.jpg",
+          "afterImage": "/images/bathtub-solutions-after-1.png"
+        }
+      ]
+    },
+    "personalization": {
+      "id": "#personalization",
+      "path": "/bathtub-solutions",
+      "badge": "CIENTOS DE COMBINACIONES",
+      "sectionTitle": "Personaliza Tu Bañera",
+      "sectionSubtitle": "Encuentra la combinación perfecta que se adapte a tu estilo y espacio con nuestra amplia gama de opciones de personalización. Tu baño, a tu manera.",
+      "features": [
+        {
+          "icon": "Palette",
+          "title": "Colores y Acabados",
+          "description": "Elige entre una variedad de colores y acabados para armonizar con la estética de tu baño."
+        },
+        {
+          "icon": "Settings",
+          "title": "Tamaño y Dimensiones",
+          "description": "Selecciona el tamaño perfecto para tu espacio, desde compactas hasta bañeras lujosas y amplias."
+        },
+        {
+          "icon": "Zap",
+          "title": "Funciones y Características",
+          "description": "Agrega jets terapéuticos, superficies calefaccionadas u otras funciones premium para el máximo confort."
+        }
+      ],
+      "cta": {
+        "text": "Te tenemos cubierto.",
+        "button": "Prueba Nuestra Herramienta de Diseño"
+      }
+    },
+    "process": {
+      "id": "#process",
+      "path": "/bathtub-solutions",
+      "sectionTitle": "De la Consulta a la Instalación, Sin Complicaciones",
+      "sectionSubtitle": "M&E Construction and Renovation ofrece soluciones personalizadas de bañeras para prácticamente cualquier escenario. Ya sea una renovación o conversión de ducha a bañera, te tenemos cubierto.",
+      "badge": "Proceso de Instalación de Bañera",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Consulta",
+          "description": "Programa una consulta gratuita en tu hogar para analizar tus opciones de reemplazo y personalizar tu nueva bañera.",
+          "image": "/images/bathtub-solutions-consultation.png",
+          "color": "from-blue-500 to-cyan-500"
+        },
+        {
+          "number": 2,
+          "title": "Ajuste a Medida",
+          "description": "Tu nueva bañera se fabrica a medida para encajar perfectamente en tu espacio, asegurando una instalación sin problemas.",
+          "image": "/images/bathtub-solutions-custom-fitting.png",
+          "color": "from-cyan-500 to-teal-500"
+        },
+        {
+          "number": 3,
+          "title": "Preparación",
+          "description": "Nuestro equipo prepara la bañera existente, asegurando una superficie limpia para la nueva instalación.",
+          "image": "/images/bathtub-solutions-preparation.png",
+          "color": "from-teal-500 to-emerald-500"
+        },
+        {
+          "number": 4,
+          "title": "Instalación",
+          "description": "Nuestro equipo instala la nueva bañera con precisión y cuidado, garantizando un ajuste perfecto y un proceso limpio y sin estrés.",
+          "image": "/images/bathtub-solutions-installation.png",
+          "color": "from-emerald-500 to-green-500"
+        },
+        {
+          "number": 5,
+          "title": "Disfruta",
+          "description": "Relájate y disfruta de tu hermosa nueva bañera con mínima interrupción en tu vida diaria.",
+          "image": "/images/bathtub-solutions-consultation.png",
+          "color": "from-green-500 to-blue-500"
+        }
+      ]
+    },
+    "inspiration": {
+      "id": "#inspiration",
+      "path": "/bathtub-solutions",
+      "sectionTitle": "Inspírate",
+      "sectionSubtitle": "Explora nuestra galería y herramienta de diseño para encontrar la solución de bañera perfecta.",
+      "cards": [
+        {
+          "icon": "ImageIcon",
+          "title": "Galería de Fotos",
+          "description": "Mira cientos de estilos y diseños de bañeras para inspirar tu proyecto.",
+          "label": "Explorar Galería",
+          "href": "/gallery",
+          "image": "/images/modern-shower-design-gallery.jpg",
+          "color": "from-blue-500 to-cyan-500"
+        },
+        {
+          "icon": "Pencil",
+          "title": "Diseña Tu Bañera",
+          "description": "Usa nuestra herramienta de diseño interactiva para personalizar y visualizar tu bañera perfecta.",
+          "label": "Comenzar Diseño",
+          "href": "/design",
+          "image": "/images/shower-design-tool-interface.jpg",
+          "color": "from-cyan-500 to-teal-500"
+        }
+      ]
+    },
+    "faq": {
+      "id": "#faq",
+      "path": "/bathtub-solutions",
+      "sectionTitle": "Preguntas Frecuentes",
+      "sectionSubtitle": "Encuentra respuestas a preguntas comunes sobre nuestros servicios de remodelación de bañeras, incluyendo instalación, personalización, materiales y mantenimiento.",
+      "faqs": [
+        {
+          "question": "¿Cuánto tiempo tarda la instalación de una bañera?",
+          "answer": "La mayoría de las instalaciones se completan en tan solo un día, dependiendo del tamaño y alcance del trabajo. Nuestro proceso es eficiente, minimizando las interrupciones."
+        },
+        {
+          "question": "¿Retiran mi bañera antigua?",
+          "answer": "Sí, nuestro equipo retira de forma segura la bañera existente como parte del proceso de instalación, incluyendo preparación y limpieza para garantizar una experiencia sin problemas."
+        },
+        {
+          "question": "¿Puedo personalizar el diseño y las funciones?",
+          "answer": "¡Absolutamente! Elige entre distintos tamaños, acabados, accesorios y funciones terapéuticas para crear la bañera que se ajuste a tu estilo y necesidades."
+        },
+        {
+          "question": "¿Qué materiales se usan en sus bañeras?",
+          "answer": "Usamos materiales duraderos y de alta calidad como acrílico premium y superficies sólidas, diseñadas para resistir manchas, durar y facilitar la limpieza."
+        },
+        {
+          "question": "¿Se requiere demolición para la instalación?",
+          "answer": "No — nuestras bañeras a menudo se instalan sobre superficies existentes, eliminando la necesidad de demolición y remodelaciones extensas."
+        },
+        {
+          "question": "¿Son seguras y accesibles sus bañeras?",
+          "answer": "Sí, ofrecemos opciones de accesibilidad, incluyendo diseños con entrada fácil, superficies antideslizantes y asientos incorporados para seguridad y confort."
+        },
+        {
+          "question": "¿Ofrecen garantías?",
+          "answer": "Sí, todas nuestras instalaciones incluyen garantía de mano de obra y de materiales, asegurando que tu nueva bañera funcione perfectamente durante años."
+        },
+        {
+          "question": "¿Cómo mantengo mi nueva bañera?",
+          "answer": "Nuestras bañeras están diseñadas para mantenimiento sencillo. Limpia las superficies con un limpiador no abrasivo para mantenerlas impecables, sin frotar fuerte."
+        },
+        {
+          "question": "¿Ofrecen consultas o presupuestos gratuitos?",
+          "answer": "Sí, ofrecemos consultas y presupuestos gratuitos. Nuestros especialistas evalúan tu espacio, revisan tus opciones y proporcionan un presupuesto transparente antes de comenzar."
+        },
+        {
+          "question": "¿Pueden convertir mi ducha en bañera?",
+          "answer": "¡Por supuesto! Nos especializamos en conversiones de ducha a bañera, creando un espacio relajante y elegante sin construcción mayor ni interrupciones."
+        }
+      ]
+    }
+  },
+
+  "kitchenSolutions": {
+    "hero": {
+      "id": "#hero",
+      "path": "/kitchen-solutions",
+      "sectionTitle": "Transformaciones Modernas de Cocina",
+      "sectionSubtitle": "Renueva tu cocina con remodelaciones personalizadas que combinan estilo y funcionalidad. Desde elegantes encimeras hasta soluciones de almacenamiento inteligentes, disfruta de un espacio diseñado para cocinar, entretener y la vida diaria.",
+      "badge": "Renovación de Cocina",
+      "image": {
+        "src": "/images/kitchen-solutions-hero.jpg",
+        "alt": "Renovación de cocina moderna"
+      },
+      "labels": {
+        "button": "Obtener Cotización Gratuita"
+      },
+      "highlights": {
+        "highlight1": {
+          "title": "Sin Complicaciones",
+          "description": "Proceso sin Estrés"
+        },
+        "highlight2": {
+          "title": "Diseño Moderno",
+          "description": "Estiloso y Funcional"
+        }
+      }
+    },
+    "types": {
+      "id": "#types",
+      "path": "/kitchen-solutions",
+      "sectionTitle": "Soluciones de Renovación de Cocina para Cada Estilo de Vida",
+      "sectionSubtitle": "Explora nuestras soluciones de cocina personalizadas, diseñadas para estilo, funcionalidad y valor duradero.",
+      "cards": [
+        {
+          "icon": "Coffee",
+          "title": "Remodelación de Cocina Moderna",
+          "description": "Actualiza tu cocina con elegantes encimeras, gabinetes y electrodomésticos para un aspecto y sensación contemporáneos.",
+          "cta": "Explorar Diseños",
+          "color": "from-blue-500 to-cyan-500",
+          "href": "/kitchen-inspiration/modern"
+        },
+        {
+          "icon": "Layout",
+          "title": "Distribuciones Personalizadas",
+          "description": "Maximiza el espacio y la eficiencia con distribuciones diseñadas para tus necesidades de cocina y entretenimiento.",
+          "cta": "Ver Antes y Después",
+          "color": "from-teal-500 to-blue-500",
+          "href": "/kitchen-inspiration/layouts"
+        },
+        {
+          "icon": "Users",
+          "title": "Cocinas Familiares",
+          "description": "Diseños funcionales y elegantes que hacen que cocinar, comer y pasar tiempo en familia sea seguro y agradable.",
+          "cta": "Descubrir Más",
+          "color": "from-cyan-500 to-sky-500",
+          "href": "/kitchen-inspiration/family-friendly"
+        }
+      ]
+    },
+    "features": {
+      "id": "#features",
+      "path": "/kitchen-solutions",
+      "sectionTitle": "Por Qué Elegir Nuestras Renovaciones de Cocina",
+      "sectionSubtitle": "Descubre los beneficios de nuestras soluciones de cocina premium, diseñadas para estilo, funcionalidad y valor duradero.",
+      "cards": [
+        {
+          "icon": "🏡",
+          "title": "Diseño Moderno",
+          "description": "Encimeras elegantes, gabinetes con estilo y acabados contemporáneos que elevan el aspecto de tu cocina."
+        },
+        {
+          "icon": "⭐",
+          "title": "Materiales Duraderos",
+          "description": "Materiales de alta calidad como cuarzo, granito y gabinetes premium, construidos para durar y resistir el uso diario."
+        },
+        {
+          "icon": "📐",
+          "title": "Distribuciones Funcionales",
+          "description": "Distribuciones de cocina optimizadas para eficiencia, flujo de trabajo y facilidad para cocinar y entretener."
+        },
+        {
+          "icon": "🎨",
+          "title": "Opciones Personalizables",
+          "description": "Elige entre una variedad de acabados, colores y soluciones de almacenamiento para crear una cocina a tu estilo y necesidades."
+        },
+        {
+          "icon": "👨‍👩‍👧‍👦",
+          "title": "Funciones Familiares",
+          "description": "Diseños ergonómicos, instalaciones seguras y superficies duraderas para una cocina que funciona para todos."
+        },
+        {
+          "icon": "💎",
+          "title": "Valor Añadido",
+          "description": "Una renovación de cocina añade valor duradero y atractivo a tu hogar, mejorando la funcionalidad y el confort."
+        }
+      ]
+    },
+    "beforeAfter": {
+      "id": "#before-after",
+      "path": "/kitchen-solutions",
+      "sectionTitle": "Ideas de Renovación de Cocina: Antes y Después",
+      "sectionSubtitle": "Ve cómo las cocinas anticuadas se transforman en espacios modernos, funcionales y con estilo, adaptados a tu estilo de vida.",
+      "description": "Ya sea que consideres una remodelación completa o una actualización inteligente, nuestras soluciones expertas te ayudan a lograr resultados hermosos y prácticos. Explora estas transformaciones de cocina para inspirarte.",
+      "labels": {
+        "button": "Reserva una Consulta Gratuita",
+        "link": "O consulta el <accent>tablero de inspiración</accent> para más ideas de diseño.",
+        "before": "Antes",
+        "after": "Después"
+      },
+      "transformations": [
+        {
+          "title": "Actualización de Cocina Moderna",
+          "beforeImage": "/images/kitchen-solutions-before.jpg",
+          "afterImage": "/images/kitchen-solutions-after.jpg"
+        },
+        {
+          "title": "Transformación de Distribución Funcional",
+          "beforeImage": "/images/kitchen-actual-before.jpg",
+          "afterImage": "/images/kitchen-actual-after.jpg"
+        }
+      ]
+    },
+    "personalization": {
+      "id": "#personalization",
+      "path": "/kitchen-solutions",
+      "badge": "OPCIONES INFINITAS",
+      "sectionTitle": "Personaliza Tu Cocina",
+      "sectionSubtitle": "Adapta cada aspecto de tu cocina — desde gabinetes hasta encimeras y electrodomésticos — para crear un espacio que refleje tu estilo y necesidades.",
+      "features": [
+        {
+          "icon": "Palette",
+          "title": "Colores y Acabados de Gabinetes",
+          "description": "Elige entre una variedad de colores, texturas y acabados de gabinetes para armonizar con tu cocina."
+        },
+        {
+          "icon": "Settings",
+          "title": "Distribución y Dimensiones",
+          "description": "Personaliza la distribución, tamaño de gabinetes y dimensiones de encimeras para que encaje perfectamente en tu espacio."
+        },
+        {
+          "icon": "Zap",
+          "title": "Funciones y Electrodomésticos",
+          "description": "Agrega funciones premium como electrodomésticos inteligentes, islas o soluciones de almacenamiento integradas para máxima funcionalidad."
+        }
+      ],
+      "cta": {
+        "text": "Diseña tu cocina de ensueño con facilidad.",
+        "button": "Obtener Cotización Gratuita"
+      }
+    },
+    "process": {
+      "id": "#process",
+      "path": "/kitchen-solutions",
+      "sectionTitle": "De la Consulta a la Finalización, Sin Complicaciones",
+      "sectionSubtitle": "M&E Construction and Renovation ofrece soluciones de cocina personalizadas, diseñadas para estilo, funcionalidad y eficiencia.",
+      "badge": "Proceso de Renovación de Cocina",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Consulta",
+          "description": "Programa una consulta gratuita en tu hogar para discutir tus necesidades y preferencias de diseño.",
+          "image": "/images/kitchen-consultation.jpg",
+          "color": "from-orange-500 to-yellow-500"
+        },
+        {
+          "number": 2,
+          "title": "Diseño y Planificación",
+          "description": "Nuestros expertos crean un diseño de cocina a medida con flujo de trabajo óptimo, opciones de gabinetes y encimeras.",
+          "image": "/images/kitchen-design-planning.jpg",
+          "color": "from-yellow-500 to-amber-500"
+        },
+        {
+          "number": 3,
+          "title": "Preparación",
+          "description": "Preparamos tu cocina existente eliminando elementos anticuados y asegurando que las superficies estén listas para la renovación.",
+          "image": "/images/kitchen-preparation.jpg",
+          "color": "from-amber-500 to-orange-400"
+        },
+        {
+          "number": 4,
+          "title": "Instalación",
+          "description": "Nuestro equipo instala gabinetes, encimeras, electrodomésticos y acabados con precisión y cuidado.",
+          "image": "/images/kitchen-solutions-before.jpg",
+          "color": "from-orange-400 to-red-400"
+        },
+        {
+          "number": 5,
+          "title": "Disfruta",
+          "description": "Ingresa a tu nueva cocina y disfruta de un espacio moderno, funcional y hermoso diseñado para ti.",
+          "image": "/images/kitchen-enjoy.jpg",
+          "color": "from-red-400 to-orange-500"
+        }
+      ]
+    },
+    "inspiration": {
+      "id": "#inspiration",
+      "path": "/kitchen-solutions",
+      "sectionTitle": "Inspírate para Tu Cocina",
+      "sectionSubtitle": "Explora nuestra galería y herramienta de diseño para encontrar ideas y soluciones para tu renovación de cocina perfecta.",
+      "cards": [
+        {
+          "icon": "ImageIcon",
+          "title": "Galería de Fotos de Cocina",
+          "description": "Navega por cientos de diseños y distribuciones de cocina impresionantes para inspirar tu proyecto.",
+          "label": "Explorar Galería",
+          "href": "/kitchen-inspiration/gallery",
+          "image": "/images/kitchen-gallery.png",
+          "color": "from-orange-500 to-yellow-500"
+        },
+        {
+          "icon": "Pencil",
+          "title": "Mira nuestro Antes y Después",
+          "description": "Ve transformaciones reales de cocinas y inspírate con nuestros proyectos completados, de cocinas anticuadas a modernas y funcionales.",
+          "label": "Ver Transformaciones",
+          "href": "/kitchen-inspiration/before-after",
+          "image": "/images/kitchen-solutions-before-after.png",
+          "color": "from-yellow-500 to-amber-500"
+        }
+      ]
+    },
+    "faq": {
+      "id": "#faq",
+      "path": "/kitchen-solutions",
+      "sectionTitle": "Preguntas Frecuentes",
+      "sectionSubtitle": "Encuentra respuestas a preguntas comunes sobre nuestros servicios de renovación de cocina, incluyendo diseño, instalación, personalización y mantenimiento.",
+      "faqs": [
+        {
+          "question": "¿Cuánto tiempo tarda una renovación de cocina?",
+          "answer": "La mayoría de las renovaciones se completan en unas pocas semanas, dependiendo del alcance del trabajo, complejidad del diseño y disponibilidad de materiales. Nuestro proceso está organizado para minimizar las interrupciones."
+        },
+        {
+          "question": "¿Retiran mis gabinetes y encimeras antiguos?",
+          "answer": "Sí, nuestro equipo retira de manera segura gabinetes, encimeras y electrodomésticos anticuados, preparando tu espacio para una instalación perfecta."
+        },
+        {
+          "question": "¿Puedo personalizar el diseño y la distribución?",
+          "answer": "¡Absolutamente! Ofrecemos distribuciones totalmente personalizables, acabados de gabinetes, materiales de encimeras y funciones para crear una cocina a tu medida."
+        },
+        {
+          "question": "¿Qué materiales usan para gabinetes y encimeras?",
+          "answer": "Usamos materiales premium y duraderos como cuarzo, granito, madera maciza y acabados de gabinetes de alta calidad, diseñados para resistir el uso diario."
+        },
+        {
+          "question": "¿Instalan los electrodomésticos?",
+          "answer": "Sí, nuestro equipo puede instalar todos los electrodomésticos, incluyendo integrables, inteligentes y sistemas de ventilación, asegurando su integración perfecta."
+        },
+        {
+          "question": "¿Se requiere demolición para la instalación?",
+          "answer": "Algunas renovaciones requieren retirar elementos existentes, pero manejamos toda la demolición de manera segura y eficiente para minimizar el desorden."
+        },
+        {
+          "question": "¿Sus cocinas son familiares?",
+          "answer": "Sí, priorizamos diseños ergonómicos, superficies duraderas y distribuciones seguras para crear cocinas funcionales para toda la familia."
+        },
+        {
+          "question": "¿Ofrecen garantías por su trabajo?",
+          "answer": "Sí, ofrecemos garantías de mano de obra y materiales para que disfrutes tu nueva cocina con tranquilidad."
+        },
+        {
+          "question": "¿Puedo obtener una consulta o presupuesto gratuito?",
+          "answer": "Sí, ofrecemos consultas y presupuestos gratuitos. Nuestros especialistas visitan tu hogar, discuten tu visión y proporcionan un plan detallado antes de iniciar el proyecto."
+        },
+        {
+          "question": "¿Pueden ayudar con actualizaciones pequeñas en lugar de una remodelación completa?",
+          "answer": "¡Claro! Realizamos remodelaciones completas y mejoras menores, como reemplazo de encimeras, repintado de gabinetes o optimización de la distribución."
+        }
+      ]
+    }
+  },
+
+  "basementSolutions": {
+    "hero": {
+      "id": "#hero",
+      "path": "/basement-solutions",
+      "sectionTitle": "Transforma Tu Sótano en un Hermoso Espacio Habitable",
+      "sectionSubtitle": "De un almacenamiento sin terminar a un refugio elegante y cómodo: nuestras soluciones de acabado de sótanos convierten cada rincón de tu hogar en un espacio funcional y habitable. Ya sea una sala familiar, oficina o área de entretenimiento, lo hacemos moderno y acogedor.",
+      "badge": "Acabado y Renovación de Sótanos",
+      "image": {
+        "src": "/images/basement-modern.png",
+        "alt": "Renovación moderna de sótano terminado"
+      },
+      "labels": {
+        "button": "Obtener Cotización Gratuita"
+      },
+      "highlights": {
+        "highlight1": {
+          "title": "Diseños Personalizados",
+          "description": "Construido para Tu Estilo de Vida"
+        },
+        "highlight2": {
+          "title": "Acabado Completo",
+          "description": "Desde la Estructura hasta el Piso"
+        }
+      }
+    },
+    "types": {
+      "id": "#types",
+      "path": "/basement-solutions",
+      "sectionTitle": "Soluciones de Renovación de Sótanos para Cada Estilo de Vida",
+      "sectionSubtitle": "Explora nuestras soluciones de sótano personalizadas, diseñadas para maximizar espacio, comodidad y funcionalidad.",
+      "cards": [
+        {
+          "icon": "Layout",
+          "title": "Acabado Completo de Sótano",
+          "description": "Transforma tu sótano sin terminar en un espacio habitable funcional: sala familiar, área de medios o oficina en casa.",
+          "cta": "Explorar Diseños",
+          "color": "from-blue-500 to-cyan-500",
+          "href": "/basement-inspiration/full-finishing"
+        },
+        {
+          "icon": "Users",
+          "title": "Áreas de Entretenimiento y Salones",
+          "description": "Crea zonas de entretenimiento acogedoras con bares, salones o salas de juegos para familia y amigos.",
+          "cta": "Ver Antes y Después",
+          "color": "from-teal-500 to-blue-500",
+          "href": "/basement-inspiration/entertainment"
+        },
+        {
+          "icon": "Coffee",
+          "title": "Oficinas en Casa y Espacios Multifuncionales",
+          "description": "Diseña áreas multifuncionales que combinen trabajo, almacenamiento y relajación sin esfuerzo.",
+          "cta": "Descubrir Más",
+          "color": "from-cyan-500 to-sky-500",
+          "href": "/basement-inspiration/flex-spaces"
+        }
+      ]
+    },
+    "features": {
+      "id": "#features",
+      "path": "/basement-solutions",
+      "sectionTitle": "Por Qué Elegir Nuestras Renovaciones de Sótanos",
+      "sectionSubtitle": "Descubre los beneficios de soluciones de sótano premium, diseñadas para funcionalidad, comodidad y valor duradero.",
+      "cards": [
+        {
+          "icon": "🏠",
+          "title": "Espacio Habitable Maximizado",
+          "description": "Convierte tu sótano en un área habitable funcional como salón, sala de medios o suite de invitados."
+        },
+        {
+          "icon": "🛠️",
+          "title": "Pisos y Acabados Duraderos",
+          "description": "Pisos, acabados de pared y aislamiento de alta calidad, resistentes a la humedad y al uso diario."
+        },
+        {
+          "icon": "📐",
+          "title": "Distribuciones Personalizadas",
+          "description": "Diseña layouts que optimicen el flujo y la funcionalidad para entretenimiento, trabajo y áreas de relajación."
+        },
+        {
+          "icon": "🎬",
+          "title": "Preparado para el Entretenimiento",
+          "description": "Incorpora centros multimedia, bares y áreas recreativas para diversión familiar y reuniones con invitados."
+        },
+        {
+          "icon": "💼",
+          "title": "Oficina en Casa y Espacios Multifuncionales",
+          "description": "Crea espacios versátiles que funcionen como oficinas, gimnasios o áreas de hobbies según tu estilo de vida."
+        },
+        {
+          "icon": "💎",
+          "title": "Mayor Valor para el Hogar",
+          "description": "Un sótano terminado mejora la superficie habitable y el valor general de tu propiedad."
+        }
+      ]
+    },
+    "beforeAfter": {
+      "id": "#before-after",
+      "path": "/basement-solutions",
+      "sectionTitle": "Ideas de Renovación de Sótanos: Antes y Después",
+      "sectionSubtitle": "Descubre cómo los sótanos sin terminar se transforman en espacios funcionales, elegantes y cómodos, adaptados a tu estilo de vida.",
+      "description": "Ya sea que quieras un cine en casa, oficina, sala de juegos o espacio habitable adicional, nuestras soluciones de renovación de sótanos te ayudan a lograr resultados hermosos y prácticos.",
+      "labels": {
+        "button": "Reserva una Consulta Gratuita",
+        "link": "O explora nuestro <accent>tablero de inspiración</accent> para más ideas de transformación de sótanos.",
+        "before": "Antes",
+        "after": "Después"
+      },
+      "transformations": [
+        {
+          "title": "Transformación de Sótano de Concepto Abierto",
+          "beforeImage": "/images/basement-actual-before.jpg",
+          "afterImage": "/images/basement-actual-after.png"
+        },
+        {
+          "title": "Acabado Funcional y Elegante de Sótano",
+          "beforeImage": "/images/basement-actual-before1.jpg",
+          "afterImage": "/images/basement-actual-after1.jpg"
+        }
+      ]
+    },
+    "personalization": {
+      "id": "#personalization",
+      "path": "/basement-solutions",
+      "badge": "OPCIONES DE SÓTANO PERSONALIZADAS",
+      "sectionTitle": "Personaliza Tu Sótano",
+      "sectionSubtitle": "Adapta cada aspecto de tu sótano, desde el layout hasta los acabados y la iluminación, para crear un espacio funcional y elegante que se ajuste a tu estilo de vida.",
+      "features": [
+        {
+          "icon": "Palette",
+          "title": "Acabados de Pared y Piso",
+          "description": "Elige entre varias opciones de pisos, colores de pared y texturas para crear la atmósfera perfecta en tu sótano."
+        },
+        {
+          "icon": "Settings",
+          "title": "Distribución y Espacios Funcionales",
+          "description": "Personaliza el layout de tu sótano para cine en casa, oficina, gimnasio, sala de juegos o espacios habitables adicionales."
+        },
+        {
+          "icon": "Zap",
+          "title": "Iluminación y Funciones",
+          "description": "Agrega funciones premium como iluminación empotrada, bares, almacenamiento integrado o zonas de entretenimiento para máxima funcionalidad."
+        }
+      ],
+      "cta": {
+        "text": "Diseña tu sótano de ensueño con facilidad.",
+        "button": "Obtener Cotización Gratuita"
+      }
+    },
+    "process": {
+      "id": "#process",
+      "path": "/basement-solutions",
+      "sectionTitle": "De la Planificación a la Finalización, Cada Paso con Cuidado",
+      "sectionSubtitle": "M&E Construction and Renovation ofrece soluciones de acabado de sótanos personalizadas para espacios habitables funcionales, modernos y con estilo.",
+      "badge": "Proceso de Acabado de Sótano",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Consulta Inicial",
+          "description": "Discute tus objetivos, ideas de distribución y preferencias de diseño con nuestros expertos.",
+          "image": "/images/basement-process-consultation.png",
+          "color": "from-blue-500 to-cyan-500"
+        },
+        {
+          "number": 2,
+          "title": "Diseño y Planificación",
+          "description": "Creamos un layout detallado del sótano, incluyendo áreas habitables, almacenamiento, iluminación y zonas de entretenimiento.",
+          "image": "/images/basement-process-planning.png",
+          "color": "from-cyan-500 to-teal-500"
+        },
+        {
+          "number": 3,
+          "title": "Preparación y Estructura",
+          "description": "Nuestro equipo prepara el sótano, instalando estructura, aislamiento y sistemas eléctricos/plomería según sea necesario.",
+          "image": "/images/basement-process-preparation.png",
+          "color": "from-teal-500 to-green-500"
+        },
+        {
+          "number": 4,
+          "title": "Acabado e Instalación",
+          "description": "Instalamos pisos, paredes, techos, iluminación y funciones personalizadas para dar vida a tu visión del sótano.",
+          "image": "/images/basement-process-finishing.png",
+          "color": "from-green-500 to-lime-500"
+        },
+        {
+          "number": 5,
+          "title": "Disfruta Tu Espacio",
+          "description": "Ingresa a tu nuevo sótano funcional y elegante, perfecto para entretenimiento, trabajo o relajación.",
+          "image": "/images/basement-process-enjoy.png",
+          "color": "from-lime-500 to-yellow-500"
+        }
+      ]
+    },
+    "inspiration": {
+      "id": "#inspiration",
+      "path": "/basement-solutions",
+      "sectionTitle": "Inspírate para Tu Sótano",
+      "sectionSubtitle": "Explora nuestra galería y proyectos de antes y después para encontrar ideas y soluciones para la renovación perfecta de tu sótano.",
+      "cards": [
+        {
+          "icon": "ImageIcon",
+          "title": "Galería de Fotos de Sótanos",
+          "description": "Navega por cientos de diseños, distribuciones y acabados de sótano impresionantes para inspirar tu proyecto.",
+          "label": "Explorar Galería",
+          "href": "/basement-inspiration/gallery",
+          "image": "/images/basement-gallery.png",
+          "color": "from-blue-500 to-cyan-500"
+        },
+        {
+          "icon": "Pencil",
+          "title": "Ver Transformaciones Antes y Después",
+          "description": "Consulta proyectos reales de acabado de sótanos y observa cómo convertimos espacios sin terminar en áreas habitables funcionales y con estilo.",
+          "label": "Ver Transformaciones",
+          "href": "/basement-inspiration/before-after",
+          "image": "/images/basement-solutions-before-after.png",
+          "color": "from-cyan-500 to-teal-500"
+        }
+      ]
+    },
+    "faq": {
+      "id": "#faq",
+      "path": "/basement-solutions",
+      "sectionTitle": "Preguntas Frecuentes",
+      "sectionSubtitle": "Encuentra respuestas a preguntas comunes sobre nuestros servicios de renovación de sótanos, incluyendo diseño, instalación, personalización y mantenimiento.",
+      "faqs": [
+        {
+          "question": "¿Cuánto tiempo tarda una renovación de sótano?",
+          "answer": "La mayoría de las renovaciones se completan en unas pocas semanas, dependiendo del alcance del trabajo, complejidad del diseño y disponibilidad de materiales. Nuestro proceso está organizado para minimizar interrupciones."
+        },
+        {
+          "question": "¿Pueden terminar completamente un sótano sin terminar?",
+          "answer": "Sí, manejamos el acabado completo del sótano, incluyendo estructura, aislamiento, electricidad, plomería, pisos, paredes y techos para crear un espacio habitable completo."
+        },
+        {
+          "question": "¿Puedo personalizar el diseño y la distribución del sótano?",
+          "answer": "¡Absolutamente! Ofrecemos layouts totalmente personalizables, acabados, iluminación y funciones para crear un sótano que se adapte perfectamente a tu estilo y necesidades."
+        },
+        {
+          "question": "¿Instalan sistemas de entretenimiento o bares?",
+          "answer": "Sí, podemos incorporar centros multimedia, bares, salas de juegos y otras funciones de entretenimiento en tu sótano terminado."
+        },
+        {
+          "question": "¿Los sótanos están diseñados para ser resistentes a la humedad?",
+          "answer": "Sí, usamos materiales y acabados de alta calidad para garantizar durabilidad, resistencia a la humedad y confort duradero."
+        },
+        {
+          "question": "¿Un sótano puede incluir oficina o gimnasio?",
+          "answer": "Sí, diseñamos espacios versátiles que pueden funcionar como oficinas, gimnasios, salas de hobbies o áreas habitables adicionales."
+        },
+        {
+          "question": "¿Ofrecen garantías para las renovaciones de sótanos?",
+          "answer": "Sí, proporcionamos garantías de mano de obra y materiales para que disfrutes tu sótano recién terminado con tranquilidad."
+        },
+        {
+          "question": "¿Hay consultas gratuitas disponibles?",
+          "answer": "Sí, ofrecemos consultas y presupuestos gratuitos. Nuestros especialistas visitan tu hogar, discuten tu visión y proporcionan un plan y cotización detallados antes de comenzar el proyecto."
+        },
+        {
+          "question": "¿Pueden ayudar con acabados parciales o mejoras menores?",
+          "answer": "¡Claro! Manejamos tanto el acabado completo del sótano como proyectos más pequeños, como mejoras de pisos, instalación de iluminación u optimización de distribución."
+        }
+      ]
     }
   }
 }

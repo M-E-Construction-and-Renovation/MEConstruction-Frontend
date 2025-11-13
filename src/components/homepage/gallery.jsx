@@ -1,26 +1,24 @@
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { ArrowRight } from "lucide-react";
-import { useTranslations } from "next-intl";
 
-export function Gallery() {
-  const t = useTranslations("home.gallery");
-  const galleryImages = t.raw("images");
+export function Gallery({ gallery }) {
+  const { sectionTitle, sectionSubtitle, button, images } = gallery;
 
   return (
     <section id="gallery" className="py-16 md:py-24 bg-secondary/30">
       <div className="container mx-auto px-4">
         <div className="mb-12 text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl mb-4 text-balance">
-            {t("sectionTitle")}
+            {sectionTitle}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
-            {t("sectionSubtitle")}
+            {sectionSubtitle}
           </p>
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 mb-8">
-          {galleryImages.map((image, index) => (
+          {images.map((image, index) => (
             <div
               key={index}
               className="group relative aspect-square overflow-hidden rounded-lg bg-muted"
@@ -41,7 +39,7 @@ export function Gallery() {
               size="lg"
               className="bg-accent hover:bg-accent/90 text-accent-foreground gap-2"
             >
-              {t("button")}
+              {button}
               <ArrowRight className="h-5 w-5" />
             </Button>
           </Link>

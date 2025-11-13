@@ -4,11 +4,9 @@ import { Card } from "../ui/card";
 import * as LucideIcons from "lucide-react";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
 
-export function KitchenInspiration() {
-  const t = useTranslations("kitchenSolutions.inspiration");
-  const inspirationCards = t.raw("cards");
+export function KitchenInspiration({ inspiration }) {
+  const { sectionTitle, sectionSubtitle, cards } = inspiration;
 
   return (
     <section
@@ -18,15 +16,15 @@ export function KitchenInspiration() {
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            {t("sectionTitle")}
+            {sectionTitle}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            {t("sectionSubtitle")}
+            {sectionSubtitle}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {inspirationCards.map((card, index) => {
+          {cards.map((card, index) => {
             const Icon = LucideIcons[card.icon] || LucideIcons.HelpCircle;
 
             return (

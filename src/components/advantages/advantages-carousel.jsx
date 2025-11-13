@@ -4,12 +4,9 @@ import { useState, useEffect, useRef } from "react";
 import { Button } from "../ui/button";
 import * as LucideIcons from "lucide-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useTranslations } from "next-intl";
 
-export function AdvantagesCarousel() {
-  const t = useTranslations("advantages.carousel");
-
-  const advantages = t.raw("items");
+export function AdvantagesCarousel({ carousel }) {
+  const { sectionTitle, items } = carousel;
 
   const [currentSlide, setCurrentSlide] = useState(0);
   const totalSlides = 3;
@@ -40,7 +37,7 @@ export function AdvantagesCarousel() {
 
   const getVisibleAdvantages = () => {
     const startIndex = currentSlide * 3;
-    return advantages.slice(startIndex, startIndex + 3);
+    return items.slice(startIndex, startIndex + 3);
   };
 
   return (
@@ -57,7 +54,7 @@ export function AdvantagesCarousel() {
 
           <div>
             <h2 className="text-3xl md:text-4xl font-bold mb-8">
-              Why Homeowners Choose M&E Construction and Renovation
+              {sectionTitle}
             </h2>
 
             <div className="space-y-6 mb-8">

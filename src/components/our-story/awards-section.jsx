@@ -1,25 +1,22 @@
 import React from "react";
 import { useTranslations } from "next-intl";
 
-const AwardsSection = () => {
-  const t = useTranslations("ourStory.awards");
-  const awards = t.raw("items");
+const AwardsSection = ({ awards }) => {
+  const { sectionTitle, sectionSubtitle, items } = awards;
 
   return (
     <section id="awards" className="py-16 md:py-24 lg:py-32 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-            {t.rich("sectionTitle", {
-              accent: (chunks) => <span className="text-accent">{chunks}</span>,
-            })}
+            {sectionTitle}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            {t("sectionSubtitle")}
+            {sectionSubtitle}
           </p>
         </div>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 mt-12">
-          {awards.map((item, index) => {
+          {items.map((item, index) => {
             return (
               <div
                 key={index}

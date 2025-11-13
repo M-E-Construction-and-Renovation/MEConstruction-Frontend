@@ -1,10 +1,6 @@
 import * as LucideIcons from "lucide-react";
-import { useTranslations } from "next-intl";
 
-export function BathroomFeatures() {
-  const t = useTranslations("bathroomRemodel.features");
-  const features = t.raw("features");
-
+export function BathroomFeatures({ features }) {
   return (
     <section
       id="features"
@@ -12,7 +8,7 @@ export function BathroomFeatures() {
     >
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-8">
-          {features.map((feature, index) => {
+          {features.features.map((feature, index) => {
             const Icon = LucideIcons[feature.icon] || LucideIcons.HelpCircle;
             return (
               <div

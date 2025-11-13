@@ -7,7 +7,7 @@
       "id": "#hero",
       "path": "/",
       "badge": "Trusted by 50,000+ Homeowners",
-      "headline": "Make every inch of your <accent>Home</accent> work for You.",
+      "headline": "Make every inch of your Home work for You.",
       "subtext": "We’ll tailor a custom remodeling plan that fits your lifestyle and budget. Our team brings years of experience, professionalism, and passion to every project. Whether you're reimagining your living space or expanding to fit your needs, we’ll help you build something beautiful, functional, and lasting.",
       "buttons": {
         "quote": "Get Free Quote",
@@ -259,12 +259,12 @@
       "id": "#hero",
       "path": "/advantages",
       "badge": "Why Choose M&E Construction and Renovation",
-      "headline": "The <accent>M&E Construction and Renovation</accent> Advantages",
+      "headline": "The M&E Construction and Renovation Advantages",
       "subtext": "Discover why thousands of homeowners trust M&E Construction and Renovation for their bathroom, kitchen, and basement needs. Quality, speed, and exceptional service guaranteed.",
       "button": "Get Free Quote",
       "image": {
         "src": "/images/modern-luxury-bathroom-with-elegant-fixtures.jpg",
-        "alt": "Bath Fitter advantages showcase"
+        "alt": "M&E Construction and Renovations advantages showcase"
       }
     },
     "carousel": {
@@ -433,7 +433,7 @@
     "hero": {
       "id": "#hero",
       "path": "/our-story",
-      "headline": "Our <accent>Story</accent>",
+      "headline": "Our Story",
       "title": "Building Trust Since 2022",
       "description": "Established in 2022, M&E Construction & Renovations has quickly become a trusted name in residential and commercial remodeling, delivering exceptional craftsmanship and innovative solutions that transform homes and businesses.",
       "button": "Get Free Quote"
@@ -442,7 +442,7 @@
     "mission": {
       "id": "#mission",
       "path": "/our-story",
-      "sectionTitle": "What <accent>Matters</accent> Most To Us",
+      "sectionTitle": "What Matters Most To Us",
       "sectionSubtitle": "At M&E Construction & Renovation, what matters most to us is transforming your home into a space that brings joy, functionality, and value. We're passionate about maximizing the potential of every area, whether it's turning a basement into an entertainer's dream, creating a spa-like bathroom retreat, or designing a stunning, functional kitchen.",
       "title": "Crafting Homes with Heart and Purpose",
       "description": "We pride ourselves on delivering excellence, combining style and practicality in every project. Trust and care are at the core of everything we do because we understand your home is your sanctuary. From concrete patios to walkways, we focus on enhancing both the aesthetic and usability of your spaces, helping you fall in love with your home all over again.",
@@ -854,29 +854,25 @@
       "description": "M&E Construction & Renovations offers tailored shower solutions for any project, whether you’re refreshing your bathroom or completely redesigning your shower space. Explore our design ideas and discover how effortless it can be to create a stylish, durable, and personalized shower that elevates your bathroom.",
       "labels": {
         "button": "Book a Free Consultation",
-        "link": "Or check out the <accent>inspiration board</accent> for more design ideas."
+        "link": "Or check out the <accent>inspiration board</accent> for more design ideas.",
+        "before": "Before",
+        "after": "After"
       },
       "transformations": [
         {
           "title": "Shower Transformation",
           "beforeImage": "/images/old-bathroom-shower-before.jpg",
-          "beforeAlt": "Before shower image",
-          "afterImage": "/images/modern-luxury-shower-after.jpg",
-          "afterAlt": "After shower image"
+          "afterImage": "/images/modern-luxury-shower-after.jpg"
         },
         {
           "title": "Tub-to-Shower Transformation",
           "beforeImage": "/images/bathtub-before-conversion.jpg",
-          "beforeAlt": "Before shower image",
-          "afterImage": "/images/spacious-shower-after-conversion.jpg",
-          "afterAlt": "After shower image"
+          "afterImage": "/images/spacious-shower-after-conversion.jpg"
         },
         {
           "title": "Accessible Shower Installation",
           "beforeImage": "/images/standard-shower-before.jpg",
-          "beforeAlt": "Before shower image",
-          "afterImage": "/images/accessible-walk-in-shower-after.jpg",
-          "afterAlt": "After shower image"
+          "afterImage": "/images/accessible-walk-in-shower-after.jpg"
         }
       ]
     },
@@ -1142,22 +1138,20 @@
       "description": "A bathtub upgrade can be done as little as one day with our bathtub solutions. Whether you're looking for a cost-effective refresh or a complete replacement, we have your back. Explore these bathroom design ideas and see how easy a transformation can be.",
       "labels": {
         "button": "Book a Free Consultation",
-        "link": "Or check out the <accent>inspiration board</accent> for more design ideas."
+        "link": "Or check out the <accent>inspiration board</accent> for more design ideas.",
+        "before": "Before",
+        "after": "After"
       },
       "transformations": [
         {
           "title": "Bath Transformation",
           "beforeImage": "/images/bathroom-remodel-before.jpg",
-          "beforeAlt": "Before bathtub image",
-          "afterImage": "/images/bathroom-remodel-after.jpg",
-          "afterAlt": "After bathtub image"
+          "afterImage": "/images/bathroom-remodel-after.jpg"
         },
         {
           "title": "Modern Upgrade",
           "beforeImage": "/images/bathtub-solutions-before-1.jpg",
-          "beforeAlt": "Before bathtub image",
-          "afterImage": "/images/bathtub-solutions-after-1.png",
-          "afterAlt": "After bathtub image"
+          "afterImage": "/images/bathtub-solutions-after-1.png"
         }
       ]
     },
@@ -1419,22 +1413,20 @@
       "description": "Whether you're considering a complete kitchen remodel or a smart refresh, our expert solutions help you achieve beautiful, practical results. Explore these kitchen design transformations for inspiration.",
       "labels": {
         "button": "Book a Free Consultation",
-        "link": "Or check out the <accent>inspiration board</accent> for more design ideas."
+        "link": "Or check out the <accent>inspiration board</accent> for more design ideas.",
+        "before": "Before",
+        "after": "After"
       },
       "transformations": [
         {
           "title": "Modern Kitchen Upgrade",
           "beforeImage": "/images/kitchen-solutions-before.jpg",
-          "beforeAlt": "Before kitchen image",
-          "afterImage": "/images/kitchen-solutions-after.jpg",
-          "afterAlt": "After kitchen image"
+          "afterImage": "/images/kitchen-solutions-after.jpg"
         },
         {
           "title": "Functional Layout Transformation",
           "beforeImage": "/images/kitchen-actual-before.jpg",
-          "beforeAlt": "Before kitchen image",
-          "afterImage": "/images/kitchen-actual-after.jpg",
-          "afterAlt": "After kitchen image"
+          "afterImage": "/images/kitchen-actual-after.jpg"
         }
       ]
     },
@@ -1696,22 +1688,20 @@
       "description": "Whether you want a home theater, office, playroom, or additional living area, our basement renovation solutions help you achieve beautiful and practical results.",
       "labels": {
         "button": "Book a Free Consultation",
-        "link": "Or explore our <accent>inspiration board</accent> for more basement transformation ideas."
+        "link": "Or explore our <accent>inspiration board</accent> for more basement transformation ideas.",
+        "before": "Before",
+        "after": "After"
       },
       "transformations": [
         {
           "title": "Open Concept Basement Transformation",
           "beforeImage": "/images/basement-actual-before.jpg",
-          "beforeAlt": "Before basement image",
-          "afterImage": "/images/basement-actual-after.png",
-          "afterAlt": "After basement image"
+          "afterImage": "/images/basement-actual-after.png"
         },
         {
           "title": "Functional & Stylish Basement Finish",
           "beforeImage": "/images/basement-actual-before1.jpg",
-          "beforeAlt": "Before basement image",
-          "afterImage": "/images/basement-actual-after1.jpg",
-          "afterAlt": "After basement image"
+          "afterImage": "/images/basement-actual-after1.jpg"
         }
       ]
     },

@@ -6,6 +6,13 @@ import { useTransition } from "react";
 import { Globe, ChevronDown } from "lucide-react";
 import { Button } from "../ui/button";
 
+// Helper to set a cookie
+const setLocaleCookie = (locale) => {
+  document.cookie = `NEXT_LOCALE=${locale}; path=/; max-age=${
+    60 * 60 * 24 * 365
+  }`; // 1 year
+};
+
 export default function LanguageSwitcher({ currentLocale }) {
   const router = useRouter();
   const pathname = usePathname();
@@ -17,6 +24,9 @@ export default function LanguageSwitcher({ currentLocale }) {
   ];
 
   const handleChange = (newLocale) => {
+    // Set cookie so middleware knows the selected language
+    setLocaleCookie(newLocale);
+
     const segments = pathname.split("/");
     segments[1] = newLocale;
     const newPath = segments.join("/") || "/";

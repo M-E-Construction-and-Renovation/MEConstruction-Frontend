@@ -4,11 +4,16 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useDispatch } from "react-redux";
 import { openModal } from "@/store/quoteModalSlice";
-import { useTranslations } from "next-intl";
 
-export function BathroomBeforeAfter() {
-  const t = useTranslations("bathroomRemodel.beforeAfter");
-  const descriptions = t.raw("descriptions");
+export function BathroomBeforeAfter({ beforeAfter }) {
+  const {
+    sectionTitle,
+    sectionSubtitle,
+    descriptions,
+    button,
+    labels,
+    beforeAfterImages,
+  } = beforeAfter;
 
   const dispatch = useDispatch();
 
@@ -26,10 +31,10 @@ export function BathroomBeforeAfter() {
           <div className="mb-12 grid md:grid-cols-2 gap-12">
             <div>
               <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                {t("sectionTitle")}
+                {sectionTitle}
               </h2>
               <h3 className="text-lg md:text-xl font-semibold mb-4">
-                {t("sectionSubtitle")}
+                {sectionSubtitle}
               </h3>
 
               {descriptions.map((description, index) => (
@@ -46,7 +51,7 @@ export function BathroomBeforeAfter() {
                 className="bg-accent hover:bg-accent/90 text-accent-foreground gap-2 text-base w-fit"
                 onClick={() => dispatch(openModal())}
               >
-                {t("button")}
+                {button}
               </Button>
             </div>
 
@@ -54,8 +59,8 @@ export function BathroomBeforeAfter() {
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-muted shadow-xl">
               <div className="absolute inset-0">
                 <img
-                  src={t("beforeAfterImages.after.src")}
-                  alt={t("beforeAfterImages.after.alt")}
+                  src={beforeAfterImages.after.src}
+                  alt={beforeAfterImages.after.alt}
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -65,17 +70,17 @@ export function BathroomBeforeAfter() {
                 style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
               >
                 <img
-                  src={t("beforeAfterImages.before.src")}
-                  alt={t("beforeAfterImages.before.alt")}
+                  src={beforeAfterImages.before.src}
+                  alt={beforeAfterImages.before.alt}
                   className="w-full h-full object-cover"
                 />
               </div>
 
               <div className="absolute top-4 left-4 bg-slate-900/80 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold text-white">
-                {t("labels.before")}
+                {labels.before}
               </div>
               <div className="absolute top-4 right-4 bg-slate-900/80 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold text-white">
-                {t("labels.after")}
+                {labels.after}
               </div>
 
               <div

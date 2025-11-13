@@ -2,11 +2,9 @@
 
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
-import { useTranslations } from "next-intl";
 
-export function FaqSection() {
-  const t = useTranslations("bathtubSolutions.faq");
-  const faqs = t.raw("faqs");
+export function FaqSection({ faq }) {
+  const { sectionTitle, sectionSubtitle, faqs } = faq;
 
   const [openIndex, setOpenIndex] = useState(null);
 
@@ -20,11 +18,9 @@ export function FaqSection() {
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              {t("sectionTitle")}
+              {sectionTitle}
             </h2>
-            <p className="text-lg text-muted-foreground">
-              {t("sectionSubtitle")}
-            </p>
+            <p className="text-lg text-muted-foreground">{sectionSubtitle}</p>
           </div>
 
           <div className="space-y-4">

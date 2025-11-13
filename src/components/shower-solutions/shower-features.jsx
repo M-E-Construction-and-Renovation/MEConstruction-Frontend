@@ -1,9 +1,7 @@
 import * as LucideIcons from "lucide-react";
-import { useTranslations } from "next-intl";
 
-export function ShowerFeatures() {
-  const t = useTranslations("showerSolutions.features");
-  const features = t.raw("features");
+export function ShowerFeatures({ features }) {
+  const { sectionTitle, sectionSubtitle } = features;
 
   return (
     <section
@@ -13,15 +11,15 @@ export function ShowerFeatures() {
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            {t("sectionTitle")}
+            {sectionTitle}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            {t("sectionSubtitle")}
+            {sectionSubtitle}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {features.map((feature, index) => {
+          {features.features.map((feature, index) => {
             const Icon = LucideIcons[feature.icon] || LucideIcons.HelpCircle;
 
             return (

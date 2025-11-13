@@ -1,9 +1,7 @@
 import * as LucideIcons from "lucide-react";
-import { useTranslations } from "next-intl";
 
-export function Features() {
-  const t = useTranslations("home.features");
-  const items = t.raw("items");
+export function Features({ features }) {
+  const { items } = features;
 
   return (
     <section id="features" className="border-y bg-secondary/30 py-12">
@@ -11,6 +9,7 @@ export function Features() {
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {items.map(({ icon, title, description }) => {
             const Icon = LucideIcons[icon] || LucideIcons.HelpCircle;
+            // const Icon = icon;
 
             return (
               <div key={title} className="flex items-start gap-4">

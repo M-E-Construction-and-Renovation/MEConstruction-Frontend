@@ -1,10 +1,8 @@
 import { Card, CardContent } from "../ui/card";
 import * as LucideIcons from "lucide-react";
-import { useTranslations } from "next-intl";
 
-export function Advantages() {
-  const t = useTranslations("home.advantages");
-  const advantages = t.raw("items");
+export function Advantages({ advantages }) {
+  const { sectionTitle, sectionSubtitle, items } = advantages;
 
   return (
     <section
@@ -14,15 +12,15 @@ export function Advantages() {
       <div className="container mx-auto px-4">
         <div className="mb-12 text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl mb-4 text-balance">
-            {t("sectionTitle")}
+            {sectionTitle}
           </h2>
           <p className="text-lg text-primary-foreground/80 max-w-2xl mx-auto text-pretty">
-            {t("sectionSubtitle")}
+            {sectionSubtitle}
           </p>
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {advantages.map((advantage, index) => {
+          {items.map((advantage, index) => {
             const Icon = LucideIcons[advantage.icon] || LucideIcons.HelpCircle;
 
             return (

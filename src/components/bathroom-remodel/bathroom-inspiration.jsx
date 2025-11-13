@@ -1,11 +1,9 @@
 import { Button } from "../ui/button";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { useTranslations } from "next-intl";
 
-export function BathroomInspiration() {
-  const t = useTranslations("bathroomRemodel.inspiration");
-  const cards = t.raw("cards");
+export function BathroomInspiration({ inspiration }) {
+  const { sectionTitle, sectionSubtitle, cards } = inspiration;
 
   return (
     <section
@@ -15,11 +13,9 @@ export function BathroomInspiration() {
       <div className="container mx-auto px-4">
         <div className="mb-12 text-white">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            {t("sectionTitle")}
+            {sectionTitle}
           </h2>
-          <p className="text-lg text-blue-100 max-w-3xl">
-            {t("sectionSubtitle")}
-          </p>
+          <p className="text-lg text-blue-100 max-w-3xl">{sectionSubtitle}</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">

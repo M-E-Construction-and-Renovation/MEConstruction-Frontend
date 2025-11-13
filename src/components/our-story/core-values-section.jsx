@@ -1,9 +1,7 @@
 import React from "react";
-import { useTranslations } from "next-intl";
 
-const CoreValuesSection = () => {
-  const t = useTranslations("ourStory.coreValues");
-  const values = t.raw("values");
+const CoreValuesSection = ({ coreValues }) => {
+  const { sectionTitle, sectionSubtitle, values } = coreValues;
 
   return (
     <section
@@ -13,12 +11,10 @@ const CoreValuesSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-            {t.rich("sectionTitle", {
-              accent: (chunks) => <span className="text-accent">{chunks}</span>,
-            })}
+            {sectionTitle}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            {t("sectionSubtitle")}
+            {sectionSubtitle}
           </p>
         </div>
 

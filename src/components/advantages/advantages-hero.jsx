@@ -5,12 +5,11 @@ import { ArrowRight } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { openModal } from "@/store/quoteModalSlice";
-import { useTranslations } from "next-intl";
 
-export function AdvantagesHero() {
+export function AdvantagesHero({ hero }) {
+  const { badge, headline, subtext, button, image } = hero;
+
   const dispatch = useDispatch();
-
-  const t = useTranslations("advantages.hero");
 
   const [isTextVisible, setIsTextVisible] = useState(false);
   const [isImageVisible, setIsImageVisible] = useState(false);
@@ -44,7 +43,7 @@ export function AdvantagesHero() {
               }`}
             >
               <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
-              <span className="font-medium">{t("badge")}</span>
+              <span className="font-medium">{badge}</span>
             </div>
 
             <h1
@@ -54,11 +53,7 @@ export function AdvantagesHero() {
                   : "-translate-x-12 opacity-0"
               }`}
             >
-              {t.rich("headline", {
-                accent: (chunks) => (
-                  <span className="text-accent">{chunks}</span>
-                ),
-              })}
+              {headline}
             </h1>
 
             <p
@@ -68,7 +63,7 @@ export function AdvantagesHero() {
                   : "-translate-x-12 opacity-0"
               }`}
             >
-              {t("subtext")}
+              {subtext}
             </p>
 
             <div
@@ -83,7 +78,7 @@ export function AdvantagesHero() {
                 size="lg"
                 className="bg-accent hover:bg-accent/90 text-accent-foreground gap-2 text-base"
               >
-                {t("button")}
+                {button}
                 <ArrowRight className="h-5 w-5" />
               </Button>
             </div>
@@ -98,8 +93,8 @@ export function AdvantagesHero() {
               }`}
             >
               <img
-                src={t("image.src")}
-                alt={t("image.alt")}
+                src={image.src}
+                alt={image.alt}
                 className="h-full w-full object-cover"
               />
             </div>

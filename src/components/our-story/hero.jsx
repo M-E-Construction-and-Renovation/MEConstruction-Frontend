@@ -5,10 +5,9 @@ import { Button } from "../ui/button";
 import { ArrowRight } from "lucide-react";
 import { useDispatch } from "react-redux";
 import { openModal } from "@/store/quoteModalSlice";
-import { useTranslations } from "next-intl";
 
-const OurStoryHero = () => {
-  const t = useTranslations("ourStory.hero");
+const OurStoryHero = ({ hero }) => {
+  const { headline, title, description, button } = hero;
 
   const dispatch = useDispatch();
 
@@ -39,17 +38,13 @@ const OurStoryHero = () => {
             }`}
           >
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-6">
-              {t.rich("headline", {
-                accent: (chunks) => (
-                  <span className="text-accent">{chunks}</span>
-                ),
-              })}
+              {headline}
             </h1>
             <p className="text-xl md:text-2xl text-gray-100 mb-4 font-semibold">
-              {t("title")}
+              {title}
             </p>
             <p className="text-lg text-gray-100 mb-8 leading-relaxed max-w-xl">
-              {t("description")}
+              {description}
             </p>
 
             <Button
@@ -57,7 +52,7 @@ const OurStoryHero = () => {
               size="lg"
               className="bg-accent hover:bg-accent/90 text-accent-foreground gap-2 text-base"
             >
-              {t("button")}
+              {button}
               <ArrowRight className="h-5 w-5" />
             </Button>
           </div>

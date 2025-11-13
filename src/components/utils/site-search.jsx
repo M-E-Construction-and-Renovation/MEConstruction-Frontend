@@ -5,7 +5,7 @@ import Fuse from "fuse.js";
 import { useState, useMemo } from "react";
 import { Search } from "lucide-react";
 import { Button } from "../ui/button";
-import { useLocale } from "next-intl";
+import { usePathname } from "next/navigation";
 import en from "../../../messages/en.json";
 import es from "../../../messages/es.json";
 import { flattenMessages } from "@/lib/utils";
@@ -14,7 +14,15 @@ import Link from "next/link";
 const messages = { en, es };
 
 export default function SiteSearch() {
-  const locale = useLocale();
+  // Detect locale from current pathname, e.g. /en/about or /es/gallery
+  const pathname = usePathname();
+  const locale =
+    pathname?.split("/")[1] === "es"
+      ? "es"
+      : pathname?.split("/")[1] === "en"
+      ? "en"
+      : "en"; // fallback to English
+
   const translations = messages[locale] || messages.en;
 
   const [query, setQuery] = useState("");

@@ -6,12 +6,10 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useDispatch } from "react-redux";
 import { openModal } from "@/store/quoteModalSlice";
-import { useTranslations } from "next-intl";
 
-export function BathroomHero() {
-  const t = useTranslations("bathroomRemodel.hero");
-
-  const features = t.raw("features");
+export function BathroomHero({ hero }) {
+  const { sectionTitle, sectionSubtitle, tagline, features, labels, image } =
+    hero;
 
   const dispatch = useDispatch();
 
@@ -44,13 +42,13 @@ export function BathroomHero() {
               }`}
             >
               <span className="text-accent font-semibold tracking-wide">
-                {t("tagline")}
+                {tagline}
               </span>
               <h1 className="text-5xl md:text-6xl font-bold tracking-tight mt-3 mb-4">
-                {t("sectionTitle")}
+                {sectionTitle}
               </h1>
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                {t("sectionSubtitle")}
+                {sectionSubtitle}
               </p>
             </div>
 
@@ -90,7 +88,7 @@ export function BathroomHero() {
                   size="lg"
                   className="bg-accent hover:bg-accent/90 text-accent-foreground gap-2 text-base"
                 >
-                  {t("labels.button")}
+                  {labels.button}
                   <ArrowRight className="h-5 w-5" />
                 </Button>
                 <Link href="/design" target="_blank">
@@ -100,7 +98,7 @@ export function BathroomHero() {
                     className="gap-2 text-base bg-transparent border-primary/20 hover:bg-primary"
                   >
                     <Palette className="h-5 w-5" />
-                    {t("labels.link")}
+                    {labels.link}
                   </Button>
                 </Link>
               </div>
@@ -117,8 +115,8 @@ export function BathroomHero() {
               }`}
             >
               <img
-                src={t("image.src")}
-                alt={t("image.alt")}
+                src={image.src}
+                alt={image.alt}
                 className="h-full w-full object-cover"
               />
             </div>

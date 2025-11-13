@@ -2,12 +2,10 @@ import Link from "next/link";
 import { Button } from "../ui/button";
 import { Card } from "../ui/card";
 import * as LucideIcons from "lucide-react";
-import { useTranslations } from "next-intl";
 
-export function KitchenPersonalization() {
-  const t = useTranslations("kitchenSolutions.personalization");
-  const features = t.raw("features");
-
+export function KitchenPersonalization({ personalization }) {
+  const { badge, sectionTitle, sectionSubtitle, features, cta } =
+    personalization;
   return (
     <section
       id="personalization"
@@ -21,13 +19,13 @@ export function KitchenPersonalization() {
       <div className="container mx-auto px-4 relative z-10 max-w-6xl">
         <div className="text-center mb-12 md:mb-16">
           <div className="inline-block px-4 py-2 bg-accent rounded-full text-primary text-sm font-semibold mb-4">
-            {t("badge")}
+            {badge}
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-accent mb-4">
-            {t("sectionTitle")}
+            {sectionTitle}
           </h2>
           <p className="text-lg text-white max-w-2xl mx-auto">
-            {t("sectionSubtitle")}
+            {sectionSubtitle}
           </p>
         </div>
 
@@ -55,13 +53,13 @@ export function KitchenPersonalization() {
         </div>
 
         <div className="text-center">
-          <p className="text-lg text-white mb-6">{t("cta.text")}</p>
+          <p className="text-lg text-white mb-6">{cta.text}</p>
           <Link href="/design" target="_blank">
             <Button
               size="lg"
               className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold"
             >
-              {t("cta.button")}
+              {cta.button}
             </Button>
           </Link>
         </div>

@@ -9,6 +9,8 @@ export default function sitemap() {
     "bathroom-remodel",
     "shower-solutions",
     "bathtub-solutions",
+    "kitchen-solutions",
+    "basement-solutions",
     "gallery",
     "before-after",
     "buying-guide",

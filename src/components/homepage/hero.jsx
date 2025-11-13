@@ -7,15 +7,12 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { openModal } from "@/store/quoteModalSlice";
 import Link from "next/link";
-import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 
-export function Hero() {
+export function Hero({ hero }) {
   const dispatch = useDispatch();
 
-  const t = useTranslations("home.hero");
-  const features = t.raw("features");
-  const images = t.raw("images");
+  const { badge, headline, subtext, buttons, features, rating, images } = hero;
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -60,7 +57,7 @@ export function Hero() {
               }`}
             >
               <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
-              <span className="font-medium">{t("badge")}</span>
+              <span className="font-medium">{badge}</span>
             </div>
 
             <h1
@@ -70,13 +67,7 @@ export function Hero() {
                   : "-translate-x-12 opacity-0"
               }`}
             >
-              {/* Transform Your Bathroom in Just{" "}
-              <span className="text-accent">One Day</span> */}
-              {t.rich("headline", {
-                accent: (chunks) => (
-                  <span className="text-accent">{chunks}</span>
-                ),
-              })}
+              {headline}
             </h1>
 
             <p
@@ -86,7 +77,7 @@ export function Hero() {
                   : "-translate-x-12 opacity-0"
               }`}
             >
-              {t("subtext")}
+              {subtext}
             </p>
 
             <div
@@ -101,7 +92,7 @@ export function Hero() {
                 size="lg"
                 className="bg-accent hover:bg-accent/90 text-accent-foreground gap-2 text-base"
               >
-                {t("buttons.quote")}
+                {buttons.quote}
                 <ArrowRight className="h-5 w-5" />
               </Button>
               <Link href="/design">
@@ -111,7 +102,7 @@ export function Hero() {
                   className="gap-2 text-base bg-transparent border-primary/20 hover:bg-primary"
                 >
                   <Palette className="h-5 w-5" />
-                  {t("buttons.design")}
+                  {buttons.design}
                 </Button>
               </Link>
             </div>
@@ -156,9 +147,9 @@ export function Hero() {
                   <span className="text-2xl font-bold text-accent">5★</span>
                 </div>
                 <div>
-                  <p className="text-sm font-semibold">{t("rating.title")}</p>
+                  <p className="text-sm font-semibold">{rating.title}</p>
                   <p className="text-xs text-muted-foreground">
-                    {t("rating.subtitle")}
+                    {rating.subtitle}
                   </p>
                 </div>
               </div>

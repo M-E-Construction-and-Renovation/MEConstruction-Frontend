@@ -5,12 +5,11 @@ import { Phone, Mail } from "lucide-react";
 import { contactNumber, secondaryEmail } from "@/data/contact-data";
 import { useDispatch } from "react-redux";
 import { openModal } from "@/store/quoteModalSlice";
-import { useTranslations } from "next-intl";
 
-export function CtaSection() {
+export function CtaSection({ cta }) {
+  const { headline, subtext, button, contact } = cta;
+
   const dispatch = useDispatch();
-
-  const t = useTranslations("cta");
 
   return (
     <section
@@ -20,10 +19,10 @@ export function CtaSection() {
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center text-primary-foreground">
           <h2 className="text-3xl md:text-5xl font-bold mb-6 text-balance">
-            {t("headline")}
+            {headline}
           </h2>
           <p className="text-lg md:text-xl mb-8 text-primary-foreground/90 text-pretty max-w-2xl mx-auto">
-            {t("subtext")}
+            {subtext}
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
@@ -53,7 +52,7 @@ export function CtaSection() {
             size="lg"
             className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold text-lg px-8 py-6 h-auto"
           >
-            {t("button")}
+            {button}
           </Button>
         </div>
       </div>

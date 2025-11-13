@@ -2,26 +2,24 @@ import Link from "next/link";
 import { Button } from "../ui/button";
 import { Card, CardContent } from "../ui/card";
 import { ArrowRight, Check } from "lucide-react";
-import { useTranslations } from "next-intl";
 
-export function Solutions() {
-  const t = useTranslations("home.solutions");
-  const solutions = t.raw("cards");
+export function Solutions({ solutions }) {
+  const { sectionTitle, sectionSubtitle, buttonText, cards } = solutions;
 
   return (
     <section id="solutions" className="py-16 md:py-24">
       <div className="container mx-auto px-4">
         <div className="mb-12 text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl mb-4 text-balance">
-            {t("sectionTitle")}
+            {sectionTitle}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
-            {t("sectionSubtitle")}
+            {sectionSubtitle}
           </p>
         </div>
 
         <div className="grid gap-8 lg:gap-12">
-          {solutions.map((solution, index) => (
+          {cards.map((solution, index) => (
             <Card key={index} className="overflow-hidden">
               <CardContent className="p-0">
                 <div
@@ -73,7 +71,7 @@ export function Solutions() {
                     <div>
                       <Link href={solution.href} target="_blank">
                         <Button className="bg-accent hover:bg-accent/90 text-accent-foreground gap-2">
-                          {t("buttonText")}
+                          {buttonText}
                           <ArrowRight className="h-4 w-4" />
                         </Button>
                       </Link>
