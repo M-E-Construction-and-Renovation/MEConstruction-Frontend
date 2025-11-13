@@ -13,10 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title:
-    "M&E Construction and Renovations LLC | Bathroom, Bathtub & Shower Remodeling",
+  title: "M&E Construction and Renovations LLC | Home Renovation Experts",
   description:
-    "M&E Construction and Renovations LLC specializes in modern bathroom, bathtub, and shower remodeling solutions. Transform your space with high-quality materials, expert craftsmanship, and a seamless installation process. Explore our interactive design tool to customize your perfect renovation today.",
+    "M&E Construction and Renovations LLC specializes in complete home renovations, including bathroom remodeling, kitchen upgrades, and basement finishing. Transform your home with expert craftsmanship, modern design, and quality you can trust.",
 };
 
 export default function RootLayout({ children }) {
