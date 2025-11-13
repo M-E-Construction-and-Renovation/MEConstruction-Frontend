@@ -8,15 +8,15 @@ export function VideoSection() {
   const [isPlaying, setIsPlaying] = useState(false);
 
   return (
-    <section className="py-16 md:py-24">
+    <section className="py-16 md:py-24 bg-gradient-to-br from-primary/5 via-accent/10 to-primary/5">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             See M&E Construction and Renovation in Action
           </h2>
           <p className="text-lg text-muted-foreground">
-            Watch how we transform bathrooms in just one day with our innovative
-            installation process.
+            Discover how we upgrade and transform homes with precision and
+            efficiency from start to finish.
           </p>
         </div>
 

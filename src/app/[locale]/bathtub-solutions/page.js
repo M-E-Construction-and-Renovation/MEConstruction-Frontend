@@ -6,7 +6,7 @@ import { BathtubBeforeAfter } from "@/components/bathtub-solutions/bathtub-befor
 import { BathtubPersonalization } from "@/components/bathtub-solutions/bathtub-personalization";
 import { BathtubProcessCarousel } from "@/components/bathtub-solutions/bathtub-process-carousel";
 import { BathtubInspiration } from "@/components/bathtub-solutions/bathtub-inspiration";
-import { FaqSection } from "@/components/advantages/faq-section";
+import { FaqSection } from "@/components/bathtub-solutions/bathtub-faq";
 import { CtaSection } from "@/components/homepage/cta-section";
 
 const page = () => {

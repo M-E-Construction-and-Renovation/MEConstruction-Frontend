@@ -2,78 +2,15 @@
 
 import { useState, useEffect, useRef } from "react";
 import { Button } from "../ui/button";
-import {
-  ChevronLeft,
-  ChevronRight,
-  Shield,
-  Clock,
-  Sparkles,
-  Award,
-  Users,
-  Wrench,
-  Leaf,
-  DollarSign,
-  Star,
-} from "lucide-react";
-
-const advantages = [
-  {
-    icon: Shield,
-    title: "Lifetime Warranty",
-    description:
-      "Our products are backed by a comprehensive lifetime warranty for your peace of mind.",
-  },
-  {
-    icon: Clock,
-    title: "One-Day Installation",
-    description:
-      "Most installations are completed in just one day, minimizing disruption to your routine.",
-  },
-  {
-    icon: Sparkles,
-    title: "No Demolition Required",
-    description:
-      "We install over your existing fixtures, eliminating mess and reducing installation time.",
-  },
-  {
-    icon: Award,
-    title: "Premium Quality Materials",
-    description:
-      "High-grade acrylic that resists mold, mildew, and maintains its beauty for years.",
-  },
-  {
-    icon: Users,
-    title: "Expert Installation Team",
-    description:
-      "Factory-trained professionals ensure perfect installation every time.",
-  },
-  {
-    icon: Wrench,
-    title: "Custom Fit Guarantee",
-    description:
-      "Precisely measured and manufactured to fit your bathroom perfectly.",
-  },
-  {
-    icon: Leaf,
-    title: "Eco-Friendly Solutions",
-    description:
-      "Sustainable materials and processes that are better for the environment.",
-  },
-  {
-    icon: DollarSign,
-    title: "Competitive Pricing",
-    description:
-      "Premium quality at prices that fit your budget with flexible financing options.",
-  },
-  {
-    icon: Star,
-    title: "50,000+ Happy Customers",
-    description:
-      "Join thousands of satisfied homeowners who chose M&E Construction and Renovation for their renovation.",
-  },
-];
+import * as LucideIcons from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export function AdvantagesCarousel() {
+  const t = useTranslations("advantages.carousel");
+
+  const advantages = t.raw("items");
+
   const [currentSlide, setCurrentSlide] = useState(0);
   const totalSlides = 3;
 
@@ -107,7 +44,7 @@ export function AdvantagesCarousel() {
   };
 
   return (
-    <section className="py-16 md:py-24 bg-secondary/20">
+    <section id="carousel" className="py-16 md:py-24 bg-secondary/20">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
@@ -125,7 +62,8 @@ export function AdvantagesCarousel() {
 
             <div className="space-y-6 mb-8">
               {getVisibleAdvantages().map((advantage, index) => {
-                const Icon = advantage.icon;
+                const Icon =
+                  LucideIcons[advantage.icon] || LucideIcons.HelpCircle;
                 return (
                   <div
                     key={`${currentSlide}-${index}`}

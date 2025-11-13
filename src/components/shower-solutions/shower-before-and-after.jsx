@@ -6,52 +6,34 @@ import { Button } from "../ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useDispatch } from "react-redux";
 import { openModal } from "@/store/quoteModalSlice";
+import { useTranslations } from "next-intl";
 
 export function ShowerBeforeAfter() {
+  const t = useTranslations("showerSolutions.beforeAfter");
+  const transformations = t.raw("transformations");
+
   const dispatch = useDispatch();
 
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const transformations = [
-    {
-      title: "Shower Transformation",
-      before: "/images/old-bathroom-shower-before.jpg",
-      after: "/images/modern-luxury-shower-after.jpg",
-    },
-    {
-      title: "Tub-to-Shower Transformation",
-      before: "/images/bathtub-before-conversion.jpg",
-      after: "/images/spacious-shower-after-conversion.jpg",
-    },
-    {
-      title: "Accessible Shower Installation",
-      before: "/images/standard-shower-before.jpg",
-      after: "/images/accessible-walk-in-shower-after.jpg",
-    },
-  ];
-
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-b from-slate-100 via-white to-slate-50">
+    <section
+      id="before-after"
+      className="py-16 md:py-24 bg-gradient-to-b from-slate-100 via-white to-slate-50"
+    >
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6 animate-in fade-in slide-in-from-left duration-700">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground">
-              Shower Ideas: Before & After
+              {t("sectionTitle")}
             </h2>
 
             <p className="text-lg text-muted-foreground leading-relaxed">
-              A shower renovation can be done in as little as a day, regardless
-              of the material of your original shower, without the mess of
-              demolition or the costs of traditional renovation.
+              {t("sectionSubtitle")}
             </p>
 
             <p className="text-base text-muted-foreground leading-relaxed">
-              Our M&E Construction and Renovation shower solutions offer
-              cost-effective bath refresh or complete tub replacement. Whether
-              you're looking for a cost-effective bathroom refresh or a complete
-              tub replacement, M&E Construction and Renovation has your back.
-              Explore these shower design ideas and see how easy a
-              transformation can be.
+              {t("description")}
             </p>
 
             <Button
@@ -59,19 +41,21 @@ export function ShowerBeforeAfter() {
               className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold"
               onClick={() => dispatch(openModal())}
             >
-              Book a Free Consultation
+              {t("labels.button")}
             </Button>
 
             <p className="text-muted-foreground text-sm">
-              Or check out the{" "}
-              <a
-                href="/gallery"
-                target="_blank"
-                className="text-accent hover:underline font-semibold"
-              >
-                inspiration board
-              </a>{" "}
-              for more design ideas.
+              {t.rich("labels.link", {
+                accent: (chunks) => (
+                  <a
+                    href="/gallery"
+                    target="_blank"
+                    className="text-accent hover:underline font-semibold"
+                  >
+                    <span className="text-accent">{chunks}</span>
+                  </a>
+                ),
+              })}
             </p>
           </div>
 
@@ -81,29 +65,31 @@ export function ShowerBeforeAfter() {
                 <div className="rounded-lg overflow-hidden">
                   <Image
                     src={
-                      transformations[activeIndex].before || "/placeholder.svg"
+                      transformations[activeIndex].beforeImage ||
+                      "/placeholder.svg"
                     }
-                    alt="Before"
+                    alt={transformations[activeIndex].beforeAlt}
                     width={300}
                     height={400}
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute bottom-3 left-3 bg-slate-700 text-white px-3 py-1 rounded-lg text-sm font-semibold">
-                    Before
+                    {transformations[activeIndex].beforeAlt}
                   </div>
                 </div>
                 <div className="rounded-lg overflow-hidden">
                   <Image
                     src={
-                      transformations[activeIndex].after || "/placeholder.svg"
+                      transformations[activeIndex].afterImage ||
+                      "/placeholder.svg"
                     }
-                    alt="After"
+                    alt={transformations[activeIndex].afterAlt}
                     width={300}
                     height={400}
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute bottom-3 right-3 bg-primary text-white px-3 py-1 rounded-lg text-sm font-semibold">
-                    After
+                    {transformations[activeIndex].afterAlt}
                   </div>
                 </div>
               </div>

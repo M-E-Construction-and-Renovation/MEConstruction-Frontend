@@ -5,9 +5,12 @@ import { ArrowRight } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { openModal } from "@/store/quoteModalSlice";
+import { useTranslations } from "next-intl";
 
 export function AdvantagesHero() {
   const dispatch = useDispatch();
+
+  const t = useTranslations("advantages.hero");
 
   const [isTextVisible, setIsTextVisible] = useState(false);
   const [isImageVisible, setIsImageVisible] = useState(false);
@@ -26,7 +29,10 @@ export function AdvantagesHero() {
   }, []);
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-accent/5 via-primary/10 to-accent/5">
+    <section
+      id="hero"
+      className="relative overflow-hidden bg-gradient-to-br from-accent/5 via-primary/10 to-accent/5"
+    >
       <div className="container mx-auto px-4 py-16 md:py-24 lg:py-32">
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 items-center">
           <div className="flex flex-col gap-6">
@@ -38,9 +44,7 @@ export function AdvantagesHero() {
               }`}
             >
               <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
-              <span className="font-medium">
-                Why Choose M&E Construction and Renovation
-              </span>
+              <span className="font-medium">{t("badge")}</span>
             </div>
 
             <h1
@@ -50,11 +54,11 @@ export function AdvantagesHero() {
                   : "-translate-x-12 opacity-0"
               }`}
             >
-              The{" "}
-              <span className="text-accent">
-                M&E Construction and Renovation
-              </span>{" "}
-              Advantages
+              {t.rich("headline", {
+                accent: (chunks) => (
+                  <span className="text-accent">{chunks}</span>
+                ),
+              })}
             </h1>
 
             <p
@@ -64,9 +68,7 @@ export function AdvantagesHero() {
                   : "-translate-x-12 opacity-0"
               }`}
             >
-              Discover why thousands of homeowners trust M&E Construction and
-              Renovation for their bathroom renovation needs. Quality, speed,
-              and exceptional service guaranteed.
+              {t("subtext")}
             </p>
 
             <div
@@ -81,7 +83,7 @@ export function AdvantagesHero() {
                 size="lg"
                 className="bg-accent hover:bg-accent/90 text-accent-foreground gap-2 text-base"
               >
-                Get Free Quote
+                {t("button")}
                 <ArrowRight className="h-5 w-5" />
               </Button>
             </div>
@@ -96,8 +98,8 @@ export function AdvantagesHero() {
               }`}
             >
               <img
-                src="/images/modern-luxury-bathroom-with-elegant-fixtures.jpg"
-                alt="Bath Fitter advantages showcase"
+                src={t("image.src")}
+                alt={t("image.alt")}
                 className="h-full w-full object-cover"
               />
             </div>

@@ -2,36 +2,12 @@
 
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
-
-const faqs = [
-  {
-    question: "How long does the installation take?",
-    answer:
-      "Most M&E Construction and Renovation installations are completed in just one day! Our expert installers work efficiently to minimize disruption to your daily routine. The exact time depends on the scope of your project, but you can typically enjoy your new bathroom within 24 hours.",
-  },
-  {
-    question: "Do you remove my existing bathtub or shower?",
-    answer:
-      "No demolition required! M&E Construction and Renovation products are designed to fit directly over your existing bathtub or shower, which saves time, reduces mess, and lowers costs. Our custom-measured acrylic products ensure a perfect fit every time.",
-  },
-  {
-    question: "What is included in the lifetime warranty?",
-    answer:
-      "Our lifetime warranty covers the M&E Construction and Renovation acrylic product and installation for as long as you own your home. This includes protection against manufacturing defects, peeling, cracking, and discoloration. Your satisfaction and peace of mind are our top priorities.",
-  },
-  {
-    question: "Can I customize the design and colors?",
-    answer:
-      "M&E Construction and Renovation offers a wide variety of colors, patterns, and accessories to match your style and preferences. From classic white to modern stone patterns, we have options to complement any bathroom décor. Our design consultants will help you create the perfect look.",
-  },
-  {
-    question: "How do I maintain my Construction and Renovation products?",
-    answer:
-      "M&E Construction and Renovation products are incredibly easy to maintain! The non-porous acrylic surface resists mold and mildew, and can be cleaned with standard household cleaners. Simply wipe down after use and clean regularly with a mild soap solution to keep your bathroom looking beautiful for years.",
-  },
-];
+import { useTranslations } from "next-intl";
 
 export function FaqSection() {
+  const t = useTranslations("advantages.faq");
+  const faqs = t.raw("faqs");
+
   const [openIndex, setOpenIndex] = useState(null);
 
   const toggleFaq = (index) => {
@@ -44,11 +20,10 @@ export function FaqSection() {
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Frequently Asked Questions
+              {t("sectionTitle")}
             </h2>
             <p className="text-lg text-muted-foreground">
-              Find answers to common questions about M&E Construction and
-              Renovation products and services.
+              {t("sectionSubtitle")}
             </p>
           </div>
 

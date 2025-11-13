@@ -40,17 +40,17 @@ export function Header() {
                 href="/"
                 className="text-4xl font-bold text-center flex flex-col text-accent"
               >
-                {/* <Image
-                    src="/images/logo.png"
-                    alt="M&E Construction & Renovation LLC Logo"
-                    width={180}
-                    height={80}
-                    className="h-16 sm:h-20 w-auto object-contain"
-                  /> */}
-                M&E
+                <Image
+                  src="/images/transparent-logo.png"
+                  alt="M&E Construction & Renovation LLC Logo"
+                  width={180}
+                  height={80}
+                  className="h-12 sm:h-16 w-auto object-contain"
+                />
+                {/* M&E
                 <span className="text-xs text-primary">
                   Construction and Renovation LLC
-                </span>
+                </span> */}
               </Link>
             </div>
 
@@ -398,11 +398,11 @@ export function Header() {
                   <div className="pl-4 mt-2 space-y-2">
                     {solutionsMenuItems.map((item) => (
                       <Link
-                        key={item}
-                        href="#"
+                        key={item.label}
+                        href={item.href}
                         className="block text-sm text-muted-foreground hover:text-primary py-1"
                       >
-                        {item}
+                        {item.label}
                       </Link>
                     ))}
                   </div>
@@ -432,11 +432,11 @@ export function Header() {
                   <div className="pl-4 mt-2 space-y-2">
                     {inspirationMenuItems.map((item) => (
                       <Link
-                        key={item}
-                        href="#"
+                        key={item.label}
+                        href={item.href}
                         className="block text-sm text-muted-foreground hover:text-primary py-1"
                       >
-                        {item}
+                        {item.label}
                       </Link>
                     ))}
                   </div>
@@ -464,11 +464,11 @@ export function Header() {
                   <div className="pl-4 mt-2 space-y-2">
                     {resourcesMenuItems.map((item) => (
                       <Link
-                        key={item}
-                        href="#"
+                        key={item.label}
+                        href={item.href}
                         className="block text-sm text-muted-foreground hover:text-primary py-1"
                       >
-                        {item}
+                        {item.label}
                       </Link>
                     ))}
                   </div>

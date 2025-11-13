@@ -1,57 +1,22 @@
-"use client";
-
 import { Card } from "../ui/card";
+import { useTranslations } from "next-intl";
 
 export function BathtubFeatures() {
-  const features = [
-    {
-      title: "Superior Comfort",
-      description:
-        "Deep, ergonomic design for ultimate relaxation and spa-like experience in your own home.",
-      icon: "🛁",
-    },
-    {
-      title: "Durable Materials",
-      description:
-        "Premium acrylic and finishes built to last with easy maintenance and timeless appeal.",
-      icon: "⭐",
-    },
-    {
-      title: "Quick Installation",
-      description:
-        "Professional installation completed in as little as 24 hours with minimal disruption.",
-      icon: "⚡",
-    },
-    {
-      title: "Customization Options",
-      description:
-        "Choose from various sizes, colors, and features to match your bathroom style perfectly.",
-      icon: "🎨",
-    },
-    {
-      title: "Safety Features",
-      description:
-        "Non-slip surfaces and accessibility options for secure, worry-free bathing.",
-      icon: "✓",
-    },
-    {
-      title: "Long-Term Value",
-      description:
-        "Increase your home's value and enjoyment with a premium bathtub upgrade.",
-      icon: "💎",
-    },
-  ];
+  const t = useTranslations("bathtubSolutions.features");
+  const features = t.raw("cards");
 
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-br from-primary/5 via-accent/10 to-primary/5">
+    <section
+      id="features"
+      className="py-16 md:py-24 bg-gradient-to-br from-primary/5 via-accent/10 to-primary/5"
+    >
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Why Choose Our Bathtubs
+            {t("sectionTitle")}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Experience the benefits of premium bathtub solutions designed for
-            modern living.
+            {t("sectionSubtitle")}
           </p>
         </div>
 

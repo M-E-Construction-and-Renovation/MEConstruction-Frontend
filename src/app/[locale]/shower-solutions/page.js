@@ -6,7 +6,7 @@ import { ShowerBeforeAfter } from "@/components/shower-solutions/shower-before-a
 import { ShowerPersonalization } from "@/components/shower-solutions/shower-personalization";
 import { ShowerProcessCarousel } from "@/components/shower-solutions/shower-process-carousel";
 import { ShowerInspiration } from "@/components/shower-solutions/shower-inspiration";
-import { FaqSection } from "@/components/advantages/faq-section";
+import { FaqSection } from "@/components/shower-solutions/shower-faq";
 import { CtaSection } from "@/components/homepage/cta-section";
 
 const page = () => {

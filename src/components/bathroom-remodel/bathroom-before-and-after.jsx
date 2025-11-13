@@ -4,8 +4,12 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useDispatch } from "react-redux";
 import { openModal } from "@/store/quoteModalSlice";
+import { useTranslations } from "next-intl";
 
 export function BathroomBeforeAfter() {
+  const t = useTranslations("bathroomRemodel.beforeAfter");
+  const descriptions = t.raw("descriptions");
+
   const dispatch = useDispatch();
 
   const [sliderPosition, setSliderPosition] = useState(50);
@@ -15,36 +19,34 @@ export function BathroomBeforeAfter() {
   };
 
   return (
-    <section className="py-20 md:py-32 bg-secondary/30">
+    <section id="before-after" className="py-20 md:py-32 bg-secondary/30">
       <div className="container mx-auto px-4">
         <div>
           {/* Header */}
           <div className="mb-12 grid md:grid-cols-2 gap-12">
-            <div className="flex flex-col justify-between">
-              <div>
-                <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                  Bathtub Ideas: Before & After
-                </h2>
-                <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                  An M&E Construction and Renovation remodel can be done in as
-                  little as a day, regardless of the material of your original
-                  bathtub, without the mess of demolition or the costs of
-                  traditional tub remodeling.
+            <div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-4">
+                {t("sectionTitle")}
+              </h2>
+              <h3 className="text-lg md:text-xl font-semibold mb-4">
+                {t("sectionSubtitle")}
+              </h3>
+
+              {descriptions.map((description, index) => (
+                <p
+                  key={index}
+                  className="text-lg text-muted-foreground mb-6 leading-relaxed"
+                >
+                  {description}
                 </p>
-                <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                  An M&E Construction and Renovation remodel can be done in as
-                  little as one day with our bath solutions. Whether you're
-                  looking for a cost-effective bath refresh or a complete tub
-                  replacement, M&E has your back. Explore these bathroom design
-                  ideas and see how easy a transformation can be.
-                </p>
-              </div>
+              ))}
+
               <Button
                 size="lg"
                 className="bg-accent hover:bg-accent/90 text-accent-foreground gap-2 text-base w-fit"
                 onClick={() => dispatch(openModal())}
               >
-                BOOK A FREE CONSULTATION
+                {t("button")}
               </Button>
             </div>
 
@@ -52,8 +54,8 @@ export function BathroomBeforeAfter() {
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-muted shadow-xl">
               <div className="absolute inset-0">
                 <img
-                  src="/images/bathroom-remodel-after.jpg"
-                  alt="After renovation"
+                  src={t("beforeAfterImages.after.src")}
+                  alt={t("beforeAfterImages.after.alt")}
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -63,17 +65,17 @@ export function BathroomBeforeAfter() {
                 style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
               >
                 <img
-                  src="/images/bathroom-remodel-before.jpg"
-                  alt="Before renovation"
+                  src={t("beforeAfterImages.before.src")}
+                  alt={t("beforeAfterImages.before.alt")}
                   className="w-full h-full object-cover"
                 />
               </div>
 
               <div className="absolute top-4 left-4 bg-slate-900/80 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold text-white">
-                Before
+                {t("labels.before")}
               </div>
               <div className="absolute top-4 right-4 bg-slate-900/80 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold text-white">
-                After
+                {t("labels.after")}
               </div>
 
               <div

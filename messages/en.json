@@ -4,50 +4,89 @@
   },
   "home": {
     "hero": {
+      "id": "#hero",
+      "path": "/",
       "badge": "Trusted by 50,000+ Homeowners",
-      "headline": "Transform Your Bathroom in Just <accent>One Day</accent>",
-      "subtext": "Experience the perfect blend of style and functionality with our premium bathroom renovation solutions. No demolition, no mess, just beautiful results.",
+      "headline": "Make every inch of your <accent>Home</accent> work for You.",
+      "subtext": "We’ll tailor a custom remodeling plan that fits your lifestyle and budget. Our team brings years of experience, professionalism, and passion to every project. Whether you're reimagining your living space or expanding to fit your needs, we’ll help you build something beautiful, functional, and lasting.",
       "buttons": {
         "quote": "Get Free Quote",
         "design": "Start Your Design"
       },
-      "features": {
-        "lifetimeWarranty": "Lifetime Warranty",
-        "oneDayInstall": "1-Day Install",
-        "noDemolition": "No Demolition"
-      },
+      "features": [
+        {
+          "label": "Bathroom Remodels",
+          "icon": "Droplet",
+          "bg": "bg-accent/10",
+          "iconColor": "text-accent"
+        },
+        {
+          "label": "Kitchen Renovations",
+          "icon": "Utensils",
+          "bg": "bg-accent-secondary/20",
+          "iconColor": "text-accent-secondary"
+        },
+        {
+          "label": "Basement Finishing",
+          "icon": "Home",
+          "bg": "bg-accent/10",
+          "iconColor": "text-accent"
+        }
+      ],
       "rating": {
         "title": "Excellent Rating",
         "subtitle": "12,000+ Reviews"
       },
-      "imageAlt": "Beautiful renovated bathroom"
+      "images": [
+        {
+          "src": "/images/contemporary-bathroom-with-walk-in-shower.jpg",
+          "title": "Bathroom"
+        },
+        {
+          "src": "/images/home-page-hero-kitchen.jpg",
+          "title": "Kitchen"
+        },
+        {
+          "src": "/images/home-page-hero-basement.jpg",
+          "title": "Basement"
+        }
+      ]
     },
 
     "features": {
+      "id": "#features",
+      "path": "/",
       "title": "Our Key Features",
       "items": [
         {
-          "title": "Lifetime Warranty",
-          "description": "Every installation backed by our comprehensive lifetime warranty."
+          "icon": "Bath",
+          "title": "Custom Bathroom Remodels",
+          "description": "Transform your bathroom with modern designs, durable materials, and expert craftsmanship."
         },
         {
-          "title": "One Day Installation",
-          "description": "Complete bathroom transformation in just 24 hours."
+          "icon": "Utensils",
+          "title": "Kitchen Renovations",
+          "description": "Upgrade your kitchen with stylish layouts, functional storage, and quality finishes."
         },
         {
-          "title": "Waterproof & Seamless",
-          "description": "Advanced waterproofing technology prevents mold and mildew."
+          "icon": "Home",
+          "title": "Basement Finishing",
+          "description": "Maximize your home’s potential with a fully finished basement built for comfort and functionality."
         },
         {
-          "title": "Easy Maintenance",
-          "description": "Non-porous surfaces that stay clean with minimal effort."
+          "icon": "Hammer",
+          "title": "Quality Craftsmanship",
+          "description": "From concept to completion, we deliver reliable construction and long-lasting results."
         }
       ]
     },
 
     "solutions": {
-      "sectionTitle": "Bathroom Solutions for Every Need",
-      "sectionSubtitle": "Choose from our range of premium bathroom renovation solutions designed to fit your style and budget.",
+      "id": "#solutions",
+      "path": "/",
+      "sectionTitle": "Home Renovation Solutions for Every Need",
+      "sectionSubtitle": "Choose from our range of premium bathroom, kitchen, and basement renovation solutions designed to fit your style and budget.",
+      "buttonText": "Learn More",
       "cards": [
         {
           "tag": "Most Popular",
@@ -59,8 +98,8 @@
             "Fixtures & accessories",
             "Professional installation"
           ],
-          "button": "Learn More",
-          "imageAlt": "Modern bathroom with bathtub and elegant tile"
+          "image": "/images/modern-bathroom-with-bathtub-and-elegant-tile.jpg",
+          "href": "/bathroom-remodel"
         },
         {
           "tag": "Quick Solution",
@@ -70,10 +109,10 @@
             "Multiple style options",
             "Built-in storage solutions",
             "Slip-resistant flooring",
-            "Lifetime warranty included"
+            "Fast, professional installation"
           ],
-          "button": "Learn More",
-          "imageAlt": "Modern walk-in shower with glass door and tile"
+          "image": "/images/modern-walk-in-shower-with-glass-door-and-tile.jpg",
+          "href": "/shower-solutions"
         },
         {
           "tag": "Luxury Option",
@@ -85,29 +124,61 @@
             "Easy-clean surfaces",
             "Custom color options"
           ],
-          "button": "Learn More",
-          "imageAlt": "Luxury freestanding bathtub in modern bathroom"
+          "image": "/images/luxury-freestanding-bathtub-in-modern-bathroom.jpg",
+          "href": "/bathtub-solutions"
+        },
+        {
+          "tag": "Home Upgrade",
+          "title": "Kitchen Renovations",
+          "description": "Revitalize your kitchen with modern designs, high-quality materials, and improved functionality.",
+          "features": [
+            "Custom cabinetry & countertops",
+            "Lighting & flooring upgrades",
+            "Energy-efficient appliances",
+            "Professional project management"
+          ],
+          "image": "/images/home-page-solutions-kitchen.jpg",
+          "href": "/kitchen-renovations"
+        },
+        {
+          "tag": "Expansion Project",
+          "title": "Basement Finishing",
+          "description": "Transform your unfinished basement into a functional and inviting living space.",
+          "features": [
+            "Complete flooring & wall systems",
+            "Insulation & moisture protection",
+            "Custom layouts & lighting",
+            "Entertainment or guest room options"
+          ],
+          "image": "/images/home-page-hero-basement.jpg",
+          "href": "/basement-finishing"
         }
       ]
     },
 
     "advantages": {
+      "id": "#advantages",
+      "path": "/",
       "sectionTitle": "Why Choose M&E Construction and Renovation",
-      "sectionSubtitle": "We're committed to delivering exceptional bathroom renovations that exceed your expectations.",
+      "sectionSubtitle": "We're committed to delivering exceptional bathroom, kitchen, and basement renovations that exceed your expectations.",
       "items": [
         {
+          "icon": "Users",
           "title": "Expert Installation Team",
           "description": "Our certified professionals bring decades of experience to every project, ensuring flawless results."
         },
         {
-          "title": "Industry-Leading Warranty",
-          "description": "We stand behind our work with a comprehensive lifetime warranty on all installations."
+          "icon": "Award",
+          "title": "Trusted Quality",
+          "description": "We deliver exceptional workmanship across bathroom, kitchen, and basement renovations."
         },
         {
+          "icon": "Wrench",
           "title": "Premium Materials",
           "description": "Only the highest quality, durable materials that resist mold, mildew, and everyday wear."
         },
         {
+          "icon": "TrendingUp",
           "title": "Increase Home Value",
           "description": "A beautiful bathroom renovation can significantly boost your property value and appeal."
         }
@@ -115,26 +186,34 @@
     },
 
     "gallery": {
+      "id": "#gallery",
+      "path": "/",
       "sectionTitle": "Inspiration Gallery",
-      "sectionSubtitle": "Explore hundreds of stunning bathroom transformations and find the perfect style for your home.",
+      "sectionSubtitle": "Explore hundreds of stunning bathroom renovations, kitchen renovations, and basement finishing projects to find the perfect style and solution for your home.",
       "button": "View Full Gallery",
       "images": [
         {
+          "src": "/images/modern-bathroom-shower-with-glass-enclosure.jpg",
           "alt": "Modern shower installation"
         },
         {
-          "alt": "Elegant vanity design"
+          "src": "/images/home-page-solutions-kitchen.jpg",
+          "alt": "Kitchen design"
         },
         {
-          "alt": "Luxury bathtub"
+          "src": "/images/home-page-hero-basement.jpg",
+          "alt": "Basement finishing"
         },
         {
+          "src": "/images/contemporary-bathroom-with-walk-in-shower.jpg",
           "alt": "Contemporary bathroom"
         }
       ]
     },
 
     "reviews": {
+      "id": "#reviews",
+      "path": "/",
       "sectionTitle": "What Our Customers Say",
       "rating": {
         "score": "5.0",
@@ -144,29 +223,1643 @@
         {
           "name": "Sarah Johnson",
           "location": "Austin, TX",
+          "rating": 5,
           "text": "The team was professional, efficient, and the results exceeded our expectations. Our new shower looks amazing!"
         },
         {
           "name": "Michael Chen",
           "location": "Seattle, WA",
+          "rating": 5,
           "text": "From consultation to installation, everything was seamless. They truly completed the job in one day as promised."
         },
         {
           "name": "Emily Rodriguez",
           "location": "Miami, FL",
+          "rating": 5,
           "text": "Outstanding quality and service. The lifetime warranty gives us complete peace of mind. Highly recommend!"
+        }
+      ]
+    }
+  },
+
+  "cta": {
+    "id": "#cta",
+    "path": "/",
+    "headline": "Ready to Transform Your Home?",
+    "subtext": "Start your renovation journey today with a free consultation. Whether it's a bathroom upgrade, kitchen remodel, or basement finishing, our experts will help you design a space that fits your lifestyle and budget.",
+    "button": "Book a Free Consultation",
+    "contact": {
+      "phoneLabel": "Call Us",
+      "emailLabel": "Email Us"
+    }
+  },
+
+  "advantages": {
+    "hero": {
+      "id": "#hero",
+      "path": "/advantages",
+      "badge": "Why Choose M&E Construction and Renovation",
+      "headline": "The <accent>M&E Construction and Renovation</accent> Advantages",
+      "subtext": "Discover why thousands of homeowners trust M&E Construction and Renovation for their bathroom, kitchen, and basement needs. Quality, speed, and exceptional service guaranteed.",
+      "button": "Get Free Quote",
+      "image": {
+        "src": "/images/modern-luxury-bathroom-with-elegant-fixtures.jpg",
+        "alt": "Bath Fitter advantages showcase"
+      }
+    },
+    "carousel": {
+      "id": "#carousel",
+      "path": "/advantages",
+      "sectionTitle": "Why Homeowners Choose M&E Construction and Renovation",
+      "items": [
+        {
+          "icon": "Shield",
+          "title": "Built to Last",
+          "description": "Every project is crafted with durable materials and expert workmanship for long-term performance."
+        },
+        {
+          "icon": "Clock",
+          "title": "Efficient Project Timeline",
+          "description": "Our team works efficiently to complete your renovation with minimal disruption to your daily routine."
+        },
+        {
+          "icon": "Sparkles",
+          "title": "No Demolition Required",
+          "description": "We install over your existing fixtures, eliminating mess and reducing installation time."
+        },
+        {
+          "icon": "Award",
+          "title": "High-Quality Materials",
+          "description": "We use premium materials that are durable, stylish, and built to last."
+        },
+        {
+          "icon": "Users",
+          "title": "Expert Installation Team",
+          "description": "Factory-trained professionals ensure perfect installation every time."
+        },
+        {
+          "icon": "Wrench",
+          "title": "Custom Fit Guarantee",
+          "description": "Precisely measured and manufactured to fit your bathroom perfectly."
+        },
+        {
+          "icon": "Leaf",
+          "title": "Eco-Friendly Solutions",
+          "description": "Sustainable materials and processes that are better for the environment."
+        },
+        {
+          "icon": "DollarSign",
+          "title": "Competitive Pricing",
+          "description": "Premium quality at prices that fit your budget with flexible financing options."
+        },
+        {
+          "icon": "Star",
+          "title": "50,000+ Happy Customers",
+          "description": "Join thousands of satisfied homeowners who chose M&E Construction and Renovation for their renovation."
+        }
+      ]
+    },
+    "beforeAfter": {
+      "id": "#before-after",
+      "path": "/advantages",
+      "sectionTitle": "Before & After Transformations",
+      "sectionSubtitle": "Discover the stunning transformations we've brought to life for our clients. From modern bathroom remodels and stylish kitchen renovations to fully finished basements, our team delivers beautiful, functional, and lasting results tailored to your home and lifestyle. Explore each category to find inspiration and see how we can bring your vision to reality.",
+      "labels": {
+        "before": "Before",
+        "after": "After"
+      },
+      "button": "Book a Free Consultation",
+      "categories": [
+        { "id": "bathroom", "label": "Bathroom" },
+        { "id": "kitchen", "label": "Kitchen" },
+        { "id": "basement", "label": "Basement" }
+      ],
+      "images": {
+        "bathroom": {
+          "before": "/images/sdb-namur-avant.png",
+          "after": "/images/modern-renovated-bathroom-after.jpg"
+        },
+        "kitchen": {
+          "before": "/images/old-kitchen-before-renovation.jpg",
+          "after": "/images/modern-renovated-kitchen.png"
+        },
+        "basement": {
+          "before": "/images/unfinished-basement-before.jpg",
+          "after": "/images/finished-basement-after-renovation.jpg"
+        }
+      }
+    },
+
+    "explore": {
+      "id": "#explore",
+      "path": "/advantages",
+      "sectionTitle": "Explore Tools and Options",
+      "sectionSubtitle": "Use our design tool for interactive and real-life-like visuals and explore options",
+      "cards": [
+        {
+          "title": "Try Our Design Tool",
+          "description": "Visualize your dream bathroom before installation",
+          "image": "/images/bathroom-design-tool-interface.jpg",
+          "alt": "Design Tool",
+          "icon": "Palette",
+          "href": "/design",
+          "target": "_blank",
+          "bgGradient": "from-accent/20 to-accent-secondary/20"
+        },
+        {
+          "title": "Customization & Accessories",
+          "description": "Explore our wide range of options and upgrades",
+          "image": "/images/bathroom-accessories-and-customization-options.jpg",
+          "alt": "Customization",
+          "icon": "Wrench",
+          "href": "/bathroom-remodel",
+          "target": "_blank",
+          "bgGradient": "from-accent-secondary/20 to-accent/20"
         }
       ]
     },
 
-    "cta": {
-      "headline": "Ready to Transform Your Bathroom?",
-      "subtext": "Get started today with a free consultation. Our experts will help you design the perfect bathroom solution tailored to your needs and budget.",
-      "button": "Book a Free Consultation",
-      "contact": {
-        "phoneLabel": "Call Us",
-        "emailLabel": "Email Us"
+    "faq": {
+      "id": "#faq",
+      "path": "/advantages",
+      "sectionTitle": "Frequently Asked Questions",
+      "sectionSubtitle": "Find answers to common questions about our bathroom, kitchen, and basement renovation services, including design options, maintenance, and guarantees.",
+      "faqs": [
+        {
+          "question": "How long does the renovation take?",
+          "answer": "Project timelines vary depending on the size and complexity of your renovation. Bathroom remodels are typically completed within a few days, kitchen renovations may take one to two weeks, and full basement finishing can take several weeks. We provide a detailed schedule before work begins so you know exactly what to expect."
+        },
+        {
+          "question": "Do you remove my existing fixtures or appliances?",
+          "answer": "Yes, our team handles the demolition and removal process safely and efficiently. We prepare the area for new installations while minimizing mess and disruption to your home."
+        },
+        {
+          "question": "What kind of guarantee do you provide?",
+          "answer": "All of our projects come with a workmanship guarantee. We stand behind the quality of our materials and craftsmanship, ensuring every renovation meets professional standards and your satisfaction."
+        },
+        {
+          "question": "Can I customize the design and materials?",
+          "answer": "Absolutely! We offer a wide range of design options, materials, colors, and finishes to match your style and budget. Our team works closely with you to create a custom layout for your bathroom, kitchen, or basement."
+        },
+        {
+          "question": "How do I maintain my new bathroom, kitchen, or basement?",
+          "answer": "Our renovations are designed for long-term durability and easy maintenance. Regular cleaning with non-abrasive products will keep surfaces looking fresh. We also provide care instructions specific to your chosen materials."
+        },
+        {
+          "question": "Do you offer eco-friendly options?",
+          "answer": "Yes, we use sustainable materials and environmentally friendly processes wherever possible, for bathrooms, kitchens, and basements."
+        },
+        {
+          "question": "Can you upgrade existing plumbing and electrical systems?",
+          "answer": "Our team can assess and upgrade plumbing, electrical, and HVAC systems as part of your renovation to ensure safety, efficiency, and compliance with local codes."
+        },
+        {
+          "question": "Are your materials durable and mold-resistant?",
+          "answer": "We use high-quality, durable materials for all projects. Surfaces are designed to resist mold, mildew, and everyday wear, ensuring longevity and safety."
+        },
+        {
+          "question": "Do you provide a project estimate before starting?",
+          "answer": "Yes, we provide detailed, transparent estimates for every project. You’ll know costs, materials, and timelines upfront before any work begins."
+        },
+        {
+          "question": "Can I renovate multiple areas at once?",
+          "answer": "Yes, we can coordinate bathroom, kitchen, and basement renovations simultaneously or in phases to fit your schedule and minimize disruption."
+        }
+      ]
+    }
+  },
+
+  "ourStory": {
+    "hero": {
+      "id": "#hero",
+      "path": "/our-story",
+      "headline": "Our <accent>Story</accent>",
+      "title": "Building Trust Since 2022",
+      "description": "Established in 2022, M&E Construction & Renovations has quickly become a trusted name in residential and commercial remodeling, delivering exceptional craftsmanship and innovative solutions that transform homes and businesses.",
+      "button": "Get Free Quote"
+    },
+
+    "mission": {
+      "id": "#mission",
+      "path": "/our-story",
+      "sectionTitle": "What <accent>Matters</accent> Most To Us",
+      "sectionSubtitle": "At M&E Construction & Renovation, what matters most to us is transforming your home into a space that brings joy, functionality, and value. We're passionate about maximizing the potential of every area, whether it's turning a basement into an entertainer's dream, creating a spa-like bathroom retreat, or designing a stunning, functional kitchen.",
+      "title": "Crafting Homes with Heart and Purpose",
+      "description": "We pride ourselves on delivering excellence, combining style and practicality in every project. Trust and care are at the core of everything we do because we understand your home is your sanctuary. From concrete patios to walkways, we focus on enhancing both the aesthetic and usability of your spaces, helping you fall in love with your home all over again.",
+      "image": {
+        "src": "/images/bathtub-simple-elegant.jpg",
+        "alt": "Home renovation"
       }
+    },
+
+    "foundation": {
+      "id": "#foundation",
+      "path": "/our-story",
+      "sectionTitle": "Our Foundation",
+      "sectionSubtitle": "Since 2022, we've been committed to transforming residential and commercial spaces with exceptional craftsmanship and innovative design solutions that exceed expectations.",
+      "items": [
+        {
+          "title": "2022",
+          "description": "Company Established"
+        },
+        {
+          "title": "500+",
+          "description": "Successful Projects"
+        },
+        {
+          "title": "100%",
+          "description": "Customer Satisfaction"
+        }
+      ]
+    },
+
+    "awards": {
+      "id": "#awards",
+      "path": "/our-story",
+      "sectionTitle": "Awards & Recognition",
+      "sectionSubtitle": "Certified, screened, and approved by leading home improvement authorities. Our commitment to excellence has earned us prestigious industry recognition and thousands of satisfied customers.",
+      "items": [
+        {
+          "title": "HomeAdvisor - Screened and Approved",
+          "src": "/images/home-advisor-screened-and-approved.png",
+          "alt": "HomeAdvisor Screened and Approved Logo",
+          "description": "Screened and approved contractor with a proven track record of quality work."
+        },
+        {
+          "title": "HomeAdvisor - Top Rated Service",
+          "src": "/images/home-advisor-top-rated.png",
+          "alt": "HomeAdvisor Top Rated Logo",
+          "description": "Consistently ranked among the top contractors with excellent ratings."
+        },
+        {
+          "title": "HomeAdvisor - Elite Service",
+          "src": "/images/home-advisor-elite-service.png",
+          "alt": "HomeAdvisor Elite Service Logo",
+          "description": "Recognized for consistently delivering exceptional quality and customer satisfaction."
+        },
+        {
+          "title": "HomeAdvisor - 1 Year Screened and Approved",
+          "src": "/images/home-advisor-1-year.png",
+          "alt": "HomeAdvisor Screened and Approved 1 Year Logo",
+          "description": "Trusted and verified by HomeAdvisor for over a year."
+        },
+        {
+          "title": "Angi - Super Service Award 2023",
+          "src": "/images/angi-super-service-2023.png",
+          "alt": "Angi Super Service Award 2023 Logo",
+          "description": "Awarded for outstanding quality and customer satisfaction."
+        }
+      ]
+    },
+
+    "coreValues": {
+      "id": "#core-values",
+      "path": "/our-story",
+      "sectionTitle": "Our Core Values",
+      "sectionSubtitle": "These principles guide everything we do and define our commitment to exceptional service.",
+      "values": [
+        {
+          "title": "Customer-Centered Approach",
+          "description": "Prioritize clear communication, transparency, and personalized solutions to ensure each project aligns with the client's vision, budget, and timeline."
+        },
+        {
+          "title": "Integrity and Accountability",
+          "description": "Operate with honesty and responsibility, ensuring every promise is kept, timelines are met, and work is completed to the highest standards."
+        },
+        {
+          "title": "Quality Craftsmanship",
+          "description": "Deliver exceptional workmanship using premium materials and proven techniques. Every project, from remodels to concrete installations, is built to last and exceed client expectations."
+        }
+      ]
+    }
+  },
+
+  "bathroomRemodel": {
+    "hero": {
+      "id": "#hero",
+      "path": "/bathroom-remodel",
+      "sectionTitle": "Custom Bathroom Renovation Made Simple",
+      "sectionSubtitle": "Tired of your old, dated bathroom? We bring modern comfort and style to your space with a remodel made just for you.",
+      "tagline": "PERSONALIZED BATHROOMS",
+      "features": [
+        "Tailored to You",
+        "Designed for Every Need",
+        "A Beautiful New Look Without the Mess"
+      ],
+
+      "labels": {
+        "button": "Get a free quote",
+        "link": "Try our design tool"
+      },
+
+      "image": {
+        "src": "/images/renovated-bathroom.jpg",
+        "alt": "Beautiful renovated bathroom"
+      }
+    },
+
+    "features": {
+      "id": "#features",
+      "path": "/bathroom-remodel",
+      "sectionTitle": "Bathroom Features",
+      "sectionSubtitle": "Discover the benefits of our modern bathroom renovation solutions designed for style, durability, and convenience.",
+      "features": [
+        {
+          "icon": "CheckCircle",
+          "title": "No Demolition Required",
+          "description": "Our innovative process installs directly over your existing fixtures, saving time, cost, and avoiding the mess of traditional renovations."
+        },
+        {
+          "icon": "Package",
+          "title": "Durable & Easy to Clean",
+          "description": "High-quality acrylic surfaces are resistant to stains, mildew, and discoloration, making maintenance effortless."
+        },
+        {
+          "icon": "Zap",
+          "title": "Custom Designs",
+          "description": "We offer a variety of styles, colors, and layouts to create a bathroom that reflects your taste and fits your space perfectly."
+        }
+      ]
+    },
+
+    "beforeAfter": {
+      "id": "#before-after",
+      "path": "/bathroom-remodel",
+      "sectionTitle": "Bathtub Ideas: Before & After",
+      "sectionSubtitle": "Explore inspiring transformations and see how M&E Construction & Renovations can revitalize your bathroom with smart, efficient solutions.",
+      "descriptions": [
+        "At M&E Construction & Renovations, we specialize in transforming bathrooms with smart, efficient solutions that avoid the mess and cost of traditional remodeling. Our innovative process works directly over your existing fixtures, allowing for a smooth, hassle-free renovation that delivers stunning results.",
+        "From outdated tubs to worn surfaces, our team can revitalize your bathroom with a fresh, modern design tailored to your lifestyle and taste. Choose from a wide range of materials, colors, and finishes to create a bathroom that feels both elegant and functional.",
+        "Whether you're looking for a subtle refresh or a complete remodel, M&E provides expert guidance and tailored solutions every step of the way. Explore our bathtub ideas, get inspired by real transformations, and see how we can turn your bathroom into a beautiful, practical space you'll love for years to come."
+      ],
+      "button": "BOOK A FREE CONSULTATION",
+      "labels": {
+        "before": "Before",
+        "after": "After"
+      },
+      "beforeAfterImages": {
+        "before": {
+          "src": "/images/bathroom-remodel-before.jpg",
+          "alt": "Before renovation"
+        },
+        "after": {
+          "src": "/images/bathroom-remodel-after.jpg",
+          "alt": "After renovation"
+        }
+      }
+    },
+
+    "inspiration": {
+      "id": "#inspiration",
+      "path": "/bathroom-remodel",
+      "sectionTitle": "Bathtub Renovation Ideas & Our Design Gallery",
+      "sectionSubtitle": "Explore our portfolio of stunning bathroom transformations and start designing your perfect bath today.",
+      "cards": [
+        {
+          "title": "Gallery",
+          "description": "View hundreds of bath and shower options to perfectly fit your style.",
+          "image": {
+            "src": "/images/modern-luxury-bathroom-renovation-before-and-after.jpg",
+            "alt": "Bathroom gallery"
+          },
+          "cta": {
+            "text": "EXPLORE THE GALLERY",
+            "href": "/gallery",
+            "target": "_blank"
+          }
+        },
+        {
+          "title": "Design Your Bath",
+          "description": "Use our design tool to imagine the possibilities. Your perfect bath is just a click away.",
+          "image": {
+            "src": "/images/bathroom-shower-door-and-accessories.jpg",
+            "alt": "Design your bath"
+          },
+          "cta": {
+            "text": "START YOUR DESIGN",
+            "href": "/design",
+            "target": "_blank"
+          }
+        }
+      ]
+    },
+
+    "customization": {
+      "id": "#customization",
+      "path": "/bathroom-remodel",
+      "badge": "HUNDREDS OF COMBINATIONS",
+      "sectionTitle": "Customize Your Bathroom",
+      "sectionSubtitle": "Discover endless possibilities to create a bathroom that perfectly reflects your style and meets your needs. From modern and minimalist to classic and cozy, our wide range of wall styles, faucets, and accessories allows you to design a space that is uniquely yours.",
+      "description": "With hundreds of combinations to choose from, creating a bathroom that balances style, functionality, and durability has never been easier. Explore our options, mix and match elements, and bring your vision to life with a space you'll love for years to come.",
+      "highlight": "Your bath, your way.",
+      "image": {
+        "src": "/configurator/bathroom-tub-right.png",
+        "alt": "Customize your bathtub"
+      },
+      "link": "TRY OUR DESIGN TOOL"
+    },
+
+    "process": {
+      "id": "#process",
+      "path": "/bathroom-remodel",
+      "sectionTitle": "Our Process",
+      "sectionSubtitle": "One Team from Start to Finish",
+      "description": "At M&E Construction & Renovations, we make remodeling your bathroom seamless and enjoyable. From your first consultation to the final finishing touches, our team guides you through each step with care, expertise, and attention to detail. During your free in-home consultation, one of our experts helps you explore a wide range of styles, colors, and finishes to design your ideal bath or shower. Once your selections are made, our proven three-step process ensures precision, quality, and a beautiful result every time.",
+      "steps": [
+        {
+          "title": "MAKE",
+          "description": "Your new tub, walls and accessories are made to measure in our state-of-the-art manufacturing facility.",
+          "image": "/images/luxury-bathroom-faucet-and-shower-head.jpg"
+        },
+        {
+          "title": "PREPARE",
+          "description": "Existing surfaces are cleaned and repaired before installation.",
+          "image": "/images/modern-bathroom-remodel-with-elegant-fixtures-and-.jpg"
+        },
+        {
+          "title": "INSTALL",
+          "description": "No stress or mess - installation is complete in a single day.",
+          "image": "/images/bathroom-remodel-install.jpg"
+        }
+      ]
+    },
+
+    "gallery": {
+      "id": "#gallery",
+      "path": "/bathroom-remodel",
+      "sectionTitle": "Before & After Gallery",
+      "sectionSubtitle": "See how our bathroom remodeling transforms homes. Each project completed in just one day with no demolition.",
+      "projects": [
+        {
+          "title": "Modern Luxury Bath",
+          "image": "/images/modern-luxury-bathroom-renovation-before-and-after.jpg",
+          "alt": "Modern Luxury Bath Before and After"
+        },
+        {
+          "title": "Spa-Inspired Bathroom",
+          "image": "/images/spa-style-bathroom-remodel-with-stone.jpg",
+          "alt": "Spa-Inspired Bathroom Before and After"
+        },
+        {
+          "title": "Contemporary Design",
+          "image": "/images/contemporary-bathroom-with-minimalist-design.jpg",
+          "alt": "Contemporary Design Bathroom Before and After"
+        }
+      ],
+      "link": "See Our Gallery"
+    },
+
+    "faq": {
+      "id": "#faq",
+      "path": "/bathroom-remodel",
+      "sectionTitle": "Frequently Asked Questions",
+      "sectionSubtitle": "Find answers to common questions about our bathroom remodeling services, including design options, timelines, materials, and maintenance.",
+      "faqs": [
+        {
+          "question": "How long does a bathroom remodel take?",
+          "answer": "Most bathroom remodels are completed within one to two weeks, depending on the size, design complexity, and material availability. We’ll provide a clear project timeline before starting so you know exactly what to expect."
+        },
+        {
+          "question": "Do you handle the demolition and removal process?",
+          "answer": "Yes, our team takes care of removing old fixtures, tiles, and materials safely and efficiently. We ensure proper disposal and prepare your bathroom for the new installation with minimal mess or disruption."
+        },
+        {
+          "question": "What type of warranty or guarantee do you offer?",
+          "answer": "All bathroom remodels come with a workmanship guarantee. We stand behind our quality and ensure every project meets professional standards and your complete satisfaction."
+        },
+        {
+          "question": "Can I customize the design and layout?",
+          "answer": "Absolutely! You can choose from a variety of layouts, tiles, vanities, fixtures, lighting options, and finishes. Our design team will help you create a bathroom that fits your style, space, and budget."
+        },
+        {
+          "question": "How should I maintain my new bathroom?",
+          "answer": "Your new bathroom is designed for easy maintenance. Regular cleaning with mild, non-abrasive products will keep surfaces fresh and looking new. We’ll also provide material-specific care instructions after installation."
+        },
+        {
+          "question": "Do you offer eco-friendly bathroom options?",
+          "answer": "Yes, we offer sustainable materials, water-saving fixtures, and energy-efficient lighting options to create an eco-conscious bathroom remodel."
+        },
+        {
+          "question": "Can you upgrade plumbing and electrical systems?",
+          "answer": "Yes, our licensed professionals can update your bathroom’s plumbing, electrical, and ventilation systems to meet modern safety standards and improve performance."
+        },
+        {
+          "question": "Are your materials water- and mold-resistant?",
+          "answer": "We use premium, moisture-resistant materials designed to prevent mold, mildew, and water damage, ensuring long-lasting durability and a healthier bathroom environment."
+        },
+        {
+          "question": "Will I receive a detailed estimate before work begins?",
+          "answer": "Yes, we provide a transparent, itemized estimate before starting. You’ll know exactly what’s included, including materials, labor, and project timelines."
+        },
+        {
+          "question": "Can you remodel multiple bathrooms at the same time?",
+          "answer": "Yes, we can remodel several bathrooms simultaneously or in phases to fit your schedule and minimize inconvenience during the renovation process."
+        }
+      ]
+    }
+  },
+
+  "showerSolutions": {
+    "hero": {
+      "id": "#hero",
+      "path": "/shower-solutions",
+      "sectionTitle": "Your Dream Shower Awaits",
+      "sectionSubtitle": "Experience the perfect blend of luxury and functionality with our expertly designed shower remodels. Our innovative process transforms your existing space seamlessly, avoiding the mess and disruption of traditional demolition.",
+      "badge": "Shower Solutions",
+      "image": {
+        "src": "/images/modern-luxury-shower-with-rainfall-showerhead-and-.jpg",
+        "alt": "Luxury shower installation"
+      },
+      "labels": { "link": "Try our Design Tool", "button": "Get a free quote" },
+
+      "highlights": {
+        "highlight1": {
+          "title": "Hassle-Free",
+          "description": "Stress-Free Process"
+        },
+        "highlight2": {
+          "title": "No Demolition",
+          "description": "Clean & Simple"
+        }
+      }
+    },
+
+    "types": {
+      "id": "#types",
+      "path": "/shower-solutions",
+      "sectionTitle": "Shower Solutions For Every Need",
+      "sectionSubtitle": "Whether you're looking for a refresh, a conversion, or accessibility improvements, we have the perfect solution for you.",
+      "cards": [
+        {
+          "icon": "Droplets",
+          "title": "Modern Shower",
+          "description": "A fresh, clean shower designed to meet your needs with premium finishes and modern aesthetics.",
+          "cta": "Explore Gallery",
+          "color": "from-blue-500 to-cyan-500",
+          "href": "/gallery"
+        },
+        {
+          "icon": "LogIn",
+          "title": "Tub-to-Shower Conversion",
+          "description": "Convert your existing bathtub into an extra-large shower for maximum space and luxury.",
+          "cta": "See Before and After",
+          "color": "from-teal-500 to-blue-500",
+          "href": "/before-after"
+        },
+        {
+          "icon": "Accessibility",
+          "title": "Easy Access Shower",
+          "description": "Low-threshold, walk-in design provides safe, convenient entry perfect for all ages.",
+          "cta": "Discover More",
+          "color": "from-cyan-500 to-sky-500",
+          "href": "/gallery"
+        }
+      ]
+    },
+
+    "features": {
+      "id": "#features",
+      "path": "/shower-solutions",
+      "sectionTitle": "A Modern Solution To An Age-Old Problem",
+      "sectionSubtitle": "M&E Construction and Renovation revolutionize the way you think about bathroom renovation.",
+      "features": [
+        {
+          "icon": "CheckCircle2",
+          "title": "No Demolition Required",
+          "description": "Professional installation without the mess, dust, or disruption of traditional bathroom renovations."
+        },
+        {
+          "icon": "Shield",
+          "title": "Durable & Low-Maintenance",
+          "description": "Premium materials that are easy to clean, resistant to stains, and built to last for years."
+        },
+        {
+          "icon": "Sparkles",
+          "title": "Cost-Effective Solutions",
+          "description": "A smart alternative to traditional demolition and replacement, delivering superior results at a fraction of the cost."
+        },
+        {
+          "icon": "Zap",
+          "title": "Customizable Designs",
+          "description": "Choose from a variety of styles, finishes, and layouts to create a shower that perfectly fits your space and taste."
+        }
+      ]
+    },
+
+    "beforeAfter": {
+      "id": "#before-after",
+      "path": "/shower-solutions",
+      "sectionTitle": "Shower Ideas: Before & After",
+      "sectionSubtitle": "Transform your shower without the mess, dust, or high costs of traditional renovations. Our innovative process works seamlessly with your existing fixtures, giving your bathroom a fresh, modern, and functional upgrade.",
+      "description": "M&E Construction & Renovations offers tailored shower solutions for any project, whether you’re refreshing your bathroom or completely redesigning your shower space. Explore our design ideas and discover how effortless it can be to create a stylish, durable, and personalized shower that elevates your bathroom.",
+      "labels": {
+        "button": "Book a Free Consultation",
+        "link": "Or check out the <accent>inspiration board</accent> for more design ideas."
+      },
+      "transformations": [
+        {
+          "title": "Shower Transformation",
+          "beforeImage": "/images/old-bathroom-shower-before.jpg",
+          "beforeAlt": "Before shower image",
+          "afterImage": "/images/modern-luxury-shower-after.jpg",
+          "afterAlt": "After shower image"
+        },
+        {
+          "title": "Tub-to-Shower Transformation",
+          "beforeImage": "/images/bathtub-before-conversion.jpg",
+          "beforeAlt": "Before shower image",
+          "afterImage": "/images/spacious-shower-after-conversion.jpg",
+          "afterAlt": "After shower image"
+        },
+        {
+          "title": "Accessible Shower Installation",
+          "beforeImage": "/images/standard-shower-before.jpg",
+          "beforeAlt": "Before shower image",
+          "afterImage": "/images/accessible-walk-in-shower-after.jpg",
+          "afterAlt": "After shower image"
+        }
+      ]
+    },
+
+    "personalization": {
+      "id": "#personalization",
+      "path": "/shower-solutions",
+      "badge": "HUNDREDS OF COMBINATIONS",
+      "sectionTitle": "Personalize Your Shower",
+      "sectionSubtitle": "With thousands of options and accessories, there are endless combinations to help customize your shower and fit your style.",
+      "features": [
+        {
+          "icon": "Palette",
+          "title": "Sleek Upgrade",
+          "description": "Choose from thousands of combinations of wall styles, faucets, and accessories."
+        },
+        {
+          "icon": "Wrench",
+          "title": "Improved Safety",
+          "description": "Low-threshold and accessible designs perfect for all ages and mobility needs."
+        },
+        {
+          "icon": "Zap",
+          "title": "Tailored to Your Space",
+          "description": "Custom-fit solutions designed specifically for your bathroom dimensions and style."
+        }
+      ],
+      "cta": {
+        "text": "We've got you covered.",
+        "button": "Try Our Design Tool"
+      }
+    },
+
+    "process": {
+      "id": "#process",
+      "path": "/shower-solutions",
+      "sectionTitle": "Expert Shower Installation, Hassle-Free",
+      "sectionSubtitle": "M&E Construction and Renovation offers custom shower solutions for virtually every scenario. Whether you're looking for a refresh, a bathtub-to-shower conversion, or an easy-access walk-in shower, we've got you covered.",
+      "badge": "Our Process",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Measure",
+          "description": "Our experts take precise measurements to ensure your custom shower solution fits perfectly in your space.",
+          "image": "/images/professional-measurement-tools-bathroom.jpg",
+          "color": "from-blue-500 to-cyan-500"
+        },
+        {
+          "number": 2,
+          "title": "Make",
+          "description": "Your shower, walls, and accessories are crafted with laser precision in our state-of-the-art facility for a perfect fit and finish.",
+          "image": "/images/manufacturing-shower-components.jpg",
+          "color": "from-cyan-500 to-teal-500"
+        },
+        {
+          "number": 3,
+          "title": "Prepare",
+          "description": "Existing surfaces are carefully cleaned and repaired to provide a flawless foundation for your new shower.",
+          "image": "/images/bathroom-preparation-professional.jpg",
+          "color": "from-teal-500 to-emerald-500"
+        },
+        {
+          "number": 4,
+          "title": "Install",
+          "description": "Our skilled installers professionally bring your shower to life, ensuring every detail is perfect and your space is beautifully transformed.",
+          "image": "/images/professional-shower-installation.jpg",
+          "color": "from-emerald-500 to-green-500"
+        },
+        {
+          "number": 5,
+          "title": "Inspect",
+          "description": "A thorough quality check and final inspection guarantee your satisfaction and a flawless installation.",
+          "image": "/images/quality-inspection-shower-installation.jpg",
+          "color": "from-green-500 to-blue-500"
+        }
+      ]
+    },
+
+    "inspiration": {
+      "id": "#inspiration",
+      "path": "/shower-solutions",
+      "sectionTitle": "Get Inspired",
+      "sectionSubtitle": "Explore our gallery and interactive design tool to discover a wide range of shower styles, finishes, and layouts.",
+      "cards": [
+        {
+          "icon": "ImageIcon",
+          "title": "Photo Gallery",
+          "description": "View hundreds of beautiful shower styles and designs to inspire your project.",
+
+          "label": "Explore Gallery",
+          "href": "/gallery",
+
+          "image": "/images/modern-shower-design-gallery.jpg",
+          "color": "from-blue-500 to-cyan-500"
+        },
+        {
+          "icon": "Pencil",
+          "title": "Design Your Shower",
+          "description": "Use our interactive design tool to customize and visualize your perfect shower.",
+
+          "label": "Start Designing",
+          "href": "/design",
+          "image": "/images/shower-design-tool-interface.jpg",
+          "color": "from-cyan-500 to-teal-500"
+        }
+      ]
+    },
+
+    "faq": {
+      "id": "#faq",
+      "path": "/shower-solutions",
+      "sectionTitle": "Frequently Asked Questions",
+      "sectionSubtitle": "Find answers to common questions about our shower remodeling services, including installation, customization, materials, and maintenance.",
+      "faqs": [
+        {
+          "question": "How long does a shower installation take?",
+          "answer": "Most shower installations are completed in as little as one to two days, depending on the scope of work. Since our process doesn’t require full demolition, you can enjoy your new shower with minimal disruption."
+        },
+        {
+          "question": "Do you remove my old shower or bathtub?",
+          "answer": "Yes, our team safely removes your existing shower, tub, or fixtures as part of the installation process. We handle all preparation and cleanup to ensure a smooth and hassle-free experience."
+        },
+        {
+          "question": "Can I customize the design and layout?",
+          "answer": "Absolutely! Choose from a variety of wall styles, finishes, accessories, and fixtures to create a shower that fits your taste, space, and budget. We offer complete customization for both design and function."
+        },
+        {
+          "question": "What materials are used for your showers?",
+          "answer": "We use high-quality, durable, and low-maintenance materials that resist stains, mold, and mildew. Our wall systems and bases are engineered for longevity and easy cleaning."
+        },
+        {
+          "question": "Is demolition required for installation?",
+          "answer": "No — our shower systems are designed to be installed directly over your existing surface, eliminating the need for messy demolition and lengthy renovation timelines."
+        },
+        {
+          "question": "Are your showers safe and accessible?",
+          "answer": "Yes, we offer a range of accessibility options including low-threshold entries, grab bars, built-in seating, and non-slip surfaces to ensure comfort and safety for every user."
+        },
+        {
+          "question": "Do you offer warranties on your shower systems?",
+          "answer": "Yes, all of our installations come with a workmanship warranty and material guarantees. We stand behind our quality and ensure your new shower performs beautifully for years."
+        },
+        {
+          "question": "How do I maintain my new shower?",
+          "answer": "Our showers are designed for easy upkeep. Simply wipe surfaces with a non-abrasive cleaner to keep them fresh and spotless — no heavy scrubbing or harsh chemicals needed."
+        },
+        {
+          "question": "Do you provide free estimates or consultations?",
+          "answer": "Yes, we offer free design consultations and estimates. Our specialists will assess your space, review your options, and provide a transparent quote before any work begins."
+        },
+        {
+          "question": "Can you convert my bathtub into a shower?",
+          "answer": "Absolutely! We specialize in tub-to-shower conversions that maximize space, improve safety, and modernize your bathroom — all without major construction."
+        }
+      ]
+    }
+  },
+
+  "bathtubSolutions": {
+    "hero": {
+      "id": "#hero",
+      "path": "/bathtub-solutions",
+      "sectionTitle": "Luxury Bathtub Experiences",
+      "sectionSubtitle": "Transform your bathroom with premium bathtub solutions. Enjoy spa-like comfort and elegance, installed quickly without disruption. Experience the perfect blend of luxury and practicality.",
+      "badge": "Bathtub Solutions",
+      "image": {
+        "src": "/images/bathtub-solutions-hero.jpg",
+        "alt": "Luxury bathtub installation"
+      },
+      "labels": {
+        "link": "Try our Design Tool",
+        "button": "Get a Free Quote"
+      },
+      "highlights": {
+        "highlight1": {
+          "title": "Hassle-Free",
+          "description": "Stress-Free Process"
+        },
+        "highlight2": {
+          "title": "Premium Quality",
+          "description": "Long-Lasting Comfort"
+        }
+      }
+    },
+
+    "types": {
+      "id": "#types",
+      "path": "/bathtub-solutions",
+      "sectionTitle": "Bathtub Solutions For Every Lifestyle",
+      "sectionSubtitle": "Choose from our premium selection of bathtubs designed for comfort, safety, and style.",
+      "cards": [
+        {
+          "icon": "Waves",
+          "title": "Luxury Soaking Tub",
+          "description": "Indulge in ultimate comfort with our deep, spacious soaking tubs designed for relaxation and elegance.",
+          "cta": "Explore Tubs",
+          "color": "from-blue-500 to-cyan-500",
+          "href": "/gallery"
+        },
+        {
+          "icon": "User",
+          "title": "Walk-In Bathtub",
+          "description": "Safe and convenient walk-in design with easy entry and exit, perfect for all ages and mobility levels.",
+          "cta": "See Before and After",
+          "color": "from-teal-500 to-blue-500",
+          "href": "/before-after"
+        },
+        {
+          "icon": "Accessibility",
+          "title": "Therapeutic Tub",
+          "description": "Featuring hydrotherapy jets and ergonomic design for soothing massage and wellness benefits.",
+          "cta": "Discover More",
+          "color": "from-cyan-500 to-sky-500",
+          "href": "/gallery"
+        }
+      ]
+    },
+
+    "features": {
+      "id": "#features",
+      "path": "/bathtub-solutions",
+      "sectionTitle": "Why Choose Our Bathtubs",
+      "sectionSubtitle": "Experience the benefits of premium bathtub solutions designed for modern living.",
+      "cards": [
+        {
+          "icon": "🛁",
+          "title": "Superior Comfort",
+          "description": "Deep, ergonomic design for ultimate relaxation and a spa-like experience in your own home."
+        },
+        {
+          "icon": "⭐",
+          "title": "Durable Materials",
+          "description": "Premium acrylic and finishes built to last, offering timeless appeal and easy maintenance."
+        },
+        {
+          "icon": "🧼",
+          "title": "Effortless Maintenance",
+          "description": "Smooth, non-porous surfaces make cleaning easy, keeping your bathtub looking pristine for years."
+        },
+        {
+          "icon": "🎨",
+          "title": "Customizable Designs",
+          "description": "Choose from a variety of sizes, colors, and features to create a bathtub that perfectly matches your bathroom style."
+        },
+        {
+          "icon": "✓",
+          "title": "Safety Features",
+          "description": "Non-slip surfaces and accessibility options provide secure, worry-free bathing for the whole family."
+        },
+        {
+          "icon": "💎",
+          "title": "Enhanced Value",
+          "description": "Upgrade your bathroom with a premium bathtub that enhances both comfort and your home's long-term appeal."
+        }
+      ]
+    },
+
+    "beforeAfter": {
+      "id": "#before-after",
+      "path": "/bathtub-solutions",
+      "sectionTitle": "Bathtub Ideas: Before & After",
+      "sectionSubtitle": "A bathtub upgrade can be done in as little as a day, regardless of the material of your original bathtub, without the mess of demolition or the costs of traditional renovation.",
+      "description": "A bathtub upgrade can be done as little as one day with our bathtub solutions. Whether you're looking for a cost-effective refresh or a complete replacement, we have your back. Explore these bathroom design ideas and see how easy a transformation can be.",
+      "labels": {
+        "button": "Book a Free Consultation",
+        "link": "Or check out the <accent>inspiration board</accent> for more design ideas."
+      },
+      "transformations": [
+        {
+          "title": "Bath Transformation",
+          "beforeImage": "/images/bathroom-remodel-before.jpg",
+          "beforeAlt": "Before bathtub image",
+          "afterImage": "/images/bathroom-remodel-after.jpg",
+          "afterAlt": "After bathtub image"
+        },
+        {
+          "title": "Modern Upgrade",
+          "beforeImage": "/images/bathtub-solutions-before-1.jpg",
+          "beforeAlt": "Before bathtub image",
+          "afterImage": "/images/bathtub-solutions-after-1.png",
+          "afterAlt": "After bathtub image"
+        }
+      ]
+    },
+
+    "personalization": {
+      "id": "#personalization",
+      "path": "/bathtub-solutions",
+      "badge": "HUNDREDS OF COMBINATIONS",
+      "sectionTitle": "Personalize Your Bathtub",
+      "sectionSubtitle": "You'll find the perfect combination to match your style and space with our wide range of customization options. Your bath, your way.",
+      "features": [
+        {
+          "icon": "Palette",
+          "title": "Colors & Finishes",
+          "description": "Choose from a range of colors and finishes to match your bathroom aesthetic."
+        },
+        {
+          "icon": "Settings",
+          "title": "Size & Dimensions",
+          "description": "Select the perfect size for your space, from compact to luxurious oversized tubs."
+        },
+        {
+          "icon": "Zap",
+          "title": "Features & Functions",
+          "description": "Add therapeutic jets, heated surfaces, or other premium features for ultimate comfort."
+        }
+      ],
+      "cta": {
+        "text": "We've got you covered.",
+        "button": "Try Our Design Tool"
+      }
+    },
+
+    "process": {
+      "id": "#process",
+      "path": "/bathtub-solutions",
+      "sectionTitle": "From Consultation to Installation, Hassle-Free",
+      "sectionSubtitle": "M&E Construction and Renovation offers custom bathtub solutions for virtually every scenario. Whether you're looking for a refresh or a shower-to-bathtub conversion, we've got you covered.",
+      "badge": "Bathtub Installation Process",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Consultation",
+          "description": "Schedule a free in-home consultation to discuss your bathtub replacement options and customize your new tub.",
+          "image": "/images/bathtub-solutions-consultation.png",
+          "color": "from-blue-500 to-cyan-500"
+        },
+        {
+          "number": 2,
+          "title": "Custom Fit",
+          "description": "Your new bathtub is custom-made to fit your space perfectly, ensuring a seamless installation.",
+          "image": "/images/bathtub-solutions-custom-fitting.png",
+          "color": "from-cyan-500 to-teal-500"
+        },
+        {
+          "number": 3,
+          "title": "Preparation",
+          "description": "Our team prepares your existing bathtub, ensuring a clean surface for the new installation.",
+          "image": "/images/bathtub-solutions-preparation.png",
+          "color": "from-teal-500 to-emerald-500"
+        },
+        {
+          "number": 4,
+          "title": "Installation",
+          "description": "Our skilled team installs your new bathtub with precision and care, ensuring a flawless fit and a clean, stress-free process.",
+          "image": "/images/bathtub-solutions-installation.png",
+          "color": "from-emerald-500 to-green-500"
+        },
+        {
+          "number": 5,
+          "title": "Enjoy",
+          "description": "Sit back and enjoy your beautiful new bathtub with minimal disruption to your daily life.",
+          "image": "/images/bathtub-solutions-consultation.png",
+          "color": "from-green-500 to-blue-500"
+        }
+      ]
+    },
+
+    "inspiration": {
+      "id": "#inspiration",
+      "path": "/bathtub-solutions",
+      "sectionTitle": "Get Inspired",
+      "sectionSubtitle": "Explore our gallery and design tool to find your perfect bathtub solution.",
+      "cards": [
+        {
+          "icon": "ImageIcon",
+          "title": "Photo Gallery",
+          "description": "View hundreds of beautiful bathtub styles and designs to inspire your project.",
+          "label": "Explore Gallery",
+          "href": "/gallery",
+          "image": "/images/modern-shower-design-gallery.jpg",
+          "color": "from-blue-500 to-cyan-500"
+        },
+        {
+          "icon": "Pencil",
+          "title": "Design Your Bathtub",
+          "description": "Use our interactive design tool to customize and visualize your perfect bathtub.",
+          "label": "Start Designing",
+          "href": "/design",
+          "image": "/images/shower-design-tool-interface.jpg",
+          "color": "from-cyan-500 to-teal-500"
+        }
+      ]
+    },
+
+    "faq": {
+      "id": "#faq",
+      "path": "/bathtub-solutions",
+      "sectionTitle": "Frequently Asked Questions",
+      "sectionSubtitle": "Find answers to common questions about our bathtub remodeling services, including installation, customization, materials, and maintenance.",
+      "faqs": [
+        {
+          "question": "How long does a bathtub installation take?",
+          "answer": "Most bathtub installations are completed in as little as one day, depending on the size and scope of work. Our process is efficient, minimizing disruption to your daily routine."
+        },
+        {
+          "question": "Do you remove my old bathtub?",
+          "answer": "Yes, our team safely removes your existing bathtub as part of the installation process. We handle all preparation and cleanup to ensure a smooth, hassle-free experience."
+        },
+        {
+          "question": "Can I customize the design and features?",
+          "answer": "Absolutely! Choose from a variety of bathtub sizes, finishes, accessories, and therapeutic features to create a tub that fits your style, space, and needs."
+        },
+        {
+          "question": "What materials are used for your bathtubs?",
+          "answer": "We use high-quality, durable materials such as premium acrylic and solid surfaces that are built to last, resist stains, and are easy to clean."
+        },
+        {
+          "question": "Is demolition required for installation?",
+          "answer": "No — our bathtubs can often be installed over your existing surfaces, eliminating the need for messy demolition and extensive renovation timelines."
+        },
+        {
+          "question": "Are your bathtubs safe and accessible?",
+          "answer": "Yes, we offer a range of accessibility options including walk-in designs, non-slip surfaces, and built-in seating to ensure safety and comfort for all users."
+        },
+        {
+          "question": "Do you offer warranties on your bathtubs?",
+          "answer": "Yes, all of our installations come with workmanship warranties and material guarantees. We stand behind our quality to ensure your new bathtub performs beautifully for years."
+        },
+        {
+          "question": "How do I maintain my new bathtub?",
+          "answer": "Our bathtubs are designed for easy maintenance. Simply wipe the surfaces with a non-abrasive cleaner to keep them looking pristine, with no heavy scrubbing required."
+        },
+        {
+          "question": "Do you provide free estimates or consultations?",
+          "answer": "Yes, we offer free in-home consultations and estimates. Our specialists assess your space, review your options, and provide a transparent quote before work begins."
+        },
+        {
+          "question": "Can you convert my shower into a bathtub?",
+          "answer": "Absolutely! We specialize in shower-to-bathtub conversions, creating a relaxing and stylish bathing space without major construction or disruption."
+        }
+      ]
+    }
+  },
+
+  "kitchenSolutions": {
+    "hero": {
+      "id": "#hero",
+      "path": "/kitchen-solutions",
+      "sectionTitle": "Modern Kitchen Transformations",
+      "sectionSubtitle": "Upgrade your kitchen with custom renovations that combine style and functionality. From sleek countertops to smart storage solutions, enjoy a space designed for cooking, entertaining, and everyday living.",
+      "badge": "Kitchen Renovation",
+      "image": {
+        "src": "/images/kitchen-solutions-hero.jpg",
+        "alt": "Modern kitchen renovation"
+      },
+      "labels": {
+        "button": "Get a Free Quote"
+      },
+      "highlights": {
+        "highlight1": {
+          "title": "Hassle-Free",
+          "description": "Stress-Free Process"
+        },
+        "highlight2": {
+          "title": "Modern Design",
+          "description": "Stylish & Functional"
+        }
+      }
+    },
+
+    "types": {
+      "id": "#types",
+      "path": "/kitchen-solutions",
+      "sectionTitle": "Kitchen Renovation Solutions For Every Lifestyle",
+      "sectionSubtitle": "Explore our tailored kitchen solutions designed for style, functionality, and lasting value.",
+      "cards": [
+        {
+          "icon": "Coffee",
+          "title": "Modern Kitchen Remodel",
+          "description": "Upgrade your kitchen with sleek countertops, cabinetry, and appliances for a contemporary look and feel.",
+          "cta": "Explore Designs",
+          "color": "from-blue-500 to-cyan-500",
+          "href": "/kitchen-inspiration/modern"
+        },
+        {
+          "icon": "Layout",
+          "title": "Custom Layouts",
+          "description": "Maximize space and efficiency with custom layouts designed to fit your cooking and entertaining needs.",
+          "cta": "See Before and After",
+          "color": "from-teal-500 to-blue-500",
+          "href": "/kitchen-inspiration/layouts"
+        },
+        {
+          "icon": "Users",
+          "title": "Family-Friendly Kitchens",
+          "description": "Functional and stylish designs that make cooking, dining, and family time enjoyable and safe.",
+          "cta": "Discover More",
+          "color": "from-cyan-500 to-sky-500",
+          "href": "/kitchen-inspiration/family-friendly"
+        }
+      ]
+    },
+
+    "features": {
+      "id": "#features",
+      "path": "/kitchen-solutions",
+      "sectionTitle": "Why Choose Our Kitchen Renovations",
+      "sectionSubtitle": "Discover the benefits of premium kitchen solutions designed for style, functionality, and lasting value.",
+      "cards": [
+        {
+          "icon": "🏡",
+          "title": "Modern Design",
+          "description": "Sleek countertops, stylish cabinetry, and contemporary finishes that elevate the look of your kitchen."
+        },
+        {
+          "icon": "⭐",
+          "title": "Durable Materials",
+          "description": "High-quality materials like quartz, granite, and premium cabinetry built to last and withstand daily use."
+        },
+        {
+          "icon": "📐",
+          "title": "Functional Layouts",
+          "description": "Optimized kitchen layouts designed for efficiency, workflow, and ease of cooking and entertaining."
+        },
+        {
+          "icon": "🎨",
+          "title": "Customizable Options",
+          "description": "Choose from a variety of finishes, colors, and storage solutions to create a kitchen tailored to your style and needs."
+        },
+        {
+          "icon": "👨‍👩‍👧‍👦",
+          "title": "Family-Friendly Features",
+          "description": "Ergonomic designs, safety-conscious installations, and durable surfaces for a kitchen that works for everyone."
+        },
+        {
+          "icon": "💎",
+          "title": "Enhanced Home Value",
+          "description": "A kitchen renovation adds lasting value and appeal to your home while improving functionality and comfort."
+        }
+      ]
+    },
+
+    "beforeAfter": {
+      "id": "#before-after",
+      "path": "/kitchen-solutions",
+      "sectionTitle": "Kitchen Renovation Ideas: Before & After",
+      "sectionSubtitle": "See how outdated kitchens are transformed into modern, functional, and stylish spaces tailored to your lifestyle.",
+      "description": "Whether you're considering a complete kitchen remodel or a smart refresh, our expert solutions help you achieve beautiful, practical results. Explore these kitchen design transformations for inspiration.",
+      "labels": {
+        "button": "Book a Free Consultation",
+        "link": "Or check out the <accent>inspiration board</accent> for more design ideas."
+      },
+      "transformations": [
+        {
+          "title": "Modern Kitchen Upgrade",
+          "beforeImage": "/images/kitchen-solutions-before.jpg",
+          "beforeAlt": "Before kitchen image",
+          "afterImage": "/images/kitchen-solutions-after.jpg",
+          "afterAlt": "After kitchen image"
+        },
+        {
+          "title": "Functional Layout Transformation",
+          "beforeImage": "/images/kitchen-actual-before.jpg",
+          "beforeAlt": "Before kitchen image",
+          "afterImage": "/images/kitchen-actual-after.jpg",
+          "afterAlt": "After kitchen image"
+        }
+      ]
+    },
+
+    "personalization": {
+      "id": "#personalization",
+      "path": "/kitchen-solutions",
+      "badge": "ENDLESS OPTIONS",
+      "sectionTitle": "Personalize Your Kitchen",
+      "sectionSubtitle": "Tailor every aspect of your kitchen—from cabinets to countertops and appliances—to create a space that reflects your style and needs.",
+      "features": [
+        {
+          "icon": "Palette",
+          "title": "Cabinet Colors & Finishes",
+          "description": "Choose from a variety of cabinetry colors, textures, and finishes to match your kitchen aesthetic."
+        },
+        {
+          "icon": "Settings",
+          "title": "Layout & Dimensions",
+          "description": "Customize the layout, cabinet sizes, and countertop dimensions to perfectly fit your space."
+        },
+        {
+          "icon": "Zap",
+          "title": "Features & Appliances",
+          "description": "Add premium features like smart appliances, islands, or built-in storage solutions for ultimate functionality."
+        }
+      ],
+      "cta": {
+        "text": "Design your dream kitchen with ease.",
+        "button": "Get a Free Quote"
+      }
+    },
+
+    "process": {
+      "id": "#process",
+      "path": "/kitchen-solutions",
+      "sectionTitle": "From Consultation to Completion, Hassle-Free",
+      "sectionSubtitle": "M&E Construction and Renovation offers custom kitchen solutions designed for style, functionality, and efficiency.",
+      "badge": "Kitchen Renovation Process",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Consultation",
+          "description": "Schedule a free in-home consultation to discuss your kitchen renovation needs and design preferences.",
+          "image": "/images/kitchen-consultation.jpg",
+          "color": "from-orange-500 to-yellow-500"
+        },
+        {
+          "number": 2,
+          "title": "Design & Planning",
+          "description": "Our experts create a tailored kitchen layout with optimal workflow, cabinetry, and countertop options.",
+          "image": "/images/kitchen-design-planning.jpg",
+          "color": "from-yellow-500 to-amber-500"
+        },
+        {
+          "number": 3,
+          "title": "Preparation",
+          "description": "We prepare your existing kitchen by removing outdated fixtures and ensuring surfaces are ready for renovation.",
+          "image": "/images/kitchen-preparation.jpg",
+          "color": "from-amber-500 to-orange-400"
+        },
+        {
+          "number": 4,
+          "title": "Installation",
+          "description": "Our skilled team installs cabinetry, countertops, appliances, and finishing touches with precision and care.",
+          "image": "/images/kitchen-solutions-before.jpg",
+          "color": "from-orange-400 to-red-400"
+        },
+        {
+          "number": 5,
+          "title": "Enjoy",
+          "description": "Step into your new kitchen and enjoy a modern, functional, and beautiful space designed just for you.",
+          "image": "/images/kitchen-enjoy.jpg",
+          "color": "from-red-400 to-orange-500"
+        }
+      ]
+    },
+
+    "inspiration": {
+      "id": "#inspiration",
+      "path": "/kitchen-solutions",
+      "sectionTitle": "Get Inspired for Your Kitchen",
+      "sectionSubtitle": "Explore our gallery and design tool to find ideas and solutions for your perfect kitchen renovation.",
+      "cards": [
+        {
+          "icon": "ImageIcon",
+          "title": "Kitchen Photo Gallery",
+          "description": "Browse hundreds of stunning kitchen designs and layouts to inspire your renovation project.",
+          "label": "Explore Gallery",
+          "href": "/kitchen-inspiration/gallery",
+          "image": "/images/kitchen-gallery.png",
+          "color": "from-orange-500 to-yellow-500"
+        },
+        {
+          "icon": "Pencil",
+          "title": "Check out our Before and After",
+          "description": "See real kitchen transformations and get inspired by our completed projects, from outdated to modern, functional kitchens.",
+          "label": "View Transformations",
+          "href": "/kitchen-inspiration/before-after",
+          "image": "/images/kitchen-solutions-before-after.png",
+          "color": "from-yellow-500 to-amber-500"
+        }
+      ]
+    },
+
+    "faq": {
+      "id": "#faq",
+      "path": "/kitchen-solutions",
+      "sectionTitle": "Frequently Asked Questions",
+      "sectionSubtitle": "Find answers to common questions about our kitchen renovation services, including design, installation, customization, and maintenance.",
+      "faqs": [
+        {
+          "question": "How long does a kitchen renovation take?",
+          "answer": "Most kitchen renovations are completed within a few weeks, depending on the scope of work, design complexity, and material availability. Our process is organized to minimize disruption to your daily routine."
+        },
+        {
+          "question": "Do you remove my old cabinets and countertops?",
+          "answer": "Yes, our team safely removes outdated cabinetry, countertops, and appliances as part of the renovation process, preparing your space for a seamless installation."
+        },
+        {
+          "question": "Can I customize the design and layout?",
+          "answer": "Absolutely! We offer fully customizable layouts, cabinet finishes, countertop materials, and features to create a kitchen that perfectly matches your style and needs."
+        },
+        {
+          "question": "What materials do you use for cabinets and countertops?",
+          "answer": "We use premium, durable materials such as quartz, granite, solid wood, and high-quality cabinetry finishes that are designed to last and resist daily wear and tear."
+        },
+        {
+          "question": "Do you handle appliance installation?",
+          "answer": "Yes, our team can install all kitchen appliances, including built-ins, smart appliances, and ventilation systems, ensuring they integrate seamlessly with your new kitchen design."
+        },
+        {
+          "question": "Is demolition required for installation?",
+          "answer": "Some renovations require removal of existing elements, but we manage all demolition safely and efficiently to minimize mess and disruption."
+        },
+        {
+          "question": "Are your kitchens designed to be family-friendly?",
+          "answer": "Yes, we prioritize ergonomic designs, durable surfaces, and safety-conscious layouts to create a functional kitchen for families of all sizes."
+        },
+        {
+          "question": "Do you offer warranties on your work?",
+          "answer": "Yes, we provide workmanship warranties and guarantees on materials used, so you can enjoy peace of mind with your new kitchen."
+        },
+        {
+          "question": "Can I get a free consultation or estimate?",
+          "answer": "Yes, we offer free consultations and estimates. Our specialists visit your home, discuss your vision, and provide a detailed plan and quote before starting the project."
+        },
+        {
+          "question": "Can you help with small updates instead of a full remodel?",
+          "answer": "Absolutely! We handle both full kitchen remodels and smaller upgrades, such as countertop replacements, cabinet refinishing, or layout optimizations."
+        }
+      ]
+    }
+  },
+
+  "basementSolutions": {
+    "hero": {
+      "id": "#hero",
+      "path": "/basement-solutions",
+      "sectionTitle": "Transform Your Basement Into a Beautiful Living Space",
+      "sectionSubtitle": "From unfinished storage to a stylish and comfortable retreat — our basement finishing solutions turn every corner of your home into a functional, livable space. Whether it’s a family room, home office, or entertainment area, we make it modern and inviting.",
+      "badge": "Basement Finishing & Renovation",
+      "image": {
+        "src": "/images/basement-modern.png",
+        "alt": "Finished modern basement renovation"
+      },
+      "labels": {
+        "button": "Get a Free Quote"
+      },
+      "highlights": {
+        "highlight1": {
+          "title": "Custom Designs",
+          "description": "Built for Your Lifestyle"
+        },
+        "highlight2": {
+          "title": "Complete Finish",
+          "description": "From Framing to Flooring"
+        }
+      }
+    },
+
+    "types": {
+      "id": "#types",
+      "path": "/basement-solutions",
+      "sectionTitle": "Basement Renovation Solutions For Every Lifestyle",
+      "sectionSubtitle": "Explore our tailored basement solutions designed to maximize space, comfort, and functionality.",
+      "cards": [
+        {
+          "icon": "Layout",
+          "title": "Full Basement Finishing",
+          "description": "Transform your unfinished basement into a functional living space — family room, media area, or home office.",
+          "cta": "Explore Designs",
+          "color": "from-blue-500 to-cyan-500",
+          "href": "/basement-inspiration/full-finishing"
+        },
+        {
+          "icon": "Users",
+          "title": "Entertainment & Lounge Areas",
+          "description": "Create inviting entertainment zones with bars, lounges, or game rooms for family and friends.",
+          "cta": "See Before and After",
+          "color": "from-teal-500 to-blue-500",
+          "href": "/basement-inspiration/entertainment"
+        },
+        {
+          "icon": "Coffee",
+          "title": "Functional Home Offices & Flex Spaces",
+          "description": "Design multi-purpose basement areas that combine work, storage, and relaxation seamlessly.",
+          "cta": "Discover More",
+          "color": "from-cyan-500 to-sky-500",
+          "href": "/basement-inspiration/flex-spaces"
+        }
+      ]
+    },
+
+    "features": {
+      "id": "#features",
+      "path": "/basement-solutions",
+      "sectionTitle": "Why Choose Our Basement Renovations",
+      "sectionSubtitle": "Discover the benefits of premium basement solutions designed for functionality, comfort, and lasting value.",
+      "cards": [
+        {
+          "icon": "🏠",
+          "title": "Maximized Living Space",
+          "description": "Turn your basement into a functional living area such as a lounge, media room, or guest suite."
+        },
+        {
+          "icon": "🛠️",
+          "title": "Durable Flooring & Finishes",
+          "description": "High-quality flooring, wall finishes, and insulation built to withstand moisture and daily use."
+        },
+        {
+          "icon": "📐",
+          "title": "Custom Layouts",
+          "description": "Design layouts that optimize flow and functionality for entertainment, work, and relaxation areas."
+        },
+        {
+          "icon": "🎬",
+          "title": "Entertainment-Ready",
+          "description": "Incorporate media centers, bars, and recreational areas for family fun and hosting guests."
+        },
+        {
+          "icon": "💼",
+          "title": "Home Office & Flex Space",
+          "description": "Create versatile spaces that double as offices, gyms, or hobby areas to fit your lifestyle."
+        },
+        {
+          "icon": "💎",
+          "title": "Increased Home Value",
+          "description": "A finished basement enhances your home's livable area and overall property value."
+        }
+      ]
+    },
+
+    "beforeAfter": {
+      "id": "#before-after",
+      "path": "/basement-solutions",
+      "sectionTitle": "Basement Renovation Ideas: Before & After",
+      "sectionSubtitle": "Discover how unfinished basements are transformed into functional, stylish, and comfortable spaces tailored to your lifestyle.",
+      "description": "Whether you want a home theater, office, playroom, or additional living area, our basement renovation solutions help you achieve beautiful and practical results.",
+      "labels": {
+        "button": "Book a Free Consultation",
+        "link": "Or explore our <accent>inspiration board</accent> for more basement transformation ideas."
+      },
+      "transformations": [
+        {
+          "title": "Open Concept Basement Transformation",
+          "beforeImage": "/images/basement-actual-before.jpg",
+          "beforeAlt": "Before basement image",
+          "afterImage": "/images/basement-actual-after.png",
+          "afterAlt": "After basement image"
+        },
+        {
+          "title": "Functional & Stylish Basement Finish",
+          "beforeImage": "/images/basement-actual-before1.jpg",
+          "beforeAlt": "Before basement image",
+          "afterImage": "/images/basement-actual-after1.jpg",
+          "afterAlt": "After basement image"
+        }
+      ]
+    },
+
+    "personalization": {
+      "id": "#personalization",
+      "path": "/basement-solutions",
+      "badge": "CUSTOM BASEMENT OPTIONS",
+      "sectionTitle": "Personalize Your Basement",
+      "sectionSubtitle": "Tailor every aspect of your basement—from layout to finishes and lighting—to create a functional, stylish space that suits your lifestyle.",
+      "features": [
+        {
+          "icon": "Palette",
+          "title": "Wall & Flooring Finishes",
+          "description": "Choose from a variety of flooring options, wall colors, and textures to create the perfect basement ambiance."
+        },
+        {
+          "icon": "Settings",
+          "title": "Layout & Functional Spaces",
+          "description": "Customize your basement layout for home theater, office, gym, playroom, or additional living spaces."
+        },
+        {
+          "icon": "Zap",
+          "title": "Lighting & Features",
+          "description": "Add premium features like recessed lighting, wet bars, built-in storage, or entertainment zones for ultimate functionality."
+        }
+      ],
+      "cta": {
+        "text": "Design your dream basement with ease.",
+        "button": "Get a Free Quote"
+      }
+    },
+
+    "process": {
+      "id": "#process",
+      "path": "/basement-solutions",
+      "sectionTitle": "From Planning to Completion, Every Step Handled With Care",
+      "sectionSubtitle": "M&E Construction and Renovation provides tailored basement finishing solutions for functional, stylish, and modern living spaces.",
+      "badge": "Basement Finishing Process",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Initial Consultation",
+          "description": "Discuss your basement finishing goals, layout ideas, and design preferences with our experts.",
+          "image": "/images/basement-process-consultation.png",
+          "color": "from-blue-500 to-cyan-500"
+        },
+        {
+          "number": 2,
+          "title": "Design & Planning",
+          "description": "We create a detailed basement layout including living spaces, storage, lighting, and entertainment areas.",
+          "image": "/images/basement-process-planning.png",
+          "color": "from-cyan-500 to-teal-500"
+        },
+        {
+          "number": 3,
+          "title": "Preparation & Framing",
+          "description": "Our team preps the basement, installing framing, insulation, and electrical/plumbing systems as needed.",
+          "image": "/images/basement-process-preparation.png",
+          "color": "from-teal-500 to-green-500"
+        },
+        {
+          "number": 4,
+          "title": "Finishing & Installation",
+          "description": "We install flooring, walls, ceilings, lighting, and custom features to bring your basement vision to life.",
+          "image": "/images/basement-process-finishing.png",
+          "color": "from-green-500 to-lime-500"
+        },
+        {
+          "number": 5,
+          "title": "Enjoy Your Space",
+          "description": "Step into your new, functional, and stylish basement, perfect for entertainment, work, or relaxation.",
+          "image": "/images/basement-process-enjoy.png",
+          "color": "from-lime-500 to-yellow-500"
+        }
+      ]
+    },
+
+    "inspiration": {
+      "id": "#inspiration",
+      "path": "/basement-solutions",
+      "sectionTitle": "Get Inspired for Your Basement",
+      "sectionSubtitle": "Explore our gallery and before-and-after projects to find ideas and solutions for your perfect basement renovation.",
+      "cards": [
+        {
+          "icon": "ImageIcon",
+          "title": "Basement Photo Gallery",
+          "description": "Browse hundreds of stunning basement designs, layouts, and finishes to inspire your renovation project.",
+          "label": "Explore Gallery",
+          "href": "/basement-inspiration/gallery",
+          "image": "/images/basement-gallery.png",
+          "color": "from-blue-500 to-cyan-500"
+        },
+        {
+          "icon": "Pencil",
+          "title": "See Before and After Transformations",
+          "description": "Check out real basement finishing projects and see how we turn unfinished spaces into functional, stylish living areas.",
+          "label": "View Transformations",
+          "href": "/basement-inspiration/before-after",
+          "image": "/images/basement-solutions-before-after.png",
+          "color": "from-cyan-500 to-teal-500"
+        }
+      ]
+    },
+
+    "faq": {
+      "id": "#faq",
+      "path": "/basement-solutions",
+      "sectionTitle": "Frequently Asked Questions",
+      "sectionSubtitle": "Find answers to common questions about our basement renovation services, including design, installation, customization, and maintenance.",
+      "faqs": [
+        {
+          "question": "How long does a basement renovation take?",
+          "answer": "Most basement renovations are completed within a few weeks, depending on the scope of work, design complexity, and material availability. Our process is organized to minimize disruption to your daily routine."
+        },
+        {
+          "question": "Can you finish an unfinished basement completely?",
+          "answer": "Yes, we handle full basement finishing, including framing, insulation, electrical, plumbing, flooring, walls, and ceilings to create a complete living space."
+        },
+        {
+          "question": "Can I customize the basement layout and design?",
+          "answer": "Absolutely! We offer fully customizable layouts, finishes, lighting, and features to create a basement that perfectly matches your style and needs."
+        },
+        {
+          "question": "Do you install home entertainment systems or bars?",
+          "answer": "Yes, we can incorporate media centers, bars, game rooms, and other entertainment features into your finished basement."
+        },
+        {
+          "question": "Are basements designed to be moisture-resistant?",
+          "answer": "Yes, we use high-quality materials and finishes to ensure durability, moisture resistance, and long-lasting comfort."
+        },
+        {
+          "question": "Can a basement include a home office or gym?",
+          "answer": "Yes, we design versatile spaces that can function as offices, gyms, hobby rooms, or additional living areas."
+        },
+        {
+          "question": "Do you provide warranties for basement renovations?",
+          "answer": "Yes, we provide workmanship warranties and guarantees on materials, so you can enjoy peace of mind with your newly finished basement."
+        },
+        {
+          "question": "Is a free consultation available?",
+          "answer": "Yes, we offer free consultations and estimates. Our specialists visit your home, discuss your vision, and provide a detailed plan and quote before starting the project."
+        },
+        {
+          "question": "Can you help with partial basement finishing or smaller upgrades?",
+          "answer": "Absolutely! We handle both full basement finishing and smaller projects, such as flooring upgrades, lighting installations, or layout optimizations."
+        }
+      ]
     }
   }
 }

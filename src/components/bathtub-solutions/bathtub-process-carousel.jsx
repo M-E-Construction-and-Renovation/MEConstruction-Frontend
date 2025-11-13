@@ -4,59 +4,20 @@ import { useState, useEffect } from "react";
 import { Button } from "../ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 export function BathtubProcessCarousel() {
+  const t = useTranslations("bathtubSolutions.process");
+  const steps = t.raw("steps");
+
   const [activeStep, setActiveStep] = useState(0);
   const [isAutoPlay, setIsAutoPlay] = useState(true);
-
-  const steps = [
-    {
-      number: 1,
-      title: "Consultation",
-      description:
-        "Schedule a free in-home consultation to discuss your bathtub replacement options and customize your new tub.",
-      image: "/images/bathtub-solutions-consultation.png",
-      color: "from-blue-500 to-cyan-500",
-    },
-    {
-      number: 2,
-      title: "Custom Fit",
-      description:
-        "Your new bathtub is custom-made to fit your space perfectly, ensuring a seamless installation.",
-      image: "/images/bathtub-solutions-custom-fitting.png",
-      color: "from-cyan-500 to-teal-500",
-    },
-    {
-      number: 3,
-      title: "Preparation",
-      description:
-        "Our team prepares your existing bathtub, ensuring a clean surface for the new installation.",
-      image: "/images/bathtub-solutions-preparation.png",
-      color: "from-teal-500 to-emerald-500",
-    },
-    {
-      number: 4,
-      title: "Installation",
-      description:
-        "Professional installation is completed quickly and cleanly, typically in 24 hours or less.",
-      image: "/images/bathtub-solutions-installation.png",
-      color: "from-emerald-500 to-green-500",
-    },
-    {
-      number: 5,
-      title: "Enjoy",
-      description:
-        "Sit back and enjoy your beautiful new bathtub with minimal disruption to your daily life.",
-      image: "/images/bathtub-solutions-consultation.png",
-      color: "from-green-500 to-blue-500",
-    },
-  ];
 
   useEffect(() => {
     if (!isAutoPlay) return;
     const timer = setInterval(() => {
       setActiveStep((prev) => (prev + 1) % steps.length);
-    }, 5000);
+    }, 3000);
     return () => clearInterval(timer);
   }, [isAutoPlay, steps.length]);
 
@@ -71,24 +32,24 @@ export function BathtubProcessCarousel() {
   };
 
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-br from-slate-50 to-white">
+    <section
+      id="process"
+      className="py-16 md:py-24 bg-gradient-to-br from-slate-50 to-white"
+    >
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-start">
           <div className="space-y-6 order-2 md:order-1">
             <div>
               <span className="text-sm font-semibold text-primary">
-                Bathtub Installation Process
+                {t("badge")}
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-2">
-                From consultation to installation, we handle everything with
-                professionalism and care.
+                {t("sectionTitle")}
               </h2>
             </div>
 
             <p className="text-lg text-muted-foreground">
-              M&E Construction and Renovation offers custom bathtub solutions
-              for virtually every scenario. Whether you're looking for a
-              refresh, a shower-to-bathtub conversion, we've got you covered.
+              {t("sectionSubtitle")}
             </p>
 
             <div className="space-y-3">
@@ -143,7 +104,7 @@ export function BathtubProcessCarousel() {
                   alt={steps[activeStep].title}
                   width={600}
                   height={400}
-                  className="w-full h-80 md:h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  className="w-full h-80 md:h-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-700"
                 />
               </div>
 

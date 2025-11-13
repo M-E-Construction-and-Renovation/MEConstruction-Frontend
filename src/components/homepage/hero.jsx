@@ -1,44 +1,21 @@
 "use client";
 
 import { Button } from "../ui/button";
-import { ArrowRight, Palette, Check, Clock, Shield } from "lucide-react";
+import * as LucideIcons from "lucide-react";
+import { ArrowRight, Palette } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { openModal } from "@/store/quoteModalSlice";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { motion, AnimatePresence } from "framer-motion";
-
-const images = [
-  "/images/contemporary-bathroom-with-walk-in-shower.jpg",
-  "/images/home-page-hero-2.jpg",
-  "/images/home-page-hero-3.jpg",
-];
-
-const items = [
-  {
-    key: "lifetimeWarranty",
-    icon: Shield,
-    bg: "bg-accent/10",
-    iconColor: "text-accent",
-  },
-  {
-    key: "oneDayInstall",
-    icon: Clock,
-    bg: "bg-accent-secondary/20",
-    iconColor: "text-accent-secondary",
-  },
-  {
-    key: "noDemolition",
-    icon: Check,
-    bg: "bg-accent/10",
-    iconColor: "text-accent",
-  },
-];
+import { motion } from "framer-motion";
 
 export function Hero() {
   const dispatch = useDispatch();
+
   const t = useTranslations("home.hero");
+  const features = t.raw("features");
+  const images = t.raw("images");
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -62,12 +39,15 @@ export function Hero() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % images.length);
-    }, 6000);
+    }, 3000);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-accent/5 via-primary/10 to-accent/5">
+    <section
+      id="hero"
+      className="relative overflow-hidden bg-gradient-to-br from-accent/5 via-primary/10 to-accent/5"
+    >
       <div className="container mx-auto px-4 py-16 md:py-24">
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-0 items-center">
           {/* LEFT SIDE TEXT */}
@@ -144,18 +124,20 @@ export function Hero() {
               }`}
             >
               <div className="flex flex-wrap gap-4">
-                {items.map(({ key, icon: Icon, bg, iconColor }) => (
-                  <div key={key} className="flex items-center gap-2">
-                    <div
-                      className={`flex h-10 w-10 items-center justify-center rounded-full ${bg}`}
-                    >
-                      <Icon className={`h-5 w-5 ${iconColor}`} />
+                {features.map(({ label, icon, bg, iconColor }) => {
+                  const Icon = LucideIcons[icon] || LucideIcons.HelpCircle;
+
+                  return (
+                    <div key={label} className="flex items-center gap-2">
+                      <div
+                        className={`flex h-10 w-10 items-center justify-center rounded-full ${bg}`}
+                      >
+                        <Icon className={`h-5 w-5 ${iconColor}`} />
+                      </div>
+                      <span className="text-sm font-medium">{label}</span>
                     </div>
-                    <span className="text-sm font-medium">
-                      {t(`features.${key}`)}
-                    </span>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -182,7 +164,7 @@ export function Hero() {
               </div>
             </div>
 
-            {images.map((src, index) => {
+            {images.map((image, index) => {
               // compute relative position (left, center, right)
               const diff =
                 (index - currentIndex + images.length) % images.length;
@@ -190,11 +172,11 @@ export function Hero() {
               let scale = 0.8;
               let opacity = 0.5;
               // let x = "-70%";
-              let x = "-20%";
+              let x = "-25%";
 
               if (diff === 0) {
                 // center image
-                scale = 1.1;
+                scale = 1.2;
                 opacity = 1;
                 x = "0%";
               } else if (diff === 1) {
@@ -202,13 +184,13 @@ export function Hero() {
                 scale = 0.8;
                 opacity = 0.6;
                 // x = "70%";
-                x = "20%";
+                x = "25%";
               }
 
               return (
                 <motion.div
-                  key={src}
-                  className="absolute rounded-2xl shadow-2xl overflow-hidden w-[80%] h-[80%] md:w-[85%] md:h-[85%]"
+                  key={image.src}
+                  className="absolute rounded-2xl shadow-2xl overflow-hidden w-[80%] h-[80%] md:w-[85%] md:h-[85%] border border-primary"
                   animate={{
                     scale,
                     x,
@@ -222,13 +204,18 @@ export function Hero() {
                 >
                   {/* 🖼️ The actual image */}
                   <img
-                    src={src}
+                    src={image.src}
                     alt={`Bathroom image ${index + 1}`}
                     className="absolute inset-0 w-full h-full object-cover"
                   />
 
                   {/* 🌑 Gradient overlay at bottom of image */}
                   <div className="absolute inset-0 bg-gradient-to-tl from-black/80 via-black/10 to-transparent pointer-events-none" />
+                  <div className="absolute bottom-0 right-0 p-4 bg-gradient-to-t from-accent/10 to-transparent">
+                    <h3 className="text-3xl font-semibold text-white">
+                      {image.title}
+                    </h3>
+                  </div>
                 </motion.div>
               );
             })}

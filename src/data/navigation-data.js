@@ -36,6 +36,16 @@ export const solutionsMenuItems = [
     href: "/bathtub-solutions",
     detail: "See our services for bathtubs",
   },
+  {
+    label: "Kitchen Solutions",
+    href: "/kitchen-solutions",
+    detail: "Our services for kitchen",
+  },
+  {
+    label: "Basement Solutions",
+    href: "/basement-solutions",
+    detail: "Our solutions for basements",
+  },
 ];
 
 export const inspirationMenuItems = [

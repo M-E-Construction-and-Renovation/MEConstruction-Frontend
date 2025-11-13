@@ -5,8 +5,11 @@ import { Button } from "../ui/button";
 import { ArrowRight } from "lucide-react";
 import { useDispatch } from "react-redux";
 import { openModal } from "@/store/quoteModalSlice";
+import { useTranslations } from "next-intl";
 
 const OurStoryHero = () => {
+  const t = useTranslations("ourStory.hero");
+
   const dispatch = useDispatch();
 
   const [isTextVisible, setIsTextVisible] = useState(false);
@@ -18,6 +21,7 @@ const OurStoryHero = () => {
 
   return (
     <section
+      id="hero"
       className="relative w-full flex items-center overflow-hidden bg-cover bg-center"
       style={{
         backgroundImage: "url('/images/our-story-hero-bg.jpg')",
@@ -35,23 +39,25 @@ const OurStoryHero = () => {
             }`}
           >
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-6">
-              Our <span className="text-accent">Story</span>
+              {t.rich("headline", {
+                accent: (chunks) => (
+                  <span className="text-accent">{chunks}</span>
+                ),
+              })}
             </h1>
             <p className="text-xl md:text-2xl text-gray-100 mb-4 font-semibold">
-              Building Trust Since 2022
+              {t("title")}
             </p>
             <p className="text-lg text-gray-100 mb-8 leading-relaxed max-w-xl">
-              M&E Construction &amp; Renovations was established in 2022,
-              becoming a trusted leader in residential and commercial
-              remodeling, dedicated to delivering exceptional craftsmanship and
-              innovative solutions that transform homes and businesses.
+              {t("description")}
             </p>
+
             <Button
               onClick={() => dispatch(openModal())}
               size="lg"
               className="bg-accent hover:bg-accent/90 text-accent-foreground gap-2 text-base"
             >
-              Get Free Quote
+              {t("button")}
               <ArrowRight className="h-5 w-5" />
             </Button>
           </div>

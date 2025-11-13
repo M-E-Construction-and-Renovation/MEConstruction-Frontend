@@ -2,63 +2,21 @@ import Link from "next/link";
 import { Button } from "../ui/button";
 import { Card, CardContent } from "../ui/card";
 import { ArrowRight, Check } from "lucide-react";
-
-const solutions = [
-  {
-    tag: "Most Popular",
-    title: "Complete Bathroom Remodel",
-    description:
-      "Transform your entire bathroom with our comprehensive renovation package.",
-    features: [
-      "Custom tub or shower installation",
-      "Wall surrounds & panels",
-      "Fixtures & accessories",
-      "Professional installation",
-    ],
-    image: "/images/modern-bathroom-with-bathtub-and-elegant-tile.jpg",
-    href: "/bathroom-remodel",
-  },
-  {
-    tag: "Quick Solution",
-    title: "Shower Solutions",
-    description:
-      "Upgrade to a beautiful, low-maintenance shower system in just one day.",
-    features: [
-      "Multiple style options",
-      "Built-in storage solutions",
-      "Slip-resistant flooring",
-      "Lifetime warranty included",
-    ],
-    image: "/images/modern-walk-in-shower-with-glass-door-and-tile.jpg",
-    href: "/shower-solutions",
-  },
-  {
-    tag: "Luxury Option",
-    title: "Bathtub Solutions",
-    description:
-      "Enjoy the perfect soak with our premium bathtub replacement options.",
-    features: [
-      "Acrylic & stone finishes",
-      "Ergonomic designs",
-      "Easy-clean surfaces",
-      "Custom color options",
-    ],
-    image: "/images/luxury-freestanding-bathtub-in-modern-bathroom.jpg",
-    href: "/bathtub-solutions",
-  },
-];
+import { useTranslations } from "next-intl";
 
 export function Solutions() {
+  const t = useTranslations("home.solutions");
+  const solutions = t.raw("cards");
+
   return (
     <section id="solutions" className="py-16 md:py-24">
       <div className="container mx-auto px-4">
         <div className="mb-12 text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl mb-4 text-balance">
-            Bathroom Solutions for Every Need
+            {t("sectionTitle")}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
-            Choose from our range of premium bathroom renovation solutions
-            designed to fit your style and budget.
+            {t("sectionSubtitle")}
           </p>
         </div>
 
@@ -72,7 +30,7 @@ export function Solutions() {
                   }`}
                 >
                   <div
-                    className={`relative aspect-[4/3] lg:aspect-auto ${
+                    className={`relative aspect-[4/3] ${
                       index % 2 === 1 ? "lg:col-start-2" : ""
                     }`}
                   >
@@ -115,7 +73,7 @@ export function Solutions() {
                     <div>
                       <Link href={solution.href} target="_blank">
                         <Button className="bg-accent hover:bg-accent/90 text-accent-foreground gap-2">
-                          Learn More
+                          {t("buttonText")}
                           <ArrowRight className="h-4 w-4" />
                         </Button>
                       </Link>

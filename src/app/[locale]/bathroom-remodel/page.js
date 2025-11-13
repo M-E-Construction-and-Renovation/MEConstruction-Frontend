@@ -6,7 +6,7 @@ import { BathroomInspiration } from "@/components/bathroom-remodel/bathroom-insp
 import { BathroomCustomizationTool } from "@/components/bathroom-remodel/bathroom-customization-tool";
 import { BathroomProcessCarousel } from "@/components/bathroom-remodel/bathroom-process-carousel";
 import { BathroomGallery } from "@/components/bathroom-remodel/bathroom-gallery";
-import { FaqSection } from "@/components/advantages/faq-section";
+import { FaqSection } from "@/components/bathroom-remodel/bathroom-faq";
 import { CtaSection } from "@/components/homepage/cta-section";
 
 const page = () => {

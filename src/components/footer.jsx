@@ -64,9 +64,9 @@ export function Footer() {
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           <div>
             <div className="mb-4 flex items-center gap-2">
-              <div className="h-full w-42 rounded bg-primary">
+              <div className="h-full w-42 rounded">
                 <Image
-                  src="/images/logo.png"
+                  src="/images/transparent-logo.png"
                   alt="M&E Construction and Renovation LLC Logo"
                   width={400}
                   height={400}
@@ -78,8 +78,10 @@ export function Footer() {
               </span>
             </div>
             <p className="text-sm text-muted-foreground mb-4">
-              Transforming bathrooms with quality, speed, and care.
+              Delivering exceptional renovations for bathrooms, kitchens, and
+              basements with precision, speed, and care.
             </p>
+
             <div className="flex gap-2">
               <Button variant="outline" size="icon">
                 <FaFacebook className="h-4 w-4" />

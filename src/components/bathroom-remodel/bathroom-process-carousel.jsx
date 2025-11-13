@@ -3,30 +3,13 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "../ui/button";
+import { useTranslations } from "next-intl";
 
 export function BathroomProcessCarousel() {
-  const [currentStep, setCurrentStep] = useState(0);
+  const t = useTranslations("bathroomRemodel.process");
+  const steps = t.raw("steps");
 
-  const steps = [
-    {
-      title: "MAKE",
-      description:
-        "Your new tub, walls and accessories are made to measure in our state-of-the-art manufacturing facility.",
-      image: "/images/luxury-bathroom-faucet-and-shower-head.jpg",
-    },
-    {
-      title: "PREPARE",
-      description:
-        "Existing surfaces are cleaned and repaired before installation.",
-      image: "/images/modern-bathroom-remodel-with-elegant-fixtures-and-.jpg",
-    },
-    {
-      title: "INSTALL",
-      description:
-        "No stress or mess - installation is complete in a single day.",
-      image: "/images/bathroom-remodel-install.jpg",
-    },
-  ];
+  const [currentStep, setCurrentStep] = useState(0);
 
   const nextStep = () => {
     setCurrentStep((prev) => (prev + 1) % steps.length);
@@ -37,19 +20,22 @@ export function BathroomProcessCarousel() {
   };
 
   return (
-    <section className="py-20 md:py-32 bg-gradient-to-br from-primary/80 via-primary/100 to-primary/80">
+    <section
+      id="process"
+      className="py-20 md:py-32 bg-gradient-to-br from-primary/80 via-primary/100 to-primary/80"
+    >
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="text-white">
-            <h2 className="text-4xl md:text-5xl font-bold mb-3">Our Process</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-3">
+              {t("sectionTitle")}
+            </h2>
             <p className="text-accent text-lg mb-8 leading-relaxed">
-              One Team from Start to Finish
+              {t("sectionSubtitle")}
             </p>
-            <p className="text-blue-100 text-lg mb-12 leading-relaxed">
-              During your free in-home consultation, one of our experts will
-              help you design your new bath or shower by selecting from a range
-              of styles and options. Then, it's just three easy steps.
+            <p className="text-blue-100 text-lg mb-6 leading-relaxed">
+              {t("description")}
             </p>
           </div>
 

@@ -1,33 +1,19 @@
-import { CheckCircle, Zap, Package } from "lucide-react";
+import * as LucideIcons from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export function BathroomFeatures() {
-  const features = [
-    {
-      icon: CheckCircle,
-      title: "No Demolition Required",
-      description:
-        "Our innovative process installs directly over your existing fixtures without the mess and expense of traditional renovations.",
-    },
-    {
-      icon: Zap,
-      title: "1-Day Installation",
-      description:
-        "Most projects are completed in as little as one day, minimizing disruption to your home and daily routine.",
-    },
-    {
-      icon: Package,
-      title: "Durable & Easy to Clean",
-      description:
-        "High-gloss acrylic surfaces are virtually maintenance-free and resist stains, mildew, and discoloration.",
-    },
-  ];
+  const t = useTranslations("bathroomRemodel.features");
+  const features = t.raw("features");
 
   return (
-    <section className="py-20 md:py-32 bg-gradient-to-br from-primary/80 via-primary/100 to-primary/80">
+    <section
+      id="features"
+      className="py-20 md:py-32 bg-gradient-to-br from-primary/80 via-primary/100 to-primary/80"
+    >
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-8">
           {features.map((feature, index) => {
-            const Icon = feature.icon;
+            const Icon = LucideIcons[feature.icon] || LucideIcons.HelpCircle;
             return (
               <div
                 key={index}

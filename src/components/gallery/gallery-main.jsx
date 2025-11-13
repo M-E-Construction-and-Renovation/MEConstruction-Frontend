@@ -109,33 +109,180 @@ export const GalleryMain = () => {
     // },
   ];
 
-  const designs = activeTab === "showers" ? showerDesigns : bathtubDesigns;
+  const kitchenDesigns = [
+    {
+      id: 1,
+      title: "Modern Minimalist Kitchen",
+      description:
+        "Sleek white cabinetry with matte black hardware and quartz countertops",
+      image: "/images/kitchen-modern-minimalist.jpg",
+    },
+    {
+      id: 2,
+      title: "Modern Stone-Finish Kitchen",
+      description:
+        "A sleek minimalist kitchen featuring matching stone-textured countertops, open shelving, and a built-in sink area",
+      image: "/images/kitchen-contemporary-grey.jpg",
+    },
+    {
+      id: 3,
+      title: "Sleek Navy Shaker Kitchen with White Quartz",
+      description:
+        "Experience the perfect blend of classic and contemporary with this stunning U-shaped kitchen featuring deep Navy Blue Shaker Cabinets and pristine White Quartz Countertops",
+      image: "/images/kitchen-white-quartz.jpg",
+    },
+    {
+      id: 4,
+      title: "Compact Modern Navy Kitchen",
+      description:
+        "This efficient corner kitchen showcases Navy Shaker Cabinets paired with a classic white subway tile backsplash and sleek white countertops",
+      image: "/images/kitchen-compact-modern.jpg",
+    },
+    {
+      id: 5,
+      title: "Crisp White Quartz Kitchen Remodel",
+      description:
+        "A bright and open design featuring floor-to-ceiling white shaker cabinets and luxurious white quartz countertops with subtle veining",
+      image: "/images/kitchen-crisp-white.jpg",
+    },
+    {
+      id: 6,
+      title: "Modern Contrast Sink Corner",
+      description:
+        "This detailed look highlights a sleek contrast design featuring crisp white shaker cabinets and quartz countertops",
+      image: "/images/kitchen-contrast-sink.jpg",
+    },
+    {
+      id: 7,
+      title: "Two-Tone Farmhouse Kitchen with Island",
+      description:
+        "A bright, open-concept kitchen featuring two-tone cabinetry—white uppers and warm gray lowers—for a modern look",
+      image: "/images/kitchen-farmhouse.jpg",
+    },
+    {
+      id: 8,
+      title: "Natural Wood Contemporary Kitchen",
+      description:
+        "A warm, sophisticated kitchen featuring light natural wood flat-panel cabinets for a minimalist, organic modern feel",
+      image: "/images/kitchen-wood-contemporary.jpg",
+    },
+  ];
+
+  const basementDesigns = [
+    {
+      id: 1,
+      title: "Contemporary Open-Concept Basement Finish",
+      description:
+        "Transform your basement into a stylish living area with this contemporary open-concept design",
+      image: "/images/basement-open-concept.jpg",
+    },
+    {
+      id: 2,
+      title: "Basement Transformation: From Utility to Luxury",
+      description:
+        "Witness a complete basement overhaul from an unfinished space (metal framing, concrete floor) to a sophisticated, high-end living area",
+      image: "/images/basement-luxury.jpg",
+    },
+    {
+      id: 3,
+      title: "Warm Modern Basement Entertainment",
+      description:
+        "A luxurious basement remodel centered around a stunning custom built-in media center with backlighting and natural wood cabinets",
+      image: "/images/basement-modern.png",
+    },
+    {
+      id: 4,
+      title: "Fun & Functional Basement Playroom",
+      description:
+        "This basement area is finished as a bright, multi-purpose playroom with a vibrant geometric accent wall and cozy neutral carpet",
+      image: "/images/basement-playroom.png",
+    },
+    {
+      id: 5,
+      title: "Minimalist Basement Corridor & Flex Space",
+      description:
+        "This finished basement area features a minimalist design with textured, neutral walls and ceiling, contrasting natural wood doors and flooring",
+      image: "/images/basement-office.png",
+    },
+    {
+      id: 6,
+      title: "Bright Basement Office and Storage",
+      description:
+        "A clean and contemporary basement finish transforming the space into a functional home office and storage solution",
+      image: "/images/basement-bright-office.jpg",
+    },
+    {
+      id: 7,
+      title: "Mid-Century Modern Basement Nook",
+      description:
+        "A warmly finished basement space featuring rich wood paneling on the staircase and dark, exposed ceiling beams for a rustic-modern feel",
+      image: "/images/basement-mid-century.jpg",
+    },
+    {
+      id: 8,
+      title: "Modern Basement with Bar and Fireplace",
+      description:
+        "A bright and comprehensive basement finish featuring an open-concept living area",
+      image: "/images/basement-bar-fireplace.jpeg",
+    },
+  ];
+
+  const designs =
+    activeTab === "showers"
+      ? showerDesigns
+      : activeTab === "bathtubs"
+      ? bathtubDesigns
+      : activeTab === "kitchens"
+      ? kitchenDesigns
+      : basementDesigns;
 
   return (
     <>
-      <section className="py-8 bg-white border-b border-border">
+      {/* <section className="py-8 bg-white border-b border-border">
         <div className="container mx-auto px-4">
-          <div className="flex gap-4 justify-center max-w-md mx-auto">
-            <button
-              onClick={() => setActiveTab("showers")}
-              className={`flex-1 py-3 px-6 rounded-lg font-semibold transition-all duration-300 cursor-pointer ${
-                activeTab === "showers"
-                  ? "bg-accent text-accent-foreground shadow-lg"
-                  : "bg-secondary text-foreground hover:bg-secondary/80"
-              }`}
-            >
-              Shower Designs
-            </button>
-            <button
-              onClick={() => setActiveTab("bathtubs")}
-              className={`flex-1 py-3 px-6 rounded-lg font-semibold transition-all duration-300 cursor-pointer ${
-                activeTab === "bathtubs"
-                  ? "bg-accent text-accent-foreground shadow-lg"
-                  : "bg-secondary text-foreground hover:bg-secondary/80"
-              }`}
-            >
-              Bathtub Designs
-            </button>
+          <div className="mb-8 text-2xl font-bold text-center">
+            Select a Category from our Inspiration Gallery
+          </div>
+
+          <div className="flex gap-2 justify-start md:justify-center overflow-x-auto scrollbar-hide">
+            {["showers", "bathtubs", "kitchens", "basements"].map((tab) => (
+              <button
+                key={tab}
+                onClick={() => {
+                  setActiveTab(tab);
+                }}
+                className={`whitespace-nowrap flex-shrink-0 py-2 px-4 rounded-md font-semibold text-sm sm:text-base transition-all duration-300 cursor-pointer ${
+                  activeTab === tab
+                    ? "bg-accent text-accent-foreground shadow-md"
+                    : "bg-secondary text-foreground hover:bg-secondary/80"
+                }`}
+              >
+                {tab.charAt(0).toUpperCase() + tab.slice(1)}
+              </button>
+            ))}
+          </div>
+        </div>
+      </section> */}
+      <div className="py-4 text-xl md:text-2xl font-bold text-center">
+        Select a Category from our Inspiration Gallery
+      </div>
+      <section className="sticky top-[7rem] md:top-[8rem] z-40 bg-white/90 backdrop-blur-sm border-b border-border py-4">
+        <div className="container mx-auto px-4">
+          {/* Scrollable Tabs */}
+          <div className="flex gap-2 justify-start md:justify-center overflow-x-auto scrollbar-hide">
+            {["showers", "bathtubs", "kitchens", "basements"].map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`whitespace-nowrap flex-shrink-0 py-2 px-4 rounded-md font-semibold text-sm sm:text-base transition-all duration-300 cursor-pointer ${
+                  activeTab === tab
+                    ? "bg-accent text-accent-foreground shadow-md"
+                    : "bg-secondary text-foreground hover:bg-secondary/80"
+                }`}
+              >
+                {tab.charAt(0).toUpperCase() + tab.slice(1)}
+              </button>
+            ))}
           </div>
         </div>
       </section>

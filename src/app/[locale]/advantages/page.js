@@ -12,7 +12,7 @@ const page = () => {
     <div className="min-h-screen">
       <AdvantagesHero />
       <AdvantagesCarousel />
-      <VideoSection />
+      {/* <VideoSection /> */}
       <BeforeAfterSection />
       <DesignToolCards />
       <FaqSection />

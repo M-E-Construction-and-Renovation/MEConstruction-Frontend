@@ -9,6 +9,7 @@ import { useLocale } from "next-intl";
 import en from "../../../messages/en.json";
 import es from "../../../messages/es.json";
 import { flattenMessages } from "@/lib/utils";
+import Link from "next/link";
 
 const messages = { en, es };
 
@@ -111,12 +112,14 @@ export default function SiteSearch() {
                 key={i}
                 className="px-2 py-2 rounded-md hover:bg-muted transition-colors"
               >
-                <p className="text-sm leading-tight">
-                  {highlightText(item.text, query)}
-                </p>
-                <p className="text-xs text-muted-foreground truncate">
+                <Link href={`${item.path}/${item.id}`} target="_blank">
+                  <p className="text-sm leading-tight">
+                    {highlightText(item.text, query)}
+                  </p>
+                  {/* <p className="text-xs text-muted-foreground truncate">
                   {item.key}
-                </p>
+                </p> */}
+                </Link>
               </div>
             ))}
           </div>
