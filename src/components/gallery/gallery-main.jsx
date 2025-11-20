@@ -238,35 +238,10 @@ export const GalleryMain = () => {
 
   return (
     <>
-      {/* <section className="py-8 bg-white border-b border-border">
-        <div className="container mx-auto px-4">
-          <div className="mb-8 text-2xl font-bold text-center">
-            Select a Category from our Inspiration Gallery
-          </div>
-
-          <div className="flex gap-2 justify-start md:justify-center overflow-x-auto scrollbar-hide">
-            {["showers", "bathtubs", "kitchens", "basements"].map((tab) => (
-              <button
-                key={tab}
-                onClick={() => {
-                  setActiveTab(tab);
-                }}
-                className={`whitespace-nowrap flex-shrink-0 py-2 px-4 rounded-md font-semibold text-sm sm:text-base transition-all duration-300 cursor-pointer ${
-                  activeTab === tab
-                    ? "bg-accent text-accent-foreground shadow-md"
-                    : "bg-secondary text-foreground hover:bg-secondary/80"
-                }`}
-              >
-                {tab.charAt(0).toUpperCase() + tab.slice(1)}
-              </button>
-            ))}
-          </div>
-        </div>
-      </section> */}
       <div className="py-4 text-xl md:text-2xl font-bold text-center">
         Select a Category from our Inspiration Gallery
       </div>
-      <section className="sticky top-[7rem] md:top-[8rem] z-40 bg-white/90 backdrop-blur-sm border-b border-border py-4">
+      <section className="sticky top-[8.5rem] md:top-[9.5rem] z-40 bg-white/90 backdrop-blur-sm border-b border-border py-4">
         <div className="container mx-auto px-4">
           {/* Scrollable Tabs */}
           <div className="flex gap-2 justify-start md:justify-center overflow-x-auto scrollbar-hide">

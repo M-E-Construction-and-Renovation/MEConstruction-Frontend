@@ -178,3 +178,19 @@
     animation: slideInUp 1s ease-out forwards;
   }
 }
+
+@layer utilities {
+  @keyframes beat {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.08);
+    }
+  }
+
+  .animate-beat {
+    animation: beat 1.3s ease-in-out infinite;
+  }
+}

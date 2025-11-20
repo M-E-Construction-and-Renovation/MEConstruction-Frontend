@@ -2,7 +2,7 @@ import React from "react";
 import { GalleryHero } from "@/components/gallery/gallery-hero";
 import { GalleryMain } from "@/components/gallery/gallery-main";
 import { GalleryTips } from "@/components/gallery/gallery-tips";
-import { CtaSection } from "@/components/homepage/cta-section";
+// import { CtaSection } from "@/components/homepage/cta-section";
 
 export const metadata = {
   title: "Inspiration Gallery | M&E Construction and Renovations LLC",
@@ -15,7 +15,7 @@ const page = () => {
       <GalleryHero />
       <GalleryMain />
       <GalleryTips />
-      <CtaSection />
+      {/* <CtaSection /> */}
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import { BeforeAfterHero } from "@/components/before-after/before-after-hero";
 import { BeforeAfterMain } from "@/components/before-after/before-after-main";
-import { CtaSection } from "@/components/homepage/cta-section";
+// import { CtaSection } from "@/components/homepage/cta-section";
 
 export const metadata = {
   title: "Before & After Gallery | M&E Construction and Renovations LLC",
@@ -13,7 +13,7 @@ const page = () => {
     <div className="min-h-screen">
       <BeforeAfterHero />
       <BeforeAfterMain />
-      <CtaSection />
+      {/* <CtaSection /> */}
     </div>
   );
 };

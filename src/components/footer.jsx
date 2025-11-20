@@ -2,7 +2,6 @@
 
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
-import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -12,6 +11,7 @@ import {
 } from "@/data/navigation-data";
 import { useState } from "react";
 import { useToast } from "./ui/use-toast";
+import { socials } from "@/data/contact-data";
 
 export function Footer() {
   const { toast } = useToast();
@@ -83,18 +83,13 @@ export function Footer() {
             </p>
 
             <div className="flex gap-2">
-              <Button variant="outline" size="icon">
-                <FaFacebook className="h-4 w-4" />
-              </Button>
-              <Button variant="outline" size="icon">
-                <FaInstagram className="h-4 w-4" />
-              </Button>
-              <Button variant="outline" size="icon">
-                <FaTwitter className="h-4 w-4" />
-              </Button>
-              <Button variant="outline" size="icon">
-                <FaYoutube className="h-4 w-4" />
-              </Button>
+              {socials.map((social) => (
+                <Link key={social.id} href={social.link} target={social.target}>
+                  <Button variant="outline" size="icon">
+                    <social.icon className="h-4 w-4" />
+                  </Button>
+                </Link>
+              ))}
             </div>
           </div>
 

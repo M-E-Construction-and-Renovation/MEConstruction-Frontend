@@ -111,7 +111,7 @@ export const BeforeAfterMain = () => {
         Select a Category from our Before & After Gallery
       </div>
       {/* ---- TAB SECTION ---- */}
-      <section className="sticky top-[7rem] md:top-[8rem] z-40 bg-white/90 backdrop-blur-sm border-b border-border py-4">
+      <section className="sticky top-[8.5rem] md:top-[9.5rem] z-40 bg-white/90 backdrop-blur-sm border-b border-border py-4">
         <div className="container mx-auto px-4">
           <div className="flex gap-2 justify-start md:justify-center overflow-x-auto scrollbar-hide">
             {["showers", "bathtubs", "kitchens", "basements"].map((tab) => (

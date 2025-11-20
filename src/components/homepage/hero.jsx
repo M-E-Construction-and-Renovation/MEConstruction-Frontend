@@ -41,9 +41,13 @@ export function Hero({ hero }) {
   }, []);
 
   return (
+    // <section
+    //   id="hero"
+    //   className="relative overflow-hidden bg-[radial-gradient(circle_at_center,_#f5f7fa,_#eef1f5)]"
+    // >
     <section
       id="hero"
-      className="relative overflow-hidden bg-gradient-to-br from-accent/5 via-primary/10 to-accent/5"
+      className="relative overflow-hidden bg-[url('/images/home-hero-bg.jpg')] bg-cover bg-center bg-no-repeat"
     >
       <div className="container mx-auto px-4 py-16 md:py-24">
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-0 items-center">
@@ -61,7 +65,7 @@ export function Hero({ hero }) {
             </div>
 
             <h1
-              className={`text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl text-balance transition-all duration-1000 ease-out ${
+              className={`text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl text-accent transition-all duration-1000 ease-out ${
                 isTextVisible
                   ? "translate-x-0 opacity-100"
                   : "-translate-x-12 opacity-0"
@@ -71,7 +75,7 @@ export function Hero({ hero }) {
             </h1>
 
             <p
-              className={`text-lg text-muted-foreground md:text-xl text-pretty max-w-2xl transition-all duration-1000 delay-100 ease-out ${
+              className={`text-lg text-pretty md:text-xl text-white max-w-2xl transition-all duration-1000 delay-100 ease-out ${
                 isTextVisible
                   ? "translate-x-0 opacity-100"
                   : "-translate-x-12 opacity-0"
@@ -99,7 +103,7 @@ export function Hero({ hero }) {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="gap-2 text-base bg-transparent border-primary/20 hover:bg-primary"
+                  className="gap-2 text-base bg-white border-white/20 hover:bg-primary"
                 >
                   <Palette className="h-5 w-5" />
                   {buttons.design}
@@ -114,7 +118,7 @@ export function Hero({ hero }) {
                   : "translate-y-8 opacity-0"
               }`}
             >
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-4 text-white">
                 {features.map(({ label, icon, bg, iconColor }) => {
                   const Icon = LucideIcons[icon] || LucideIcons.HelpCircle;
 

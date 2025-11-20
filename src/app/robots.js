@@ -6,6 +6,6 @@ export default function robots() {
         allow: "/",
       },
     ],
-    sitemap: `${process.env.NEXT_PUBLIC_CLIENT_URL}/sitemap.xml`,
+    sitemap: `${process.env.NEXT_PUBLIC_BASE_URL}/sitemap.xml`,
   };
 }

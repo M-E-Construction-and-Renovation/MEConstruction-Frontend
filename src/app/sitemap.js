@@ -1,5 +1,5 @@
 export default function sitemap() {
-  const baseUrl = process.env.NEXT_PUBLIC_CLIENT_URL;
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
   const locales = ["en", "es"]; // add or remove supported locales
 
   const routes = [

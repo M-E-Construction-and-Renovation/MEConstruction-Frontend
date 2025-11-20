@@ -23,7 +23,7 @@ export function BeforeAfterSection({ beforeAfter }) {
   return (
     <section
       id="before-after"
-      className="py-16 md:py-24 bg-secondary/20 bg-gradient-to-br from-primary/5 via-accent/10 to-primary/5"
+      className="py-16 md:py-24 bg-[url('/images/home-inspiration-bg.jpg')] bg-cover bg-center bg-no-repeat"
     >
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center mb-12">

@@ -41,7 +41,7 @@ export default function LanguageSwitcher({ currentLocale }) {
   return (
     <Popover.Root>
       <Popover.Trigger asChild>
-        <Button className="hidden lg:flex items-center gap-2 hover:opacity-80 bg-transparent cursor-pointer text-sm font-medium">
+        <Button className="flex items-center gap-2 hover:opacity-80 bg-transparent cursor-pointer text-sm font-medium text-primary md:text-primary-foreground">
           <Globe className="h-4 w-4" />
           {currentLabel}
           <ChevronDown className="h-3 w-3" />
@@ -52,7 +52,7 @@ export default function LanguageSwitcher({ currentLocale }) {
         <Popover.Content
           side="bottom"
           align="center"
-          className="w-auto bg-popover text-popover-foreground dark:bg-gray-800 dark:text-gray-100 rounded shadow-md py-1 z-51"
+          className="w-auto bg-popover dark:bg-gray-800 dark:text-gray-100 rounded shadow-md py-1 z-51"
         >
           {locales
             .filter((l) => l.code !== currentLocale)

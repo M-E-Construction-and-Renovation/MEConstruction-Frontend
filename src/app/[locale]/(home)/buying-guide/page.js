@@ -1,7 +1,7 @@
 import React from "react";
 import { BuyingGuideHero } from "@/components/buying-guide/buying-guide-hero";
 import { BuyingGuideMain } from "@/components/buying-guide/buying-guide-main";
-import { CtaSection } from "@/components/homepage/cta-section";
+// import { CtaSection } from "@/components/homepage/cta-section";
 
 export const metadata = {
   title:
@@ -14,7 +14,7 @@ const page = () => {
     <div className="min-h-screen">
       <BuyingGuideHero />
       <BuyingGuideMain />
-      <CtaSection />
+      {/* <CtaSection /> */}
     </div>
   );
 };

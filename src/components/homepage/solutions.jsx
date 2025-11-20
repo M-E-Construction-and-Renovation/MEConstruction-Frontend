@@ -7,7 +7,11 @@ export function Solutions({ solutions }) {
   const { sectionTitle, sectionSubtitle, buttonText, cards } = solutions;
 
   return (
-    <section id="solutions" className="py-16 md:py-24">
+    // <section id="solutions" className="py-16 md:py-24">
+    <section
+      id="solutions"
+      className="py-16 md:py-24 bg-[radial-gradient(circle_at_center,_#f5f7fa,_#eef1f5)]"
+    >
       <div className="container mx-auto px-4">
         <div className="mb-12 text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl mb-4 text-balance">
@@ -20,14 +24,18 @@ export function Solutions({ solutions }) {
 
         <div className="grid gap-8 lg:gap-12">
           {cards.map((solution, index) => (
-            <Card key={index} className="overflow-hidden">
+            // <Card key={index} className="overflow-hidden">
+            <Card
+              key={index}
+              className="overflow-hidden rounded-2xl border border-gray-200 shadow-[0_4px_20px_rgba(0,0,0,0.06)] bg-white"
+            >
               <CardContent className="p-0">
                 <div
                   className={`grid gap-8 lg:grid-cols-2 ${
                     index % 2 === 1 ? "lg:grid-flow-dense" : ""
                   }`}
                 >
-                  <div
+                  {/* <div
                     className={`relative aspect-[4/3] ${
                       index % 2 === 1 ? "lg:col-start-2" : ""
                     }`}
@@ -39,6 +47,27 @@ export function Solutions({ solutions }) {
                     />
                     <div className="absolute top-4 left-4">
                       <span className="inline-flex items-center rounded-full bg-accent px-3 py-1 text-sm font-medium text-accent-foreground">
+                        {solution.tag}
+                      </span>
+                    </div>
+                  </div> */}
+
+                  <div
+                    className={`relative aspect-[4/3] overflow-hidden ${
+                      index % 2 === 1 ? "lg:col-start-2" : ""
+                    }`}
+                  >
+                    <img
+                      src={solution.image}
+                      alt={solution.title}
+                      className="h-full w-full object-cover scale-105 hover:scale-110 transition-all duration-500"
+                    />
+
+                    <div className="absolute top-4 left-4">
+                      {/* <span className="inline-flex items-center rounded-full bg-accent/90 px-3 py-1 text-sm font-medium text-accent-foreground shadow">
+                        {solution.tag}
+                      </span> */}
+                      <span className="animate-beat inline-flex items-center rounded-full bg-accent/90 px-3 py-1 text-sm font-medium text-accent-foreground shadow">
                         {solution.tag}
                       </span>
                     </div>

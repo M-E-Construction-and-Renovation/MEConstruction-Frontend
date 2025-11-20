@@ -17,7 +17,7 @@ export default async function RootLayout({ children, params }) {
     <div>
       <div className="sticky top-0 z-50 w-full">
         <UpperHeader locale={locale} upperHeader={upperHeader} />
-        <Header />
+        <Header locale={locale} />
       </div>
       {children}
       <CtaSection cta={cta} />

@@ -1,6 +1,7 @@
 import { Hero } from "../../../components/homepage/hero";
 import { Features } from "../../../components/homepage/features";
 import { Solutions } from "../../../components/homepage/solutions";
+import { LocationSection } from "@/components/homepage/location-section";
 import { Advantages } from "../../../components/homepage/advantages";
 import { Gallery } from "../../../components/homepage/gallery";
 import { Reviews } from "../../../components/homepage/reviews";
@@ -21,6 +22,7 @@ export default async function Home({ params }) {
       <Hero hero={hero} />
       <Features features={features} />
       <Solutions solutions={solutions} />
+      <LocationSection />
       <Advantages advantages={advantages} />
       <Gallery gallery={gallery} />
       <Reviews reviews={reviews} />

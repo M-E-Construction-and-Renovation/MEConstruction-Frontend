@@ -5,6 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { openModal } from "@/store/quoteModalSlice";
+import Image from "next/image";
 
 export function AdvantagesHero({ hero }) {
   const { badge, headline, subtext, button, image } = hero;
@@ -28,10 +29,23 @@ export function AdvantagesHero({ hero }) {
   }, []);
 
   return (
-    <section
-      id="hero"
-      className="relative overflow-hidden bg-gradient-to-br from-accent/5 via-primary/10 to-accent/5"
-    >
+    <section id="hero" className="relative overflow-hidden">
+      {/* Background Image */}
+      <div
+        className={`absolute inset-0 transition-all duration-1000 ease-out ${
+          isImageVisible ? "opacity-100 scale-100" : "opacity-0 scale-105"
+        }`}
+      >
+        <Image
+          src="/images/advantages-hero-bg.jpg"
+          alt="Advantages page hero background"
+          fill
+          className="object-cover absolute inset-0"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/75 to-black/65" />
+      </div>
+
       <div className="container mx-auto px-4 py-16 md:py-24 lg:py-32">
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 items-center">
           <div className="flex flex-col gap-6">
@@ -47,7 +61,7 @@ export function AdvantagesHero({ hero }) {
             </div>
 
             <h1
-              className={`text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl text-balance transition-all duration-1000 ease-out ${
+              className={`text-accent text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl text-balance transition-all duration-1000 ease-out ${
                 isTextVisible
                   ? "translate-x-0 opacity-100"
                   : "-translate-x-12 opacity-0"
@@ -57,7 +71,7 @@ export function AdvantagesHero({ hero }) {
             </h1>
 
             <p
-              className={`text-lg text-muted-foreground md:text-xl text-pretty max-w-2xl transition-all duration-1000 delay-100 ease-out ${
+              className={`text-lg text-white md:text-xl text-pretty max-w-2xl transition-all duration-1000 delay-100 ease-out ${
                 isTextVisible
                   ? "translate-x-0 opacity-100"
                   : "-translate-x-12 opacity-0"

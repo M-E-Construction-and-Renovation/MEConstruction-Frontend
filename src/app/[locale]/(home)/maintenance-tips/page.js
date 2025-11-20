@@ -1,7 +1,7 @@
 import React from "react";
 import { MaintenanceTipsHero } from "@/components/maintenance-tips/maintenance-tips-hero";
 import { MaintenanceTipsMain } from "@/components/maintenance-tips/maintenance-tips-main";
-import { CtaSection } from "@/components/homepage/cta-section";
+// import { CtaSection } from "@/components/homepage/cta-section";
 
 export const metadata = {
   title: "Bathroom Maintenance Tips | M&E Construction and Renovations LLC",
@@ -14,7 +14,7 @@ const page = () => {
     <div className="min-h-screen">
       <MaintenanceTipsHero />
       <MaintenanceTipsMain />
-      <CtaSection />
+      {/* <CtaSection /> */}
     </div>
   );
 };

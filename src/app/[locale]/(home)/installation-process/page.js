@@ -2,7 +2,7 @@ import React from "react";
 import { InstallationProcessHero } from "@/components/installation-process/installation-process-hero";
 import { InstallationProcessTimeline } from "@/components/installation-process/installation-process-timeline";
 import { InstallationProcessWorks } from "@/components/installation-process/installation-process-works";
-import { CtaSection } from "@/components/homepage/cta-section";
+// import { CtaSection } from "@/components/homepage/cta-section";
 
 export const metadata = {
   title: "Our Installation Process | M&E Construction and Renovations LLC",
@@ -15,7 +15,7 @@ const page = () => {
       <InstallationProcessHero />
       <InstallationProcessTimeline />
       <InstallationProcessWorks />
-      <CtaSection />
+      {/* <CtaSection /> */}
     </div>
   );
 };

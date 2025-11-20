@@ -8,11 +8,13 @@ export const metadata = {
     "Design your dream bathroom with M&E Construction and Renovations LLC’s interactive design tool. Customize showers, bathtubs, and layouts in real time before starting your renovation project.",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children, params }) {
+  const { locale } = await params;
+
   return (
     <div className="h-screen flex flex-col overflow-hidden">
       <div className="sticky top-0 z-50 w-full">
-        <Header />
+        <Header locale={locale} />
       </div>
       <main className="flex-1 overflow-hidden">{children}</main>
     </div>
