@@ -33,8 +33,23 @@ function DesignTool() {
         (p) => p.id === selectedInCategory.productId
       );
 
+      // if (product) {
+      //   setActiveTier(product.tier);
+      // }
+
       if (product) {
-        setActiveTier(product.tier);
+        // Determine the tier based on the selected color
+        const selectedColor = selectedInCategory.color;
+        let tierFound = "basic"; // fallback
+
+        for (const [tierName, colors] of Object.entries(product.tiers || {})) {
+          if (colors.includes(selectedColor)) {
+            tierFound = tierName;
+            break;
+          }
+        }
+
+        setActiveTier(tierFound);
       }
     } else {
       setActiveTier("basic");
@@ -46,6 +61,24 @@ function DesignTool() {
       ...prev,
       [activeTab]: { productId, color },
     }));
+  };
+
+  const handleUnselectProduct = (productId) => {
+    setSelectedProducts((prev) => {
+      const selected = prev[activeTab];
+
+      // If no selected product for this tab, do nothing
+      if (!selected) return prev;
+
+      // If the product matches, remove the key from object
+      if (selected.productId === productId) {
+        const { [activeTab]: _, ...rest } = prev;
+        return rest;
+      }
+
+      // If it doesn't match, return previous state
+      return prev;
+    });
   };
 
   return (
@@ -61,6 +94,7 @@ function DesignTool() {
       activeTier={activeTier}
       setActiveTier={setActiveTier}
       handleProductSelect={handleProductSelect}
+      handleUnselectProduct={handleUnselectProduct}
       plumbing={plumbing}
       shape={shape}
     />

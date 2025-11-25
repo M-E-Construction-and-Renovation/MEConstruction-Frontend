@@ -11,7 +11,7 @@ function ShowerDesignTool() {
   const plumbing = searchParams.get("plumbing") || "left";
   const shape = searchParams.get("shape") || "unknown";
 
-  const [activeTab, setActiveTab] = useState("showerBases");
+  const [activeTab, setActiveTab] = useState("faucets");
   const [activeTier, setActiveTier] = useState("basic");
   const [selectedProducts, setSelectedProducts] = useState({});
 
@@ -21,7 +21,7 @@ function ShowerDesignTool() {
     alert("Design shared! Link copied to clipboard.");
 
   const currentCategory =
-    categories.find((c) => c.id === activeTab) || "showerBases";
+    categories.find((c) => c.id === activeTab) || "faucets";
 
   const handleCategoryChange = (categoryId) => {
     setActiveTab(categoryId);
@@ -33,8 +33,23 @@ function ShowerDesignTool() {
         (p) => p.id === selectedInCategory.productId
       );
 
+      // if (product) {
+      //   setActiveTier(product.tier);
+      // }
+
       if (product) {
-        setActiveTier(product.tier);
+        // Determine the tier based on the selected color
+        const selectedColor = selectedInCategory.color;
+        let tierFound = "basic"; // fallback
+
+        for (const [tierName, colors] of Object.entries(product.tiers || {})) {
+          if (colors.includes(selectedColor)) {
+            tierFound = tierName;
+            break;
+          }
+        }
+
+        setActiveTier(tierFound);
       }
     } else {
       setActiveTier("basic");
@@ -48,20 +63,47 @@ function ShowerDesignTool() {
     }));
   };
 
+  const handleUnselectProduct = (productId) => {
+    setSelectedProducts((prev) => {
+      const selected = prev[activeTab];
+
+      // If no selected product for this tab, do nothing
+      if (!selected) return prev;
+
+      // If the product matches, remove the key from object
+      if (selected.productId === productId) {
+        const { [activeTab]: _, ...rest } = prev;
+        return rest;
+      }
+
+      // If it doesn't match, return previous state
+      return prev;
+    });
+  };
+
   return (
-    <ConfigurePage
-      handleResetDesign={handleResetDesign}
-      handleSaveDesign={handleSaveDesign}
-      handleShareDesign={handleShareDesign}
-      categories={categories}
-      activeTab={activeTab}
-      selectedProducts={selectedProducts}
-      handleCategoryChange={handleCategoryChange}
-      currentCategory={currentCategory}
-      activeTier={activeTier}
-      setActiveTier={setActiveTier}
-      handleProductSelect={handleProductSelect}
-    />
+    <div className="w-full h-full flex items-center">
+      <h1 className="w-full text-center my-auto font-bold">
+        WORK IN PROGRESS...
+      </h1>
+    </div>
+
+    // <ConfigurePage
+    //   handleResetDesign={handleResetDesign}
+    //   handleSaveDesign={handleSaveDesign}
+    //   handleShareDesign={handleShareDesign}
+    //   categories={categories}
+    //   activeTab={activeTab}
+    //   selectedProducts={selectedProducts}
+    //   handleCategoryChange={handleCategoryChange}
+    //   currentCategory={currentCategory}
+    //   activeTier={activeTier}
+    //   setActiveTier={setActiveTier}
+    //   handleProductSelect={handleProductSelect}
+    //   handleUnselectProduct={handleUnselectProduct}
+    //   plumbing={plumbing}
+    //   shape={shape}
+    // />
   );
 }
 

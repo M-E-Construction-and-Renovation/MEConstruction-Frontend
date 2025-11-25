@@ -19,10 +19,13 @@ const ConfigurePage = ({
   activeTier = "",
   setActiveTier = () => {},
   handleProductSelect = () => {},
+  handleUnselectProduct = () => {},
   plumbing = "",
   shape = "",
 }) => {
   const router = useRouter();
+
+  console.log(selectedProducts);
 
   return (
     <div className="flex flex-col h-full overflow-hidden">
@@ -33,15 +36,9 @@ const ConfigurePage = ({
 
         <div className="w-full lg:w-2/3 flex items-center justify-center bg-muted relative">
           <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[calc(100vh-70px)] flex items-center justify-center">
-            {/* <Image
-              src="/placeholder.svg?height=600&width=700"
-              alt="Design Preview"
-              fill
-              className="object-cover"
-              priority
-            /> */}
             <BathroomConfigurator
               selectedProducts={selectedProducts}
+              categories={categories}
               plumbing={plumbing}
               shape={shape}
             />
@@ -120,11 +117,17 @@ const ConfigurePage = ({
           <div className="p-3 border-b grid grid-cols-3 gap-2 shrink-0 overflow-x-auto">
             {["basic", "standard", "premium"].map((tier) => {
               const tierProducts =
-                currentCategory?.products.filter((p) => p.tier === tier) || [];
+                currentCategory?.products.filter((p) => p.tiers[tier]) || [];
+
+              console.log(tierProducts);
+
               const hasSelectedInTier =
                 selectedProducts[activeTab]?.productId &&
+                selectedProducts[activeTab]?.color &&
                 tierProducts.some(
-                  (p) => p.id === selectedProducts[activeTab].productId
+                  (p) =>
+                    p.tiers[tier].includes(selectedProducts[activeTab].color) &&
+                    p.id === selectedProducts[activeTab].productId
                 );
 
               return (
@@ -152,57 +155,86 @@ const ConfigurePage = ({
 
           {/* Product List */}
 
-          <div className="flex-1 p-3 space-y-4 overflow-visible lg:overflow-y-auto">
-            {currentCategory?.products
-              .filter((p) => p.tier === activeTier)
-              .map((product) => {
-                const isSelected =
-                  selectedProducts[activeTab]?.productId === product.id;
-                return (
-                  <div
-                    key={product.id}
-                    onClick={() =>
-                      handleProductSelect(product.id, product.colors[0])
-                    }
-                    className={`p-3 rounded-lg cursor-pointer transition-all border-2 ${
-                      isSelected
-                        ? "border-primary bg-primary/10"
-                        : "border-muted hover:border-primary/50"
-                    }`}
-                  >
-                    <div className="relative h-40 mb-2 bg-muted rounded overflow-hidden">
-                      <Image
-                        src={product.image || "/placeholder.svg"}
-                        alt={product.name}
-                        fill
-                        className="object-cover"
-                      />
+          <div className="flex-1 p-3 overflow-visible lg:overflow-y-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
+              {currentCategory?.products
+                .filter((product) => {
+                  // show product if it has colors in the active tier
+                  if (product.tiers?.[activeTier]?.length > 0) return true;
+                  return false;
+                })
+                .map((product) => {
+                  const isSelected =
+                    selectedProducts[activeTab]?.productId === product.id &&
+                    product.tiers[activeTier]?.includes(
+                      selectedProducts[activeTab]?.color
+                    );
+
+                  // pick default color from tiers
+                  const defaultColor = product.tiers?.[activeTier]?.[0] ?? "";
+
+                  // pick image source based on color if product is selected choose product display image for that color if not choose default color
+                  let imgSrc = isSelected
+                    ? product.displayByColor?.[
+                        selectedProducts[activeTab]?.color
+                      ]?.productDisplay
+                    : product.displayByColor?.[defaultColor]?.productDisplay;
+
+                  let imgAlt = product.name || "Product";
+
+                  return (
+                    <div
+                      key={product.id}
+                      onClick={() =>
+                        isSelected
+                          ? handleUnselectProduct(product.id)
+                          : handleProductSelect(product.id, defaultColor)
+                      }
+                      className={`p-3 rounded-lg cursor-pointer transition-all border-2 ${
+                        isSelected
+                          ? "border-primary bg-primary/10"
+                          : "border-muted hover:border-primary/50"
+                      }`}
+                    >
+                      <div className="relative w-full aspect-square mb-2 bg-muted rounded overflow-hidden bg-gradient-to-br from-primary/40 to-primary/80">
+                        <img
+                          src={imgSrc}
+                          alt={imgAlt}
+                          // fill
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
+
+                      <h4 className="font-semibold text-sm mb-2">
+                        {product.name}
+                      </h4>
+
+                      <div className="flex gap-1 flex-wrap">
+                        {(
+                          product.tiers?.[activeTier] ||
+                          Object.keys(product.staticSrc || {})
+                        ).map((color) => (
+                          <button
+                            key={color}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleProductSelect(product.id, color);
+                            }}
+                            className={`px-2 py-1 text-xs rounded transition-colors ${
+                              selectedProducts[activeTab]?.color === color &&
+                              isSelected
+                                ? "bg-primary text-primary-foreground"
+                                : "bg-muted hover:bg-muted/80"
+                            }`}
+                          >
+                            {color}
+                          </button>
+                        ))}
+                      </div>
                     </div>
-                    <h4 className="font-semibold text-sm mb-2">
-                      {product.name}
-                    </h4>
-                    <div className="flex gap-1 flex-wrap">
-                      {product.colors.map((color) => (
-                        <button
-                          key={color}
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleProductSelect(product.id, color);
-                          }}
-                          className={`px-2 py-1 text-xs rounded transition-colors ${
-                            selectedProducts[activeTab]?.color === color &&
-                            isSelected
-                              ? "bg-primary text-primary-foreground"
-                              : "bg-muted hover:bg-muted/80"
-                          }`}
-                        >
-                          {color}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+            </div>
           </div>
         </div>
       </div>

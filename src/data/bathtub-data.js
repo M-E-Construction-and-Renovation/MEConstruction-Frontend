@@ -2,441 +2,376 @@ const bathtubCategories = [
   {
     id: "tubFronts",
     label: "Tub Fronts",
+    zIndex: "75",
     products: [
       {
         id: "tf1",
-        name: "Classic White",
-        image: "/white-bathtub-front.jpg",
-        colors: ["White", "Cream", "Off-White"],
-        tier: "basic",
+        name: "Princeton - American Standard",
+        tiers: {
+          basic: ["White"], // Your images were only White
+        },
+        displayByColor: {
+          White: {
+            productDisplay:
+              "/configurator/products/tubfronts/display/princeton-display.png",
+            designDisplay:
+              "/configurator/products/tubfronts/right/princeton-tub-right-white.png",
+          },
+        },
       },
+
       {
         id: "tf2",
-        name: "Modern Gray",
-        image: "/gray-bathtub-front.jpg",
-        colors: ["Light Gray", "Dark Gray", "Charcoal"],
-        tier: "basic",
+        name: "Pro Steel - MAAX",
+        tiers: {
+          basic: ["White"],
+        },
+        displayByColor: {
+          White: {
+            productDisplay:
+              "/configurator/products/tubfronts/display/prosteel-display.png",
+            designDisplay:
+              "/configurator/products/tubfronts/right/prosteel-tub-right-white.png",
+          },
+        },
       },
       {
         id: "tf3",
-        name: "Elegant Beige",
-        image: "/beige-bathtub-front.jpg",
-        colors: ["Beige", "Taupe", "Sand"],
-        tier: "basic",
-      },
-      {
-        id: "tf4",
-        name: "Soft Ivory",
-        image: "/ivory-bathtub-front.jpg",
-        colors: ["Ivory", "Pearl", "Vanilla"],
-        tier: "standard",
-      },
-      {
-        id: "tf5",
-        name: "Slate Blue",
-        image: "/blue-bathtub-front.jpg",
-        colors: ["Light Blue", "Slate", "Navy"],
-        tier: "standard",
-      },
-      {
-        id: "tf6",
-        name: "Warm Taupe",
-        image: "/taupe-bathtub-front.jpg",
-        colors: ["Warm Taupe", "Greige", "Mushroom"],
-        tier: "standard",
-      },
-      {
-        id: "tf7",
-        name: "Luxury Black",
-        image: "/black-bathtub-front.jpg",
-        colors: ["Jet Black", "Matte Black", "Glossy Black"],
-        tier: "premium",
-      },
-      {
-        id: "tf8",
-        name: "Premium White",
-        image: "/premium-white-bathtub.jpg",
-        colors: ["Pure White", "Bright White", "Brilliant White"],
-        tier: "premium",
-      },
-      {
-        id: "tf9",
-        name: "Designer Gray",
-        image: "/designer-gray-bathtub.jpg",
-        colors: ["Graphite", "Titanium", "Platinum"],
-        tier: "premium",
+        name: "Villager - Kohler",
+        tiers: {
+          basic: ["White"],
+        },
+        displayByColor: {
+          White: {
+            productDisplay:
+              "/configurator/products/tubfronts/display/villager-display.png",
+            designDisplay:
+              "/configurator/products/tubfronts/left/villager-tub-left-white.png",
+          },
+        },
       },
     ],
   },
+
   {
     id: "walls",
     label: "Walls",
+    zIndex: "10",
     products: [
       {
         id: "w1",
-        name: "Subway Tile",
-        image: "/subway-tile-wall.jpg",
-        colors: ["White", "Gray", "Black"],
-        tier: "basic",
+        name: "Genova",
+        tiers: {
+          basic: ["White"],
+        },
+        displayByColor: {
+          White: {
+            productDisplay: "/configurator/products/walls/genova-white.jpg",
+            designDisplay: "/configurator/products/walls/genova-white.jpg",
+          },
+        },
       },
       {
         id: "w2",
-        name: "Marble Look",
-        image: "/marble-wall-tile.jpg",
-        colors: ["White", "Gray", "Black"],
-        tier: "basic",
+        name: "Napoli",
+        tiers: {
+          basic: ["White"],
+        },
+        displayByColor: {
+          White: {
+            productDisplay: "/configurator/products/walls/napoli-white.jpg",
+            designDisplay: "/configurator/products/walls/napoli-white.jpg",
+          },
+        },
       },
       {
         id: "w3",
-        name: "Mosaic",
-        image: "/mosaic-wall-tile.jpg",
-        colors: ["Blue", "Green", "Gray"],
-        tier: "basic",
+        name: "Palermo",
+        tiers: {
+          basic: ["White"],
+        },
+        displayByColor: {
+          White: {
+            productDisplay: "/configurator/products/walls/palermo-white.jpg",
+            designDisplay: "/configurator/products/walls/palermo-white.jpg",
+          },
+        },
       },
       {
         id: "w4",
-        name: "Hexagon Tile",
-        image: "/hexagon-wall-tile.jpg",
-        colors: ["White", "Gray", "Beige"],
-        tier: "standard",
-      },
-      {
-        id: "w5",
-        name: "Large Format",
-        image: "/large-format-tile.jpg",
-        colors: ["White", "Gray", "Cream"],
-        tier: "standard",
-      },
-      {
-        id: "w6",
-        name: "Textured Stone",
-        image: "/textured-stone-wall.jpg",
-        colors: ["Gray", "Beige", "Brown"],
-        tier: "standard",
-      },
-      {
-        id: "w7",
-        name: "Premium Marble",
-        image: "/premium-marble-wall.jpg",
-        colors: ["White", "Gray", "Black"],
-        tier: "premium",
-      },
-      {
-        id: "w8",
-        name: "Luxury Porcelain",
-        image: "/luxury-porcelain-wall.jpg",
-        colors: ["White", "Cream", "Ivory"],
-        tier: "premium",
-      },
-      {
-        id: "w9",
-        name: "Designer Mosaic",
-        image: "/designer-mosaic-wall.jpg",
-        colors: ["Blue", "Green", "Purple"],
-        tier: "premium",
+        name: "Savona",
+        tiers: {
+          basic: ["White"],
+        },
+        displayByColor: {
+          White: {
+            productDisplay: "/configurator/products/walls/savona-white.jpg",
+            designDisplay: "/configurator/products/walls/savona-white.jpg",
+          },
+        },
       },
     ],
   },
+
   {
     id: "faucets",
     label: "Faucets",
+    zIndex: "80",
     products: [
       {
         id: "f1",
-        name: "Chrome Modern",
-        image: "/chrome-faucet.jpg",
-        colors: ["Chrome", "Brushed Nickel", "Matte Black"],
-        tier: "basic",
+        name: "Foundations - Delta",
+        // image:
+        //   "/configurator/products/faucets/display/foundations-display.webp",
+        tiers: {
+          basic: ["Chrome", "Stainless"],
+          // standard: [],
+        },
+        displayByColor: {
+          Chrome: {
+            productDisplay:
+              "https://mobileimages.lowes.com/productimages/0377a656-7a4c-4570-aca2-440e3a266b81/65088340.png?size=pdhz",
+            designDisplay:
+              "/configurator/products/faucets/left/foundations-left-chrome.png",
+          },
+          Stainless: {
+            productDisplay:
+              "https://mobileimages.lowes.com/productimages/1a3c2775-7efd-4a19-918d-6b9170970f6f/65088348.png?size=pdhz",
+            designDisplay:
+              "/configurator/products/faucets/left/foundations-left-stainless.png",
+          },
+        },
       },
       {
         id: "f2",
-        name: "Gold Elegant",
-        image: "/gold-faucet.jpg",
-        colors: ["Gold", "Rose Gold", "Champagne"],
-        tier: "basic",
+        name: "Florez - Kohler",
+        tiers: {
+          basic: ["Brushed Nickel"],
+          standard: ["Black"],
+          premium: ["Polished Nickel"],
+        },
+        displayByColor: {
+          "Brushed Nickel": {
+            productDisplay:
+              "https://mobileimages.lowes.com/productimages/65229ad1-2bcc-4fbb-b7bd-48127b1dbe17/66591679.jpeg?size=pdhz",
+            designDisplay:
+              "/configurator/products/faucets/left/florez-left-brushed-nickel.png",
+          },
+          Black: {
+            productDisplay:
+              "https://mobileimages.lowes.com/productimages/1632f398-c4e0-4062-85b2-f3860702bef6/66591675.jpeg?size=pdhz",
+            designDisplay:
+              "/configurator/products/faucets/left/florez-left-black.png",
+          },
+
+          "Polished Nickel": {
+            productDisplay:
+              "https://mobileimages.lowes.com/productimages/9486735c-f164-492e-8a30-c55dee7d6a1f/66574639.jpeg?size=pdhz",
+            designDisplay:
+              "/configurator/products/faucets/left/florez-left-chrome.png",
+          },
+        },
       },
       {
         id: "f3",
-        name: "Oil Rubbed",
-        image: "/oil-rubbed-bronze-faucet.jpg",
-        colors: ["Bronze", "Black", "Copper"],
-        tier: "basic",
-      },
-      {
-        id: "f4",
-        name: "Brushed Nickel",
-        image: "/brushed-nickel-faucet.jpg",
-        colors: ["Brushed Nickel", "Satin Nickel", "Polished Nickel"],
-        tier: "standard",
-      },
-      {
-        id: "f5",
-        name: "Matte Black",
-        image: "/matte-black-faucet.jpg",
-        colors: ["Matte Black", "Satin Black", "Glossy Black"],
-        tier: "standard",
-      },
-      {
-        id: "f6",
-        name: "Stainless Steel",
-        image: "/stainless-steel-faucet.jpg",
-        colors: ["Stainless Steel", "Brushed Steel", "Polished Steel"],
-        tier: "standard",
-      },
-      {
-        id: "f7",
-        name: "Luxury Chrome",
-        image: "/luxury-chrome-faucet.jpg",
-        colors: ["Polished Chrome", "Brushed Chrome", "Satin Chrome"],
-        tier: "premium",
-      },
-      {
-        id: "f8",
-        name: "Designer Gold",
-        image: "/designer-gold-faucet.jpg",
-        colors: ["24K Gold", "Rose Gold", "Champagne Gold"],
-        tier: "premium",
-      },
-      {
-        id: "f9",
-        name: "Premium Bronze",
-        image: "/premium-bronze-faucet.jpg",
-        colors: ["Oil Rubbed Bronze", "Antique Bronze", "Dark Bronze"],
-        tier: "premium",
+        name: "Premise - Kohler",
+        tiers: {
+          basic: ["Brushed Brass"],
+          standard: ["Brushed Nickel"],
+          premium: ["Black"],
+        },
+        displayByColor: {
+          "Brushed Brass": {
+            productDisplay:
+              "https://mobileimages.lowes.com/productimages/bbcb3534-1a69-497c-81bc-63421063a484/65496028.jpg?size=pdhz",
+            designDisplay:
+              "/configurator/products/faucets/left/premise-left-brushed-brass.png",
+          },
+          "Brushed Nickel": {
+            productDisplay:
+              "https://mobileimages.lowes.com/productimages/cfd394b9-57b1-4aab-aa5e-408ee5f99d1c/65496025.jpg?size=pdhz",
+            designDisplay:
+              "/configurator/products/faucets/left/premise-left-brushed-nickel.png",
+          },
+          Black: {
+            productDisplay:
+              "https://mobileimages.lowes.com/productimages/028810b7-cd59-4561-9b2e-187b0820a38d/67595340.jpeg?size=pdhz",
+            designDisplay:
+              "/configurator/products/faucets/left/premise-left-black.png",
+          },
+        },
       },
     ],
   },
+
   {
-    id: "accessories",
-    label: "Accessories",
+    id: "shelves",
+    label: "Shelves",
+    zIndex: "50",
     products: [
       {
-        id: "a1",
-        name: "Towel Rack",
-        image: "/placeholder.svg?height=200&width=200",
-        colors: ["Chrome", "Black", "Gold"],
-        tier: "basic",
+        id: "s1",
+        name: "Single Shelf",
+        tiers: {
+          basic: ["White"],
+        },
+        displayByColor: {
+          White: {
+            productDisplay:
+              "/configurator/products/accessories/display/single-shelf-white-display.png",
+            designDisplay:
+              "/configurator/products/accessories/left/single-shelf-left-white.png",
+          },
+        },
       },
       {
-        id: "a2",
-        name: "Soap Dispenser",
-        image: "/placeholder.svg?height=200&width=200",
-        colors: ["White", "Black", "Gray"],
-        tier: "basic",
-      },
-      {
-        id: "a3",
-        name: "Mirror",
-        image: "/placeholder.svg?height=200&width=200",
-        colors: ["Framed", "Frameless", "Backlit"],
-        tier: "basic",
-      },
-      {
-        id: "a4",
-        name: "Heated Towel Rack",
-        image: "/placeholder.svg?height=200&width=200",
-        colors: ["Chrome", "Brushed Nickel", "Matte Black"],
-        tier: "standard",
-      },
-      {
-        id: "a5",
-        name: "Luxury Mirror",
-        image: "/placeholder.svg?height=200&width=200",
-        colors: ["Backlit", "Heated", "Smart"],
-        tier: "standard",
-      },
-      {
-        id: "a6",
-        name: "Premium Shelves",
-        image: "/placeholder.svg?height=200&width=200",
-        colors: ["Glass", "Stainless Steel", "Ceramic"],
-        tier: "standard",
-      },
-      {
-        id: "a7",
-        name: "Designer Towel Rack",
-        image: "/placeholder.svg?height=200&width=200",
-        colors: ["24K Gold", "Polished Chrome", "Matte Black"],
-        tier: "premium",
-      },
-      {
-        id: "a8",
-        name: "Smart Mirror",
-        image: "/placeholder.svg?height=200&width=200",
-        colors: ["LED", "Heated", "Defogging"],
-        tier: "premium",
-      },
-      {
-        id: "a9",
-        name: "Luxury Accessories Set",
-        image: "/placeholder.svg?height=200&width=200",
-        colors: ["Gold", "Chrome", "Bronze"],
-        tier: "premium",
+        id: "s2",
+        name: "Shelf",
+        tiers: {
+          basic: ["White"],
+        },
+        displayByColor: {
+          White: {
+            productDisplay:
+              "/configurator/products/accessories/display/shelf-white-display.png",
+            designDisplay:
+              "/configurator/products/accessories/left/shelf-left-white.png",
+          },
+        },
       },
     ],
   },
+
   {
-    id: "doorRods",
-    label: "Doors/Rods",
+    id: "grabBars",
+    label: "Grab Bars",
+    zIndex: "50",
     products: [
       {
-        id: "dr1",
-        name: "Sliding Door",
-        image: "/placeholder.svg?height=200&width=200",
-        colors: ["Clear", "Frosted", "Tinted"],
-        tier: "basic",
-      },
-      {
-        id: "dr2",
-        name: "Hinged Door",
-        image: "/placeholder.svg?height=200&width=200",
-        colors: ["Clear", "Frosted", "Tinted"],
-        tier: "basic",
-      },
-      {
-        id: "dr3",
-        name: "Curtain Rod",
-        image: "/placeholder.svg?height=200&width=200",
-        colors: ["Chrome", "Brass", "Black"],
-        tier: "basic",
-      },
-      {
-        id: "dr4",
-        name: "Frameless Sliding",
-        image: "/placeholder.svg?height=200&width=200",
-        colors: ["Clear", "Frosted", "Tinted"],
-        tier: "standard",
-      },
-      {
-        id: "dr5",
-        name: "Pivot Door",
-        image: "/placeholder.svg?height=200&width=200",
-        colors: ["Clear", "Frosted", "Tinted"],
-        tier: "standard",
-      },
-      {
-        id: "dr6",
-        name: "Bifold Door",
-        image: "/placeholder.svg?height=200&width=200",
-        colors: ["Clear", "Frosted", "Tinted"],
-        tier: "standard",
-      },
-      {
-        id: "dr7",
-        name: "Premium Frameless",
-        image: "/placeholder.svg?height=200&width=200",
-        colors: ["Clear", "Frosted", "Tinted"],
-        tier: "premium",
-      },
-      {
-        id: "dr8",
-        name: "Luxury Pivot",
-        image: "/placeholder.svg?height=200&width=200",
-        colors: ["Clear", "Frosted", "Tinted"],
-        tier: "premium",
-      },
-      {
-        id: "dr9",
-        name: "Designer Bifold",
-        image: "/placeholder.svg?height=200&width=200",
-        colors: ["Clear", "Frosted", "Tinted"],
-        tier: "premium",
+        id: "gb1",
+        name: "Flara - Moen",
+        tiers: {
+          basic: ["Chrome"],
+          standard: ["Brushed Nickel"],
+          premium: ["Polished Nickel"],
+        },
+        displayByColor: {
+          Chrome: {
+            productDisplay:
+              "https://embed.widencdn.net/img/moen/vpjoptoh0i/y400px@1x/yg0312ch.tif.jpg?q=100",
+            designDisplay:
+              "/configurator/products/accessories/flara-chrome.png",
+          },
+          "Brushed Nickel": {
+            productDisplay:
+              "https://embed.widencdn.net/img/moen/vacgnik4i6/y400px@1x/yg0312bn.tif.jpg?q=100",
+            designDisplay:
+              "/configurator/products/accessories/flara-brushed-nickel.png",
+          },
+          "Polished Nickel": {
+            productDisplay:
+              "https://embed.widencdn.net/img/moen/uisofrc6rx/y400px@1x/yg0312nl.tif.jpg?q=100",
+            designDisplay:
+              "/configurator/products/accessories/flara-brushed-nickel.png",
+          },
+        },
       },
     ],
   },
+
+  {
+    id: "doorsRods",
+    label: "Doors / Rods",
+    zIndex: "80",
+    products: [
+      {
+        id: "d1",
+        name: "Sliding Shower Door",
+        tiers: {
+          basic: ["Chrome"],
+        },
+        displayByColor: {
+          Chrome: {
+            productDisplay:
+              "/configurator/products/doors-rods/left/sliding-left-tub-chrome.png",
+            designDisplay:
+              "/configurator/products/doors-rods/left/sliding-left-tub-chrome.png",
+          },
+        },
+      },
+    ],
+  },
+
   {
     id: "wainscotings",
     label: "Wainscotings",
+    zIndex: "70",
     products: [
       {
-        id: "wc1",
-        name: "Beadboard",
-        image: "/placeholder.svg?height=200&width=200",
-        colors: ["White", "Cream", "Gray"],
-        tier: "basic",
+        id: "wsc1",
+        name: "Tile Wainscoting",
+        tiers: {
+          basic: ["White"],
+        },
+        displayByColor: {
+          White: {
+            productDisplay:
+              "/configurator/products/wainscotings/wainscoting2.png",
+            designDisplay:
+              "/configurator/products/wainscotings/wainscoting2.png",
+          },
+        },
       },
+
       {
-        id: "wc2",
-        name: "Shaker Style",
-        image: "/placeholder.svg?height=200&width=200",
-        colors: ["White", "Gray", "Navy"],
-        tier: "basic",
-      },
-      {
-        id: "wc3",
-        name: "Modern Panel",
-        image: "/placeholder.svg?height=200&width=200",
-        colors: ["White", "Black", "Gray"],
-        tier: "basic",
-      },
-      {
-        id: "wc4",
-        name: "Raised Panel",
-        image: "/placeholder.svg?height=200&width=200",
-        colors: ["White", "Cream", "Gray"],
-        tier: "standard",
-      },
-      {
-        id: "wc5",
-        name: "Board and Batten",
-        image: "/placeholder.svg?height=200&width=200",
-        colors: ["White", "Gray", "Navy"],
-        tier: "standard",
-      },
-      {
-        id: "wc6",
-        name: "Tongue and Groove",
-        image: "/placeholder.svg?height=200&width=200",
-        colors: ["White", "Black", "Gray"],
-        tier: "standard",
-      },
-      {
-        id: "wc7",
-        name: "Premium Beadboard",
-        image: "/placeholder.svg?height=200&width=200",
-        colors: ["White", "Cream", "Gray"],
-        tier: "premium",
-      },
-      {
-        id: "wc8",
-        name: "Luxury Shaker",
-        image: "/placeholder.svg?height=200&width=200",
-        colors: ["White", "Gray", "Navy"],
-        tier: "premium",
-      },
-      {
-        id: "wc9",
-        name: "Designer Panel",
-        image: "/placeholder.svg?height=200&width=200",
-        colors: ["White", "Black", "Gray"],
-        tier: "premium",
+        id: "wsc2",
+        name: "Breadboard Wainscoting",
+        tiers: {
+          basic: ["White"],
+        },
+        displayByColor: {
+          White: {
+            productDisplay:
+              "/configurator/products/wainscotings/wainscoting1.png",
+            designDisplay:
+              "/configurator/products/wainscotings/wainscoting1.png",
+          },
+        },
       },
     ],
   },
+
   {
     id: "ceilings",
     label: "Ceilings",
+    zIndex: "20",
     products: [
       {
         id: "c1",
-        name: "Smooth Drywall",
-        image: "/placeholder.svg?height=200&width=200",
-        colors: ["White", "Cream", "Gray"],
-        tier: "basic",
+        name: "Smooth Tile Ceiling",
+        tiers: {
+          basic: ["White"],
+        },
+        displayByColor: {
+          White: {
+            productDisplay: "/configurator/products/ceilings/ceiling1.png",
+            designDisplay: "/configurator/products/ceilings/ceiling1.png",
+          },
+        },
       },
+
       {
         id: "c2",
-        name: "Textured",
-        image: "/placeholder.svg?height=200&width=200",
-        colors: ["White", "Cream", "Beige"],
-        tier: "standard",
-      },
-      {
-        id: "c3",
-        name: "Coffered",
-        image: "/placeholder.svg?height=200&width=200",
-        colors: ["White", "Gray", "Navy"],
-        tier: "premium",
+        name: "Coffered Ceiling",
+        tiers: {
+          basic: ["White"],
+        },
+        displayByColor: {
+          White: {
+            productDisplay: "/configurator/products/ceilings/ceiling2.png",
+            designDisplay: "/configurator/products/ceilings/ceiling2.png",
+          },
+        },
       },
     ],
   },

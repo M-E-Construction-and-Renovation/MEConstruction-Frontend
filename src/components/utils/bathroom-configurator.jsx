@@ -1,109 +1,66 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
-
-const bathroomOptions = {
-  base: "/configurator/base.png",
-  showers: {
-    none: null,
-    modern: "/configurator/shower.png",
-  },
-  tiles: {
-    blue: "/configurator/tiles-blue.png",
-    gray: "/configurator/tiles-gray.png",
-  },
-};
+import { bathroomConfig } from "@/data/bathroom-data";
 
 export default function BathroomConfigurator({
-  selectedProducts = [],
+  selectedProducts = {},
+  categories = [],
   plumbing = "",
   shape = "",
 }) {
-  const [selectedShower, setSelectedShower] = useState("none");
-  const [selectedTiles, setSelectedTiles] = useState("blue");
+  const filteredBathroomConfig = bathroomConfig.find(
+    (bathroom) => bathroom.plumbing === plumbing && bathroom.shape === shape
+  );
+
+  const filteredCategories = categories.filter(
+    (category) => category.id in selectedProducts
+  );
 
   return (
     <section className="flex flex-col md:flex-row items-center justify-center">
       {/* 🖼️ Configurator Preview */}
       <div className="">
         {/* Base */}
-        <img
-          src={`/configurator/bathroom-${shape}-${plumbing}.png`}
-          alt="Base bathroom"
-          className="absolute inset-0 w-full h-full"
-        />
 
-        {/* Tiles Layer */}
-        {selectedProducts?.tubFronts && (
-          <motion.img
-            key={selectedProducts.tubFronts.productId}
-            src={`/configurator/tub-fronts-${selectedProducts.tubFronts.productId}-${selectedProducts.tubFronts.color}.png`}
-            alt="Tub front"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="absolute inset-0 w-full h-full"
+        {filteredBathroomConfig?.config?.map((config, index) => (
+          <img
+            key={index}
+            src={config.src}
+            alt={config.alt}
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{ zIndex: config.zIndex }}
           />
-        )}
+        ))}
 
-        {/* Shower Layer */}
-        {selectedProducts?.faucets && (
-          <motion.img
-            key={selectedProducts.faucets.productId}
-            src={`/configurator/faucets-${selectedProducts.faucets.productId}-${selectedProducts.faucets.color}.png`}
-            alt="Faucet"
-            // // initial={{ opacity: 0, y: 10 }}
-            // initial={{ opacity: 0 }}
-            // // animate={{ opacity: 1, y: 0 }}
-            // animate={{ opacity: 1 }}
-            // exit={{ opacity: 0 }}
-            // transition={{ duration: 0.4 }}
-            className="absolute inset-0 w-full h-full"
-          />
-        )}
+        {/* Products */}
+        {filteredCategories.map((category, index) => {
+          const specificProduct = category.products.find(
+            (product) => product.id === selectedProducts[category.id].productId
+          );
+
+          let imageSrc =
+            specificProduct.displayByColor?.[
+              selectedProducts[category.id].color
+            ].designDisplay || "/";
+          let imageAlt = specificProduct.name;
+
+          return (
+            <motion.img
+              key={specificProduct.id || index}
+              src={imageSrc}
+              alt={imageAlt}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className={`absolute inset-0 w-full h-full object-cover transform ${
+                plumbing === "right" ? "scale-x-[-1]" : ""
+              }`}
+              style={{ zIndex: category.zIndex }}
+            />
+          );
+        })}
       </div>
-
-      {/* ⚙️ Controls
-      <div className="space-y-4">
-        <div>
-          <h3 className="font-semibold mb-2">Tile Color</h3>
-          <div className="flex gap-2">
-            {Object.keys(bathroomOptions.tiles).map((color) => (
-              <button
-                key={color}
-                onClick={() => setSelectedTiles(color)}
-                className={`px-3 py-1 rounded border ${
-                  selectedTiles === color
-                    ? "bg-accent text-white"
-                    : "bg-background"
-                }`}
-              >
-                {color}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div>
-          <h3 className="font-semibold mb-2">Shower</h3>
-          <div className="flex gap-2">
-            {Object.keys(bathroomOptions.showers).map((type) => (
-              <button
-                key={type}
-                onClick={() => setSelectedShower(type)}
-                className={`px-3 py-1 rounded border ${
-                  selectedShower === type
-                    ? "bg-accent text-white"
-                    : "bg-background"
-                }`}
-              >
-                {type === "none" ? "None" : type}
-              </button>
-            ))}
-          </div>
-        </div>
-      </div> */}
     </section>
   );
 }
