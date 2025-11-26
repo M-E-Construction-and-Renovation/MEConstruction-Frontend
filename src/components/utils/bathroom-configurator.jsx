@@ -13,6 +13,12 @@ export default function BathroomConfigurator({
     (bathroom) => bathroom.shape === shape
   );
 
+  // Preload base bathroom images
+  filteredBathroomConfig?.config?.forEach((config) => {
+    const img = new Image();
+    img.src = config.src;
+  });
+
   const filteredCategories = categories.filter(
     (category) => category.id in selectedProducts
   );
@@ -25,6 +31,7 @@ export default function BathroomConfigurator({
 
         {filteredBathroomConfig?.config?.map((config, index) => (
           <img
+            loading="eager"
             key={index}
             src={config.src}
             alt={config.alt}
@@ -46,6 +53,9 @@ export default function BathroomConfigurator({
               selectedProducts[category.id].color
             ].designDisplay || "/";
           let imageAlt = specificProduct.name;
+
+          const preload = new Image();
+          preload.src = imageSrc;
 
           return (
             <motion.img
