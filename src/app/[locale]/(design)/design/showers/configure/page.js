@@ -4,19 +4,57 @@ import { useSearchParams } from "next/navigation";
 import { useState, Suspense } from "react";
 import allCategories from "@/data/products";
 import ConfigurePage from "@/components/utils/congifure-page";
+import { useToast } from "@/components/ui/use-toast";
 
 function ShowerDesignTool() {
+  const { toast } = useToast();
+
   const searchParams = useSearchParams();
 
   const plumbing = searchParams.get("plumbing") || "left";
   const shape = searchParams.get("shape") || "unknown";
 
   const [activeTab, setActiveTab] = useState("faucets");
-  const [activeTier, setActiveTier] = useState("basic");
+  const [activeTier, setActiveTier] = useState("premium");
   const [selectedProducts, setSelectedProducts] = useState({});
 
   const handleResetDesign = () => setSelectedProducts({});
-  const handleSaveDesign = () => alert("Design saved successfully!");
+
+  //SAVE DESIGN
+  const handleSaveDesign = async (email) => {
+    try {
+      // Ensure all fields are defined
+      const payload = {
+        email,
+        shape: shape || "",
+        plumbing: plumbing || "",
+        selectedProducts: selectedProducts || {},
+      };
+
+      const response = await fetch("/api/design/save-project", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        toast.success("Design saved successfully!");
+      } else {
+        // data.errors guaranteed to be array of { message } from API
+        toast.error(
+          data.errors
+            ? data.errors.map((e) => e.message).join(", ")
+            : data.message
+        );
+      }
+    } catch (err) {
+      console.error(err);
+      toast.error("Failed to save design.");
+    }
+  };
+
   const handleShareDesign = () =>
     alert("Design shared! Link copied to clipboard.");
 

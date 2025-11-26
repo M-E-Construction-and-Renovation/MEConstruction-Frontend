@@ -1,11 +1,11 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
 import { ChevronLeft, RotateCcw, Save, Share2, Check } from "lucide-react";
 import BathroomConfigurator from "./bathroom-configurator";
+import EmailModal from "./email-modal";
 
 const ConfigurePage = ({
   handleResetDesign = () => {},
@@ -24,8 +24,6 @@ const ConfigurePage = ({
   shape = "",
 }) => {
   const router = useRouter();
-
-  console.log(selectedProducts);
 
   return (
     <div className="flex flex-col h-full overflow-hidden">
@@ -67,14 +65,15 @@ const ConfigurePage = ({
                 <RotateCcw className="h-4 w-4" />
                 <span className="hidden sm:inline">Reset</span>
               </Button>
-              <Button
+              {/* <Button
                 variant="outline"
                 className="gap-2 bg-transparent"
                 onClick={handleSaveDesign}
               >
                 <Save className="h-4 w-4" />
                 <span className="hidden sm:inline">Save</span>
-              </Button>
+              </Button> */}
+              <EmailModal onSave={handleSaveDesign} />
               <Button
                 className="gap-2 bg-primary hover:bg-primary/90"
                 onClick={handleShareDesign}
@@ -118,8 +117,6 @@ const ConfigurePage = ({
             {["basic", "standard", "premium"].map((tier) => {
               const tierProducts =
                 currentCategory?.products.filter((p) => p.tiers[tier]) || [];
-
-              console.log(tierProducts);
 
               const hasSelectedInTier =
                 selectedProducts[activeTab]?.productId &&
