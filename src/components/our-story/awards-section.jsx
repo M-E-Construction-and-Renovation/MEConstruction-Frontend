@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 const AwardsSection = ({ awards }) => {
   const { sectionTitle, sectionSubtitle, items } = awards;
@@ -24,10 +25,11 @@ const AwardsSection = ({ awards }) => {
                 <h3 className="text-lg font-semibold text-foreground mb-2">
                   {item.title}
                 </h3>
-                <div className="w-30 h-30 mx-auto my-2">
-                  <img
+                <div className="relative w-30 h-30 mx-auto my-2">
+                  <Image
                     src={item.src}
                     alt={item.alt}
+                    fill
                     className="aspect-square object-contain"
                   />
                 </div>

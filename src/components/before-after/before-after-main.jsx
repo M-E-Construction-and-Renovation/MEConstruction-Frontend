@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 export const BeforeAfterMain = () => {
   const [activeTab, setActiveTab] = useState("showers");
@@ -146,9 +147,10 @@ export const BeforeAfterMain = () => {
               <div className="grid grid-cols-1 md:grid-cols-2">
                 {/* Before */}
                 <div className="relative aspect-[4/3] overflow-hidden bg-gray-200">
-                  <img
+                  <Image
                     src={current.before || "/placeholder.svg"}
                     alt="Before"
+                    fill
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute top-3 left-3 bg-gray-800 text-white px-3 py-1 rounded-md font-bold text-sm">
@@ -158,9 +160,10 @@ export const BeforeAfterMain = () => {
 
                 {/* After */}
                 <div className="relative aspect-[4/3] overflow-hidden bg-gray-200">
-                  <img
+                  <Image
                     src={current.after || "/placeholder.svg"}
                     alt="After"
+                    fill
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute top-3 right-3 bg-accent text-accent-foreground px-3 py-1 rounded-md font-bold text-sm">
@@ -224,17 +227,19 @@ export const BeforeAfterMain = () => {
                 className="group rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer bg-white"
               >
                 <div className="grid grid-cols-2">
-                  <div className="aspect-[4/3] overflow-hidden bg-gray-200">
-                    <img
+                  <div className="relative aspect-[4/3] overflow-hidden bg-gray-200">
+                    <Image
                       src={t.before || "/placeholder.svg"}
                       alt="Before"
+                      fill
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
-                  <div className="aspect-[4/3] overflow-hidden bg-gray-200">
-                    <img
+                  <div className="relative aspect-[4/3] overflow-hidden bg-gray-200">
+                    <Image
                       src={t.after || "/placeholder.svg"}
                       alt="After"
+                      fill
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
@@ -274,9 +279,10 @@ export const BeforeAfterMain = () => {
               transition={{ duration: 0.4 }}
               className="relative w-full max-w-5xl"
             >
-              <img
+              <Image
                 src={showingAfter ? current.after : current.before}
                 alt={showingAfter ? "After" : "Before"}
+                fill
                 className="w-full h-auto max-h-[85vh] object-cover rounded-lg"
               />
               <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-4">

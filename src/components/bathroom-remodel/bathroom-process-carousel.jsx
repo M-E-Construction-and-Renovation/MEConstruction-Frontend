@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "../ui/button";
+import Image from "next/image";
 
 export function BathroomProcessCarousel({ process }) {
   const { sectionTitle, sectionSubtitle, description, steps } = process;
@@ -41,9 +42,10 @@ export function BathroomProcessCarousel({ process }) {
           <div className="relative">
             {/* Current Step Display */}
             <div className="relative aspect-video rounded-2xl overflow-hidden mb-8 shadow-2xl">
-              <img
+              <Image
                 src={steps[currentStep].image || "/placeholder.svg"}
                 alt={steps[currentStep].title}
+                fill
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-accent/60 via-transparent to-transparent" />

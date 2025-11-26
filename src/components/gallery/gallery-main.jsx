@@ -2,6 +2,9 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+
+const MotionImage = motion(Image);
 
 export const GalleryMain = () => {
   const [activeTab, setActiveTab] = useState("showers");
@@ -272,9 +275,10 @@ export const GalleryMain = () => {
                 className="group rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 bg-white cursor-pointer"
               >
                 <div className="relative h-48 overflow-hidden bg-gray-200">
-                  <img
+                  <Image
                     src={design.image || "/placeholder.svg"}
                     alt={design.title}
+                    fill
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                 </div>
@@ -302,9 +306,10 @@ export const GalleryMain = () => {
             exit={{ opacity: 0 }}
             onClick={() => setSelectedImage(null)}
           >
-            <motion.img
+            <MotionImage
               src={selectedImage}
               alt="Expanded design"
+              fill
               className="max-h-[90vh] max-w-[90vw] rounded-lg shadow-2xl object-contain"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}

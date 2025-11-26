@@ -2,6 +2,9 @@
 
 import { motion } from "framer-motion";
 import { bathroomConfig } from "@/data/bathroom-data";
+import Image from "next/image";
+
+const MotionImage = motion(Image);
 
 export default function BathroomConfigurator({
   selectedProducts = {},
@@ -10,7 +13,7 @@ export default function BathroomConfigurator({
   shape = "",
 }) {
   const filteredBathroomConfig = bathroomConfig.find(
-    (bathroom) => bathroom.plumbing === plumbing && bathroom.shape === shape
+    (bathroom) => bathroom.shape === shape
   );
 
   const filteredCategories = categories.filter(
@@ -24,11 +27,14 @@ export default function BathroomConfigurator({
         {/* Base */}
 
         {filteredBathroomConfig?.config?.map((config, index) => (
-          <img
+          <Image
             key={index}
             src={config.src}
             alt={config.alt}
-            className="absolute inset-0 w-full h-full object-cover"
+            fill
+            className={`absolute inset-0 w-full h-full object-cover transform ${
+              plumbing === "right" ? "scale-x-[-1]" : ""
+            }`}
             style={{ zIndex: config.zIndex }}
           />
         ))}
@@ -46,10 +52,11 @@ export default function BathroomConfigurator({
           let imageAlt = specificProduct.name;
 
           return (
-            <motion.img
+            <MotionImage
               key={specificProduct.id || index}
               src={imageSrc}
               alt={imageAlt}
+              fill
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}

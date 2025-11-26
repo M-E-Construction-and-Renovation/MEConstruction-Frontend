@@ -1,4 +1,5 @@
 import * as LucideIcons from "lucide-react";
+import Image from "next/image";
 
 export function DesignToolCards({ explore }) {
   const { sectionTitle, sectionSubtitle, cards } = explore;
@@ -40,9 +41,10 @@ export function DesignToolCards({ explore }) {
                   target={target}
                   className={`group relative overflow-hidden rounded-2xl aspect-[4/3] bg-gradient-to-br ${bgGradient} hover:shadow-2xl transition-all duration-300`}
                 >
-                  <img
+                  <Image
                     src={image}
                     alt={alt}
+                    fill
                     className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />

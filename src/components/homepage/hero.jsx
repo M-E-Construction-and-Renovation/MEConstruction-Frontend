@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { openModal } from "@/store/quoteModalSlice";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export function Hero({ hero }) {
   const dispatch = useDispatch();
@@ -198,9 +199,10 @@ export function Hero({ hero }) {
                   }}
                 >
                   {/* 🖼️ The actual image */}
-                  <img
+                  <Image
                     src={image.src}
                     alt={`Bathroom image ${index + 1}`}
+                    fill
                     className="absolute inset-0 w-full h-full object-cover"
                   />
 

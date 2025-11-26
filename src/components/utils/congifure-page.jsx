@@ -196,12 +196,12 @@ const ConfigurePage = ({
                           : "border-muted hover:border-primary/50"
                       }`}
                     >
-                      <div className="relative w-full aspect-square mb-2 bg-muted rounded overflow-hidden bg-gradient-to-br from-primary/40 to-primary/80">
+                      <div className="relative w-full aspect-square mb-2 rounded overflow-hidden bg-gradient-to-br from-transparent via-black/20 to-transparent">
                         <img
                           src={imgSrc}
                           alt={imgAlt}
                           // fill
-                          className="w-full h-full object-contain"
+                          className="w-full h-full object-cover"
                         />
                       </div>
 

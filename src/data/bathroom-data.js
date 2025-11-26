@@ -1,6 +1,6 @@
 const baseBathroomConfig = [
   {
-    id: "Bathroom",
+    id: "bathroom",
     src: "/configurator/bathroom/bathroom-tub.png",
     alt: "Bathroom tub shaped",
     zIndex: "0",
@@ -22,17 +22,10 @@ const baseBathroomConfig = [
 export const bathroomConfig = [
   {
     shape: "tub",
-    plumbing: "left",
-    config: baseBathroomConfig,
-  },
-  {
-    shape: "tub",
-    plumbing: "right",
     config: baseBathroomConfig,
   },
   {
     shape: "tub-to-shower",
-    plumbing: "left",
     config: [
       {
         id: "tub-to-shower base",
@@ -45,7 +38,6 @@ export const bathroomConfig = [
   },
   {
     shape: "curved",
-    plumbing: "left",
     config: [
       {
         id: "curved base",
@@ -58,7 +50,6 @@ export const bathroomConfig = [
   },
   {
     shape: "neo-angle",
-    plumbing: "left",
     config: [
       {
         id: "neo-angle base",
@@ -71,7 +62,6 @@ export const bathroomConfig = [
   },
   {
     shape: "alcove",
-    plumbing: "left",
     config: [
       {
         id: "alcove base",

@@ -24,9 +24,10 @@ export function VideoSection() {
           <div className="relative aspect-video rounded-2xl overflow-hidden bg-muted group">
             {!isPlaying ? (
               <>
-                <img
+                <Image
                   src="/images/bathroom-renovation-video-thumbnail.jpg"
                   alt="Video thumbnail"
+                  fill
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-black/40 flex items-center justify-center">

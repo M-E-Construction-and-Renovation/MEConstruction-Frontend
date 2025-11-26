@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Button } from "../ui/button";
 import { Card, CardContent } from "../ui/card";
 import { ArrowRight, Check } from "lucide-react";
+import Image from "next/image";
 
 export function Solutions({ solutions }) {
   const { sectionTitle, sectionSubtitle, buttonText, cards } = solutions;
@@ -35,31 +36,15 @@ export function Solutions({ solutions }) {
                     index % 2 === 1 ? "lg:grid-flow-dense" : ""
                   }`}
                 >
-                  {/* <div
-                    className={`relative aspect-[4/3] ${
-                      index % 2 === 1 ? "lg:col-start-2" : ""
-                    }`}
-                  >
-                    <img
-                      src={solution.image || "/placeholder.svg"}
-                      alt={solution.title}
-                      className="h-full w-full object-cover"
-                    />
-                    <div className="absolute top-4 left-4">
-                      <span className="inline-flex items-center rounded-full bg-accent px-3 py-1 text-sm font-medium text-accent-foreground">
-                        {solution.tag}
-                      </span>
-                    </div>
-                  </div> */}
-
                   <div
                     className={`relative aspect-[4/3] overflow-hidden ${
                       index % 2 === 1 ? "lg:col-start-2" : ""
                     }`}
                   >
-                    <img
+                    <Image
                       src={solution.image}
                       alt={solution.title}
+                      fill
                       className="h-full w-full object-cover scale-105 hover:scale-110 transition-all duration-500"
                     />
 

@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useDispatch } from "react-redux";
 import { openModal } from "@/store/quoteModalSlice";
+import Image from "next/image";
 
 export function BathroomHero({ hero }) {
   const { sectionTitle, sectionSubtitle, tagline, features, labels, image } =
@@ -114,9 +115,10 @@ export function BathroomHero({ hero }) {
                   : "translate-x-12 opacity-0 scale-95"
               }`}
             >
-              <img
+              <Image
                 src={image.src}
                 alt={image.alt}
+                fill
                 className="h-full w-full object-cover"
               />
             </div>

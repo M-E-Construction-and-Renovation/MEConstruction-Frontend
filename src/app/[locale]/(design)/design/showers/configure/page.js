@@ -2,7 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 import { useState, Suspense } from "react";
-import categories from "@/data/shower-data";
+import allCategories from "@/data/products";
 import ConfigurePage from "@/components/utils/congifure-page";
 
 function ShowerDesignTool() {
@@ -20,6 +20,10 @@ function ShowerDesignTool() {
   const handleShareDesign = () =>
     alert("Design shared! Link copied to clipboard.");
 
+  const categories = allCategories.filter((category) =>
+    category.shapesAllowed.includes(shape)
+  );
+
   const currentCategory =
     categories.find((c) => c.id === activeTab) || "faucets";
 
@@ -32,10 +36,6 @@ function ShowerDesignTool() {
       const product = category?.products.find(
         (p) => p.id === selectedInCategory.productId
       );
-
-      // if (product) {
-      //   setActiveTier(product.tier);
-      // }
 
       if (product) {
         // Determine the tier based on the selected color
@@ -82,28 +82,22 @@ function ShowerDesignTool() {
   };
 
   return (
-    <div className="w-full h-full flex items-center">
-      <h1 className="w-full text-center my-auto font-bold">
-        WORK IN PROGRESS...
-      </h1>
-    </div>
-
-    // <ConfigurePage
-    //   handleResetDesign={handleResetDesign}
-    //   handleSaveDesign={handleSaveDesign}
-    //   handleShareDesign={handleShareDesign}
-    //   categories={categories}
-    //   activeTab={activeTab}
-    //   selectedProducts={selectedProducts}
-    //   handleCategoryChange={handleCategoryChange}
-    //   currentCategory={currentCategory}
-    //   activeTier={activeTier}
-    //   setActiveTier={setActiveTier}
-    //   handleProductSelect={handleProductSelect}
-    //   handleUnselectProduct={handleUnselectProduct}
-    //   plumbing={plumbing}
-    //   shape={shape}
-    // />
+    <ConfigurePage
+      handleResetDesign={handleResetDesign}
+      handleSaveDesign={handleSaveDesign}
+      handleShareDesign={handleShareDesign}
+      categories={categories}
+      activeTab={activeTab}
+      selectedProducts={selectedProducts}
+      handleCategoryChange={handleCategoryChange}
+      currentCategory={currentCategory}
+      activeTier={activeTier}
+      setActiveTier={setActiveTier}
+      handleProductSelect={handleProductSelect}
+      handleUnselectProduct={handleUnselectProduct}
+      plumbing={plumbing}
+      shape={shape}
+    />
   );
 }
 

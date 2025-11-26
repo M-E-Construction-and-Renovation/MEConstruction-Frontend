@@ -1,6 +1,7 @@
 import { Button } from "../ui/button";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 export function BathroomInspiration({ inspiration }) {
   const { sectionTitle, sectionSubtitle, cards } = inspiration;
@@ -26,9 +27,10 @@ export function BathroomInspiration({ inspiration }) {
               className="group relative rounded-2xl overflow-hidden bg-white/10 backdrop-blur border border-white/20 hover:border-accent/50 transition-all duration-300"
             >
               <div className="aspect-video overflow-hidden">
-                <img
+                <Image
                   src={card.image.src}
                   alt={card.image.alt}
+                  fill
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-indigo-950/60 to-transparent" />

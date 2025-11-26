@@ -373,6 +373,7 @@ export function Header({ locale }) {
               <Button
                 size="lg"
                 className="bg-accent hover:bg-accent/90 text-accent-foreground mt-4 w-full"
+                onClick={() => dispatch(openModal())}
               >
                 GET A FREE QUOTE
               </Button>

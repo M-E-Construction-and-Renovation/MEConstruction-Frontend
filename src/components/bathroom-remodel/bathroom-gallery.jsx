@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 
 export function BathroomGallery({ gallery }) {
   const { sectionTitle, sectionSubtitle, projects, link } = gallery;
@@ -26,10 +27,11 @@ export function BathroomGallery({ gallery }) {
               key={index}
               className="rounded-xl overflow-hidden bg-white group shadow-md hover:shadow-xl transition-all duration-300 border border-slate-100"
             >
-              <div className="aspect-video overflow-hidden">
-                <img
+              <div className="relative aspect-video overflow-hidden">
+                <Image
                   src={project.image || "/placeholder.svg"}
                   alt={project.title}
+                  fill
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               </div>

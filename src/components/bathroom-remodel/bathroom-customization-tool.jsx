@@ -1,6 +1,7 @@
 import { Button } from "../ui/button";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 export function BathroomCustomizationTool({ customization }) {
   const {
@@ -22,10 +23,11 @@ export function BathroomCustomizationTool({ customization }) {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left Image */}
           <div className="order-2 md:order-1">
-            <div className="aspect-square rounded-2xl overflow-hidden shadow-2xl">
-              <img
+            <div className="relative aspect-square rounded-2xl overflow-hidden shadow-2xl">
+              <Image
                 src={image.src}
                 alt={image.alt}
+                fill
                 className="w-full h-full object-cover"
               />
             </div>

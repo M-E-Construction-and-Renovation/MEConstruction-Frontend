@@ -2,7 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 import { useState, Suspense } from "react";
-import categories from "@/data/bathtub-data";
+import allCategories from "@/data/products";
 import ConfigurePage from "@/components/utils/congifure-page";
 
 function DesignTool() {
@@ -20,6 +20,10 @@ function DesignTool() {
   const handleShareDesign = () =>
     alert("Design shared! Link copied to clipboard.");
 
+  const categories = allCategories.filter((category) =>
+    category.shapesAllowed.includes(shape)
+  );
+
   const currentCategory =
     categories.find((c) => c.id === activeTab) || "tubFronts";
 
@@ -32,10 +36,6 @@ function DesignTool() {
       const product = category?.products.find(
         (p) => p.id === selectedInCategory.productId
       );
-
-      // if (product) {
-      //   setActiveTier(product.tier);
-      // }
 
       if (product) {
         // Determine the tier based on the selected color

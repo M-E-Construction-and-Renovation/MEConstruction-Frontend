@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { Button } from "../ui/button";
 import * as LucideIcons from "lucide-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import Image from "next/image";
 
 export function AdvantagesCarousel({ carousel }) {
   const { sectionTitle, items } = carousel;
@@ -45,9 +46,10 @@ export function AdvantagesCarousel({ carousel }) {
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
-            <img
+            <Image
               src="/images/professional-bathroom-renovation-team-working.jpg"
               alt="M&E Construction and Renovation advantages"
+              fill
               className="w-full h-full object-cover"
             />
           </div>

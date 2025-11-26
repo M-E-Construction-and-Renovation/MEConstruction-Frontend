@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useDispatch } from "react-redux";
 import { openModal } from "@/store/quoteModalSlice";
+import Image from "next/image";
 
 export function BathroomBeforeAfter({ beforeAfter }) {
   const {
@@ -58,9 +59,10 @@ export function BathroomBeforeAfter({ beforeAfter }) {
             {/* Before/After Slider */}
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-muted shadow-xl">
               <div className="absolute inset-0">
-                <img
+                <Image
                   src={beforeAfterImages.after.src}
                   alt={beforeAfterImages.after.alt}
+                  fill
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -69,9 +71,10 @@ export function BathroomBeforeAfter({ beforeAfter }) {
                 className="absolute inset-0 overflow-hidden"
                 style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
               >
-                <img
+                <Image
                   src={beforeAfterImages.before.src}
                   alt={beforeAfterImages.before.alt}
+                  fill
                   className="w-full h-full object-cover"
                 />
               </div>

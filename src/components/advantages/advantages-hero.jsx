@@ -106,9 +106,10 @@ export function AdvantagesHero({ hero }) {
                   : "translate-x-full opacity-0"
               }`}
             >
-              <img
+              <Image
                 src={image.src}
                 alt={image.alt}
+                fill
                 className="h-full w-full object-cover"
               />
             </div>

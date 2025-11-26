@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 const MissionSection = ({ mission }) => {
   const { sectionTitle, sectionSubtitle, title, description, image } = mission;
@@ -21,10 +22,11 @@ const MissionSection = ({ mission }) => {
               {description}
             </p>
           </div>
-          <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-lg">
-            <img
+          <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg">
+            <Image
               src={image.src}
               alt={image.alt}
+              fill
               className="w-full h-full object-cover"
             />
           </div>

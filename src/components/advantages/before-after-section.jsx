@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Button } from "../ui/button";
 import { useDispatch } from "react-redux";
 import { openModal } from "@/store/quoteModalSlice";
+import Image from "next/image";
 
 export function BeforeAfterSection({ beforeAfter }) {
   const { sectionTitle, sectionSubtitle, labels, button, categories, images } =
@@ -58,9 +59,10 @@ export function BeforeAfterSection({ beforeAfter }) {
           <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-muted">
             {/* AFTER Image */}
             <div className="absolute inset-0">
-              <img
+              <Image
                 src={currentImages.after || "/placeholder.svg"}
                 alt="After renovation"
+                fill
                 className="w-full h-full object-cover"
               />
             </div>
@@ -70,9 +72,10 @@ export function BeforeAfterSection({ beforeAfter }) {
               className="absolute inset-0 overflow-hidden"
               style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
             >
-              <img
+              <Image
                 src={currentImages.before || "/placeholder.svg"}
                 alt="Before renovation"
+                fill
                 className="w-full h-full object-cover"
               />
             </div>
