@@ -52,7 +52,6 @@ export default function BathroomConfigurator({
               key={specificProduct.id || index}
               src={imageSrc}
               alt={imageAlt}
-              fill
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
