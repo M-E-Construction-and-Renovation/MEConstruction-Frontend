@@ -22,6 +22,7 @@ const ConfigurePage = ({
   handleUnselectProduct = () => {},
   plumbing = "",
   shape = "",
+  projectEmail = "",
 }) => {
   const router = useRouter();
 
@@ -73,7 +74,10 @@ const ConfigurePage = ({
                 <Save className="h-4 w-4" />
                 <span className="hidden sm:inline">Save</span>
               </Button> */}
-              <EmailModal onSave={handleSaveDesign} />
+              <EmailModal
+                onSave={handleSaveDesign}
+                projectEmail={projectEmail}
+              />
               <Button
                 className="gap-2 bg-primary hover:bg-primary/90"
                 onClick={handleShareDesign}

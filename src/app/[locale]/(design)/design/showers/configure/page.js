@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useState, Suspense } from "react";
+import { useState, useEffect, Suspense } from "react";
 import allCategories from "@/data/products";
 import ConfigurePage from "@/components/utils/congifure-page";
 import { useToast } from "@/components/ui/use-toast";
@@ -13,10 +13,45 @@ function ShowerDesignTool() {
 
   const plumbing = searchParams.get("plumbing") || "left";
   const shape = searchParams.get("shape") || "unknown";
+  const email = searchParams.get("email") || "";
 
   const [activeTab, setActiveTab] = useState("faucets");
   const [activeTier, setActiveTier] = useState("premium");
   const [selectedProducts, setSelectedProducts] = useState({});
+  const [loadingProject, setLoadingProject] = useState(!!email); // only fetch if email is present
+
+  // Fetch existing design if email exists
+  useEffect(() => {
+    if (!email) return;
+
+    const fetchProject = async () => {
+      setLoadingProject(true);
+
+      try {
+        const res = await fetch("/api/design/load-project", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email }),
+        });
+
+        const data = await res.json();
+
+        if (res.ok && data.projects) {
+          // Set selectedProducts from fetched project
+          setSelectedProducts(data.projects.selectedProducts || {});
+        } else {
+          toast.error(data.error || "No saved project found for this email.");
+        }
+      } catch (err) {
+        console.error(err);
+        toast.error("Failed to load saved project.");
+      } finally {
+        setLoadingProject(false);
+      }
+    };
+
+    fetchProject();
+  }, [email, toast]);
 
   const handleResetDesign = () => setSelectedProducts({});
 
@@ -119,6 +154,17 @@ function ShowerDesignTool() {
     });
   };
 
+  if (loadingProject) {
+    return (
+      <div className="fixed inset-0 flex flex-col items-center justify-center bg-white z-50">
+        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-blue-600 mb-4"></div>
+        <p className="text-lg font-medium text-gray-700">
+          Loading saved project...
+        </p>
+      </div>
+    );
+  }
+
   return (
     <ConfigurePage
       handleResetDesign={handleResetDesign}
@@ -135,13 +181,23 @@ function ShowerDesignTool() {
       handleUnselectProduct={handleUnselectProduct}
       plumbing={plumbing}
       shape={shape}
+      projectEmail={email}
     />
   );
 }
 
 export default function ShowerDesignToolWrapper() {
   return (
-    <Suspense fallback={<div>Loading configurator...</div>}>
+    <Suspense
+      fallback={
+        <div className="fixed inset-0 flex flex-col items-center justify-center bg-white z-50">
+          <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-blue-600 mb-4"></div>
+          <p className="text-lg font-medium text-gray-700">
+            Loading Design Tool...
+          </p>
+        </div>
+      }
+    >
       <ShowerDesignTool />
     </Suspense>
   );

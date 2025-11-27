@@ -5,12 +5,13 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { Button } from "../ui/button";
 import { Save } from "lucide-react";
 
-export default function EmailModal({ onSave }) {
+export default function EmailModal({ onSave, projectEmail = "" }) {
   const [open, setOpen] = React.useState(false);
-  const [email, setEmail] = React.useState("");
+  const [email, setEmail] = React.useState(projectEmail ?? "");
   const [isLoading, setIsLoading] = React.useState(false);
 
-  const handleSave = async () => {
+  const handleSave = async (e) => {
+    e.preventDefault();
     setIsLoading(true);
     if (email && onSave) {
       await onSave(email);
@@ -42,7 +43,7 @@ export default function EmailModal({ onSave }) {
             We need your email to save your design.
           </Dialog.Description>
 
-          <div className="mt-4 flex flex-col gap-4">
+          <form onSubmit={handleSave} className="mt-4 flex flex-col gap-4">
             <input
               type="email"
               required
@@ -53,13 +54,13 @@ export default function EmailModal({ onSave }) {
             />
 
             <Button
-              onClick={handleSave}
+              type="submit"
               disabled={isLoading}
               className="w-full px-4 py-2 bg-accent/90 text-white rounded hover:bg-accent/100 cursor-pointer"
             >
               {isLoading ? "Saving..." : "Save"}
             </Button>
-          </div>
+          </form>
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>
