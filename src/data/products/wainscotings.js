@@ -25,7 +25,7 @@ export const wainscotingsCategories = [
         id: "wsc2",
         name: "Breadboard Wainscoting",
         tiers: {
-          basic: ["White"],
+          standard: ["White"],
         },
         displayByColor: {
           White: {
@@ -48,7 +48,7 @@ export const wainscotingsCategories = [
         id: "swsc1",
         name: "Tile Wainscoting",
         tiers: {
-          standard: ["White"],
+          basic: ["White"],
         },
         displayByColor: {
           White: {
@@ -56,6 +56,21 @@ export const wainscotingsCategories = [
               "/configurator/products/walls/display/grid-display.PNG",
             designDisplay:
               "/configurator/products/wainscotings/shower-wainscoting-tile-white.png",
+          },
+        },
+      },
+      {
+        id: "swsc2",
+        name: "Breadboard Wainscoting",
+        tiers: {
+          standard: ["White"],
+        },
+        displayByColor: {
+          White: {
+            productDisplay:
+              "https://www.cherokeewood.com/wp-content/uploads/2016/09/wainscoting-bead-board.jpg",
+            designDisplay:
+              "/configurator/products/wainscotings/shower-wainscoting-breadboard-white.png",
           },
         },
       },
