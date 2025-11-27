@@ -13,10 +13,8 @@ export const doorsRodsCategories = [
         },
         displayByColor: {
           Chrome: {
-            productDisplay:
-              "/configurator/products/doors-rods/left/sliding-left-tub-chrome.png",
-            designDisplay:
-              "/configurator/products/doors-rods/left/sliding-left-tub-chrome.png",
+            productDisplay: "/configurator/products/doors-rods/tub-chrome.png",
+            designDisplay: "/configurator/products/doors-rods/tub-chrome.png",
           },
         },
       },
@@ -37,9 +35,9 @@ export const doorsRodsCategories = [
         displayByColor: {
           Chrome: {
             productDisplay:
-              "/configurator/products/doors-rods/left/tub-to-shower-chrome.png",
+              "/configurator/products/doors-rods/tub-to-shower-chrome.png",
             designDisplay:
-              "/configurator/products/doors-rods/left/tub-to-shower-chrome.png",
+              "/configurator/products/doors-rods/tub-to-shower-chrome.png",
           },
         },
       },
@@ -60,9 +58,9 @@ export const doorsRodsCategories = [
         displayByColor: {
           Chrome: {
             productDisplay:
-              "/configurator/products/doors-rods/left/curved-chrome.png",
+              "/configurator/products/doors-rods/curved-chrome.png",
             designDisplay:
-              "/configurator/products/doors-rods/left/curved-chrome.png",
+              "/configurator/products/doors-rods/curved-chrome.png",
           },
         },
       },
@@ -83,9 +81,9 @@ export const doorsRodsCategories = [
         displayByColor: {
           Chrome: {
             productDisplay:
-              "/configurator/products/doors-rods/left/neo-angle-chrome.png",
+              "/configurator/products/doors-rods/neo-angle-chrome.png",
             designDisplay:
-              "/configurator/products/doors-rods/left/neo-angle-chrome.png",
+              "/configurator/products/doors-rods/neo-angle-chrome.png",
           },
         },
       },
@@ -106,9 +104,9 @@ export const doorsRodsCategories = [
         displayByColor: {
           Chrome: {
             productDisplay:
-              "/configurator/products/doors-rods/left/alcove-chrome.png",
+              "/configurator/products/doors-rods/alcove-chrome.png",
             designDisplay:
-              "/configurator/products/doors-rods/left/alcove-chrome.png",
+              "/configurator/products/doors-rods/alcove-chrome.png",
           },
         },
       },
