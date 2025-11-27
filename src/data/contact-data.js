@@ -1,4 +1,4 @@
-import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
+import { FaFacebook, FaInstagram } from "react-icons/fa";
 
 export const contactNumber = {
   displayValue: "+1 (815) 581-9633",

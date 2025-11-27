@@ -78,13 +78,13 @@ const ConfigurePage = ({
                 onSave={handleSaveDesign}
                 projectEmail={projectEmail}
               />
-              <Button
+              {/* <Button
                 className="gap-2 bg-primary hover:bg-primary/90"
                 onClick={handleShareDesign}
               >
                 <Share2 className="h-4 w-4" />
                 <span className="hidden sm:inline">Share</span>
-              </Button>
+              </Button> */}
             </div>
           </div>
 

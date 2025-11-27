@@ -17,7 +17,7 @@ export const aboutMenuItems = [
     href: "/advantages/#faq",
     detail: "Frequently asked questions",
   },
-  { label: "Contact Us", href: "#", detail: "Get in touch with us!" },
+  { label: "Contact Us", href: "/contact", detail: "Get in touch with us!" },
 ];
 
 export const solutionsMenuItems = [
