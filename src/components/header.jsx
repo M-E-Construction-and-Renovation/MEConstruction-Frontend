@@ -20,6 +20,7 @@ import {
 } from "@/data/navigation-data";
 import Image from "next/image";
 import Link from "next/link";
+import { socials } from "@/data/contact-data";
 
 import LanguageSwitcher from "./utils/language-switcher";
 
@@ -200,11 +201,11 @@ export function Header({ locale }) {
             </nav>
 
             {/* CTA Button */}
-            <div className="hidden lg:block">
+            <div className="hidden xl:flex">
               <Button
                 onClick={() => dispatch(openModal())}
                 size="lg"
-                className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold"
+                className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold animate-beat"
               >
                 GET A FREE QUOTE
               </Button>
@@ -228,7 +229,7 @@ export function Header({ locale }) {
       </div>
 
       {mobileMenuOpen && (
-        <div className="border-t lg:hidden bg-background max-h-[calc(100vh-8rem)] overflow-y-auto text-primary">
+        <div className="border-t xl:hidden bg-background max-h-[calc(100vh-8rem)] overflow-y-auto text-primary">
           <div className="container mx-auto px-4 py-4">
             <nav className="flex flex-col gap-2">
               {/* About with Submenu */}
@@ -381,6 +382,20 @@ export function Header({ locale }) {
               {/* Mobile Contact Info */}
               <div className="flex flex-col gap-3 mt-4 pt-4 border-t md:hidden">
                 <LanguageSwitcher currentLocale={locale} />
+
+                <div className="flex gap-2 justify-center">
+                  {socials.map((social) => (
+                    <Link
+                      key={social.id}
+                      href={social.link}
+                      target={social.target}
+                    >
+                      <Button variant="outline" size="icon">
+                        <social.icon className="h-8 w-8" />
+                      </Button>
+                    </Link>
+                  ))}
+                </div>
               </div>
             </nav>
           </div>

@@ -4,8 +4,6 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
-const MotionImage = motion(Image);
-
 export const GalleryMain = () => {
   const [activeTab, setActiveTab] = useState("showers");
   const [selectedImage, setSelectedImage] = useState(null);
@@ -306,10 +304,9 @@ export const GalleryMain = () => {
             exit={{ opacity: 0 }}
             onClick={() => setSelectedImage(null)}
           >
-            <MotionImage
+            <motion.img
               src={selectedImage}
               alt="Expanded design"
-              fill
               className="max-h-[90vh] max-w-[90vw] rounded-lg shadow-2xl object-contain"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}

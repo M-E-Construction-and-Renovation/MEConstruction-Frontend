@@ -82,11 +82,11 @@ export function Solutions({ solutions }) {
                       ))}
                     </ul>
 
-                    <div>
+                    <div className="animate-bounce">
                       <Link href={solution.href} target="_blank">
-                        <Button className="bg-accent hover:bg-accent/90 text-accent-foreground gap-2">
+                        <Button className="bg-accent hover:bg-accent/90 text-accent-foreground gap-2 text-lg">
                           {buttonText}
-                          <ArrowRight className="h-4 w-4" />
+                          <ArrowRight className="h-6 w-6" />
                         </Button>
                       </Link>
                     </div>

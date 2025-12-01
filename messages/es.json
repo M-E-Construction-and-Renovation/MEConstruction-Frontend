@@ -11,7 +11,7 @@
       "subtext": "Diseñamos un plan de remodelación personalizado que se adapta a tu estilo de vida y presupuesto. Nuestro equipo aporta años de experiencia, profesionalismo y pasión a cada proyecto. Ya sea que estés reimaginando tu espacio o ampliándolo para tus necesidades, te ayudaremos a construir algo hermoso, funcional y duradero.",
       "buttons": {
         "quote": "Obtener cotización gratuita",
-        "design": "Comienza tu diseño"
+        "design": "Diseña tu baño"
       },
       "features": [
         {
@@ -217,26 +217,50 @@
       "sectionTitle": "Lo que dicen nuestros clientes",
       "rating": {
         "score": "5.0",
-        "summary": "de más de 12,000 reseñas"
+        "summary": "de más de 120+ reseñas"
       },
       "items": [
         {
-          "name": "Sarah Johnson",
-          "location": "Austin, TX",
+          "name": "Lin O.",
+          "location": "Northbrook, IL (Angi)",
           "rating": 5,
-          "text": "El equipo fue profesional, eficiente y los resultados superaron nuestras expectativas. ¡Nuestra nueva ducha se ve increíble!"
+          "text": "Todo resultó como lo imaginé. Muy buen trabajo.",
+          "date": "Nov 2025"
         },
         {
-          "name": "Michael Chen",
-          "location": "Seattle, WA",
+          "name": "Andrea T.",
+          "location": "Northbrook, IL (Angi)",
           "rating": 5,
-          "text": "Desde la consulta hasta la instalación, todo fue fluido. Cumplieron con su promesa de terminar en un solo día."
+          "text": "M&E derribó una pared no estructural entre el comedor y la sala, dándonos un espacio abierto. Estamos muy contentos con su trabajo. El equipo vino todos los días hasta que el trabajo estuvo completo. También limpiaron al final y se llevaron todos los escombros. Marc y su equipo hicieron un gran trabajo dándonos un nuevo espacio que amamos y disfrutamos cada día.",
+          "date": "Nov 2025"
         },
         {
-          "name": "Emily Rodríguez",
-          "location": "Miami, FL",
+          "name": "Christine N.",
+          "location": "Northbrook, IL (Angi)",
           "rating": 5,
-          "text": "Excelente calidad y servicio. La garantía de por vida nos da total tranquilidad. ¡Altamente recomendado!"
+          "text": "Recientemente tuve un proyecto de entrada de concreto hecho por M&E Construction… el proceso fue fluido… ¡estoy tan feliz con cómo resultó todo!",
+          "date": "Mar 2025"
+        },
+        {
+          "name": "Ilya K.",
+          "location": "Northbrook, IL (Angi)",
+          "rating": 5,
+          "text": "Marc y su equipo en M&E Construction and Renovation fueron increíblemente profesionales y confiables. Completaron dos remodelaciones de baños en tiempo y de forma eficiente. Fueron extremadamente comunicativos, amables y honestos durante todo el proceso — en general una experiencia muy fluida y ambos baños quedaron fantásticos. ¡Los recomiendo ampliamente y sin duda trabajaríamos con ellos nuevamente!",
+          "date": "Nov 2024"
+        },
+        {
+          "name": "Michelle K.",
+          "location": "Northbrook, IL (Angi)",
+          "rating": 5,
+          "text": "El equipo de Marc fue extremadamente profesional y diligente para realizar el trabajo.",
+          "date": "Nov 2024"
+        },
+        {
+          "name": "Jim G.",
+          "location": "Northbrook, IL (Angi)",
+          "rating": 5,
+          "text": "El producto final superó mis expectativas.",
+          "date": "Oct 2024"
         }
       ]
     }
@@ -498,6 +522,12 @@
           "src": "/images/angi-super-service-2023.png",
           "alt": "Logo Angi Super Service Award 2023",
           "description": "Premiado por calidad sobresaliente y satisfacción del cliente."
+        },
+        {
+          "title": "Angi - Premio a un Servicio Excelente 2025",
+          "src": "/images/angi-super-service-2025.png",
+          "alt": "Logotipo del Premio a un Servicio Excelente de Angi 2025",
+          "description": "Este profesional ha mantenido un promedio de más de 4.5 estrellas durante su tiempo en Angi."
         }
       ]
     },

@@ -15,28 +15,26 @@ const AwardsSection = ({ awards }) => {
             {sectionSubtitle}
           </p>
         </div>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 mt-12">
-          {items.map((item, index) => {
-            return (
-              <div
-                key={index}
-                className="flex flex-col justify-between p-6 rounded-lg border border-accent/20 bg-gradient-to-b from-accent/20 to-accent/5 shadow-md"
-              >
-                <h3 className="text-lg font-semibold text-foreground mb-2">
-                  {item.title}
-                </h3>
-                <div className="relative w-30 h-30 mx-auto my-2">
-                  <Image
-                    src={item.src}
-                    alt={item.alt}
-                    fill
-                    className="aspect-square object-contain"
-                  />
-                </div>
-                <p className="text-muted-foreground">{item.description}</p>
+        <div className="columns-1 sm:columns-2 lg:columns-4 xl:columns-5 gap-6 space-y-6">
+          {items.map((item, index) => (
+            <div
+              key={index}
+              className="break-inside-avoid flex flex-col justify-between p-6 rounded-lg border border-accent/20 bg-gradient-to-b from-accent/20 to-accent/5 shadow-md mb-6"
+            >
+              <h3 className="text-lg font-semibold text-foreground mb-2">
+                {item.title}
+              </h3>
+              <div className="relative w-30 h-30 mx-auto my-2">
+                <Image
+                  src={item.src}
+                  alt={item.alt}
+                  fill
+                  className="aspect-square object-contain"
+                />
               </div>
-            );
-          })}
+              <p className="text-muted-foreground">{item.description}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

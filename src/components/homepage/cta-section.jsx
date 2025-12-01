@@ -50,7 +50,7 @@ export function CtaSection({ cta }) {
           <Button
             onClick={() => dispatch(openModal())}
             size="lg"
-            className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold text-lg px-8 py-6 h-auto"
+            className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold text-xl md:text-4xl px-8 py-8 h-auto animate-beat"
           >
             {button}
           </Button>

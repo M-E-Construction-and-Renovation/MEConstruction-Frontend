@@ -86,7 +86,7 @@ export function Footer() {
               {socials.map((social) => (
                 <Link key={social.id} href={social.link} target={social.target}>
                   <Button variant="outline" size="icon">
-                    <social.icon className="h-4 w-4" />
+                    <social.icon className="h-8 w-8" />
                   </Button>
                 </Link>
               ))}

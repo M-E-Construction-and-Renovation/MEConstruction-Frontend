@@ -263,14 +263,8 @@ export const BeforeAfterMain = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            onClick={closeModal}
           >
-            <button
-              onClick={closeModal}
-              className="absolute top-6 right-6 text-white hover:text-accent transition"
-            >
-              <X className="w-8 h-8" />
-            </button>
-
             <motion.div
               key={showingAfter ? current.after : current.before}
               initial={{ opacity: 0, scale: 0.9 }}
@@ -278,11 +272,11 @@ export const BeforeAfterMain = () => {
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.4 }}
               className="relative w-full max-w-5xl"
+              onClick={(e) => e.stopPropagation()} // stops click from bubbling
             >
-              <Image
+              <img
                 src={showingAfter ? current.after : current.before}
                 alt={showingAfter ? "After" : "Before"}
-                fill
                 className="w-full h-auto max-h-[85vh] object-cover rounded-lg"
               />
               <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-4">

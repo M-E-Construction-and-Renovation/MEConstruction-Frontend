@@ -193,4 +193,19 @@
   .animate-beat {
     animation: beat 1.3s ease-in-out infinite;
   }
+
+  /* Bounce X animation */
+  @keyframes bounceX {
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(10px);
+    }
+  }
+
+  .animate-bounce-x {
+    animation: bounceX 1.3s infinite;
+  }
 }

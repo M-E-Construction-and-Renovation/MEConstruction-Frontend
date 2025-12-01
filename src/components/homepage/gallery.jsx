@@ -57,7 +57,7 @@ export function Gallery({ gallery }) {
               className="bg-accent hover:bg-accent/90 text-accent-foreground gap-2"
             >
               {button}
-              <ArrowRight className="h-5 w-5" />
+              <ArrowRight className="h-5 w-5 animate-bounce-x" />
             </Button>
           </Link>
         </div>

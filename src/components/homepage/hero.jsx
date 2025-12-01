@@ -86,7 +86,7 @@ export function Hero({ hero }) {
             </p>
 
             <div
-              className={`flex flex-col gap-4 sm:flex-row sm:items-center transition-all duration-1000 delay-200 ease-out ${
+              className={`flex flex-col gap-6 sm:flex-row sm:items-center transition-all duration-1000 delay-200 ease-out ${
                 isTextVisible
                   ? "translate-x-0 opacity-100"
                   : "-translate-x-12 opacity-0"
@@ -95,7 +95,7 @@ export function Hero({ hero }) {
               <Button
                 onClick={() => dispatch(openModal())}
                 size="lg"
-                className="bg-accent hover:bg-accent/90 text-accent-foreground gap-2 text-base"
+                className="bg-accent hover:bg-accent/90 text-accent-foreground gap-2 text-base animate-beat"
               >
                 {buttons.quote}
                 <ArrowRight className="h-5 w-5" />
@@ -104,10 +104,10 @@ export function Hero({ hero }) {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="gap-2 text-base bg-white border-white/20 hover:bg-primary"
+                  className="gap-2 text-base bg-white border-white/20 hover:bg-primary animate-beat"
                 >
-                  <Palette className="h-5 w-5" />
                   {buttons.design}
+                  <Palette className="h-5 w-5" />
                 </Button>
               </Link>
             </div>

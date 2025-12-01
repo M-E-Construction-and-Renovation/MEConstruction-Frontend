@@ -11,7 +11,7 @@
       "subtext": "We’ll tailor a custom remodeling plan that fits your lifestyle and budget. Our team brings years of experience, professionalism, and passion to every project. Whether you're reimagining your living space or expanding to fit your needs, we’ll help you build something beautiful, functional, and lasting.",
       "buttons": {
         "quote": "Get Free Quote",
-        "design": "Start Your Design"
+        "design": "Design Your Bathroom"
       },
       "features": [
         {
@@ -217,26 +217,50 @@
       "sectionTitle": "What Our Customers Say",
       "rating": {
         "score": "5.0",
-        "summary": "from 12,000+ reviews"
+        "summary": "from 120+ reviews"
       },
       "items": [
         {
-          "name": "Sarah Johnson",
-          "location": "Austin, TX",
+          "name": "Lin O.",
+          "location": "Northbrook, IL (Angi)",
           "rating": 5,
-          "text": "The team was professional, efficient, and the results exceeded our expectations. Our new shower looks amazing!"
+          "text": "Everything turned out the way I envisioned it. Very nice job.",
+          "date": "Nov 2025"
         },
         {
-          "name": "Michael Chen",
-          "location": "Seattle, WA",
+          "name": "Andrea T.",
+          "location": "Northbrook, IL (Angi)",
           "rating": 5,
-          "text": "From consultation to installation, everything was seamless. They truly completed the job in one day as promised."
+          "text": "M&E took down a non‑load bearing wall between the dining room and the living room giving us an open space living. We are very happy with their work. The guys came every day until the work is complete. They also cleaned up at the end and haul all the construction debris away. Marc and his team did a great job giving us a new living space that we love and enjoy everyday.",
+          "date": "Nov 2025"
         },
         {
-          "name": "Emily Rodriguez",
-          "location": "Miami, FL",
+          "name": "Christine N.",
+          "location": "Northbrook, IL (Angi)",
           "rating": 5,
-          "text": "Outstanding quality and service. The lifetime warranty gives us complete peace of mind. Highly recommend!"
+          "text": "I recently had a concrete driveway project done by M&E Construction.. the process was smooth.. I'm so happy with how everything turned out!",
+          "date": "Mar 2025"
+        },
+        {
+          "name": "Ilya K.",
+          "location": "Northbrook, IL (Angi)",
+          "rating": 5,
+          "text": "Marc and his team at M&E Construction and Renovation were incredibly professional and reliable. They completed two complete bathroom remodels in a timely and efficient manner. They were extremely communicative, friendly, and honest throughout the entire process — overall a very smooth experience and both bathrooms turned out fantastic! Would highly recommend Marc and his excellent team and would gladly work with them again!",
+          "date": "Nov 2024"
+        },
+        {
+          "name": "Michelle K.",
+          "location": "Northbrook, IL (Angi)",
+          "rating": 5,
+          "text": "Marc's team was extremely professional and diligent in getting the job done.",
+          "date": "Nov 2024"
+        },
+        {
+          "name": "Jim G.",
+          "location": "Northbrook, IL (Angi)",
+          "rating": 5,
+          "text": "Finished product exceeded my expectations.",
+          "date": "Oct 2024"
         }
       ]
     }
@@ -508,6 +532,12 @@
           "src": "/images/angi-super-service-2023.png",
           "alt": "Angi Super Service Award 2023 Logo",
           "description": "Awarded for outstanding quality and customer satisfaction."
+        },
+        {
+          "title": "Angi - Super Service Award 2025",
+          "src": "/images/angi-super-service-2025.png",
+          "alt": "Angi Super Service Award 2025 Logo",
+          "description": "This pro has maintained an average of 4.5+ star throughout their time with Angi."
         }
       ]
     },
