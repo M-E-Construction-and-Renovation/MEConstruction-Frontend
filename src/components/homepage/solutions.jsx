@@ -5,7 +5,7 @@ import { ArrowRight, Check } from "lucide-react";
 import Image from "next/image";
 
 export function Solutions({ solutions }) {
-  const { sectionTitle, sectionSubtitle, buttonText, cards } = solutions;
+  const { sectionTitle, sectionSubtitle, cards } = solutions;
 
   return (
     // <section id="solutions" className="py-16 md:py-24">
@@ -32,7 +32,7 @@ export function Solutions({ solutions }) {
             >
               <CardContent className="p-0">
                 <div
-                  className={`grid gap-8 lg:grid-cols-2 ${
+                  className={`grid lg:grid-cols-2 ${
                     index % 2 === 1 ? "lg:grid-flow-dense" : ""
                   }`}
                 >
@@ -58,26 +58,26 @@ export function Solutions({ solutions }) {
                     </div>
                   </div>
 
-                  <div className="flex flex-col justify-center gap-6 p-6 lg:p-12">
+                  <div className="text-center flex flex-col justify-center gap-10 p-6 lg:p-12">
                     <div>
-                      <h3 className="text-2xl font-bold mb-3 md:text-3xl">
+                      <h3 className="text-2xl font-bold mb-3 md:text-3xl xl:text-6xl">
                         {solution.title}
                       </h3>
-                      <p className="text-muted-foreground text-pretty">
+                      <p className="text-muted-foreground text-pretty md:text-xl xl:text-2xl">
                         {solution.description}
                       </p>
                     </div>
 
-                    <ul className="space-y-3">
+                    <ul className="w-fit mx-auto space-y-3">
                       {solution.features.map((feature, featureIndex) => (
                         <li
                           key={featureIndex}
                           className="flex items-start gap-3"
                         >
-                          <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10 mt-0.5">
-                            <Check className="h-4 w-4 text-primary" />
+                          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-success-primary bg-success-primary/10 mt-0.5">
+                            <Check className="h-6 w-6 text-success-primary" />
                           </div>
-                          <span className="text-sm">{feature}</span>
+                          <span className="text-sm md:text-lg">{feature}</span>
                         </li>
                       ))}
                     </ul>
@@ -85,7 +85,7 @@ export function Solutions({ solutions }) {
                     <div className="animate-bounce">
                       <Link href={solution.href} target="_blank">
                         <Button className="bg-accent hover:bg-accent/90 text-accent-foreground gap-2 text-lg">
-                          {buttonText}
+                          {solution.ctaText}
                           <ArrowRight className="h-6 w-6" />
                         </Button>
                       </Link>

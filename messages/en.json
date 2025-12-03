@@ -86,7 +86,6 @@
       "path": "/",
       "sectionTitle": "Home Renovation Solutions for Every Need",
       "sectionSubtitle": "Choose from our range of premium bathroom, kitchen, and basement renovation solutions designed to fit your style and budget.",
-      "buttonText": "Learn More",
       "cards": [
         {
           "tag": "Most Popular",
@@ -99,7 +98,8 @@
             "Professional installation"
           ],
           "image": "/images/modern-bathroom-with-bathtub-and-elegant-tile.jpg",
-          "href": "/bathroom-remodel"
+          "href": "/design/choose-project",
+          "ctaText": "Design Your Bathroom Now!"
         },
         {
           "tag": "Quick Solution",
@@ -112,7 +112,8 @@
             "Fast, professional installation"
           ],
           "image": "/images/modern-walk-in-shower-with-glass-door-and-tile.jpg",
-          "href": "/shower-solutions"
+          "href": "/design/showers/shape",
+          "ctaText": "Get Your Shower Now!"
         },
         {
           "tag": "Luxury Option",
@@ -125,7 +126,8 @@
             "Custom color options"
           ],
           "image": "/images/luxury-freestanding-bathtub-in-modern-bathroom.jpg",
-          "href": "/bathtub-solutions"
+          "href": "/design/bathtubs/plumbing",
+          "ctaText": "Choose Your Bathtub Now!"
         },
         {
           "tag": "Home Upgrade",
@@ -138,7 +140,8 @@
             "Professional project management"
           ],
           "image": "/images/home-page-solutions-kitchen.jpg",
-          "href": "/kitchen-renovations"
+          "href": "/kitchen-solutions",
+          "ctaText": "Learn More About Kitchen Renovations!"
         },
         {
           "tag": "Expansion Project",
@@ -151,7 +154,8 @@
             "Entertainment or guest room options"
           ],
           "image": "/images/home-page-hero-basement.jpg",
-          "href": "/basement-finishing"
+          "href": "/basement-solutions",
+          "ctaText": "Learn More About Basement Finishing!"
         }
       ]
     },
@@ -222,42 +226,42 @@
       "items": [
         {
           "name": "Lin O.",
-          "location": "Northbrook, IL (Angi)",
+          "location": "Northbrook",
           "rating": 5,
           "text": "Everything turned out the way I envisioned it. Very nice job.",
           "date": "Nov 2025"
         },
         {
           "name": "Andrea T.",
-          "location": "Northbrook, IL (Angi)",
+          "location": "Northbrook",
           "rating": 5,
           "text": "M&E took down a non‑load bearing wall between the dining room and the living room giving us an open space living. We are very happy with their work. The guys came every day until the work is complete. They also cleaned up at the end and haul all the construction debris away. Marc and his team did a great job giving us a new living space that we love and enjoy everyday.",
           "date": "Nov 2025"
         },
         {
           "name": "Christine N.",
-          "location": "Northbrook, IL (Angi)",
+          "location": "Northbrook",
           "rating": 5,
           "text": "I recently had a concrete driveway project done by M&E Construction.. the process was smooth.. I'm so happy with how everything turned out!",
           "date": "Mar 2025"
         },
         {
           "name": "Ilya K.",
-          "location": "Northbrook, IL (Angi)",
+          "location": "Northbrook",
           "rating": 5,
           "text": "Marc and his team at M&E Construction and Renovation were incredibly professional and reliable. They completed two complete bathroom remodels in a timely and efficient manner. They were extremely communicative, friendly, and honest throughout the entire process — overall a very smooth experience and both bathrooms turned out fantastic! Would highly recommend Marc and his excellent team and would gladly work with them again!",
           "date": "Nov 2024"
         },
         {
           "name": "Michelle K.",
-          "location": "Northbrook, IL (Angi)",
+          "location": "Northbrook",
           "rating": 5,
           "text": "Marc's team was extremely professional and diligent in getting the job done.",
           "date": "Nov 2024"
         },
         {
           "name": "Jim G.",
-          "location": "Northbrook, IL (Angi)",
+          "location": "Northbrook",
           "rating": 5,
           "text": "Finished product exceeded my expectations.",
           "date": "Oct 2024"

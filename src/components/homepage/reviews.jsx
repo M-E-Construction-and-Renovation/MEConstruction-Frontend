@@ -50,7 +50,7 @@ export function Reviews({ reviews }) {
                     {[...Array(review.rating)].map((_, i) => (
                       <Star
                         key={i}
-                        className="h-4 w-4 fill-accent text-accent animate-pulse"
+                        className="h-4 w-4 fill-accent text-accent"
                       />
                     ))}
                   </div>

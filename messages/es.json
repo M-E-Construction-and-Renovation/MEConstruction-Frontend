@@ -86,7 +86,6 @@
       "path": "/",
       "sectionTitle": "Soluciones de renovación para cada necesidad",
       "sectionSubtitle": "Elige entre nuestras opciones premium de renovación de baño, cocina y sótano diseñadas para adaptarse a tu estilo y presupuesto.",
-      "buttonText": "Más información",
       "cards": [
         {
           "tag": "Más popular",
@@ -99,7 +98,8 @@
             "Instalación profesional"
           ],
           "image": "/images/modern-bathroom-with-bathtub-and-elegant-tile.jpg",
-          "href": "/bathroom-remodel"
+          "href": "/design/choose-project",
+          "ctaText": "¡Diseña tu baño ahora!"
         },
         {
           "tag": "Solución rápida",
@@ -112,7 +112,8 @@
             "Instalación rápida y profesional"
           ],
           "image": "/images/modern-walk-in-shower-with-glass-door-and-tile.jpg",
-          "href": "/shower-solutions"
+          "href": "/design/showers/shape",
+          "ctaText": "¡Obtén tu ducha ahora!"
         },
         {
           "tag": "Opción de lujo",
@@ -125,7 +126,8 @@
             "Opciones de color personalizadas"
           ],
           "image": "/images/luxury-freestanding-bathtub-in-modern-bathroom.jpg",
-          "href": "/bathtub-solutions"
+          "href": "/design/bathtubs/plumbing",
+          "ctaText": "¡Elige tu bañera ahora!"
         },
         {
           "tag": "Mejora del hogar",
@@ -138,7 +140,8 @@
             "Gestión profesional de proyectos"
           ],
           "image": "/images/home-page-solutions-kitchen.jpg",
-          "href": "/kitchen-renovations"
+          "href": "/kitchen-solutions",
+          "ctaText": "Más información"
         },
         {
           "tag": "Proyecto de expansión",
@@ -151,7 +154,8 @@
             "Opciones para sala de entretenimiento o habitación de invitados"
           ],
           "image": "/images/home-page-hero-basement.jpg",
-          "href": "/basement-finishing"
+          "href": "/basement-solutions",
+          "ctaText": "Más información"
         }
       ]
     },
@@ -222,42 +226,42 @@
       "items": [
         {
           "name": "Lin O.",
-          "location": "Northbrook, IL (Angi)",
+          "location": "Northbrook",
           "rating": 5,
           "text": "Todo resultó como lo imaginé. Muy buen trabajo.",
           "date": "Nov 2025"
         },
         {
           "name": "Andrea T.",
-          "location": "Northbrook, IL (Angi)",
+          "location": "Northbrook",
           "rating": 5,
           "text": "M&E derribó una pared no estructural entre el comedor y la sala, dándonos un espacio abierto. Estamos muy contentos con su trabajo. El equipo vino todos los días hasta que el trabajo estuvo completo. También limpiaron al final y se llevaron todos los escombros. Marc y su equipo hicieron un gran trabajo dándonos un nuevo espacio que amamos y disfrutamos cada día.",
           "date": "Nov 2025"
         },
         {
           "name": "Christine N.",
-          "location": "Northbrook, IL (Angi)",
+          "location": "Northbrook",
           "rating": 5,
           "text": "Recientemente tuve un proyecto de entrada de concreto hecho por M&E Construction… el proceso fue fluido… ¡estoy tan feliz con cómo resultó todo!",
           "date": "Mar 2025"
         },
         {
           "name": "Ilya K.",
-          "location": "Northbrook, IL (Angi)",
+          "location": "Northbrook",
           "rating": 5,
           "text": "Marc y su equipo en M&E Construction and Renovation fueron increíblemente profesionales y confiables. Completaron dos remodelaciones de baños en tiempo y de forma eficiente. Fueron extremadamente comunicativos, amables y honestos durante todo el proceso — en general una experiencia muy fluida y ambos baños quedaron fantásticos. ¡Los recomiendo ampliamente y sin duda trabajaríamos con ellos nuevamente!",
           "date": "Nov 2024"
         },
         {
           "name": "Michelle K.",
-          "location": "Northbrook, IL (Angi)",
+          "location": "Northbrook",
           "rating": 5,
           "text": "El equipo de Marc fue extremadamente profesional y diligente para realizar el trabajo.",
           "date": "Nov 2024"
         },
         {
           "name": "Jim G.",
-          "location": "Northbrook, IL (Angi)",
+          "location": "Northbrook",
           "rating": 5,
           "text": "El producto final superó mis expectativas.",
           "date": "Oct 2024"

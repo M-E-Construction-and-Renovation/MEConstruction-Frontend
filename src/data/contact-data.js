@@ -29,12 +29,12 @@ export const reviewsPlatforms = [
     id: "angi",
     link: "https://www.angi.com/companylist/us/il/northbrook/me-construction-renovation-reviews-1.htm?fbclid=IwZXh0bgNhZW0CMTAAYnJpZBExY2tNSXVndkpFaWNCNHY0Z3NydGMGYXBwX2lkEDIyMjAzOTE3ODgyMDA4OTIAAR4Royu4LPTVZJXjGVx8HfTbA8LHkWMIXNu1zKDZmwfrzerwy84-k5ytdYdv2A_aem_kQeYpEvcou2P2nZrC-Urxg",
     target: "_blank",
-    text: "Read views on Angi",
+    text: "Read reviews on Angi",
   },
   {
     id: "yelp",
     link: "https://www.yelp.com/biz/m-and-e-construction-northbrook",
     target: "_blank",
-    text: "Read views on Yelp",
+    text: "Read reviews on Yelp",
   },
 ];
