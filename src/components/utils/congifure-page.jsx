@@ -30,11 +30,34 @@ const ConfigurePage = ({
     <div className="flex flex-col h-full overflow-hidden">
       {/* Main Content */}
 
-      <div className="flex-1 flex flex-col lg:flex-row overflow-auto lg:overflow-hidden">
-        {/* Preview Section */}
+      <div className="flex-1 flex flex-col xl:flex-row overflow-auto xl:overflow-hidden">
+        {/* Toolbar Mobile*/}
+        <div className="flex xl:hidden flex-wrap items-center justify-between gap-2 p-1 border-b bg-background sticky top-0 z-10">
+          <Button
+            variant="ghost"
+            className="gap-2 flex-shrink-0"
+            onClick={() => router.back()}
+          >
+            <ChevronLeft className="h-4 w-4" />
+            Back to previous page
+          </Button>
+          <div className="flex flex-wrap gap-2 justify-center ">
+            <Button
+              variant="outline"
+              className="gap-2 bg-transparent"
+              onClick={handleResetDesign}
+            >
+              <RotateCcw className="h-4 w-4" />
+              <span className="hidden sm:inline">Reset</span>
+            </Button>
 
-        <div className="w-full lg:w-2/3 flex items-center justify-center bg-muted relative">
-          <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[calc(100vh-70px)] flex items-center justify-center">
+            <EmailModal onSave={handleSaveDesign} projectEmail={projectEmail} />
+          </div>
+        </div>
+
+        {/* Preview Section */}
+        <div className="w-full xl:w-2/3 flex items-center justify-center bg-muted relative">
+          <div className="relative w-full aspect-square xl:h-[calc(100vh-100px)] flex items-center justify-center">
             <BathroomConfigurator
               selectedProducts={selectedProducts}
               categories={categories}
@@ -45,10 +68,9 @@ const ConfigurePage = ({
         </div>
 
         {/* Sidebar */}
-        <div className="w-full lg:w-1/3 flex flex-col border-t lg:border-t-0 lg:border-l bg-background">
+        <div className="w-full xl:w-1/3 flex flex-col border-t xl:border-t-0 xl:border-l bg-background">
           {/* Toolbar */}
-
-          <div className="flex flex-wrap items-center justify-between gap-2 p-3 border-b bg-background sticky top-0 z-10">
+          <div className="hidden xl:flex flex-wrap items-center justify-between gap-2 p-3 border-b bg-background sticky top-0 z-10">
             <Button
               variant="ghost"
               className="gap-2 flex-shrink-0"
@@ -66,25 +88,11 @@ const ConfigurePage = ({
                 <RotateCcw className="h-4 w-4" />
                 <span className="hidden sm:inline">Reset</span>
               </Button>
-              {/* <Button
-                variant="outline"
-                className="gap-2 bg-transparent"
-                onClick={handleSaveDesign}
-              >
-                <Save className="h-4 w-4" />
-                <span className="hidden sm:inline">Save</span>
-              </Button> */}
+
               <EmailModal
                 onSave={handleSaveDesign}
                 projectEmail={projectEmail}
               />
-              {/* <Button
-                className="gap-2 bg-primary hover:bg-primary/90"
-                onClick={handleShareDesign}
-              >
-                <Share2 className="h-4 w-4" />
-                <span className="hidden sm:inline">Share</span>
-              </Button> */}
             </div>
           </div>
 
@@ -156,11 +164,10 @@ const ConfigurePage = ({
 
           {/* Product List */}
 
-          <div className="flex-1 p-3 overflow-visible lg:overflow-y-auto">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
+          <div className="flex xl:block overflow-x-auto xl:overflow-y-auto p-3">
+            <div className="flex gap-3 xl:grid xl:grid-cols-3">
               {currentCategory?.products
                 .filter((product) => {
-                  // show product if it has colors in the active tier
                   if (product.tiers?.[activeTier]?.length > 0) return true;
                   return false;
                 })
@@ -171,17 +178,13 @@ const ConfigurePage = ({
                       selectedProducts[activeTab]?.color
                     );
 
-                  // pick default color from tiers
                   const defaultColor = product.tiers?.[activeTier]?.[0] ?? "";
 
-                  // pick image source based on color if product is selected choose product display image for that color if not choose default color
                   let imgSrc = isSelected
                     ? product.displayByColor?.[
                         selectedProducts[activeTab]?.color
                       ]?.productDisplay
                     : product.displayByColor?.[defaultColor]?.productDisplay;
-
-                  let imgAlt = product.name || "Product";
 
                   return (
                     <div
@@ -191,7 +194,7 @@ const ConfigurePage = ({
                           ? handleUnselectProduct(product.id)
                           : handleProductSelect(product.id, defaultColor)
                       }
-                      className={`p-3 rounded-lg cursor-pointer transition-all border-2 ${
+                      className={`min-w-[160px] max-w-[160px] flex-shrink-0 xl:min-w-0 xl:max-w-none xl:w-auto p-3 rounded-lg cursor-pointer transition-all border-2 ${
                         isSelected
                           ? "border-primary bg-primary/10"
                           : "border-muted hover:border-primary/50"
@@ -200,8 +203,7 @@ const ConfigurePage = ({
                       <div className="relative w-full aspect-square mb-2 rounded overflow-hidden bg-gradient-to-br from-transparent via-black/20 to-transparent">
                         <img
                           src={imgSrc}
-                          alt={imgAlt}
-                          // fill
+                          alt={product.name}
                           className="w-full h-full object-cover"
                         />
                       </div>
