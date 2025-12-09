@@ -11,7 +11,7 @@ export default async function RootLayout({ children, params }) {
   const messages = (await import(`../../../../messages/${locale}.json`))
     .default;
 
-  const { upperHeader, cta } = messages;
+  const { cta, upperHeader } = messages;
 
   return (
     <div>

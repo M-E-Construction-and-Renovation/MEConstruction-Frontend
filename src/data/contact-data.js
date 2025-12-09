@@ -5,6 +5,10 @@ export const contactNumber = {
   value: "+18155819633",
 };
 
+export const calendly = {
+  href: "https://calendly.com/marc-meconstructionrenovations",
+};
+
 export const primaryEmail = "marc@meconstructionrenovations.com";
 
 export const secondaryEmail = "admin@meconstructionrenovations.com";
