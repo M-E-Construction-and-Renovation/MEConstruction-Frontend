@@ -7,6 +7,7 @@ import { doorsRodsCategories } from "./doors-rods";
 import { wainscotingsCategories } from "./wainscotings";
 import { ceilingsCategories } from "./ceilings";
 import { nicheCategories } from "./niche";
+import { towelBars } from "./towelBars";
 
 const allCategories = [
   ...tubFrontsCategories,
@@ -18,6 +19,7 @@ const allCategories = [
   ...doorsRodsCategories,
   ...wainscotingsCategories,
   ...ceilingsCategories,
+  ...towelBars,
 ];
 
 export default allCategories;
