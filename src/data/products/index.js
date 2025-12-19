@@ -8,6 +8,10 @@ import { wainscotingsCategories } from "./wainscotings";
 import { ceilingsCategories } from "./ceilings";
 import { nicheCategories } from "./niche";
 import { towelBars } from "./towelBars";
+import { toiletCategories } from "./toilets";
+import { vanityShelvesCategories } from "./vanityShelves";
+import { mirrorCategories } from "./vanityMirrors";
+import { lightsCategories } from "./vanityLights";
 
 const allCategories = [
   ...tubFrontsCategories,
@@ -20,6 +24,10 @@ const allCategories = [
   ...wainscotingsCategories,
   ...ceilingsCategories,
   ...towelBars,
+  ...toiletCategories,
+  ...vanityShelvesCategories,
+  ...mirrorCategories,
+  ...lightsCategories,
 ];
 
 export default allCategories;

@@ -1,6 +1,7 @@
 export const doorsRodsCategories = [
   {
     id: "doorsRods",
+    angle: "front",
     label: "Doors / Rods",
     zIndex: "80",
     shapesAllowed: ["tub"],
@@ -22,6 +23,7 @@ export const doorsRodsCategories = [
   },
   {
     id: "tub-to-shower-doors",
+    angle: "front",
     label: "Doors / Rods",
     zIndex: "80",
     shapesAllowed: ["tub-to-shower"],
@@ -45,6 +47,7 @@ export const doorsRodsCategories = [
   },
   {
     id: "curved-doors",
+    angle: "front",
     label: "Doors / Rods",
     zIndex: "80",
     shapesAllowed: ["curved"],
@@ -68,6 +71,7 @@ export const doorsRodsCategories = [
   },
   {
     id: "neo-angle-doors",
+    angle: "front",
     label: "Doors / Rods",
     zIndex: "80",
     shapesAllowed: ["neo-angle"],
@@ -91,6 +95,7 @@ export const doorsRodsCategories = [
   },
   {
     id: "alcove-doors",
+    angle: "front",
     label: "Doors / Rods",
     zIndex: "80",
     shapesAllowed: ["alcove"],

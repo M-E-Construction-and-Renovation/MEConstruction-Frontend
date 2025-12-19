@@ -1,6 +1,7 @@
 export const grabBarsCategories = [
   {
     id: "grabBars",
+    angle: "front",
     label: "Grab Bars",
     zIndex: "50",
     shapesAllowed: ["tub", "tub-to-shower"],

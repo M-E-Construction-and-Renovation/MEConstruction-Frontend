@@ -1,6 +1,7 @@
 export const wallsCategories = [
   {
     id: "walls",
+    angle: "front",
     label: "Walls",
     zIndex: "10",
     shapesAllowed: ["tub", "tub-to-shower"],
@@ -78,6 +79,7 @@ export const wallsCategories = [
   },
   {
     id: "showerWalls",
+    angle: "front",
     label: "Walls",
     zIndex: "10",
     shapesAllowed: ["curved", "neo-angle", "alcove"],

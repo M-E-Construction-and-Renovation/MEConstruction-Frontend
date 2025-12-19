@@ -1,6 +1,7 @@
 export const wainscotingsCategories = [
   {
     id: "wainscotings",
+    angle: "front",
     label: "Wainscotings",
     zIndex: "70",
     shapesAllowed: ["tub", "tub-to-shower"],
@@ -40,6 +41,7 @@ export const wainscotingsCategories = [
   },
   {
     id: "showerWainscotings",
+    angle: "front",
     label: "Wainscotings",
     zIndex: "70",
     shapesAllowed: ["curved", "neo-angle", "alcove"],

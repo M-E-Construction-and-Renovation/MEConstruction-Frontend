@@ -4,13 +4,15 @@ import { motion } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { bathroomConfig } from "@/data/bathroom-data";
-import { Plus, Minus, Fullscreen } from "lucide-react";
+import { Plus, Minus, Fullscreen, ArrowRightLeft } from "lucide-react";
 
 export default function BathroomConfigurator({
   selectedProducts = {},
   categories = [],
   plumbing = "",
   shape = "",
+  isSideAngle = false,
+  setIsSideAngle = () => {},
 }) {
   const containerRef = useRef(null);
   const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
@@ -19,13 +21,19 @@ export default function BathroomConfigurator({
     (bathroom) => bathroom.shape === shape
   );
 
-  filteredBathroomConfig?.config?.forEach((config) => {
+  const bathroomViewAngleConfig = isSideAngle
+    ? filteredBathroomConfig?.config?.sideAngleCam
+    : filteredBathroomConfig?.config?.frontAngleCam;
+
+  bathroomViewAngleConfig?.forEach((config) => {
     const img = new Image();
     img.src = config.src;
   });
 
   const filteredCategories = categories.filter(
-    (category) => category.id in selectedProducts
+    (category) =>
+      category.id in selectedProducts &&
+      (isSideAngle ? category.angle === "side" : category.angle === "front")
   );
 
   useEffect(() => {
@@ -73,7 +81,7 @@ export default function BathroomConfigurator({
               <>
                 <TransformComponent contentStyle={wrapperStyles}>
                   {/* Base Images */}
-                  {filteredBathroomConfig?.config?.map((config, index) => (
+                  {bathroomViewAngleConfig?.map((config, index) => (
                     <img
                       key={index}
                       src={config.src}
@@ -131,6 +139,12 @@ export default function BathroomConfigurator({
                     className="p-2 bg-white rounded-full shadow-md hover:bg-gray-100 mt-1 cursor-pointer"
                   >
                     <Fullscreen className="w-6 h-6" />
+                  </button>
+                  <button
+                    onClick={() => setIsSideAngle(!isSideAngle)}
+                    className="p-2 bg-white rounded-full shadow-md hover:bg-gray-100 mt-1 cursor-pointer"
+                  >
+                    <ArrowRightLeft className="w-6 h-6" />
                   </button>
                 </div>
               </>

@@ -1,6 +1,7 @@
 export const nicheCategories = [
   {
     id: "niche",
+    angle: "front",
     label: "Wall Niche",
     zIndex: "50",
     shapesAllowed: ["tub", "tub-to-shower", "curved", "neo-angle", "alcove"],

@@ -1,6 +1,7 @@
 export const tubFrontsCategories = [
   {
     id: "tubFronts",
+    angle: "front",
     label: "Tub Fronts",
     zIndex: "75",
     shapesAllowed: ["tub"],

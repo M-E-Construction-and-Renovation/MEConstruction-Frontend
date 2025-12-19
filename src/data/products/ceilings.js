@@ -1,6 +1,7 @@
 export const ceilingsCategories = [
   {
     id: "ceilings",
+    angle: "front",
     label: "Ceilings",
     zIndex: "20",
     shapesAllowed: ["tub", "tub-to-shower", "curved", "neo-angle", "alcove"],

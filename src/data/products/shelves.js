@@ -1,6 +1,7 @@
 export const shelvesCategories = [
   {
     id: "shelves",
+    angle: "front",
     label: "Shelves",
     zIndex: "50",
     shapesAllowed: ["tub", "tub-to-shower", "curved", "neo-angle", "alcove"],

@@ -1,6 +1,7 @@
 export const faucetsCategories = [
   {
     id: "faucets",
+    angle: "front",
     label: "Faucets",
     zIndex: "80",
     shapesAllowed: ["tub", "tub-to-shower", "curved", "neo-angle", "alcove"],
