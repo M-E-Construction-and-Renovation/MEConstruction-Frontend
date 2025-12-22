@@ -14,12 +14,6 @@ export async function POST(req) {
     // Validate email
     const { email } = QuerySchema.parse(body);
 
-    // Query by email
-    // const { data, error } = await supabase
-    //   .from("projects")
-    //   .select("*")
-    //   .eq("email", email);
-
     const { data, error } = await supabase
       .from("projects")
       .select("*")
@@ -32,7 +26,8 @@ export async function POST(req) {
           error:
             error.code === "PGRST116"
               ? "No project found with this email"
-              : error.message,
+              : // : error.message,
+                "Failed to load project. Something went wrong",
         },
         { status: 400 }
       );

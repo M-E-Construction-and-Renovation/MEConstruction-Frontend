@@ -100,7 +100,8 @@ export async function POST(req) {
   } catch (error) {
     console.error(error);
     return NextResponse.json(
-      { success: false, message: error.message || "Something went wrong" },
+      // { success: false, message: error.message || "Something went wrong" },
+      { success: false, message: "Failed to save. Something went wrong" },
       { status: 500 }
     );
   }
