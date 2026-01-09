@@ -1,7 +1,7 @@
 export const tubFrontsCategories = [
   {
     id: "tubFronts",
-    angle: "front",
+    initialAngle: "front",
     label: "Tub Fronts",
     zIndex: "75",
     shapesAllowed: ["tub"],
@@ -16,8 +16,10 @@ export const tubFrontsCategories = [
           White: {
             productDisplay:
               "/configurator/products/tubfronts/design/princeton-white.png",
-            designDisplay:
-              "/configurator/products/tubfronts/design/princeton-white.png",
+            designDisplay: {
+              front:
+                "/configurator/products/tubfronts/design/princeton-white.png",
+            },
           },
         },
       },
@@ -32,8 +34,10 @@ export const tubFrontsCategories = [
           White: {
             productDisplay:
               "/configurator/products/tubfronts/design/prosteel-white.png",
-            designDisplay:
-              "/configurator/products/tubfronts/design/prosteel-white.png",
+            designDisplay: {
+              front:
+                "/configurator/products/tubfronts/design/prosteel-white.png",
+            },
           },
         },
       },
@@ -47,8 +51,10 @@ export const tubFrontsCategories = [
           White: {
             productDisplay:
               "/configurator/products/tubfronts/design/villager-white.png",
-            designDisplay:
-              "/configurator/products/tubfronts/design/villager-white.png",
+            designDisplay: {
+              front:
+                "/configurator/products/tubfronts/design/villager-white.png",
+            },
           },
         },
       },

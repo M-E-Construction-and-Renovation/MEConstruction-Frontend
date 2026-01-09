@@ -1,7 +1,7 @@
 export const wainscotingsCategories = [
   {
     id: "wainscotings",
-    angle: "front",
+    initialAngle: "front",
     label: "Wainscotings",
     zIndex: "70",
     shapesAllowed: ["tub", "tub-to-shower"],
@@ -16,8 +16,9 @@ export const wainscotingsCategories = [
           White: {
             productDisplay:
               "/configurator/products/walls/display/grid-display.PNG",
-            designDisplay:
-              "/configurator/products/wainscotings/wainscoting2.png",
+            designDisplay: {
+              front: "/configurator/products/wainscotings/wainscoting2.png",
+            },
           },
         },
       },
@@ -32,8 +33,9 @@ export const wainscotingsCategories = [
           White: {
             productDisplay:
               "https://www.cherokeewood.com/wp-content/uploads/2016/09/wainscoting-bead-board.jpg",
-            designDisplay:
-              "/configurator/products/wainscotings/wainscoting1.png",
+            designDisplay: {
+              front: "/configurator/products/wainscotings/wainscoting1.png",
+            },
           },
         },
       },
@@ -56,8 +58,10 @@ export const wainscotingsCategories = [
           White: {
             productDisplay:
               "/configurator/products/walls/display/grid-display.PNG",
-            designDisplay:
-              "/configurator/products/wainscotings/shower-wainscoting-tile-white.png",
+            designDisplay: {
+              front:
+                "/configurator/products/wainscotings/shower-wainscoting-tile-white.png",
+            },
           },
         },
       },
@@ -71,8 +75,10 @@ export const wainscotingsCategories = [
           White: {
             productDisplay:
               "https://www.cherokeewood.com/wp-content/uploads/2016/09/wainscoting-bead-board.jpg",
-            designDisplay:
-              "/configurator/products/wainscotings/shower-wainscoting-breadboard-white.png",
+            designDisplay: {
+              front:
+                "/configurator/products/wainscotings/shower-wainscoting-breadboard-white.png",
+            },
           },
         },
       },

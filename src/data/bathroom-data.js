@@ -22,7 +22,7 @@ const baseBathroomConfig = [
 const sideAngleBaseBathroomConfig = [
   {
     id: "sideAngleCamBathroom",
-    src: "/configurator/bathroom/side-angle-bathroom.png",
+    src: "/configurator/bathroom/side-angle-bathroom.jpg",
     alt: "Bathroom Side Angle View",
     zIndex: "0",
   },

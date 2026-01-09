@@ -106,7 +106,7 @@ const ConfigurePage = ({
             {categories.map((category) => {
               const hasSelectedProduct = !!selectedProducts[category.id];
 
-              const switchToSideAngle = category?.angle === "side";
+              const switchToSideAngle = category?.initialAngle === "side";
 
               return (
                 <button

@@ -1,7 +1,7 @@
 export const ceilingsCategories = [
   {
     id: "ceilings",
-    angle: "front",
+    initialAngle: "front",
     label: "Ceilings",
     zIndex: "20",
     shapesAllowed: ["tub", "tub-to-shower", "curved", "neo-angle", "alcove"],
@@ -15,7 +15,9 @@ export const ceilingsCategories = [
         displayByColor: {
           White: {
             productDisplay: "/configurator/products/ceilings/ceiling1.png",
-            designDisplay: "/configurator/products/ceilings/ceiling1.png",
+            designDisplay: {
+              front: "/configurator/products/ceilings/ceiling1.png",
+            },
           },
         },
       },
@@ -29,7 +31,9 @@ export const ceilingsCategories = [
         displayByColor: {
           White: {
             productDisplay: "/configurator/products/ceilings/ceiling2.png",
-            designDisplay: "/configurator/products/ceilings/ceiling2.png",
+            designDisplay: {
+              front: "/configurator/products/ceilings/ceiling2.png",
+            },
           },
         },
       },

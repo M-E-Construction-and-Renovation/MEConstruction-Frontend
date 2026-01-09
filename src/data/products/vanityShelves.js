@@ -1,7 +1,7 @@
 export const vanityShelvesCategories = [
   {
     id: "vanitiyShelves",
-    angle: "side",
+    initialAngle: "side",
     label: "Vanity Shelves",
     zIndex: "10",
     shapesAllowed: ["tub", "tub-to-shower", "curved", "neo-angle", "alcove"],
@@ -16,20 +16,23 @@ export const vanityShelvesCategories = [
           White: {
             productDisplay:
               "/configurator/products/vanity-shelves/design/basic1-white.png",
-            designDisplay:
-              "/configurator/products/vanity-shelves/design/basic1-white.png",
+            designDisplay: {
+              side: "/configurator/products/vanity-shelves/design/basic1-white.png",
+            },
           },
           Brown: {
             productDisplay:
               "/configurator/products/vanity-shelves/design/basic1-brown.png",
-            designDisplay:
-              "/configurator/products/vanity-shelves/design/basic1-brown.png",
+            designDisplay: {
+              side: "/configurator/products/vanity-shelves/design/basic1-brown.png",
+            },
           },
           Wood: {
             productDisplay:
               "/configurator/products/vanity-shelves/design/basic1-wood.png",
-            designDisplay:
-              "/configurator/products/vanity-shelves/design/basic1-wood.png",
+            designDisplay: {
+              side: "/configurator/products/vanity-shelves/design/basic1-wood.png",
+            },
           },
         },
       },
@@ -43,20 +46,23 @@ export const vanityShelvesCategories = [
           White: {
             productDisplay:
               "/configurator/products/vanity-shelves/design/basic2-white.png",
-            designDisplay:
-              "/configurator/products/vanity-shelves/design/basic2-white.png",
+            designDisplay: {
+              side: "/configurator/products/vanity-shelves/design/basic2-white.png",
+            },
           },
           Blue: {
             productDisplay:
               "/configurator/products/vanity-shelves/design/basic2-blue.png",
-            designDisplay:
-              "/configurator/products/vanity-shelves/design/basic2-blue.png",
+            designDisplay: {
+              side: "/configurator/products/vanity-shelves/design/basic2-blue.png",
+            },
           },
           Pearl: {
             productDisplay:
               "/configurator/products/vanity-shelves/design/basic2-pearl.png",
-            designDisplay:
-              "/configurator/products/vanity-shelves/design/basic2-pearl.png",
+            designDisplay: {
+              side: "/configurator/products/vanity-shelves/design/basic2-pearl.png",
+            },
           },
         },
       },
@@ -70,14 +76,16 @@ export const vanityShelvesCategories = [
           White: {
             productDisplay:
               "/configurator/products/vanity-shelves/design/standard1-white.png",
-            designDisplay:
-              "/configurator/products/vanity-shelves/design/standard1-white.png",
+            designDisplay: {
+              side: "/configurator/products/vanity-shelves/design/standard1-white.png",
+            },
           },
           Cream: {
             productDisplay:
               "/configurator/products/vanity-shelves/design/standard1-cream.png",
-            designDisplay:
-              "/configurator/products/vanity-shelves/design/standard1-cream.png",
+            designDisplay: {
+              side: "/configurator/products/vanity-shelves/design/standard1-cream.png",
+            },
           },
         },
       },
@@ -91,8 +99,9 @@ export const vanityShelvesCategories = [
           Cream: {
             productDisplay:
               "/configurator/products/vanity-shelves/design/standard2-cream.png",
-            designDisplay:
-              "/configurator/products/vanity-shelves/design/standard2-cream.png",
+            designDisplay: {
+              side: "/configurator/products/vanity-shelves/design/standard2-cream.png",
+            },
           },
         },
       },
@@ -106,8 +115,9 @@ export const vanityShelvesCategories = [
           Cream: {
             productDisplay:
               "/configurator/products/vanity-shelves/design/standard3-white.png",
-            designDisplay:
-              "/configurator/products/vanity-shelves/design/standard3-white.png",
+            designDisplay: {
+              side: "/configurator/products/vanity-shelves/design/standard3-white.png",
+            },
           },
         },
       },
@@ -121,14 +131,16 @@ export const vanityShelvesCategories = [
           White: {
             productDisplay:
               "/configurator/products/vanity-shelves/design/premium1-white.png",
-            designDisplay:
-              "/configurator/products/vanity-shelves/design/premium1-white.png",
+            designDisplay: {
+              side: "/configurator/products/vanity-shelves/design/premium1-white.png",
+            },
           },
           Wood: {
             productDisplay:
               "/configurator/products/vanity-shelves/design/premium1-wood.png",
-            designDisplay:
-              "/configurator/products/vanity-shelves/design/premium1-wood.png",
+            designDisplay: {
+              side: "/configurator/products/vanity-shelves/design/premium1-wood.png",
+            },
           },
         },
       },
@@ -142,14 +154,16 @@ export const vanityShelvesCategories = [
           Blue: {
             productDisplay:
               "/configurator/products/vanity-shelves/design/premium2-blue.png",
-            designDisplay:
-              "/configurator/products/vanity-shelves/design/premium2-blue.png",
+            designDisplay: {
+              side: "/configurator/products/vanity-shelves/design/premium2-blue.png",
+            },
           },
           Wood: {
             productDisplay:
               "/configurator/products/vanity-shelves/design/premium2-wood.png",
-            designDisplay:
-              "/configurator/products/vanity-shelves/design/premium2-wood.png",
+            designDisplay: {
+              side: "/configurator/products/vanity-shelves/design/premium2-wood.png",
+            },
           },
         },
       },
@@ -163,20 +177,23 @@ export const vanityShelvesCategories = [
           Brown: {
             productDisplay:
               "/configurator/products/vanity-shelves/design/premium3-brown.png",
-            designDisplay:
-              "/configurator/products/vanity-shelves/design/premium3-brown.png",
+            designDisplay: {
+              side: "/configurator/products/vanity-shelves/design/premium3-brown.png",
+            },
           },
           Wood: {
             productDisplay:
               "/configurator/products/vanity-shelves/design/premium3-wood.png",
-            designDisplay:
-              "/configurator/products/vanity-shelves/design/premium3-wood.png",
+            designDisplay: {
+              side: "/configurator/products/vanity-shelves/design/premium3-wood.png",
+            },
           },
           Pearl: {
             productDisplay:
               "/configurator/products/vanity-shelves/design/premium3-pearl.png",
-            designDisplay:
-              "/configurator/products/vanity-shelves/design/premium3-pearl.png",
+            designDisplay: {
+              side: "/configurator/products/vanity-shelves/design/premium3-pearl.png",
+            },
           },
         },
       },

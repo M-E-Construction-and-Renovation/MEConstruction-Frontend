@@ -1,7 +1,7 @@
 export const lightsCategories = [
   {
     id: "lights",
-    angle: "side",
+    initialAngle: "side",
     label: "Vanity Light",
     zIndex: "10",
     shapesAllowed: ["tub", "tub-to-shower", "curved", "neo-angle", "alcove"],
@@ -16,8 +16,9 @@ export const lightsCategories = [
           White: {
             productDisplay:
               "/configurator/products/vanity-lights/design/basic-1.png",
-            designDisplay:
-              "/configurator/products/vanity-lights/design/basic-1.png",
+            designDisplay: {
+              side: "/configurator/products/vanity-lights/design/basic-1.png",
+            },
           },
         },
       },
@@ -31,8 +32,9 @@ export const lightsCategories = [
           White: {
             productDisplay:
               "/configurator/products/vanity-lights/design/basic-2.png",
-            designDisplay:
-              "/configurator/products/vanity-lights/design/basic-2.png",
+            designDisplay: {
+              side: "/configurator/products/vanity-lights/design/basic-2.png",
+            },
           },
         },
       },
@@ -46,8 +48,9 @@ export const lightsCategories = [
           White: {
             productDisplay:
               "/configurator/products/vanity-lights/design/basic-3.png",
-            designDisplay:
-              "/configurator/products/vanity-lights/design/basic-3.png",
+            designDisplay: {
+              side: "/configurator/products/vanity-lights/design/basic-3.png",
+            },
           },
         },
       },
@@ -61,8 +64,9 @@ export const lightsCategories = [
           White: {
             productDisplay:
               "/configurator/products/vanity-lights/design/basic-4.png",
-            designDisplay:
-              "/configurator/products/vanity-lights/design/basic-4.png",
+            designDisplay: {
+              side: "/configurator/products/vanity-lights/design/basic-4.png",
+            },
           },
         },
       },
@@ -76,8 +80,9 @@ export const lightsCategories = [
           White: {
             productDisplay:
               "/configurator/products/vanity-lights/design/basic-5.png",
-            designDisplay:
-              "/configurator/products/vanity-lights/design/basic-5.png",
+            designDisplay: {
+              side: "/configurator/products/vanity-lights/design/basic-5.png",
+            },
           },
         },
       },
@@ -91,8 +96,9 @@ export const lightsCategories = [
           Brown: {
             productDisplay:
               "/configurator/products/vanity-lights/design/standard-1.png",
-            designDisplay:
-              "/configurator/products/vanity-lights/design/standard-1.png",
+            designDisplay: {
+              side: "/configurator/products/vanity-lights/design/standard-1.png",
+            },
           },
         },
       },
@@ -106,8 +112,9 @@ export const lightsCategories = [
           Brown: {
             productDisplay:
               "/configurator/products/vanity-lights/design/standard-2.png",
-            designDisplay:
-              "/configurator/products/vanity-lights/design/standard-2.png",
+            designDisplay: {
+              side: "/configurator/products/vanity-lights/design/standard-2.png",
+            },
           },
         },
       },
@@ -121,8 +128,9 @@ export const lightsCategories = [
           Brown: {
             productDisplay:
               "/configurator/products/vanity-lights/design/standard-3.png",
-            designDisplay:
-              "/configurator/products/vanity-lights/design/standard-3.png",
+            designDisplay: {
+              side: "/configurator/products/vanity-lights/design/standard-3.png",
+            },
           },
         },
       },
@@ -136,8 +144,9 @@ export const lightsCategories = [
           Brown: {
             productDisplay:
               "/configurator/products/vanity-lights/design/premium-1.png",
-            designDisplay:
-              "/configurator/products/vanity-lights/design/premium-1.png",
+            designDisplay: {
+              side: "/configurator/products/vanity-lights/design/premium-1.png",
+            },
           },
         },
       },
@@ -151,8 +160,9 @@ export const lightsCategories = [
           Brown: {
             productDisplay:
               "/configurator/products/vanity-lights/design/premium-2.png",
-            designDisplay:
-              "/configurator/products/vanity-lights/design/premium-2.png",
+            designDisplay: {
+              side: "/configurator/products/vanity-lights/design/premium-2.png",
+            },
           },
         },
       },
@@ -166,8 +176,9 @@ export const lightsCategories = [
           Brown: {
             productDisplay:
               "/configurator/products/vanity-lights/design/premium-3.png",
-            designDisplay:
-              "/configurator/products/vanity-lights/design/premium-3.png",
+            designDisplay: {
+              side: "/configurator/products/vanity-lights/design/premium-3.png",
+            },
           },
         },
       },
@@ -181,8 +192,9 @@ export const lightsCategories = [
           Brown: {
             productDisplay:
               "/configurator/products/vanity-lights/design/premium-4.png",
-            designDisplay:
-              "/configurator/products/vanity-lights/design/premium-4.png",
+            designDisplay: {
+              side: "/configurator/products/vanity-lights/design/premium-4.png",
+            },
           },
         },
       },

@@ -1,7 +1,7 @@
 export const grabBarsCategories = [
   {
     id: "grabBars",
-    angle: "front",
+    initialAngle: "front",
     label: "Grab Bars",
     zIndex: "50",
     shapesAllowed: ["tub", "tub-to-shower"],
@@ -18,20 +18,25 @@ export const grabBarsCategories = [
           Chrome: {
             productDisplay:
               "https://embed.widencdn.net/img/moen/vpjoptoh0i/y400px@1x/yg0312ch.tif.jpg?q=100",
-            designDisplay:
-              "/configurator/products/accessories/flara-chrome.png",
+            designDisplay: {
+              front: "/configurator/products/accessories/flara-chrome.png",
+            },
           },
           "Brushed Nickel": {
             productDisplay:
               "https://embed.widencdn.net/img/moen/vacgnik4i6/y400px@1x/yg0312bn.tif.jpg?q=100",
-            designDisplay:
-              "/configurator/products/accessories/flara-brushed-nickel.png",
+            designDisplay: {
+              front:
+                "/configurator/products/accessories/flara-brushed-nickel.png",
+            },
           },
           "Polished Nickel": {
             productDisplay:
               "https://embed.widencdn.net/img/moen/uisofrc6rx/y400px@1x/yg0312nl.tif.jpg?q=100",
-            designDisplay:
-              "/configurator/products/accessories/flara-brushed-nickel.png",
+            designDisplay: {
+              front:
+                "/configurator/products/accessories/flara-brushed-nickel.png",
+            },
           },
         },
       },

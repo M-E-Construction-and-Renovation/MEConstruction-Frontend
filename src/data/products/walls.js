@@ -1,7 +1,7 @@
 export const wallsCategories = [
   {
     id: "walls",
-    angle: "front",
+    initialAngle: "front",
     label: "Walls",
     zIndex: "10",
     shapesAllowed: ["tub", "tub-to-shower"],
@@ -16,7 +16,9 @@ export const wallsCategories = [
           White: {
             productDisplay:
               "/configurator/products/walls/display/staggered-display.PNG",
-            designDisplay: "/configurator/products/walls/genova-white.png",
+            designDisplay: {
+              front: "/configurator/products/walls/genova-white.png",
+            },
           },
         },
       },
@@ -30,7 +32,9 @@ export const wallsCategories = [
           White: {
             productDisplay:
               "/configurator/products/walls/display/small-grid-display.PNG",
-            designDisplay: "/configurator/products/walls/napoli-white.png",
+            designDisplay: {
+              front: "/configurator/products/walls/napoli-white.png",
+            },
           },
         },
       },
@@ -44,7 +48,9 @@ export const wallsCategories = [
           White: {
             productDisplay:
               "/configurator/products/walls/display/grid-display.PNG",
-            designDisplay: "/configurator/products/walls/palermo-white.png",
+            designDisplay: {
+              front: "/configurator/products/walls/palermo-white.png",
+            },
           },
         },
       },
@@ -58,7 +64,9 @@ export const wallsCategories = [
           White: {
             productDisplay:
               "/configurator/products/walls/display/stacked-display.PNG",
-            designDisplay: "/configurator/products/walls/stackered-white.jpg",
+            designDisplay: {
+              front: "/configurator/products/walls/stackered-white.jpg",
+            },
           },
         },
       },
@@ -71,7 +79,9 @@ export const wallsCategories = [
         displayByColor: {
           White: {
             productDisplay: "/configurator/products/walls/wall-kit-white.png",
-            designDisplay: "/configurator/products/walls/wall-kit-white.png",
+            designDisplay: {
+              front: "/configurator/products/walls/wall-kit-white.png",
+            },
           },
         },
       },
@@ -79,7 +89,7 @@ export const wallsCategories = [
   },
   {
     id: "showerWalls",
-    angle: "front",
+    initialAngel: "front",
     label: "Walls",
     zIndex: "10",
     shapesAllowed: ["curved", "neo-angle", "alcove"],
@@ -94,8 +104,9 @@ export const wallsCategories = [
           White: {
             productDisplay:
               "/configurator/products/walls/display/staggered-display.PNG",
-            designDisplay:
-              "/configurator/products/walls/shower-staggered-white.png",
+            designDisplay: {
+              front: "/configurator/products/walls/shower-staggered-white.png",
+            },
           },
         },
       },
@@ -109,8 +120,9 @@ export const wallsCategories = [
           White: {
             productDisplay:
               "/configurator/products/walls/display/small-grid-display.PNG",
-            designDisplay:
-              "/configurator/products/walls/shower-napoli-white.png",
+            designDisplay: {
+              front: "/configurator/products/walls/shower-napoli-white.png",
+            },
           },
         },
       },
@@ -124,8 +136,9 @@ export const wallsCategories = [
           White: {
             productDisplay:
               "/configurator/products/walls/display/grid-display.PNG",
-            designDisplay:
-              "/configurator/products/walls/shower-palermo-white.png",
+            designDisplay: {
+              front: "/configurator/products/walls/shower-palermo-white.png",
+            },
           },
         },
       },
@@ -139,8 +152,9 @@ export const wallsCategories = [
           White: {
             productDisplay:
               "/configurator/products/walls/display/stacked-display.PNG",
-            designDisplay:
-              "/configurator/products/walls/shower-stacked-white.png",
+            designDisplay: {
+              front: "/configurator/products/walls/shower-stacked-white.png",
+            },
           },
         },
       },

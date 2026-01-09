@@ -1,7 +1,7 @@
 export const shelvesCategories = [
   {
     id: "shelves",
-    angle: "front",
+    initialAngle: "front",
     label: "Shelves",
     zIndex: "50",
     shapesAllowed: ["tub", "tub-to-shower", "curved", "neo-angle", "alcove"],
@@ -16,8 +16,10 @@ export const shelvesCategories = [
           White: {
             productDisplay:
               "/configurator/products/accessories/display/single-shelf-white-display.png",
-            designDisplay:
-              "/configurator/products/accessories/left/single-shelf-left-white.png",
+            designDisplay: {
+              front:
+                "/configurator/products/accessories/left/single-shelf-left-white.png",
+            },
           },
         },
       },
@@ -31,8 +33,10 @@ export const shelvesCategories = [
           White: {
             productDisplay:
               "/configurator/products/accessories/display/shelf-white-display.png",
-            designDisplay:
-              "/configurator/products/accessories/left/shelf-left-white.png",
+            designDisplay: {
+              front:
+                "/configurator/products/accessories/left/shelf-left-white.png",
+            },
           },
         },
       },

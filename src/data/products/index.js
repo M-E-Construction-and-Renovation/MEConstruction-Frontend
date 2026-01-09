@@ -12,6 +12,7 @@ import { toiletCategories } from "./toilets";
 import { vanityShelvesCategories } from "./vanityShelves";
 import { mirrorCategories } from "./vanityMirrors";
 import { lightsCategories } from "./vanityLights";
+import { bathroomColorCategories } from "./bathroom-color";
 
 const allCategories = [
   ...tubFrontsCategories,
@@ -28,6 +29,7 @@ const allCategories = [
   ...vanityShelvesCategories,
   ...mirrorCategories,
   ...lightsCategories,
+  ...bathroomColorCategories,
 ];
 
 export default allCategories;

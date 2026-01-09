@@ -1,7 +1,7 @@
 export const doorsRodsCategories = [
   {
     id: "doorsRods",
-    angle: "front",
+    initialAngle: "front",
     label: "Doors / Rods",
     zIndex: "80",
     shapesAllowed: ["tub"],
@@ -15,7 +15,89 @@ export const doorsRodsCategories = [
         displayByColor: {
           Chrome: {
             productDisplay: "/configurator/products/doors-rods/tub-chrome.png",
-            designDisplay: "/configurator/products/doors-rods/tub-chrome.png",
+            designDisplay: {
+              front: "/configurator/products/doors-rods/tub-chrome.png",
+            },
+          },
+        },
+      },
+      {
+        id: "sc1",
+        name: "Curtain 1",
+        tiers: {
+          basic: ["Common Curtain"],
+        },
+        displayByColor: {
+          "Common Curtain": {
+            productDisplay:
+              "/configurator/products/doors-rods/common-curtain.png",
+            designDisplay: {
+              front: "/configurator/products/doors-rods/common-curtain.png",
+            },
+          },
+        },
+      },
+      {
+        id: "sc2",
+        name: "Brown Plain Curtain",
+        tiers: {
+          standard: ["Brown"],
+        },
+        displayByColor: {
+          Brown: {
+            productDisplay:
+              "/configurator/products/doors-rods/brown-curtain.png",
+            designDisplay: {
+              front: "/configurator/products/doors-rods/brown-curtain.png",
+            },
+          },
+        },
+      },
+      {
+        id: "sc3",
+        name: "White Plain Curtain",
+        tiers: {
+          standard: ["White"],
+        },
+        displayByColor: {
+          White: {
+            productDisplay:
+              "/configurator/products/doors-rods/white-curtain.png",
+            designDisplay: {
+              front: "/configurator/products/doors-rods/white-curtain.png",
+            },
+          },
+        },
+      },
+      {
+        id: "sc4",
+        name: "Gray Plain Curtain",
+        tiers: {
+          premium: ["Gray"],
+        },
+        displayByColor: {
+          Gray: {
+            productDisplay:
+              "/configurator/products/doors-rods/gray-curtain.png",
+            designDisplay: {
+              front: "/configurator/products/doors-rods/gray-curtain.png",
+            },
+          },
+        },
+      },
+      {
+        id: "sc5",
+        name: "Blue Plain Curtain",
+        tiers: {
+          premium: ["Blue"],
+        },
+        displayByColor: {
+          Blue: {
+            productDisplay:
+              "/configurator/products/doors-rods/blue-curtain.png",
+            designDisplay: {
+              front: "/configurator/products/doors-rods/blue-curtain.png",
+            },
           },
         },
       },
@@ -23,7 +105,7 @@ export const doorsRodsCategories = [
   },
   {
     id: "tub-to-shower-doors",
-    angle: "front",
+    initialAngle: "front",
     label: "Doors / Rods",
     zIndex: "80",
     shapesAllowed: ["tub-to-shower"],
@@ -38,8 +120,90 @@ export const doorsRodsCategories = [
           Chrome: {
             productDisplay:
               "/configurator/products/doors-rods/tub-to-shower-chrome.png",
-            designDisplay:
-              "/configurator/products/doors-rods/tub-to-shower-chrome.png",
+            designDisplay: {
+              front:
+                "/configurator/products/doors-rods/tub-to-shower-chrome.png",
+            },
+          },
+        },
+      },
+      {
+        id: "sc1",
+        name: "Curtain 1",
+        tiers: {
+          basic: ["Common Curtain"],
+        },
+        displayByColor: {
+          "Common Curtain": {
+            productDisplay:
+              "/configurator/products/doors-rods/common-curtain.png",
+            designDisplay: {
+              front: "/configurator/products/doors-rods/common-curtain.png",
+            },
+          },
+        },
+      },
+      {
+        id: "sc2",
+        name: "Brown Plain Curtain",
+        tiers: {
+          standard: ["Brown"],
+        },
+        displayByColor: {
+          Brown: {
+            productDisplay:
+              "/configurator/products/doors-rods/brown-curtain.png",
+            designDisplay: {
+              front: "/configurator/products/doors-rods/brown-curtain.png",
+            },
+          },
+        },
+      },
+      {
+        id: "sc3",
+        name: "White Plain Curtain",
+        tiers: {
+          standard: ["White"],
+        },
+        displayByColor: {
+          White: {
+            productDisplay:
+              "/configurator/products/doors-rods/white-curtain.png",
+            designDisplay: {
+              front: "/configurator/products/doors-rods/white-curtain.png",
+            },
+          },
+        },
+      },
+      {
+        id: "sc4",
+        name: "Gray Plain Curtain",
+        tiers: {
+          premium: ["Gray"],
+        },
+        displayByColor: {
+          Gray: {
+            productDisplay:
+              "/configurator/products/doors-rods/gray-curtain.png",
+            designDisplay: {
+              front: "/configurator/products/doors-rods/gray-curtain.png",
+            },
+          },
+        },
+      },
+      {
+        id: "sc5",
+        name: "Blue Plain Curtain",
+        tiers: {
+          premium: ["Blue"],
+        },
+        displayByColor: {
+          Blue: {
+            productDisplay:
+              "/configurator/products/doors-rods/blue-curtain.png",
+            designDisplay: {
+              front: "/configurator/products/doors-rods/blue-curtain.png",
+            },
           },
         },
       },
@@ -47,7 +211,7 @@ export const doorsRodsCategories = [
   },
   {
     id: "curved-doors",
-    angle: "front",
+    initialAngle: "front",
     label: "Doors / Rods",
     zIndex: "80",
     shapesAllowed: ["curved"],
@@ -62,8 +226,9 @@ export const doorsRodsCategories = [
           Chrome: {
             productDisplay:
               "/configurator/products/doors-rods/curved-chrome.png",
-            designDisplay:
-              "/configurator/products/doors-rods/curved-chrome.png",
+            designDisplay: {
+              front: "/configurator/products/doors-rods/curved-chrome.png",
+            },
           },
         },
       },
@@ -71,7 +236,7 @@ export const doorsRodsCategories = [
   },
   {
     id: "neo-angle-doors",
-    angle: "front",
+    initialAngle: "front",
     label: "Doors / Rods",
     zIndex: "80",
     shapesAllowed: ["neo-angle"],
@@ -86,8 +251,9 @@ export const doorsRodsCategories = [
           Chrome: {
             productDisplay:
               "/configurator/products/doors-rods/neo-angle-chrome.png",
-            designDisplay:
-              "/configurator/products/doors-rods/neo-angle-chrome.png",
+            designDisplay: {
+              front: "/configurator/products/doors-rods/neo-angle-chrome.png",
+            },
           },
         },
       },
@@ -95,7 +261,7 @@ export const doorsRodsCategories = [
   },
   {
     id: "alcove-doors",
-    angle: "front",
+    initialAngle: "front",
     label: "Doors / Rods",
     zIndex: "80",
     shapesAllowed: ["alcove"],
@@ -110,8 +276,9 @@ export const doorsRodsCategories = [
           Chrome: {
             productDisplay:
               "/configurator/products/doors-rods/alcove-chrome.png",
-            designDisplay:
-              "/configurator/products/doors-rods/alcove-chrome.png",
+            designDisplay: {
+              front: "/configurator/products/doors-rods/alcove-chrome.png",
+            },
           },
         },
       },

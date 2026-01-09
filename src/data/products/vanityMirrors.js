@@ -1,7 +1,7 @@
 export const mirrorCategories = [
   {
     id: "mirrors",
-    angle: "side",
+    initialAngle: "side",
     label: "Vanity Mirror",
     zIndex: "10",
     shapesAllowed: ["tub", "tub-to-shower", "curved", "neo-angle", "alcove"],
@@ -16,8 +16,9 @@ export const mirrorCategories = [
           Brown: {
             productDisplay:
               "/configurator/products/vanity-mirrors/design/mirror-1.png",
-            designDisplay:
-              "/configurator/products/vanity-mirrors/design/mirror-1.png",
+            designDisplay: {
+              side: "/configurator/products/vanity-mirrors/design/mirror-1.png",
+            },
           },
         },
       },
@@ -31,8 +32,9 @@ export const mirrorCategories = [
           Brown: {
             productDisplay:
               "/configurator/products/vanity-mirrors/design/basic-2.png",
-            designDisplay:
-              "/configurator/products/vanity-mirrors/design/basic-2.png",
+            designDisplay: {
+              side: "/configurator/products/vanity-mirrors/design/basic-2.png",
+            },
           },
         },
       },
@@ -46,8 +48,9 @@ export const mirrorCategories = [
           Brown: {
             productDisplay:
               "/configurator/products/vanity-mirrors/design/basic-3.png",
-            designDisplay:
-              "/configurator/products/vanity-mirrors/design/basic-3.png",
+            designDisplay: {
+              side: "/configurator/products/vanity-mirrors/design/basic-3.png",
+            },
           },
         },
       },
@@ -61,8 +64,9 @@ export const mirrorCategories = [
           Brown: {
             productDisplay:
               "/configurator/products/vanity-mirrors/design/mirror-2.png",
-            designDisplay:
-              "/configurator/products/vanity-mirrors/design/mirror-2.png",
+            designDisplay: {
+              side: "/configurator/products/vanity-mirrors/design/mirror-2.png",
+            },
           },
         },
       },
@@ -76,8 +80,9 @@ export const mirrorCategories = [
           Brown: {
             productDisplay:
               "/configurator/products/vanity-mirrors/design/standard-2.png",
-            designDisplay:
-              "/configurator/products/vanity-mirrors/design/standard-2.png",
+            designDisplay: {
+              side: "/configurator/products/vanity-mirrors/design/standard-2.png",
+            },
           },
         },
       },
@@ -91,8 +96,9 @@ export const mirrorCategories = [
           Brown: {
             productDisplay:
               "/configurator/products/vanity-mirrors/design/premium-1.png",
-            designDisplay:
-              "/configurator/products/vanity-mirrors/design/premium-1.png",
+            designDisplay: {
+              side: "/configurator/products/vanity-mirrors/design/premium-1.png",
+            },
           },
         },
       },

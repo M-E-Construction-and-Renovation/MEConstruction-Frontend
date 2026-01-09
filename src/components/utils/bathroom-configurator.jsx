@@ -31,9 +31,9 @@ export default function BathroomConfigurator({
   });
 
   const filteredCategories = categories.filter(
-    (category) =>
-      category.id in selectedProducts &&
-      (isSideAngle ? category.angle === "side" : category.angle === "front")
+    (category) => category.id in selectedProducts
+    // &&
+    //   (isSideAngle ? category.angle === "side" : category.angle === "front")
   );
 
   useEffect(() => {
@@ -99,10 +99,37 @@ export default function BathroomConfigurator({
                       (product) =>
                         product.id === selectedProducts[category.id].productId
                     );
-                    let imageSrc =
-                      specificProduct.displayByColor?.[
-                        selectedProducts[category.id].color
-                      ].designDisplay || "/";
+
+                    let imageSrc;
+
+                    if (isSideAngle) {
+                      if (
+                        specificProduct.displayByColor?.[
+                          selectedProducts[category.id].color
+                        ].designDisplay?.side
+                      ) {
+                        imageSrc =
+                          specificProduct.displayByColor?.[
+                            selectedProducts[category.id].color
+                          ].designDisplay?.side;
+                      } else {
+                        return;
+                      }
+                    } else {
+                      if (
+                        specificProduct.displayByColor?.[
+                          selectedProducts[category.id].color
+                        ].designDisplay?.front
+                      ) {
+                        imageSrc =
+                          specificProduct.displayByColor?.[
+                            selectedProducts[category.id].color
+                          ].designDisplay?.front;
+                      } else {
+                        return;
+                      }
+                    }
+
                     return (
                       <motion.img
                         key={specificProduct.id || index}
