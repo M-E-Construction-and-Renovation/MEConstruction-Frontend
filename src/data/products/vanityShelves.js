@@ -10,7 +10,7 @@ export const vanityShelvesCategories = [
         id: "vs1",
         name: "Basic 1",
         tiers: {
-          basic: ["White", "Brown", "Wood"],
+          basic: ["White", "Black", "Wood"],
         },
         displayByColor: {
           White: {
@@ -20,11 +20,11 @@ export const vanityShelvesCategories = [
               side: "/configurator/products/vanity-shelves/design/basic1-white.png",
             },
           },
-          Brown: {
+          Black: {
             productDisplay:
-              "/configurator/products/vanity-shelves/design/basic1-brown.png",
+              "/configurator/products/vanity-shelves/design/basic1-black.png",
             designDisplay: {
-              side: "/configurator/products/vanity-shelves/design/basic1-brown.png",
+              side: "/configurator/products/vanity-shelves/design/basic1-black.png",
             },
           },
           Wood: {
@@ -144,41 +144,41 @@ export const vanityShelvesCategories = [
           },
         },
       },
-      {
-        id: "vs7",
-        name: "Premium 2",
-        tiers: {
-          premium: ["Blue", "Wood"],
-        },
-        displayByColor: {
-          Blue: {
-            productDisplay:
-              "/configurator/products/vanity-shelves/design/premium2-blue.png",
-            designDisplay: {
-              side: "/configurator/products/vanity-shelves/design/premium2-blue.png",
-            },
-          },
-          Wood: {
-            productDisplay:
-              "/configurator/products/vanity-shelves/design/premium2-wood.png",
-            designDisplay: {
-              side: "/configurator/products/vanity-shelves/design/premium2-wood.png",
-            },
-          },
-        },
-      },
+      // {
+      //   id: "vs7",
+      //   name: "Premium 2",
+      //   tiers: {
+      //     premium: ["Blue", "Wood"],
+      //   },
+      //   displayByColor: {
+      //     Blue: {
+      //       productDisplay:
+      //         "/configurator/products/vanity-shelves/design/premium2-blue.png",
+      //       designDisplay: {
+      //         side: "/configurator/products/vanity-shelves/design/premium2-blue.png",
+      //       },
+      //     },
+      //     Wood: {
+      //       productDisplay:
+      //         "/configurator/products/vanity-shelves/design/premium2-wood.png",
+      //       designDisplay: {
+      //         side: "/configurator/products/vanity-shelves/design/premium2-wood.png",
+      //       },
+      //     },
+      //   },
+      // },
       {
         id: "vs8",
         name: "Premium 3",
         tiers: {
-          premium: ["Brown", "Wood", "Pearl"],
+          premium: ["Black", "Wood", "Pearl"],
         },
         displayByColor: {
-          Brown: {
+          Black: {
             productDisplay:
-              "/configurator/products/vanity-shelves/design/premium3-brown.png",
+              "/configurator/products/vanity-shelves/design/premium3-black.png",
             designDisplay: {
-              side: "/configurator/products/vanity-shelves/design/premium3-brown.png",
+              side: "/configurator/products/vanity-shelves/design/premium3-black.png",
             },
           },
           Wood: {
