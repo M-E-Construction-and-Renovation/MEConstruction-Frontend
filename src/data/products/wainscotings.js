@@ -17,7 +17,10 @@ export const wainscotingsCategories = [
             productDisplay:
               "/configurator/products/walls/display/grid-display.PNG",
             designDisplay: {
-              front: "/configurator/products/wainscotings/wainscoting2.png",
+              front: {
+                initialPosition:
+                  "/configurator/products/wainscotings/wainscoting2.png",
+              },
             },
           },
         },
@@ -34,7 +37,10 @@ export const wainscotingsCategories = [
             productDisplay:
               "https://www.cherokeewood.com/wp-content/uploads/2016/09/wainscoting-bead-board.jpg",
             designDisplay: {
-              front: "/configurator/products/wainscotings/wainscoting1.png",
+              front: {
+                initialPosition:
+                  "/configurator/products/wainscotings/wainscoting1.png",
+              },
             },
           },
         },
@@ -59,8 +65,10 @@ export const wainscotingsCategories = [
             productDisplay:
               "/configurator/products/walls/display/grid-display.PNG",
             designDisplay: {
-              front:
-                "/configurator/products/wainscotings/shower-wainscoting-tile-white.png",
+              front: {
+                initialPosition:
+                  "/configurator/products/wainscotings/shower-wainscoting-tile-white.png",
+              },
             },
           },
         },
@@ -76,8 +84,10 @@ export const wainscotingsCategories = [
             productDisplay:
               "https://www.cherokeewood.com/wp-content/uploads/2016/09/wainscoting-bead-board.jpg",
             designDisplay: {
-              front:
-                "/configurator/products/wainscotings/shower-wainscoting-breadboard-white.png",
+              front: {
+                initialPosition:
+                  "/configurator/products/wainscotings/shower-wainscoting-breadboard-white.png",
+              },
             },
           },
         },

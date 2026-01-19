@@ -4,7 +4,13 @@ import { motion } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { bathroomConfig } from "@/data/bathroom-data";
-import { Plus, Minus, Fullscreen, ArrowRightLeft } from "lucide-react";
+import {
+  Plus,
+  Minus,
+  Fullscreen,
+  ArrowRightLeft,
+  SwitchCamera,
+} from "lucide-react";
 
 export default function BathroomConfigurator({
   selectedProducts = {},
@@ -13,6 +19,8 @@ export default function BathroomConfigurator({
   shape = "",
   isSideAngle = false,
   setIsSideAngle = () => {},
+  isInverted = false,
+  setIsInverted = () => {},
 }) {
   const containerRef = useRef(null);
   const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
@@ -108,10 +116,36 @@ export default function BathroomConfigurator({
                           selectedProducts[category.id].color
                         ].designDisplay?.side
                       ) {
-                        imageSrc =
-                          specificProduct.displayByColor?.[
-                            selectedProducts[category.id].color
-                          ].designDisplay?.side;
+                        if (isInverted) {
+                          if (
+                            specificProduct.displayByColor?.[
+                              selectedProducts[category.id].color
+                            ].designDisplay?.side?.invertedPosition
+                          ) {
+                            imageSrc =
+                              specificProduct.displayByColor?.[
+                                selectedProducts[category.id].color
+                              ].designDisplay?.side?.invertedPosition;
+                          } else {
+                            imageSrc =
+                              specificProduct.displayByColor?.[
+                                selectedProducts[category.id].color
+                              ].designDisplay?.side?.initialPosition;
+                          }
+                        } else {
+                          if (
+                            specificProduct.displayByColor?.[
+                              selectedProducts[category.id].color
+                            ].designDisplay?.side?.initialPosition
+                          ) {
+                            imageSrc =
+                              specificProduct.displayByColor?.[
+                                selectedProducts[category.id].color
+                              ].designDisplay?.side?.initialPosition;
+                          } else {
+                            return;
+                          }
+                        }
                       } else {
                         return;
                       }
@@ -121,10 +155,36 @@ export default function BathroomConfigurator({
                           selectedProducts[category.id].color
                         ].designDisplay?.front
                       ) {
-                        imageSrc =
-                          specificProduct.displayByColor?.[
-                            selectedProducts[category.id].color
-                          ].designDisplay?.front;
+                        if (isInverted) {
+                          if (
+                            specificProduct.displayByColor?.[
+                              selectedProducts[category.id].color
+                            ].designDisplay?.front?.invertedPosition
+                          ) {
+                            imageSrc =
+                              specificProduct.displayByColor?.[
+                                selectedProducts[category.id].color
+                              ].designDisplay?.front?.invertedPosition;
+                          } else {
+                            imageSrc =
+                              specificProduct.displayByColor?.[
+                                selectedProducts[category.id].color
+                              ].designDisplay?.front?.initialPosition;
+                          }
+                        } else {
+                          if (
+                            specificProduct.displayByColor?.[
+                              selectedProducts[category.id].color
+                            ].designDisplay?.front?.initialPosition
+                          ) {
+                            imageSrc =
+                              specificProduct.displayByColor?.[
+                                selectedProducts[category.id].color
+                              ].designDisplay?.front?.initialPosition;
+                          } else {
+                            return;
+                          }
+                        }
                       } else {
                         return;
                       }
@@ -169,6 +229,12 @@ export default function BathroomConfigurator({
                   </button>
                   <button
                     onClick={() => setIsSideAngle(!isSideAngle)}
+                    className="p-2 bg-white rounded-full shadow-md hover:bg-gray-100 mt-1 cursor-pointer"
+                  >
+                    <SwitchCamera className="w-6 h-6" />
+                  </button>
+                  <button
+                    onClick={() => setIsInverted(!isInverted)}
                     className="p-2 bg-white rounded-full shadow-md hover:bg-gray-100 mt-1 cursor-pointer"
                   >
                     <ArrowRightLeft className="w-6 h-6" />

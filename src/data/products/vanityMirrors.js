@@ -17,7 +17,12 @@ export const mirrorCategories = [
             productDisplay:
               "/configurator/products/vanity-mirrors/design/mirror-1.png",
             designDisplay: {
-              side: "/configurator/products/vanity-mirrors/design/mirror-1.png",
+              side: {
+                initialPosition:
+                  "/configurator/products/vanity-mirrors/design/mirror-1.png",
+                invertedPosition:
+                  "/configurator/products/vanity-mirrors/design/mirror-1-inverted.png",
+              },
             },
           },
         },
@@ -33,7 +38,12 @@ export const mirrorCategories = [
             productDisplay:
               "/configurator/products/vanity-mirrors/design/basic-2.png",
             designDisplay: {
-              side: "/configurator/products/vanity-mirrors/design/basic-2.png",
+              side: {
+                initialPosition:
+                  "/configurator/products/vanity-mirrors/design/basic-2.png",
+                invertedPosition:
+                  "/configurator/products/vanity-mirrors/design/basic-2-inverted.png",
+              },
             },
           },
         },
@@ -49,7 +59,12 @@ export const mirrorCategories = [
             productDisplay:
               "/configurator/products/vanity-mirrors/design/basic-3.png",
             designDisplay: {
-              side: "/configurator/products/vanity-mirrors/design/basic-3.png",
+              side: {
+                initialPosition:
+                  "/configurator/products/vanity-mirrors/design/basic-3.png",
+                invertedPosition:
+                  "/configurator/products/vanity-mirrors/design/basic-3-inverted.png",
+              },
             },
           },
         },
@@ -65,7 +80,12 @@ export const mirrorCategories = [
             productDisplay:
               "/configurator/products/vanity-mirrors/design/mirror-2.png",
             designDisplay: {
-              side: "/configurator/products/vanity-mirrors/design/mirror-2.png",
+              side: {
+                initialPosition:
+                  "/configurator/products/vanity-mirrors/design/mirror-2.png",
+                invertedPosition:
+                  "/configurator/products/vanity-mirrors/design/mirror-2-inverted.png",
+              },
             },
           },
         },
@@ -81,7 +101,12 @@ export const mirrorCategories = [
             productDisplay:
               "/configurator/products/vanity-mirrors/design/standard-2.png",
             designDisplay: {
-              side: "/configurator/products/vanity-mirrors/design/standard-2.png",
+              side: {
+                initialPosition:
+                  "/configurator/products/vanity-mirrors/design/standard-2.png",
+                invertedPosition:
+                  "/configurator/products/vanity-mirrors/design/standard-2-inverted.png",
+              },
             },
           },
         },
@@ -97,7 +122,12 @@ export const mirrorCategories = [
             productDisplay:
               "/configurator/products/vanity-mirrors/design/premium-1.png",
             designDisplay: {
-              side: "/configurator/products/vanity-mirrors/design/premium-1.png",
+              side: {
+                initialPosition:
+                  "/configurator/products/vanity-mirrors/design/premium-1.png",
+                invertedPosition:
+                  "/configurator/products/vanity-mirrors/design/premium-1-inverted.png",
+              },
             },
           },
         },

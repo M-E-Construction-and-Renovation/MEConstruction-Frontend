@@ -17,8 +17,10 @@ export const tubFrontsCategories = [
             productDisplay:
               "/configurator/products/tubfronts/design/princeton-white.png",
             designDisplay: {
-              front:
-                "/configurator/products/tubfronts/design/princeton-white.png",
+              front: {
+                initialPosition:
+                  "/configurator/products/tubfronts/design/princeton-white.png",
+              },
             },
           },
         },
@@ -35,8 +37,10 @@ export const tubFrontsCategories = [
             productDisplay:
               "/configurator/products/tubfronts/design/prosteel-white.png",
             designDisplay: {
-              front:
-                "/configurator/products/tubfronts/design/prosteel-white.png",
+              front: {
+                initialPosition:
+                  "/configurator/products/tubfronts/design/prosteel-white.png",
+              },
             },
           },
         },
@@ -52,8 +56,10 @@ export const tubFrontsCategories = [
             productDisplay:
               "/configurator/products/tubfronts/design/villager-white.png",
             designDisplay: {
-              front:
-                "/configurator/products/tubfronts/design/villager-white.png",
+              front: {
+                initialPosition:
+                  "/configurator/products/tubfronts/design/villager-white.png",
+              },
             },
           },
         },

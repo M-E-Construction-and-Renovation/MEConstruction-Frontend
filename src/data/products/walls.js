@@ -17,7 +17,10 @@ export const wallsCategories = [
             productDisplay:
               "/configurator/products/walls/display/staggered-display.PNG",
             designDisplay: {
-              front: "/configurator/products/walls/genova-white.png",
+              front: {
+                initialPosition:
+                  "/configurator/products/walls/genova-white.png",
+              },
             },
           },
         },
@@ -33,7 +36,10 @@ export const wallsCategories = [
             productDisplay:
               "/configurator/products/walls/display/small-grid-display.PNG",
             designDisplay: {
-              front: "/configurator/products/walls/napoli-white.png",
+              front: {
+                initialPosition:
+                  "/configurator/products/walls/napoli-white.png",
+              },
             },
           },
         },
@@ -49,7 +55,10 @@ export const wallsCategories = [
             productDisplay:
               "/configurator/products/walls/display/grid-display.PNG",
             designDisplay: {
-              front: "/configurator/products/walls/palermo-white.png",
+              front: {
+                initialPosition:
+                  "/configurator/products/walls/palermo-white.png",
+              },
             },
           },
         },
@@ -65,7 +74,10 @@ export const wallsCategories = [
             productDisplay:
               "/configurator/products/walls/display/stacked-display.PNG",
             designDisplay: {
-              front: "/configurator/products/walls/stackered-white.jpg",
+              front: {
+                initialPosition:
+                  "/configurator/products/walls/stackered-white.jpg",
+              },
             },
           },
         },
@@ -80,7 +92,10 @@ export const wallsCategories = [
           White: {
             productDisplay: "/configurator/products/walls/wall-kit-white.png",
             designDisplay: {
-              front: "/configurator/products/walls/wall-kit-white.png",
+              front: {
+                initialPosition:
+                  "/configurator/products/walls/wall-kit-white.png",
+              },
             },
           },
         },
@@ -105,7 +120,10 @@ export const wallsCategories = [
             productDisplay:
               "/configurator/products/walls/display/staggered-display.PNG",
             designDisplay: {
-              front: "/configurator/products/walls/shower-staggered-white.png",
+              front: {
+                initialPosition:
+                  "/configurator/products/walls/shower-staggered-white.png",
+              },
             },
           },
         },
@@ -121,7 +139,10 @@ export const wallsCategories = [
             productDisplay:
               "/configurator/products/walls/display/small-grid-display.PNG",
             designDisplay: {
-              front: "/configurator/products/walls/shower-napoli-white.png",
+              front: {
+                initialPosition:
+                  "/configurator/products/walls/shower-napoli-white.png",
+              },
             },
           },
         },
@@ -137,7 +158,10 @@ export const wallsCategories = [
             productDisplay:
               "/configurator/products/walls/display/grid-display.PNG",
             designDisplay: {
-              front: "/configurator/products/walls/shower-palermo-white.png",
+              front: {
+                initialPosition:
+                  "/configurator/products/walls/shower-palermo-white.png",
+              },
             },
           },
         },
@@ -153,7 +177,10 @@ export const wallsCategories = [
             productDisplay:
               "/configurator/products/walls/display/stacked-display.PNG",
             designDisplay: {
-              front: "/configurator/products/walls/shower-stacked-white.png",
+              front: {
+                initialPosition:
+                  "/configurator/products/walls/shower-stacked-white.png",
+              },
             },
           },
         },

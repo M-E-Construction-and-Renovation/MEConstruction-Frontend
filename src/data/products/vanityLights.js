@@ -17,7 +17,12 @@ export const lightsCategories = [
             productDisplay:
               "/configurator/products/vanity-lights/design/basic-1.png",
             designDisplay: {
-              side: "/configurator/products/vanity-lights/design/basic-1.png",
+              side: {
+                initialPosition:
+                  "/configurator/products/vanity-lights/design/basic-1.png",
+                invertedPosition:
+                  "/configurator/products/vanity-lights/design/basic-1-inverted.png",
+              },
             },
           },
         },
@@ -33,7 +38,12 @@ export const lightsCategories = [
             productDisplay:
               "/configurator/products/vanity-lights/design/basic-2.png",
             designDisplay: {
-              side: "/configurator/products/vanity-lights/design/basic-2.png",
+              side: {
+                initialPosition:
+                  "/configurator/products/vanity-lights/design/basic-2.png",
+                invertedPosition:
+                  "/configurator/products/vanity-lights/design/basic-2-inverted.png",
+              },
             },
           },
         },
@@ -49,7 +59,12 @@ export const lightsCategories = [
             productDisplay:
               "/configurator/products/vanity-lights/design/basic-3.png",
             designDisplay: {
-              side: "/configurator/products/vanity-lights/design/basic-3.png",
+              side: {
+                initialPosition:
+                  "/configurator/products/vanity-lights/design/basic-3.png",
+                invertedPosition:
+                  "/configurator/products/vanity-lights/design/basic-3-inverted.png",
+              },
             },
           },
         },
@@ -65,7 +80,12 @@ export const lightsCategories = [
             productDisplay:
               "/configurator/products/vanity-lights/design/basic-4.png",
             designDisplay: {
-              side: "/configurator/products/vanity-lights/design/basic-4.png",
+              side: {
+                initialPosition:
+                  "/configurator/products/vanity-lights/design/basic-4.png",
+                invertedPosition:
+                  "/configurator/products/vanity-lights/design/basic-4-inverted.png",
+              },
             },
           },
         },
@@ -81,7 +101,12 @@ export const lightsCategories = [
             productDisplay:
               "/configurator/products/vanity-lights/design/basic-5.png",
             designDisplay: {
-              side: "/configurator/products/vanity-lights/design/basic-5.png",
+              side: {
+                initialPosition:
+                  "/configurator/products/vanity-lights/design/basic-5.png",
+                invertedPosition:
+                  "/configurator/products/vanity-lights/design/basic-5-inverted.png",
+              },
             },
           },
         },
@@ -97,7 +122,12 @@ export const lightsCategories = [
             productDisplay:
               "/configurator/products/vanity-lights/design/standard-1.png",
             designDisplay: {
-              side: "/configurator/products/vanity-lights/design/standard-1.png",
+              side: {
+                initialPosition:
+                  "/configurator/products/vanity-lights/design/standard-1.png",
+                invertedPosition:
+                  "/configurator/products/vanity-lights/design/standard-1-inverted.png",
+              },
             },
           },
         },
@@ -113,7 +143,12 @@ export const lightsCategories = [
             productDisplay:
               "/configurator/products/vanity-lights/design/standard-2.png",
             designDisplay: {
-              side: "/configurator/products/vanity-lights/design/standard-2.png",
+              side: {
+                initialPosition:
+                  "/configurator/products/vanity-lights/design/standard-2.png",
+                invertedPosition:
+                  "/configurator/products/vanity-lights/design/standard-2-inverted.png",
+              },
             },
           },
         },
@@ -129,7 +164,12 @@ export const lightsCategories = [
             productDisplay:
               "/configurator/products/vanity-lights/design/standard-3.png",
             designDisplay: {
-              side: "/configurator/products/vanity-lights/design/standard-3.png",
+              side: {
+                initialPosition:
+                  "/configurator/products/vanity-lights/design/standard-3.png",
+                invertedPosition:
+                  "/configurator/products/vanity-lights/design/standard-3-inverted.png",
+              },
             },
           },
         },
@@ -145,7 +185,12 @@ export const lightsCategories = [
             productDisplay:
               "/configurator/products/vanity-lights/design/premium-1.png",
             designDisplay: {
-              side: "/configurator/products/vanity-lights/design/premium-1.png",
+              side: {
+                initialPosition:
+                  "/configurator/products/vanity-lights/design/premium-1.png",
+                invertedPosition:
+                  "/configurator/products/vanity-lights/design/premium-1-inverted.png",
+              },
             },
           },
         },
@@ -161,7 +206,12 @@ export const lightsCategories = [
             productDisplay:
               "/configurator/products/vanity-lights/design/premium-2.png",
             designDisplay: {
-              side: "/configurator/products/vanity-lights/design/premium-2.png",
+              side: {
+                initialPosition:
+                  "/configurator/products/vanity-lights/design/premium-2.png",
+                invertedPosition:
+                  "/configurator/products/vanity-lights/design/premium-2-inverted.png",
+              },
             },
           },
         },
@@ -177,7 +227,10 @@ export const lightsCategories = [
             productDisplay:
               "/configurator/products/vanity-lights/design/premium-3.png",
             designDisplay: {
-              side: "/configurator/products/vanity-lights/design/premium-3.png",
+              side: {
+                initialPosition:
+                  "/configurator/products/vanity-lights/design/premium-3.png",
+              },
             },
           },
         },
@@ -193,7 +246,12 @@ export const lightsCategories = [
             productDisplay:
               "/configurator/products/vanity-lights/design/premium-4.png",
             designDisplay: {
-              side: "/configurator/products/vanity-lights/design/premium-4.png",
+              side: {
+                initialPosition:
+                  "/configurator/products/vanity-lights/design/premium-4.png",
+                invertedPosition:
+                  "/configurator/products/vanity-lights/design/premium-4-inverted.png",
+              },
             },
           },
         },

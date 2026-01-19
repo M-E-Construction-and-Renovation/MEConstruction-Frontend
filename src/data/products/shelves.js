@@ -17,8 +17,10 @@ export const shelvesCategories = [
             productDisplay:
               "/configurator/products/accessories/display/single-shelf-white-display.png",
             designDisplay: {
-              front:
-                "/configurator/products/accessories/left/single-shelf-left-white.png",
+              front: {
+                initialPosition:
+                  "/configurator/products/accessories/left/single-shelf-left-white.png",
+              },
             },
           },
         },
@@ -34,8 +36,10 @@ export const shelvesCategories = [
             productDisplay:
               "/configurator/products/accessories/display/shelf-white-display.png",
             designDisplay: {
-              front:
-                "/configurator/products/accessories/left/shelf-left-white.png",
+              front: {
+                initialPosition:
+                  "/configurator/products/accessories/left/shelf-left-white.png",
+              },
             },
           },
         },

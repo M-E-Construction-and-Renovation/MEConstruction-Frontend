@@ -19,23 +19,30 @@ export const grabBarsCategories = [
             productDisplay:
               "https://embed.widencdn.net/img/moen/vpjoptoh0i/y400px@1x/yg0312ch.tif.jpg?q=100",
             designDisplay: {
-              front: "/configurator/products/accessories/flara-chrome.png",
+              front: {
+                initialPosition:
+                  "/configurator/products/accessories/flara-chrome.png",
+              },
             },
           },
           "Brushed Nickel": {
             productDisplay:
               "https://embed.widencdn.net/img/moen/vacgnik4i6/y400px@1x/yg0312bn.tif.jpg?q=100",
             designDisplay: {
-              front:
-                "/configurator/products/accessories/flara-brushed-nickel.png",
+              front: {
+                initialPosition:
+                  "/configurator/products/accessories/flara-brushed-nickel.png",
+              },
             },
           },
           "Polished Nickel": {
             productDisplay:
               "https://embed.widencdn.net/img/moen/uisofrc6rx/y400px@1x/yg0312nl.tif.jpg?q=100",
             designDisplay: {
-              front:
-                "/configurator/products/accessories/flara-brushed-nickel.png",
+              front: {
+                initialPosition:
+                  "/configurator/products/accessories/flara-brushed-nickel.png",
+              },
             },
           },
         },

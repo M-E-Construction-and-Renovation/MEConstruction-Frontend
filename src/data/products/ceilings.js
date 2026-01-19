@@ -16,7 +16,9 @@ export const ceilingsCategories = [
           White: {
             productDisplay: "/configurator/products/ceilings/ceiling1.png",
             designDisplay: {
-              front: "/configurator/products/ceilings/ceiling1.png",
+              front: {
+                initialPosition: "/configurator/products/ceilings/ceiling1.png",
+              },
             },
           },
         },
@@ -32,7 +34,9 @@ export const ceilingsCategories = [
           White: {
             productDisplay: "/configurator/products/ceilings/ceiling2.png",
             designDisplay: {
-              front: "/configurator/products/ceilings/ceiling2.png",
+              front: {
+                initialPosition: "/configurator/products/ceilings/ceiling2.png",
+              },
             },
           },
         },

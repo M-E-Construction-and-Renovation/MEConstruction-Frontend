@@ -17,8 +17,10 @@ export const nicheCategories = [
             productDisplay:
               "/configurator/products/niche/display/niche-square-display.PNG",
             designDisplay: {
-              front:
-                "/configurator/products/niche/design/niche-square-middle.png",
+              front: {
+                initialPosition:
+                  "/configurator/products/niche/design/niche-square-middle.png",
+              },
             },
           },
         },
@@ -34,8 +36,10 @@ export const nicheCategories = [
             productDisplay:
               "/configurator/products/niche/display/niche-square-display.PNG",
             designDisplay: {
-              front:
-                "/configurator/products/niche/design/niche-square-side.png",
+              front: {
+                initialPosition:
+                  "/configurator/products/niche/design/niche-square-side.png",
+              },
             },
           },
         },

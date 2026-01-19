@@ -3,14 +3,13 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
-import { ChevronLeft, RotateCcw, Save, Share2, Check } from "lucide-react";
+import { ChevronLeft, RotateCcw, Check } from "lucide-react";
 import BathroomConfigurator from "./bathroom-configurator";
 import EmailModal from "./email-modal";
 
 const ConfigurePage = ({
   handleResetDesign = () => {},
   handleSaveDesign = () => {},
-  handleShareDesign = () => {},
   categories = [],
   activeTab = "",
   selectedProducts = {},
@@ -27,6 +26,8 @@ const ConfigurePage = ({
   const router = useRouter();
 
   const [isSideAngle, setIsSideAngle] = useState(false);
+
+  const [isInverted, setIsInverted] = useState(false);
 
   return (
     <div className="flex flex-col h-full overflow-hidden">
@@ -67,6 +68,8 @@ const ConfigurePage = ({
               shape={shape}
               isSideAngle={isSideAngle}
               setIsSideAngle={setIsSideAngle}
+              isInverted={isInverted}
+              setIsInverted={setIsInverted}
             />
           </div>
         </div>
