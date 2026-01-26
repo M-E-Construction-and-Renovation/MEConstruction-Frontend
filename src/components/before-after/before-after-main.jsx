@@ -81,10 +81,10 @@ export const BeforeAfterMain = () => {
     activeTab === "showers"
       ? showerTransformations
       : activeTab === "bathtubs"
-      ? bathtubTransformations
-      : activeTab === "kitchens"
-      ? kitchenTransformations
-      : basementTransformations;
+        ? bathtubTransformations
+        : activeTab === "kitchens"
+          ? kitchenTransformations
+          : basementTransformations;
 
   const current = transformations[currentIndex];
 
@@ -94,7 +94,7 @@ export const BeforeAfterMain = () => {
 
   const handlePrev = () => {
     setCurrentIndex(
-      (prev) => (prev - 1 + transformations.length) % transformations.length
+      (prev) => (prev - 1 + transformations.length) % transformations.length,
     );
   };
 
@@ -151,6 +151,7 @@ export const BeforeAfterMain = () => {
                     src={current.before || "/placeholder.svg"}
                     alt="Before"
                     fill
+                    priority
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute top-3 left-3 bg-gray-800 text-white px-3 py-1 rounded-md font-bold text-sm">
@@ -164,6 +165,7 @@ export const BeforeAfterMain = () => {
                     src={current.after || "/placeholder.svg"}
                     alt="After"
                     fill
+                    priority
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute top-3 right-3 bg-accent text-accent-foreground px-3 py-1 rounded-md font-bold text-sm">
@@ -232,6 +234,7 @@ export const BeforeAfterMain = () => {
                       src={t.before || "/placeholder.svg"}
                       alt="Before"
                       fill
+                      priority
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
@@ -240,6 +243,7 @@ export const BeforeAfterMain = () => {
                       src={t.after || "/placeholder.svg"}
                       alt="After"
                       fill
+                      priority
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>

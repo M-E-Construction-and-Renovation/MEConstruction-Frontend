@@ -28,6 +28,7 @@ export function BathroomCustomizationTool({ customization }) {
                 src={image.src}
                 alt={image.alt}
                 fill
+                priority
                 className="w-full h-full object-cover"
               />
             </div>

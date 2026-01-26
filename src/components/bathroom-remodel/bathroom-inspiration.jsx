@@ -31,6 +31,7 @@ export function BathroomInspiration({ inspiration }) {
                   src={card.image.src}
                   alt={card.image.alt}
                   fill
+                  priority
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-indigo-950/60 to-transparent" />

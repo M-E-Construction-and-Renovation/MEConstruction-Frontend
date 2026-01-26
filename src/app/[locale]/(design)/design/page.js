@@ -29,23 +29,13 @@ export default function DesignToolLanding() {
           ref={videoRef}
           autoPlay
           muted
+          loop
           playsInline
+          preload="auto"
           className="absolute inset-0 w-full h-full object-cover"
         >
           <source src="/videos/design-bg-video2.mp4" type="video/mp4" />
         </video>
-
-        {/* YouTube Background
-        <div className="absolute inset-0 overflow-hidden">
-          <iframe
-            src="https://www.youtube.com/embed/-Y-8ib0GHCU?autoplay=1&mute=1&loop=1&playlist=-Y-8ib0GHCU&controls=0&showinfo=0&modestbranding=1"
-            className="absolute top-0 left-0 w-full h-full pointer-events-none"
-            title="Background Video"
-            frameBorder="0"
-            allow="autoplay; fullscreen"
-            allowFullScreen
-          />
-        </div> */}
 
         {/* Dark Overlay */}
         <div className="absolute inset-0 bg-black/50" />

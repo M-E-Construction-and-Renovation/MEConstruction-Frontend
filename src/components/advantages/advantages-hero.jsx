@@ -110,6 +110,7 @@ export function AdvantagesHero({ hero }) {
                 src={image.src}
                 alt={image.alt}
                 fill
+                priority
                 className="h-full w-full object-cover"
               />
             </div>

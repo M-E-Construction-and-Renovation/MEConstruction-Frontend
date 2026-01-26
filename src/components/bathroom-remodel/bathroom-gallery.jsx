@@ -32,6 +32,7 @@ export function BathroomGallery({ gallery }) {
                   src={project.image || "/placeholder.svg"}
                   alt={project.title}
                   fill
+                  priority
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               </div>

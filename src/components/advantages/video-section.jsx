@@ -28,6 +28,7 @@ export function VideoSection() {
                   src="/images/bathroom-renovation-video-thumbnail.jpg"
                   alt="Video thumbnail"
                   fill
+                  priority
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-black/40 flex items-center justify-center">

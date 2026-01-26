@@ -63,6 +63,7 @@ export function BathroomBeforeAfter({ beforeAfter }) {
                   src={beforeAfterImages.after.src}
                   alt={beforeAfterImages.after.alt}
                   fill
+                  priority
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -75,6 +76,7 @@ export function BathroomBeforeAfter({ beforeAfter }) {
                   src={beforeAfterImages.before.src}
                   alt={beforeAfterImages.before.alt}
                   fill
+                  priority
                   className="w-full h-full object-cover"
                 />
               </div>

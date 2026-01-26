@@ -46,6 +46,7 @@ export function BathroomProcessCarousel({ process }) {
                 src={steps[currentStep].image || "/placeholder.svg"}
                 alt={steps[currentStep].title}
                 fill
+                priority
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-accent/60 via-transparent to-transparent" />

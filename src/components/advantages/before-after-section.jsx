@@ -63,6 +63,7 @@ export function BeforeAfterSection({ beforeAfter }) {
                 src={currentImages.after || "/placeholder.svg"}
                 alt="After renovation"
                 fill
+                priority
                 className="w-full h-full object-cover"
               />
             </div>
@@ -76,6 +77,7 @@ export function BeforeAfterSection({ beforeAfter }) {
                 src={currentImages.before || "/placeholder.svg"}
                 alt="Before renovation"
                 fill
+                priority
                 className="w-full h-full object-cover"
               />
             </div>

@@ -39,6 +39,7 @@ export function KitchenInspiration({ inspiration }) {
                     alt={card.title}
                     width={400}
                     height={300}
+                    priority
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                   <div

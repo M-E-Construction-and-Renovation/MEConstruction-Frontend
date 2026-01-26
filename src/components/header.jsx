@@ -186,6 +186,7 @@ export function Header({ locale }) {
                                     alt={img.alt}
                                     width={300}
                                     height={300}
+                                    priority
                                     className="object-cover w-full h-full"
                                   />
                                 </div>
@@ -237,7 +238,7 @@ export function Header({ locale }) {
                 <button
                   onClick={() =>
                     setExpandedMobileMenu(
-                      expandedMobileMenu === "about" ? null : "about"
+                      expandedMobileMenu === "about" ? null : "about",
                     )
                   }
                   className="flex items-center justify-between w-full text-sm font-medium transition-colors py-2"
@@ -277,7 +278,7 @@ export function Header({ locale }) {
                 <button
                   onClick={() =>
                     setExpandedMobileMenu(
-                      expandedMobileMenu === "solutions" ? null : "solutions"
+                      expandedMobileMenu === "solutions" ? null : "solutions",
                     )
                   }
                   className="flex items-center justify-between w-full text-sm font-medium transition-colors py-2"
@@ -311,7 +312,7 @@ export function Header({ locale }) {
                     setExpandedMobileMenu(
                       expandedMobileMenu === "inspiration"
                         ? null
-                        : "inspiration"
+                        : "inspiration",
                     )
                   }
                   className="flex items-center justify-between w-full text-sm font-medium transition-colors py-2"
@@ -343,7 +344,7 @@ export function Header({ locale }) {
                 <button
                   onClick={() =>
                     setExpandedMobileMenu(
-                      expandedMobileMenu === "resources" ? null : "resources"
+                      expandedMobileMenu === "resources" ? null : "resources",
                     )
                   }
                   className="flex items-center justify-between w-full text-sm font-medium transition-colors py-2"

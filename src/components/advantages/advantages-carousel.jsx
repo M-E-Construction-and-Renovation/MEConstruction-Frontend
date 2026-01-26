@@ -50,6 +50,7 @@ export function AdvantagesCarousel({ carousel }) {
               src="/images/professional-bathroom-renovation-team-working.jpg"
               alt="M&E Construction and Renovation advantages"
               fill
+              priority
               className="w-full h-full object-cover"
             />
           </div>

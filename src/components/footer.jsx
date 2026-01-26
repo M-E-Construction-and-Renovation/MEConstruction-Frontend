@@ -70,6 +70,7 @@ export function Footer() {
                   alt="M&E Construction and Renovation LLC Logo"
                   width={400}
                   height={400}
+                  priority
                   className="object-contain"
                 />
               </div>

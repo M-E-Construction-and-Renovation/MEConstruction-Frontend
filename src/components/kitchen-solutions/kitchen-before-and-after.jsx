@@ -71,6 +71,7 @@ export function KitchenBeforeAfter({ beforeAfter }) {
                     alt={transformations[activeIndex].title}
                     width={300}
                     height={400}
+                    priority
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute bottom-3 left-3 bg-slate-700 text-white px-3 py-1 rounded-lg text-sm font-semibold">
@@ -86,6 +87,7 @@ export function KitchenBeforeAfter({ beforeAfter }) {
                     alt={transformations[activeIndex].title}
                     width={300}
                     height={400}
+                    priority
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute bottom-3 right-3 bg-primary text-white px-3 py-1 rounded-lg text-sm font-semibold">
@@ -120,7 +122,7 @@ export function KitchenBeforeAfter({ beforeAfter }) {
                 onClick={() =>
                   setActiveIndex(
                     (activeIndex - 1 + transformations.length) %
-                      transformations.length
+                      transformations.length,
                   )
                 }
                 className="p-3 rounded-full bg-slate-100 hover:bg-slate-200 transition-colors"

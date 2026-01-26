@@ -203,6 +203,7 @@ export function Hero({ hero }) {
                     src={image.src}
                     alt={`Bathroom image ${index + 1}`}
                     fill
+                    priority
                     className="absolute inset-0 w-full h-full object-cover"
                   />
 

@@ -27,6 +27,7 @@ const MissionSection = ({ mission }) => {
               src={image.src}
               alt={image.alt}
               fill
+              priority
               className="w-full h-full object-cover"
             />
           </div>

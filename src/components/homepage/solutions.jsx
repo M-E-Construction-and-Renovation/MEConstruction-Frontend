@@ -45,6 +45,7 @@ export function Solutions({ solutions }) {
                       src={solution.image}
                       alt={solution.title}
                       fill
+                      priority
                       className="h-full w-full object-cover scale-105 hover:scale-110 transition-all duration-500"
                     />
 

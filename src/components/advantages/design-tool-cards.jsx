@@ -30,7 +30,7 @@ export function DesignToolCards({ explore }) {
                 target,
                 bgGradient,
               },
-              index
+              index,
             ) => {
               const Icon = LucideIcons[icon] || LucideIcons.HelpCircle;
 
@@ -45,6 +45,7 @@ export function DesignToolCards({ explore }) {
                     src={image}
                     alt={alt}
                     fill
+                    priority
                     className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
@@ -57,7 +58,7 @@ export function DesignToolCards({ explore }) {
                   </div>
                 </a>
               );
-            }
+            },
           )}
         </div>
       </div>

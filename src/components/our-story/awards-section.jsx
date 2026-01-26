@@ -29,6 +29,7 @@ const AwardsSection = ({ awards }) => {
                   src={item.src}
                   alt={item.alt}
                   fill
+                  priority
                   className="aspect-square object-contain"
                 />
               </div>

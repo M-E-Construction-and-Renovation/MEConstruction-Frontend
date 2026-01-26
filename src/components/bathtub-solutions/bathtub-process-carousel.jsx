@@ -100,6 +100,7 @@ export function BathtubProcessCarousel({ process }) {
                   alt={steps[activeStep].title}
                   width={600}
                   height={400}
+                  priority
                   className="w-full h-80 md:h-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-700"
                 />
               </div>
