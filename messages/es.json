@@ -39,15 +39,15 @@
       },
       "images": [
         {
-          "src": "/images/contemporary-bathroom-with-walk-in-shower.jpg",
+          "src": "/images/bathroom-gallery-8.jpg",
           "title": "Baño"
         },
         {
-          "src": "/images/home-page-hero-kitchen.jpg",
+          "src": "/images/kitchen-wood-contemporary.jpg",
           "title": "Cocina"
         },
         {
-          "src": "/images/home-page-hero-basement.jpg",
+          "src": "/images/basement-gallery-2.jpg",
           "title": "Sótano"
         }
       ]
@@ -97,7 +97,7 @@
             "Accesorios y complementos",
             "Instalación profesional"
           ],
-          "image": "/images/modern-bathroom-with-bathtub-and-elegant-tile.jpg",
+          "image": "/images/bathroom-gallery-4.jpg",
           "href": "/design/choose-project",
           "ctaText": "¡Diseña tu baño ahora!"
         },
@@ -111,7 +111,7 @@
             "Pisos antideslizantes",
             "Instalación rápida y profesional"
           ],
-          "image": "/images/modern-walk-in-shower-with-glass-door-and-tile.jpg",
+          "image": "/images/bathroom-gallery-7.jpg",
           "href": "/design/showers/shape",
           "ctaText": "¡Obtén tu ducha ahora!"
         },
@@ -125,7 +125,7 @@
             "Superficies de fácil limpieza",
             "Opciones de color personalizadas"
           ],
-          "image": "/images/luxury-freestanding-bathtub-in-modern-bathroom.jpg",
+          "image": "/images/bathroom-gallery-6.jpg",
           "href": "/design/bathtubs/plumbing",
           "ctaText": "¡Elige tu bañera ahora!"
         },
@@ -139,7 +139,7 @@
             "Electrodomésticos de bajo consumo",
             "Gestión profesional de proyectos"
           ],
-          "image": "/images/home-page-solutions-kitchen.jpg",
+          "image": "/images/kitchen-farmhouse.jpg",
           "href": "/kitchen-solutions",
           "ctaText": "Más información"
         },
@@ -153,7 +153,7 @@
             "Diseños y iluminación personalizados",
             "Opciones para sala de entretenimiento o habitación de invitados"
           ],
-          "image": "/images/home-page-hero-basement.jpg",
+          "image": "/images/basement-gallery-2.jpg",
           "href": "/basement-solutions",
           "ctaText": "Más información"
         }
@@ -197,19 +197,19 @@
       "button": "Ver galería completa",
       "images": [
         {
-          "src": "/images/modern-bathroom-shower-with-glass-enclosure.jpg",
+          "src": "/images/bathroom-gallery-7.jpg",
           "alt": "Instalación de ducha moderna"
         },
         {
-          "src": "/images/home-page-solutions-kitchen.jpg",
+          "src": "/images/bathroom-gallery-4.jpg",
           "alt": "Diseño de cocina"
         },
         {
-          "src": "/images/home-page-hero-basement.jpg",
+          "src": "/images/kitchen-farmhouse.jpg",
           "alt": "Terminación de sótano"
         },
         {
-          "src": "/images/contemporary-bathroom-with-walk-in-shower.jpg",
+          "src": "/images/basement-gallery-2.jpg",
           "alt": "Baño contemporáneo"
         }
       ]

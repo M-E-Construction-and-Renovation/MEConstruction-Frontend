@@ -39,15 +39,15 @@
       },
       "images": [
         {
-          "src": "/images/contemporary-bathroom-with-walk-in-shower.jpg",
+          "src": "/images/bathroom-gallery-8.jpg",
           "title": "Bathroom"
         },
         {
-          "src": "/images/home-page-hero-kitchen.jpg",
+          "src": "/images/kitchen-wood-contemporary.jpg",
           "title": "Kitchen"
         },
         {
-          "src": "/images/home-page-hero-basement.jpg",
+          "src": "/images/basement-gallery-2.jpg",
           "title": "Basement"
         }
       ]
@@ -97,7 +97,7 @@
             "Fixtures & accessories",
             "Professional installation"
           ],
-          "image": "/images/modern-bathroom-with-bathtub-and-elegant-tile.jpg",
+          "image": "/images/bathroom-gallery-4.jpg",
           "href": "/design/choose-project",
           "ctaText": "Design Your Bathroom Now!"
         },
@@ -111,7 +111,7 @@
             "Slip-resistant flooring",
             "Fast, professional installation"
           ],
-          "image": "/images/modern-walk-in-shower-with-glass-door-and-tile.jpg",
+          "image": "/images/bathroom-gallery-7.jpg",
           "href": "/design/showers/shape",
           "ctaText": "Get Your Shower Now!"
         },
@@ -125,7 +125,7 @@
             "Easy-clean surfaces",
             "Custom color options"
           ],
-          "image": "/images/luxury-freestanding-bathtub-in-modern-bathroom.jpg",
+          "image": "/images/bathroom-gallery-6.jpg",
           "href": "/design/bathtubs/plumbing",
           "ctaText": "Choose Your Bathtub Now!"
         },
@@ -139,7 +139,7 @@
             "Energy-efficient appliances",
             "Professional project management"
           ],
-          "image": "/images/home-page-solutions-kitchen.jpg",
+          "image": "/images/kitchen-farmhouse.jpg",
           "href": "/kitchen-solutions",
           "ctaText": "Learn More About Kitchen Renovations!"
         },
@@ -153,7 +153,7 @@
             "Custom layouts & lighting",
             "Entertainment or guest room options"
           ],
-          "image": "/images/home-page-hero-basement.jpg",
+          "image": "/images/basement-gallery-2.jpg",
           "href": "/basement-solutions",
           "ctaText": "Learn More About Basement Finishing!"
         }
@@ -197,19 +197,19 @@
       "button": "View Full Gallery",
       "images": [
         {
-          "src": "/images/modern-bathroom-shower-with-glass-enclosure.jpg",
+          "src": "/images/bathroom-gallery-7.jpg",
           "alt": "Modern shower installation"
         },
         {
-          "src": "/images/home-page-solutions-kitchen.jpg",
+          "src": "/images/bathroom-gallery-4.jpg",
           "alt": "Kitchen design"
         },
         {
-          "src": "/images/home-page-hero-basement.jpg",
+          "src": "/images/kitchen-farmhouse.jpg",
           "alt": "Basement finishing"
         },
         {
-          "src": "/images/contemporary-bathroom-with-walk-in-shower.jpg",
+          "src": "/images/basement-gallery-2.jpg",
           "alt": "Contemporary bathroom"
         }
       ]
