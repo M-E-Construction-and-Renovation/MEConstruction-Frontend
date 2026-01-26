@@ -22,27 +22,89 @@ export default function BathroomConfigurator({
   isInverted = false,
   setIsInverted = () => {},
 }) {
+  const cacheRef = useRef([]);
+
   const containerRef = useRef(null);
   const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
 
   const filteredBathroomConfig = bathroomConfig.find(
-    (bathroom) => bathroom.shape === shape
+    (bathroom) => bathroom.shape === shape,
   );
 
   const bathroomViewAngleConfig = isSideAngle
     ? filteredBathroomConfig?.config?.sideAngleCam
     : filteredBathroomConfig?.config?.frontAngleCam;
 
-  bathroomViewAngleConfig?.forEach((config) => {
-    const img = new Image();
-    img.src = config.src;
-  });
+  // bathroomViewAngleConfig?.forEach((config) => {
+  //   const img = new Image();
+  //   img.src = config.src;
+  // });
 
   const filteredCategories = categories.filter(
-    (category) => category.id in selectedProducts
+    (category) => category.id in selectedProducts,
     // &&
     //   (isSideAngle ? category.angle === "side" : category.angle === "front")
   );
+
+  useEffect(() => {
+    const imgs = [];
+
+    // preload bathroom base views
+    bathroomConfig.forEach((bathroom) => {
+      ["frontAngleCam", "sideAngleCam"].forEach((view) => {
+        bathroom.config[view]?.forEach((cfg) => {
+          const img = new Image();
+          img.loading = "eager";
+          img.src = cfg.src;
+          img.decode?.().catch(() => {});
+          imgs.push(img);
+        });
+      });
+    });
+
+    // preload ALL potential products
+    categories.forEach((category) => {
+      category.products.forEach((product) => {
+        Object.values(product.displayByColor).forEach((colorObj) => {
+          const display = colorObj.designDisplay;
+
+          // preload front views
+          if (display.front?.initialPosition) {
+            const img = new Image();
+            img.loading = "eager";
+            img.src = display.front.initialPosition;
+            img.decode?.().catch(() => {});
+            imgs.push(img);
+          }
+          if (display.front?.invertedPosition) {
+            const img = new Image();
+            img.loading = "eager";
+            img.src = display.front.invertedPosition;
+            img.decode?.().catch(() => {});
+            imgs.push(img);
+          }
+
+          // preload side views
+          if (display.side?.initialPosition) {
+            const img = new Image();
+            img.loading = "eager";
+            img.src = display.side.initialPosition;
+            img.decode?.().catch(() => {});
+            imgs.push(img);
+          }
+          if (display.side?.invertedPosition) {
+            const img = new Image();
+            img.loading = "eager";
+            img.src = display.side.invertedPosition;
+            img.decode?.().catch(() => {});
+            imgs.push(img);
+          }
+        });
+      });
+    });
+
+    cacheRef.current = imgs;
+  }, []);
 
   useEffect(() => {
     if (containerRef.current) {
@@ -90,10 +152,13 @@ export default function BathroomConfigurator({
                 <TransformComponent contentStyle={wrapperStyles}>
                   {/* Base Images */}
                   {bathroomViewAngleConfig?.map((config, index) => (
-                    <img
+                    <motion.img
                       key={index}
                       src={config.src}
                       alt={config.alt}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
                       className={`absolute inset-0 w-full h-full object-cover transform ${
                         plumbing === "right" ? "scale-x-[-1]" : ""
                       }`}
@@ -105,7 +170,7 @@ export default function BathroomConfigurator({
                   {filteredCategories.map((category, index) => {
                     const specificProduct = category.products.find(
                       (product) =>
-                        product.id === selectedProducts[category.id].productId
+                        product.id === selectedProducts[category.id].productId,
                     );
 
                     let imageSrc;
