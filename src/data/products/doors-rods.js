@@ -17,7 +17,7 @@ export const doorsRodsCategories = [
             productDisplay: "/configurator/products/doors-rods/tub-chrome.png",
             designDisplay: {
               front: {
-                initialPostion:
+                initialPosition:
                   "/configurator/products/doors-rods/tub-chrome.png",
               },
             },
@@ -36,7 +36,7 @@ export const doorsRodsCategories = [
               "/configurator/products/doors-rods/common-curtain.png",
             designDisplay: {
               front: {
-                initialPostion:
+                initialPosition:
                   "/configurator/products/doors-rods/common-curtain.png",
               },
             },
@@ -55,7 +55,7 @@ export const doorsRodsCategories = [
               "/configurator/products/doors-rods/brown-curtain.png",
             designDisplay: {
               front: {
-                initialPostion:
+                initialPosition:
                   "/configurator/products/doors-rods/brown-curtain.png",
               },
             },
@@ -74,7 +74,7 @@ export const doorsRodsCategories = [
               "/configurator/products/doors-rods/white-curtain.png",
             designDisplay: {
               front: {
-                initialPostion:
+                initialPosition:
                   "/configurator/products/doors-rods/white-curtain.png",
               },
             },
@@ -93,7 +93,7 @@ export const doorsRodsCategories = [
               "/configurator/products/doors-rods/gray-curtain.png",
             designDisplay: {
               front: {
-                initialPostion:
+                initialPosition:
                   "/configurator/products/doors-rods/gray-curtain.png",
               },
             },

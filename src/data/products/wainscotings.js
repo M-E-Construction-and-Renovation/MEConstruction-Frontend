@@ -2,7 +2,7 @@ export const wainscotingsCategories = [
   {
     id: "wainscotings",
     initialAngle: "front",
-    label: "Wainscotings",
+    label: "Pre Fab Walls",
     zIndex: "70",
     shapesAllowed: ["tub", "tub-to-shower"],
     products: [
