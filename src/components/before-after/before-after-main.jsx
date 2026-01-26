@@ -6,44 +6,29 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
 export const BeforeAfterMain = () => {
-  const [activeTab, setActiveTab] = useState("showers");
+  const [activeTab, setActiveTab] = useState("bathrooms");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showingAfter, setShowingAfter] = useState(false);
 
-  const showerTransformations = [
+  const bathroomTransformations = [
     {
       id: 1,
-      title: "Outdated Tile to Modern Glass",
-      before: "/images/old-bathroom-shower-before.jpg",
-      after: "/images/modern-luxury-shower-after.jpg",
+      title: "Outdated Tile to Modern Marble",
+      before: "/images/bathroom-before-1.jpg",
+      after: "/images/bathroom-gallery-5.jpg",
     },
     {
       id: 2,
-      title: "Cramped to Spacious",
-      before: "/images/bathtub-before-conversion.jpg",
-      after: "/images/spacious-shower-after-conversion.jpg",
+      title: "Messy to Neat",
+      before: "/images/bathroom-before-2.jpg",
+      after: "/images/bathroom-after-2.jpg",
     },
     {
       id: 3,
-      title: "Worn Out to Elegant",
-      before: "/images/standard-shower-before.jpg",
-      after: "/images/accessible-walk-in-shower-after.jpg",
-    },
-  ];
-
-  const bathtubTransformations = [
-    {
-      id: 1,
-      title: "Stained Tub to Pristine White",
-      before: "/images/bathroom-remodel-before.jpg",
-      after: "/images/bathroom-remodel-after.jpg",
-    },
-    {
-      id: 2,
-      title: "Cracked to Elegant Soaker",
-      before: "/images/bathtub-solutions-before-1.jpg",
-      after: "/images/bathtub-solutions-after-1.png",
+      title: "Unfinished to Elegant",
+      before: "/images/bathroom-before-3.jpg",
+      after: "/images/bathroom-after-3.jpg",
     },
   ];
 
@@ -78,13 +63,13 @@ export const BeforeAfterMain = () => {
   ];
 
   const transformations =
-    activeTab === "showers"
-      ? showerTransformations
-      : activeTab === "bathtubs"
-        ? bathtubTransformations
-        : activeTab === "kitchens"
-          ? kitchenTransformations
-          : basementTransformations;
+    activeTab === "bathrooms"
+      ? bathroomTransformations
+      : // : activeTab === "bathtubs"
+        //   ? bathtubTransformations
+        activeTab === "kitchens"
+        ? kitchenTransformations
+        : basementTransformations;
 
   const current = transformations[currentIndex];
 
@@ -115,7 +100,7 @@ export const BeforeAfterMain = () => {
       <section className="sticky top-[8.5rem] md:top-[9.5rem] z-40 bg-white/90 backdrop-blur-sm border-b border-border py-4">
         <div className="container mx-auto px-4">
           <div className="flex gap-2 justify-start md:justify-center overflow-x-auto scrollbar-hide">
-            {["showers", "bathtubs", "kitchens", "basements"].map((tab) => (
+            {["bathrooms", "kitchens", "basements"].map((tab) => (
               <button
                 key={tab}
                 onClick={() => {

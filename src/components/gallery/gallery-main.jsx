@@ -5,109 +5,87 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
 export const GalleryMain = () => {
-  const [activeTab, setActiveTab] = useState("showers");
+  const [activeTab, setActiveTab] = useState("bathrooms");
   const [selectedImage, setSelectedImage] = useState(null);
 
-  const showerDesigns = [
+  const bathroomDesigns = [
     {
       id: 1,
-      title: "Modern Glass Enclosure",
-      description: "Sleek frameless glass shower with rainfall showerhead",
-      image: "/images/modern-frameless-glass-shower-with-rainfall-shower.jpg",
+      title: "Sleek Transitional Walk-In Shower",
+      description:
+        "A stunning shower remodel featuring high-gloss subway tile surrounds and integrated shelving",
+      image: "/images/bathroom-gallery-1.jpg",
     },
     {
       id: 2,
-      title: "Marble Luxe Shower",
-      description: "Elegant marble walls with chrome fixtures",
-      image: "/images/luxurious-marble-shower-with-chrome-fixtures-and-e.jpg",
+      title: "Elegant Double Vanity Refresh",
+      description:
+        "This spacious bathroom features a rich espresso double vanity paired with a creamy stone countertop and warm gold fixtures",
+      image: "/images/bathroom-gallery-2.jpg",
     },
     {
       id: 3,
-      title: "Minimal White Shower",
-      description: "Clean white tile design with minimalist aesthetic",
-      image: "/images/minimalist-white-tile-shower-with-clean-modern-des.jpg",
+      title: "Minimalist Shaker-Style Bath",
+      description:
+        "This design features a crisp white Shaker-style vanity paired with a seamless integrated countertop for a clean, streamlined look",
+      image: "/images/bathroom-gallery-3.jpg",
     },
     {
       id: 4,
-      title: "Dark Slate Shower",
-      description: "Contemporary dark slate tiles with LED lighting",
-      image: "/images/dark-slate-tile-shower-with-led-lighting-and-moder.jpg",
+      title: "Modern Spa Retreat with Open Wet Room",
+      description:
+        "This high-end master bath features a contemporary open-concept wet room with a low-profile walk-in shower and a sculptural freestanding soaking tub",
+      image: "/images/bathroom-gallery-4.jpg",
     },
     {
       id: 5,
-      title: "Subway Tile Shower",
-      description: "Classic subway tile with warm wood tones",
-      image: "/images/classic-subway-tile-shower-with-warm-wood-accents-.jpg",
+      title: "Marble & Quartz Master Suite",
+      description:
+        "This master bathroom features a high-end marble-veined floor and a matching quartz vanity top that brings a cohesive, luxury feel to the space",
+      image: "/images/bathroom-gallery-5.jpg",
     },
     {
       id: 6,
-      title: "Geometric Pattern Shower",
-      description: "Bold geometric tiles with mixed patterns",
-      image: "/images/geometric-pattern-tiles-in-shower-with-bold-design.jpg",
+      title: "Marble-Inspired Alcove Tub",
+      description:
+        "This sophisticated tub-to-shower conversion features a classic alcove bathtub encased in large-format, high-gloss marble-patterned porcelain tiles",
+      image: "/images/bathroom-gallery-6.jpg",
     },
     {
       id: 7,
-      title: "Spa-Inspired Shower",
-      description: "Rainfall showerhead with stone accent wall",
-      image: "/images/spa-inspired-shower-with-rainfall-showerhead-and-s.jpg",
+      title: "Modern Industrial Luxe Wet Room",
+      description:
+        "This high-contrast bathroom showcases a bold industrial-modern aesthetic centered around a black-framed Crittall-style walk-in shower",
+      image: "/images/bathroom-gallery-7.jpg",
     },
     {
       id: 8,
-      title: "Industrial Shower",
-      description: "Black metal fixtures with cement-finish walls",
-      image: "/images/industrial-style-shower-with-black-fixtures-and-co.jpg",
-    },
-  ];
-
-  const bathtubDesigns = [
-    {
-      id: 1,
-      title: "Freestanding Soaker",
-      description: "Elegant white standalone bathtub with chrome feet",
-      image: "/images/freestanding-white-soaker-bathtub-with-chrome-feet.jpg",
+      title: "Monochrome High-Contrast Master Suite",
+      description:
+        "This striking bathroom remodel features a bold high-contrast aesthetic, pairing deep espresso-finished Shaker cabinetry with crisp white quartz countertops",
+      image: "/images/bathroom-gallery-8.jpg",
     },
     {
-      id: 2,
-      title: "Corner Jetted Bath",
-      description: "Luxury corner whirlpool tub with jet system",
-      image: "/images/luxury-corner-bathtub-with-jets-and-contemporary-d.jpg",
+      id: 9,
+      title: "Organic Cycladic-Style Wet Room",
+      description:
+        "Inspired by Greek island architecture, this unique bathroom features a seamless, sculptural plaster design with flowing, organic curves and a brilliant white finish",
+      image: "/images/bathroom-gallery-9.jpg",
     },
     {
-      id: 3,
-      title: "Minimalist Rectangular",
-      description: "Sleek rectangular bathtub with clean lines",
-      image: "/images/minimalist-rectangular-bathtub-with-clean-lines-an.jpg",
+      id: 10,
+      title: "Industrial-Modern Geometric Wet Room",
+      description:
+        "This sleek, modern shower features a bold matte black frameless enclosure that creates a striking architectural focal point",
+      image: "/images/bathroom-gallery-10.jpg",
     },
     {
-      id: 4,
-      title: "Deep Soaking Bath",
-      description: "Deep-soaking tub with wooden surround",
-      image: "/images/deep-soaking-bathtub-with-wooden-surround-and-spa-.jpg",
+      id: 11,
+      title: "Modern Minimalism / Luxury Contemporary",
+      description:
+        "This high-end master bathroom features a seamless open-concept wet room with floor-to-ceiling marble-veined porcelain tiles",
+      image: "/images/bathroom-gallery-11.jpg",
     },
-    {
-      id: 5,
-      title: "Japanese Hinoki Bath",
-      description: "Wooden soaking tub with natural wood finish",
-      image: "/images/japanese-style-wooden-soaking-bathtub-with-natural.jpg",
-    },
-    {
-      id: 6,
-      title: "Built-in Soaker",
-      description: "Tile-surround built-in bathtub with steps",
-      image: "/images/built-in-bathtub-with-tile-surround-and-elegant-st.jpg",
-    },
-    {
-      id: 7,
-      title: "Modern Curved Bath",
-      description: "Contemporary curved design with integrated heater",
-      image: "/images/modern-curved-bathtub-with-integrated-heater-syste.jpg",
-    },
-    // {
-    //   id: 8,
-    //   title: "Double-Ended Bath",
-    //   description: "Double-ended antique-style bathtub with vintage charm",
-    //   image: "/placeholder.svg?height=400&width=500",
-    // },
   ];
 
   const kitchenDesigns = [
@@ -148,20 +126,13 @@ export const GalleryMain = () => {
     },
     {
       id: 6,
-      title: "Modern Contrast Sink Corner",
-      description:
-        "This detailed look highlights a sleek contrast design featuring crisp white shaker cabinets and quartz countertops",
-      image: "/images/kitchen-contrast-sink.jpg",
-    },
-    {
-      id: 7,
       title: "Two-Tone Farmhouse Kitchen with Island",
       description:
         "A bright, open-concept kitchen featuring two-tone cabinetry—white uppers and warm gray lowers—for a modern look",
       image: "/images/kitchen-farmhouse.jpg",
     },
     {
-      id: 8,
+      id: 7,
       title: "Natural Wood Contemporary Kitchen",
       description:
         "A warm, sophisticated kitchen featuring light natural wood flat-panel cabinets for a minimalist, organic modern feel",
@@ -172,70 +143,28 @@ export const GalleryMain = () => {
   const basementDesigns = [
     {
       id: 1,
-      title: "Contemporary Open-Concept Basement Finish",
-      description:
-        "Transform your basement into a stylish living area with this contemporary open-concept design",
-      image: "/images/basement-open-concept.jpg",
-    },
-    {
-      id: 2,
       title: "Basement Transformation: From Utility to Luxury",
       description:
         "Witness a complete basement overhaul from an unfinished space (metal framing, concrete floor) to a sophisticated, high-end living area",
       image: "/images/basement-luxury.jpg",
     },
     {
-      id: 3,
-      title: "Warm Modern Basement Entertainment",
+      id: 2,
+      title: "Modern Open-Concept Basement Renovation",
       description:
-        "A luxurious basement remodel centered around a stunning custom built-in media center with backlighting and natural wood cabinets",
-      image: "/images/basement-modern.png",
-    },
-    {
-      id: 4,
-      title: "Fun & Functional Basement Playroom",
-      description:
-        "This basement area is finished as a bright, multi-purpose playroom with a vibrant geometric accent wall and cozy neutral carpet",
-      image: "/images/basement-playroom.png",
-    },
-    {
-      id: 5,
-      title: "Minimalist Basement Corridor & Flex Space",
-      description:
-        "This finished basement area features a minimalist design with textured, neutral walls and ceiling, contrasting natural wood doors and flooring",
-      image: "/images/basement-office.png",
-    },
-    {
-      id: 6,
-      title: "Bright Basement Office and Storage",
-      description:
-        "A clean and contemporary basement finish transforming the space into a functional home office and storage solution",
-      image: "/images/basement-bright-office.jpg",
-    },
-    {
-      id: 7,
-      title: "Mid-Century Modern Basement Nook",
-      description:
-        "A warmly finished basement space featuring rich wood paneling on the staircase and dark, exposed ceiling beams for a rustic-modern feel",
-      image: "/images/basement-mid-century.jpg",
-    },
-    {
-      id: 8,
-      title: "Modern Basement with Bar and Fireplace",
-      description:
-        "A bright and comprehensive basement finish featuring an open-concept living area",
-      image: "/images/basement-bar-fireplace.jpeg",
+        "This expansive basement remodel utilizes a clean, neutral palette of soft blue-grey walls and crisp white trim to maximize the feeling of space and light",
+      image: "/images/basement-gallery-2.jpg",
     },
   ];
 
   const designs =
-    activeTab === "showers"
-      ? showerDesigns
-      : activeTab === "bathtubs"
-      ? bathtubDesigns
-      : activeTab === "kitchens"
-      ? kitchenDesigns
-      : basementDesigns;
+    activeTab === "bathrooms"
+      ? bathroomDesigns
+      : // : activeTab === "bathtubs"
+        // ? bathtubDesigns
+        activeTab === "kitchens"
+        ? kitchenDesigns
+        : basementDesigns;
 
   return (
     <>
@@ -246,7 +175,7 @@ export const GalleryMain = () => {
         <div className="container mx-auto px-4">
           {/* Scrollable Tabs */}
           <div className="flex gap-2 justify-start md:justify-center overflow-x-auto scrollbar-hide">
-            {["showers", "bathtubs", "kitchens", "basements"].map((tab) => (
+            {["bathrooms", "kitchens", "basements"].map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
