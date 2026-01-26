@@ -47,7 +47,7 @@ export function AdvantagesCarousel({ carousel }) {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
             <Image
-              src="/images/professional-bathroom-renovation-team-working.jpg"
+              src="/images/bathroom-gallery-8.jpg"
               alt="M&E Construction and Renovation advantages"
               fill
               priority

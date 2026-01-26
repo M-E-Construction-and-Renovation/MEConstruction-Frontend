@@ -8,7 +8,7 @@ export const aboutMenuItems = [
   // { label: "Careers", href: "#" },
   {
     label: "Testimonials",
-    href: "/#testimonials",
+    href: "/#reviews",
     detail: "What our customers say about us",
   },
   // { label: "Warranty", href: "#" },

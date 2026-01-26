@@ -363,16 +363,16 @@
       ],
       "images": {
         "bathroom": {
-          "before": "/images/sdb-namur-avant.png",
-          "after": "/images/modern-renovated-bathroom-after.jpg"
+          "before": "/images/bathroom-before-1.jpg",
+          "after": "/images/bathroom-gallery-5.jpg"
         },
         "kitchen": {
-          "before": "/images/old-kitchen-before-renovation.jpg",
-          "after": "/images/modern-renovated-kitchen.png"
+          "before": "/images/kitchen-solutions-before.jpg",
+          "after": "/images/kitchen-solutions-after.jpg"
         },
         "basement": {
-          "before": "/images/unfinished-basement-before.jpg",
-          "after": "/images/finished-basement-after-renovation.jpg"
+          "before": "/images/basement-actual-before1.jpg",
+          "after": "/images/basement-actual-after1.jpg"
         }
       }
     },
@@ -604,7 +604,7 @@
     "beforeAfter": {
       "id": "#before-after",
       "path": "/bathroom-remodel",
-      "sectionTitle": "Ideas de Bañera: Antes y Después",
+      "sectionTitle": "Ideas de Baño: Antes y Después",
       "sectionSubtitle": "Explora transformaciones inspiradoras y descubre cómo M&E Construction & Renovations puede revitalizar tu baño con soluciones inteligentes y eficientes.",
       "descriptions": [
         "En M&E Construction & Renovations, nos especializamos en transformar baños con soluciones inteligentes y eficientes que evitan el desorden y el costo de las remodelaciones tradicionales. Nuestro proceso innovador funciona directamente sobre los accesorios existentes, permitiendo una renovación sin problemas y con resultados sorprendentes.",
@@ -618,11 +618,11 @@
       },
       "beforeAfterImages": {
         "before": {
-          "src": "/images/bathroom-remodel-before.jpg",
+          "src": "/images/bathroom-before-2.jpg",
           "alt": "Antes de la remodelación"
         },
         "after": {
-          "src": "/images/bathroom-remodel-after.jpg",
+          "src": "/images/bathroom-after-2.jpg",
           "alt": "Después de la remodelación"
         }
       }
@@ -670,7 +670,7 @@
       "description": "Con cientos de combinaciones para elegir, crear un baño que equilibre estilo, funcionalidad y durabilidad nunca ha sido tan fácil. Explora nuestras opciones, mezcla y combina elementos y da vida a tu visión con un espacio que amarás durante años.",
       "highlight": "Tu baño, a tu manera.",
       "image": {
-        "src": "/configurator/bathroom-tub-right.png",
+        "src": "/images/bathroom-gallery-2.jpg",
         "alt": "Personaliza tu bañera"
       },
       "link": "PRUEBA NUESTRA HERRAMIENTA DE DISEÑO"
@@ -707,17 +707,17 @@
       "projects": [
         {
           "title": "Baño de Lujo Moderno",
-          "image": "/images/modern-luxury-bathroom-renovation-before-and-after.jpg",
+          "image": "/images/bathroom-gallery-3.jpg",
           "alt": "Baño de Lujo Moderno Antes y Después"
         },
         {
           "title": "Baño Inspirado en Spa",
-          "image": "/images/spa-style-bathroom-remodel-with-stone.jpg",
+          "image": "/images/bathroom-gallery-4.jpg",
           "alt": "Baño Inspirado en Spa Antes y Después"
         },
         {
           "title": "Diseño Contemporáneo",
-          "image": "/images/contemporary-bathroom-with-minimalist-design.jpg",
+          "image": "/images/bathroom-gallery-5.jpg",
           "alt": "Diseño Contemporáneo Antes y Después"
         }
       ],
@@ -867,25 +867,15 @@
       "description": "M&E Construction & Renovations ofrece soluciones de ducha personalizadas para cualquier proyecto, ya sea refrescando tu baño o rediseñando por completo tu espacio de ducha. Explora nuestras ideas de diseño y descubre lo fácil que es crear una ducha elegante, duradera y personalizada que eleve tu baño.",
       "labels": {
         "button": "Reserva una Consulta Gratuita",
-        "link": "O consulta el <accent>tablero de inspiración</accent> para más ideas de diseño.",
+        "link": "O consulta el tablero de inspiración para más ideas de diseño.",
         "before": "Antes",
         "after": "Después"
       },
       "transformations": [
         {
           "title": "Transformación de Ducha",
-          "beforeImage": "/images/old-bathroom-shower-before.jpg",
-          "afterImage": "/images/modern-luxury-shower-after.jpg"
-        },
-        {
-          "title": "Transformación de Bañera a Ducha",
-          "beforeImage": "/images/bathtub-before-conversion.jpg",
-          "afterImage": "/images/spacious-shower-after-conversion.jpg"
-        },
-        {
-          "title": "Instalación de Ducha Accesible",
-          "beforeImage": "/images/standard-shower-before.jpg",
-          "afterImage": "/images/accessible-walk-in-shower-after.jpg"
+          "beforeImage": "/images/bathroom-before-1.jpg",
+          "afterImage": "/images/bathroom-gallery-5.jpg"
         }
       ]
     },
@@ -1141,20 +1131,15 @@
       "description": "La actualización de una bañera puede completarse en tan solo un día con nuestras soluciones. Ya busques una renovación económica o un reemplazo completo, tenemos la solución perfecta. Explora estas ideas de diseño de baños y descubre lo fácil que puede ser la transformación.",
       "labels": {
         "button": "Reserva una Consulta Gratuita",
-        "link": "O consulta el <accent>tablero de inspiración</accent> para más ideas de diseño.",
+        "link": "O consulta el tablero de inspiración para más ideas de diseño.",
         "before": "Antes",
         "after": "Después"
       },
       "transformations": [
         {
           "title": "Transformación de Bañera",
-          "beforeImage": "/images/bathroom-remodel-before.jpg",
-          "afterImage": "/images/bathroom-remodel-after.jpg"
-        },
-        {
-          "title": "Actualización Moderna",
-          "beforeImage": "/images/bathtub-solutions-before-1.jpg",
-          "afterImage": "/images/bathtub-solutions-after-1.png"
+          "beforeImage": "/images/bathroom-before-3.jpg",
+          "afterImage": "/images/bathroom-after-3.jpg"
         }
       ]
     },
@@ -1409,7 +1394,7 @@
       "description": "Ya sea que consideres una remodelación completa o una actualización inteligente, nuestras soluciones expertas te ayudan a lograr resultados hermosos y prácticos. Explora estas transformaciones de cocina para inspirarte.",
       "labels": {
         "button": "Reserva una Consulta Gratuita",
-        "link": "O consulta el <accent>tablero de inspiración</accent> para más ideas de diseño.",
+        "link": "O consulta el tablero de inspiración para más ideas de diseño.",
         "before": "Antes",
         "after": "Después"
       },
@@ -1677,7 +1662,7 @@
       "description": "Ya sea que quieras un cine en casa, oficina, sala de juegos o espacio habitable adicional, nuestras soluciones de renovación de sótanos te ayudan a lograr resultados hermosos y prácticos.",
       "labels": {
         "button": "Reserva una Consulta Gratuita",
-        "link": "O explora nuestro <accent>tablero de inspiración</accent> para más ideas de transformación de sótanos.",
+        "link": "O explora nuestro tablero de inspiración para más ideas de transformación de sótanos.",
         "before": "Antes",
         "after": "Después"
       },

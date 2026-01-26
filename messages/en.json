@@ -364,16 +364,16 @@
       ],
       "images": {
         "bathroom": {
-          "before": "/images/sdb-namur-avant.png",
-          "after": "/images/modern-renovated-bathroom-after.jpg"
+          "before": "/images/bathroom-before-1.jpg",
+          "after": "/images/bathroom-gallery-5.jpg"
         },
         "kitchen": {
-          "before": "/images/old-kitchen-before-renovation.jpg",
-          "after": "/images/modern-renovated-kitchen.png"
+          "before": "/images/kitchen-solutions-before.jpg",
+          "after": "/images/kitchen-solutions-after.jpg"
         },
         "basement": {
-          "before": "/images/unfinished-basement-before.jpg",
-          "after": "/images/finished-basement-after-renovation.jpg"
+          "before": "/images/basement-actual-before1.jpg",
+          "after": "/images/basement-actual-after1.jpg"
         }
       }
     },
@@ -619,7 +619,7 @@
     "beforeAfter": {
       "id": "#before-after",
       "path": "/bathroom-remodel",
-      "sectionTitle": "Bathtub Ideas: Before & After",
+      "sectionTitle": "Bathroom Ideas: Before & After",
       "sectionSubtitle": "Explore inspiring transformations and see how M&E Construction & Renovations can revitalize your bathroom with smart, efficient solutions.",
       "descriptions": [
         "At M&E Construction & Renovations, we specialize in transforming bathrooms with smart, efficient solutions that avoid the mess and cost of traditional remodeling. Our innovative process works directly over your existing fixtures, allowing for a smooth, hassle-free renovation that delivers stunning results.",
@@ -633,11 +633,11 @@
       },
       "beforeAfterImages": {
         "before": {
-          "src": "/images/bathroom-remodel-before.jpg",
+          "src": "/images/bathroom-before-2.jpg",
           "alt": "Before renovation"
         },
         "after": {
-          "src": "/images/bathroom-remodel-after.jpg",
+          "src": "/images/bathroom-after-2.jpg",
           "alt": "After renovation"
         }
       }
@@ -687,7 +687,7 @@
       "description": "With hundreds of combinations to choose from, creating a bathroom that balances style, functionality, and durability has never been easier. Explore our options, mix and match elements, and bring your vision to life with a space you'll love for years to come.",
       "highlight": "Your bath, your way.",
       "image": {
-        "src": "/configurator/bathroom-tub-right.png",
+        "src": "/images/bathroom-gallery-2.jpg",
         "alt": "Customize your bathtub"
       },
       "link": "TRY OUR DESIGN TOOL"
@@ -726,17 +726,17 @@
       "projects": [
         {
           "title": "Modern Luxury Bath",
-          "image": "/images/modern-luxury-bathroom-renovation-before-and-after.jpg",
+          "image": "/images/bathroom-gallery-3.jpg",
           "alt": "Modern Luxury Bath Before and After"
         },
         {
           "title": "Spa-Inspired Bathroom",
-          "image": "/images/spa-style-bathroom-remodel-with-stone.jpg",
+          "image": "/images/bathroom-gallery-4.jpg",
           "alt": "Spa-Inspired Bathroom Before and After"
         },
         {
           "title": "Contemporary Design",
-          "image": "/images/contemporary-bathroom-with-minimalist-design.jpg",
+          "image": "/images/bathroom-gallery-5.jpg",
           "alt": "Contemporary Design Bathroom Before and After"
         }
       ],
@@ -888,25 +888,15 @@
       "description": "M&E Construction & Renovations offers tailored shower solutions for any project, whether you’re refreshing your bathroom or completely redesigning your shower space. Explore our design ideas and discover how effortless it can be to create a stylish, durable, and personalized shower that elevates your bathroom.",
       "labels": {
         "button": "Book a Free Consultation",
-        "link": "Or check out the <accent>inspiration board</accent> for more design ideas.",
+        "link": "Or check out the inspiration board for more design ideas.",
         "before": "Before",
         "after": "After"
       },
       "transformations": [
         {
           "title": "Shower Transformation",
-          "beforeImage": "/images/old-bathroom-shower-before.jpg",
-          "afterImage": "/images/modern-luxury-shower-after.jpg"
-        },
-        {
-          "title": "Tub-to-Shower Transformation",
-          "beforeImage": "/images/bathtub-before-conversion.jpg",
-          "afterImage": "/images/spacious-shower-after-conversion.jpg"
-        },
-        {
-          "title": "Accessible Shower Installation",
-          "beforeImage": "/images/standard-shower-before.jpg",
-          "afterImage": "/images/accessible-walk-in-shower-after.jpg"
+          "beforeImage": "/images/bathroom-before-1.jpg",
+          "afterImage": "/images/bathroom-gallery-5.jpg"
         }
       ]
     },
@@ -1172,20 +1162,15 @@
       "description": "A bathtub upgrade can be done as little as one day with our bathtub solutions. Whether you're looking for a cost-effective refresh or a complete replacement, we have your back. Explore these bathroom design ideas and see how easy a transformation can be.",
       "labels": {
         "button": "Book a Free Consultation",
-        "link": "Or check out the <accent>inspiration board</accent> for more design ideas.",
+        "link": "Or check out the inspiration board for more design ideas.",
         "before": "Before",
         "after": "After"
       },
       "transformations": [
         {
           "title": "Bath Transformation",
-          "beforeImage": "/images/bathroom-remodel-before.jpg",
-          "afterImage": "/images/bathroom-remodel-after.jpg"
-        },
-        {
-          "title": "Modern Upgrade",
-          "beforeImage": "/images/bathtub-solutions-before-1.jpg",
-          "afterImage": "/images/bathtub-solutions-after-1.png"
+          "beforeImage": "/images/bathroom-before-3.jpg",
+          "afterImage": "/images/bathroom-after-3.jpg"
         }
       ]
     },
@@ -1447,7 +1432,7 @@
       "description": "Whether you're considering a complete kitchen remodel or a smart refresh, our expert solutions help you achieve beautiful, practical results. Explore these kitchen design transformations for inspiration.",
       "labels": {
         "button": "Book a Free Consultation",
-        "link": "Or check out the <accent>inspiration board</accent> for more design ideas.",
+        "link": "Or check out the inspiration board for more design ideas.",
         "before": "Before",
         "after": "After"
       },
@@ -1722,7 +1707,7 @@
       "description": "Whether you want a home theater, office, playroom, or additional living area, our basement renovation solutions help you achieve beautiful and practical results.",
       "labels": {
         "button": "Book a Free Consultation",
-        "link": "Or explore our <accent>inspiration board</accent> for more basement transformation ideas.",
+        "link": "Or explore our inspiration board for more basement transformation ideas.",
         "before": "Before",
         "after": "After"
       },
