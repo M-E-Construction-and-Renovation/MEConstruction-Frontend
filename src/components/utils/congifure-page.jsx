@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
 import { ChevronLeft, RotateCcw, Check } from "lucide-react";
 import BathroomConfigurator from "./bathroom-configurator";
+import BathroomScene from "./bathroomScene";
 import EmailModal from "./email-modal";
 
 const ConfigurePage = ({
@@ -60,7 +61,7 @@ const ConfigurePage = ({
 
         {/* Preview Section */}
         <div className="w-full xl:w-2/3 flex items-center justify-center bg-muted relative">
-          <div className="relative w-full aspect-[4/3] xl:h-[calc(100vh-100px)] flex items-center justify-center">
+          {/* <div className="relative w-full aspect-[4/3] xl:h-[calc(100vh-100px)] flex items-center justify-center">
             <BathroomConfigurator
               selectedProducts={selectedProducts}
               categories={categories}
@@ -71,7 +72,13 @@ const ConfigurePage = ({
               isInverted={isInverted}
               setIsInverted={setIsInverted}
             />
-          </div>
+          </div> */}
+          <BathroomScene
+            selectedProducts={selectedProducts}
+            categories={categories}
+            plumbing={plumbing}
+            shape={shape}
+          />
         </div>
 
         {/* Sidebar */}
@@ -148,7 +155,7 @@ const ConfigurePage = ({
                 tierProducts.some(
                   (p) =>
                     p.tiers[tier].includes(selectedProducts[activeTab].color) &&
-                    p.id === selectedProducts[activeTab].productId
+                    p.id === selectedProducts[activeTab].productId,
                 );
 
               return (
@@ -159,8 +166,8 @@ const ConfigurePage = ({
                     activeTier === tier
                       ? "bg-primary text-primary-foreground"
                       : hasSelectedInTier
-                      ? "bg-success-background/20 border-2 border-success-primary text-success-primary"
-                      : "bg-muted hover:bg-muted/80"
+                        ? "bg-success-background/20 border-2 border-success-primary text-success-primary"
+                        : "bg-muted hover:bg-muted/80"
                   }`}
                 >
                   {tier}
@@ -187,7 +194,7 @@ const ConfigurePage = ({
                   const isSelected =
                     selectedProducts[activeTab]?.productId === product.id &&
                     product.tiers[activeTier]?.includes(
-                      selectedProducts[activeTab]?.color
+                      selectedProducts[activeTab]?.color,
                     );
 
                   const defaultColor = product.tiers?.[activeTier]?.[0] ?? "";

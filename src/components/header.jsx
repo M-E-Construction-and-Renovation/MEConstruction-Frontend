@@ -116,6 +116,7 @@ export function Header({ locale }) {
                   alt="M&E Construction & Renovation LLC Logo"
                   width={9999}
                   height={9999}
+                  priority
                   className="h-20 sm:h-24 w-auto object-contain"
                 />
               </Link>
