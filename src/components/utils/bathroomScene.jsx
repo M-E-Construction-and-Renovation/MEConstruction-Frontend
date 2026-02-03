@@ -3,25 +3,7 @@
 import * as THREE from "three";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF, Environment } from "@react-three/drei";
-import { useLayoutEffect, Suspense, useRef } from "react";
-
-// function BathroomModel() {
-//   const { scene } = useGLTF("/models/bathroom.glb");
-
-//   // Log mesh names once (for verification)
-//   useEffect(() => {
-//     console.log("Bathroom children:");
-//     scene.traverse((child) => {
-//       if (child.isMesh) {
-//         console.log(child);
-//         // console.log("Mesh:", child.name);
-//         // console.log("Material:", child.material?.name);
-//       }
-//     });
-//   }, [scene]);
-
-//   return <primitive object={scene} />;
-// }
+import { useLayoutEffect, Suspense } from "react";
 
 function BathroomModel() {
   const { scene } = useGLTF("/models/bathroom.glb");
@@ -33,23 +15,22 @@ function BathroomModel() {
 
     scene.position.sub(center);
 
-    // scene.traverse((child) => {
-    //   if (child.isMesh) {
-    //     const material = child.material;
+    // Apply material config
+    scene.traverse((child) => {
+      if (!child.isMesh || !child.material) return;
 
-    //     if (material) {
-    //       // 2. Adjust roughness (0.0 to 1.0)
-    //       // Lowering this will make the "warehouse" environment reflect more on the dark walls
-    //       material.roughness = 0.5;
+      const mat = child.material;
 
-    //       // 3. Optional: Adjust metalness to make it react more to light
-    //       material.metalness = 0.2;
+      // Neutral architectural white
+      mat.color.set("#F2F3F4");
+      mat.color.convertSRGBToLinear();
 
-    //       // 4. Ensure Three.js knows the material needs an update
-    //       material.needsUpdate = true;
-    //     }
-    //   }
-    // });
+      mat.roughness = 0.85; // matte painted wall
+      mat.metalness = 0.0;
+
+      mat.envMapIntensity = 0.3; // subtle bounce
+      mat.needsUpdate = true;
+    });
   }, [scene]);
 
   return <primitive object={scene} />;
@@ -60,23 +41,61 @@ function Product({
   position,
   rotation,
   scale = [1, 1, 1],
-  color = "white",
+  color = "#EFF2F3",
+  roughness = 0.0, // glossy ceramic
+  metalness = 0.0, // not metal
+  clearcoat = 0.0, // glazed surface
+  clearcoatRoughness = 0.0,
+  envMapIntensity = 0, // reflections
 }) {
   const { scene } = useGLTF(glb);
 
   useLayoutEffect(() => {
+    // Apply material config
+
     scene.position.copy(position);
     scene.rotation.copy(rotation);
     scene.scale.set(...scale);
 
-    // Set color
     scene.traverse((child) => {
-      if (child.isMesh) {
-        child.userData.initialColor = child.material.color.clone();
-        child.material.color.set(color);
+      if (!child.isMesh || !child.material) return;
+
+      const mat = child.material;
+
+      // Store original color once (optional but professional)
+      if (!child.userData.initialColor) {
+        child.userData.initialColor = mat.color.clone();
       }
+
+      // Apply color correctly
+      mat.color.set(color || "#EFF2F3");
+      mat.color.convertSRGBToLinear(); // CRITICAL
+
+      // Apply PBR values
+      mat.roughness = roughness;
+      mat.metalness = metalness;
+
+      // Only if material supports it
+      if ("clearcoat" in mat) {
+        mat.clearcoat = clearcoat;
+        mat.clearcoatRoughness = clearcoatRoughness;
+      }
+
+      mat.envMapIntensity = envMapIntensity;
+      mat.needsUpdate = true;
     });
-  }, [scene, position, rotation, scale, color]);
+  }, [
+    scene,
+    position,
+    rotation,
+    scale,
+    color,
+    roughness,
+    metalness,
+    clearcoat,
+    clearcoatRoughness,
+    envMapIntensity,
+  ]);
 
   return <primitive object={scene} />;
 }
@@ -87,12 +106,8 @@ export default function BathroomScene({
   plumbing = "",
   shape = "",
 }) {
-  const bathroomRef = useRef();
-
   const filteredCategories = categories.filter(
     (category) => category.id in selectedProducts,
-    // &&
-    //   (isSideAngle ? category.angle === "side" : category.angle === "front")
   );
 
   return (
@@ -111,17 +126,20 @@ export default function BathroomScene({
           camera={{ fov: 50 }}
           shadows
           gl={{
+            physicallyCorrectLights: true,
             toneMapping: THREE.ACESFilmicToneMapping,
-            toneMappingExposure: 0.7, // increase or decrease
+            toneMappingExposure: 1.0, // increase or decrease
             outputEncoding: THREE.SRGBColorSpace,
           }}
+          className="bg-gray-400"
         >
-          {/* Optional: ambient for soft fill */}
-          <ambientLight intensity={0.2} />
-          <hemisphereLight intensity={0.5} color="white" groundColor="black" />
-          <directionalLight position={[0, 3, 0]} intensity={10} />
+          <ambientLight intensity={0.35} />
 
-          <BathroomModel bathroomRef={bathroomRef} />
+          <directionalLight position={[3, 5, 2]} intensity={3} castShadow />
+
+          <directionalLight position={[-3, 4, -2]} intensity={1.5} />
+
+          <BathroomModel />
 
           {filteredCategories.map((category, index) => {
             const specificProduct = category.products.find(
@@ -141,15 +159,18 @@ export default function BathroomScene({
                 position={specificProduct.position}
                 rotation={specificProduct.rotation}
                 color={color}
+                roughness={specificProduct.roughness}
+                metalness={specificProduct.metalness}
+                clearcoat={specificProduct.clearcoat}
+                clearcoatRoughness={specificProduct.clearcoatRoughness}
+                envMapIntensity={specificProduct.envMapIntensity}
               />
             );
           })}
 
           <Environment
-            background={true} // false if you don't want HDR as sky
-            backgroundIntensity={1}
-            environmentIntensity={0.8}
-            files={null} // null for a neutral default
+            background={false} // false if you don't want HDR as sky
+            environmentIntensity={0.6}
             preset="warehouse" // drei provides a neutral preset
           />
 

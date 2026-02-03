@@ -9,6 +9,7 @@ export const tubFrontsCategories = [
     label: "Tub Fronts",
     // zIndex: "75",
     shapesAllowed: ["tub"],
+    isDraggable: false,
     products: [
       {
         id: "tf1",
@@ -19,6 +20,11 @@ export const tubFrontsCategories = [
         glb: "/models/bathtub.glb",
         position: new THREE.Vector3(-1.45, -1.55, -1.8),
         rotation: new THREE.Euler(0, 0, 0),
+        roughness: 0.45, // glossy ceramic
+        metalness: 0.0, // not metal
+        clearcoat: 0.12, // glazed surface
+        clearcoatRoughness: 0.5,
+        envMapIntensity: 1, // reflections
         displayByColor: {
           White: {
             productDisplay:
