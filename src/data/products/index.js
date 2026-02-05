@@ -21,7 +21,7 @@ const allCategories = [
   // ...nicheCategories,
   // ...faucetsCategories,
   // ...shelvesCategories,
-  ...grabBarsCategories,
+  // ...grabBarsCategories,
   // ...doorsRodsCategories,
   // ...wainscotingsCategories,
   // ...ceilingsCategories,

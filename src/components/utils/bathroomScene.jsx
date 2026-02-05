@@ -2,7 +2,13 @@
 
 import * as THREE from "three";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, useGLTF, Environment } from "@react-three/drei";
+import {
+  OrbitControls,
+  useGLTF,
+  Environment,
+  ContactShadows,
+  Lightformer,
+} from "@react-three/drei";
 import { useLayoutEffect, Suspense } from "react";
 
 function BathroomModel() {
@@ -25,10 +31,10 @@ function BathroomModel() {
       mat.color.set("#F2F3F4");
       mat.color.convertSRGBToLinear();
 
-      mat.roughness = 0.85; // matte painted wall
-      mat.metalness = 0.0;
+      mat.roughness = 0.5; // matte painted wall
+      mat.metalness = 0.5;
 
-      mat.envMapIntensity = 0.3; // subtle bounce
+      mat.envMapIntensity = 1; // subtle bounce
       mat.needsUpdate = true;
     });
   }, [scene]);
@@ -128,16 +134,63 @@ export default function BathroomScene({
           gl={{
             physicallyCorrectLights: true,
             toneMapping: THREE.ACESFilmicToneMapping,
-            toneMappingExposure: 1.0, // increase or decrease
+            toneMappingExposure: 1, // increase or decrease
             outputEncoding: THREE.SRGBColorSpace,
+            antialias: true,
           }}
-          className="bg-gray-400"
+          className="bg-gradient-to-b from-blue-500 to-white"
         >
-          <ambientLight intensity={0.35} />
+          <ambientLight intensity={4} />
 
-          <directionalLight position={[3, 5, 2]} intensity={3} castShadow />
+          <directionalLight
+            position={[2, 5, 5]} // Up 10 units, slightly to the side and front
+            intensity={1}
+            castShadow
+          />
 
-          <directionalLight position={[-3, 4, -2]} intensity={1.5} />
+          <ContactShadows
+            position={[0, -1, 0]}
+            opacity={0.6}
+            scale={20}
+            blur={2.5}
+            far={1.5}
+          />
+
+          <Environment resolution={1024}>
+            {/* A "Ceiling" light to make the whole room bright */}
+            <Lightformer
+              form="rect"
+              intensity={5}
+              position={[0, 5, 0]}
+              scale={[10, 10]}
+              rotation-x={Math.PI / 2}
+            />
+            <Lightformer
+              form="rect"
+              intensity={5}
+              position={[-2, 5, 0]}
+              scale={[10, 10]}
+              rotation-x={Math.PI / 2}
+            />
+            <Lightformer
+              form="rect"
+              intensity={5}
+              position={[2, 5, 0]}
+              scale={[10, 10]}
+              rotation-x={Math.PI / 2}
+            />
+          </Environment>
+
+          <OrbitControls
+            makeDefault
+            enablePan={false}
+            minDistance={1}
+            maxDistance={4}
+            minPolarAngle={Math.PI / 2.5} // 45°
+            maxPolarAngle={Math.PI / 1.9} // ~95°
+            minAzimuthAngle={-Math.PI / 13.3}
+            maxAzimuthAngle={Math.PI / 13.3}
+          />
 
           <BathroomModel />
 
@@ -167,23 +220,6 @@ export default function BathroomScene({
               />
             );
           })}
-
-          <Environment
-            background={false} // false if you don't want HDR as sky
-            environmentIntensity={0.6}
-            preset="warehouse" // drei provides a neutral preset
-          />
-
-          <OrbitControls
-            makeDefault
-            enablePan={false}
-            minDistance={1}
-            maxDistance={4}
-            minPolarAngle={Math.PI / 2.5} // 45°
-            maxPolarAngle={Math.PI / 1.9} // ~95°
-            minAzimuthAngle={-Math.PI / 13.3}
-            maxAzimuthAngle={Math.PI / 13.3}
-          />
         </Canvas>
       </Suspense>
     </div>

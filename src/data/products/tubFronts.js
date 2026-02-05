@@ -20,11 +20,11 @@ export const tubFrontsCategories = [
         glb: "/models/bathtub.glb",
         position: new THREE.Vector3(-1.45, -1.55, -1.8),
         rotation: new THREE.Euler(0, 0, 0),
-        roughness: 0.45, // glossy ceramic
-        metalness: 0.0, // not metal
-        clearcoat: 0.12, // glazed surface
-        clearcoatRoughness: 0.5,
-        envMapIntensity: 1, // reflections
+        roughness: 0.5, // glossy ceramic
+        metalness: 0.2, // not metal
+        clearcoat: 0.0, // glazed surface
+        clearcoatRoughness: 0.0,
+        envMapIntensity: 0.0, // reflections
         displayByColor: {
           White: {
             productDisplay:
