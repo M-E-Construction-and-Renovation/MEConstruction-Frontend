@@ -8,10 +8,7 @@ export function Reviews({ reviews }) {
   const { sectionTitle, rating, items } = reviews;
 
   return (
-    <section
-      id="reviews"
-      className="py-16 md:py-24 bg-[url('/images/reviews-bg.jpg')] bg-cover bg-center bg-no-repeat overflow-hidden"
-    >
+    <section id="reviews" className="py-16 md:py-24 overflow-hidden">
       <div className="relative container mx-auto px-4">
         <Star
           className="animate-ping absolute -top-14 -right-14 h-64 w-64 text-accent/10"

@@ -1,10 +1,15 @@
+"use client";
+
+import * as THREE from "three";
+
 export const towelBars = [
   {
     id: "towelBars",
-    initialAngle: "front",
+    // initialAngle: "front",
     label: "Towel Bars",
-    zIndex: "50",
-    shapesAllowed: ["tub", "tub-to-shower", "curved", "neo-angle", "alcove"],
+    // zIndex: "50",
+    // shapesAllowed: ["tub", "tub-to-shower", "curved", "neo-angle", "alcove"],
+    isDraggable: true,
     products: [
       {
         id: "tb1",
@@ -14,46 +19,34 @@ export const towelBars = [
           standard: ["Brass"],
           premium: ["Black", "Champagne Gold"],
         },
+        glb: "/models/towel-bars/towel bar model 1 - 24in.glb",
+        position: new THREE.Vector3(-1.12, -0.3, 0),
+        rotation: new THREE.Euler(0, 1.55, 0),
+        roughness: 1, // glossy ceramic
+        metalness: 1, // not metal
+        clearcoat: 0.0, // glazed surface
+        clearcoatRoughness: 0.0,
+        envMapIntensity: 1.0, // reflections
         displayByColor: {
           Chrome: {
             productDisplay:
               "https://kohler.scene7.com/is/image/PAWEB/GBH_SQTemplate?$product_src=is{PAWEB/23285-CP_ISO_d2c0076888_rgb}&$PDPDesktopSQ$&fmt=webp",
-            designDisplay: {
-              front: {
-                initialPosition:
-                  "/configurator/products/towel-bars/design/towel-bar-square-chrome.png",
-              },
-            },
+            color: "#ffffff",
           },
           Brass: {
             productDisplay:
               "https://kohler.scene7.com/is/image/PAWEB/GBH_SQTemplate?$product_src=is{PAWEB/23285-2MB_ISO_d2c0076824_rgb}&$PDPDesktopSQ$&fmt=webp",
-            designDisplay: {
-              front: {
-                initialPosition:
-                  "/configurator/products/towel-bars/design/towel-bar-square-brass.png",
-              },
-            },
+            color: "#B5A642",
           },
           Black: {
             productDisplay:
               "https://kohler.scene7.com/is/image/PAWEB/GBH_SQTemplate?$product_src=is{PAWEB/23285-BL_ISO_d2c0076851_rgb}&$PDPDesktopSQ$&fmt=webp",
-            designDisplay: {
-              front: {
-                initialPosition:
-                  "/configurator/products/towel-bars/design/towel-bar-square-black.png",
-              },
-            },
+            color: "#000000",
           },
           "Champagne Gold": {
             productDisplay:
               "https://kohler.scene7.com/is/image/PAWEB/GBH_SQTemplate?$product_src=is{PAWEB/23285-2MB_ISO_d2c0076824_rgb}&$PDPDesktopSQ$&fmt=webp",
-            designDisplay: {
-              front: {
-                initialPosition:
-                  "/configurator/products/towel-bars/design/towel-bar-square-champagne-gold.png",
-              },
-            },
+            color: "#F7E7CE",
           },
         },
       },
@@ -65,46 +58,34 @@ export const towelBars = [
           standard: ["Brass"],
           premium: ["Black", "Champagne Gold"],
         },
+        glb: "/models/towel-bars/towel bar model 2 - 24in.glb",
+        position: new THREE.Vector3(-1.12, -0.3, 0),
+        rotation: new THREE.Euler(0, 1.55, 0),
+        roughness: 1, // glossy ceramic
+        metalness: 1, // not metal
+        clearcoat: 0.0, // glazed surface
+        clearcoatRoughness: 0.0,
+        envMapIntensity: 1.0, // reflections
         displayByColor: {
           Chrome: {
             productDisplay:
               "https://kohler.scene7.com/is/image/PAWEB/GBH_SQTemplate?$product_src=is{PAWEB/14437-CP_ISO_d2c0086585_rgb}&$PDPDesktopSQ$&fmt=webp",
-            designDisplay: {
-              front: {
-                initialPosition:
-                  "/configurator/products/towel-bars/design/towel-bar-round-chrome.png",
-              },
-            },
+            color: "#ffffff",
           },
           Brass: {
             productDisplay:
               "https://kohler.scene7.com/is/image/PAWEB/GBH_SQTemplate?$product_src=is{PAWEB/14437-2MB_ISO_d2c0086156_rgb}&$PDPDesktopSQ$&fmt=webp",
-            designDisplay: {
-              front: {
-                initialPosition:
-                  "/configurator/products/towel-bars/design/towel-bar-round-brass.png",
-              },
-            },
+            color: "#B5A642",
           },
           Black: {
             productDisplay:
               "https://kohler.scene7.com/is/image/PAWEB/GBH_SQTemplate?$product_src=is{PAWEB/14437-BL_ISO_d2c0086613_rgb}&$PDPDesktopSQ$&fmt=webp",
-            designDisplay: {
-              front: {
-                initialPosition:
-                  "/configurator/products/towel-bars/design/towel-bar-round-black.png",
-              },
-            },
+            color: "#000000",
           },
           "Champagne Gold": {
             productDisplay:
               "https://kohler.scene7.com/is/image/PAWEB/GBH_SQTemplate?$product_src=is{PAWEB/zaa82112_rgb}&$PDPDesktopSQ$&fmt=webp",
-            designDisplay: {
-              Front: {
-                initialPosition:
-                  "/configurator/products/towel-bars/design/towel-bar-round-champagne-gold.png",
-              },
-            },
+            color: "#F7E7CE",
           },
         },
       },

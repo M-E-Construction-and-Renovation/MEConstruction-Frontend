@@ -8,7 +8,7 @@ export const grabBarsCategories = [
     // initialAngle: "front",
     label: "Grab Bars",
     // zIndex: "50",
-    shapesAllowed: ["tub", "tub-to-shower"],
+    // shapesAllowed: ["tub", "tub-to-shower"],
     isDraggable: true,
     products: [
       {

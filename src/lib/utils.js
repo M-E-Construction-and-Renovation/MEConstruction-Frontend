@@ -1,6 +1,5 @@
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { useGLTF } from "@react-three/drei";
 
 export function cn(...inputs) {
   return twMerge(clsx(inputs));
@@ -55,15 +54,4 @@ export function flattenMessages(
   }
 
   return result;
-}
-
-//Util function for preloading 3d assets
-export function preloadFromCategories(categories) {
-  categories.forEach((category) => {
-    category.products.forEach((product) => {
-      if (product.glb) {
-        useGLTF.preload(product.glb);
-      }
-    });
-  });
 }

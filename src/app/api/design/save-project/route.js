@@ -5,7 +5,7 @@ import supabase from "../../client";
 // 1. Zod schema
 const saveProjectSchema = z.object({
   email: z.email("Email not valid"),
-  shape: z.string().min(1, "Shape is required"),
+  // shape: z.string().min(1, "Shape is required"),
   plumbing: z.string().min(1, "Plumbing is required"),
   selectedProducts: z
     .record(z.string(), z.any())
@@ -40,7 +40,7 @@ async function subscribeToMailchimp({
   };
 
   const subscriberHash = Buffer.from(email.trim().toLowerCase()).toString(
-    "base64"
+    "base64",
   ); // Mailchimp expects MD5 hash in v3, adjust if needed
   const subscriberUrl = `https://${process.env.MAILCHIMP_SERVER_PREFIX}.api.mailchimp.com/3.0/lists/${process.env.MAILCHIMP_LIST_ID}/members/${subscriberHash}`;
 
@@ -76,7 +76,7 @@ export async function POST(req) {
 
       return NextResponse.json(
         { success: false, errors: formattedErrors },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -102,7 +102,7 @@ export async function POST(req) {
     return NextResponse.json(
       // { success: false, message: error.message || "Something went wrong" },
       { success: false, message: "Failed to save. Something went wrong" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

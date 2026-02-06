@@ -46,6 +46,7 @@ export function Solutions({ solutions }) {
                       alt={solution.title}
                       fill
                       priority
+                      sizes="(min-width: 1024px) 50vw, 100vw"
                       className="h-full w-full object-cover scale-105 hover:scale-110 transition-all duration-500"
                     />
 
@@ -85,7 +86,7 @@ export function Solutions({ solutions }) {
 
                     <div className="animate-bounce">
                       <Link href={solution.href} target="_blank">
-                        <Button className="bg-accent hover:bg-accent/90 text-accent-foreground gap-2 text-lg">
+                        <Button className="gap-2 md:text-lg" variant="primary">
                           {solution.ctaText}
                           <ArrowRight className="h-6 w-6" />
                         </Button>

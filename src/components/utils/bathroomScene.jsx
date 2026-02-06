@@ -28,7 +28,7 @@ function BathroomModel() {
       const mat = child.material;
 
       // Neutral architectural white
-      mat.color.set("#F2F3F4");
+      mat.color.set("#FFFFF7");
       mat.color.convertSRGBToLinear();
 
       mat.roughness = 0.5; // matte painted wall
@@ -130,7 +130,6 @@ export default function BathroomScene({
   selectedProducts = {},
   categories = [],
   plumbing = "",
-  shape = "",
 }) {
   const filteredCategories = categories.filter(
     (category) => category.id in selectedProducts,
@@ -205,8 +204,11 @@ export default function BathroomScene({
             far={1.5}
           />
 
-          <Environment resolution={1024}>
-            {/* A "Ceiling" light to make the whole room bright */}
+          <Environment
+            preset="studio"
+            environmentIntensity={0.1}
+            resolution={1024}
+          >
             <Lightformer
               form="rect"
               intensity={5}
@@ -245,5 +247,3 @@ export default function BathroomScene({
     </div>
   );
 }
-
-useGLTF.preload("/models/bathroom.glb");

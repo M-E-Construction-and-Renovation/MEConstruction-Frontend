@@ -39,22 +39,22 @@ export default function LoadProjectModal({ open, setOpen }) {
       }
 
       const project = data.projects;
-      const bathroomType = [
-        "tub-to-shower",
-        "curved",
-        "neo-angle",
-        "alcove",
-      ].includes(project.shape)
-        ? "showers"
-        : project.shape === "tub"
-        ? "bathtubs"
-        : "";
-      const projectUrl =
-        bathroomType === "showers"
-          ? `/design/${bathroomType}/configure?plumbing=${project.plumbing}&shape=${project.shape}&email=${project.email}`
-          : `/design/${bathroomType}/configure?plumbing=${[
-              project.plumbing,
-            ]}&email=${project.email}`;
+      // const bathroomType = [
+      //   "tub-to-shower",
+      //   "curved",
+      //   "neo-angle",
+      //   "alcove",
+      // ].includes(project.shape)
+      //   ? "showers"
+      //   : project.shape === "tub"
+      //   ? "bathtubs"
+      //   : "";
+      const projectUrl = `/design/bathroom/configure?plumbing=${project.plumbing}&email=${project.email}`;
+      // bathroomType === "showers"
+      //   ? `/design/${bathroomType}/configure?plumbing=${project.plumbing}&shape=${project.shape}&email=${project.email}`
+      //   : `/design/${bathroomType}/configure?plumbing=${[
+      //       project.plumbing,
+      //     ]}&email=${project.email}`;
 
       router.push(projectUrl);
     } catch (err) {

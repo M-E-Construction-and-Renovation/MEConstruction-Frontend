@@ -1,4 +1,4 @@
-import { tubFrontsCategories } from "./tubFronts";
+import { tubFrontsShowerPansCategories } from "./tubFronts";
 import { wallsCategories } from "./walls";
 import { faucetsCategories } from "./faucets";
 import { shelvesCategories } from "./shelves";
@@ -16,17 +16,17 @@ import { bathroomColorCategories } from "./bathroom-color";
 import { sinkFaucetCategories } from "./sink-faucets";
 
 const allCategories = [
-  ...tubFrontsCategories,
-  // ...wallsCategories,
+  ...tubFrontsShowerPansCategories,
+  ...wallsCategories,
   // ...nicheCategories,
   // ...faucetsCategories,
   // ...shelvesCategories,
   // ...grabBarsCategories,
-  // ...doorsRodsCategories,
+  ...doorsRodsCategories,
   // ...wainscotingsCategories,
   // ...ceilingsCategories,
-  // ...towelBars,
-  // ...toiletCategories,
+  ...towelBars,
+  ...toiletCategories,
   // ...vanityShelvesCategories,
   // ...mirrorCategories,
   // ...lightsCategories,

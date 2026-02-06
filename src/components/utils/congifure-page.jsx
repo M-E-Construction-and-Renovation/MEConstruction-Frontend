@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
 import { ChevronLeft, RotateCcw, Check } from "lucide-react";
-import BathroomConfigurator from "./bathroom-configurator";
+// import BathroomConfigurator from "./bathroom-configurator";
 import BathroomScene from "./bathroomScene";
 import EmailModal from "./email-modal";
 
@@ -21,14 +21,9 @@ const ConfigurePage = ({
   handleProductSelect = () => {},
   handleUnselectProduct = () => {},
   plumbing = "",
-  shape = "",
   projectEmail = "",
 }) => {
   const router = useRouter();
-
-  const [isSideAngle, setIsSideAngle] = useState(false);
-
-  const [isInverted, setIsInverted] = useState(false);
 
   return (
     <div className="flex flex-col h-full overflow-hidden">
@@ -61,23 +56,10 @@ const ConfigurePage = ({
 
         {/* Preview Section */}
         <div className="w-full xl:w-2/3 flex items-center justify-center bg-muted relative">
-          {/* <div className="relative w-full aspect-[4/3] xl:h-[calc(100vh-100px)] flex items-center justify-center">
-            <BathroomConfigurator
-              selectedProducts={selectedProducts}
-              categories={categories}
-              plumbing={plumbing}
-              shape={shape}
-              isSideAngle={isSideAngle}
-              setIsSideAngle={setIsSideAngle}
-              isInverted={isInverted}
-              setIsInverted={setIsInverted}
-            />
-          </div> */}
           <BathroomScene
             selectedProducts={selectedProducts}
             categories={categories}
             plumbing={plumbing}
-            shape={shape}
           />
         </div>
 
@@ -116,14 +98,11 @@ const ConfigurePage = ({
             {categories.map((category) => {
               const hasSelectedProduct = !!selectedProducts[category.id];
 
-              const switchToSideAngle = category?.initialAngle === "side";
-
               return (
                 <button
                   key={category.id}
                   onClick={() => {
                     handleCategoryChange(category.id);
-                    setIsSideAngle(switchToSideAngle);
                   }}
                   className={`relative px-3 py-2 rounded text-xs sm:text-sm font-medium whitespace-nowrap transition-colors cursor-pointer ${
                     activeTab === category.id

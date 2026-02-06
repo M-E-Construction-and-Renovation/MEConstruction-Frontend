@@ -42,10 +42,6 @@ export function Hero({ hero }) {
   }, []);
 
   return (
-    // <section
-    //   id="hero"
-    //   className="relative overflow-hidden bg-[radial-gradient(circle_at_center,_#f5f7fa,_#eef1f5)]"
-    // >
     <section
       id="hero"
       className="relative overflow-hidden bg-[url('/images/home-hero-bg.jpg')] bg-cover bg-center bg-no-repeat"
@@ -204,6 +200,7 @@ export function Hero({ hero }) {
                     alt={`Bathroom image ${index + 1}`}
                     fill
                     priority
+                    sizes="(min-width: 768px) 85vw, 80vw"
                     className="absolute inset-0 w-full h-full object-cover"
                   />
 
