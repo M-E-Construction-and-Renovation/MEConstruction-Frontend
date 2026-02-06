@@ -9,7 +9,7 @@ import {
   ContactShadows,
   Lightformer,
 } from "@react-three/drei";
-import { useLayoutEffect, Suspense } from "react";
+import { useLayoutEffect, Suspense, useMemo } from "react";
 
 function BathroomModel() {
   const { scene } = useGLTF("/models/bathroom.glb");
@@ -56,14 +56,28 @@ function Product({
 }) {
   const { scene } = useGLTF(glb);
 
+  // 🔑 CLONE THE SCENE
+  // const clonedScene = useMemo(() => scene.clone(true), [scene]);
+  const clonedScene = useMemo(() => {
+    const clone = scene.clone(true);
+
+    clone.traverse((child) => {
+      if (!child.isMesh || !child.material) return;
+
+      child.material = child.material.clone();
+    });
+
+    return clone;
+  }, [scene]);
+
   useLayoutEffect(() => {
     // Apply material config
 
-    scene.position.copy(position);
-    scene.rotation.copy(rotation);
-    scene.scale.set(...scale);
+    // scene.position.copy(position);
+    // scene.rotation.copy(rotation);
+    // scene.scale.set(...scale);
 
-    scene.traverse((child) => {
+    clonedScene.traverse((child) => {
       if (!child.isMesh || !child.material) return;
 
       const mat = child.material;
@@ -91,10 +105,10 @@ function Product({
       mat.needsUpdate = true;
     });
   }, [
-    scene,
-    position,
-    rotation,
-    scale,
+    clonedScene,
+    // position,
+    // rotation,
+    // scale,
     color,
     roughness,
     metalness,
@@ -103,7 +117,13 @@ function Product({
     envMapIntensity,
   ]);
 
-  return <primitive object={scene} />;
+  // return <primitive object={clonedScene} />;
+  // 🔑 TRANSFORMS GO HERE (NO EFFECT)
+  return (
+    <group position={position} rotation={rotation} scale={scale}>
+      <primitive object={clonedScene} />
+    </group>
+  );
 }
 
 export default function BathroomScene({
@@ -140,6 +160,35 @@ export default function BathroomScene({
           }}
           className="bg-gradient-to-b from-blue-500 to-white"
         >
+          <BathroomModel />
+
+          {filteredCategories.map((category, index) => {
+            const specificProduct = category.products.find(
+              (product) =>
+                product.id === selectedProducts[category.id].productId,
+            );
+
+            const color =
+              specificProduct.displayByColor?.[
+                selectedProducts[category.id].color
+              ].color;
+
+            return (
+              <Product
+                key={specificProduct.id}
+                glb={specificProduct.glb}
+                position={specificProduct.position}
+                rotation={specificProduct.rotation}
+                color={color}
+                roughness={specificProduct.roughness}
+                metalness={specificProduct.metalness}
+                clearcoat={specificProduct.clearcoat}
+                clearcoatRoughness={specificProduct.clearcoatRoughness}
+                envMapIntensity={specificProduct.envMapIntensity}
+              />
+            );
+          })}
+
           <ambientLight intensity={4} />
 
           <directionalLight
@@ -191,35 +240,6 @@ export default function BathroomScene({
             minAzimuthAngle={-Math.PI / 13.3}
             maxAzimuthAngle={Math.PI / 13.3}
           />
-
-          <BathroomModel />
-
-          {filteredCategories.map((category, index) => {
-            const specificProduct = category.products.find(
-              (product) =>
-                product.id === selectedProducts[category.id].productId,
-            );
-
-            const color =
-              specificProduct.displayByColor?.[
-                selectedProducts[category.id].color
-              ].color;
-
-            return (
-              <Product
-                key={specificProduct.id}
-                glb={specificProduct.glb}
-                position={specificProduct.position}
-                rotation={specificProduct.rotation}
-                color={color}
-                roughness={specificProduct.roughness}
-                metalness={specificProduct.metalness}
-                clearcoat={specificProduct.clearcoat}
-                clearcoatRoughness={specificProduct.clearcoatRoughness}
-                envMapIntensity={specificProduct.envMapIntensity}
-              />
-            );
-          })}
         </Canvas>
       </Suspense>
     </div>

@@ -1,5 +1,6 @@
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { useGLTF } from "@react-three/drei";
 
 export function cn(...inputs) {
   return twMerge(clsx(inputs));
@@ -10,7 +11,7 @@ export function flattenMessages(
   prefix = "",
   sectionData = { path: null, id: null },
   depth = 0,
-  maxDepth = 3
+  maxDepth = 3,
 ) {
   let result = [];
 
@@ -48,10 +49,21 @@ export function flattenMessages(
       }
     } else if (typeof value === "object" && value !== null) {
       result = result.concat(
-        flattenMessages(value, newKey, currentSectionData, depth + 1, maxDepth)
+        flattenMessages(value, newKey, currentSectionData, depth + 1, maxDepth),
       );
     }
   }
 
   return result;
+}
+
+//Util function for preloading 3d assets
+export function preloadFromCategories(categories) {
+  categories.forEach((category) => {
+    category.products.forEach((product) => {
+      if (product.glb) {
+        useGLTF.preload(product.glb);
+      }
+    });
+  });
 }
