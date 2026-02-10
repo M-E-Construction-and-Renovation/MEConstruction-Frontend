@@ -18,7 +18,7 @@ export const doorsRodsCategories = [
           basic: ["Chrome"],
         },
         glb: "/models/doors-and-rods/door-alcove.glb",
-        position: new THREE.Vector3(-1.2, -1.4, -1.9),
+        position: new THREE.Vector3(-1.2, 0.1, -5.1),
         rotation: new THREE.Euler(0, 0, 0),
         roughness: 1, // glossy ceramic
         metalness: 1, // not metal
@@ -40,7 +40,7 @@ export const doorsRodsCategories = [
           standard: ["Chrome"],
         },
         glb: "/models/doors-and-rods/door-curved.glb",
-        position: new THREE.Vector3(-1.2, -1.4, -1.9),
+        position: new THREE.Vector3(-1.2, 0.1, -5.1),
         rotation: new THREE.Euler(0, 0, 0),
         roughness: 0.5, // glossy ceramic
         metalness: 1, // not metal
@@ -62,9 +62,9 @@ export const doorsRodsCategories = [
           premium: ["Chrome"],
         },
         glb: "/models/doors-and-rods/door-neoangle.glb",
-        position: new THREE.Vector3(-1.25, -1.4, -1.9),
+        position: new THREE.Vector3(-1.2, 0.1, -5.1),
         rotation: new THREE.Euler(0, 0, 0),
-        roughness: 0.5, // glossy ceramic
+        roughness: 0.0, // glossy ceramic
         metalness: 1, // not metal
         clearcoat: 0.0, // glazed surface
         clearcoatRoughness: 0.0,
@@ -84,13 +84,13 @@ export const doorsRodsCategories = [
           premium: ["Chrome"],
         },
         glb: "/models/doors-and-rods/tub-to-shower-door.glb",
-        position: new THREE.Vector3(-1.19, -1.35, -1.75),
+        position: new THREE.Vector3(-1.2, 0.1, -5.1),
         rotation: new THREE.Euler(0, 0, 0),
-        roughness: 1, // glossy ceramic
+        roughness: 0, // glossy ceramic
         metalness: 1, // not metal
         clearcoat: 0.0, // glazed surface
         clearcoatRoughness: 0.0,
-        envMapIntensity: 1.0, // reflections
+        envMapIntensity: 0.0, // reflections
         displayByColor: {
           Chrome: {
             productDisplay:
@@ -106,9 +106,9 @@ export const doorsRodsCategories = [
           standard: ["Chrome"],
         },
         glb: "/models/doors-and-rods/bathtub-door.glb",
-        position: new THREE.Vector3(-1.19, -1.35, -1.8),
+        position: new THREE.Vector3(-1.2, 0.1, -5.1),
         rotation: new THREE.Euler(0, 0, 0),
-        roughness: 1, // glossy ceramic
+        roughness: 0, // glossy ceramic
         metalness: 1, // not metal
         clearcoat: 0.0, // glazed surface
         clearcoatRoughness: 0.0,
@@ -128,13 +128,13 @@ export const doorsRodsCategories = [
           standard: ["Chrome"],
         },
         glb: "/models/doors-and-rods/curtain rod.glb",
-        position: new THREE.Vector3(-1.21, -1.35, -1.8),
+        position: new THREE.Vector3(-1.21, 0.1, -5),
         rotation: new THREE.Euler(0, 0, 0),
-        roughness: 0.8, // glossy ceramic
-        metalness: 0.7, // not metal
+        roughness: 0.5, // glossy ceramic
+        metalness: 0.5, // not metal
         clearcoat: 0.0, // glazed surface
         clearcoatRoughness: 0.0,
-        envMapIntensity: 1.0, // reflections
+        envMapIntensity: 0.0, // reflections
         displayByColor: {
           Chrome: {
             productDisplay:
@@ -150,13 +150,13 @@ export const doorsRodsCategories = [
           basic: ["Champagne Gold"],
         },
         glb: "/models/doors-and-rods/curtain rod 2.glb",
-        position: new THREE.Vector3(-1.21, -1.35, -1.5),
+        position: new THREE.Vector3(-1.21, 0.1, -4.5),
         rotation: new THREE.Euler(0, 0, 0),
-        roughness: 0.8, // glossy ceramic
-        metalness: 0.7, // not metal
+        roughness: 0.5, // glossy ceramic
+        metalness: 0.5, // not metal
         clearcoat: 0.0, // glazed surface
         clearcoatRoughness: 0.0,
-        envMapIntensity: 1.0, // reflections
+        envMapIntensity: 0.0, // reflections
         displayByColor: {
           "Champagne Gold": {
             productDisplay:
@@ -172,7 +172,7 @@ export const doorsRodsCategories = [
           premium: ["Black"],
         },
         glb: "/models/doors-and-rods/curtain rod 3.glb",
-        position: new THREE.Vector3(-1.21, -1.35, -1.5),
+        position: new THREE.Vector3(-1.21, 0.1, -4.5),
         rotation: new THREE.Euler(0, 0, 0),
         roughness: 1, // glossy ceramic
         metalness: 0.5, // not metal

@@ -18,7 +18,7 @@ export const toiletCategories = [
           basic: ["White"],
         },
         glb: "/models/toilets/basic_glacierbay.glb",
-        position: new THREE.Vector3(0.45, -1.55, 0.7),
+        position: new THREE.Vector3(0.45, 0, -3),
         rotation: new THREE.Euler(0, 0, 0),
         roughness: 0.9, // glossy ceramic
         metalness: 1.0, // not metal
@@ -40,7 +40,7 @@ export const toiletCategories = [
           basic: ["White"],
         },
         glb: "/models/toilets/basic_american standard.glb",
-        position: new THREE.Vector3(0.45, -1.55, 0.7),
+        position: new THREE.Vector3(0.45, 0, -3),
         rotation: new THREE.Euler(0, 0, 0),
         roughness: 0.9, // glossy ceramic
         metalness: 1, // not metal
@@ -61,7 +61,7 @@ export const toiletCategories = [
           premium: ["White"],
         },
         glb: "/models/toilets/premium_kelmbrook.glb",
-        position: new THREE.Vector3(0.45, -1.55, 0.7),
+        position: new THREE.Vector3(0.45, 0, -3),
         rotation: new THREE.Euler(0, 0, 0),
         roughness: 0.9, // glossy ceramic
         metalness: 1, // not metal
@@ -83,7 +83,7 @@ export const toiletCategories = [
           premium: ["White"],
         },
         glb: "/models/toilets/premium_starosacompact.glb",
-        position: new THREE.Vector3(0.45, -1.55, 0.7),
+        position: new THREE.Vector3(0.45, 0, -3),
         rotation: new THREE.Euler(0, 0, 0),
         roughness: 0.9, // glossy ceramic
         metalness: 1, // not metal
@@ -127,7 +127,7 @@ export const toiletCategories = [
           premium: ["White"],
         },
         glb: "/models/toilets/premium_totoultra2.glb",
-        position: new THREE.Vector3(0.45, -1.55, 0.7),
+        position: new THREE.Vector3(0.45, 0, -3),
         rotation: new THREE.Euler(0, 0, 0),
         roughness: 0.9, // glossy ceramic
         metalness: 1, // not metal
@@ -149,7 +149,7 @@ export const toiletCategories = [
           standard: ["White"],
         },
         glb: "/models/toilets/standard_highline.glb",
-        position: new THREE.Vector3(0.45, -1.55, 0.7),
+        position: new THREE.Vector3(0.45, 0, -3),
         rotation: new THREE.Euler(0, 0, 0),
         roughness: 0.9, // glossy ceramic
         metalness: 1, // not metal
@@ -171,7 +171,7 @@ export const toiletCategories = [
           standard: ["White"],
         },
         glb: "/models/toilets/standard_gleam.glb",
-        position: new THREE.Vector3(0.45, -1.55, 0.7),
+        position: new THREE.Vector3(0.45, 0, -3),
         rotation: new THREE.Euler(0, 0, 0),
         roughness: 0.9, // glossy ceramic
         metalness: 1, // not metal

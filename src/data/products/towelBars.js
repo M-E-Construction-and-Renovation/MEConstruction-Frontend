@@ -20,13 +20,13 @@ export const towelBars = [
           premium: ["Black", "Champagne Gold"],
         },
         glb: "/models/towel-bars/towel bar model 1 - 24in.glb",
-        position: new THREE.Vector3(-1.12, -0.3, 0),
-        rotation: new THREE.Euler(0, 1.55, 0),
-        roughness: 1, // glossy ceramic
+        position: new THREE.Vector3(-1.11, 1.5, -2.5),
+        rotation: new THREE.Euler(0, 1.57, 0),
+        roughness: 0.3, // glossy ceramic
         metalness: 1, // not metal
         clearcoat: 0.0, // glazed surface
         clearcoatRoughness: 0.0,
-        envMapIntensity: 1.0, // reflections
+        envMapIntensity: 0.0, // reflections
         displayByColor: {
           Chrome: {
             productDisplay:
@@ -59,13 +59,13 @@ export const towelBars = [
           premium: ["Black", "Champagne Gold"],
         },
         glb: "/models/towel-bars/towel bar model 2 - 24in.glb",
-        position: new THREE.Vector3(-1.12, -0.3, 0),
-        rotation: new THREE.Euler(0, 1.55, 0),
-        roughness: 1, // glossy ceramic
+        position: new THREE.Vector3(-1.11, 1.5, -2.5),
+        rotation: new THREE.Euler(0, 1.57, 0),
+        roughness: 0.3, // glossy ceramic
         metalness: 1, // not metal
         clearcoat: 0.0, // glazed surface
         clearcoatRoughness: 0.0,
-        envMapIntensity: 1.0, // reflections
+        envMapIntensity: 0.0, // reflections
         displayByColor: {
           Chrome: {
             productDisplay:

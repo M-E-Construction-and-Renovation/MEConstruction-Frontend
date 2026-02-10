@@ -7,39 +7,70 @@ import {
   useGLTF,
   Environment,
   ContactShadows,
-  Lightformer,
+  useEnvironment,
 } from "@react-three/drei";
+import { EffectComposer, N8AO } from "@react-three/postprocessing";
 import { useLayoutEffect, Suspense, useMemo } from "react";
+
+useEnvironment.preload({ files: "/environment/bathroom-environment.hdr" });
 
 function BathroomModel() {
   const { scene } = useGLTF("/models/bathroom.glb");
 
-  useLayoutEffect(() => {
-    // Center the model
-    const box = new THREE.Box3().setFromObject(scene);
-    const center = box.getCenter(new THREE.Vector3());
+  const clonedScene = useMemo(() => {
+    const clone = scene.clone(true);
 
-    scene.position.sub(center);
-
-    // Apply material config
-    scene.traverse((child) => {
+    clone.traverse((child) => {
       if (!child.isMesh || !child.material) return;
+
+      child.material = child.material.clone();
+
+      child.receiveShadow = true; // Walls catch shadows from vanity/bath
+      child.castShadow = true; // If light comes from outside a window
 
       const mat = child.material;
 
-      // Neutral architectural white
-      mat.color.set("#FFFFF7");
+      // mat.color.set("#F5F5F5");
+      mat.color.set("#E8E8E8");
       mat.color.convertSRGBToLinear();
 
-      mat.roughness = 0.5; // matte painted wall
-      mat.metalness = 0.5;
-
-      mat.envMapIntensity = 1; // subtle bounce
       mat.needsUpdate = true;
     });
+
+    return clone;
   }, [scene]);
 
-  return <primitive object={scene} />;
+  useLayoutEffect(() => {
+    // Center the model
+    // const box = new THREE.Box3().setFromObject(clonedScene);
+    // const center = box.getCenter(new THREE.Vector3());
+
+    // clonedScene.position.sub(center);
+
+    // Apply material config
+    clonedScene.traverse((child) => {
+      // if (!child.isMesh || !child.material) return;
+      // if (child.name === "floor" || child.name === "Ceiling") {
+      //   child.traverse((mesh) => {
+      //     if (!mesh.isMesh || !mesh.material) return;
+      //     const mat = mesh.material;
+      //     mat.color.set("#FFFFFA");
+      //     mat.color.convertSRGBToLinear();
+      //     mat.needsUpdate = true;
+      //   });
+      // }
+      // const mat = child.material;
+      // // Neutral architectural white
+      // mat.color.set("#000000");
+      // mat.color.convertSRGBToLinear();
+      // mat.roughness = 0.5; // matte painted wall
+      // mat.metalness = 0.5;
+      // mat.envMapIntensity = 1; // subtle bounce
+      // mat.needsUpdate = true;
+    });
+  }, [clonedScene]);
+
+  return <primitive object={clonedScene} />;
 }
 
 function Product({
@@ -87,6 +118,9 @@ function Product({
         child.userData.initialColor = mat.color.clone();
       }
 
+      child.castShadow = true; // Product casts shadow on floor/wall
+      child.receiveShadow = true; // Product receives shadows from walls
+
       // Apply color correctly
       mat.color.set(color || "#EFF2F3");
       mat.color.convertSRGBToLinear(); // CRITICAL
@@ -126,6 +160,39 @@ function Product({
   );
 }
 
+function InteriorLight({
+  position = [0.08, 2.9, -4.3],
+  intensity = 10,
+  castShadow = true,
+}) {
+  return (
+    <group position={position}>
+      {/* Adjust Y to your ceiling height */}
+      {/* 1. The Physical "Bulb" (What you see) */}
+      <mesh>
+        <sphereGeometry args={[0.05, 16, 16]} />
+        <meshStandardMaterial
+          emissive="#ffffca"
+          emissiveIntensity={2}
+          color="white"
+        />
+      </mesh>
+      {/* 2. The Actual Light (What illuminates the room) */}
+      <pointLight
+        intensity={intensity} // High because of physical decay
+        decay={1} // Standard physical light behavior
+        distance={20} // Range of the light
+        castShadow={castShadow} // Enable this for shadows on walls
+        // shadow-mapSize={1024}
+        shadow-mapSize={[512, 512]}
+        shadow-bias={-0.0005} // Prevents "shadow acne" patterns on meshes
+        // shadow-normalBias={0.02}
+        shadow-normalBias={0.04}
+      />
+    </group>
+  );
+}
+
 export default function BathroomScene({
   selectedProducts = {},
   categories = [],
@@ -150,6 +217,7 @@ export default function BathroomScene({
         <Canvas
           camera={{ fov: 50 }}
           shadows
+          dpr={[1, 1.5]} // This ensures the GPU never works harder than it needs to
           gl={{
             physicallyCorrectLights: true,
             toneMapping: THREE.ACESFilmicToneMapping,
@@ -159,6 +227,12 @@ export default function BathroomScene({
           }}
           className="bg-gradient-to-b from-blue-500 to-white"
         >
+          <Environment
+            environmentIntensity={0.2}
+            files="/environment/bathroom-environment.hdr"
+            // background={true}
+          />
+
           <BathroomModel />
 
           {filteredCategories.map((category, index) => {
@@ -188,52 +262,29 @@ export default function BathroomScene({
             );
           })}
 
-          <ambientLight intensity={4} />
+          <EffectComposer disableNormalPass>
+            <N8AO
+              halfRes // Renders at half resolution (invisible to eye, 2x faster)
+              aoRadius={0.5}
+              intensity={1}
+              distanceFalloff={1}
+            />
+          </EffectComposer>
 
-          <directionalLight
-            position={[2, 5, 5]} // Up 10 units, slightly to the side and front
-            intensity={1}
-            castShadow
+          <ambientLight intensity={0.1} />
+
+          {/* 2. The Main Light Source */}
+          <InteriorLight intensity={10} />
+          {/* 3. Secondary Light Source */}
+          <InteriorLight
+            position={[0.08, 2.9, -1.6]}
+            intensity={5}
+            castShadow={false}
           />
-
-          <ContactShadows
-            position={[0, -1, 0]}
-            opacity={0.6}
-            scale={20}
-            blur={2.5}
-            far={1.5}
-          />
-
-          <Environment
-            preset="studio"
-            environmentIntensity={0.1}
-            resolution={1024}
-          >
-            <Lightformer
-              form="rect"
-              intensity={5}
-              position={[0, 5, 0]}
-              scale={[10, 10]}
-              rotation-x={Math.PI / 2}
-            />
-            <Lightformer
-              form="rect"
-              intensity={5}
-              position={[-2, 5, 0]}
-              scale={[10, 10]}
-              rotation-x={Math.PI / 2}
-            />
-            <Lightformer
-              form="rect"
-              intensity={5}
-              position={[2, 5, 0]}
-              scale={[10, 10]}
-              rotation-x={Math.PI / 2}
-            />
-          </Environment>
 
           <OrbitControls
             makeDefault
+            target={[0, 1.5, -4]}
             enablePan={false}
             minDistance={1}
             maxDistance={4}

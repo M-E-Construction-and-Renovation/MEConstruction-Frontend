@@ -94,7 +94,7 @@ export const wallsCategories = [
           basic: ["White"],
         },
         glb: "/models/cabin-walls/wall_kit.glb",
-        position: new THREE.Vector3(-1.199, -1, -2.07),
+        position: new THREE.Vector3(-1.199, 0.6, -5.29),
         rotation: new THREE.Euler(0, 0, 0),
         roughness: 0.8, // glossy ceramic
         metalness: 0.7, // not metal
