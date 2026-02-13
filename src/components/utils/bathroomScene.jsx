@@ -6,16 +6,43 @@ import {
   OrbitControls,
   useGLTF,
   Environment,
-  ContactShadows,
   useEnvironment,
+  useTexture,
+  MeshReflectorMaterial,
 } from "@react-three/drei";
 import { EffectComposer, N8AO } from "@react-three/postprocessing";
-import { useLayoutEffect, Suspense, useMemo } from "react";
+import { useLayoutEffect, Suspense, useMemo, useRef, useEffect } from "react";
 
 useEnvironment.preload({ files: "/environment/bathroom-environment.hdr" });
 
 function BathroomModel() {
   const { scene } = useGLTF("/models/bathroom.glb");
+
+  const floorTexture = {
+    map: "/textures/tiles/floor_tile_1/Tiles107_2K-JPG_Color.jpg",
+    normalMap: "/textures/tiles/floor_tile_1/Tiles107_2K-JPG_NormalGL.jpg",
+    roughnessMap: "/textures/tiles/floor_tile_1/Tiles107_2K-JPG_Roughness.jpg",
+  };
+
+  const wallTexture = {
+    map: "/textures/walls/wall_tile_1/Tiles075_2K-JPG_Color.jpg",
+    normalMap: "/textures/walls/wall_tile_1/Tiles075_2K-JPG_NormalGL.jpg",
+    roughnessMap: "/textures/walls/wall_tile_1/Tiles075_2K-JPG_Roughness.jpg",
+  };
+
+  const ceilingTexture = {
+    map: "/textures/ceilings/ceiling_1/Plastic013A_2K-JPG_Color.jpg",
+    normalMap: "/textures/ceilings/ceiling_1/Plastic013A_2K-JPG_NormalGL.jpg",
+    roughnessMap:
+      "/textures/ceilings/ceiling_1/Plastic013A_2K-JPG_Roughness.jpg",
+  };
+
+  // 1. Load textures (hooks handle the Suspense automatically)
+  const floorMaps = useTexture(floorTexture || {});
+
+  const wallMaps = useTexture(wallTexture || {});
+
+  const ceilingMaps = useTexture(ceilingTexture || {});
 
   const clonedScene = useMemo(() => {
     const clone = scene.clone(true);
@@ -27,46 +54,99 @@ function BathroomModel() {
 
       child.receiveShadow = true; // Walls catch shadows from vanity/bath
       child.castShadow = true; // If light comes from outside a window
-
-      const mat = child.material;
-
-      // mat.color.set("#F5F5F5");
-      mat.color.set("#E8E8E8");
-      mat.color.convertSRGBToLinear();
-
-      mat.needsUpdate = true;
     });
 
     return clone;
   }, [scene]);
 
   useLayoutEffect(() => {
-    // Center the model
-    // const box = new THREE.Box3().setFromObject(clonedScene);
-    // const center = box.getCenter(new THREE.Vector3());
-
-    // clonedScene.position.sub(center);
-
     // Apply material config
     clonedScene.traverse((child) => {
-      // if (!child.isMesh || !child.material) return;
-      // if (child.name === "floor" || child.name === "Ceiling") {
-      //   child.traverse((mesh) => {
-      //     if (!mesh.isMesh || !mesh.material) return;
-      //     const mat = mesh.material;
-      //     mat.color.set("#FFFFFA");
-      //     mat.color.convertSRGBToLinear();
-      //     mat.needsUpdate = true;
-      //   });
-      // }
-      // const mat = child.material;
-      // // Neutral architectural white
-      // mat.color.set("#000000");
-      // mat.color.convertSRGBToLinear();
-      // mat.roughness = 0.5; // matte painted wall
-      // mat.metalness = 0.5;
-      // mat.envMapIntensity = 1; // subtle bounce
-      // mat.needsUpdate = true;
+      if (child.name === "floor") {
+        child.traverse((mesh) => {
+          if (!mesh.isMesh || !mesh.material) return;
+          const mat = mesh.material;
+
+          if (floorMaps.map) {
+            // 1. Enable Wrapping (Necessary for tiling)
+            floorMaps.map.wrapS = floorMaps.map.wrapT = THREE.RepeatWrapping;
+            // 2. Set the Repeat [X, Y]
+            // Values higher than 1 make the pattern smaller (tiling more)
+            // Values lower than 1 stretch the pattern
+            floorMaps.map.repeat.set(4, 4);
+            mat.map = floorMaps.map;
+            mat.map.flipY = false;
+          }
+          if (floorMaps.roughnessMap) mat.roughnessMap = floorMaps.roughnessMap;
+
+          if (floorMaps.normalMap) {
+            floorMaps.normalMap.wrapS = floorMaps.normalMap.wrapT =
+              THREE.RepeatWrapping;
+            floorMaps.normalMap.repeat.set(4, 4);
+            mat.normalMap = floorMaps.normalMap;
+          }
+          mat.needsUpdate = true;
+        });
+      }
+
+      if (
+        child.name === "Wall_Right" ||
+        child.name === "Wall_Left" ||
+        child.name === "Wall_Back"
+      ) {
+        child.traverse((mesh) => {
+          if (!mesh.isMesh || !mesh.material) return;
+          const mat = mesh.material;
+          if (wallMaps.map) {
+            // 1. Enable Wrapping (Necessary for tiling)
+            wallMaps.map.wrapS = wallMaps.map.wrapT = THREE.RepeatWrapping;
+            // 2. Set the Repeat [X, Y]
+            // Values higher than 1 make the pattern smaller (tiling more)
+            // Values lower than 1 stretch the pattern
+            wallMaps.map.repeat.set(1, 1);
+            mat.map = wallMaps.map;
+            mat.map.flipY = false;
+          }
+          if (wallMaps.roughnessMap) mat.roughnessMap = wallMaps.roughnessMap;
+
+          if (wallMaps.normalMap) {
+            wallMaps.normalMap.wrapS = wallMaps.normalMap.wrapT =
+              THREE.RepeatWrapping;
+            wallMaps.normalMap.repeat.set(1, 1);
+            mat.normalMap = wallMaps.normalMap;
+          }
+          mat.needsUpdate = true;
+        });
+      }
+
+      if (child.name === "Ceiling") {
+        child.traverse((mesh) => {
+          if (!mesh.isMesh || !mesh.material) return;
+          const mat = mesh.material;
+
+          if (ceilingMaps.map) {
+            // 1. Enable Wrapping (Necessary for tiling)
+            ceilingMaps.map.wrapS = ceilingMaps.map.wrapT =
+              THREE.RepeatWrapping;
+            // 2. Set the Repeat [X, Y]
+            // Values higher than 1 make the pattern smaller (tiling more)
+            // Values lower than 1 stretch the pattern
+            ceilingMaps.map.repeat.set(4, 4);
+            mat.map = ceilingMaps.map;
+            mat.map.flipY = false;
+          }
+          if (ceilingMaps.roughnessMap)
+            mat.roughnessMap = ceilingMaps.roughnessMap;
+
+          if (ceilingMaps.normalMap) {
+            ceilingMaps.normalMap.wrapS = ceilingMaps.normalMap.wrapT =
+              THREE.RepeatWrapping;
+            ceilingMaps.normalMap.repeat.set(4, 4);
+            mat.normalMap = ceilingMaps.normalMap;
+          }
+          mat.needsUpdate = true;
+        });
+      }
     });
   }, [clonedScene]);
 
@@ -78,58 +158,49 @@ function Product({
   position,
   rotation,
   scale = [1, 1, 1],
-  color = "#EFF2F3",
-  roughness = 0.0, // glossy ceramic
-  metalness = 0.0, // not metal
-  clearcoat = 0.0, // glazed surface
+  color,
+  roughness = 0.0,
+  metalness = 0.0,
+  clearcoat = 0.0,
   clearcoatRoughness = 0.0,
-  envMapIntensity = 0, // reflections
+  envMapIntensity = 0,
+  isMirror = false,
 }) {
   const { scene } = useGLTF(glb);
 
-  // 🔑 CLONE THE SCENE
-  // const clonedScene = useMemo(() => scene.clone(true), [scene]);
-  const clonedScene = useMemo(() => {
+  const { clonedScene, mirrorGeometry } = useMemo(() => {
     const clone = scene.clone(true);
+
+    let mirrorGeometry;
 
     clone.traverse((child) => {
       if (!child.isMesh || !child.material) return;
-
+      // Clone materials so changes don't affect other instances
       child.material = child.material.clone();
+
+      if (isMirror && child.name.includes("mirror")) {
+        mirrorGeometry = child.geometry;
+        child.visible = false; // Hide the original so it doesn't overlap
+      }
     });
 
-    return clone;
+    return { clonedScene: clone, mirrorGeometry };
   }, [scene]);
 
+  // APPLY PBR PROPERTIES
   useLayoutEffect(() => {
-    // Apply material config
-
-    // scene.position.copy(position);
-    // scene.rotation.copy(rotation);
-    // scene.scale.set(...scale);
-
     clonedScene.traverse((child) => {
       if (!child.isMesh || !child.material) return;
 
       const mat = child.material;
+      child.castShadow = true;
+      child.receiveShadow = true;
 
-      // Store original color once (optional but professional)
-      if (!child.userData.initialColor) {
-        child.userData.initialColor = mat.color.clone();
-      }
+      if (color) mat.color.set(color || "#EFF2F3").convertSRGBToLinear();
 
-      child.castShadow = true; // Product casts shadow on floor/wall
-      child.receiveShadow = true; // Product receives shadows from walls
-
-      // Apply color correctly
-      mat.color.set(color || "#EFF2F3");
-      mat.color.convertSRGBToLinear(); // CRITICAL
-
-      // Apply PBR values
       mat.roughness = roughness;
       mat.metalness = metalness;
 
-      // Only if material supports it
       if ("clearcoat" in mat) {
         mat.clearcoat = clearcoat;
         mat.clearcoatRoughness = clearcoatRoughness;
@@ -140,9 +211,6 @@ function Product({
     });
   }, [
     clonedScene,
-    // position,
-    // rotation,
-    // scale,
     color,
     roughness,
     metalness,
@@ -151,17 +219,34 @@ function Product({
     envMapIntensity,
   ]);
 
-  // return <primitive object={clonedScene} />;
-  // 🔑 TRANSFORMS GO HERE (NO EFFECT)
   return (
     <group position={position} rotation={rotation} scale={scale}>
       <primitive object={clonedScene} />
+
+      {isMirror && mirrorGeometry && (
+        <mesh geometry={mirrorGeometry}>
+          <MeshReflectorMaterial
+            blur={[0, 0]} // Turn off blur temporarily to see if it's working
+            resolution={1024}
+            mixBlur={0}
+            mixStrength={2} // Crank this up to force the reflection to show
+            roughness={0}
+            depthScale={0} // Set to 0 to disable depth-based fading for testing
+            color="#a0a0a0" // Lighten the base color (black base = black mirror)
+            metalness={0.5}
+            mirror={1}
+            transparent={false}
+            depthWrite={true}
+            side={THREE.DoubleSide}
+          />
+        </mesh>
+      )}
     </group>
   );
 }
 
 function InteriorLight({
-  position = [0.08, 2.9, -4.3],
+  position = [0.08, 2.96, -4.3],
   intensity = 10,
   castShadow = true,
 }) {
@@ -228,9 +313,9 @@ export default function BathroomScene({
           className="bg-gradient-to-b from-blue-500 to-white"
         >
           <Environment
-            environmentIntensity={0.2}
+            environmentIntensity={0}
             files="/environment/bathroom-environment.hdr"
-            // background={true}
+            background={true}
           />
 
           <BathroomModel />
@@ -252,15 +337,19 @@ export default function BathroomScene({
                 glb={specificProduct.glb}
                 position={specificProduct.position}
                 rotation={specificProduct.rotation}
+                scale={specificProduct.scale}
                 color={color}
                 roughness={specificProduct.roughness}
                 metalness={specificProduct.metalness}
                 clearcoat={specificProduct.clearcoat}
                 clearcoatRoughness={specificProduct.clearcoatRoughness}
                 envMapIntensity={specificProduct.envMapIntensity}
+                isMirror={category.isMirror}
               />
             );
           })}
+
+          {/* <Mirror /> */}
 
           <EffectComposer disableNormalPass>
             <N8AO
@@ -271,13 +360,13 @@ export default function BathroomScene({
             />
           </EffectComposer>
 
-          <ambientLight intensity={0.1} />
+          <ambientLight intensity={0.5} />
 
           {/* 2. The Main Light Source */}
           <InteriorLight intensity={10} />
           {/* 3. Secondary Light Source */}
           <InteriorLight
-            position={[0.08, 2.9, -1.6]}
+            position={[0.08, 2.96, -1.6]}
             intensity={5}
             castShadow={false}
           />
@@ -287,7 +376,7 @@ export default function BathroomScene({
             target={[0, 1.5, -4]}
             enablePan={false}
             minDistance={1}
-            maxDistance={4}
+            maxDistance={4.5}
             minPolarAngle={Math.PI / 2.5} // 45°
             maxPolarAngle={Math.PI / 1.9} // ~95°
             minAzimuthAngle={-Math.PI / 13.3}

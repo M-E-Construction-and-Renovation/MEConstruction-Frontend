@@ -20,8 +20,8 @@ export const tubFrontsShowerPansCategories = [
         glb: "/models/tub-fronts-and-shower-pans/princeton.glb",
         position: new THREE.Vector3(-1.46, -0.015, -5),
         rotation: new THREE.Euler(0, 0, 0),
-        roughness: 0.0, // glossy ceramic
-        metalness: 0.0, // not metal
+        roughness: 0, // glossy ceramic
+        metalness: 0, // not metal
         clearcoat: 0.0, // glazed surface
         clearcoatRoughness: 0.0,
         envMapIntensity: 0.0, // reflections

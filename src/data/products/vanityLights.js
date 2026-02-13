@@ -1,10 +1,10 @@
 export const lightsCategories = [
   {
     id: "lights",
-    initialAngle: "side",
+    // initialAngle: "side",
     label: "Vanity Light",
-    zIndex: "10",
-    shapesAllowed: ["tub", "tub-to-shower", "curved", "neo-angle", "alcove"],
+    // zIndex: "10",
+    // shapesAllowed: ["tub", "tub-to-shower", "curved", "neo-angle", "alcove"],
     products: [
       {
         id: "vl1",
@@ -12,18 +12,20 @@ export const lightsCategories = [
         tiers: {
           basic: ["White"],
         },
+        glb: "/models/lights/lights 1.glb",
+        position: [-0.97, 2.3, -3.1],
+        rotation: [0, Math.PI / 2, 0],
+        scale: [1, 1, 1],
+        roughness: 0.2, // glossy ceramic
+        metalness: 0.5, // not metal
+        clearcoat: 0.0, // glazed surface
+        clearcoatRoughness: 0.0,
+        envMapIntensity: 0.0, // reflections
         displayByColor: {
           White: {
             productDisplay:
-              "/configurator/products/vanity-lights/design/basic-1.png",
-            designDisplay: {
-              side: {
-                initialPosition:
-                  "/configurator/products/vanity-lights/design/basic-1.png",
-                invertedPosition:
-                  "/configurator/products/vanity-lights/design/basic-1-inverted.png",
-              },
-            },
+              "https://images.thdstatic.com/productImages/bad870f5-bfdf-4a44-a940-8e4f91de6d61/svn/chrome-aspen-creative-corporation-vanity-lighting-62270-c3_600.jpg",
+            color: "",
           },
         },
       },
@@ -33,18 +35,20 @@ export const lightsCategories = [
         tiers: {
           basic: ["White"],
         },
+        glb: "/models/lights/lights 2.glb",
+        position: [-1.055, 2.3, -3.1],
+        rotation: [0, Math.PI / 2, 0],
+        scale: [1, 1, 1],
+        roughness: 0.2, // glossy ceramic
+        metalness: 0.5, // not metal
+        clearcoat: 0.0, // glazed surface
+        clearcoatRoughness: 0.0,
+        envMapIntensity: 0.0, // reflections
         displayByColor: {
           White: {
             productDisplay:
-              "/configurator/products/vanity-lights/design/basic-2.png",
-            designDisplay: {
-              side: {
-                initialPosition:
-                  "/configurator/products/vanity-lights/design/basic-2.png",
-                invertedPosition:
-                  "/configurator/products/vanity-lights/design/basic-2-inverted.png",
-              },
-            },
+              "https://mobileimages.lowes.com/productimages/d52b62d4-171c-4a76-80f4-12a69961cb46/68035913.jpeg?size=pdhism",
+            color: "",
           },
         },
       },
@@ -54,18 +58,20 @@ export const lightsCategories = [
         tiers: {
           basic: ["White"],
         },
+        glb: "/models/lights/lights 3.glb",
+        position: [-1.04, 2.3, -3.1],
+        rotation: [0, Math.PI / 2, 0],
+        scale: [1, 1, 1],
+        roughness: 0.2, // glossy ceramic
+        metalness: 0.5, // not metal
+        clearcoat: 0.0, // glazed surface
+        clearcoatRoughness: 0.0,
+        envMapIntensity: 0.0, // reflections
         displayByColor: {
           White: {
             productDisplay:
-              "/configurator/products/vanity-lights/design/basic-3.png",
-            designDisplay: {
-              side: {
-                initialPosition:
-                  "/configurator/products/vanity-lights/design/basic-3.png",
-                invertedPosition:
-                  "/configurator/products/vanity-lights/design/basic-3-inverted.png",
-              },
-            },
+              "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQVX7y-t70YLWLwoMMfux7XpA6ytHf5GCKYubDAtwIxSzkMABzoQ-d268LIY08o8X6bsusjoVe-EgIDm8lVwQO8V3dyvukLJhdg_AolsfL4wm5A-t7th3sM",
+            color: "",
           },
         },
       },
@@ -73,20 +79,21 @@ export const lightsCategories = [
         id: "vl4",
         name: "Vanity Light 4",
         tiers: {
-          basic: ["White"],
+          premium: ["Gray/Gold"],
         },
+        glb: "/models/lights/lights 4.glb",
+        position: [-1.04, 2.3, -3.1],
+        rotation: [0, Math.PI / 2, 0],
+        scale: [1, 1, 1],
+        roughness: 0.2, // glossy ceramic
+        metalness: 0.5, // not metal
+        clearcoat: 0.0, // glazed surface
+        clearcoatRoughness: 0.0,
+        envMapIntensity: 0.0, // reflections
         displayByColor: {
-          White: {
-            productDisplay:
-              "/configurator/products/vanity-lights/design/basic-4.png",
-            designDisplay: {
-              side: {
-                initialPosition:
-                  "/configurator/products/vanity-lights/design/basic-4.png",
-                invertedPosition:
-                  "/configurator/products/vanity-lights/design/basic-4-inverted.png",
-              },
-            },
+          "Gray/Gold": {
+            productDisplay: "/images/display/lights/vanity 4-display.jpg",
+            color: "",
           },
         },
       },
@@ -94,20 +101,22 @@ export const lightsCategories = [
         id: "vl5",
         name: "Vanity Light 5",
         tiers: {
-          basic: ["White"],
+          premium: ["White"],
         },
+        glb: "/models/lights/lights 5.glb",
+        position: [-1.12, 2.3, -3.1],
+        rotation: [0, Math.PI / 2, 0],
+        scale: [1, 1, 1],
+        roughness: 0.2, // glossy ceramic
+        metalness: 0.5, // not metal
+        clearcoat: 0.0, // glazed surface
+        clearcoatRoughness: 0.0,
+        envMapIntensity: 0.0, // reflections
         displayByColor: {
           White: {
             productDisplay:
-              "/configurator/products/vanity-lights/design/basic-5.png",
-            designDisplay: {
-              side: {
-                initialPosition:
-                  "/configurator/products/vanity-lights/design/basic-5.png",
-                invertedPosition:
-                  "/configurator/products/vanity-lights/design/basic-5-inverted.png",
-              },
-            },
+              "https://mobileimages.lowes.com/productimages/67f20ee7-3e80-4cfc-acea-0fe675254ae9/75096841.jpeg?size=pdhz",
+            color: "",
           },
         },
       },
@@ -115,20 +124,22 @@ export const lightsCategories = [
         id: "vl6",
         name: "Vanity Light 6",
         tiers: {
-          standard: ["Brown"],
+          standard: ["Black/Gold"],
         },
+        glb: "/models/lights/lights 7.glb",
+        position: [-1, 2.3, -3.4],
+        rotation: [0, Math.PI / 2, 0],
+        scale: [1, 1, 1],
+        roughness: 0.2, // glossy ceramic
+        metalness: 0.5, // not metal
+        clearcoat: 0.0, // glazed surface
+        clearcoatRoughness: 0.0,
+        envMapIntensity: 0.0, // reflections
         displayByColor: {
-          Brown: {
+          "Black/Gold": {
             productDisplay:
-              "/configurator/products/vanity-lights/design/standard-1.png",
-            designDisplay: {
-              side: {
-                initialPosition:
-                  "/configurator/products/vanity-lights/design/standard-1.png",
-                invertedPosition:
-                  "/configurator/products/vanity-lights/design/standard-1-inverted.png",
-              },
-            },
+              "https://m.media-amazon.com/images/I/61z+YDhmqvL._AC_UF350,350_QL80_.jpg",
+            color: "",
           },
         },
       },
@@ -136,123 +147,22 @@ export const lightsCategories = [
         id: "vl7",
         name: "Vanity Light 7",
         tiers: {
-          standard: ["Brown"],
+          standard: ["Gold"],
         },
+        glb: "/models/lights/lights 8.glb",
+        position: [-1.05, 2.3, -3.4],
+        rotation: [0, Math.PI / 2, 0],
+        scale: [1, 1, 1],
+        roughness: 0.2, // glossy ceramic
+        metalness: 0.5, // not metal
+        clearcoat: 0.0, // glazed surface
+        clearcoatRoughness: 0.0,
+        envMapIntensity: 0.0, // reflections
         displayByColor: {
-          Brown: {
+          Gold: {
             productDisplay:
-              "/configurator/products/vanity-lights/design/standard-2.png",
-            designDisplay: {
-              side: {
-                initialPosition:
-                  "/configurator/products/vanity-lights/design/standard-2.png",
-                invertedPosition:
-                  "/configurator/products/vanity-lights/design/standard-2-inverted.png",
-              },
-            },
-          },
-        },
-      },
-      {
-        id: "vl8",
-        name: "Vanity Light 8",
-        tiers: {
-          standard: ["Brown"],
-        },
-        displayByColor: {
-          Brown: {
-            productDisplay:
-              "/configurator/products/vanity-lights/design/standard-3.png",
-            designDisplay: {
-              side: {
-                initialPosition:
-                  "/configurator/products/vanity-lights/design/standard-3.png",
-                invertedPosition:
-                  "/configurator/products/vanity-lights/design/standard-3-inverted.png",
-              },
-            },
-          },
-        },
-      },
-      {
-        id: "vl9",
-        name: "Vanity Light 9",
-        tiers: {
-          premium: ["Brown"],
-        },
-        displayByColor: {
-          Brown: {
-            productDisplay:
-              "/configurator/products/vanity-lights/design/premium-1.png",
-            designDisplay: {
-              side: {
-                initialPosition:
-                  "/configurator/products/vanity-lights/design/premium-1.png",
-                invertedPosition:
-                  "/configurator/products/vanity-lights/design/premium-1-inverted.png",
-              },
-            },
-          },
-        },
-      },
-      {
-        id: "vl10",
-        name: "Vanity Light 10",
-        tiers: {
-          premium: ["Brown"],
-        },
-        displayByColor: {
-          Brown: {
-            productDisplay:
-              "/configurator/products/vanity-lights/design/premium-2.png",
-            designDisplay: {
-              side: {
-                initialPosition:
-                  "/configurator/products/vanity-lights/design/premium-2.png",
-                invertedPosition:
-                  "/configurator/products/vanity-lights/design/premium-2-inverted.png",
-              },
-            },
-          },
-        },
-      },
-      {
-        id: "vl11",
-        name: "Vanity Light 11",
-        tiers: {
-          premium: ["Brown"],
-        },
-        displayByColor: {
-          Brown: {
-            productDisplay:
-              "/configurator/products/vanity-lights/design/premium-3.png",
-            designDisplay: {
-              side: {
-                initialPosition:
-                  "/configurator/products/vanity-lights/design/premium-3.png",
-              },
-            },
-          },
-        },
-      },
-      {
-        id: "vl12",
-        name: "Vanity Light 12",
-        tiers: {
-          premium: ["Brown"],
-        },
-        displayByColor: {
-          Brown: {
-            productDisplay:
-              "/configurator/products/vanity-lights/design/premium-4.png",
-            designDisplay: {
-              side: {
-                initialPosition:
-                  "/configurator/products/vanity-lights/design/premium-4.png",
-                invertedPosition:
-                  "/configurator/products/vanity-lights/design/premium-4-inverted.png",
-              },
-            },
+              "https://lights.com/cdn/shop/files/LC004941_WB_Alt4_1500.jpg?v=1761160724&width=1214",
+            color: "",
           },
         },
       },
