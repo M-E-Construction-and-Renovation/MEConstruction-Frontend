@@ -1,46 +1,54 @@
 export const shelvesCategories = [
   {
     id: "shelves",
-    initialAngle: "front",
+    // initialAngle: "front",
     label: "Shelves",
-    zIndex: "50",
-    shapesAllowed: ["tub", "tub-to-shower", "curved", "neo-angle", "alcove"],
+    // zIndex: "50",
+    // shapesAllowed: ["tub", "tub-to-shower", "curved", "neo-angle", "alcove"],
     products: [
       {
         id: "s1",
-        name: "Single Shelf",
+        name: "Long Shelf",
         tiers: {
           basic: ["White"],
         },
+        glb: "/models/shelves/long shelf.glb",
+        position: [-1.2, 1.5, -6.08],
+        rotation: [0, 0, 0],
+        scale: [0.8, 0.8, 1],
+        roughness: 1, // glossy ceramic
+        metalness: 0.5, // not metal
+        clearcoat: 0.0, // glazed surface
+        clearcoatRoughness: 0.0,
+        envMapIntensity: 0.0, // reflections
         displayByColor: {
           White: {
             productDisplay:
               "/configurator/products/accessories/display/single-shelf-white-display.png",
-            designDisplay: {
-              front: {
-                initialPosition:
-                  "/configurator/products/accessories/left/single-shelf-left-white.png",
-              },
-            },
+            color: "#ffffff",
           },
         },
       },
       {
         id: "s2",
-        name: "Shelf",
+        name: "Single Shelf",
         tiers: {
           basic: ["White"],
         },
+        glb: "/models/shelves/Short shelf.glb",
+        position: [-1.2, 1.3, -6.08],
+        rotation: [0, 0, 0],
+        scale: [0.8, 0.8, 1],
+        roughness: 1, // glossy ceramic
+        metalness: 0.5, // not metal
+        clearcoat: 0.0, // glazed surface
+        clearcoatRoughness: 0.0,
+        envMapIntensity: 0.0, // reflections
         displayByColor: {
           White: {
             productDisplay:
-              "/configurator/products/accessories/display/shelf-white-display.png",
-            designDisplay: {
-              front: {
-                initialPosition:
-                  "/configurator/products/accessories/left/shelf-left-white.png",
-              },
-            },
+              "/configurator/products/accessories/display/single-shelf-white-display.png",
+            color: "#ffffff",
           },
         },
       },

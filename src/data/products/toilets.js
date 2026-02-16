@@ -20,8 +20,8 @@ export const toiletCategories = [
         glb: "/models/toilets/basic_glacierbay.glb",
         position: new THREE.Vector3(-0.45, 0, -2.5),
         rotation: new THREE.Euler(0, Math.PI / 1, 0),
-        roughness: 0.9, // glossy ceramic
-        metalness: 1.0, // not metal
+        roughness: 1, // glossy ceramic
+        metalness: 0.5, // not metal
         clearcoat: 0.0, // glazed surface
         clearcoatRoughness: 0.0,
         envMapIntensity: 1.0, // reflections
@@ -42,8 +42,8 @@ export const toiletCategories = [
         glb: "/models/toilets/basic_american standard.glb",
         position: new THREE.Vector3(-0.45, 0, -2.5),
         rotation: new THREE.Euler(0, Math.PI / 1, 0),
-        roughness: 0.9, // glossy ceramic
-        metalness: 1, // not metal
+        roughness: 1, // glossy ceramic
+        metalness: 0.5, // not metal
         clearcoat: 0.0, // glazed surface
         clearcoatRoughness: 0.0,
         envMapIntensity: 1.0, // reflections
@@ -63,8 +63,8 @@ export const toiletCategories = [
         glb: "/models/toilets/premium_kelmbrook.glb",
         position: new THREE.Vector3(-0.45, 0, -2.5),
         rotation: new THREE.Euler(0, Math.PI / 1, 0),
-        roughness: 0.9, // glossy ceramic
-        metalness: 1, // not metal
+        roughness: 1, // glossy ceramic
+        metalness: 0.5, // not metal
         clearcoat: 0.0, // glazed surface
         clearcoatRoughness: 0.0,
         envMapIntensity: 1.0, // reflections
@@ -85,8 +85,8 @@ export const toiletCategories = [
         glb: "/models/toilets/premium_starosacompact.glb",
         position: new THREE.Vector3(-0.45, 0, -2.5),
         rotation: new THREE.Euler(0, Math.PI / 1, 0),
-        roughness: 0.9, // glossy ceramic
-        metalness: 1, // not metal
+        roughness: 1, // glossy ceramic
+        metalness: 0.5, // not metal
         clearcoat: 0.0, // glazed surface
         clearcoatRoughness: 0.0,
         envMapIntensity: 1.0, // reflections
@@ -129,8 +129,8 @@ export const toiletCategories = [
         glb: "/models/toilets/premium_totoultra2.glb",
         position: new THREE.Vector3(-0.45, 0, -2.5),
         rotation: new THREE.Euler(0, Math.PI / 1, 0),
-        roughness: 0.9, // glossy ceramic
-        metalness: 1, // not metal
+        roughness: 1, // glossy ceramic
+        metalness: 0.5, // not metal
         clearcoat: 0.0, // glazed surface
         clearcoatRoughness: 0.0,
         envMapIntensity: 1.0, // reflections
@@ -151,8 +151,8 @@ export const toiletCategories = [
         glb: "/models/toilets/standard_highline.glb",
         position: new THREE.Vector3(-0.45, 0, -2.5),
         rotation: new THREE.Euler(0, Math.PI / 1, 0),
-        roughness: 0.9, // glossy ceramic
-        metalness: 1, // not metal
+        roughness: 1, // glossy ceramic
+        metalness: 0.5, // not metal
         clearcoat: 0.0, // glazed surface
         clearcoatRoughness: 0.0,
         envMapIntensity: 1.0, // reflections
@@ -173,8 +173,8 @@ export const toiletCategories = [
         glb: "/models/toilets/standard_gleam.glb",
         position: new THREE.Vector3(-0.45, 0, -2.5),
         rotation: new THREE.Euler(0, Math.PI / 1, 0),
-        roughness: 0.9, // glossy ceramic
-        metalness: 1, // not metal
+        roughness: 1, // glossy ceramic
+        metalness: 0.5, // not metal
         clearcoat: 0.0, // glazed surface
         clearcoatRoughness: 0.0,
         envMapIntensity: 1.0, // reflections

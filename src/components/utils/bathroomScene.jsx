@@ -30,6 +30,14 @@ function BathroomModel() {
     roughnessMap: "/textures/walls/wall_tile_1/Tiles075_2K-JPG_Roughness.jpg",
   };
 
+  const cabinWallTexture = {
+    map: "/textures/cabin_walls/cabin_wall_1/Marble020_2K-JPG_Color.jpg",
+    normalMap:
+      "/textures/cabin_walls/cabin_wall_1/Marble020_2K-JPG_NormalGL.jpg",
+    roughnessMap:
+      "/textures/cabin_walls/cabin_wall_1/Marble020_2K-JPG_Roughness.jpg",
+  };
+
   const ceilingTexture = {
     map: "/textures/ceilings/ceiling_1/Plastic013A_2K-JPG_Color.jpg",
     normalMap: "/textures/ceilings/ceiling_1/Plastic013A_2K-JPG_NormalGL.jpg",
@@ -41,6 +49,8 @@ function BathroomModel() {
   const floorMaps = useTexture(floorTexture || {});
 
   const wallMaps = useTexture(wallTexture || {});
+
+  const cabinWallMaps = useTexture(cabinWallTexture || {});
 
   const ceilingMaps = useTexture(ceilingTexture || {});
 
@@ -96,25 +106,34 @@ function BathroomModel() {
       ) {
         child.traverse((mesh) => {
           if (!mesh.isMesh || !mesh.material) return;
+          // if (!mesh.name.includes("cabin_wall")) return;
           const mat = mesh.material;
-          if (wallMaps.map) {
+
+          const bathroomWallMaps = mesh.name.includes("cabin_wall")
+            ? cabinWallMaps
+            : wallMaps;
+
+          if (bathroomWallMaps.map) {
             // 1. Enable Wrapping (Necessary for tiling)
-            wallMaps.map.wrapS = wallMaps.map.wrapT = THREE.RepeatWrapping;
+            bathroomWallMaps.map.wrapS = bathroomWallMaps.map.wrapT =
+              THREE.RepeatWrapping;
             // 2. Set the Repeat [X, Y]
             // Values higher than 1 make the pattern smaller (tiling more)
             // Values lower than 1 stretch the pattern
-            wallMaps.map.repeat.set(1, 1);
-            mat.map = wallMaps.map;
+            bathroomWallMaps.map.repeat.set(1, 1);
+            mat.map = bathroomWallMaps.map;
             mat.map.flipY = false;
           }
-          if (wallMaps.roughnessMap) mat.roughnessMap = wallMaps.roughnessMap;
+          if (bathroomWallMaps.roughnessMap)
+            mat.roughnessMap = bathroomWallMaps.roughnessMap;
 
-          if (wallMaps.normalMap) {
-            wallMaps.normalMap.wrapS = wallMaps.normalMap.wrapT =
-              THREE.RepeatWrapping;
-            wallMaps.normalMap.repeat.set(1, 1);
-            mat.normalMap = wallMaps.normalMap;
+          if (bathroomWallMaps.normalMap) {
+            bathroomWallMaps.normalMap.wrapS =
+              bathroomWallMaps.normalMap.wrapT = THREE.RepeatWrapping;
+            bathroomWallMaps.normalMap.repeat.set(1, 1);
+            mat.normalMap = bathroomWallMaps.normalMap;
           }
+
           mat.needsUpdate = true;
         });
       }
@@ -349,8 +368,6 @@ export default function BathroomScene({
             );
           })}
 
-          {/* <Mirror /> */}
-
           <EffectComposer disableNormalPass>
             <N8AO
               halfRes // Renders at half resolution (invisible to eye, 2x faster)
@@ -360,7 +377,7 @@ export default function BathroomScene({
             />
           </EffectComposer>
 
-          <ambientLight intensity={0.5} />
+          <ambientLight intensity={1} />
 
           {/* 2. The Main Light Source */}
           <InteriorLight intensity={10} />

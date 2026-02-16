@@ -11,28 +11,28 @@ export const tubFrontsShowerPansCategories = [
     // shapesAllowed: ["tub"],
     isDraggable: false,
     products: [
-      {
-        id: "tf1",
-        name: "Princeton - American Standard",
-        tiers: {
-          basic: ["White"], // Your images were only White
-        },
-        glb: "/models/tub-fronts-and-shower-pans/princeton.glb",
-        position: new THREE.Vector3(-1.46, -0.015, -5),
-        rotation: new THREE.Euler(0, 0, 0),
-        roughness: 0, // glossy ceramic
-        metalness: 0, // not metal
-        clearcoat: 0.0, // glazed surface
-        clearcoatRoughness: 0.0,
-        envMapIntensity: 0.0, // reflections
-        displayByColor: {
-          White: {
-            productDisplay:
-              "https://lixil.cdn.celum.cloud/174054_2391202ICH020_0_CDNwebp.webp",
-            color: "#ffffff",
-          },
-        },
-      },
+      // {
+      //   id: "tf1",
+      //   name: "Princeton - American Standard",
+      //   tiers: {
+      //     basic: ["White"], // Your images were only White
+      //   },
+      //   glb: "/models/tub-fronts-and-shower-pans/princeton.glb",
+      //   position: new THREE.Vector3(-1.46, -0.015, -5),
+      //   rotation: new THREE.Euler(0, 0, 0),
+      // roughness: 0.5, // glossy ceramic
+      //   metalness: 0.1, // not metal
+      //   clearcoat: 0.0, // glazed surface
+      //   clearcoatRoughness: 0.0,
+      //   envMapIntensity: 0.0, // reflections
+      //   displayByColor: {
+      //     White: {
+      //       productDisplay:
+      //         "https://lixil.cdn.celum.cloud/174054_2391202ICH020_0_CDNwebp.webp",
+      //       color: "#ffffff",
+      //     },
+      //   },
+      // },
       {
         id: "tf2",
         name: "Pro Steel - MAAX",
@@ -41,10 +41,11 @@ export const tubFrontsShowerPansCategories = [
         },
         glb: "/models/tub-fronts-and-shower-pans/prosteel.glb",
         // position: new THREE.Vector3(-1.2, -1.55, -2.05),
-        position: new THREE.Vector3(-1.195, -0.015, -5.3),
+        position: new THREE.Vector3(-1.195, -0.015, -5.1),
         rotation: new THREE.Euler(0, 0, 0),
-        roughness: 0.9, // glossy ceramic
-        metalness: 1.0, // not metal
+        scale: [1, 1, 1.2],
+        roughness: 1, // glossy ceramic
+        metalness: 0.5, // not metal
         clearcoat: 0.0, // glazed surface
         clearcoatRoughness: 0.0,
         envMapIntensity: 0.0, // reflections
@@ -63,10 +64,11 @@ export const tubFrontsShowerPansCategories = [
           premium: ["White"],
         },
         glb: "/models/tub-fronts-and-shower-pans/villager.glb",
-        position: new THREE.Vector3(-1.195, -0.015, -5.3),
+        position: new THREE.Vector3(-1.195, -0.015, -5.1),
         rotation: new THREE.Euler(0, 0, 0),
-        roughness: 1.0, // glossy ceramic
-        metalness: 1.0, // not metal
+        scale: [1, 1, 1.2],
+        roughness: 1, // glossy ceramic
+        metalness: 0.5, // not metal
         clearcoat: 0.0, // glazed surface
         clearcoatRoughness: 0.0,
         envMapIntensity: 0.0, // reflections
@@ -87,8 +89,8 @@ export const tubFrontsShowerPansCategories = [
         glb: "/models/tub-fronts-and-shower-pans/tub.glb",
         position: new THREE.Vector3(-1.195, -0.015, -5.09),
         rotation: new THREE.Euler(0, 0, 0),
-        roughness: 1.0, // glossy ceramic
-        metalness: 1.0, // not metal
+        roughness: 1, // glossy ceramic
+        metalness: 0.5, // not metal
         clearcoat: 0.0, // glazed surface
         clearcoatRoughness: 0.0,
         envMapIntensity: 0.0, // reflections
@@ -110,7 +112,7 @@ export const tubFrontsShowerPansCategories = [
         position: new THREE.Vector3(-1.195, -0.015, -5.09),
         rotation: new THREE.Euler(0, 0, 0),
         roughness: 1, // glossy ceramic
-        metalness: 1, // not metal
+        metalness: 0.5, // not metal
         clearcoat: 0.0, // glazed surface
         clearcoatRoughness: 0.0,
         envMapIntensity: 0.0, // reflections
@@ -131,8 +133,8 @@ export const tubFrontsShowerPansCategories = [
         glb: "/models/tub-fronts-and-shower-pans/curved.glb",
         position: new THREE.Vector3(-1.195, -0.015, -5.09),
         rotation: new THREE.Euler(0, 0, 0),
-        roughness: 0.8, // glossy ceramic
-        metalness: 0.7, // not metal
+        roughness: 1, // glossy ceramic
+        metalness: 0.5, // not metal
         clearcoat: 0.0, // glazed surface
         clearcoatRoughness: 0.0,
         envMapIntensity: 0.0, // reflections
@@ -153,8 +155,8 @@ export const tubFrontsShowerPansCategories = [
         glb: "/models/tub-fronts-and-shower-pans/neo-angle.glb",
         position: new THREE.Vector3(-1.195, -0.015, -5.09),
         rotation: new THREE.Euler(0, 0, 0),
-        roughness: 0.8, // glossy ceramic
-        metalness: 0.7, // not metal
+        roughness: 1, // glossy ceramic
+        metalness: 0.5, // not metal
         clearcoat: 0.0, // glazed surface
         clearcoatRoughness: 0.0,
         envMapIntensity: 0.0, // reflections

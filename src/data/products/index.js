@@ -20,10 +20,9 @@ const allCategories = [
   ...wallsCategories,
   // ...nicheCategories,
   ...faucetsCategories,
-  // ...shelvesCategories,
-  // ...grabBarsCategories,
-  ...doorsRodsCategories,
-  // ...wainscotingsCategories,
+  ...shelvesCategories,
+  ...grabBarsCategories,
+  ...wainscotingsCategories,
   // ...ceilingsCategories,
   ...towelBars,
   ...toiletCategories,
@@ -32,6 +31,7 @@ const allCategories = [
   ...lightsCategories,
   // ...bathroomColorCategories,
   // ...sinkFaucetCategories,
+  ...doorsRodsCategories,
 ];
 
 export default allCategories;

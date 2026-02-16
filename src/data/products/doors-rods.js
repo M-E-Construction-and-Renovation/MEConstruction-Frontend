@@ -64,7 +64,7 @@ export const doorsRodsCategories = [
         glb: "/models/doors-and-rods/door-neoangle.glb",
         position: new THREE.Vector3(-1.2, 0.1, -5.1),
         rotation: new THREE.Euler(0, 0, 0),
-        roughness: 0.0, // glossy ceramic
+        roughness: 1, // glossy ceramic
         metalness: 1, // not metal
         clearcoat: 0.0, // glazed surface
         clearcoatRoughness: 0.0,
@@ -86,8 +86,8 @@ export const doorsRodsCategories = [
         glb: "/models/doors-and-rods/tub-to-shower-door.glb",
         position: new THREE.Vector3(-1.2, 0.1, -5.1),
         rotation: new THREE.Euler(0, 0, 0),
-        roughness: 0.1, // glossy ceramic
-        metalness: 0.9, // not metal
+        roughness: 0.2, // glossy ceramic
+        metalness: 1, // not metal
         clearcoat: 0.0, // glazed surface
         clearcoatRoughness: 0.0,
         envMapIntensity: 0.0, // reflections
@@ -103,18 +103,18 @@ export const doorsRodsCategories = [
         id: "sd5",
         name: "Tub-To-Shower Door",
         tiers: {
-          standard: ["Chrome"],
+          standard: ["Black"],
         },
         glb: "/models/doors-and-rods/bathtub-door.glb",
         position: new THREE.Vector3(-1.2, 0.1, -5.1),
         rotation: new THREE.Euler(0, 0, 0),
-        roughness: 0.1, // glossy ceramic
-        metalness: 0.9, // not metal
+        roughness: 0.2, // glossy ceramic
+        metalness: 1, // not metal
         clearcoat: 0.0, // glazed surface
         clearcoatRoughness: 0.0,
         envMapIntensity: 0.0, // reflections
         displayByColor: {
-          Chrome: {
+          Black: {
             productDisplay:
               "https://free3dbase.com/upload/modele/drzwi-rozsuwane-geo-6-120.jpg",
             color: "#ffffff",
@@ -130,8 +130,8 @@ export const doorsRodsCategories = [
         glb: "/models/doors-and-rods/curtain rod.glb",
         position: new THREE.Vector3(-1.21, 0.1, -5),
         rotation: new THREE.Euler(0, 0, 0),
-        roughness: 0.5, // glossy ceramic
-        metalness: 0.5, // not metal
+        roughness: 1, // glossy ceramic
+        metalness: 0.2, // not metal
         clearcoat: 0.0, // glazed surface
         clearcoatRoughness: 0.0,
         envMapIntensity: 0.0, // reflections
