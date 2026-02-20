@@ -447,7 +447,7 @@ export default function BathroomScene({
           <OrbitControls
             makeDefault
             target={[0, 1.5, -4]}
-            enablePan={true}
+            enablePan={false}
             minDistance={1}
             maxDistance={4.5}
             minPolarAngle={Math.PI / 2.5} // 45°

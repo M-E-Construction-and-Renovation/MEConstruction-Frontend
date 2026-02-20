@@ -181,7 +181,7 @@ export default function PlumbingConfiguration() {
       {/* 4. FOOTER NOTE */}
       <footer className="py-8 text-center border-t border-border/50">
         <p className="text-xs text-muted-foreground uppercase tracking-widest font-semibold">
-          Design Assistant v15.0
+          Design Assistant v16.0
         </p>
       </footer>
     </div>
