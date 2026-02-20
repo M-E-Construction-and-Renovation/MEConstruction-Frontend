@@ -64,6 +64,25 @@ export const cabinWallsCategories = [
           },
         },
       },
+      {
+        id: "cw4",
+        name: "Tile 4",
+        tiers: {
+          premium: ["White"],
+        },
+        normalMap:
+          "/textures/cabin_walls/cabin_wall_5/Tiles040_2K-JPG_NormalGL.jpg",
+        roughnessMap:
+          "/textures/cabin_walls/cabin_wall_5/Tiles040_2K-JPG_Roughness.jpg",
+        displayByColor: {
+          White: {
+            productDisplay:
+              "/textures/cabin_walls/cabin_wall_5/Tiles040_2K-JPG_Color.jpg",
+            color:
+              "/textures/cabin_walls/cabin_wall_5/Tiles040_2K-JPG_Color.jpg",
+          },
+        },
+      },
     ],
   },
 ];

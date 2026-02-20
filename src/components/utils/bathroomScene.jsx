@@ -448,12 +448,12 @@ export default function BathroomScene({
             makeDefault
             target={[0, 1.5, -4]}
             enablePan={true}
-            // minDistance={1}
-            // maxDistance={4.5}
-            // minPolarAngle={Math.PI / 2.5} // 45°
-            // maxPolarAngle={Math.PI / 1.9} // ~95°
-            // minAzimuthAngle={-Math.PI / 13.3}
-            // maxAzimuthAngle={Math.PI / 13.3}
+            minDistance={1}
+            maxDistance={4.5}
+            minPolarAngle={Math.PI / 2.5} // 45°
+            maxPolarAngle={Math.PI / 1.9} // ~95°
+            minAzimuthAngle={-Math.PI / 13.3}
+            maxAzimuthAngle={Math.PI / 13.3}
           />
         </Canvas>
       </Suspense>

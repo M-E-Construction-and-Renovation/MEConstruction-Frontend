@@ -12,7 +12,6 @@ import { toiletCategories } from "./toilets";
 import { vanityShelvesCategories } from "./vanityShelves";
 import { mirrorCategories } from "./vanityMirrors";
 import { lightsCategories } from "./vanityLights";
-import { bathroomColorCategories } from "./bathroom-color";
 import { sinkFaucetCategories } from "./sink-faucets";
 import { wallKitsCategories } from "./wall-kits";
 
