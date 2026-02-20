@@ -107,14 +107,14 @@ const ConfigurePage = ({
           {/* MAIN UI CONTENT */}
           <div className="pointer-events-auto w-full flex flex-col gap-2 xl:gap-0 xl:h-full xl:overflow-hidden bg-white/10 backdrop-blur-2xl xl:backdrop-blur-none xl:bg-background rounded-[2.5rem] xl:rounded-none p-4 xl:p-0 shadow-2xl xl:shadow-none border border-white/40 xl:border-none">
             {/* CATEGORIES (Pills on mobile, Tabs on desktop) */}
-            <div className="flex xl:grid xl:grid-cols-2 gap-2 p-2 xl:p-4 overflow-x-auto xl:overflow-x-visible xl:border-b [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <div className="flex xl:grid xl:grid-cols-3 gap-2 p-2 xl:p-4 overflow-x-auto xl:overflow-x-visible xl:border-b [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
               {categories.map((category) => {
                 const isActive = activeTab === category.id;
                 return (
                   <button
                     key={category.id}
                     onClick={() => handleCategoryChange(category.id)}
-                    className={`relative flex-shrink-0 px-5 py-2.5 xl:px-3 xl:py-2 rounded-full xl:rounded-md text-xs font-bold transition-all shadow-md xl:shadow-none ${
+                    className={`cursor-pointer relative flex-shrink-0 px-5 py-2.5 xl:px-3 xl:py-2 rounded-full xl:rounded-md text-xs font-bold transition-all shadow-md xl:shadow-none ${
                       isActive
                         ? "bg-primary text-white scale-105 xl:scale-100"
                         : "bg-white/90 xl:bg-muted text-slate-700 hover:bg-muted/80"
@@ -138,7 +138,7 @@ const ConfigurePage = ({
                   <button
                     key={tier}
                     onClick={() => setActiveTier(tier)}
-                    className={`flex-1 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${
+                    className={`cursor-pointer flex-1 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${
                       activeTier === tier
                         ? "bg-white shadow-sm text-primary"
                         : "text-slate-500"
@@ -151,7 +151,7 @@ const ConfigurePage = ({
             </div>
 
             {/* PRODUCT LIST (Horizontal on mobile, Vertical Grid on desktop) */}
-            <div className="flex xl:grid xl:grid-cols-2 gap-4 xl:gap-3 p-1 xl:p-4 overflow-x-auto xl:overflow-y-auto snap-x xl:snap-none [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <div className="flex xl:grid xl:grid-cols-3 gap-4 xl:gap-3 p-1 xl:p-4 overflow-x-auto xl:overflow-y-auto snap-x xl:snap-none [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
               {currentCategory?.products
                 .filter((p) => p.tiers?.[activeTier]?.length > 0)
                 .map((product) => {
@@ -175,7 +175,7 @@ const ConfigurePage = ({
                           setIsDrawerOpen(false);
                         }
                       }}
-                      className={`flex-shrink-0 w-32 xl:w-auto snap-center p-3 rounded-2xl xl:rounded-lg transition-all border-2 ${
+                      className={`cursor-pointer flex-shrink-0 w-32 xl:w-auto snap-center p-3 rounded-2xl xl:rounded-lg transition-all border-2 ${
                         isSelected
                           ? "bg-white xl:bg-primary/5 border-primary shadow-xl xl:shadow-none"
                           : "bg-transparent border-transparent xl:border-muted hover:border-primary/30"
@@ -203,7 +203,7 @@ const ConfigurePage = ({
                               e.stopPropagation();
                               handleProductSelect(product.id, color);
                             }}
-                            className={`w-3.5 h-3.5 rounded-full border border-slate-300 transition-all ${
+                            className={`cursor-pointer w-3.5 h-3.5 rounded-full border border-slate-300 transition-all ${
                               selectedProducts[activeTab]?.color === color &&
                               isSelected
                                 ? "ring-2 ring-primary ring-offset-1 scale-110"
@@ -217,7 +217,7 @@ const ConfigurePage = ({
                   );
                 })}
               <div
-                className="hidden xl:block xl:h-[60px] xl:col-span-2 pointer-events-none"
+                className="hidden xl:block xl:h-[60px] xl:col-span-3 pointer-events-none"
                 aria-hidden="true"
               />
             </div>

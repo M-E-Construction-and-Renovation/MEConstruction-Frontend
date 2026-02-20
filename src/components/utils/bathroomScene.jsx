@@ -371,7 +371,7 @@ export default function BathroomScene({
         <Canvas
           // camera={{ fov: 50 }}
           camera={{
-            fov: isMobile ? 70 : isLaptop ? 50 : 55,
+            fov: isMobile ? 75 : isLaptop ? 50 : 55,
           }}
           shadows
           dpr={[1, 1.5]} // This ensures the GPU never works harder than it needs to
@@ -447,13 +447,13 @@ export default function BathroomScene({
           <OrbitControls
             makeDefault
             target={[0, 1.5, -4]}
-            enablePan={false}
-            minDistance={1}
-            maxDistance={4.5}
-            minPolarAngle={Math.PI / 2.5} // 45°
-            maxPolarAngle={Math.PI / 1.9} // ~95°
-            minAzimuthAngle={-Math.PI / 13.3}
-            maxAzimuthAngle={Math.PI / 13.3}
+            enablePan={true}
+            // minDistance={1}
+            // maxDistance={4.5}
+            // minPolarAngle={Math.PI / 2.5} // 45°
+            // maxPolarAngle={Math.PI / 1.9} // ~95°
+            // minAzimuthAngle={-Math.PI / 13.3}
+            // maxAzimuthAngle={Math.PI / 13.3}
           />
         </Canvas>
       </Suspense>
