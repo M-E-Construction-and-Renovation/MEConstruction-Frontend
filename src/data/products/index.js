@@ -14,10 +14,15 @@ import { mirrorCategories } from "./vanityMirrors";
 import { lightsCategories } from "./vanityLights";
 import { bathroomColorCategories } from "./bathroom-color";
 import { sinkFaucetCategories } from "./sink-faucets";
+import { wallKitsCategories } from "./wall-kits";
+
+import { cabinWallsCategories } from "./cabin-walls";
 
 const allCategories = [
   ...tubFrontsShowerPansCategories,
+  ...cabinWallsCategories,
   ...wallsCategories,
+  // ...wallKitsCategories,
   // ...nicheCategories,
   ...faucetsCategories,
   ...shelvesCategories,

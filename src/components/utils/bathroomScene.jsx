@@ -15,35 +15,70 @@ import { useLayoutEffect, Suspense, useMemo, useRef, useEffect } from "react";
 
 useEnvironment.preload({ files: "/environment/bathroom-environment.hdr" });
 
-function BathroomModel() {
+function BathroomModel({ filteredTextures, selectedProducts }) {
   const { scene } = useGLTF("/models/bathroom.glb");
 
-  const floorTexture = {
-    map: "/textures/tiles/floor_tile_1/Tiles107_2K-JPG_Color.jpg",
-    normalMap: "/textures/tiles/floor_tile_1/Tiles107_2K-JPG_NormalGL.jpg",
-    roughnessMap: "/textures/tiles/floor_tile_1/Tiles107_2K-JPG_Roughness.jpg",
+  const initialTextures = {
+    floorTexture: {
+      map: "/textures/tiles/floor_tile_1/Tiles107_2K-JPG_Color.jpg",
+      normalMap: "/textures/tiles/floor_tile_1/Tiles107_2K-JPG_NormalGL.jpg",
+      roughnessMap:
+        "/textures/tiles/floor_tile_1/Tiles107_2K-JPG_Roughness.jpg",
+    },
+    wallTexture: {
+      map: "/textures/walls/wall_tile_1/Tiles075_2K-JPG_Color.jpg",
+      normalMap: "/textures/walls/wall_tile_1/Tiles075_2K-JPG_NormalGL.jpg",
+      roughnessMap: "/textures/walls/wall_tile_1/Tiles075_2K-JPG_Roughness.jpg",
+    },
+    cabinWallTexture: {
+      map: "/textures/cabin_walls/cabin_wall_1/Marble020_2K-JPG_Color.jpg",
+      normalMap:
+        "/textures/cabin_walls/cabin_wall_1/Marble020_2K-JPG_NormalGL.jpg",
+      roughnessMap:
+        "/textures/cabin_walls/cabin_wall_1/Marble020_2K-JPG_Roughness.jpg",
+    },
+    ceilingTexture: {
+      map: "/textures/ceilings/ceiling_1/Plastic013A_2K-JPG_Color.jpg",
+      normalMap: "/textures/ceilings/ceiling_1/Plastic013A_2K-JPG_NormalGL.jpg",
+      roughnessMap:
+        "/textures/ceilings/ceiling_1/Plastic013A_2K-JPG_Roughness.jpg",
+    },
   };
 
-  const wallTexture = {
-    map: "/textures/walls/wall_tile_1/Tiles075_2K-JPG_Color.jpg",
-    normalMap: "/textures/walls/wall_tile_1/Tiles075_2K-JPG_NormalGL.jpg",
-    roughnessMap: "/textures/walls/wall_tile_1/Tiles075_2K-JPG_Roughness.jpg",
-  };
+  const textures = useMemo(() => {
+    const result = {};
 
-  const cabinWallTexture = {
-    map: "/textures/cabin_walls/cabin_wall_1/Marble020_2K-JPG_Color.jpg",
-    normalMap:
-      "/textures/cabin_walls/cabin_wall_1/Marble020_2K-JPG_NormalGL.jpg",
-    roughnessMap:
-      "/textures/cabin_walls/cabin_wall_1/Marble020_2K-JPG_Roughness.jpg",
-  };
+    Object.keys(initialTextures).forEach((key) => {
+      const category = filteredTextures?.find((c) => c.id === key);
+      const selected = selectedProducts?.[key];
 
-  const ceilingTexture = {
-    map: "/textures/ceilings/ceiling_1/Plastic013A_2K-JPG_Color.jpg",
-    normalMap: "/textures/ceilings/ceiling_1/Plastic013A_2K-JPG_NormalGL.jpg",
-    roughnessMap:
-      "/textures/ceilings/ceiling_1/Plastic013A_2K-JPG_Roughness.jpg",
-  };
+      if (category && selected) {
+        const product = category.products.find(
+          (p) => p.id === selected.productId,
+        );
+
+        if (product) {
+          const color = product.displayByColor?.[selected.color]?.color;
+
+          result[key] = {
+            map: color || product.map || initialTextures[key].map,
+            normalMap: product.normalMap || initialTextures[key].normalMap,
+            roughnessMap:
+              product.roughnessMap || initialTextures[key].roughnessMap,
+          };
+          return;
+        }
+      }
+
+      // fallback
+      result[key] = initialTextures[key];
+    });
+
+    return result;
+  }, [filteredTextures, selectedProducts]);
+
+  const { floorTexture, wallTexture, cabinWallTexture, ceilingTexture } =
+    textures;
 
   // 1. Load textures (hooks handle the Suspense automatically)
   const floorMaps = useTexture(floorTexture || {});
@@ -120,7 +155,7 @@ function BathroomModel() {
             // 2. Set the Repeat [X, Y]
             // Values higher than 1 make the pattern smaller (tiling more)
             // Values lower than 1 stretch the pattern
-            bathroomWallMaps.map.repeat.set(1, 1);
+            bathroomWallMaps.map.repeat.set(2, 2);
             mat.map = bathroomWallMaps.map;
             mat.map.flipY = false;
           }
@@ -130,7 +165,7 @@ function BathroomModel() {
           if (bathroomWallMaps.normalMap) {
             bathroomWallMaps.normalMap.wrapS =
               bathroomWallMaps.normalMap.wrapT = THREE.RepeatWrapping;
-            bathroomWallMaps.normalMap.repeat.set(1, 1);
+            bathroomWallMaps.normalMap.repeat.set(2, 2);
             mat.normalMap = bathroomWallMaps.normalMap;
           }
 
@@ -167,7 +202,7 @@ function BathroomModel() {
         });
       }
     });
-  }, [clonedScene]);
+  }, [clonedScene, floorMaps, wallMaps, cabinWallMaps, ceilingMaps]);
 
   return <primitive object={clonedScene} />;
 }
@@ -306,11 +341,26 @@ export default function BathroomScene({
     (category) => category.id in selectedProducts,
   );
 
+  const filteredTextures = filteredCategories.filter(
+    (category) => category.isTexture,
+  );
+
+  const filteredProducts = filteredCategories.filter(
+    (category) => !category.isTexture,
+  );
+
+  // Check if we are on mobile to adjust camera
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+  const isLaptop =
+    typeof window !== "undefined" &&
+    window.innerWidth < 1280 &&
+    window.innerWidth > 768;
+
   return (
     <div className="w-full h-full">
       <Suspense
         fallback={
-          <div className="fixed inset-0 flex flex-col items-center justify-center bg-white z-50">
+          <div className="h-full flex flex-col items-center justify-center bg-white z-50">
             <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-blue-600 mb-4"></div>
             <p className="text-lg font-medium text-gray-700">
               Loading Design Tool...
@@ -319,7 +369,10 @@ export default function BathroomScene({
         }
       >
         <Canvas
-          camera={{ fov: 50 }}
+          // camera={{ fov: 50 }}
+          camera={{
+            fov: isMobile ? 70 : isLaptop ? 50 : 55,
+          }}
           shadows
           dpr={[1, 1.5]} // This ensures the GPU never works harder than it needs to
           gl={{
@@ -337,9 +390,12 @@ export default function BathroomScene({
             background={true}
           />
 
-          <BathroomModel />
+          <BathroomModel
+            filteredTextures={filteredTextures}
+            selectedProducts={selectedProducts}
+          />
 
-          {filteredCategories.map((category, index) => {
+          {filteredProducts.map((category, index) => {
             const specificProduct = category.products.find(
               (product) =>
                 product.id === selectedProducts[category.id].productId,

@@ -1,5 +1,4 @@
 import "../../../globals.css";
-import { Header } from "../../../../components/header";
 import ClientPreloadBoundary from "@/components/utils/ClientPreloadBoundary";
 
 export const metadata = {
@@ -13,13 +12,8 @@ export default async function RootLayout({ children, params }) {
   const { locale } = await params;
 
   return (
-    <div className="h-screen flex flex-col overflow-hidden">
-      <div className="sticky top-0 z-50 w-full">
-        <Header locale={locale} />
-      </div>
-      <main className="flex-1 overflow-hidden">
-        <ClientPreloadBoundary>{children}</ClientPreloadBoundary>
-      </main>
+    <div className="h-screen">
+      <ClientPreloadBoundary>{children}</ClientPreloadBoundary>
     </div>
   );
 }

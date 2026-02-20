@@ -3,8 +3,13 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
-import { ChevronLeft, RotateCcw, Check } from "lucide-react";
-// import BathroomConfigurator from "./bathroom-configurator";
+import {
+  ChevronLeft,
+  RotateCcw,
+  Check,
+  ChevronDown,
+  ChevronUp,
+} from "lucide-react";
 import BathroomScene from "./bathroomScene";
 import EmailModal from "./email-modal";
 
@@ -24,217 +29,197 @@ const ConfigurePage = ({
   projectEmail = "",
 }) => {
   const router = useRouter();
+  const [isDrawerOpen, setIsDrawerOpen] = useState(true);
 
   return (
-    <div className="flex flex-col h-full overflow-hidden">
-      {/* Main Content */}
+    // Main Container: 100vh and overflow-hidden is crucial for both layouts
+    <div className="flex flex-col xl:flex-row h-screen w-full overflow-hidden bg-background">
+      {/* --- 1. TOOLBAR (Floating on Mobile, Integrated on Desktop) --- */}
+      <div className="absolute xl:fixed top-4 left-4 right-4 xl:right-auto xl:w-[calc(66.66%-2rem)] z-30 flex justify-between items-center pointer-events-none">
+        <Button
+          variant="secondary"
+          className="gap-2 shadow-lg pointer-events-auto backdrop-blur-md bg-white/70 border-none xl:bg-white"
+          onClick={() => router.back()}
+        >
+          <ChevronLeft className="h-4 w-4" />
+          <span className="hidden sm:inline font-bold">Back</span>
+        </Button>
 
-      <div className="flex-1 flex flex-col xl:flex-row overflow-auto xl:overflow-hidden">
-        {/* Toolbar Mobile*/}
-        <div className="flex xl:hidden flex-wrap items-center justify-between gap-2 p-1 border-b bg-background sticky top-0 z-10">
+        <div className="flex gap-2 pointer-events-auto xl:hidden">
           <Button
-            variant="ghost"
-            className="gap-2 flex-shrink-0"
-            onClick={() => router.back()}
+            variant="secondary"
+            className="shadow-lg backdrop-blur-md bg-white/70 border-none"
+            onClick={handleResetDesign}
           >
-            <ChevronLeft className="h-4 w-4" />
-            Back to previous page
+            <RotateCcw className="h-4 w-4" />
           </Button>
-          <div className="flex flex-wrap gap-2 justify-center ">
+          <EmailModal onSave={handleSaveDesign} projectEmail={projectEmail} />
+        </div>
+      </div>
+
+      {/* --- 2. PREVIEW SECTION (3D Scene) --- */}
+      {/* On Mobile: Full screen (absolute) | On Desktop: 2/3 width (relative) */}
+      <div className="absolute inset-0 xl:relative xl:w-2/3 h-full z-0 bg-muted">
+        <BathroomScene
+          selectedProducts={selectedProducts}
+          categories={categories}
+          plumbing={plumbing}
+        />
+      </div>
+
+      {/* --- 3. UI SECTION (Floating Drawer on Mobile, Sidebar on Desktop) --- */}
+      <div
+        className={`
+          absolute bottom-0 left-0 right-0 z-20 transition-transform duration-500 ease-in-out pointer-events-none pb-2
+          xl:relative xl:w-1/3 xl:h-full xl:translate-y-0 xl:pointer-events-auto xl:pb-0 xl:border-l xl:bg-background xl:flex xl:flex-col
+          ${isDrawerOpen ? "translate-y-0" : "translate-y-[calc(100%-35px)]"}
+        `}
+      >
+        {/* DESKTOP HEADER (Only visible on XL) */}
+        <div className="hidden xl:flex items-center justify-between p-4 border-b bg-background sticky top-0 z-10">
+          <h2 className="font-bold text-lg">Configure Design</h2>
+          <div className="flex gap-2">
             <Button
               variant="outline"
-              className="gap-2 bg-transparent"
+              size="sm"
               onClick={handleResetDesign}
+              className="gap-2"
             >
-              <RotateCcw className="h-4 w-4" />
-              <span className="hidden sm:inline">Reset</span>
+              <RotateCcw className="h-4 w-4" /> Reset
             </Button>
-
             <EmailModal onSave={handleSaveDesign} projectEmail={projectEmail} />
           </div>
         </div>
 
-        {/* Preview Section */}
-        <div className="w-full xl:w-2/3 flex items-center justify-center bg-muted relative">
-          <BathroomScene
-            selectedProducts={selectedProducts}
-            categories={categories}
-            plumbing={plumbing}
-          />
-        </div>
+        <div className="w-full max-w-4xl mx-auto px-2 xl:px-0 xl:max-w-none flex flex-col items-center xl:items-stretch xl:h-full">
+          {/* MOBILE TOGGLE ARROW (Hidden on XL) */}
+          <button
+            onClick={() => setIsDrawerOpen(!isDrawerOpen)}
+            className="xl:hidden pointer-events-auto flex items-center justify-center w-12 h-8 mb-1 bg-accent backdrop-blur-md rounded-t-xl shadow-md border-x border-t border-white/40 text-white"
+          >
+            {isDrawerOpen ? (
+              <ChevronDown className="h-5 w-5" />
+            ) : (
+              <ChevronUp className="h-5 w-5" />
+            )}
+          </button>
 
-        {/* Sidebar */}
-        <div className="w-full xl:w-1/3 flex flex-col border-t xl:border-t-0 xl:border-l bg-background">
-          {/* Toolbar */}
-          <div className="hidden xl:flex flex-wrap items-center justify-between gap-2 p-3 border-b bg-background sticky top-0 z-10">
-            <Button
-              variant="ghost"
-              className="gap-2 flex-shrink-0"
-              onClick={() => router.back()}
-            >
-              <ChevronLeft className="h-4 w-4" />
-              Back to previous page
-            </Button>
-            <div className="flex flex-wrap gap-2 justify-center ">
-              <Button
-                variant="outline"
-                className="gap-2 bg-transparent"
-                onClick={handleResetDesign}
-              >
-                <RotateCcw className="h-4 w-4" />
-                <span className="hidden sm:inline">Reset</span>
-              </Button>
-
-              <EmailModal
-                onSave={handleSaveDesign}
-                projectEmail={projectEmail}
-              />
-            </div>
-          </div>
-
-          {/* Tabs */}
-
-          <div className="p-3 border-b grid grid-cols-3 gap-2 shrink-0 overflow-x-auto">
-            {categories.map((category) => {
-              const hasSelectedProduct = !!selectedProducts[category.id];
-
-              return (
-                <button
-                  key={category.id}
-                  onClick={() => {
-                    handleCategoryChange(category.id);
-                  }}
-                  className={`relative px-3 py-2 rounded text-xs sm:text-sm font-medium whitespace-nowrap transition-colors cursor-pointer ${
-                    activeTab === category.id
-                      ? "bg-primary text-primary-foreground"
-                      : "bg-muted hover:bg-muted/80"
-                  }`}
-                >
-                  {category.label}
-                  {hasSelectedProduct && (
-                    <span className="absolute -top-2 -right-2 text-xs font-bold p-0.5 rounded-full bg-success-background border-2 border-success-primary text-success-primary">
-                      <Check className="h-4 w-4" />
-                    </span>
-                  )}
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Tier Tabs */}
-
-          <div className="p-3 border-b grid grid-cols-3 gap-2 shrink-0 overflow-x-auto">
-            {["basic", "standard", "premium"].map((tier) => {
-              const tierProducts =
-                currentCategory?.products.filter((p) => p.tiers[tier]) || [];
-
-              const hasSelectedInTier =
-                selectedProducts[activeTab]?.productId &&
-                selectedProducts[activeTab]?.color &&
-                tierProducts.some(
-                  (p) =>
-                    p.tiers[tier].includes(selectedProducts[activeTab].color) &&
-                    p.id === selectedProducts[activeTab].productId,
+          {/* MAIN UI CONTENT */}
+          <div className="pointer-events-auto w-full flex flex-col gap-2 xl:gap-0 xl:h-full xl:overflow-hidden bg-white/10 backdrop-blur-2xl xl:backdrop-blur-none xl:bg-background rounded-[2.5rem] xl:rounded-none p-4 xl:p-0 shadow-2xl xl:shadow-none border border-white/40 xl:border-none">
+            {/* CATEGORIES (Pills on mobile, Tabs on desktop) */}
+            <div className="flex xl:grid xl:grid-cols-2 gap-2 p-2 xl:p-4 overflow-x-auto xl:overflow-x-visible xl:border-b [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+              {categories.map((category) => {
+                const isActive = activeTab === category.id;
+                return (
+                  <button
+                    key={category.id}
+                    onClick={() => handleCategoryChange(category.id)}
+                    className={`relative flex-shrink-0 px-5 py-2.5 xl:px-3 xl:py-2 rounded-full xl:rounded-md text-xs font-bold transition-all shadow-md xl:shadow-none ${
+                      isActive
+                        ? "bg-primary text-white scale-105 xl:scale-100"
+                        : "bg-white/90 xl:bg-muted text-slate-700 hover:bg-muted/80"
+                    }`}
+                  >
+                    {category.label}
+                    {!!selectedProducts[category.id] && (
+                      <span className="absolute -top-1 -right-1 xl:top-1 xl:right-1 bg-green-500 rounded-full p-0.5 border-2 border-white">
+                        <Check className="h-3 w-3 text-white" />
+                      </span>
+                    )}
+                  </button>
                 );
+              })}
+            </div>
 
-              return (
-                <button
-                  key={tier}
-                  onClick={() => setActiveTier(tier)}
-                  className={`relative px-4 py-2 rounded text-sm font-medium transition-colors capitalize flex-1 ${
-                    activeTier === tier
-                      ? "bg-primary text-primary-foreground"
-                      : hasSelectedInTier
-                        ? "bg-success-background/20 border-2 border-success-primary text-success-primary"
-                        : "bg-muted hover:bg-muted/80"
-                  }`}
-                >
-                  {tier}
-                  {hasSelectedInTier && (
-                    <span className="absolute -top-2 -right-2 bg-success-background text-success-primary border-2 border-success-primary text-xs font-bold px-2 py-0.5 rounded-full">
-                      Selected
-                    </span>
-                  )}
-                </button>
-              );
-            })}
-          </div>
+            {/* TIER TOGGLE */}
+            <div className="flex justify-center xl:p-4 xl:bg-slate-50 border-y">
+              <div className="flex p-1 bg-slate-200/40 xl:bg-slate-200 rounded-full w-full max-w-[280px] xl:max-w-none">
+                {["basic", "standard", "premium"].map((tier) => (
+                  <button
+                    key={tier}
+                    onClick={() => setActiveTier(tier)}
+                    className={`flex-1 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${
+                      activeTier === tier
+                        ? "bg-white shadow-sm text-primary"
+                        : "text-slate-500"
+                    }`}
+                  >
+                    {tier}
+                  </button>
+                ))}
+              </div>
+            </div>
 
-          {/* Product List */}
-
-          <div className="flex xl:block overflow-x-auto xl:overflow-y-auto p-3">
-            <div className="flex gap-3 xl:grid xl:grid-cols-3">
+            {/* PRODUCT LIST (Horizontal on mobile, Vertical Grid on desktop) */}
+            <div className="flex xl:grid xl:grid-cols-2 gap-4 xl:gap-3 p-1 xl:p-4 overflow-x-auto xl:overflow-y-auto snap-x xl:snap-none [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
               {currentCategory?.products
-                .filter((product) => {
-                  if (product.tiers?.[activeTier]?.length > 0) return true;
-                  return false;
-                })
+                .filter((p) => p.tiers?.[activeTier]?.length > 0)
                 .map((product) => {
                   const isSelected =
                     selectedProducts[activeTab]?.productId === product.id &&
                     product.tiers[activeTier]?.includes(
                       selectedProducts[activeTab]?.color,
                     );
-
-                  const defaultColor = product.tiers?.[activeTier]?.[0] ?? "";
-
-                  let imgSrc = isSelected
-                    ? product.displayByColor?.[
-                        selectedProducts[activeTab]?.color
-                      ]?.productDisplay
-                    : product.displayByColor?.[defaultColor]?.productDisplay;
+                  const currentSelectedColor = isSelected
+                    ? selectedProducts[activeTab]?.color
+                    : (product.tiers?.[activeTier]?.[0] ?? "");
 
                   return (
                     <div
                       key={product.id}
-                      onClick={() =>
+                      onClick={() => {
+                        if (isSelected) {
+                          handleUnselectProduct(product.id);
+                        } else {
+                          handleProductSelect(product.id, currentSelectedColor);
+                          setIsDrawerOpen(false);
+                        }
+                      }}
+                      className={`flex-shrink-0 w-32 xl:w-auto snap-center p-3 rounded-2xl xl:rounded-lg transition-all border-2 ${
                         isSelected
-                          ? handleUnselectProduct(product.id)
-                          : handleProductSelect(product.id, defaultColor)
-                      }
-                      className={`min-w-[160px] max-w-[160px] flex-shrink-0 xl:min-w-0 xl:max-w-none xl:w-auto p-3 rounded-lg cursor-pointer transition-all border-2 ${
-                        isSelected
-                          ? "border-primary bg-primary/10"
-                          : "border-muted hover:border-primary/50"
+                          ? "bg-white xl:bg-primary/5 border-primary shadow-xl xl:shadow-none"
+                          : "bg-transparent border-transparent xl:border-muted hover:border-primary/30"
                       }`}
                     >
-                      <div className="relative w-full aspect-square mb-2 rounded overflow-hidden bg-gradient-to-br from-transparent via-black/20 to-transparent">
+                      <div className="aspect-square rounded-xl xl:rounded-md overflow-hidden mb-2 bg-slate-100">
                         <img
-                          src={imgSrc}
+                          src={
+                            product.displayByColor?.[currentSelectedColor]
+                              ?.productDisplay
+                          }
                           alt={product.name}
                           className="w-full h-full object-cover"
                         />
                       </div>
-
-                      <h4 className="font-semibold text-sm mb-2">
+                      <p className="text-[10px] xl:text-xs font-bold text-slate-800 truncate leading-tight mb-2">
                         {product.name}
-                      </h4>
+                      </p>
 
-                      <div className="flex gap-1 flex-wrap">
-                        {(
-                          product.tiers?.[activeTier] ||
-                          Object.keys(product.staticSrc || {})
-                        ).map((color) => (
+                      <div className="flex gap-1.5 flex-wrap">
+                        {product.tiers?.[activeTier]?.map((color) => (
                           <button
                             key={color}
                             onClick={(e) => {
                               e.stopPropagation();
                               handleProductSelect(product.id, color);
                             }}
-                            className={`px-2 py-1 text-xs rounded transition-colors ${
+                            className={`w-3.5 h-3.5 rounded-full border border-slate-300 transition-all ${
                               selectedProducts[activeTab]?.color === color &&
                               isSelected
-                                ? "bg-primary text-primary-foreground"
-                                : "bg-muted hover:bg-muted/80"
+                                ? "ring-2 ring-primary ring-offset-1 scale-110"
+                                : "hover:scale-110"
                             }`}
-                          >
-                            {color}
-                          </button>
+                            style={{ backgroundColor: color.toLowerCase() }}
+                          />
                         ))}
                       </div>
                     </div>
                   );
                 })}
+              <div
+                className="hidden xl:block xl:h-[60px] xl:col-span-2 pointer-events-none"
+                aria-hidden="true"
+              />
             </div>
           </div>
         </div>

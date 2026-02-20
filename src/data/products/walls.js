@@ -1,12 +1,8 @@
-"use client";
-
-import * as THREE from "three";
-
 export const wallsCategories = [
   {
     id: "walls",
     // initialAngle: "front",
-    label: "Cabin Walls",
+    label: "Bathroom Walls",
     // zIndex: "10",
     // shapesAllowed: ["tub", "tub-to-shower"],
     isDraggable: false,

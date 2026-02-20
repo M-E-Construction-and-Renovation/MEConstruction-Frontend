@@ -23,10 +23,7 @@ export default function EmailModal({ onSave, projectEmail = "" }) {
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger asChild>
-        {/* <button className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
-          Save Design
-        </button> */}
-        <Button variant="outline" className="gap-2 bg-transparent">
+        <Button variant="primary" className="gap-2">
           <Save className="h-4 w-4" />
           <span className="hidden sm:inline">Save</span>
         </Button>

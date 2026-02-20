@@ -11,28 +11,29 @@ export const tubFrontsShowerPansCategories = [
     // shapesAllowed: ["tub"],
     isDraggable: false,
     products: [
-      // {
-      //   id: "tf1",
-      //   name: "Princeton - American Standard",
-      //   tiers: {
-      //     basic: ["White"], // Your images were only White
-      //   },
-      //   glb: "/models/tub-fronts-and-shower-pans/princeton.glb",
-      //   position: new THREE.Vector3(-1.46, -0.015, -5),
-      //   rotation: new THREE.Euler(0, 0, 0),
-      // roughness: 0.5, // glossy ceramic
-      //   metalness: 0.1, // not metal
-      //   clearcoat: 0.0, // glazed surface
-      //   clearcoatRoughness: 0.0,
-      //   envMapIntensity: 0.0, // reflections
-      //   displayByColor: {
-      //     White: {
-      //       productDisplay:
-      //         "https://lixil.cdn.celum.cloud/174054_2391202ICH020_0_CDNwebp.webp",
-      //       color: "#ffffff",
-      //     },
-      //   },
-      // },
+      {
+        id: "tf1",
+        name: "Kohler - Entity",
+        tiers: {
+          basic: ["White"], // Your images were only White
+        },
+        glb: "/models/tub-fronts-and-shower-pans/kohler-entity.glb",
+        position: new THREE.Vector3(-0.1, -0.025, -5.7),
+        rotation: new THREE.Euler(0, 0, 0),
+        scale: [1.73, 1.6, 1.6],
+        roughness: 1, // glossy ceramic
+        metalness: 0.5, // not metal
+        clearcoat: 0.0, // glazed surface
+        clearcoatRoughness: 0.0,
+        envMapIntensity: 0.0, // reflections
+        displayByColor: {
+          White: {
+            productDisplay:
+              "https://mobileimages.lowes.com/productimages/f28e0c12-0f59-4c25-8e32-55ee61f6353b/75042117.jpeg?size=pdhism",
+            color: "#ffffff",
+          },
+        },
+      },
       {
         id: "tf2",
         name: "Pro Steel - MAAX",
@@ -76,6 +77,52 @@ export const tubFrontsShowerPansCategories = [
           White: {
             productDisplay:
               "https://kohler.scene7.com/is/image/PAWEB/GBH_SQTemplate?$product_src=is{PAWEB/715-0_ISO_d2c0064351_rgb}&$PDPDesktopSQ$&fmt=webp",
+            color: "#ffffff",
+          },
+        },
+      },
+      {
+        id: "tf4",
+        name: "Kohler - Underscore",
+        tiers: {
+          premium: ["White"], // Your images were only White
+        },
+        glb: "/models/tub-fronts-and-shower-pans/kohler-underscore.glb",
+        position: new THREE.Vector3(0, -0.015, -5.72),
+        rotation: new THREE.Euler(0, 0, 0),
+        scale: [1.7, 1.2, 1.5],
+        roughness: 1, // glossy ceramic
+        metalness: 0.5, // not metal
+        clearcoat: 0.0, // glazed surface
+        clearcoatRoughness: 0.0,
+        envMapIntensity: 0.0, // reflections
+        displayByColor: {
+          White: {
+            productDisplay:
+              "https://mobileimages.lowes.com/productimages/2dd25004-f30c-4013-9dbe-752dc8fc0ac1/75042305.jpeg?size=pdhism",
+            color: "#ffffff",
+          },
+        },
+      },
+      {
+        id: "tf5",
+        name: "Sterling - Rectangle Alcove",
+        tiers: {
+          standard: ["White"], // Your images were only White
+        },
+        glb: "/models/tub-fronts-and-shower-pans/sterling-rectangle-alcove.glb",
+        position: new THREE.Vector3(0, -0.015, -5.75),
+        rotation: new THREE.Euler(0, 0, 0),
+        scale: [1.7, 1.5, 1.65],
+        roughness: 1, // glossy ceramic
+        metalness: 0.5, // not metal
+        clearcoat: 0.0, // glazed surface
+        clearcoatRoughness: 0.0,
+        envMapIntensity: 0.0, // reflections
+        displayByColor: {
+          White: {
+            productDisplay:
+              "https://mobileimages.lowes.com/productimages/eda8f54b-6adb-4005-8e92-a612ef4445bc/69094221.jpeg?size=pdhism",
             color: "#ffffff",
           },
         },
