@@ -60,7 +60,7 @@ export const mirrorCategories = [
           standard: ["Gold"],
         },
         glb: "/models/mirrors/mirror 3.glb",
-        position: [-1.05, 1.8, -3.5],
+        position: [-1.08, 1.8, -3.5],
         rotation: [0, Math.PI / 2, 0],
         scale: [0.02, 0.02, 0.02],
         roughness: 0.2, // glossy ceramic
@@ -83,7 +83,7 @@ export const mirrorCategories = [
           standard: ["White"],
         },
         glb: "/models/mirrors/mirror 4.glb",
-        position: [-1.09, 1.8, -3.5],
+        position: [-1.11, 1.8, -3.5],
         rotation: [0, Math.PI / 2, 0],
         scale: [0.02, 0.02, 0.02],
         roughness: 0.8, // glossy ceramic

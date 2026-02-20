@@ -24,7 +24,7 @@ export const shelvesCategories = [
         displayByColor: {
           White: {
             productDisplay:
-              "/configurator/products/accessories/display/single-shelf-white-display.png",
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbHWYLxyCKT_vHMwr-oslcE1h_9rz6bIBGCTtJ1Os1TA&s",
             color: "#ffffff",
           },
         },
@@ -47,7 +47,7 @@ export const shelvesCategories = [
         displayByColor: {
           White: {
             productDisplay:
-              "/configurator/products/accessories/display/single-shelf-white-display.png",
+              "https://mobileimages.lowes.com/productimages/904bd32c-0b11-4d6c-bd6a-25d13607ea6b/44308435.jpg?size=pdhism",
             color: "#ffffff",
           },
         },
