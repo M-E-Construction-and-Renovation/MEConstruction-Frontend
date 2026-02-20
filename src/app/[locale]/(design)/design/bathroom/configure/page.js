@@ -166,23 +166,25 @@ function DesignTool() {
   }
 
   return (
-    <ConfigurePage
-      handleResetDesign={handleResetDesign}
-      handleSaveDesign={handleSaveDesign}
-      handleShareDesign={handleShareDesign}
-      categories={allCategories}
-      activeTab={activeTab}
-      selectedProducts={selectedProducts}
-      handleCategoryChange={handleCategoryChange}
-      currentCategory={currentCategory}
-      activeTier={activeTier}
-      setActiveTier={setActiveTier}
-      handleProductSelect={handleProductSelect}
-      handleUnselectProduct={handleUnselectProduct}
-      plumbing={plumbing}
-      // shape={shape}
-      projectEmail={email}
-    />
+    <div className="fixed inset-0 h-screen w-screen overflow-hidden">
+      <ConfigurePage
+        handleResetDesign={handleResetDesign}
+        handleSaveDesign={handleSaveDesign}
+        handleShareDesign={handleShareDesign}
+        categories={allCategories}
+        activeTab={activeTab}
+        selectedProducts={selectedProducts}
+        handleCategoryChange={handleCategoryChange}
+        currentCategory={currentCategory}
+        activeTier={activeTier}
+        setActiveTier={setActiveTier}
+        handleProductSelect={handleProductSelect}
+        handleUnselectProduct={handleUnselectProduct}
+        plumbing={plumbing}
+        // shape={shape}
+        projectEmail={email}
+      />
+    </div>
   );
 }
 
