@@ -33,7 +33,7 @@ const ConfigurePage = ({
 
   return (
     // Main Container: 100vh and overflow-hidden is crucial for both layouts
-    <div className="flex flex-col xl:flex-row h-screen w-full overflow-hidden bg-background">
+    <div className="flex flex-col xl:flex-row h-dvh w-full overflow-hidden bg-background">
       {/* --- 1. TOOLBAR (Floating on Mobile, Integrated on Desktop) --- */}
       <div className="absolute xl:fixed top-4 left-4 right-4 xl:right-auto xl:w-[calc(66.66%-2rem)] z-30 flex justify-between items-center pointer-events-none">
         <Button
@@ -70,9 +70,10 @@ const ConfigurePage = ({
       {/* --- 3. UI SECTION (Floating Drawer on Mobile, Sidebar on Desktop) --- */}
       <div
         className={`
-          absolute bottom-0 left-0 right-0 z-20 transition-transform duration-500 ease-in-out pointer-events-none pb-2
+          absolute bottom-0 left-0 right-0 z-20 transition-transform duration-500 ease-in-out pointer-events-none
+          pb-[env(safe-area-inset-bottom,0.5rem)]
           xl:relative xl:w-1/3 xl:h-full xl:translate-y-0 xl:pointer-events-auto xl:pb-0 xl:border-l xl:bg-background xl:flex xl:flex-col
-          ${isDrawerOpen ? "translate-y-0" : "translate-y-[calc(100%-35px)]"}
+          ${isDrawerOpen ? "translate-y-0" : "translate-y-[calc(100%-45px)]"}
         `}
       >
         {/* DESKTOP HEADER (Only visible on XL) */}

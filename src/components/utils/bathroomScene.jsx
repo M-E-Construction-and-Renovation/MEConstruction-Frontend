@@ -11,7 +11,14 @@ import {
   MeshReflectorMaterial,
 } from "@react-three/drei";
 import { EffectComposer, N8AO } from "@react-three/postprocessing";
-import { useLayoutEffect, Suspense, useMemo, useRef, useEffect } from "react";
+import {
+  useLayoutEffect,
+  Suspense,
+  useMemo,
+  useRef,
+  useEffect,
+  useState,
+} from "react";
 
 useEnvironment.preload({ files: "/environment/bathroom-environment.hdr" });
 
@@ -332,11 +339,41 @@ function InteriorLight({
   );
 }
 
+// Function for calculating dynamically window and screen size
+function useWindowSize() {
+  const [size, setSize] = useState({
+    width: typeof window !== "undefined" ? window.innerWidth : 1200,
+    height: typeof window !== "undefined" ? window.innerHeight : 800,
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setSize({ width: window.innerWidth, height: window.innerHeight });
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return size;
+}
+
 export default function BathroomScene({
   selectedProducts = {},
   categories = [],
   plumbing = "",
 }) {
+  const { width } = useWindowSize(); // This will trigger a re-render on resize/rotateconst { width } = useWindowSize(); // This will trigger a re-render on resize/rotate
+
+  const isMobile = width < 768;
+  const isLaptop = width < 1280 && width >= 768;
+
+  // Recalculate FOV based on current width
+  const dynamicFov = useMemo(() => {
+    if (isMobile) return 75;
+    if (isLaptop) return 50;
+    return 55;
+  }, [isMobile, isLaptop]);
+
   const filteredCategories = categories.filter(
     (category) => category.id in selectedProducts,
   );
@@ -349,12 +386,12 @@ export default function BathroomScene({
     (category) => !category.isTexture,
   );
 
-  // Check if we are on mobile to adjust camera
-  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
-  const isLaptop =
-    typeof window !== "undefined" &&
-    window.innerWidth < 1280 &&
-    window.innerWidth > 768;
+  // // Check if we are on mobile to adjust camera
+  // const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+  // const isLaptop =
+  //   typeof window !== "undefined" &&
+  //   window.innerWidth < 1280 &&
+  //   window.innerWidth > 768;
 
   return (
     <div className="w-full h-full">
@@ -370,8 +407,9 @@ export default function BathroomScene({
       >
         <Canvas
           // camera={{ fov: 50 }}
+          key={dynamicFov}
           camera={{
-            fov: isMobile ? 75 : isLaptop ? 50 : 55,
+            fov: dynamicFov,
           }}
           shadows
           dpr={[1, 1.5]} // This ensures the GPU never works harder than it needs to

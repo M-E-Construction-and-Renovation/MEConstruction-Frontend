@@ -166,7 +166,7 @@ function DesignTool() {
   }
 
   return (
-    <div className="fixed inset-0 h-screen w-screen overflow-hidden">
+    <div className="fixed inset-0 h-dvh w-screen overflow-hidden">
       <ConfigurePage
         handleResetDesign={handleResetDesign}
         handleSaveDesign={handleSaveDesign}
