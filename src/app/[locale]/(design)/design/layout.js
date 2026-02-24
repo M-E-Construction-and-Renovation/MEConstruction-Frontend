@@ -12,7 +12,7 @@ export default async function RootLayout({ children, params }) {
   const { locale } = await params;
 
   return (
-    <div className="h-screen">
+    <div className="h-dvh">
       <ClientPreloadBoundary>{children}</ClientPreloadBoundary>
     </div>
   );
