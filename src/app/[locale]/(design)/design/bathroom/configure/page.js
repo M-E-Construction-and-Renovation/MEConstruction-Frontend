@@ -125,7 +125,7 @@ function DesignTool() {
         setActiveTier(tierFound);
       }
     } else {
-      setActiveTier("basic");
+      setActiveTier("premium");
     }
   };
 

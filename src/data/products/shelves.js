@@ -10,7 +10,7 @@ export const shelvesCategories = [
         id: "s1",
         name: "Long Shelf",
         tiers: {
-          basic: ["White"],
+          premium: ["White"],
         },
         glb: "/models/shelves/long shelf.glb",
         position: [-1.2, 1.5, -6.08],
@@ -33,7 +33,7 @@ export const shelvesCategories = [
         id: "s2",
         name: "Single Shelf",
         tiers: {
-          basic: ["White"],
+          premium: ["White"],
         },
         glb: "/models/shelves/Short shelf.glb",
         position: [-1.2, 1.3, -6.08],
