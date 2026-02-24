@@ -11,14 +11,7 @@ import {
   MeshReflectorMaterial,
 } from "@react-three/drei";
 import { EffectComposer, N8AO } from "@react-three/postprocessing";
-import {
-  useLayoutEffect,
-  Suspense,
-  useMemo,
-  useRef,
-  useEffect,
-  useState,
-} from "react";
+import { useLayoutEffect, useMemo, useEffect, useState } from "react";
 
 useEnvironment.preload({ files: "/environment/bathroom-environment.hdr" });
 
@@ -88,13 +81,17 @@ function BathroomModel({ filteredTextures, selectedProducts }) {
     textures;
 
   // 1. Load textures (hooks handle the Suspense automatically)
-  const floorMaps = useTexture(floorTexture || {});
+  const floorMaps = useTexture(floorTexture || initialTextures.floorTexture);
 
-  const wallMaps = useTexture(wallTexture || {});
+  const wallMaps = useTexture(wallTexture || initialTextures.wallTexture);
 
-  const cabinWallMaps = useTexture(cabinWallTexture || {});
+  const cabinWallMaps = useTexture(
+    cabinWallTexture || initialTextures.cabinWallTexture,
+  );
 
-  const ceilingMaps = useTexture(ceilingTexture || {});
+  const ceilingMaps = useTexture(
+    ceilingTexture || initialTextures.ceilingTexture,
+  );
 
   const clonedScene = useMemo(() => {
     const clone = scene.clone(true);
@@ -386,115 +383,95 @@ export default function BathroomScene({
     (category) => !category.isTexture,
   );
 
-  // // Check if we are on mobile to adjust camera
-  // const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
-  // const isLaptop =
-  //   typeof window !== "undefined" &&
-  //   window.innerWidth < 1280 &&
-  //   window.innerWidth > 768;
-
   return (
     <div className="w-full h-full">
-      <Suspense
-        fallback={
-          <div className="h-full flex flex-col items-center justify-center bg-white z-50">
-            <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-blue-600 mb-4"></div>
-            <p className="text-lg font-medium text-gray-700">
-              Loading Design Tool...
-            </p>
-          </div>
-        }
+      <Canvas
+        key={dynamicFov}
+        camera={{
+          fov: dynamicFov,
+        }}
+        shadows
+        dpr={[1, 1.5]} // This ensures the GPU never works harder than it needs to
+        gl={{
+          physicallyCorrectLights: true,
+          toneMapping: THREE.ACESFilmicToneMapping,
+          toneMappingExposure: 1, // increase or decrease
+          outputEncoding: THREE.SRGBColorSpace,
+          antialias: true,
+        }}
+        className="bg-gradient-to-b from-blue-500 to-white"
       >
-        <Canvas
-          // camera={{ fov: 50 }}
-          key={dynamicFov}
-          camera={{
-            fov: dynamicFov,
-          }}
-          shadows
-          dpr={[1, 1.5]} // This ensures the GPU never works harder than it needs to
-          gl={{
-            physicallyCorrectLights: true,
-            toneMapping: THREE.ACESFilmicToneMapping,
-            toneMappingExposure: 1, // increase or decrease
-            outputEncoding: THREE.SRGBColorSpace,
-            antialias: true,
-          }}
-          className="bg-gradient-to-b from-blue-500 to-white"
-        >
-          <Environment
-            environmentIntensity={0}
-            files="/environment/bathroom-environment.hdr"
-            background={true}
-          />
+        <Environment
+          environmentIntensity={0}
+          files="/environment/bathroom-environment.hdr"
+          background={true}
+        />
 
-          <BathroomModel
-            filteredTextures={filteredTextures}
-            selectedProducts={selectedProducts}
-          />
+        <BathroomModel
+          filteredTextures={filteredTextures}
+          selectedProducts={selectedProducts}
+        />
 
-          {filteredProducts.map((category, index) => {
-            const specificProduct = category.products.find(
-              (product) =>
-                product.id === selectedProducts[category.id].productId,
-            );
+        {filteredProducts.map((category, index) => {
+          const specificProduct = category.products.find(
+            (product) => product.id === selectedProducts[category.id].productId,
+          );
 
-            const color =
-              specificProduct.displayByColor?.[
-                selectedProducts[category.id].color
-              ].color;
+          const color =
+            specificProduct.displayByColor?.[
+              selectedProducts[category.id].color
+            ].color;
 
-            return (
-              <Product
-                key={specificProduct.id}
-                glb={specificProduct.glb}
-                position={specificProduct.position}
-                rotation={specificProduct.rotation}
-                scale={specificProduct.scale}
-                color={color}
-                roughness={specificProduct.roughness}
-                metalness={specificProduct.metalness}
-                clearcoat={specificProduct.clearcoat}
-                clearcoatRoughness={specificProduct.clearcoatRoughness}
-                envMapIntensity={specificProduct.envMapIntensity}
-                isMirror={category.isMirror}
-              />
-            );
-          })}
-
-          <EffectComposer disableNormalPass>
-            <N8AO
-              halfRes // Renders at half resolution (invisible to eye, 2x faster)
-              aoRadius={0.5}
-              intensity={1}
-              distanceFalloff={1}
+          return (
+            <Product
+              key={specificProduct.id}
+              glb={specificProduct.glb}
+              position={specificProduct.position}
+              rotation={specificProduct.rotation}
+              scale={specificProduct.scale}
+              color={color}
+              roughness={specificProduct.roughness}
+              metalness={specificProduct.metalness}
+              clearcoat={specificProduct.clearcoat}
+              clearcoatRoughness={specificProduct.clearcoatRoughness}
+              envMapIntensity={specificProduct.envMapIntensity}
+              isMirror={category.isMirror}
             />
-          </EffectComposer>
+          );
+        })}
 
-          <ambientLight intensity={1} />
-
-          {/* 2. The Main Light Source */}
-          <InteriorLight intensity={10} />
-          {/* 3. Secondary Light Source */}
-          <InteriorLight
-            position={[0.08, 2.96, -1.6]}
-            intensity={5}
-            castShadow={false}
+        <EffectComposer disableNormalPass>
+          <N8AO
+            halfRes // Renders at half resolution (invisible to eye, 2x faster)
+            aoRadius={0.5}
+            intensity={1}
+            distanceFalloff={1}
           />
+        </EffectComposer>
 
-          <OrbitControls
-            makeDefault
-            target={[0, 1.5, -4]}
-            enablePan={false}
-            minDistance={1}
-            maxDistance={4.5}
-            minPolarAngle={Math.PI / 2.5} // 45°
-            maxPolarAngle={Math.PI / 1.9} // ~95°
-            minAzimuthAngle={-Math.PI / 13.3}
-            maxAzimuthAngle={Math.PI / 13.3}
-          />
-        </Canvas>
-      </Suspense>
+        <ambientLight intensity={1} />
+
+        {/* 2. The Main Light Source */}
+        <InteriorLight intensity={10} />
+        {/* 3. Secondary Light Source */}
+        <InteriorLight
+          position={[0.08, 2.96, -1.6]}
+          intensity={5}
+          castShadow={false}
+        />
+
+        <OrbitControls
+          makeDefault
+          target={[0, 1.5, -4]}
+          enablePan={false}
+          minDistance={1}
+          maxDistance={4.5}
+          minPolarAngle={Math.PI / 2.5} // 45°
+          maxPolarAngle={Math.PI / 1.9} // ~95°
+          minAzimuthAngle={-Math.PI / 13.3}
+          maxAzimuthAngle={Math.PI / 13.3}
+        />
+      </Canvas>
     </div>
   );
 }

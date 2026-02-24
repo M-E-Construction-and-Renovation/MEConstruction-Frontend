@@ -6,7 +6,7 @@ import allCategories from "@/data/products";
 import ConfigurePage from "@/components/utils/congifure-page";
 import { useToast } from "@/components/ui/use-toast";
 
-function DesignTool() {
+export default function DesignTool() {
   const { toast } = useToast();
 
   const searchParams = useSearchParams();
@@ -167,40 +167,34 @@ function DesignTool() {
 
   return (
     <div className="fixed inset-0 h-dvh w-screen overflow-hidden">
-      <ConfigurePage
-        handleResetDesign={handleResetDesign}
-        handleSaveDesign={handleSaveDesign}
-        handleShareDesign={handleShareDesign}
-        categories={allCategories}
-        activeTab={activeTab}
-        selectedProducts={selectedProducts}
-        handleCategoryChange={handleCategoryChange}
-        currentCategory={currentCategory}
-        activeTier={activeTier}
-        setActiveTier={setActiveTier}
-        handleProductSelect={handleProductSelect}
-        handleUnselectProduct={handleUnselectProduct}
-        plumbing={plumbing}
-        // shape={shape}
-        projectEmail={email}
-      />
+      <Suspense
+        fallback={
+          <div className="fixed inset-0 flex flex-col items-center justify-center bg-white z-50">
+            <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-blue-600 mb-4"></div>
+            <p className="text-lg font-medium text-gray-700">
+              Loading Design Tool...
+            </p>
+          </div>
+        }
+      >
+        <ConfigurePage
+          handleResetDesign={handleResetDesign}
+          handleSaveDesign={handleSaveDesign}
+          handleShareDesign={handleShareDesign}
+          categories={allCategories}
+          activeTab={activeTab}
+          selectedProducts={selectedProducts}
+          handleCategoryChange={handleCategoryChange}
+          currentCategory={currentCategory}
+          activeTier={activeTier}
+          setActiveTier={setActiveTier}
+          handleProductSelect={handleProductSelect}
+          handleUnselectProduct={handleUnselectProduct}
+          plumbing={plumbing}
+          // shape={shape}
+          projectEmail={email}
+        />
+      </Suspense>
     </div>
-  );
-}
-
-export default function DesignToolWrapper() {
-  return (
-    <Suspense
-      fallback={
-        <div className="fixed inset-0 flex flex-col items-center justify-center bg-white z-50">
-          <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-blue-600 mb-4"></div>
-          <p className="text-lg font-medium text-gray-700">
-            Loading Design Tool...
-          </p>
-        </div>
-      }
-    >
-      <DesignTool />
-    </Suspense>
   );
 }
