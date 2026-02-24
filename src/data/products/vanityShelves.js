@@ -22,9 +22,9 @@ export const vanityShelvesCategories = [
         envMapIntensity: 0.0, // reflections
         displayByColor: {
           Black: {
-            productDisplay:
-              "/configurator/products/vanity-shelves/design/basic1-white.png",
+            productDisplay: "/images/display/vanity-shelves/vs1-gray.PNG",
             color: "",
+            displayColor: "#7D7D7D",
           },
         },
       },
@@ -44,9 +44,9 @@ export const vanityShelvesCategories = [
         envMapIntensity: 0.0, // reflections
         displayByColor: {
           Wood: {
-            productDisplay:
-              "/configurator/products/vanity-shelves/design/basic2-white.png",
+            productDisplay: "/images/display/vanity-shelves/vs2-wood.PNG",
             color: "",
+            displayColor: "#D2A683",
           },
         },
       },
@@ -66,9 +66,9 @@ export const vanityShelvesCategories = [
         envMapIntensity: 0.0, // reflections
         displayByColor: {
           White: {
-            productDisplay:
-              "/configurator/products/vanity-shelves/design/standard1-white.png",
+            productDisplay: "/images/display/vanity-shelves/vs3-white.PNG",
             color: "",
+            displayColor: "#ffffff",
           },
         },
       },
@@ -88,9 +88,9 @@ export const vanityShelvesCategories = [
         envMapIntensity: 0.0, // reflections
         displayByColor: {
           "Black/White": {
-            productDisplay:
-              "/configurator/products/vanity-shelves/design/standard2-cream.png",
+            productDisplay: "/images/display/vanity-shelves/vs4-white.PNG",
             color: "",
+            displayColor: "#ffffff",
           },
         },
       },
@@ -110,9 +110,9 @@ export const vanityShelvesCategories = [
         envMapIntensity: 0.0, // reflections
         displayByColor: {
           "Black/Dirty White": {
-            productDisplay:
-              "/configurator/products/vanity-shelves/design/standard3-cream.png",
+            productDisplay: "/images/display/vanity-shelves/vs5-white.PNG",
             color: "",
+            displayColor: "#ffffff",
           },
         },
       },
@@ -132,9 +132,9 @@ export const vanityShelvesCategories = [
         envMapIntensity: 0.0, // reflections
         displayByColor: {
           "Black/Gray": {
-            productDisplay:
-              "/configurator/products/vanity-shelves/design/premium1-white.png",
+            productDisplay: "/images/display/vanity-shelves/vs6-gray.PNG",
             color: "",
+            displayColor: "#808080",
           },
         },
       },
@@ -154,9 +154,9 @@ export const vanityShelvesCategories = [
         envMapIntensity: 0.0, // reflections
         displayByColor: {
           Blue: {
-            productDisplay:
-              "/configurator/products/vanity-shelves/design/premium3-black.png",
+            productDisplay: "/images/display/vanity-shelves/vs7-blue.PNG",
             color: "",
+            displayColor: "#0000FF",
           },
         },
       },

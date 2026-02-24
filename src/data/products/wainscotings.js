@@ -25,24 +25,24 @@ export const wainscotingsCategories = [
         envMapIntensity: 0.0, // reflections
         displayByColor: {
           White: {
-            productDisplay:
-              "/configurator/products/walls/display/grid-display.PNG",
+            productDisplay: "/images/display/wainscotings/pf1-white.PNG",
             color: "#ffffff",
+            displayColor: "#ffffff",
           },
           Wood: {
-            productDisplay:
-              "/configurator/products/walls/display/grid-display.PNG",
+            productDisplay: "/images/display/wainscotings/pf1-brown.PNG",
             color: "#D2B48C",
+            displayColor: "#D2B48C",
           },
           "Olive Green": {
-            productDisplay:
-              "/configurator/products/walls/display/grid-display.PNG",
+            productDisplay: "/images/display/wainscotings/pf1-olive.PNG",
             color: "#808000",
+            displayColor: "#808000",
           },
           "Saddle Brown": {
-            productDisplay:
-              "/configurator/products/walls/display/grid-display.PNG",
+            productDisplay: "/images/display/wainscotings/pf1-maroon.PNG",
             color: "#8B4513",
+            displayColor: "#8B4513",
           },
         },
       },
@@ -65,24 +65,24 @@ export const wainscotingsCategories = [
         envMapIntensity: 0.0, // reflections
         displayByColor: {
           White: {
-            productDisplay:
-              "/configurator/products/walls/display/grid-display.PNG",
+            productDisplay: "/images/display/wainscotings/pf2-white.PNG",
             color: "#ffffff",
+            displayColor: "#ffffff",
           },
           Wood: {
-            productDisplay:
-              "/configurator/products/walls/display/grid-display.PNG",
+            productDisplay: "/images/display/wainscotings/pf2-brown.PNG",
             color: "#D2B48C",
+            displayColor: "#D2B48C",
           },
           "Olive Green": {
-            productDisplay:
-              "/configurator/products/walls/display/grid-display.PNG",
+            productDisplay: "/images/display/wainscotings/pf2-olive.PNG",
             color: "#808000",
+            displayColor: "#808000",
           },
           "Saddle Brown": {
-            productDisplay:
-              "/configurator/products/walls/display/grid-display.PNG",
+            productDisplay: "/images/display/wainscotings/pf2-maroon.PNG",
             color: "#8B4513",
+            displayColor: "#8B4513",
           },
         },
       },
@@ -105,24 +105,24 @@ export const wainscotingsCategories = [
         envMapIntensity: 0.0, // reflections
         displayByColor: {
           White: {
-            productDisplay:
-              "/configurator/products/walls/display/grid-display.PNG",
+            productDisplay: "/images/display/wainscotings/pf3-white.PNG",
             color: "#ffffff",
+            displayColor: "#ffffff",
           },
           Wood: {
-            productDisplay:
-              "/configurator/products/walls/display/grid-display.PNG",
+            productDisplay: "/images/display/wainscotings/pf3-brown.PNG",
             color: "#D2B48C",
+            displayColor: "#D2B48C",
           },
           "Olive Green": {
-            productDisplay:
-              "/configurator/products/walls/display/grid-display.PNG",
+            productDisplay: "/images/display/wainscotings/pf3-olive.PNG",
             color: "#808000",
+            displayColor: "#808000",
           },
           "Saddle Brown": {
-            productDisplay:
-              "/configurator/products/walls/display/grid-display.PNG",
+            productDisplay: "/images/display/wainscotings/pf3-maroon.PNG",
             color: "#8B4513",
+            displayColor: "#8B4513",
           },
         },
       },
@@ -145,24 +145,24 @@ export const wainscotingsCategories = [
         envMapIntensity: 0.0, // reflections
         displayByColor: {
           White: {
-            productDisplay:
-              "/configurator/products/walls/display/grid-display.PNG",
+            productDisplay: "/images/display/wainscotings/pf4-white.PNG",
             color: "#ffffff",
+            displayColor: "#ffffff",
           },
           Wood: {
-            productDisplay:
-              "/configurator/products/walls/display/grid-display.PNG",
+            productDisplay: "/images/display/wainscotings/pf4-brown.PNG",
             color: "#D2B48C",
+            displayColor: "#D2B48C",
           },
           "Olive Green": {
-            productDisplay:
-              "/configurator/products/walls/display/grid-display.PNG",
+            productDisplay: "/images/display/wainscotings/pf4-olive.PNG",
             color: "#808000",
+            displayColor: "#808000",
           },
           "Saddle Brown": {
-            productDisplay:
-              "/configurator/products/walls/display/grid-display.PNG",
+            productDisplay: "/images/display/wainscotings/pf4-maroon.PNG",
             color: "#8B4513",
+            displayColor: "#8B4513",
           },
         },
       },

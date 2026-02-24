@@ -31,6 +31,7 @@ export const tubFrontsShowerPansCategories = [
             productDisplay:
               "https://mobileimages.lowes.com/productimages/f28e0c12-0f59-4c25-8e32-55ee61f6353b/75042117.jpeg?size=pdhism",
             color: "#ffffff",
+            displayColor: "#ffffff",
           },
         },
       },
@@ -55,6 +56,7 @@ export const tubFrontsShowerPansCategories = [
             productDisplay:
               "https://mobileimages.lowes.com/productimages/fc85934f-5401-4902-a777-ce06d40cad8d/74270120.jpeg?size=pdhism",
             color: "#ffffff",
+            displayColor: "#ffffff",
           },
         },
       },
@@ -78,6 +80,7 @@ export const tubFrontsShowerPansCategories = [
             productDisplay:
               "https://kohler.scene7.com/is/image/PAWEB/GBH_SQTemplate?$product_src=is{PAWEB/715-0_ISO_d2c0064351_rgb}&$PDPDesktopSQ$&fmt=webp",
             color: "#ffffff",
+            displayColor: "#ffffff",
           },
         },
       },
@@ -101,6 +104,7 @@ export const tubFrontsShowerPansCategories = [
             productDisplay:
               "https://mobileimages.lowes.com/productimages/2dd25004-f30c-4013-9dbe-752dc8fc0ac1/75042305.jpeg?size=pdhism",
             color: "#ffffff",
+            displayColor: "#ffffff",
           },
         },
       },
@@ -124,6 +128,7 @@ export const tubFrontsShowerPansCategories = [
             productDisplay:
               "https://mobileimages.lowes.com/productimages/eda8f54b-6adb-4005-8e92-a612ef4445bc/69094221.jpeg?size=pdhism",
             color: "#ffffff",
+            displayColor: "#ffffff",
           },
         },
       },
@@ -146,6 +151,7 @@ export const tubFrontsShowerPansCategories = [
             productDisplay:
               "https://mobileimages.lowes.com/productimages/b9724081-d95f-4c08-93ea-0cb34e26ce27/74273147.jpeg",
             color: "#ffffff",
+            displayColor: "#ffffff",
           },
         },
       },
@@ -168,6 +174,7 @@ export const tubFrontsShowerPansCategories = [
             productDisplay:
               "https://images.thdstatic.com/productImages/91df8fbb-f764-4d68-96a4-dc1fb7e34b1e/svn/white-swan-shower-pans-ff03454md-010-64_600.jpg",
             color: "#ffffff",
+            displayColor: "#ffffff",
           },
         },
       },
@@ -190,6 +197,7 @@ export const tubFrontsShowerPansCategories = [
             productDisplay:
               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWlv2yPJ3Jl3rEobOjLcDtpDFYNyEBGjmwIw&s",
             color: "#ffffff",
+            displayColor: "#ffffff",
           },
         },
       },
@@ -212,6 +220,7 @@ export const tubFrontsShowerPansCategories = [
             productDisplay:
               "https://static.wixstatic.com/media/f18398_0fda84c0c25d4594a36462eabe88e987~mv2.jpg/v1/fill/w_980,h_980,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/f18398_0fda84c0c25d4594a36462eabe88e987~mv2.jpg",
             color: "#ffffff",
+            displayColor: "#ffffff",
           },
         },
       },

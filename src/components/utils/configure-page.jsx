@@ -225,7 +225,11 @@ const ConfigurePage = ({
                                   ? "ring-2 ring-primary ring-offset-1 scale-110"
                                   : "hover:scale-110"
                               }`}
-                              style={{ backgroundColor: color.toLowerCase() }}
+                              style={{
+                                backgroundColor:
+                                  product.displayByColor[color].displayColor ||
+                                  "#ffffff",
+                              }}
                             />
                           ))}
                         </div>

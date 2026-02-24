@@ -31,6 +31,7 @@ export const doorsRodsCategories = [
             productDisplay:
               "https://mobileimages.lowes.com/productimages/7406aa25-ac0f-4182-abf5-85d1db14fd88/44205698.jpg?size=pdhism",
             color: "#727472",
+            displayColor: "#000000",
           },
         },
       },
@@ -54,6 +55,7 @@ export const doorsRodsCategories = [
             productDisplay:
               "https://mobileimages.lowes.com/productimages/626b66c8-f7f1-48f2-bec1-09337e536b6d/42573895.jpg?size=pdhism",
             color: "#ffffff",
+            displayColor: "#EBECF0",
           },
         },
       },
@@ -77,6 +79,7 @@ export const doorsRodsCategories = [
             productDisplay:
               "https://b5.3dsky.org/media/cache/tuk_model_custom_filter_ang_en/model_images/0000/0000/7840/7840537.686cd2dcbcf20.jpeg",
             color: "#727472",
+            displayColor: "#000000",
           },
         },
       },
@@ -100,6 +103,7 @@ export const doorsRodsCategories = [
             productDisplay:
               "https://b4.3dsky.org/media/cache/tuk_model_custom_filter_ang_en/model_images/0000/0000/7508/7508399.67d5f0846c414.png",
             color: "#727472",
+            displayColor: "#000000",
           },
         },
       },
@@ -123,6 +127,7 @@ export const doorsRodsCategories = [
             productDisplay:
               "https://b4.3dsky.org/media/cache/tuk_model_custom_filter_ang_en/model_images/0000/0000/7504/7504590.67d3f231c94c3.png",
             color: "#727472",
+            displayColor: "#000000",
           },
         },
       },
@@ -145,6 +150,7 @@ export const doorsRodsCategories = [
             productDisplay:
               "https://images.thdstatic.com/productImages/a14bb0e1-fbe5-4678-8bc9-1408f4640a35/svn/dreamline-alcove-shower-doors-shdr-20557210-04-64_600.jpg",
             color: "#ffffff",
+            displayColor: "#EBECF0",
           },
         },
       },
@@ -167,6 +173,7 @@ export const doorsRodsCategories = [
             productDisplay:
               "https://free3dbase.com/upload/modele/drzwi-rozsuwane-geo-6-120.jpg",
             color: "#ffffff",
+            displayColor: "#000000",
           },
         },
       },
@@ -190,6 +197,7 @@ export const doorsRodsCategories = [
             productDisplay:
               "https://mobileimages.lowes.com/productimages/6737df2d-23d1-4875-8fa9-5bef86f30555/80392648.jpeg?size=pdhismm",
             color: "#727472",
+            displayColor: "#000000",
           },
         },
       },
@@ -213,6 +221,7 @@ export const doorsRodsCategories = [
             productDisplay:
               "https://mobileimages.lowes.com/productimages/f6d155b9-e01d-4678-9851-9581e8f93af1/63882436.jpg?size=pdhism",
             color: "#727472",
+            displayColor: "#000000",
           },
         },
       },
@@ -236,6 +245,7 @@ export const doorsRodsCategories = [
             productDisplay:
               "https://m.media-amazon.com/images/I/81FHpqB-NGL.jpg",
             color: "#727472",
+            displayColor: "#000000",
           },
         },
       },
@@ -258,6 +268,7 @@ export const doorsRodsCategories = [
             productDisplay:
               "https://m.media-amazon.com/images/S/aplus-media-library-service-media/8ef3d433-1a67-4752-ae64-24ee317e9955.__CR0,0,970,600_PT0_SX970_V1___.jpg",
             color: "#ffffff",
+            displayColor: "#EBECF0",
           },
         },
       },
@@ -280,6 +291,7 @@ export const doorsRodsCategories = [
             productDisplay:
               "https://i.pinimg.com/736x/da/7e/de/da7edec696bf20fde9329de87a43e5f1.jpg",
             color: "#F7E7CE",
+            displayColor: "#F7E7CE",
           },
         },
       },
@@ -302,6 +314,7 @@ export const doorsRodsCategories = [
             productDisplay:
               "https://3hlinen.com.au/cdn/shop/files/3HLinen_Linen_Shower_Curtain_Black.png?v=1758293819&width=1920",
             color: "#727472",
+            displayColor: "#000000",
           },
         },
       },

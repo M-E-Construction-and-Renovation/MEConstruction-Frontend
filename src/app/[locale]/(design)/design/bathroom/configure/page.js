@@ -3,7 +3,7 @@
 import { useSearchParams } from "next/navigation";
 import { useState, useEffect, Suspense } from "react";
 import allCategories from "@/data/products";
-import ConfigurePage from "@/components/utils/congifure-page";
+import ConfigurePage from "@/components/utils/configure-page";
 import { useToast } from "@/components/ui/use-toast";
 
 export default function DesignTool() {

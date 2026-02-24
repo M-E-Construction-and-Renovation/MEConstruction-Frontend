@@ -32,21 +32,25 @@ export const towelBars = [
             productDisplay:
               "https://kohler.scene7.com/is/image/PAWEB/GBH_SQTemplate?$product_src=is{PAWEB/23285-CP_ISO_d2c0076888_rgb}&$PDPDesktopSQ$&fmt=webp",
             color: "#ffffff",
+            displayColor: "#EBECF0",
           },
           Brass: {
             productDisplay:
               "https://kohler.scene7.com/is/image/PAWEB/GBH_SQTemplate?$product_src=is{PAWEB/23285-2MB_ISO_d2c0076824_rgb}&$PDPDesktopSQ$&fmt=webp",
             color: "#B5A642",
+            displayColor: "#B5A642",
           },
           Black: {
             productDisplay:
               "https://kohler.scene7.com/is/image/PAWEB/GBH_SQTemplate?$product_src=is{PAWEB/23285-BL_ISO_d2c0076851_rgb}&$PDPDesktopSQ$&fmt=webp",
             color: "#000000",
+            displayColor: "#000000",
           },
           "Champagne Gold": {
             productDisplay:
               "https://kohler.scene7.com/is/image/PAWEB/GBH_SQTemplate?$product_src=is{PAWEB/23285-2MB_ISO_d2c0076824_rgb}&$PDPDesktopSQ$&fmt=webp",
             color: "#F7E7CE",
+            displayColor: "#FFD700",
           },
         },
       },
@@ -71,21 +75,25 @@ export const towelBars = [
             productDisplay:
               "https://kohler.scene7.com/is/image/PAWEB/GBH_SQTemplate?$product_src=is{PAWEB/14437-CP_ISO_d2c0086585_rgb}&$PDPDesktopSQ$&fmt=webp",
             color: "#ffffff",
+            displayColor: "#EBECF0",
           },
           Brass: {
             productDisplay:
               "https://kohler.scene7.com/is/image/PAWEB/GBH_SQTemplate?$product_src=is{PAWEB/14437-2MB_ISO_d2c0086156_rgb}&$PDPDesktopSQ$&fmt=webp",
             color: "#B5A642",
+            displayColor: "#B5A642",
           },
           Black: {
             productDisplay:
               "https://kohler.scene7.com/is/image/PAWEB/GBH_SQTemplate?$product_src=is{PAWEB/14437-BL_ISO_d2c0086613_rgb}&$PDPDesktopSQ$&fmt=webp",
             color: "#000000",
+            displayColor: "#000000",
           },
           "Champagne Gold": {
             productDisplay:
               "https://kohler.scene7.com/is/image/PAWEB/GBH_SQTemplate?$product_src=is{PAWEB/zaa82112_rgb}&$PDPDesktopSQ$&fmt=webp",
             color: "#F7E7CE",
+            displayColor: "#FFD700",
           },
         },
       },

@@ -18,6 +18,7 @@ export const wallsCategories = [
             productDisplay:
               "/textures/walls/wall_tile_2/Marble012_2K-JPG_Color.jpg",
             color: "/textures/walls/wall_tile_2/Marble012_2K-JPG_Color.jpg",
+            displayColor: "#D3D3D3",
           },
         },
       },
@@ -36,6 +37,7 @@ export const wallsCategories = [
             productDisplay:
               "/textures/walls/wall_tile_3/Travertine009_2K-JPG_Color.jpg",
             color: "/textures/walls/wall_tile_3/Travertine009_2K-JPG_Color.jpg",
+            displayColor: "#C2B280",
           },
         },
       },
@@ -53,6 +55,7 @@ export const wallsCategories = [
             productDisplay:
               "/textures/walls/wall_tile_4/Marble016_2K-JPG_Color.jpg",
             color: "/textures/walls/wall_tile_4/Marble016_2K-JPG_Color.jpg",
+            displayColor: "#808080",
           },
         },
       },
@@ -70,6 +73,7 @@ export const wallsCategories = [
             productDisplay:
               "/textures/walls/wall_tile_5/Onyx001_2K-JPG_Color.jpg",
             color: "/textures/walls/wall_tile_5/Onyx001_2K-JPG_Color.jpg",
+            displayColor: "#C4A484",
           },
         },
       },

@@ -26,6 +26,7 @@ export const lightsCategories = [
             productDisplay:
               "https://images.thdstatic.com/productImages/bad870f5-bfdf-4a44-a940-8e4f91de6d61/svn/chrome-aspen-creative-corporation-vanity-lighting-62270-c3_600.jpg",
             color: "",
+            displayColor: "#ffffff",
           },
         },
       },
@@ -49,6 +50,7 @@ export const lightsCategories = [
             productDisplay:
               "https://mobileimages.lowes.com/productimages/d52b62d4-171c-4a76-80f4-12a69961cb46/68035913.jpeg?size=pdhism",
             color: "",
+            displayColor: "#E8E4C9",
           },
         },
       },
@@ -72,6 +74,7 @@ export const lightsCategories = [
             productDisplay:
               "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQVX7y-t70YLWLwoMMfux7XpA6ytHf5GCKYubDAtwIxSzkMABzoQ-d268LIY08o8X6bsusjoVe-EgIDm8lVwQO8V3dyvukLJhdg_AolsfL4wm5A-t7th3sM",
             color: "",
+            displayColor: "#ffffff",
           },
         },
       },
@@ -94,6 +97,7 @@ export const lightsCategories = [
           "Gray/Gold": {
             productDisplay: "/images/display/lights/vanity 4-display.jpg",
             color: "",
+            displayColor: "#808080",
           },
         },
       },
@@ -117,6 +121,7 @@ export const lightsCategories = [
             productDisplay:
               "https://mobileimages.lowes.com/productimages/67f20ee7-3e80-4cfc-acea-0fe675254ae9/75096841.jpeg?size=pdhz",
             color: "",
+            displayColor: "#ffffff",
           },
         },
       },
@@ -140,6 +145,7 @@ export const lightsCategories = [
             productDisplay:
               "https://m.media-amazon.com/images/I/61z+YDhmqvL._AC_UF350,350_QL80_.jpg",
             color: "",
+            displayColor: "#808080",
           },
         },
       },
@@ -163,6 +169,7 @@ export const lightsCategories = [
             productDisplay:
               "https://lights.com/cdn/shop/files/LC004941_WB_Alt4_1500.jpg?v=1761160724&width=1214",
             color: "",
+            displayColor: "#ffffff",
           },
         },
       },

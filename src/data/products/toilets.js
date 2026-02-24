@@ -30,6 +30,7 @@ export const toiletCategories = [
             productDisplay:
               "https://images.thdstatic.com/productImages/6fe20a93-2ab3-453c-b589-a96123a18b20/svn/white-glacier-bay-two-piece-toilets-n2316-64_1000.jpg",
             color: "#ffffff",
+            displayColor: "#ffffff",
           },
         },
       },
@@ -51,6 +52,7 @@ export const toiletCategories = [
           White: {
             productDisplay: "https://cdn.rona.ca/images/00535176_L.jpg",
             color: "#ffffff",
+            displayColor: "#ffffff",
           },
         },
       },
@@ -73,6 +75,7 @@ export const toiletCategories = [
             productDisplay:
               "https://kohler.scene7.com/is/image/PAWEB/GBH_SQTemplate?$product_src=is{PAWEB/33201-0_ISO_d2c0041033_rgb}&$PDPMobilePortraitSQ$&fmt=webp",
             color: "#ffffff",
+            displayColor: "#ffffff",
           },
         },
       },
@@ -95,6 +98,7 @@ export const toiletCategories = [
             productDisplay:
               "https://kohler.scene7.com/is/image/PAWEB/Category_Template?$PDPcon$&fmt=webp&$gradient_src=PAWEB/organic-gradient&$shadow_src=PAWEB/Blank&$Badge1_src=PAWEB/Blank&$Badge4_src=PAWEB/Blank&$Badge3_src=PAWEB/Blank&$Badge2_src=PAWEB/Blank&$product_src=is{PAWEB/zaa64625_rgb}",
             color: "#ffffff",
+            displayColor: "#ffffff",
           },
         },
       },
@@ -139,6 +143,7 @@ export const toiletCategories = [
             productDisplay:
               "https://www.blissbathandkitchen.com/wp-content/uploads/2024/10/CST604CEFGAT40-Toilet-hero.webp",
             color: "#ffffff",
+            displayColor: "#ffffff",
           },
         },
       },
@@ -161,6 +166,7 @@ export const toiletCategories = [
             productDisplay:
               "https://kohler.scene7.com/is/image/PAWEB/Category_Template?$PDPexpz$&fmt=webp&$gradient_src=PAWEB/organic-gradient&$shadow_src=PAWEB/Blank&$Badge1_src=PAWEB/Blank&$Badge4_src=PAWEB/Blank&$Badge3_src=PAWEB/Blank&$Badge2_src=PAWEB/Blank&$product_src=is{PAWEB/aad01724_rgb}",
             color: "#ffffff",
+            displayColor: "#ffffff",
           },
         },
       },
@@ -183,6 +189,7 @@ export const toiletCategories = [
             productDisplay:
               "https://kohler.scene7.com/is/image/PAWEB/Category_Template?$PDPexpz$&fmt=webp&$gradient_src=PAWEB/organic-gradient&$shadow_src=PAWEB/Blank&$Badge1_src=PAWEB/Blank&$Badge4_src=PAWEB/Blank&$Badge3_src=PAWEB/Blank&$Badge2_src=PAWEB/Blank&$product_src=is{PAWEB/zaa86862_rgb}",
             color: "#FAF9F0",
+            displayColor: "#FAF9F0",
           },
         },
       },

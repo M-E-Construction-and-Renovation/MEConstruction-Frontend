@@ -23,6 +23,7 @@ export const cabinWallsCategories = [
               "/textures/cabin_walls/cabin_wall_2/Tiles030_2K-JPG_Color.jpg",
             color:
               "/textures/cabin_walls/cabin_wall_2/Tiles030_2K-JPG_Color.jpg",
+            displayColor: "#ADD8E6",
           },
         },
       },
@@ -42,6 +43,7 @@ export const cabinWallsCategories = [
               "/textures/cabin_walls/cabin_wall_3/Tiles035_2K-JPG_Color.jpg",
             color:
               "/textures/cabin_walls/cabin_wall_3/Tiles035_2K-JPG_Color.jpg",
+            displayColor: "#ADD8E6",
           },
         },
       },
@@ -61,6 +63,7 @@ export const cabinWallsCategories = [
               "/textures/cabin_walls/cabin_wall_4/Tiles109_2K-JPG_Color.jpg",
             color:
               "/textures/cabin_walls/cabin_wall_4/Tiles109_2K-JPG_Color.jpg",
+            displayColor: "#C2B280",
           },
         },
       },
@@ -80,6 +83,7 @@ export const cabinWallsCategories = [
               "/textures/cabin_walls/cabin_wall_5/Tiles040_2K-JPG_Color.jpg",
             color:
               "/textures/cabin_walls/cabin_wall_5/Tiles040_2K-JPG_Color.jpg",
+            displayColor: "#D3D3D3",
           },
         },
       },
