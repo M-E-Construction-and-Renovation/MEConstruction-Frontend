@@ -498,14 +498,13 @@ export default function BathroomScene({
         <OrbitControls
           makeDefault
           target={[0, 1.5, -4]}
-          enablePan={true}
-          // enablePan={false}
-          // minDistance={1}
-          // maxDistance={4.5}
-          // minPolarAngle={Math.PI / 2.5} // 45°
-          // maxPolarAngle={Math.PI / 1.9} // ~95°
-          // minAzimuthAngle={-Math.PI / 13.3}
-          // maxAzimuthAngle={Math.PI / 13.3}
+          enablePan={false}
+          minDistance={1}
+          maxDistance={4.5}
+          minPolarAngle={Math.PI / 2.5} // 45°
+          maxPolarAngle={Math.PI / 1.9} // ~95°
+          minAzimuthAngle={-Math.PI / 13.3}
+          maxAzimuthAngle={Math.PI / 13.3}
         />
       </Canvas>
     </div>

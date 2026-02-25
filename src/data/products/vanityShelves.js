@@ -171,6 +171,35 @@ export const vanityShelvesCategories = [
           },
         },
       },
+      {
+        id: "vs9",
+        name: "OVE Decors - Tahoe",
+        tiers: {
+          premium: ["White"],
+        },
+        // ONLY FOR VANITY SHELVES THAT HAS MORE THAN ONE SINK FAUCETS
+        sinkCoords: [
+          [-1.1, 0.87, -3.11], // Left Faucet Position
+          [-1.1, 0.87, -3.89], // Right Faucet Position
+        ],
+        glb: "/models/vanity-shelves/ove-decors-tahoe.glb",
+        position: [-0.91, 0, -3.5],
+        rotation: [0, Math.PI / 2, 0],
+        scale: [0.7, 1, 1],
+        roughness: 1, // glossy ceramic
+        metalness: 0, // not metal
+        clearcoat: 0.0, // glazed surface
+        clearcoatRoughness: 0.0,
+        envMapIntensity: 0.0, // reflections
+        displayByColor: {
+          White: {
+            productDisplay:
+              "https://mobileimages.lowes.com/productimages/60e1feb5-1b00-49cf-a90f-9572c031569a/67968168.jpeg?size=pdhz",
+            color: "",
+            displayColor: "#ffffff",
+          },
+        },
+      },
     ],
   },
 ];
