@@ -1,6 +1,6 @@
 export const vanityShelvesCategories = [
   {
-    id: "vanitiyShelves",
+    id: "vanityShelves",
     // initialAngle: "side",
     label: "Vanity Shelves",
     // zIndex: "10",
@@ -12,6 +12,7 @@ export const vanityShelvesCategories = [
         tiers: {
           basic: ["Black"],
         },
+        sinkCoords: [[-1.15, 0.85, -3.5]],
         glb: "/models/vanity-shelves/Basic_type_A.glb",
         position: [-0.99, 0, -2.9],
         rotation: [0, Math.PI / 2, 0],
@@ -34,6 +35,7 @@ export const vanityShelvesCategories = [
         tiers: {
           basic: ["Wood"],
         },
+        sinkCoords: [[-1.15, 0.85, -3.49]],
         glb: "/models/vanity-shelves/Basic_type_B.glb",
         position: [-0.6, 0, -3],
         rotation: [0, Math.PI / 2, 0],
@@ -56,6 +58,7 @@ export const vanityShelvesCategories = [
         tiers: {
           standard: ["White"],
         },
+        sinkCoords: [[-1.15, 0.85, -3.53]],
         glb: "/models/vanity-shelves/Standard_type_A.glb",
         position: [-0.64, 0, -3.05],
         rotation: [0, Math.PI / 2, 0],
@@ -78,6 +81,7 @@ export const vanityShelvesCategories = [
         tiers: {
           standard: ["Black/White"],
         },
+        sinkCoords: [[-1.15, 0.85, -3.54]],
         glb: "/models/vanity-shelves/Standard_type_B.glb",
         position: [-0.64, 0, -3.05],
         rotation: [0, Math.PI / 2, 0],
@@ -100,6 +104,7 @@ export const vanityShelvesCategories = [
         tiers: {
           premium: ["Black/Dirty White"],
         },
+        sinkCoords: [[-1.15, 0.85, -3.55]],
         glb: "/models/vanity-shelves/Premium_type_A.glb",
         position: [-0.64, 0, -3.05],
         rotation: [0, Math.PI / 2, 0],
@@ -122,6 +127,7 @@ export const vanityShelvesCategories = [
         tiers: {
           premium: ["Black/Gray"],
         },
+        sinkCoords: [[-1.15, 0.85, -3.55]],
         glb: "/models/vanity-shelves/Premium_type_B.glb",
         position: [-0.64, 0, -3.05],
         rotation: [0, Math.PI / 2, 0],
@@ -144,6 +150,11 @@ export const vanityShelvesCategories = [
         tiers: {
           premium: ["Blue"],
         },
+        // ONLY FOR VANITY SHELVES THAT HAS MORE THAN ONE SINK FAUCETS
+        sinkCoords: [
+          [-1.17, 0.85, -3.3], // Left Faucet Position
+          [-1.17, 0.85, -3.8], // Right Faucet Position
+        ],
         glb: "/models/vanity-shelves/Premium_type_C.glb",
         position: [-0.64, 0, -2.85],
         rotation: [0, Math.PI / 2, 0],

@@ -222,53 +222,62 @@ function Product({
   clearcoat = 0.0,
   clearcoatRoughness = 0.0,
   envMapIntensity = 0,
+  categoryId,
+  // FOR PRODUCTS THAT HAVE MIRROR
   isMirror = false,
+  // FOR VANITY SHELVES THAT REQUIRES MORE THAN ONE SINK FAUCET
+  sinkCoords = null,
 }) {
   const { scene } = useGLTF(glb);
 
-  const { clonedScene, mirrorGeometry } = useMemo(() => {
-    const clone = scene.clone(true);
+  // 1. Determine positions: if it's a faucet and we have coords from the vanity, use them.
+  // Otherwise, fallback to the product's default position.
+  const renderPositions =
+    categoryId === "sinkFaucets" && sinkCoords ? sinkCoords : [position];
 
-    let mirrorGeometry;
+  // 2. Create an array of clones based on how many positions we have
+  const instances = useMemo(() => {
+    return renderPositions.map(() => {
+      const clone = scene.clone(true);
 
-    clone.traverse((child) => {
-      if (!child.isMesh || !child.material) return;
-      // Clone materials so changes don't affect other instances
-      child.material = child.material.clone();
+      let mirrorGeo = null;
 
-      if (isMirror && child.name.includes("mirror")) {
-        mirrorGeometry = child.geometry;
-        child.visible = false; // Hide the original so it doesn't overlap
-      }
+      clone.traverse((child) => {
+        if (!child.isMesh || !child.material) return;
+        child.material = child.material.clone();
+
+        if (isMirror && child.name.includes("mirror")) {
+          mirrorGeo = child.geometry;
+          child.visible = false;
+        }
+      });
+      return { clone, mirrorGeo };
     });
+  }, [scene, renderPositions, isMirror]);
 
-    return { clonedScene: clone, mirrorGeometry };
-  }, [scene]);
-
-  // APPLY PBR PROPERTIES
+  // 3. Apply PBR Properties to ALL clones
   useLayoutEffect(() => {
-    clonedScene.traverse((child) => {
-      if (!child.isMesh || !child.material) return;
+    instances.forEach(({ clone }) => {
+      clone.traverse((child) => {
+        if (!child.isMesh || !child.material) return;
+        const mat = child.material;
+        child.castShadow = true;
+        child.receiveShadow = true;
 
-      const mat = child.material;
-      child.castShadow = true;
-      child.receiveShadow = true;
+        if (color) mat.color.set(color || "#EFF2F3").convertSRGBToLinear();
+        mat.roughness = roughness;
+        mat.metalness = metalness;
 
-      if (color) mat.color.set(color || "#EFF2F3").convertSRGBToLinear();
-
-      mat.roughness = roughness;
-      mat.metalness = metalness;
-
-      if ("clearcoat" in mat) {
-        mat.clearcoat = clearcoat;
-        mat.clearcoatRoughness = clearcoatRoughness;
-      }
-
-      mat.envMapIntensity = envMapIntensity;
-      mat.needsUpdate = true;
+        if ("clearcoat" in mat) {
+          mat.clearcoat = clearcoat;
+          mat.clearcoatRoughness = clearcoatRoughness;
+        }
+        mat.envMapIntensity = envMapIntensity;
+        mat.needsUpdate = true;
+      });
     });
   }, [
-    clonedScene,
+    instances,
     color,
     roughness,
     metalness,
@@ -278,28 +287,37 @@ function Product({
   ]);
 
   return (
-    <group position={position} rotation={rotation} scale={scale}>
-      <primitive object={clonedScene} />
+    <>
+      {instances.map(({ clone, mirrorGeo }, index) => (
+        <group
+          key={`${glb}-${index}`}
+          position={renderPositions[index]}
+          rotation={rotation}
+          scale={scale}
+        >
+          <primitive object={clone} />
 
-      {isMirror && mirrorGeometry && (
-        <mesh geometry={mirrorGeometry}>
-          <MeshReflectorMaterial
-            blur={[0, 0]} // Turn off blur temporarily to see if it's working
-            resolution={1024}
-            mixBlur={0}
-            mixStrength={2} // Crank this up to force the reflection to show
-            roughness={0}
-            depthScale={0} // Set to 0 to disable depth-based fading for testing
-            color="#a0a0a0" // Lighten the base color (black base = black mirror)
-            metalness={0.5}
-            mirror={1}
-            transparent={false}
-            depthWrite={true}
-            side={THREE.DoubleSide}
-          />
-        </mesh>
-      )}
-    </group>
+          {isMirror && mirrorGeo && (
+            <mesh geometry={mirrorGeo}>
+              <MeshReflectorMaterial
+                blur={[0, 0]}
+                resolution={1024}
+                mixBlur={0}
+                mixStrength={2}
+                roughness={0}
+                depthScale={0}
+                color="#a0a0a0"
+                metalness={0.5}
+                mirror={1}
+                transparent={false}
+                depthWrite={true}
+                side={THREE.DoubleSide}
+              />
+            </mesh>
+          )}
+        </group>
+      ))}
+    </>
   );
 }
 
@@ -383,6 +401,15 @@ export default function BathroomScene({
     (category) => !category.isTexture,
   );
 
+  // 1. Find the active vanity shelf data to see if it has sinkCoords, for vanity shelves that require more than one sink faucet
+  const activeVanity = useMemo(() => {
+    const vanityCategory = categories.find((c) => c.id === "vanityShelves");
+    const selection = selectedProducts["vanityShelves"];
+    if (!vanityCategory || !selection) return null;
+
+    return vanityCategory.products.find((p) => p.id === selection.productId);
+  }, [categories, selectedProducts]);
+
   return (
     <div className="w-full h-full">
       <Canvas
@@ -417,6 +444,8 @@ export default function BathroomScene({
             (product) => product.id === selectedProducts[category.id].productId,
           );
 
+          if (!specificProduct) return null;
+
           const color =
             specificProduct.displayByColor?.[
               selectedProducts[category.id].color
@@ -435,7 +464,13 @@ export default function BathroomScene({
               clearcoat={specificProduct.clearcoat}
               clearcoatRoughness={specificProduct.clearcoatRoughness}
               envMapIntensity={specificProduct.envMapIntensity}
+              categoryId={category.id}
+              // ONLY FOR PRODUCTS THAT HAVE MIRRORS
               isMirror={category.isMirror}
+              // ONLY FOR THE VANITY SHELVES THAT REQUIRES MORE THAN ONE SINK FAUCET
+              sinkCoords={
+                category.id === "sinkFaucets" ? activeVanity?.sinkCoords : null
+              }
             />
           );
         })}
@@ -463,13 +498,14 @@ export default function BathroomScene({
         <OrbitControls
           makeDefault
           target={[0, 1.5, -4]}
-          enablePan={false}
-          minDistance={1}
-          maxDistance={4.5}
-          minPolarAngle={Math.PI / 2.5} // 45°
-          maxPolarAngle={Math.PI / 1.9} // ~95°
-          minAzimuthAngle={-Math.PI / 13.3}
-          maxAzimuthAngle={Math.PI / 13.3}
+          enablePan={true}
+          // enablePan={false}
+          // minDistance={1}
+          // maxDistance={4.5}
+          // minPolarAngle={Math.PI / 2.5} // 45°
+          // maxPolarAngle={Math.PI / 1.9} // ~95°
+          // minAzimuthAngle={-Math.PI / 13.3}
+          // maxAzimuthAngle={Math.PI / 13.3}
         />
       </Canvas>
     </div>

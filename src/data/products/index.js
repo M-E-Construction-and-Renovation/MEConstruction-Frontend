@@ -34,7 +34,7 @@ const allCategories = [
   ...mirrorCategories,
   ...lightsCategories,
   // ...bathroomColorCategories,
-  // ...sinkFaucetCategories,
+  ...sinkFaucetCategories,
   ...doorsRodsCategories,
 ];
 
