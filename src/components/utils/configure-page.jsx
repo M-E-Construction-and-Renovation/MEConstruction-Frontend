@@ -218,6 +218,7 @@ const ConfigurePage = ({
                               onClick={(e) => {
                                 e.stopPropagation();
                                 handleProductSelect(product.id, color);
+                                setIsDrawerOpen(false);
                               }}
                               className={`cursor-pointer w-3.5 h-3.5 rounded-full border border-slate-300 transition-all ${
                                 selectedProducts[activeTab]?.color === color &&
