@@ -1,46 +1,56 @@
 export const nicheCategories = [
   {
     id: "niche",
-    initialAngle: "front",
+    // initialAngle: "front",
     label: "Wall Niche",
-    zIndex: "50",
-    shapesAllowed: ["tub", "tub-to-shower", "curved", "neo-angle", "alcove"],
+    // zIndex: "50",
+    // shapesAllowed: ["tub", "tub-to-shower", "curved", "neo-angle", "alcove"],
     products: [
       {
         id: "wn1",
-        name: "Middle Wall Niche - Square",
+        name: "MAAX - Nextile",
         tiers: {
-          basic: ["Textured Gray"],
+          premium: ["White"],
         },
+        glb: "/models/wall-niche/maax-nextile.glb",
+        position: [0, 1.5, -6.35],
+        rotation: [0, 0, 0],
+        scale: [1.3, 1, 1],
+        roughness: 1, // glossy ceramic
+        metalness: 0.5, // not metal
+        clearcoat: 0.0, // glazed surface
+        clearcoatRoughness: 0.0,
+        envMapIntensity: 0.0, // reflections
         displayByColor: {
-          "Textured Gray": {
+          White: {
             productDisplay:
-              "/configurator/products/niche/display/niche-square-display.PNG",
-            designDisplay: {
-              front: {
-                initialPosition:
-                  "/configurator/products/niche/design/niche-square-middle.png",
-              },
-            },
+              "https://mobileimages.lowes.com/productimages/88694e7e-9eb5-452c-b5d2-e2cb15f0f20f/44106351.jpg",
+            color: "",
+            displayColor: "#ffffff",
           },
         },
       },
       {
         id: "wn2",
-        name: "Side Wall Niche - Square",
+        name: "Square Niche",
         tiers: {
-          basic: ["Textured Gray"],
+          standard: ["Gray"],
         },
+        glb: "/models/wall-niche/wall-niche.glb",
+        position: [0, 1.5, -6.38],
+        rotation: [0, 0, 0],
+        scale: [1, 1, 1],
+        roughness: 1, // glossy ceramic
+        metalness: 0.5, // not metal
+        clearcoat: 0.0, // glazed surface
+        clearcoatRoughness: 0.0,
+        envMapIntensity: 0.0, // reflections
         displayByColor: {
-          "Textured Gray": {
+          Gray: {
             productDisplay:
-              "/configurator/products/niche/display/niche-square-display.PNG",
-            designDisplay: {
-              front: {
-                initialPosition:
-                  "/configurator/products/niche/design/niche-square-side.png",
-              },
-            },
+              "https://s.alicdn.com/@sc04/kf/Hb85d20bce89a40cbabe9ec49348f2d64n.jpg?avif=close&webp=close",
+            color: "",
+            displayColor: "#808080",
           },
         },
       },

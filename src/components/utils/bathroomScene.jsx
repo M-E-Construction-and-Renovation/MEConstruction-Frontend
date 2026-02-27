@@ -13,10 +13,53 @@ import {
 import { EffectComposer, N8AO } from "@react-three/postprocessing";
 import { useLayoutEffect, useMemo, useEffect, useState } from "react";
 
+import { Geometry, Base, Subtraction } from "@react-three/csg";
+
 useEnvironment.preload({ files: "/environment/bathroom-environment.hdr" });
 
-function BathroomModel({ filteredTextures, selectedProducts }) {
-  const { scene } = useGLTF("/models/bathroom.glb");
+function BathroomModel({
+  filteredTextures,
+  filteredProducts,
+  selectedProducts,
+}) {
+  // 1. Load the bathroom GLB
+  const { scene, nodes } = useGLTF("/models/bathroom.glb");
+
+  // Load the Niche GLB at the top level (don't put this in useMemo!)
+  // If the niche changes based on selectedProducts, pass the dynamic path here
+  const selectedNichePath = useMemo(() => {
+    const category = filteredProducts?.find((c) => c.id === "niche");
+    const product = category?.products.find(
+      (p) => p.id === selectedProducts["niche"]?.productId,
+    );
+    return product?.glb || null;
+  }, [filteredProducts, selectedProducts]);
+
+  // Use the hook correctly
+  const nicheGLTF = useGLTF(
+    selectedNichePath || "/models/wall-niche/wall-niche.glb",
+  );
+
+  // Now calculate dimensions safely
+  const wallNicheInfo = useMemo(() => {
+    if (!nicheGLTF) return null;
+
+    const box = new THREE.Box3().setFromObject(nicheGLTF.scene);
+    const size = new THREE.Vector3();
+    box.getSize(size);
+
+    // Get the niche position from your product data
+    const category = filteredProducts?.find((c) => c.id === "niche");
+    const product = category?.products.find(
+      (p) => p.id === selectedProducts["niche"]?.productId,
+    );
+
+    return {
+      size: size,
+      position: product?.position || [0, 1.2, 0],
+      scale: product?.scale || [1, 1, 1],
+    };
+  }, [nicheGLTF, filteredProducts, selectedProducts]);
 
   const initialTextures = {
     floorTexture: {
@@ -85,13 +128,38 @@ function BathroomModel({ filteredTextures, selectedProducts }) {
 
   const wallMaps = useTexture(wallTexture || initialTextures.wallTexture);
 
+  const ceilingMaps = useTexture(
+    ceilingTexture || initialTextures.ceilingTexture,
+  );
+
   const cabinWallMaps = useTexture(
     cabinWallTexture || initialTextures.cabinWallTexture,
   );
 
-  const ceilingMaps = useTexture(
-    ceilingTexture || initialTextures.ceilingTexture,
-  );
+  // 1. Prepare your textures outside the return so they are ready
+  const backWallMaterial = useMemo(() => {
+    if (!cabinWallMaps.map) return null;
+
+    // Clone the texture so we don't mess up other objects using it
+    const map = cabinWallMaps.map.clone();
+    const normal = cabinWallMaps.normalMap?.clone();
+
+    map.wrapS = map.wrapT = THREE.RepeatWrapping;
+    map.repeat.set(2, 2); // Match your bathroom tiling
+
+    if (normal) {
+      normal.wrapS = normal.wrapT = THREE.RepeatWrapping;
+      normal.repeat.set(2, 2);
+    }
+
+    return (
+      <meshStandardMaterial
+        map={map}
+        normalMap={normal}
+        roughnessMap={cabinWallMaps.roughnessMap}
+      />
+    );
+  }, [cabinWallMaps]);
 
   const clonedScene = useMemo(() => {
     const clone = scene.clone(true);
@@ -107,6 +175,17 @@ function BathroomModel({ filteredTextures, selectedProducts }) {
 
     return clone;
   }, [scene]);
+
+  // At the top of your component, add this effect
+  useLayoutEffect(() => {
+    const wall = clonedScene.getObjectByName("back_wall");
+    if (wall) {
+      wall.visible = false;
+      // We also hide it from shadow casting so it doesn't leave a ghost shadow where the hole is
+      wall.castShadow = false;
+      wall.receiveShadow = false;
+    }
+  }, [clonedScene]);
 
   useLayoutEffect(() => {
     // Apply material config
@@ -138,19 +217,14 @@ function BathroomModel({ filteredTextures, selectedProducts }) {
         });
       }
 
-      if (
-        child.name === "Wall_Right" ||
-        child.name === "Wall_Left" ||
-        child.name === "Wall_Back"
-      ) {
+      if (child.name === "walls") {
         child.traverse((mesh) => {
-          if (!mesh.isMesh || !mesh.material) return;
-          // if (!mesh.name.includes("cabin_wall")) return;
+          if (!mesh.isMesh || !mesh.material || mesh.name === "back_wall")
+            return;
+
           const mat = mesh.material;
 
-          const bathroomWallMaps = mesh.name.includes("cabin_wall")
-            ? cabinWallMaps
-            : wallMaps;
+          const bathroomWallMaps = wallMaps;
 
           if (bathroomWallMaps.map) {
             // 1. Enable Wrapping (Necessary for tiling)
@@ -208,7 +282,35 @@ function BathroomModel({ filteredTextures, selectedProducts }) {
     });
   }, [clonedScene, floorMaps, wallMaps, cabinWallMaps, ceilingMaps]);
 
-  return <primitive object={clonedScene} />;
+  return (
+    <group>
+      {/* 1. RENDER THE FULL BATHROOM SCENE (Without the back wall) */}
+      <primitive object={clonedScene} />
+
+      {/* 2. THE HOLE ENGINE */}
+      <mesh>
+        <Geometry computeWindow={0} useBuffers={true} incremental={true}>
+          <Base geometry={nodes.back_wall.geometry} />
+          {wallNicheInfo && (
+            <Subtraction
+              position={wallNicheInfo.position}
+              scale={wallNicheInfo.scale}
+              // showOperation
+            >
+              <boxGeometry
+                args={[
+                  wallNicheInfo.size.x,
+                  wallNicheInfo.size.y,
+                  wallNicheInfo.size.z * 5, // Extra deep to ensure a clean cut
+                ]}
+              />
+            </Subtraction>
+          )}
+        </Geometry>
+        {backWallMaterial}
+      </mesh>
+    </group>
+  );
 }
 
 function Product({
@@ -242,6 +344,8 @@ function Product({
 
       let mirrorGeo = null;
 
+      let centerOffSet = null;
+
       clone.traverse((child) => {
         if (!child.isMesh || !child.material) return;
         child.material = child.material.clone();
@@ -251,7 +355,15 @@ function Product({
           child.visible = false;
         }
       });
-      return { clone, mirrorGeo };
+
+      if (categoryId === "niche") {
+        const box = new THREE.Box3().setFromObject(clone);
+        const center = new THREE.Vector3();
+        box.getCenter(center);
+        centerOffSet = center;
+      }
+
+      return { clone, mirrorGeo, centerOffSet };
     });
   }, [scene, renderPositions, isMirror]);
 
@@ -288,10 +400,18 @@ function Product({
 
   return (
     <>
-      {instances.map(({ clone, mirrorGeo }, index) => (
+      {instances.map(({ clone, mirrorGeo, centerOffSet }, index) => (
         <group
           key={`${glb}-${index}`}
-          position={renderPositions[index]}
+          position={
+            centerOffSet
+              ? [
+                  renderPositions[index][0] - centerOffSet?.x,
+                  renderPositions[index][1] - centerOffSet?.y,
+                  renderPositions[index][2] - centerOffSet?.z,
+                ]
+              : renderPositions[index]
+          }
           rotation={rotation}
           scale={scale}
         >
@@ -436,6 +556,7 @@ export default function BathroomScene({
 
         <BathroomModel
           filteredTextures={filteredTextures}
+          filteredProducts={filteredProducts}
           selectedProducts={selectedProducts}
         />
 

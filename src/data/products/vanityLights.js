@@ -10,7 +10,7 @@ export const lightsCategories = [
         id: "vl1",
         name: "Vanity Light 1",
         tiers: {
-          basic: ["White"],
+          premium: ["White"],
         },
         glb: "/models/lights/lights 1.glb",
         position: [-0.97, 2.3, -3.1],
@@ -34,7 +34,7 @@ export const lightsCategories = [
         id: "vl2",
         name: "Vanity Light 2",
         tiers: {
-          basic: ["White"],
+          premium: ["White"],
         },
         glb: "/models/lights/lights 2.glb",
         position: [-1.055, 2.3, -3.1],
@@ -58,7 +58,7 @@ export const lightsCategories = [
         id: "vl3",
         name: "Vanity Light 3",
         tiers: {
-          basic: ["White"],
+          premium: ["White"],
         },
         glb: "/models/lights/lights 3.glb",
         position: [-1.04, 2.3, -3.1],
@@ -82,7 +82,7 @@ export const lightsCategories = [
         id: "vl4",
         name: "Vanity Light 4",
         tiers: {
-          premium: ["Gray/Gold"],
+          standard: ["Gray/Gold"],
         },
         glb: "/models/lights/lights 4.glb",
         position: [-1.04, 2.3, -3.1],
@@ -105,7 +105,7 @@ export const lightsCategories = [
         id: "vl5",
         name: "Vanity Light 5",
         tiers: {
-          premium: ["White"],
+          basic: ["White"],
         },
         glb: "/models/lights/lights 5.glb",
         position: [-1.12, 2.3, -3.1],
@@ -153,7 +153,7 @@ export const lightsCategories = [
         id: "vl7",
         name: "Vanity Light 7",
         tiers: {
-          standard: ["Gold"],
+          basic: ["Gold"],
         },
         glb: "/models/lights/lights 8.glb",
         position: [-1.05, 2.3, -3.4],

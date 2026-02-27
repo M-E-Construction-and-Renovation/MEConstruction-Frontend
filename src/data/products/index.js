@@ -5,7 +5,6 @@ import { shelvesCategories } from "./shelves";
 import { grabBarsCategories } from "./grabBars";
 import { doorsRodsCategories } from "./doors-rods";
 import { wainscotingsCategories } from "./wainscotings";
-import { ceilingsCategories } from "./ceilings";
 import { nicheCategories } from "./niche";
 import { towelBars } from "./towelBars";
 import { toiletCategories } from "./toilets";
@@ -22,19 +21,17 @@ const allCategories = [
   ...cabinWallsCategories,
   ...wallsCategories,
   // ...wallKitsCategories,
-  // ...nicheCategories,
   ...faucetsCategories,
+  ...nicheCategories,
   ...shelvesCategories,
   ...grabBarsCategories,
-  ...wainscotingsCategories,
-  // ...ceilingsCategories,
   ...towelBars,
+  ...wainscotingsCategories,
   ...toiletCategories,
   ...vanityShelvesCategories,
+  ...sinkFaucetCategories,
   ...mirrorCategories,
   ...lightsCategories,
-  // ...bathroomColorCategories,
-  ...sinkFaucetCategories,
   ...doorsRodsCategories,
 ];
 

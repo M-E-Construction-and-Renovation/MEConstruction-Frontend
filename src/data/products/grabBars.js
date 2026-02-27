@@ -16,7 +16,7 @@ export const grabBarsCategories = [
           premium: ["Polished Nickel"],
         },
         glb: "/models/grab-bars/grab_bar_1.glb",
-        position: [-0.35, 0.7, -6.21],
+        position: [0, 0.7, -6.21],
         rotation: [0, 0, 0],
         roughness: 0.35, // glossy ceramic
         metalness: 1, // not metal
@@ -53,7 +53,7 @@ export const grabBarsCategories = [
           premium: ["Gold", "Black"],
         },
         glb: "/models/grab-bars/grab_bar_2.glb",
-        position: [-0.35, 0.7, -6.15],
+        position: [0, 0.7, -6.15],
         rotation: [0, 0, 0],
         roughness: 0.35, // glossy ceramic
         metalness: 1, // not metal
@@ -96,7 +96,7 @@ export const grabBarsCategories = [
           premium: ["Bronze"],
         },
         glb: "/models/grab-bars/grab_bar_3.glb",
-        position: [-0.45, 0.7, -6.21],
+        position: [-0.1, 0.6, -6.21],
         rotation: [0, 0, 0],
         scale: [0.7, 0.7, 0.7],
         roughness: 0.35, // glossy ceramic
