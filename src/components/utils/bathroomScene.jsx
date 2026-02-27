@@ -288,7 +288,7 @@ function BathroomModel({
       <primitive object={clonedScene} />
 
       {/* 2. THE HOLE ENGINE */}
-      <mesh>
+      <mesh castShadow receiveShadow>
         <Geometry computeWindow={0} useBuffers={true} incremental={true}>
           <Base geometry={nodes.back_wall.geometry} />
           {wallNicheInfo && (
@@ -414,6 +414,7 @@ function Product({
           }
           rotation={rotation}
           scale={scale}
+          // scale={[-1, 1, 1]}
         >
           <primitive object={clone} />
 
@@ -619,6 +620,7 @@ export default function BathroomScene({
         <OrbitControls
           makeDefault
           target={[0, 1.5, -4]}
+          // enablePan={true}
           enablePan={false}
           minDistance={1}
           maxDistance={4.5}
