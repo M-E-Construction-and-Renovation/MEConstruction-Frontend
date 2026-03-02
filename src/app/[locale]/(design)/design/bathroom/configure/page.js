@@ -129,10 +129,15 @@ export default function DesignTool() {
     }
   };
 
-  const handleProductSelect = (productId, color) => {
+  const handleProductSelect = (
+    productId,
+    color,
+    flipped = false,
+    placement = "center",
+  ) => {
     setSelectedProducts((prev) => ({
       ...prev,
-      [activeTab]: { productId, color },
+      [activeTab]: { productId, color, flipped, placement },
     }));
   };
 
@@ -152,6 +157,22 @@ export default function DesignTool() {
       // If it doesn't match, return previous state
       return prev;
     });
+  };
+
+  // Dedicated flip toggle handler (flipping position with rotation) (inverting)
+  const handleFlipProduct = (flipped) => {
+    setSelectedProducts((prev) => ({
+      ...prev,
+      [activeTab]: { ...prev[activeTab], flipped },
+    }));
+  };
+
+  // Dedicated placement handler (for moving products with position choices)
+  const handlePlacementChange = (placement) => {
+    setSelectedProducts((prev) => ({
+      ...prev,
+      [activeTab]: { ...prev[activeTab], placement },
+    }));
   };
 
   if (loadingProject) {
@@ -190,6 +211,8 @@ export default function DesignTool() {
           setActiveTier={setActiveTier}
           handleProductSelect={handleProductSelect}
           handleUnselectProduct={handleUnselectProduct}
+          handleFlipProduct={handleFlipProduct}
+          handlePlacementChange={handlePlacementChange}
           plumbing={plumbing}
           // shape={shape}
           projectEmail={email}

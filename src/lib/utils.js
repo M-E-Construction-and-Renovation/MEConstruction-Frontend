@@ -55,3 +55,35 @@ export function flattenMessages(
 
   return result;
 }
+
+export function resolvePlacement(product, placement, flipped) {
+  const opt = product?.positionOptions?.[placement];
+
+  if (!opt) {
+    // Product has no positionOptions — use raw position/rotation
+    const positions =
+      product?.nicheCoords ??
+      (product?.position ? [product.position] : [[0, 1.2, 0]]);
+    return {
+      positions,
+      rotation: product?.rotation ?? [0, 0, 0],
+      scale: product?.scale ?? [1, 1, 1], // ← add scale to return
+      shouldFlip: flipped,
+    };
+  }
+
+  // Resolve positions: named coords array OR single offset
+  const positions = opt.coords ?? (opt.offset ? [opt.offset] : [[0, 1.2, 0]]);
+
+  // Rotation: use placement-specific or fall back to product base
+  const rotation = opt.rotation ?? product?.rotation ?? [0, 0, 0];
+
+  // Per-placement scale override, falls back to product base scale
+  const scale = opt.scale ?? product?.scale ?? [1, 1, 1];
+
+  // Apply flip ONLY on products that don't use rotation-per-placement
+  // (side-wall niches rotate instead of flipping)
+  const shouldFlip = flipped && !opt.rotation;
+
+  return { positions, rotation, scale, shouldFlip };
+}

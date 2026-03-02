@@ -1,25 +1,18 @@
-"use client";
-
-import * as THREE from "three";
-
 export const toiletCategories = [
   {
     id: "toilets",
-    // initialAngle: "side",
     label: "Toilets",
-    // zIndex: "10",
-    // shapesAllowed: ["tub", "tub-to-shower", "curved", "neo-angle", "alcove"],
-    isDraggable: false,
     products: [
       {
         id: "t1",
         name: "Glacier Bay",
+        allowFlip: true,
         tiers: {
           basic: ["White"],
         },
         glb: "/models/toilets/basic_glacierbay.glb",
-        position: new THREE.Vector3(-0.45, 0, -2.5),
-        rotation: new THREE.Euler(0, Math.PI / 1, 0),
+        position: [-0.45, 0, -2.5],
+        rotation: [0, Math.PI / 1, 0],
         roughness: 1, // glossy ceramic
         metalness: 0.5, // not metal
         clearcoat: 0.0, // glazed surface
@@ -37,12 +30,13 @@ export const toiletCategories = [
       {
         id: "t2",
         name: "American Standard",
+        allowFlip: true,
         tiers: {
           basic: ["White"],
         },
         glb: "/models/toilets/basic_american standard.glb",
-        position: new THREE.Vector3(-0.45, 0, -2.5),
-        rotation: new THREE.Euler(0, Math.PI / 1, 0),
+        position: [-0.45, 0, -2.5],
+        rotation: [0, Math.PI / 1, 0],
         roughness: 1, // glossy ceramic
         metalness: 0.5, // not metal
         clearcoat: 0.0, // glazed surface
@@ -59,12 +53,13 @@ export const toiletCategories = [
       {
         id: "t3",
         name: "Elmbrook",
+        allowFlip: true,
         tiers: {
           premium: ["White"],
         },
         glb: "/models/toilets/premium_kelmbrook.glb",
-        position: new THREE.Vector3(-0.45, 0, -2.5),
-        rotation: new THREE.Euler(0, Math.PI / 1, 0),
+        position: [-0.45, 0, -2.5],
+        rotation: [0, Math.PI / 1, 0],
         roughness: 1, // glossy ceramic
         metalness: 0.5, // not metal
         clearcoat: 0.0, // glazed surface
@@ -82,12 +77,13 @@ export const toiletCategories = [
       {
         id: "t4",
         name: "Santa Rosa Compact",
+        allowFlip: true,
         tiers: {
           premium: ["White"],
         },
         glb: "/models/toilets/premium_starosacompact.glb",
-        position: new THREE.Vector3(-0.45, 0, -2.5),
-        rotation: new THREE.Euler(0, Math.PI / 1, 0),
+        position: [-0.45, 0, -2.5],
+        rotation: [0, Math.PI / 1, 0],
         roughness: 1, // glossy ceramic
         metalness: 0.5, // not metal
         clearcoat: 0.0, // glazed surface
@@ -102,37 +98,16 @@ export const toiletCategories = [
           },
         },
       },
-      // {
-      //   id: "t5",
-      //   name: "TOTO - Drake",
-      //   tiers: {
-      //     premium: ["White"],
-      //   },
-      //   glb: "/models/toilets/premium_totodrake.glb",
-      //   position: new THREE.Vector3(0.45, -1.55, 0.7),
-      //   rotation: new THREE.Euler(0, 0, 0),
-      //   roughness: 0.7, // glossy ceramic
-      //   metalness: 1, // not metal
-      //   clearcoat: 0.0, // glazed surface
-      //   clearcoatRoughness: 0.0,
-      //   envMapIntensity: 1.0, // reflections
-      //   displayByColor: {
-      //     White: {
-      //       productDisplay:
-      //         "https://images.thdstatic.com/productImages/57b32ad3-276e-43a0-81e2-bd9fb5fe1e1d/svn/cotton-white-toto-two-piece-toilets-ms776124csfg-01-64_1000.jpg",
-      //       color: "#ffffff",
-      //     },
-      //   },
-      // },
       {
         id: "t6",
         name: "TOTO - Ultramax II",
+        allowFlip: true,
         tiers: {
           premium: ["White"],
         },
         glb: "/models/toilets/premium_totoultra2.glb",
-        position: new THREE.Vector3(-0.45, 0, -2.5),
-        rotation: new THREE.Euler(0, Math.PI / 1, 0),
+        position: [-0.45, 0, -2.5],
+        rotation: [0, Math.PI / 1, 0],
         roughness: 1, // glossy ceramic
         metalness: 0.5, // not metal
         clearcoat: 0.0, // glazed surface
@@ -150,12 +125,13 @@ export const toiletCategories = [
       {
         id: "t7",
         name: "Highline",
+        allowFlip: true,
         tiers: {
           standard: ["White"],
         },
         glb: "/models/toilets/standard_highline.glb",
-        position: new THREE.Vector3(-0.45, 0, -2.5),
-        rotation: new THREE.Euler(0, Math.PI / 1, 0),
+        position: [-0.45, 0, -2.5],
+        rotation: [0, Math.PI / 1, 0],
         roughness: 1, // glossy ceramic
         metalness: 0.5, // not metal
         clearcoat: 0.0, // glazed surface
@@ -173,12 +149,13 @@ export const toiletCategories = [
       {
         id: "t8",
         name: "Gleam",
+        allowFlip: true,
         tiers: {
           standard: ["White"],
         },
         glb: "/models/toilets/standard_gleam.glb",
-        position: new THREE.Vector3(-0.45, 0, -2.5),
-        rotation: new THREE.Euler(0, Math.PI / 1, 0),
+        position: [-0.45, 0, -2.5],
+        rotation: [0, Math.PI / 1, 0],
         roughness: 1, // glossy ceramic
         metalness: 0.5, // not metal
         clearcoat: 0.0, // glazed surface

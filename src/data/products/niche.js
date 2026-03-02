@@ -1,21 +1,36 @@
 export const nicheCategories = [
   {
     id: "niche",
-    // initialAngle: "front",
     label: "Wall Niche",
-    // zIndex: "50",
-    // shapesAllowed: ["tub", "tub-to-shower", "curved", "neo-angle", "alcove"],
     products: [
       {
         id: "wn1",
         name: "MAAX - Nextile",
+        allowPosition: true,
+        positionOptions: {
+          left: {
+            offset: [-1.24, 1.7, -5.7], // absolute world position on left side wall
+            rotation: [0, Math.PI / 2, 0], // facing inward (toward center)
+            scale: [1, 1, 1],
+          },
+          center: {
+            offset: [0, 1.5, -6.35], // back wall center
+            rotation: [0, 0, 0],
+            scale: [1, 1, 1],
+          },
+          right: {
+            offset: [1.24, 1.7, -5.7], // absolute world position on right side wall
+            rotation: [0, -Math.PI / 2, 0], // facing inward
+            scale: [1, 1, 1],
+          },
+        },
         tiers: {
           premium: ["White"],
         },
-        glb: "/models/wall-niche/maax-nextile.glb",
-        position: [0, 1.5, -6.35],
+        glb: "/models/wall-niche/maax-nextile-square.glb",
+        // position: [0, 1.5, -6.35],
         rotation: [0, 0, 0],
-        scale: [1.3, 1, 1],
+        scale: [1, 1, 1],
         roughness: 1, // glossy ceramic
         metalness: 0.5, // not metal
         clearcoat: 0.0, // glazed surface
@@ -32,12 +47,134 @@ export const nicheCategories = [
       },
       {
         id: "wn2",
+        name: "Double - MAAX - Nextile",
+        allowPosition: true,
+        positionOptions: {
+          left: {
+            // Two niches stacked vertically on side wall
+            coords: [
+              [-1.25, 1.8, -5.95],
+              [-1.25, 1.8, -5.45],
+            ],
+            rotation: [0, Math.PI / 2, 0],
+            scale: [1, 1, 1],
+          },
+          center: {
+            // Two niches spread horizontally on back wall
+            coords: [
+              [0.22, 1.5, -6.35],
+              [-0.22, 1.5, -6.35],
+            ],
+            rotation: [0, 0, 0],
+            scale: [1, 1, 1],
+          },
+          right: {
+            coords: [
+              [1.25, 1.8, -5.95],
+              [1.25, 1.8, -5.45],
+            ],
+            rotation: [0, -Math.PI / 2, 0],
+            scale: [1, 1, 1],
+          },
+        },
+        tiers: {
+          premium: ["White"],
+        },
+        glb: "/models/wall-niche/maax-nextile-square.glb",
+        rotation: [0, 0, 0],
+        scale: [1, 1, 2],
+        roughness: 1, // glossy ceramic
+        metalness: 0.5, // not metal
+        clearcoat: 0.0, // glazed surface
+        clearcoatRoughness: 0.0,
+        envMapIntensity: 0.0, // reflections
+        displayByColor: {
+          White: {
+            productDisplay:
+              "https://mobileimages.lowes.com/productimages/88694e7e-9eb5-452c-b5d2-e2cb15f0f20f/44106351.jpg",
+            color: "",
+            displayColor: "#ffffff",
+          },
+        },
+      },
+      {
+        id: "wn3",
         name: "Square Niche",
+        allowPosition: true,
+        positionOptions: {
+          left: {
+            offset: [-1.29, 1.7, -5.7], // absolute world position on left side wall
+            rotation: [0, Math.PI / 2, 0], // facing inward (toward center)
+            scale: [1, 1, 1],
+          },
+          center: {
+            offset: [0, 1.5, -6.35], // back wall center
+            rotation: [0, 0, 0],
+            scale: [1, 1, 1],
+          },
+          right: {
+            offset: [1.29, 1.7, -5.7], // absolute world position on right side wall
+            rotation: [0, -Math.PI / 2, 0], // facing inward
+            scale: [1, 1, 1],
+          },
+        },
         tiers: {
           standard: ["Gray"],
         },
         glb: "/models/wall-niche/wall-niche.glb",
         position: [0, 1.5, -6.38],
+        rotation: [0, 0, 0],
+        scale: [1, 1, 1],
+        roughness: 1, // glossy ceramic
+        metalness: 0.5, // not metal
+        clearcoat: 0.0, // glazed surface
+        clearcoatRoughness: 0.0,
+        envMapIntensity: 0.0, // reflections
+        displayByColor: {
+          Gray: {
+            productDisplay:
+              "https://s.alicdn.com/@sc04/kf/Hb85d20bce89a40cbabe9ec49348f2d64n.jpg?avif=close&webp=close",
+            color: "",
+            displayColor: "#808080",
+          },
+        },
+      },
+      {
+        id: "wn4",
+        name: "Double - Square Niche",
+        allowPosition: true,
+        positionOptions: {
+          left: {
+            // Two niches stacked vertically on side wall
+            coords: [
+              [-1.29, 1.8, -5.9],
+              [-1.29, 1.8, -5.45],
+            ],
+            rotation: [0, Math.PI / 2, 0],
+            scale: [1, 1, 1],
+          },
+          center: {
+            // Two niches spread horizontally on back wall
+            coords: [
+              [0.2, 1.5, -6.38],
+              [-0.2, 1.5, -6.38],
+            ],
+            rotation: [0, 0, 0],
+            scale: [1, 1, 1],
+          },
+          right: {
+            coords: [
+              [1.29, 1.8, -5.9],
+              [1.29, 1.8, -5.45],
+            ],
+            rotation: [0, -Math.PI / 2, 0],
+            scale: [1, 1, 1],
+          },
+        },
+        tiers: {
+          standard: ["Gray"],
+        },
+        glb: "/models/wall-niche/wall-niche.glb",
         rotation: [0, 0, 0],
         scale: [1, 1, 1],
         roughness: 1, // glossy ceramic

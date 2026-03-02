@@ -1,14 +1,12 @@
 export const lightsCategories = [
   {
     id: "lights",
-    // initialAngle: "side",
     label: "Vanity Light",
-    // zIndex: "10",
-    // shapesAllowed: ["tub", "tub-to-shower", "curved", "neo-angle", "alcove"],
     products: [
       {
         id: "vl1",
         name: "Vanity Light 1",
+        allowFlip: true,
         tiers: {
           premium: ["White"],
         },
@@ -33,6 +31,7 @@ export const lightsCategories = [
       {
         id: "vl2",
         name: "Vanity Light 2",
+        allowFlip: true,
         tiers: {
           premium: ["White"],
         },
@@ -57,6 +56,7 @@ export const lightsCategories = [
       {
         id: "vl3",
         name: "Vanity Light 3",
+        allowFlip: true,
         tiers: {
           premium: ["White"],
         },
@@ -81,6 +81,7 @@ export const lightsCategories = [
       {
         id: "vl4",
         name: "Vanity Light 4",
+        allowFlip: true,
         tiers: {
           standard: ["Gray/Gold"],
         },
@@ -104,6 +105,7 @@ export const lightsCategories = [
       {
         id: "vl5",
         name: "Vanity Light 5",
+        allowFlip: true,
         tiers: {
           basic: ["White"],
         },
@@ -128,6 +130,7 @@ export const lightsCategories = [
       {
         id: "vl6",
         name: "Vanity Light 6",
+        allowFlip: true,
         tiers: {
           standard: ["Black/Gold"],
         },
@@ -152,6 +155,7 @@ export const lightsCategories = [
       {
         id: "vl7",
         name: "Vanity Light 7",
+        allowFlip: true,
         tiers: {
           basic: ["Gold"],
         },

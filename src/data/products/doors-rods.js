@@ -1,25 +1,18 @@
-"use client";
-
-import * as THREE from "three";
-
 export const doorsRodsCategories = [
   {
     id: "doorsRods",
-    // initialAngle: "front",
     label: "Doors / Rods",
-    // zIndex: "80",
-    // shapesAllowed: ["tub"],
-    isDraggable: false,
     products: [
       {
         id: "tfd1",
         name: "Kohler - Levity Bathtub Door",
+        allowFlip: true,
         tiers: {
           premium: ["Black"],
         },
         glb: "/models/doors-and-rods/kohler-levity-frameless.glb",
-        position: new THREE.Vector3(0, 0.6, -5.1),
-        rotation: new THREE.Euler(0, 0, 0),
+        position: [0, 0.6, -5.1],
+        rotation: [0, 0, 0],
         scale: [1.6, 1.3, 1],
         roughness: 1, // glossy ceramic
         metalness: 1, // not metal
@@ -38,12 +31,13 @@ export const doorsRodsCategories = [
       {
         id: "tfd2",
         name: "allen + roth - Davidson Bathtub Door",
+        allowFlip: true,
         tiers: {
           premium: ["Chrome"],
         },
         glb: "/models/doors-and-rods/allen-roth-davidson-frameless.glb",
-        position: new THREE.Vector3(0, 0.6, -5.1),
-        rotation: new THREE.Euler(0, 0, 0),
+        position: [0, 0.6, -5.1],
+        rotation: [0, 0, 0],
         scale: [1.6, 1.3, 1],
         roughness: 1, // glossy ceramic
         metalness: 0.8, // not metal
@@ -62,12 +56,13 @@ export const doorsRodsCategories = [
       {
         id: "sd1",
         name: "Allen Brau Fantasy - Alcove Shower Door",
+        allowFlip: true,
         tiers: {
           basic: ["Black"],
         },
         glb: "/models/doors-and-rods/alcove-shower-door.glb",
-        position: new THREE.Vector3(0, 0.03, -6.3),
-        rotation: new THREE.Euler(0, 0, 0),
+        position: [0, 0.03, -6.3],
+        rotation: [0, 0, 0],
         scale: [1.45, 1.2, 1.05],
         roughness: 1, // glossy ceramic
         metalness: 1, // not metal
@@ -86,12 +81,13 @@ export const doorsRodsCategories = [
       {
         id: "sd2",
         name: "ABBER - Curved Shower Door",
+        allowFlip: true,
         tiers: {
           standard: ["Black"],
         },
         glb: "/models/doors-and-rods/abber-schwarzer-diamant-curved-shower-door.glb",
-        position: new THREE.Vector3(-0.72, 0.1, -5.06),
-        rotation: new THREE.Euler(0, 0, 0),
+        position: [-0.72, 0.1, -5.06],
+        rotation: [0, 0, 0],
         scale: [1.35, 1.2, 1.05],
         roughness: 1, // glossy ceramic
         metalness: 1, // not metal
@@ -110,12 +106,13 @@ export const doorsRodsCategories = [
       {
         id: "sd3",
         name: "ABBER - Neo-Angle Shower Door",
+        allowFlip: true,
         tiers: {
           premium: ["Black"],
         },
         glb: "/models/doors-and-rods/abber-ewiges-wasser-neo-angle-shower-door.glb",
-        position: new THREE.Vector3(0.09, 0.1, -4.83),
-        rotation: new THREE.Euler(0, 0, 0),
+        position: [0.09, 0.1, -4.83],
+        rotation: [0, 0, 0],
         scale: [1.35, 1.2, 1.38],
         roughness: 1, // glossy ceramic
         metalness: 1, // not metal
@@ -134,12 +131,13 @@ export const doorsRodsCategories = [
       {
         id: "sd4",
         name: "Tub-To-Shower Thin Frame Door",
+        allowFlip: true,
         tiers: {
           premium: ["Chrome"],
         },
         glb: "/models/doors-and-rods/tub-to-shower-door.glb",
-        position: new THREE.Vector3(-1.2, 0.1, -5),
-        rotation: new THREE.Euler(0, 0, 0),
+        position: [-1.2, 0.1, -5],
+        rotation: [0, 0, 0],
         roughness: 0.2, // glossy ceramic
         metalness: 1, // not metal
         clearcoat: 0.0, // glazed surface
@@ -157,12 +155,13 @@ export const doorsRodsCategories = [
       {
         id: "sd5",
         name: "Tub-To-Shower Door",
+        allowFlip: true,
         tiers: {
           standard: ["Black"],
         },
         glb: "/models/doors-and-rods/bathtub-door.glb",
-        position: new THREE.Vector3(-1.2, 0.1, -5.1),
-        rotation: new THREE.Euler(0, 0, 0),
+        position: [-1.2, 0.1, -5.1],
+        rotation: [0, 0, 0],
         roughness: 0.2, // glossy ceramic
         metalness: 1, // not metal
         clearcoat: 0.0, // glazed surface
@@ -180,12 +179,13 @@ export const doorsRodsCategories = [
       {
         id: "sd6",
         name: "Kohler - Levity Shower Door",
+        allowFlip: true,
         tiers: {
           premium: ["Black"],
         },
         glb: "/models/doors-and-rods/kohler-levity-frameless.glb",
-        position: new THREE.Vector3(0, 0.1, -5.1),
-        rotation: new THREE.Euler(0, 0, 0),
+        position: [0, 0.1, -5.1],
+        rotation: [0, 0, 0],
         scale: [1.66, 1.6, 1],
         roughness: 1, // glossy ceramic
         metalness: 1, // not metal
@@ -204,12 +204,13 @@ export const doorsRodsCategories = [
       {
         id: "sd7",
         name: "allen + roth - Davidson Shower Door",
+        allowFlip: true,
         tiers: {
           premium: ["Black"],
         },
         glb: "/models/doors-and-rods/allen-roth-davidson-frameless.glb",
-        position: new THREE.Vector3(0, 0.1, -5.1),
-        rotation: new THREE.Euler(0, 0, 0),
+        position: [0, 0.1, -5.1],
+        rotation: [0, 0, 0],
         scale: [1.66, 1.7, 1],
         roughness: 1, // glossy ceramic
         metalness: 1, // not metal
@@ -228,12 +229,13 @@ export const doorsRodsCategories = [
       {
         id: "sd8",
         name: "ABBER - Alcove Shower Door",
+        allowFlip: true,
         tiers: {
           basic: ["Black"],
         },
         glb: "/models/doors-and-rods/alcove-shower-door2.glb",
-        position: new THREE.Vector3(0.05, 0.15, -6.3),
-        rotation: new THREE.Euler(0, 0, 0),
+        position: [0.05, 0.15, -6.3],
+        rotation: [0, 0, 0],
         scale: [1.55, 1.2, 1.55],
         roughness: 1, // glossy ceramic
         metalness: 1, // not metal
@@ -252,12 +254,13 @@ export const doorsRodsCategories = [
       {
         id: "sr1",
         name: "Shower Rod 1",
+        allowFlip: true,
         tiers: {
           standard: ["Chrome"],
         },
         glb: "/models/doors-and-rods/curtain rod.glb",
-        position: new THREE.Vector3(-1.21, 0.1, -5),
-        rotation: new THREE.Euler(0, 0, 0),
+        position: [-1.21, 0.1, -5],
+        rotation: [0, 0, 0],
         roughness: 1, // glossy ceramic
         metalness: 0.2, // not metal
         clearcoat: 0.0, // glazed surface
@@ -275,12 +278,13 @@ export const doorsRodsCategories = [
       {
         id: "sr2",
         name: "Shower Rod 2",
+        allowFlip: true,
         tiers: {
           basic: ["Champagne Gold"],
         },
         glb: "/models/doors-and-rods/curtain rod 2.glb",
-        position: new THREE.Vector3(-1.21, 0.1, -4.5),
-        rotation: new THREE.Euler(0, 0, 0),
+        position: [-1.21, 0.1, -4.5],
+        rotation: [0, 0, 0],
         roughness: 0.5, // glossy ceramic
         metalness: 0.5, // not metal
         clearcoat: 0.0, // glazed surface
@@ -298,12 +302,13 @@ export const doorsRodsCategories = [
       {
         id: "sr3",
         name: "Shower Rod 3",
+        allowFlip: true,
         tiers: {
           premium: ["Black"],
         },
         glb: "/models/doors-and-rods/curtain rod 3.glb",
-        position: new THREE.Vector3(-1.21, 0.1, -4.5),
-        rotation: new THREE.Euler(0, 0, 0),
+        position: [-1.21, 0.1, -4.5],
+        rotation: [0, 0, 0],
         roughness: 1, // glossy ceramic
         metalness: 0.5, // not metal
         clearcoat: 0.0, // glazed surface

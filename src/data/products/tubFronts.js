@@ -1,25 +1,18 @@
-"use client";
-
-import * as THREE from "three";
-
 export const tubFrontsShowerPansCategories = [
   {
     id: "tubFronts/showerPans",
-    // initialAngle: "front",
     label: "Tub Fronts/Shower Pans",
-    // zIndex: "75",
-    // shapesAllowed: ["tub"],
-    isDraggable: false,
     products: [
       {
         id: "tf1",
         name: "Kohler - Entity",
+        allowFlip: true,
         tiers: {
           basic: ["White"], // Your images were only White
         },
         glb: "/models/tub-fronts-and-shower-pans/kohler-entity.glb",
-        position: new THREE.Vector3(-0.1, -0.025, -5.7),
-        rotation: new THREE.Euler(0, 0, 0),
+        position: [-0.1, -0.025, -5.7],
+        rotation: [0, 0, 0],
         scale: [1.73, 1.6, 1.6],
         roughness: 1, // glossy ceramic
         metalness: 0.5, // not metal
@@ -38,13 +31,13 @@ export const tubFrontsShowerPansCategories = [
       {
         id: "tf2",
         name: "Pro Steel - MAAX",
+        allowFlip: true,
         tiers: {
           standard: ["White"],
         },
         glb: "/models/tub-fronts-and-shower-pans/prosteel.glb",
-        // position: new THREE.Vector3(-1.2, -1.55, -2.05),
-        position: new THREE.Vector3(-1.195, -0.015, -5.1),
-        rotation: new THREE.Euler(0, 0, 0),
+        position: [-1.195, -0.015, -5.1],
+        rotation: [0, 0, 0],
         scale: [1, 1, 1.2],
         roughness: 1, // glossy ceramic
         metalness: 0.5, // not metal
@@ -63,13 +56,15 @@ export const tubFrontsShowerPansCategories = [
       {
         id: "tf3",
         name: "Villager - Kohler",
+        allowFlip: true,
         tiers: {
           premium: ["White"],
         },
         glb: "/models/tub-fronts-and-shower-pans/villager.glb",
-        position: new THREE.Vector3(-1.195, -0.015, -5.1),
-        rotation: new THREE.Euler(0, 0, 0),
-        scale: [1, 1, 1.2],
+        position: [1.195, -0.015, -5.1],
+        rotation: [0, 0, 0],
+        scale: [-1, 1, 1.2],
+        // scale: [1, 1, 1.2],
         roughness: 1, // glossy ceramic
         metalness: 0.5, // not metal
         clearcoat: 0.0, // glazed surface
@@ -87,12 +82,13 @@ export const tubFrontsShowerPansCategories = [
       {
         id: "tf4",
         name: "Kohler - Underscore",
+        allowFlip: true,
         tiers: {
           premium: ["White"], // Your images were only White
         },
         glb: "/models/tub-fronts-and-shower-pans/kohler-underscore.glb",
-        position: new THREE.Vector3(0, -0.015, -5.72),
-        rotation: new THREE.Euler(0, 0, 0),
+        position: [0, -0.015, -5.72],
+        rotation: [0, 0, 0],
         scale: [1.7, 1.2, 1.5],
         roughness: 1, // glossy ceramic
         metalness: 0.5, // not metal
@@ -111,12 +107,13 @@ export const tubFrontsShowerPansCategories = [
       {
         id: "tf5",
         name: "Sterling - Rectangle Alcove",
+        allowFlip: true,
         tiers: {
           standard: ["White"], // Your images were only White
         },
         glb: "/models/tub-fronts-and-shower-pans/sterling-rectangle-alcove.glb",
-        position: new THREE.Vector3(0, -0.015, -5.75),
-        rotation: new THREE.Euler(0, 0, 0),
+        position: [0, -0.015, -5.75],
+        rotation: [0, 0, 0],
         scale: [1.7, 1.5, 1.65],
         roughness: 1, // glossy ceramic
         metalness: 0.5, // not metal
@@ -135,12 +132,13 @@ export const tubFrontsShowerPansCategories = [
       {
         id: "sp1",
         name: "Tub-To-Shower Pan",
+        allowFlip: true,
         tiers: {
           premium: ["White"],
         },
         glb: "/models/tub-fronts-and-shower-pans/tub.glb",
-        position: new THREE.Vector3(-1.195, -0.015, -5.09),
-        rotation: new THREE.Euler(0, 0, 0),
+        position: [-1.195, -0.015, -5.09],
+        rotation: [0, 0, 0],
         roughness: 1, // glossy ceramic
         metalness: 0.5, // not metal
         clearcoat: 0.0, // glazed surface
@@ -158,12 +156,13 @@ export const tubFrontsShowerPansCategories = [
       {
         id: "sp2",
         name: "Alcove Shower Pan",
+        allowFlip: true,
         tiers: {
           basic: ["White"],
         },
         glb: "/models/tub-fronts-and-shower-pans/alcove.glb",
-        position: new THREE.Vector3(-1.195, -0.015, -5.09),
-        rotation: new THREE.Euler(0, 0, 0),
+        position: [-1.195, -0.015, -5.09],
+        rotation: [0, 0, 0],
         roughness: 1, // glossy ceramic
         metalness: 0.5, // not metal
         clearcoat: 0.0, // glazed surface
@@ -181,12 +180,13 @@ export const tubFrontsShowerPansCategories = [
       {
         id: "sp3",
         name: "Curved Shower Pan",
+        allowFlip: true,
         tiers: {
           standard: ["White"],
         },
         glb: "/models/tub-fronts-and-shower-pans/curved.glb",
-        position: new THREE.Vector3(-1.195, -0.015, -5.09),
-        rotation: new THREE.Euler(0, 0, 0),
+        position: [-1.195, -0.015, -5.09],
+        rotation: [0, 0, 0],
         roughness: 1, // glossy ceramic
         metalness: 0.5, // not metal
         clearcoat: 0.0, // glazed surface
@@ -204,12 +204,13 @@ export const tubFrontsShowerPansCategories = [
       {
         id: "sp4",
         name: "Neo-Angle Shower Pan",
+        allowFlip: true,
         tiers: {
           premium: ["White"],
         },
         glb: "/models/tub-fronts-and-shower-pans/neo-angle.glb",
-        position: new THREE.Vector3(-1.195, -0.015, -5.09),
-        rotation: new THREE.Euler(0, 0, 0),
+        position: [-1.195, -0.015, -5.09],
+        rotation: [0, 0, 0],
         roughness: 1, // glossy ceramic
         metalness: 0.5, // not metal
         clearcoat: 0.0, // glazed surface

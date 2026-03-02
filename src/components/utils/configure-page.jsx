@@ -25,6 +25,8 @@ const ConfigurePage = ({
   setActiveTier = () => {},
   handleProductSelect = () => {},
   handleUnselectProduct = () => {},
+  handleFlipProduct = () => {},
+  handlePlacementChange = () => {},
   plumbing = "",
   projectEmail = "",
 }) => {
@@ -162,6 +164,69 @@ const ConfigurePage = ({
                   ))}
                 </div>
               </div>
+
+              {/* FLIP AND PLACEMENT TOGGLE — only shown for products with allowFlip or allowPosition */}
+              {(() => {
+                const selected = selectedProducts[activeTab];
+                const product = currentCategory?.products.find(
+                  (p) => p.id === selected?.productId,
+                );
+
+                if (product?.allowFlip) {
+                  return (
+                    <div className="flex justify-center px-4 py-2 border-b">
+                      <div className="flex p-1 bg-slate-200/40 xl:bg-slate-200 rounded-full w-full max-w-[180px] xl:max-w-[220px]">
+                        {[
+                          { label: "Left", value: false },
+                          { label: "Right", value: true },
+                        ].map(({ label, value }) => (
+                          <button
+                            key={label}
+                            onClick={() => {
+                              handleFlipProduct(value);
+                              setIsDrawerOpen(false);
+                            }}
+                            className={`cursor-pointer flex-1 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${
+                              (selected?.flipped ?? false) === value
+                                ? "bg-white shadow-sm text-primary"
+                                : "text-slate-500"
+                            }`}
+                          >
+                            {label}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                } else if (product?.allowPosition) {
+                  const options = Object.keys(product.positionOptions); // ["left", "center", "right"]
+
+                  return (
+                    <div className="flex justify-center px-4 py-2 border-b">
+                      <div className="flex p-1 bg-slate-200/40 xl:bg-slate-200 rounded-full w-full max-w-[220px] xl:max-w-[260px]">
+                        {options.map((opt) => (
+                          <button
+                            key={opt}
+                            onClick={() => {
+                              handlePlacementChange(opt);
+                              setIsDrawerOpen(false);
+                            }}
+                            className={`cursor-pointer flex-1 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${
+                              (selected?.placement ?? "center") === opt
+                                ? "bg-white shadow-sm text-primary"
+                                : "text-slate-500"
+                            }`}
+                          >
+                            {opt}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                } else {
+                  return null;
+                }
+              })()}
 
               {/* PRODUCT LIST (Horizontal on mobile, Vertical Grid on desktop) */}
               <div className="flex xl:grid xl:grid-cols-3 gap-4 xl:gap-3 p-1 xl:p-4 overflow-x-auto xl:overflow-y-auto snap-x xl:snap-none [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">

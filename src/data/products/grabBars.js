@@ -1,15 +1,23 @@
 export const grabBarsCategories = [
   {
     id: "grabBars",
-    // initialAngle: "front",
     label: "Grab Bars",
-    // zIndex: "50",
-    // shapesAllowed: ["tub", "tub-to-shower"],
-    // isDraggable: true,
     products: [
       {
         id: "gb1",
         name: "Flara - Moen",
+        allowPosition: true,
+        positionOptions: {
+          left: {
+            offset: [-0.6, 0.7, -6.21], // absolute world position on left side wall
+          },
+          center: {
+            offset: [0, 0.7, -6.21], // back wall center
+          },
+          right: {
+            offset: [0.6, 0.7, -6.21], // absolute world position on right side wall
+          },
+        },
         tiers: {
           basic: ["Chrome"],
           standard: ["Brushed Nickel"],
@@ -47,6 +55,18 @@ export const grabBarsCategories = [
       {
         id: "gb2",
         name: "Align Designer - Moen",
+        allowPosition: true,
+        positionOptions: {
+          left: {
+            offset: [-0.6, 0.7, -6.15], // absolute world position on left side wall
+          },
+          center: {
+            offset: [0, 0.7, -6.15], // back wall center
+          },
+          right: {
+            offset: [0.6, 0.7, -6.15], // absolute world position on right side wall
+          },
+        },
         tiers: {
           basic: ["Chrome"],
           standard: ["Brushed Nickel"],
@@ -90,6 +110,18 @@ export const grabBarsCategories = [
       {
         id: "gb3",
         name: "Home Care Designer - Moen",
+        allowPosition: true,
+        positionOptions: {
+          left: {
+            offset: [-0.6, 0.6, -6.21], // absolute world position on left side wall
+          },
+          center: {
+            offset: [0, 0.6, -6.21], // back wall center
+          },
+          right: {
+            offset: [0.6, 0.6, -6.21], // absolute world position on right side wall
+          },
+        },
         tiers: {
           basic: ["Chrome"],
           standard: ["Brushed Nickel"],

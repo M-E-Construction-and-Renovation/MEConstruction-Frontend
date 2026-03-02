@@ -1,14 +1,12 @@
 export const vanityShelvesCategories = [
   {
     id: "vanityShelves",
-    // initialAngle: "side",
     label: "Vanity Shelves",
-    // zIndex: "10",
-    // shapesAllowed: ["tub", "tub-to-shower", "curved", "neo-angle", "alcove"],
     products: [
       {
         id: "vs1",
         name: "Basic 1",
+        allowFlip: true,
         tiers: {
           basic: ["Black"],
         },
@@ -32,6 +30,7 @@ export const vanityShelvesCategories = [
       {
         id: "vs2",
         name: "Basic 2",
+        allowFlip: true,
         tiers: {
           basic: ["Wood"],
         },
@@ -55,6 +54,7 @@ export const vanityShelvesCategories = [
       {
         id: "vs3",
         name: "Standard 1",
+        allowFlip: true,
         tiers: {
           standard: ["White"],
         },
@@ -78,6 +78,7 @@ export const vanityShelvesCategories = [
       {
         id: "vs4",
         name: "Standard 2",
+        allowFlip: true,
         tiers: {
           standard: ["Black/White"],
         },
@@ -101,6 +102,7 @@ export const vanityShelvesCategories = [
       {
         id: "vs5",
         name: "Premium 1",
+        allowFlip: true,
         tiers: {
           premium: ["Black/Dirty White"],
         },
@@ -124,6 +126,7 @@ export const vanityShelvesCategories = [
       {
         id: "vs6",
         name: "Premium 2",
+        allowFlip: true,
         tiers: {
           premium: ["Black/Gray"],
         },
@@ -147,6 +150,7 @@ export const vanityShelvesCategories = [
       {
         id: "vs8",
         name: "Premium 3",
+        allowFlip: true,
         tiers: {
           premium: ["Blue"],
         },
@@ -174,6 +178,7 @@ export const vanityShelvesCategories = [
       {
         id: "vs9",
         name: "OVE Decors - Tahoe",
+        allowFlip: true,
         tiers: {
           premium: ["White"],
         },

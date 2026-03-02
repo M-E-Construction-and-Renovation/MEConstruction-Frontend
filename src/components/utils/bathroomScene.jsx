@@ -15,6 +15,8 @@ import { useLayoutEffect, useMemo, useEffect, useState } from "react";
 
 import { Geometry, Base, Subtraction } from "@react-three/csg";
 
+import { resolvePlacement } from "@/lib/utils";
+
 useEnvironment.preload({ files: "/environment/bathroom-environment.hdr" });
 
 function BathroomModel({
@@ -54,10 +56,22 @@ function BathroomModel({
       (p) => p.id === selectedProducts["niche"]?.productId,
     );
 
+    if (!product) return null;
+
+    const placement = selectedProducts["niche"]?.placement ?? "center";
+    const flipped = selectedProducts["niche"]?.flipped ?? false;
+
+    const { positions, rotation, scale } = resolvePlacement(
+      product,
+      placement,
+      flipped,
+    );
+
     return {
-      size: size,
-      position: product?.position || [0, 1.2, 0],
-      scale: product?.scale || [1, 1, 1],
+      size,
+      position: positions,
+      rotation,
+      scale,
     };
   }, [nicheGLTF, filteredProducts, selectedProducts]);
 
@@ -291,21 +305,24 @@ function BathroomModel({
       <mesh castShadow receiveShadow>
         <Geometry computeWindow={0} useBuffers={true} incremental={true}>
           <Base geometry={nodes.back_wall.geometry} />
-          {wallNicheInfo && (
-            <Subtraction
-              position={wallNicheInfo.position}
-              scale={wallNicheInfo.scale}
-              // showOperation
-            >
-              <boxGeometry
-                args={[
-                  wallNicheInfo.size.x,
-                  wallNicheInfo.size.y,
-                  wallNicheInfo.size.z * 5, // Extra deep to ensure a clean cut
-                ]}
-              />
-            </Subtraction>
-          )}
+          {wallNicheInfo &&
+            wallNicheInfo?.position?.map((position, index) => (
+              <Subtraction
+                key={index}
+                position={position}
+                scale={wallNicheInfo.scale}
+                rotation={wallNicheInfo.rotation}
+                // showOperation
+              >
+                <boxGeometry
+                  args={[
+                    wallNicheInfo.size.x,
+                    wallNicheInfo.size.y,
+                    wallNicheInfo.size.z * 5, // Extra deep to ensure a clean cut
+                  ]}
+                />
+              </Subtraction>
+            ))}
         </Geometry>
         {backWallMaterial}
       </mesh>
@@ -329,17 +346,85 @@ function Product({
   isMirror = false,
   // FOR VANITY SHELVES THAT REQUIRES MORE THAN ONE SINK FAUCET
   sinkCoords = null,
+  // FOR DOUBLE OR MORE WALL NICHE
+  nicheCoords = null,
+  // FOR FLIPPLING AND INVERTING PRODUCTS
+  flipped = false,
+  placement = "center",
+  positionOptions = null,
 }) {
   const { scene } = useGLTF(glb);
 
-  // 1. Determine positions: if it's a faucet and we have coords from the vanity, use them.
-  // Otherwise, fallback to the product's default position.
-  const renderPositions =
-    categoryId === "sinkFaucets" && sinkCoords ? sinkCoords : [position];
+  // Resolve positions and rotation from placement system
+  const {
+    positions: resolvedPositions,
+    rotation: resolvedRotation,
+    scale: resolvedScale,
+    shouldFlip,
+  } = useMemo(() => {
+    // Invert rotation
+    const flipRotation = flipped ? rotation.map((rot) => -rot) : rotation;
+
+    // Products with the new positionOptions system
+    if (positionOptions) {
+      return resolvePlacement(
+        { position, rotation, nicheCoords, positionOptions, scale },
+        placement,
+        flipped,
+      );
+    }
+
+    // Legacy: sinkFaucets
+    if (categoryId === "sinkFaucets" && sinkCoords) {
+      return {
+        positions: sinkCoords,
+        rotation: flipRotation,
+        scale,
+        shouldFlip: flipped,
+      };
+    }
+
+    // Legacy: niche with raw nicheCoords (no positionOptions)
+    if (categoryId === "niche" && nicheCoords) {
+      return { positions: nicheCoords, rotation, scale, shouldFlip: flipped };
+    }
+
+    return {
+      positions: [position],
+      rotation: flipRotation,
+      scale,
+      shouldFlip: flipped,
+    };
+  }, [
+    positionOptions,
+    placement,
+    flipped,
+    position,
+    rotation,
+    nicheCoords,
+    sinkCoords,
+    scale,
+  ]);
+
+  // Now use resolvedScale instead of the raw scale prop
+  const effectiveScale = useMemo(() => {
+    const s = Array.isArray(resolvedScale)
+      ? resolvedScale
+      : [resolvedScale.x, resolvedScale.y, resolvedScale.z];
+    return shouldFlip ? [-s[0], s[1], s[2]] : s;
+  }, [resolvedScale, shouldFlip]);
+
+  // Apply flip to positions only when shouldFlip is true
+  const effectivePositions = useMemo(() => {
+    return resolvedPositions.map((pos) => {
+      const p = Array.isArray(pos) ? pos : [pos.x, pos.y, pos.z];
+      return shouldFlip ? [-p[0], p[1], p[2]] : p;
+    });
+  }, [resolvedPositions, shouldFlip]);
 
   // 2. Create an array of clones based on how many positions we have
   const instances = useMemo(() => {
-    return renderPositions.map(() => {
+    return effectivePositions.map(() => {
       const clone = scene.clone(true);
 
       let mirrorGeo = null;
@@ -365,7 +450,7 @@ function Product({
 
       return { clone, mirrorGeo, centerOffSet };
     });
-  }, [scene, renderPositions, isMirror]);
+  }, [scene, effectivePositions, isMirror]);
 
   // 3. Apply PBR Properties to ALL clones
   useLayoutEffect(() => {
@@ -406,15 +491,14 @@ function Product({
           position={
             centerOffSet
               ? [
-                  renderPositions[index][0] - centerOffSet?.x,
-                  renderPositions[index][1] - centerOffSet?.y,
-                  renderPositions[index][2] - centerOffSet?.z,
+                  effectivePositions[index][0] - centerOffSet.x,
+                  effectivePositions[index][1] - centerOffSet.y,
+                  effectivePositions[index][2] - centerOffSet.z,
                 ]
-              : renderPositions[index]
+              : effectivePositions[index]
           }
-          rotation={rotation}
-          scale={scale}
-          // scale={[-1, 1, 1]}
+          rotation={resolvedRotation}
+          scale={effectiveScale}
         >
           <primitive object={clone} />
 
@@ -593,6 +677,15 @@ export default function BathroomScene({
               sinkCoords={
                 category.id === "sinkFaucets" ? activeVanity?.sinkCoords : null
               }
+              // ONLY FOR DOUBLE WALL NICHE
+              nicheCoords={
+                category.id === "niche" && specificProduct.nicheCoords
+                  ? specificProduct.nicheCoords
+                  : null
+              }
+              flipped={selectedProducts[category.id]?.flipped ?? false}
+              placement={selectedProducts[category.id]?.placement ?? "center"}
+              positionOptions={specificProduct.positionOptions ?? null}
             />
           );
         })}

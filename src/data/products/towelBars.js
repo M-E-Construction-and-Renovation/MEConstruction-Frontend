@@ -1,27 +1,20 @@
-"use client";
-
-import * as THREE from "three";
-
 export const towelBars = [
   {
     id: "towelBars",
-    // initialAngle: "front",
     label: "Towel Bars",
-    // zIndex: "50",
-    // shapesAllowed: ["tub", "tub-to-shower", "curved", "neo-angle", "alcove"],
-    isDraggable: true,
     products: [
       {
         id: "tb1",
         name: "Square Towel Bar",
+        allowFlip: true,
         tiers: {
           basic: ["Chrome"],
           standard: ["Brass"],
           premium: ["Black", "Champagne Gold"],
         },
         glb: "/models/towel-bars/towel bar model 1 - 24in.glb",
-        position: new THREE.Vector3(1.11, 1.5, -4),
-        rotation: new THREE.Euler(0, -Math.PI / 2, 0),
+        position: [-1.11, 1.5, -4],
+        rotation: [0, Math.PI / 2, 0],
         roughness: 0.3, // glossy ceramic
         metalness: 1, // not metal
         clearcoat: 0.0, // glazed surface
@@ -57,14 +50,15 @@ export const towelBars = [
       {
         id: "tb2",
         name: "Round Towel Bar",
+        allowFlip: true,
         tiers: {
           basic: ["Chrome"],
           standard: ["Brass"],
           premium: ["Black", "Champagne Gold"],
         },
         glb: "/models/towel-bars/towel bar model 2 - 24in.glb",
-        position: new THREE.Vector3(1.11, 1.5, -4),
-        rotation: new THREE.Euler(0, -Math.PI / 2, 0),
+        position: [-1.11, 1.5, -4],
+        rotation: [0, Math.PI / 2, 0],
         roughness: 0.3, // glossy ceramic
         metalness: 1, // not metal
         clearcoat: 0.0, // glazed surface

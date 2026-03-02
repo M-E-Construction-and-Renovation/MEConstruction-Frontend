@@ -1,14 +1,12 @@
 export const sinkFaucetCategories = [
   {
     id: "sinkFaucets",
-    // initialAngle: "side",
     label: "Sink Faucets",
-    // zIndex: "10",
-    // shapesAllowed: ["tub", "tub-to-shower", "curved", "neo-angle", "alcove"],
     products: [
       {
         id: "sf1",
         name: "Peerless - Widespread",
+        allowFlip: true,
         tiers: {
           basic: ["Chrome"],
           premium: ["Black"],
@@ -39,6 +37,7 @@ export const sinkFaucetCategories = [
       {
         id: "sf2",
         name: "Kohler - Tempered",
+        allowFlip: true,
         tiers: {
           basic: ["Chrome"],
           standard: ["Brushed Nickel"],
@@ -76,6 +75,7 @@ export const sinkFaucetCategories = [
       {
         id: "sf3",
         name: "Delta - Centerset",
+        allowFlip: true,
         tiers: {
           basic: ["Chrome"],
           standard: ["Champagne Bronze"],
@@ -113,6 +113,7 @@ export const sinkFaucetCategories = [
       {
         id: "sf4",
         name: "Kohler - Simplice",
+        allowFlip: true,
         tiers: {
           basic: ["Chrome"],
           standard: ["Brushed Nickel"],
@@ -150,6 +151,7 @@ export const sinkFaucetCategories = [
       {
         id: "sf5",
         name: "Kohler - Devonshire",
+        allowFlip: true,
         tiers: {
           basic: ["Chrome"],
           premium: ["Brushed Nickel"],
@@ -180,6 +182,7 @@ export const sinkFaucetCategories = [
       {
         id: "sf6",
         name: "Delta - Tetra",
+        allowFlip: true,
         tiers: {
           basic: ["Chrome"],
           standard: ["Black"],
@@ -217,6 +220,7 @@ export const sinkFaucetCategories = [
       {
         id: "sf7",
         name: "Kingston - Sona",
+        allowFlip: true,
         tiers: {
           basic: ["Chrome"],
           standard: ["Black"],
@@ -225,6 +229,7 @@ export const sinkFaucetCategories = [
         glb: "/models/sink-faucets/sink-faucet-7.glb",
         position: [-1.15, 0.85, -3.5],
         rotation: [0, Math.PI / 2, 0],
+        scale: [-1, 1, 1],
         roughness: 0.4, // glossy ceramic
         metalness: 1, // not metal
         clearcoat: 0.0, // glazed surface

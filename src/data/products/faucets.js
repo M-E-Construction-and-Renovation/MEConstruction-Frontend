@@ -1,24 +1,18 @@
-"use client";
-
-import * as THREE from "three";
-
 export const faucetsCategories = [
   {
     id: "faucets",
-    // initialAngle: "front",
     label: "Faucets",
-    // zIndex: "80",
-    // shapesAllowed: ["tub", "tub-to-shower", "curved", "neo-angle", "alcove"],
     products: [
       {
         id: "f1",
         name: "Foundations - Delta",
+        allowFlip: true,
         tiers: {
           basic: ["Chrome", "Stainless"],
         },
         glb: "/models/shower-tub-faucets/Delta foundation.glb",
-        position: new THREE.Vector3(-1.2, 0.1, -5.6),
-        rotation: new THREE.Euler(0, 0, 0),
+        position: [-1.2, 0.1, -5.6],
+        rotation: [0, 0, 0],
         roughness: 0.3, // glossy ceramic
         metalness: 1, // not metal
         clearcoat: 0.0, // glazed surface
@@ -42,14 +36,15 @@ export const faucetsCategories = [
       {
         id: "f2",
         name: "Florez - Kohler",
+        allowFlip: true,
         tiers: {
           basic: ["Brushed Nickel"],
           standard: ["Black"],
           premium: ["Polished Nickel"],
         },
         glb: "/models/shower-tub-faucets/kohler florez.glb",
-        position: new THREE.Vector3(-1.2, 0.1, -5.6),
-        rotation: new THREE.Euler(0, 0, 0),
+        position: [-1.2, 0.1, -5.6],
+        rotation: [0, 0, 0],
         roughness: 0.3, // glossy ceramic
         metalness: 1, // not metal
         clearcoat: 0.0, // glazed surface
@@ -79,13 +74,14 @@ export const faucetsCategories = [
       {
         id: "f3",
         name: "Premise - Kohler",
+        allowFlip: true,
         tiers: {
           standard: ["Brushed Nickel"],
           premium: ["Black"],
         },
         glb: "/models/shower-tub-faucets/kohler premise.glb",
-        position: new THREE.Vector3(-1.2, 0.1, -5.6),
-        rotation: new THREE.Euler(0, 0, 0),
+        position: [-1.2, 0.1, -5.6],
+        rotation: [0, 0, 0],
         roughness: 0.3, // glossy ceramic
         metalness: 1, // not metal
         clearcoat: 0.0, // glazed surface
@@ -109,12 +105,13 @@ export const faucetsCategories = [
       {
         id: "f4",
         name: "allen + roth - Veda",
+        allowFlip: true,
         tiers: {
           premium: ["Black"],
         },
         glb: "/models/shower-tub-faucets/Allen Roth Veda 1 handle.glb",
-        position: new THREE.Vector3(-1.245, 0.1, -5.6),
-        rotation: new THREE.Euler(0, 0, 0),
+        position: [-1.245, 0.1, -5.6],
+        rotation: [0, 0, 0],
         roughness: 0.3, // glossy ceramic
         metalness: 1, // not metal
         clearcoat: 0.0, // glazed surface
@@ -132,12 +129,13 @@ export const faucetsCategories = [
       {
         id: "f5",
         name: "Delta - Classic",
+        allowFlip: true,
         tiers: {
           standard: ["Chrome"],
         },
         glb: "/models/shower-tub-faucets/Delta Classic.glb",
-        position: new THREE.Vector3(-1.2, 0.1, -5.6),
-        rotation: new THREE.Euler(0, 0, 0),
+        position: [-1.2, 0.1, -5.6],
+        rotation: [0, 0, 0],
         roughness: 0.3, // glossy ceramic
         metalness: 1, // not metal
         clearcoat: 0.0, // glazed surface
@@ -155,14 +153,15 @@ export const faucetsCategories = [
       {
         id: "f6",
         name: "Kohler - Desette",
+        allowFlip: true,
         tiers: {
           basic: ["Chrome"],
           standard: ["Brushed Nickel"],
           premium: ["Black"],
         },
         glb: "/models/shower-tub-faucets/kohler desette 1 handle.glb",
-        position: new THREE.Vector3(-1.2, 0.1, -5.6),
-        rotation: new THREE.Euler(0, 0, 0),
+        position: [-1.2, 0.1, -5.6],
+        rotation: [0, 0, 0],
         roughness: 0.3, // glossy ceramic
         metalness: 1, // not metal
         clearcoat: 0.0, // glazed surface
@@ -192,12 +191,13 @@ export const faucetsCategories = [
       {
         id: "f7",
         name: "Moen - Adler",
+        allowFlip: true,
         tiers: {
           premium: ["Chrome"],
         },
         glb: "/models/shower-tub-faucets/Moen adler 3-handle.glb",
-        position: new THREE.Vector3(-1.2, 0.1, -5.6),
-        rotation: new THREE.Euler(0, 0, 0),
+        position: [-1.2, 0.1, -5.6],
+        rotation: [0, 0, 0],
         roughness: 0.3, // glossy ceramic
         metalness: 1, // not metal
         clearcoat: 0.0, // glazed surface
@@ -215,11 +215,12 @@ export const faucetsCategories = [
       {
         id: "f8",
         name: "Moen - Lindor",
+        allowFlip: true,
         tiers: {
           premium: ["Black"],
         },
         glb: "/models/shower-tub-faucets/moen lindor 1 handle.glb",
-        position: new THREE.Vector3(-1.2, 0.1, -5.6),
+        position: [-1.2, 0.1, -5.6],
         roughness: 0.3, // glossy ceramic
         metalness: 1, // not metal
         clearcoat: 0.0, // glazed surface

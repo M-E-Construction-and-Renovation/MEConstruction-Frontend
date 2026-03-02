@@ -1,11 +1,8 @@
 export const cabinWallsCategories = [
   {
     id: "cabinWallTexture",
-    // initialAngle: "front",
     label: "Cabin Walls",
     isTexture: true,
-    // zIndex: "10",
-    // shapesAllowed: ["tub", "tub-to-shower"],
     products: [
       {
         id: "cw1",

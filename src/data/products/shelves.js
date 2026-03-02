@@ -1,14 +1,12 @@
 export const shelvesCategories = [
   {
     id: "shelves",
-    // initialAngle: "front",
     label: "Shelves",
-    // zIndex: "50",
-    // shapesAllowed: ["tub", "tub-to-shower", "curved", "neo-angle", "alcove"],
     products: [
       {
         id: "s1",
         name: "Long Shelf",
+        allowFlip: true,
         tiers: {
           premium: ["White"],
         },
@@ -33,6 +31,7 @@ export const shelvesCategories = [
       {
         id: "s2",
         name: "Single Shelf",
+        allowFlip: true,
         tiers: {
           premium: ["White"],
         },
