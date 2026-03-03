@@ -7,7 +7,6 @@ export const mirrorCategories = [
       {
         id: "vm1",
         name: "Vanity Mirror 1",
-        allowFlip: true,
         tiers: {
           premium: ["Orange"],
         },
@@ -32,7 +31,6 @@ export const mirrorCategories = [
       {
         id: "vm2",
         name: "Vanity Mirror 2",
-        allowFlip: true,
         tiers: {
           premium: ["Black"],
         },
@@ -57,7 +55,6 @@ export const mirrorCategories = [
       {
         id: "vm3",
         name: "Vanity Mirror 3",
-        allowFlip: true,
         tiers: {
           standard: ["Gold"],
         },
@@ -82,7 +79,6 @@ export const mirrorCategories = [
       {
         id: "vm4",
         name: "Vanity Mirror 4",
-        allowFlip: true,
         tiers: {
           standard: ["White"],
         },
@@ -107,7 +103,6 @@ export const mirrorCategories = [
       {
         id: "vm5",
         name: "Vanity Mirror 5",
-        allowFlip: true,
         tiers: {
           basic: ["Wood"],
         },

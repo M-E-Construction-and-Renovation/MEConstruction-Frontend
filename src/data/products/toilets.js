@@ -7,6 +7,19 @@ export const toiletCategories = [
         id: "t1",
         name: "Glacier Bay",
         allowFlip: true,
+        allowPosition: true,
+        positionOptions: {
+          front: {
+            offset: [-0.45, 0, -2.5], // absolute world position on left side wall
+            rotation: [0, Math.PI / 1, 0], // facing inward (toward center)
+            // scale: [1, 1, 1],
+          },
+          back: {
+            offset: [-0.45, 0, -4], // absolute world position on right side wall
+            rotation: [0, Math.PI / 1, 0], // facing inward
+            // scale: [1, 1, 1],
+          },
+        },
         tiers: {
           basic: ["White"],
         },
@@ -31,6 +44,19 @@ export const toiletCategories = [
         id: "t2",
         name: "American Standard",
         allowFlip: true,
+        allowPosition: true,
+        positionOptions: {
+          front: {
+            offset: [-0.45, 0, -2.5], // absolute world position on left side wall
+            rotation: [0, Math.PI / 1, 0], // facing inward (toward center)
+            // scale: [1, 1, 1],
+          },
+          back: {
+            offset: [-0.45, 0, -4], // absolute world position on right side wall
+            rotation: [0, Math.PI / 1, 0], // facing inward
+            // scale: [1, 1, 1],
+          },
+        },
         tiers: {
           basic: ["White"],
         },
@@ -54,6 +80,19 @@ export const toiletCategories = [
         id: "t3",
         name: "Elmbrook",
         allowFlip: true,
+        allowPosition: true,
+        positionOptions: {
+          front: {
+            offset: [-0.45, 0, -2.5], // absolute world position on left side wall
+            rotation: [0, Math.PI / 1, 0], // facing inward (toward center)
+            // scale: [1, 1, 1],
+          },
+          back: {
+            offset: [-0.45, 0, -4], // absolute world position on right side wall
+            rotation: [0, Math.PI / 1, 0], // facing inward
+            // scale: [1, 1, 1],
+          },
+        },
         tiers: {
           premium: ["White"],
         },
@@ -78,6 +117,19 @@ export const toiletCategories = [
         id: "t4",
         name: "Santa Rosa Compact",
         allowFlip: true,
+        allowPosition: true,
+        positionOptions: {
+          front: {
+            offset: [-0.45, 0, -2.5], // absolute world position on left side wall
+            rotation: [0, Math.PI / 1, 0], // facing inward (toward center)
+            // scale: [1, 1, 1],
+          },
+          back: {
+            offset: [-0.45, 0, -4], // absolute world position on right side wall
+            rotation: [0, Math.PI / 1, 0], // facing inward
+            // scale: [1, 1, 1],
+          },
+        },
         tiers: {
           premium: ["White"],
         },
@@ -102,6 +154,19 @@ export const toiletCategories = [
         id: "t6",
         name: "TOTO - Ultramax II",
         allowFlip: true,
+        allowPosition: true,
+        positionOptions: {
+          front: {
+            offset: [-0.45, 0, -2.5], // absolute world position on left side wall
+            rotation: [0, Math.PI / 1, 0], // facing inward (toward center)
+            // scale: [1, 1, 1],
+          },
+          back: {
+            offset: [-0.45, 0, -4], // absolute world position on right side wall
+            rotation: [0, Math.PI / 1, 0], // facing inward
+            // scale: [1, 1, 1],
+          },
+        },
         tiers: {
           premium: ["White"],
         },
@@ -126,6 +191,19 @@ export const toiletCategories = [
         id: "t7",
         name: "Highline",
         allowFlip: true,
+        allowPosition: true,
+        positionOptions: {
+          front: {
+            offset: [-0.45, 0, -2.5], // absolute world position on left side wall
+            rotation: [0, Math.PI / 1, 0], // facing inward (toward center)
+            // scale: [1, 1, 1],
+          },
+          back: {
+            offset: [-0.45, 0, -4], // absolute world position on right side wall
+            rotation: [0, Math.PI / 1, 0], // facing inward
+            // scale: [1, 1, 1],
+          },
+        },
         tiers: {
           standard: ["White"],
         },
@@ -150,6 +228,19 @@ export const toiletCategories = [
         id: "t8",
         name: "Gleam",
         allowFlip: true,
+        allowPosition: true,
+        positionOptions: {
+          front: {
+            offset: [-0.45, 0, -2.5], // absolute world position on left side wall
+            rotation: [0, Math.PI / 1, 0], // facing inward (toward center)
+            // scale: [1, 1, 1],
+          },
+          back: {
+            offset: [-0.45, 0, -4], // absolute world position on right side wall
+            rotation: [0, Math.PI / 1, 0], // facing inward
+            // scale: [1, 1, 1],
+          },
+        },
         tiers: {
           standard: ["White"],
         },

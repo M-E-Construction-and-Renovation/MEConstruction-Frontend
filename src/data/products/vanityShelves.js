@@ -7,6 +7,25 @@ export const vanityShelvesCategories = [
         id: "vs1",
         name: "Basic 1",
         allowFlip: true,
+        allowPosition: true,
+        positionOptions: {
+          back: {
+            offset: [-0.99, 0, -2.9], // absolute world position on right side wall
+            rotation: [0, Math.PI / 2, 0], // facing inward
+            // scale: [1, 1, 1],
+            sinkCoords: [[-1.15, 0.85, -3.5]],
+            mirrorCoords: [[-1.15, 1.7, -3.5]],
+            lightCoords: [[-1.21, 2.3, -3.45]],
+          },
+          front: {
+            offset: [-0.99, 0, -1.53], // absolute world position on left side wall
+            rotation: [0, Math.PI / 2, 0], // facing inward (toward center)
+            // scale: [1, 1, 1],
+            sinkCoords: [[-1.15, 0.85, -2.15]],
+            mirrorCoords: [[-1.15, 1.7, -2.1]],
+            lightCoords: [[-1.21, 2.3, -2.05]],
+          },
+        },
         tiers: {
           basic: ["Black"],
         },
@@ -31,6 +50,25 @@ export const vanityShelvesCategories = [
         id: "vs2",
         name: "Basic 2",
         allowFlip: true,
+        allowPosition: true,
+        positionOptions: {
+          back: {
+            offset: [-0.64, 0, -3.05], // absolute world position on right side wall
+            rotation: [0, Math.PI / 2, 0], // facing inward
+            // scale: [1, 1, 1],
+            sinkCoords: [[-1.15, 0.85, -3.53]],
+            mirrorCoords: [[-1.15, 1.7, -3.5]],
+            lightCoords: [[-1.21, 2.3, -3.45]],
+          },
+          front: {
+            offset: [-0.64, 0, -1.65], // absolute world position on left side wall
+            rotation: [0, Math.PI / 2, 0], // facing inward (toward center)
+            // scale: [1, 1, 1],
+            sinkCoords: [[-1.15, 0.85, -2.15]],
+            mirrorCoords: [[-1.15, 1.7, -2.1]],
+            lightCoords: [[-1.21, 2.3, -2.05]],
+          },
+        },
         tiers: {
           basic: ["Wood"],
         },
@@ -55,6 +93,25 @@ export const vanityShelvesCategories = [
         id: "vs3",
         name: "Standard 1",
         allowFlip: true,
+        allowPosition: true,
+        positionOptions: {
+          back: {
+            offset: [-0.64, 0, -3.05], // absolute world position on right side wall
+            rotation: [0, Math.PI / 2, 0], // facing inward
+            // scale: [1, 1, 1],
+            sinkCoords: [[-1.15, 0.85, -3.53]],
+            mirrorCoords: [[-1.15, 1.7, -3.5]],
+            lightCoords: [[-1.21, 2.3, -3.45]],
+          },
+          front: {
+            offset: [-0.64, 0, -1.65], // absolute world position on left side wall
+            rotation: [0, Math.PI / 2, 0], // facing inward (toward center)
+            // scale: [1, 1, 1],
+            sinkCoords: [[-1.15, 0.85, -2.15]],
+            mirrorCoords: [[-1.15, 1.7, -2.1]],
+            lightCoords: [[-1.21, 2.3, -2.05]],
+          },
+        },
         tiers: {
           standard: ["White"],
         },
@@ -79,6 +136,25 @@ export const vanityShelvesCategories = [
         id: "vs4",
         name: "Standard 2",
         allowFlip: true,
+        allowPosition: true,
+        positionOptions: {
+          back: {
+            offset: [-0.64, 0, -3.05], // absolute world position on right side wall
+            rotation: [0, Math.PI / 2, 0], // facing inward
+            // scale: [1, 1, 1],
+            sinkCoords: [[-1.15, 0.85, -3.54]],
+            mirrorCoords: [[-1.15, 1.7, -3.5]],
+            lightCoords: [[-1.21, 2.3, -3.45]],
+          },
+          front: {
+            offset: [-0.64, 0, -1.65], // absolute world position on left side wall
+            rotation: [0, Math.PI / 2, 0], // facing inward (toward center)
+            // scale: [1, 1, 1],
+            sinkCoords: [[-1.15, 0.85, -2.15]],
+            mirrorCoords: [[-1.15, 1.7, -2.1]],
+            lightCoords: [[-1.21, 2.3, -2.05]],
+          },
+        },
         tiers: {
           standard: ["Black/White"],
         },
@@ -103,6 +179,25 @@ export const vanityShelvesCategories = [
         id: "vs5",
         name: "Premium 1",
         allowFlip: true,
+        allowPosition: true,
+        positionOptions: {
+          back: {
+            offset: [-0.64, 0, -2.85], // absolute world position on right side wall
+            rotation: [0, Math.PI / 2, 0], // facing inward
+            // scale: [1, 1, 1],
+            sinkCoords: [[-1.15, 0.85, -3.33]],
+            mirrorCoords: [[-1.15, 1.7, -3.3]],
+            lightCoords: [[-1.21, 2.3, -3.3]],
+          },
+          front: {
+            offset: [-0.64, 0, -1.65], // absolute world position on left side wall
+            rotation: [0, Math.PI / 2, 0], // facing inward (toward center)
+            // scale: [1, 1, 1],
+            sinkCoords: [[-1.15, 0.85, -2.15]],
+            mirrorCoords: [[-1.15, 1.7, -2.1]],
+            lightCoords: [[-1.21, 2.3, -2.05]],
+          },
+        },
         tiers: {
           premium: ["Black/Dirty White"],
         },
@@ -127,6 +222,25 @@ export const vanityShelvesCategories = [
         id: "vs6",
         name: "Premium 2",
         allowFlip: true,
+        allowPosition: true,
+        positionOptions: {
+          back: {
+            offset: [-0.64, 0, -3.05], // absolute world position on right side wall
+            rotation: [0, Math.PI / 2, 0], // facing inward
+            // scale: [1, 1, 1],
+            sinkCoords: [[-1.15, 0.85, -3.55]],
+            mirrorCoords: [[-1.15, 1.7, -3.5]],
+            lightCoords: [[-1.21, 2.3, -3.5]],
+          },
+          front: {
+            offset: [-0.64, 0, -2], // absolute world position on left side wall
+            rotation: [0, Math.PI / 2, 0], // facing inward (toward center)
+            // scale: [1, 1, 1],
+            sinkCoords: [[-1.15, 0.85, -2.5]],
+            mirrorCoords: [[-1.15, 1.7, -2.5]],
+            lightCoords: [[-1.21, 2.3, -2.5]],
+          },
+        },
         tiers: {
           premium: ["Black/Gray"],
         },
@@ -151,6 +265,31 @@ export const vanityShelvesCategories = [
         id: "vs8",
         name: "Premium 3",
         allowFlip: true,
+        allowPosition: true,
+        positionOptions: {
+          back: {
+            offset: [-0.64, 0, -2.85], // absolute world position on right side wall
+            rotation: [0, Math.PI / 2, 0], // facing inward
+            // scale: [1, 1, 1],
+            sinkCoords: [
+              [-1.17, 0.85, -3.3],
+              [-1.17, 0.85, -3.8],
+            ],
+            mirrorCoords: [[-1.15, 1.7, -3.5]],
+            lightCoords: [[-1.21, 2.3, -3.55]],
+          },
+          front: {
+            offset: [-0.64, 0, -1.65], // absolute world position on left side wall
+            rotation: [0, Math.PI / 2, 0], // facing inward (toward center)
+            // scale: [1, 1, 1],
+            sinkCoords: [
+              [-1.17, 0.85, -2.1],
+              [-1.17, 0.85, -2.6],
+            ],
+            mirrorCoords: [[-1.15, 1.7, -2.3]],
+            lightCoords: [[-1.21, 2.3, -2.35]],
+          },
+        },
         tiers: {
           premium: ["Blue"],
         },
@@ -179,6 +318,31 @@ export const vanityShelvesCategories = [
         id: "vs9",
         name: "OVE Decors - Tahoe",
         allowFlip: true,
+        allowPosition: true,
+        positionOptions: {
+          back: {
+            offset: [-0.91, 0, -3.5], // absolute world position on right side wall
+            rotation: [0, Math.PI / 2, 0], // facing inward
+            // scale: [1, 1, 1],
+            sinkCoords: [
+              [-1.1, 0.87, -3.11],
+              [-1.1, 0.87, -3.89],
+            ],
+            mirrorCoords: [[-1.15, 1.7, -3.5]],
+            lightCoords: [[-1.21, 2.3, -3.4]],
+          },
+          front: {
+            offset: [-0.91, 0, -2.3], // absolute world position on left side wall
+            rotation: [0, Math.PI / 2, 0], // facing inward (toward center)
+            // scale: [1, 1, 1],
+            sinkCoords: [
+              [-1.1, 0.87, -2.7],
+              [-1.1, 0.87, -1.93],
+            ],
+            mirrorCoords: [[-1.15, 1.7, -2.3]],
+            lightCoords: [[-1.21, 2.3, -2.3]],
+          },
+        },
         tiers: {
           premium: ["White"],
         },
@@ -188,6 +352,7 @@ export const vanityShelvesCategories = [
           [-1.1, 0.87, -3.89], // Right Faucet Position
         ],
         glb: "/models/vanity-shelves/ove-decors-tahoe.glb",
+        // position: [-0.91, 0, -2.5],
         position: [-0.91, 0, -3.5],
         rotation: [0, Math.PI / 2, 0],
         scale: [0.7, 1, 1],

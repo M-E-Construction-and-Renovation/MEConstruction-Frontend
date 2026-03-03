@@ -172,9 +172,10 @@ const ConfigurePage = ({
                   (p) => p.id === selected?.productId,
                 );
 
-                if (product?.allowFlip) {
-                  return (
-                    <div className="flex justify-center px-4 py-2 border-b">
+                // if (product?.allowFlip) {
+                return (
+                  <div className="flex justify-center px-4 py-2 border-b gap-4">
+                    {product?.allowFlip && (
                       <div className="flex p-1 bg-slate-200/40 xl:bg-slate-200 rounded-full w-full max-w-[180px] xl:max-w-[220px]">
                         {[
                           { label: "Left", value: false },
@@ -196,15 +197,10 @@ const ConfigurePage = ({
                           </button>
                         ))}
                       </div>
-                    </div>
-                  );
-                } else if (product?.allowPosition) {
-                  const options = Object.keys(product.positionOptions); // ["left", "center", "right"]
-
-                  return (
-                    <div className="flex justify-center px-4 py-2 border-b">
+                    )}
+                    {product?.allowPosition && (
                       <div className="flex p-1 bg-slate-200/40 xl:bg-slate-200 rounded-full w-full max-w-[220px] xl:max-w-[260px]">
-                        {options.map((opt) => (
+                        {Object.keys(product.positionOptions).map((opt) => (
                           <button
                             key={opt}
                             onClick={() => {
@@ -221,11 +217,9 @@ const ConfigurePage = ({
                           </button>
                         ))}
                       </div>
-                    </div>
-                  );
-                } else {
-                  return null;
-                }
+                    )}
+                  </div>
+                );
               })()}
 
               {/* PRODUCT LIST (Horizontal on mobile, Vertical Grid on desktop) */}

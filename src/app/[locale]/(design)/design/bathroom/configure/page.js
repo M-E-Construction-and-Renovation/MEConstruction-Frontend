@@ -6,6 +6,8 @@ import allCategories from "@/data/products";
 import ConfigurePage from "@/components/utils/configure-page";
 import { useToast } from "@/components/ui/use-toast";
 
+import { resolvePositionConflicts, resolveInitialPlacement } from "@/lib/utils";
+
 export default function DesignTool() {
   const { toast } = useToast();
 
@@ -135,10 +137,57 @@ export default function DesignTool() {
     flipped = false,
     placement = "center",
   ) => {
-    setSelectedProducts((prev) => ({
-      ...prev,
-      [activeTab]: { productId, color, flipped, placement },
-    }));
+    // setSelectedProducts((prev) => ({
+    //   ...prev,
+    //   [activeTab]: { productId, color, flipped, placement },
+    // }));
+
+    // setSelectedProducts((prev) => {
+    //   // Preserve existing flipped/placement if the product was already selected
+    //   // (e.g. user just clicked a color swatch — don't reset their position choices)
+    //   const existing = prev[activeTab];
+    //   const effectivePlacement = existing?.placement ?? placement;
+    //   const effectiveFlipped = existing?.flipped ?? flipped;
+
+    //   const updated = {
+    //     ...prev,
+    //     [activeTab]: {
+    //       productId,
+    //       color,
+    //       flipped: effectiveFlipped,
+    //       placement: effectivePlacement,
+    //     },
+    //   };
+
+    //   return resolvePositionConflicts(updated, activeTab, allCategories);
+    // });
+
+    setSelectedProducts((prev) => {
+      const existing = prev[activeTab];
+      const effectiveFlipped = existing?.flipped ?? flipped;
+
+      // Normalize placement: if this product has positionOptions and current
+      // placement isn't valid for it, snap to its first option
+      const rawPlacement = existing?.placement ?? placement;
+      const effectivePlacement = resolveInitialPlacement(
+        activeTab,
+        productId,
+        rawPlacement,
+        allCategories,
+      );
+
+      const updated = {
+        ...prev,
+        [activeTab]: {
+          productId,
+          color,
+          flipped: effectiveFlipped,
+          placement: effectivePlacement,
+        },
+      };
+
+      return resolvePositionConflicts(updated, activeTab, allCategories);
+    });
   };
 
   const handleUnselectProduct = (productId) => {
@@ -161,18 +210,32 @@ export default function DesignTool() {
 
   // Dedicated flip toggle handler (flipping position with rotation) (inverting)
   const handleFlipProduct = (flipped) => {
-    setSelectedProducts((prev) => ({
-      ...prev,
-      [activeTab]: { ...prev[activeTab], flipped },
-    }));
+    // setSelectedProducts((prev) => ({
+    //   ...prev,
+    //   [activeTab]: { ...prev[activeTab], flipped },
+    // }));
+    setSelectedProducts((prev) => {
+      const updated = {
+        ...prev,
+        [activeTab]: { ...prev[activeTab], flipped },
+      };
+      return resolvePositionConflicts(updated, activeTab, allCategories);
+    });
   };
 
   // Dedicated placement handler (for moving products with position choices)
   const handlePlacementChange = (placement) => {
-    setSelectedProducts((prev) => ({
-      ...prev,
-      [activeTab]: { ...prev[activeTab], placement },
-    }));
+    // setSelectedProducts((prev) => ({
+    //   ...prev,
+    //   [activeTab]: { ...prev[activeTab], placement },
+    // }));
+    setSelectedProducts((prev) => {
+      const updated = {
+        ...prev,
+        [activeTab]: { ...prev[activeTab], placement },
+      };
+      return resolvePositionConflicts(updated, activeTab, allCategories);
+    });
   };
 
   if (loadingProject) {

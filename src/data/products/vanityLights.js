@@ -6,11 +6,10 @@ export const lightsCategories = [
       {
         id: "vl1",
         name: "Vanity Light 1",
-        allowFlip: true,
         tiers: {
           premium: ["White"],
         },
-        glb: "/models/lights/lights 1.glb",
+        glb: "/models/lights/light-1.glb",
         position: [-0.97, 2.3, -3.1],
         rotation: [0, Math.PI / 2, 0],
         scale: [1, 1, 1],
@@ -31,11 +30,10 @@ export const lightsCategories = [
       {
         id: "vl2",
         name: "Vanity Light 2",
-        allowFlip: true,
         tiers: {
           premium: ["White"],
         },
-        glb: "/models/lights/lights 2.glb",
+        glb: "/models/lights/light-2.glb",
         position: [-1.055, 2.3, -3.1],
         rotation: [0, Math.PI / 2, 0],
         scale: [1, 1, 1],
@@ -56,11 +54,10 @@ export const lightsCategories = [
       {
         id: "vl3",
         name: "Vanity Light 3",
-        allowFlip: true,
         tiers: {
           premium: ["White"],
         },
-        glb: "/models/lights/lights 3.glb",
+        glb: "/models/lights/light-3.glb",
         position: [-1.04, 2.3, -3.1],
         rotation: [0, Math.PI / 2, 0],
         scale: [1, 1, 1],
@@ -81,11 +78,10 @@ export const lightsCategories = [
       {
         id: "vl4",
         name: "Vanity Light 4",
-        allowFlip: true,
         tiers: {
           standard: ["Gray/Gold"],
         },
-        glb: "/models/lights/lights 4.glb",
+        glb: "/models/lights/light-4.glb",
         position: [-1.04, 2.3, -3.1],
         rotation: [0, Math.PI / 2, 0],
         scale: [1, 1, 1],
@@ -105,11 +101,10 @@ export const lightsCategories = [
       {
         id: "vl5",
         name: "Vanity Light 5",
-        allowFlip: true,
         tiers: {
           basic: ["White"],
         },
-        glb: "/models/lights/lights 5.glb",
+        glb: "/models/lights/light-5.glb",
         position: [-1.12, 2.3, -3.1],
         rotation: [0, Math.PI / 2, 0],
         scale: [1, 1, 1],
@@ -130,11 +125,10 @@ export const lightsCategories = [
       {
         id: "vl6",
         name: "Vanity Light 6",
-        allowFlip: true,
         tiers: {
           standard: ["Black/Gold"],
         },
-        glb: "/models/lights/lights 7.glb",
+        glb: "/models/lights/light-7.glb",
         position: [-1, 2.3, -3.4],
         rotation: [0, Math.PI / 2, 0],
         scale: [1, 1, 1],
@@ -155,11 +149,10 @@ export const lightsCategories = [
       {
         id: "vl7",
         name: "Vanity Light 7",
-        allowFlip: true,
         tiers: {
           basic: ["Gold"],
         },
-        glb: "/models/lights/lights 8.glb",
+        glb: "/models/lights/light-8.glb",
         position: [-1.05, 2.3, -3.4],
         rotation: [0, Math.PI / 2, 0],
         scale: [1, 1, 1],

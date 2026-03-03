@@ -346,8 +346,10 @@ function Product({
   isMirror = false,
   // FOR VANITY SHELVES THAT REQUIRES MORE THAN ONE SINK FAUCET
   sinkCoords = null,
+  mirrorCoords = null,
+  lightCoords = null,
   // FOR DOUBLE OR MORE WALL NICHE
-  nicheCoords = null,
+  // nicheCoords = null,
   // FOR FLIPPLING AND INVERTING PRODUCTS
   flipped = false,
   placement = "center",
@@ -363,12 +365,13 @@ function Product({
     shouldFlip,
   } = useMemo(() => {
     // Invert rotation
-    const flipRotation = flipped ? rotation.map((rot) => -rot) : rotation;
+    // const flipRotation = flipped ? rotation.map((rot) => -rot) : rotation;
 
     // Products with the new positionOptions system
     if (positionOptions) {
       return resolvePlacement(
-        { position, rotation, nicheCoords, positionOptions, scale },
+        // { position, rotation, nicheCoords, positionOptions, scale },
+        { position, rotation, positionOptions, scale },
         placement,
         flipped,
       );
@@ -378,20 +381,38 @@ function Product({
     if (categoryId === "sinkFaucets" && sinkCoords) {
       return {
         positions: sinkCoords,
-        rotation: flipRotation,
+        rotation,
+        scale,
+        shouldFlip: flipped,
+      };
+    }
+    // Legacy: mirrors
+    if (categoryId === "mirrors" && mirrorCoords) {
+      return {
+        positions: mirrorCoords,
+        rotation,
+        scale,
+        shouldFlip: flipped,
+      };
+    }
+    // Legacy: lights
+    if (categoryId === "lights" && lightCoords) {
+      return {
+        positions: lightCoords,
+        rotation,
         scale,
         shouldFlip: flipped,
       };
     }
 
     // Legacy: niche with raw nicheCoords (no positionOptions)
-    if (categoryId === "niche" && nicheCoords) {
-      return { positions: nicheCoords, rotation, scale, shouldFlip: flipped };
-    }
+    // if (categoryId === "niche" && nicheCoords) {
+    //   return { positions: nicheCoords, rotation, scale, shouldFlip: flipped };
+    // }
 
     return {
       positions: [position],
-      rotation: flipRotation,
+      rotation,
       scale,
       shouldFlip: flipped,
     };
@@ -401,9 +422,12 @@ function Product({
     flipped,
     position,
     rotation,
-    nicheCoords,
+    // nicheCoords,
     sinkCoords,
+    mirrorCoords,
+    lightCoords,
     scale,
+    categoryId,
   ]);
 
   // Now use resolvedScale instead of the raw scale prop
@@ -421,6 +445,14 @@ function Product({
       return shouldFlip ? [-p[0], p[1], p[2]] : p;
     });
   }, [resolvedPositions, shouldFlip]);
+
+  // Apply if rotation should be flipped too
+  const effectiveRotation = useMemo(() => {
+    const r = Array.isArray(resolvedRotation)
+      ? resolvedRotation
+      : [resolvedRotation.x, resolvedRotation.y, resolvedRotation.z];
+    return shouldFlip ? r.map((rot) => -rot) : r;
+  }, [resolvedRotation, shouldFlip]);
 
   // 2. Create an array of clones based on how many positions we have
   const instances = useMemo(() => {
@@ -497,7 +529,8 @@ function Product({
                 ]
               : effectivePositions[index]
           }
-          rotation={resolvedRotation}
+          // rotation={resolvedRotation}
+          rotation={effectiveRotation}
           scale={effectiveScale}
         >
           <primitive object={clone} />
@@ -607,12 +640,52 @@ export default function BathroomScene({
   );
 
   // 1. Find the active vanity shelf data to see if it has sinkCoords, for vanity shelves that require more than one sink faucet
-  const activeVanity = useMemo(() => {
+  // const activeVanity = useMemo(() => {
+  //   const vanityCategory = categories.find((c) => c.id === "vanityShelves");
+  //   const selection = selectedProducts["vanityShelves"];
+  //   if (!vanityCategory || !selection) return null;
+
+  //   return vanityCategory.products.find((p) => p.id === selection.productId);
+  // }, [categories, selectedProducts]);
+
+  const activeVanityShelfCoords = useMemo(() => {
     const vanityCategory = categories.find((c) => c.id === "vanityShelves");
     const selection = selectedProducts["vanityShelves"];
     if (!vanityCategory || !selection) return null;
 
-    return vanityCategory.products.find((p) => p.id === selection.productId);
+    const product = vanityCategory.products.find(
+      (p) => p.id === selection.productId,
+    );
+    if (!product) return null;
+
+    // Use resolvePlacement so we get the placement-aware sinkCoords
+    // const { sinkCoords, shouldFlip } = resolvePlacement(
+    //   product,
+    //   selection.placement ?? "center",
+    //   selection.flipped ?? false,
+    // );
+
+    const { sinkCoords, mirrorCoords, lightCoords } = resolvePlacement(
+      product,
+      selection.placement ?? "center",
+      selection.flipped ?? false,
+    );
+
+    // return sinkCoords ?? null;
+
+    if (sinkCoords && mirrorCoords && lightCoords) {
+      return { sinkCoords, mirrorCoords, lightCoords };
+    } else return null;
+
+    // console.log(sinkCoords);
+
+    // if (!sinkCoords) return null;
+
+    // // Apply flip to sink coords the same way Product component does it
+    // return sinkCoords.map((coord) => {
+    //   const c = Array.isArray(coord) ? coord : [coord.x, coord.y, coord.z];
+    //   return shouldFlip ? [-c[0], c[1], c[2]] : c;
+    // });
   }, [categories, selectedProducts]);
 
   return (
@@ -674,16 +747,42 @@ export default function BathroomScene({
               // ONLY FOR PRODUCTS THAT HAVE MIRRORS
               isMirror={category.isMirror}
               // ONLY FOR THE VANITY SHELVES THAT REQUIRES MORE THAN ONE SINK FAUCET
+
+              // sinkCoords={
+              //   category.id === "sinkFaucets" ? activeVanity?.sinkCoords : null
+              // }
+
               sinkCoords={
-                category.id === "sinkFaucets" ? activeVanity?.sinkCoords : null
-              }
-              // ONLY FOR DOUBLE WALL NICHE
-              nicheCoords={
-                category.id === "niche" && specificProduct.nicheCoords
-                  ? specificProduct.nicheCoords
+                category.id === "sinkFaucets"
+                  ? activeVanityShelfCoords?.sinkCoords
                   : null
               }
-              flipped={selectedProducts[category.id]?.flipped ?? false}
+              mirrorCoords={
+                category.id === "mirrors"
+                  ? activeVanityShelfCoords?.mirrorCoords
+                  : null
+              }
+              lightCoords={
+                category.id === "lights"
+                  ? activeVanityShelfCoords?.lightCoords
+                  : null
+              }
+              // ONLY FOR DOUBLE WALL NICHE
+              // nicheCoords={
+              //   category.id === "niche" && specificProduct.nicheCoords
+              //     ? specificProduct.nicheCoords
+              //     : null
+              // }
+
+              // flipped={selectedProducts[category.id]?.flipped ?? false}
+
+              flipped={
+                category.id === "sinkFaucets" ||
+                category.id === "mirrors" ||
+                category.id === "lights"
+                  ? (selectedProducts["vanityShelves"]?.flipped ?? false)
+                  : (selectedProducts[category.id]?.flipped ?? false)
+              }
               placement={selectedProducts[category.id]?.placement ?? "center"}
               positionOptions={specificProduct.positionOptions ?? null}
             />

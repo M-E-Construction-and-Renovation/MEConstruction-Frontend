@@ -6,7 +6,6 @@ export const sinkFaucetCategories = [
       {
         id: "sf1",
         name: "Peerless - Widespread",
-        allowFlip: true,
         tiers: {
           basic: ["Chrome"],
           premium: ["Black"],
@@ -37,7 +36,6 @@ export const sinkFaucetCategories = [
       {
         id: "sf2",
         name: "Kohler - Tempered",
-        allowFlip: true,
         tiers: {
           basic: ["Chrome"],
           standard: ["Brushed Nickel"],
@@ -75,7 +73,6 @@ export const sinkFaucetCategories = [
       {
         id: "sf3",
         name: "Delta - Centerset",
-        allowFlip: true,
         tiers: {
           basic: ["Chrome"],
           standard: ["Champagne Bronze"],
@@ -113,7 +110,6 @@ export const sinkFaucetCategories = [
       {
         id: "sf4",
         name: "Kohler - Simplice",
-        allowFlip: true,
         tiers: {
           basic: ["Chrome"],
           standard: ["Brushed Nickel"],
@@ -151,7 +147,6 @@ export const sinkFaucetCategories = [
       {
         id: "sf5",
         name: "Kohler - Devonshire",
-        allowFlip: true,
         tiers: {
           basic: ["Chrome"],
           premium: ["Brushed Nickel"],
@@ -182,7 +177,6 @@ export const sinkFaucetCategories = [
       {
         id: "sf6",
         name: "Delta - Tetra",
-        allowFlip: true,
         tiers: {
           basic: ["Chrome"],
           standard: ["Black"],
@@ -220,7 +214,6 @@ export const sinkFaucetCategories = [
       {
         id: "sf7",
         name: "Kingston - Sona",
-        allowFlip: true,
         tiers: {
           basic: ["Chrome"],
           standard: ["Black"],
