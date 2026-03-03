@@ -11,9 +11,9 @@ export const tubFrontsShowerPansCategories = [
           basic: ["White"], // Your images were only White
         },
         glb: "/models/tub-fronts-and-shower-pans/kohler-entity.glb",
-        position: [-0.1, -0.025, -5.7],
+        position: [0.1, -0.025, -5.7],
         rotation: [0, 0, 0],
-        scale: [1.73, 1.6, 1.6],
+        scale: [-1.73, 1.6, 1.6],
         roughness: 1, // glossy ceramic
         metalness: 0.5, // not metal
         clearcoat: 0.0, // glazed surface
@@ -61,10 +61,9 @@ export const tubFrontsShowerPansCategories = [
           premium: ["White"],
         },
         glb: "/models/tub-fronts-and-shower-pans/villager.glb",
-        position: [1.195, -0.015, -5.1],
+        position: [-1.195, -0.015, -5.1],
         rotation: [0, 0, 0],
-        scale: [-1, 1, 1.2],
-        // scale: [1, 1, 1.2],
+        scale: [1, 1, 1.2],
         roughness: 1, // glossy ceramic
         metalness: 0.5, // not metal
         clearcoat: 0.0, // glazed surface
@@ -87,9 +86,9 @@ export const tubFrontsShowerPansCategories = [
           premium: ["White"], // Your images were only White
         },
         glb: "/models/tub-fronts-and-shower-pans/kohler-underscore.glb",
-        position: [0, -0.015, -5.72],
+        position: [-0, -0.015, -5.72],
         rotation: [0, 0, 0],
-        scale: [1.7, 1.2, 1.5],
+        scale: [-1.7, 1.2, 1.5],
         roughness: 1, // glossy ceramic
         metalness: 0.5, // not metal
         clearcoat: 0.0, // glazed surface
