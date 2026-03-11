@@ -9,8 +9,8 @@ export const nicheCategories = [
         allowPosition: true,
         positionOptions: {
           left: {
-            offset: [-1.24, 1.7, -5.7], // absolute world position on left side wall
-            rotation: [0, Math.PI / 2, 0], // facing inward (toward center)
+            offset: [-0.7, 1.5, -6.35], // absolute world position on left side wall
+            rotation: [0, 0, 0], // facing inward (toward center)
             scale: [1, 1, 1],
           },
           center: {
@@ -19,8 +19,8 @@ export const nicheCategories = [
             scale: [1, 1, 1],
           },
           right: {
-            offset: [1.24, 1.7, -5.7], // absolute world position on right side wall
-            rotation: [0, -Math.PI / 2, 0], // facing inward
+            offset: [0.7, 1.5, -6.35], // absolute world position on right side wall
+            rotation: [0, 0, 0], // facing inward
             scale: [1, 1, 1],
           },
         },
@@ -28,7 +28,6 @@ export const nicheCategories = [
           premium: ["White"],
         },
         glb: "/models/wall-niche/maax-nextile-square.glb",
-        // position: [0, 1.5, -6.35],
         rotation: [0, 0, 0],
         scale: [1, 1, 1],
         roughness: 1, // glossy ceramic
@@ -53,10 +52,10 @@ export const nicheCategories = [
           left: {
             // Two niches stacked vertically on side wall
             coords: [
-              [-1.25, 1.8, -5.95],
-              [-1.25, 1.8, -5.45],
+              [-0.4, 1.5, -6.35],
+              [-0.85, 1.5, -6.35],
             ],
-            rotation: [0, Math.PI / 2, 0],
+            rotation: [0, 0, 0],
             scale: [1, 1, 1],
           },
           center: {
@@ -70,10 +69,10 @@ export const nicheCategories = [
           },
           right: {
             coords: [
-              [1.25, 1.8, -5.95],
-              [1.25, 1.8, -5.45],
+              [0.4, 1.5, -6.35],
+              [0.85, 1.5, -6.35],
             ],
-            rotation: [0, -Math.PI / 2, 0],
+            rotation: [0, 0, 0],
             scale: [1, 1, 1],
           },
         },
@@ -103,8 +102,8 @@ export const nicheCategories = [
         allowPosition: true,
         positionOptions: {
           left: {
-            offset: [-1.29, 1.7, -5.7], // absolute world position on left side wall
-            rotation: [0, Math.PI / 2, 0], // facing inward (toward center)
+            offset: [-0.7, 1.5, -6.35], // absolute world position on left side wall
+            rotation: [0, 0, 0], // facing inward (toward center)
             scale: [1, 1, 1],
           },
           center: {
@@ -113,8 +112,8 @@ export const nicheCategories = [
             scale: [1, 1, 1],
           },
           right: {
-            offset: [1.29, 1.7, -5.7], // absolute world position on right side wall
-            rotation: [0, -Math.PI / 2, 0], // facing inward
+            offset: [0.7, 1.5, -6.35], // absolute world position on right side wall
+            rotation: [0, 0, 0], // facing inward
             scale: [1, 1, 1],
           },
         },
@@ -147,10 +146,10 @@ export const nicheCategories = [
           left: {
             // Two niches stacked vertically on side wall
             coords: [
-              [-1.29, 1.8, -5.9],
-              [-1.29, 1.8, -5.45],
+              [-0.4, 1.5, -6.35],
+              [-0.8, 1.5, -6.35],
             ],
-            rotation: [0, Math.PI / 2, 0],
+            rotation: [0, 0, 0],
             scale: [1, 1, 1],
           },
           center: {
@@ -164,10 +163,10 @@ export const nicheCategories = [
           },
           right: {
             coords: [
-              [1.29, 1.8, -5.9],
-              [1.29, 1.8, -5.45],
+              [0.4, 1.5, -6.35],
+              [0.8, 1.5, -6.35],
             ],
-            rotation: [0, -Math.PI / 2, 0],
+            rotation: [0, 0, 0],
             scale: [1, 1, 1],
           },
         },

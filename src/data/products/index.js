@@ -13,6 +13,7 @@ import { mirrorCategories } from "./vanityMirrors";
 import { lightsCategories } from "./vanityLights";
 import { sinkFaucetCategories } from "./sink-faucets";
 import { wallKitsCategories } from "./wall-kits";
+import { floorCategories } from "./floor";
 
 import { cabinWallsCategories } from "./cabin-walls";
 
@@ -20,6 +21,7 @@ const allCategories = [
   ...tubFrontsShowerPansCategories,
   ...cabinWallsCategories,
   ...wallsCategories,
+  ...floorCategories,
   // ...wallKitsCategories,
   ...faucetsCategories,
   ...nicheCategories,
