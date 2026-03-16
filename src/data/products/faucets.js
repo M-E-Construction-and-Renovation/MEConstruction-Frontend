@@ -221,6 +221,7 @@ export const faucetsCategories = [
         },
         glb: "/models/shower-tub-faucets/moen lindor 1 handle.glb",
         position: [-1.2, 0.1, -5.6],
+        rotation: [0, 0, 0],
         roughness: 0.3, // glossy ceramic
         metalness: 1, // not metal
         clearcoat: 0.0, // glazed surface

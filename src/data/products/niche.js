@@ -9,6 +9,11 @@ export const nicheCategories = [
         allowPosition: true,
         positionOptions: {
           left: {
+            offset: [-1.25, 1.8, -5.7], // absolute world position on left side wall
+            rotation: [0, Math.PI / 2, 0], // facing inward (toward center)
+            scale: [1, 1, 1],
+          },
+          "mid left": {
             offset: [-0.7, 1.5, -6.35], // absolute world position on left side wall
             rotation: [0, 0, 0], // facing inward (toward center)
             scale: [1, 1, 1],
@@ -18,9 +23,14 @@ export const nicheCategories = [
             rotation: [0, 0, 0],
             scale: [1, 1, 1],
           },
-          right: {
+          "mid right": {
             offset: [0.7, 1.5, -6.35], // absolute world position on right side wall
             rotation: [0, 0, 0], // facing inward
+            scale: [1, 1, 1],
+          },
+          right: {
+            offset: [1.25, 1.8, -5.7], // absolute world position on right side wall
+            rotation: [0, -Math.PI / 2, 0], // facing inward
             scale: [1, 1, 1],
           },
         },
@@ -50,6 +60,14 @@ export const nicheCategories = [
         allowPosition: true,
         positionOptions: {
           left: {
+            coords: [
+              [-1.25, 1.8, -5.4],
+              [-1.25, 1.8, -5.9],
+            ],
+            rotation: [0, Math.PI / 2, 0],
+            scale: [1, 1, 1],
+          },
+          "mid left": {
             // Two niches stacked vertically on side wall
             coords: [
               [-0.4, 1.5, -6.35],
@@ -67,12 +85,20 @@ export const nicheCategories = [
             rotation: [0, 0, 0],
             scale: [1, 1, 1],
           },
-          right: {
+          "mid right": {
             coords: [
               [0.4, 1.5, -6.35],
               [0.85, 1.5, -6.35],
             ],
             rotation: [0, 0, 0],
+            scale: [1, 1, 1],
+          },
+          right: {
+            coords: [
+              [1.25, 1.8, -5.4],
+              [1.25, 1.8, -5.9],
+            ],
+            rotation: [0, -Math.PI / 2, 0],
             scale: [1, 1, 1],
           },
         },
@@ -102,6 +128,11 @@ export const nicheCategories = [
         allowPosition: true,
         positionOptions: {
           left: {
+            offset: [-1.28, 1.8, -5.7], // absolute world position on left side wall
+            rotation: [0, Math.PI / 2, 0], // facing inward (toward center)
+            scale: [1, 1, 1],
+          },
+          "mid left": {
             offset: [-0.7, 1.5, -6.35], // absolute world position on left side wall
             rotation: [0, 0, 0], // facing inward (toward center)
             scale: [1, 1, 1],
@@ -111,9 +142,14 @@ export const nicheCategories = [
             rotation: [0, 0, 0],
             scale: [1, 1, 1],
           },
-          right: {
+          "mid right": {
             offset: [0.7, 1.5, -6.35], // absolute world position on right side wall
             rotation: [0, 0, 0], // facing inward
+            scale: [1, 1, 1],
+          },
+          right: {
+            offset: [1.28, 1.8, -5.7], // absolute world position on left side wall
+            rotation: [0, -Math.PI / 2, 0], // facing inward (toward center)
             scale: [1, 1, 1],
           },
         },
@@ -144,6 +180,14 @@ export const nicheCategories = [
         allowPosition: true,
         positionOptions: {
           left: {
+            coords: [
+              [-1.28, 1.8, -5.4],
+              [-1.28, 1.8, -5.9],
+            ],
+            rotation: [0, Math.PI / 2, 0],
+            scale: [1, 1, 1],
+          },
+          "mid left": {
             // Two niches stacked vertically on side wall
             coords: [
               [-0.4, 1.5, -6.35],
@@ -161,12 +205,20 @@ export const nicheCategories = [
             rotation: [0, 0, 0],
             scale: [1, 1, 1],
           },
-          right: {
+          "mid right": {
             coords: [
               [0.4, 1.5, -6.35],
               [0.8, 1.5, -6.35],
             ],
             rotation: [0, 0, 0],
+            scale: [1, 1, 1],
+          },
+          right: {
+            coords: [
+              [1.28, 1.8, -5.4],
+              [1.28, 1.8, -5.9],
+            ],
+            rotation: [0, -Math.PI / 2, 0],
             scale: [1, 1, 1],
           },
         },

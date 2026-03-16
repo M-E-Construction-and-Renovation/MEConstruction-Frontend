@@ -332,10 +332,10 @@ function BathroomModel({
 
 function Product({
   glb,
-  position,
-  rotation,
+  position = [0, 0, 0],
+  rotation = [0, 0, 0],
   scale = [1, 1, 1],
-  color,
+  color = "#ffffff",
   roughness = 0.0,
   metalness = 0.0,
   clearcoat = 0.0,
