@@ -252,6 +252,31 @@ export const doorsRodsCategories = [
         },
       },
       {
+        id: "sd9",
+        name: "Heckfiel - Single Sliding Shower Door",
+        allowFlip: true,
+        tiers: {
+          premium: ["Black"],
+        },
+        glb: "/models/doors-and-rods/heckfiel-single-slide-shower-door.glb",
+        position: [0.025, 1.4, -5.1],
+        rotation: [0, 0, 0],
+        scale: [1.48, 1.25, 1.55],
+        roughness: 1, // glossy ceramic
+        metalness: 1, // not metal
+        clearcoat: 0.0, // glazed surface
+        clearcoatRoughness: 0.0,
+        envMapIntensity: 1.0, // reflections
+        displayByColor: {
+          Black: {
+            productDisplay:
+              "https://images.thdstatic.com/productImages/0d6ceffd-8276-4e2c-bc22-e4c4ccd188e3/svn/heckfiel-alcove-shower-doors-sp07sy6072-64_600.jpg",
+            color: "#727472",
+            displayColor: "#000000",
+          },
+        },
+      },
+      {
         id: "sr1",
         name: "Shower Rod 1",
         allowFlip: true,

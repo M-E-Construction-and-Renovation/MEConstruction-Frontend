@@ -266,7 +266,7 @@ const ConfigurePage = ({
                             className="w-full h-full object-cover"
                           />
                         </div>
-                        <p className="text-[10px] xl:text-xs font-bold text-slate-800 truncate leading-tight mb-2">
+                        <p className="text-[10px] xl:text-xs font-bold text-slate-800 leading-tight mb-2">
                           {product.name}
                         </p>
 
