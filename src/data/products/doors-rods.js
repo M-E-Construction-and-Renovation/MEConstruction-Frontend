@@ -6,6 +6,7 @@ export const doorsRodsCategories = [
       {
         id: "tfd1",
         name: "Kohler - Levity Bathtub Door",
+        shape: ["tub"],
         allowFlip: true,
         tiers: {
           premium: ["Black"],
@@ -31,6 +32,7 @@ export const doorsRodsCategories = [
       {
         id: "tfd2",
         name: "allen + roth - Davidson Bathtub Door",
+        shape: ["tub"],
         allowFlip: true,
         tiers: {
           premium: ["Chrome"],
@@ -56,6 +58,7 @@ export const doorsRodsCategories = [
       {
         id: "sd1",
         name: "Allen Brau Fantasy - Alcove Shower Door",
+        shape: ["alcove"],
         allowFlip: true,
         tiers: {
           basic: ["Black"],
@@ -81,6 +84,7 @@ export const doorsRodsCategories = [
       {
         id: "sd2",
         name: "ABBER - Curved Shower Door",
+        shape: ["curve"],
         allowFlip: true,
         tiers: {
           standard: ["Black"],
@@ -106,10 +110,12 @@ export const doorsRodsCategories = [
       {
         id: "sd3",
         name: "ABBER - Neo-Angle Shower Door",
+        shape: ["neo-angle"],
         allowFlip: true,
         tiers: {
           premium: ["Black"],
         },
+        // glb: "/models/doors-and-rods/abber-ewiges-wasser-neo-angle-shower-door.glb",
         glb: "/models/doors-and-rods/abber-ewiges-wasser-neo-angle-shower-door.glb",
         position: [0.09, 0.1, -4.83],
         rotation: [0, 0, 0],
@@ -131,6 +137,7 @@ export const doorsRodsCategories = [
       {
         id: "sd4",
         name: "Tub-To-Shower Thin Frame Door",
+        shape: ["tub-to-shower"],
         allowFlip: true,
         tiers: {
           premium: ["Chrome"],
@@ -155,6 +162,7 @@ export const doorsRodsCategories = [
       {
         id: "sd5",
         name: "Tub-To-Shower Door",
+        shape: ["tub-to-shower"],
         allowFlip: true,
         tiers: {
           standard: ["Black"],
@@ -179,6 +187,7 @@ export const doorsRodsCategories = [
       {
         id: "sd6",
         name: "Kohler - Levity Shower Door",
+        shape: ["tub-to-shower"],
         allowFlip: true,
         tiers: {
           premium: ["Black"],
@@ -204,6 +213,7 @@ export const doorsRodsCategories = [
       {
         id: "sd7",
         name: "allen + roth - Davidson Shower Door",
+        shape: ["tub-to-shower"],
         allowFlip: true,
         tiers: {
           premium: ["Black"],
@@ -229,6 +239,7 @@ export const doorsRodsCategories = [
       {
         id: "sd8",
         name: "ABBER - Alcove Shower Door",
+        shape: ["alcove"],
         allowFlip: true,
         tiers: {
           basic: ["Black"],
@@ -254,10 +265,12 @@ export const doorsRodsCategories = [
       {
         id: "sd9",
         name: "Heckfiel - Single Sliding Shower Door",
+        shape: ["tub-to-shower"],
         allowFlip: true,
         tiers: {
           premium: ["Black"],
         },
+        // glb: "/models/doors-and-rods/heckfiel-single-slide-shower-door.glb",
         glb: "/models/doors-and-rods/heckfiel-single-slide-shower-door.glb",
         position: [0.025, 1.4, -5.1],
         rotation: [0, 0, 0],
@@ -279,6 +292,7 @@ export const doorsRodsCategories = [
       {
         id: "sr1",
         name: "Shower Rod 1",
+        shape: ["tub", "tub-to-shower"],
         allowFlip: true,
         tiers: {
           standard: ["Chrome"],
@@ -303,6 +317,7 @@ export const doorsRodsCategories = [
       {
         id: "sr2",
         name: "Shower Rod 2",
+        shape: ["tub", "tub-to-shower"],
         allowFlip: true,
         tiers: {
           basic: ["Champagne Gold"],
@@ -327,6 +342,7 @@ export const doorsRodsCategories = [
       {
         id: "sr3",
         name: "Shower Rod 3",
+        shape: ["tub", "tub-to-shower"],
         allowFlip: true,
         tiers: {
           premium: ["Black"],

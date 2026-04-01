@@ -134,34 +134,10 @@ export default function DesignTool() {
   const handleProductSelect = (
     productId,
     color,
+    shape,
     flipped = false,
     placement = "center",
   ) => {
-    // setSelectedProducts((prev) => ({
-    //   ...prev,
-    //   [activeTab]: { productId, color, flipped, placement },
-    // }));
-
-    // setSelectedProducts((prev) => {
-    //   // Preserve existing flipped/placement if the product was already selected
-    //   // (e.g. user just clicked a color swatch — don't reset their position choices)
-    //   const existing = prev[activeTab];
-    //   const effectivePlacement = existing?.placement ?? placement;
-    //   const effectiveFlipped = existing?.flipped ?? flipped;
-
-    //   const updated = {
-    //     ...prev,
-    //     [activeTab]: {
-    //       productId,
-    //       color,
-    //       flipped: effectiveFlipped,
-    //       placement: effectivePlacement,
-    //     },
-    //   };
-
-    //   return resolvePositionConflicts(updated, activeTab, allCategories);
-    // });
-
     setSelectedProducts((prev) => {
       const existing = prev[activeTab];
       const effectiveFlipped = existing?.flipped ?? flipped;
@@ -176,11 +152,35 @@ export default function DesignTool() {
         allCategories,
       );
 
+      let newPrev = prev;
+
+      if (activeTab === "tubFronts/showerPans") {
+        // Keep shape-dependent products only if they support the newly selected shape
+        newPrev = Object.fromEntries(
+          Object.entries(prev).filter(([key, value]) => {
+            if (key === "tubFronts/showerPans") return false; // always replace base
+
+            const category = allCategories.find((c) => c.id === key);
+            const product = category?.products.find(
+              (p) => p.id === value.productId,
+            );
+
+            // No shape constraint = always keep (tiles, niches, etc.)
+            if (!product?.shape || product.shape.length === 0) return true;
+
+            // Has shape constraint = only keep if new shape is supported
+            return product.shape.includes(shape);
+          }),
+        );
+      }
+
       const updated = {
-        ...prev,
+        // ...prev,
+        ...newPrev,
         [activeTab]: {
           productId,
           color,
+          shape,
           flipped: effectiveFlipped,
           placement: effectivePlacement,
         },

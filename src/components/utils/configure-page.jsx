@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, Suspense } from "react";
+import React, { useState, Suspense, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
 import {
@@ -32,6 +32,10 @@ const ConfigurePage = ({
 }) => {
   const router = useRouter();
   const [isDrawerOpen, setIsDrawerOpen] = useState(true);
+
+  const selectedShape = useMemo(() => {
+    return selectedProducts["tubFronts/showerPans"]?.shape ?? null;
+  }, [selectedProducts]);
 
   return (
     <Suspense
@@ -227,11 +231,20 @@ const ConfigurePage = ({
                 {currentCategory?.products
                   .filter((p) => p.tiers?.[activeTier]?.length > 0)
                   .map((product) => {
+                    if (
+                      currentCategory.id !== "tubFronts/showerPans" &&
+                      selectedShape &&
+                      product.shape?.length > 0 &&
+                      !product.shape?.includes(selectedShape)
+                    )
+                      return;
+
                     const isSelected =
                       selectedProducts[activeTab]?.productId === product.id &&
                       product.tiers[activeTier]?.includes(
                         selectedProducts[activeTab]?.color,
                       );
+
                     const currentSelectedColor = isSelected
                       ? selectedProducts[activeTab]?.color
                       : (product.tiers?.[activeTier]?.[0] ?? "");
@@ -246,6 +259,7 @@ const ConfigurePage = ({
                             handleProductSelect(
                               product.id,
                               currentSelectedColor,
+                              product?.shape,
                             );
                             setIsDrawerOpen(false);
                           }

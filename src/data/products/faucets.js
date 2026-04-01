@@ -1,11 +1,12 @@
 export const faucetsCategories = [
   {
     id: "faucets",
-    label: "Faucets",
+    label: "Shower Heads",
     products: [
       {
         id: "f1",
         name: "Foundations - Delta",
+        shape: ["tub"],
         allowFlip: true,
         tiers: {
           basic: ["Chrome", "Stainless"],
@@ -36,6 +37,7 @@ export const faucetsCategories = [
       {
         id: "f2",
         name: "Florez - Kohler",
+        shape: ["tub"],
         allowFlip: true,
         tiers: {
           basic: ["Brushed Nickel"],
@@ -74,6 +76,7 @@ export const faucetsCategories = [
       {
         id: "f3",
         name: "Premise - Kohler",
+        shape: ["tub"],
         allowFlip: true,
         tiers: {
           standard: ["Brushed Nickel"],
@@ -105,6 +108,7 @@ export const faucetsCategories = [
       {
         id: "f4",
         name: "allen + roth - Veda",
+        shape: ["tub"],
         allowFlip: true,
         tiers: {
           premium: ["Black"],
@@ -129,6 +133,7 @@ export const faucetsCategories = [
       {
         id: "f5",
         name: "Delta - Classic",
+        shape: ["tub-to-shower", "alcove", "neo-angle", "curved"],
         allowFlip: true,
         tiers: {
           standard: ["Chrome"],
@@ -153,6 +158,7 @@ export const faucetsCategories = [
       {
         id: "f6",
         name: "Kohler - Desette",
+        shape: ["tub"],
         allowFlip: true,
         tiers: {
           basic: ["Chrome"],
@@ -191,6 +197,7 @@ export const faucetsCategories = [
       {
         id: "f7",
         name: "Moen - Adler",
+        shape: ["tub"],
         allowFlip: true,
         tiers: {
           premium: ["Chrome"],
@@ -215,6 +222,7 @@ export const faucetsCategories = [
       {
         id: "f8",
         name: "Moen - Lindor",
+        shape: ["tub"],
         allowFlip: true,
         tiers: {
           premium: ["Black"],

@@ -6,6 +6,7 @@ export const tubFrontsShowerPansCategories = [
       {
         id: "tf1",
         name: "Kohler - Entity",
+        shape: "tub",
         allowFlip: true,
         tiers: {
           basic: ["White"], // Your images were only White
@@ -31,6 +32,7 @@ export const tubFrontsShowerPansCategories = [
       {
         id: "tf2",
         name: "Pro Steel - MAAX",
+        shape: "tub",
         allowFlip: true,
         tiers: {
           standard: ["White"],
@@ -56,6 +58,7 @@ export const tubFrontsShowerPansCategories = [
       {
         id: "tf3",
         name: "Villager - Kohler",
+        shape: "tub",
         allowFlip: true,
         tiers: {
           premium: ["White"],
@@ -81,6 +84,7 @@ export const tubFrontsShowerPansCategories = [
       {
         id: "tf4",
         name: "Kohler - Underscore",
+        shape: "tub",
         allowFlip: true,
         tiers: {
           premium: ["White"], // Your images were only White
@@ -106,6 +110,7 @@ export const tubFrontsShowerPansCategories = [
       {
         id: "tf5",
         name: "Sterling - Rectangle Alcove",
+        shape: "tub",
         allowFlip: true,
         tiers: {
           standard: ["White"], // Your images were only White
@@ -131,6 +136,7 @@ export const tubFrontsShowerPansCategories = [
       {
         id: "sp1",
         name: "Tub-To-Shower Pan",
+        shape: "tub-to-shower",
         allowFlip: true,
         tiers: {
           premium: ["White"],
@@ -155,6 +161,7 @@ export const tubFrontsShowerPansCategories = [
       {
         id: "sp2",
         name: "Alcove Shower Pan",
+        shape: "alcove",
         allowFlip: true,
         tiers: {
           basic: ["White"],
@@ -179,6 +186,7 @@ export const tubFrontsShowerPansCategories = [
       {
         id: "sp3",
         name: "Curved Shower Pan",
+        shape: "curve",
         allowFlip: true,
         tiers: {
           standard: ["White"],
@@ -203,6 +211,7 @@ export const tubFrontsShowerPansCategories = [
       {
         id: "sp4",
         name: "Neo-Angle Shower Pan",
+        shape: "neo-angle",
         allowFlip: true,
         tiers: {
           premium: ["White"],

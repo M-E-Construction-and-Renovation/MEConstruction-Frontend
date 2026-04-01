@@ -1,7 +1,7 @@
 export const cabinWallsCategories = [
   {
     id: "cabinWallTexture",
-    label: "Cabin Walls",
+    label: "Shower Wall Tiles",
     isTexture: true,
     products: [
       {
