@@ -83,16 +83,16 @@ function BathroomModel({
         "/textures/tiles/floor_tile_1/Tiles107_2K-JPG_Roughness.jpg",
     },
     wallTexture: {
-      map: "/textures/walls/wall_tile_1/Tiles075_2K-JPG_Color.jpg",
-      normalMap: "/textures/walls/wall_tile_1/Tiles075_2K-JPG_NormalGL.jpg",
-      roughnessMap: "/textures/walls/wall_tile_1/Tiles075_2K-JPG_Roughness.jpg",
+      map: "/textures/walls/wall_tile_6/Concrete048_1K-JPG_Color.jpg",
+      normalMap: "/textures/walls/wall_tile_6/Concrete048_1K-JPG_NormalGL.jpg",
+      roughnessMap:
+        "/textures/walls/wall_tile_6/Concrete048_1K-JPG_Roughness.jpg",
     },
     cabinWallTexture: {
-      map: "/textures/cabin_walls/cabin_wall_1/Marble020_2K-JPG_Color.jpg",
-      normalMap:
-        "/textures/cabin_walls/cabin_wall_1/Marble020_2K-JPG_NormalGL.jpg",
+      map: "/textures/walls/wall_tile_6/Concrete048_1K-JPG_Color.jpg",
+      normalMap: "/textures/walls/wall_tile_6/Concrete048_1K-JPG_NormalGL.jpg",
       roughnessMap:
-        "/textures/cabin_walls/cabin_wall_1/Marble020_2K-JPG_Roughness.jpg",
+        "/textures/walls/wall_tile_6/Concrete048_1K-JPG_Roughness.jpg",
     },
     ceilingTexture: {
       map: "/textures/ceilings/ceiling_1/Plastic013A_2K-JPG_Color.jpg",
@@ -150,30 +150,47 @@ function BathroomModel({
     cabinWallTexture || initialTextures.cabinWallTexture,
   );
 
-  // 1. Prepare your textures outside the return so they are ready
-  const backWallMaterial = useMemo(() => {
-    if (!cabinWallMaps.map) return null;
+  const bathroomMaterials = useMemo(() => {
+    // 1. Quick exit if data isn't ready
+    if (!cabinWallMaps.map || !wallMaps.map || !ceilingMaps.map) return null;
 
-    // Clone the texture so we don't mess up other objects using it
-    const map = cabinWallMaps.map.clone();
-    const normal = cabinWallMaps.normalMap?.clone();
+    // 2. Helper to process texture sets
+    const prepareMaterial = (textureSet, repeatX = 2, repeatY = 2) => {
+      const maps = {};
 
-    map.wrapS = map.wrapT = THREE.RepeatWrapping;
-    map.repeat.set(2, 2); // Match your bathroom tiling
+      // List of map types we want to clone and adjust
+      ["map", "normalMap", "roughnessMap"].forEach((type) => {
+        if (textureSet[type]) {
+          const cloned = textureSet[type].clone();
+          cloned.wrapS = cloned.wrapT = THREE.RepeatWrapping;
+          cloned.repeat.set(repeatX, repeatY);
+          maps[type] = cloned;
+        }
+      });
 
-    if (normal) {
-      normal.wrapS = normal.wrapT = THREE.RepeatWrapping;
-      normal.repeat.set(2, 2);
-    }
+      return (
+        <meshStandardMaterial
+          map={maps.map}
+          normalMap={maps.normalMap}
+          roughnessMap={maps.roughnessMap}
+        />
+      );
+    };
 
-    return (
-      <meshStandardMaterial
-        map={map}
-        normalMap={normal}
-        roughnessMap={cabinWallMaps.roughnessMap}
-      />
-    );
-  }, [cabinWallMaps]);
+    // 3. Define your mappings
+    const materialConfigs = {
+      cabinWallMaterial: cabinWallMaps,
+      wallMaterial: wallMaps,
+      ceilingMaterial: ceilingMaps,
+      // floorMaterial: floorMaps, <-- Adding new ones is now one line
+    };
+
+    // 4. Iterate and build the final object
+    return Object.entries(materialConfigs).reduce((acc, [key, mapSet]) => {
+      acc[key] = prepareMaterial(mapSet);
+      return acc;
+    }, {});
+  }, [cabinWallMaps, wallMaps, ceilingMaps]); // Don't forget to add wallMaps to dependencies!
 
   const clonedScene = useMemo(() => {
     const clone = scene.clone(true);
@@ -190,15 +207,19 @@ function BathroomModel({
     return clone;
   }, [scene]);
 
-  // At the top of your component, add this effect
   useLayoutEffect(() => {
-    const wall = clonedScene.getObjectByName("back_wall");
-    if (wall) {
-      wall.visible = false;
-      // We also hide it from shadow casting so it doesn't leave a ghost shadow where the hole is
-      wall.castShadow = false;
-      wall.receiveShadow = false;
-    }
+    // 1. List the names of all objects you want to hide/disable
+    const objectsToHide = ["back_wall", "side_walls", "ceiling"];
+
+    objectsToHide.forEach((name) => {
+      const obj = clonedScene.getObjectByName(name);
+
+      if (obj) {
+        obj.visible = false;
+        obj.castShadow = false;
+        obj.receiveShadow = false;
+      }
+    });
   }, [clonedScene]);
 
   useLayoutEffect(() => {
@@ -230,102 +251,61 @@ function BathroomModel({
           mat.needsUpdate = true;
         });
       }
-
-      if (child.name === "walls") {
-        child.traverse((mesh) => {
-          if (!mesh.isMesh || !mesh.material || mesh.name === "back_wall")
-            return;
-
-          const mat = mesh.material;
-
-          const bathroomWallMaps = wallMaps;
-
-          if (bathroomWallMaps.map) {
-            // 1. Enable Wrapping (Necessary for tiling)
-            bathroomWallMaps.map.wrapS = bathroomWallMaps.map.wrapT =
-              THREE.RepeatWrapping;
-            // 2. Set the Repeat [X, Y]
-            // Values higher than 1 make the pattern smaller (tiling more)
-            // Values lower than 1 stretch the pattern
-            bathroomWallMaps.map.repeat.set(2, 2);
-            mat.map = bathroomWallMaps.map;
-            mat.map.flipY = false;
-          }
-          if (bathroomWallMaps.roughnessMap)
-            mat.roughnessMap = bathroomWallMaps.roughnessMap;
-
-          if (bathroomWallMaps.normalMap) {
-            bathroomWallMaps.normalMap.wrapS =
-              bathroomWallMaps.normalMap.wrapT = THREE.RepeatWrapping;
-            bathroomWallMaps.normalMap.repeat.set(2, 2);
-            mat.normalMap = bathroomWallMaps.normalMap;
-          }
-
-          mat.needsUpdate = true;
-        });
-      }
-
-      if (child.name === "Ceiling") {
-        child.traverse((mesh) => {
-          if (!mesh.isMesh || !mesh.material) return;
-          const mat = mesh.material;
-
-          if (ceilingMaps.map) {
-            // 1. Enable Wrapping (Necessary for tiling)
-            ceilingMaps.map.wrapS = ceilingMaps.map.wrapT =
-              THREE.RepeatWrapping;
-            // 2. Set the Repeat [X, Y]
-            // Values higher than 1 make the pattern smaller (tiling more)
-            // Values lower than 1 stretch the pattern
-            ceilingMaps.map.repeat.set(4, 4);
-            mat.map = ceilingMaps.map;
-            mat.map.flipY = false;
-          }
-          if (ceilingMaps.roughnessMap)
-            mat.roughnessMap = ceilingMaps.roughnessMap;
-
-          if (ceilingMaps.normalMap) {
-            ceilingMaps.normalMap.wrapS = ceilingMaps.normalMap.wrapT =
-              THREE.RepeatWrapping;
-            ceilingMaps.normalMap.repeat.set(4, 4);
-            mat.normalMap = ceilingMaps.normalMap;
-          }
-          mat.needsUpdate = true;
-        });
-      }
     });
-  }, [clonedScene, floorMaps, wallMaps, cabinWallMaps, ceilingMaps]);
+  }, [clonedScene, floorMaps]);
 
   return (
     <group>
-      {/* 1. RENDER THE FULL BATHROOM SCENE (Without the back wall) */}
+      {/* 1. RENDER THE FULL BATHROOM SCENE (Hidden walls are already invisible) */}
       <primitive object={clonedScene} />
 
-      {/* 2. THE HOLE ENGINE */}
-      <mesh castShadow receiveShadow>
-        <Geometry computeWindow={0} useBuffers={true} incremental={true}>
-          <Base geometry={nodes.back_wall.geometry} />
-          {wallNicheInfo &&
-            wallNicheInfo?.position?.map((position, index) => (
-              <Subtraction
-                key={index}
-                position={position}
-                scale={wallNicheInfo.scale}
-                rotation={wallNicheInfo.rotation}
-                // showOperation
-              >
-                <boxGeometry
-                  args={[
-                    wallNicheInfo.size.x,
-                    wallNicheInfo.size.y,
-                    wallNicheInfo.size.z * 5, // Extra deep to ensure a clean cut
-                  ]}
-                />
-              </Subtraction>
-            ))}
-        </Geometry>
-        {backWallMaterial}
-      </mesh>
+      {/* 2. RENDER DYNAMIC CSG WALLS */}
+      {[
+        {
+          name: "back_wall",
+          geometry: nodes.back_wall.geometry,
+          material: bathroomMaterials.cabinWallMaterial,
+          hasNiches: true,
+        },
+        {
+          name: "side_walls",
+          geometry: nodes.side_walls.geometry,
+          material: bathroomMaterials.wallMaterial,
+          hasNiches: false,
+        },
+        {
+          name: "ceiling",
+          geometry: nodes.ceiling.geometry,
+          material: bathroomMaterials.ceilingMaterial,
+          hasNiches: false,
+        },
+      ].map((wall) => (
+        <mesh key={wall.name} castShadow receiveShadow>
+          <Geometry computeWindow={0} useBuffers={true} incremental={true}>
+            <Base geometry={wall.geometry} />
+
+            {/* Only render Subtractions if this specific wall needs them */}
+            {wall.hasNiches &&
+              wallNicheInfo?.position?.map((pos, idx) => (
+                <Subtraction
+                  key={idx}
+                  position={pos}
+                  scale={wallNicheInfo.scale}
+                  rotation={wallNicheInfo.rotation}
+                >
+                  <boxGeometry
+                    args={[
+                      wallNicheInfo.size.x,
+                      wallNicheInfo.size.y,
+                      wallNicheInfo.size.z * 5,
+                    ]}
+                  />
+                </Subtraction>
+              ))}
+          </Geometry>
+          {wall.material}
+        </mesh>
+      ))}
     </group>
   );
 }
