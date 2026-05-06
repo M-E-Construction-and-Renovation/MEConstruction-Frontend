@@ -5,6 +5,60 @@ export const wallsCategories = [
     isTexture: true,
     products: [
       {
+        id: "w0",
+        name: "Neutral Colors",
+        tiers: {
+          basic: [
+            "Graystone",
+            "Tranquility",
+            "Nimbus Gray",
+            "Taos Taupe",
+            "Fatigue Green",
+          ],
+        },
+        normalMap:
+          "/textures/walls/wall_tile_6/Concrete048_1K-JPG_NormalGL.jpg",
+        roughnessMap:
+          "/textures/walls/wall_tile_6/Concrete048_1K-JPG_Roughness.jpg",
+        displayByColor: {
+          Graystone: {
+            productDisplay:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQZIfuu7hJBYASt22zPLJJOjClvRv2BPlMfw&s",
+            map: null,
+            color: "#949089",
+            displayColor: "#949089",
+          },
+          Tranquility: {
+            productDisplay:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1J1b0yKh28yAoctufyfQbAheR5XHk3VnXCQ&s",
+            map: null,
+            color: "#B5BEB9",
+            displayColor: "#B5BEB9",
+          },
+          "Nimbus Gray": {
+            productDisplay:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqhp-bQ8Hlu7JMjNx9vTiDZqspK8BYjb4JFg&s",
+            map: null,
+            color: "#A1AEB1",
+            displayColor: "#A1AEB1",
+          },
+          "Taos Taupe": {
+            productDisplay:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0_H9abYknL7h83Z4xWlCIH_WlE6bHyqC4zg&s",
+            map: null,
+            color: "#8D877E",
+            displayColor: "#8D877E",
+          },
+          "Fatigue Green": {
+            productDisplay:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmILobMg_NGayZy5uQT_vN-OlX0bzobzfGxA&s",
+            map: null,
+            color: "#525149",
+            displayColor: "#525149",
+          },
+        },
+      },
+      {
         id: "w1",
         name: "Marble Wall Tile",
         tiers: {
@@ -17,7 +71,8 @@ export const wallsCategories = [
           White: {
             productDisplay:
               "/textures/walls/wall_tile_2/Marble012_2K-JPG_Color.jpg",
-            color: "/textures/walls/wall_tile_2/Marble012_2K-JPG_Color.jpg",
+            map: "/textures/walls/wall_tile_2/Marble012_2K-JPG_Color.jpg",
+            color: "",
             displayColor: "#D3D3D3",
           },
         },
@@ -36,7 +91,8 @@ export const wallsCategories = [
           Sand: {
             productDisplay:
               "/textures/walls/wall_tile_3/Travertine009_2K-JPG_Color.jpg",
-            color: "/textures/walls/wall_tile_3/Travertine009_2K-JPG_Color.jpg",
+            map: "/textures/walls/wall_tile_3/Travertine009_2K-JPG_Color.jpg",
+            color: "",
             displayColor: "#C2B280",
           },
         },
@@ -54,7 +110,8 @@ export const wallsCategories = [
           Black: {
             productDisplay:
               "/textures/walls/wall_tile_4/Marble016_2K-JPG_Color.jpg",
-            color: "/textures/walls/wall_tile_4/Marble016_2K-JPG_Color.jpg",
+            map: "/textures/walls/wall_tile_4/Marble016_2K-JPG_Color.jpg",
+            color: "",
             displayColor: "#808080",
           },
         },
@@ -72,7 +129,8 @@ export const wallsCategories = [
           Cream: {
             productDisplay:
               "/textures/walls/wall_tile_5/Onyx001_2K-JPG_Color.jpg",
-            color: "/textures/walls/wall_tile_5/Onyx001_2K-JPG_Color.jpg",
+            map: "/textures/walls/wall_tile_5/Onyx001_2K-JPG_Color.jpg",
+            color: "",
             displayColor: "#C4A484",
           },
         },
@@ -90,7 +148,8 @@ export const wallsCategories = [
           Black: {
             productDisplay:
               "/textures/walls/wall_tile_1/Tiles075_2K-JPG_Color.jpg",
-            color: "/textures/walls/wall_tile_1/Tiles075_2K-JPG_Color.jpg",
+            map: "/textures/walls/wall_tile_1/Tiles075_2K-JPG_Color.jpg",
+            color: "",
             displayColor: "#000000",
           },
         },
@@ -110,8 +169,8 @@ export const wallsCategories = [
           "Light Blue": {
             productDisplay:
               "/textures/cabin_walls/cabin_wall_2/Tiles030_2K-JPG_Color.jpg",
-            color:
-              "/textures/cabin_walls/cabin_wall_2/Tiles030_2K-JPG_Color.jpg",
+            map: "/textures/cabin_walls/cabin_wall_2/Tiles030_2K-JPG_Color.jpg",
+            color: "",
             displayColor: "#ADD8E6",
           },
         },
@@ -130,8 +189,8 @@ export const wallsCategories = [
           "Small Blue": {
             productDisplay:
               "/textures/cabin_walls/cabin_wall_3/Tiles035_2K-JPG_Color.jpg",
-            color:
-              "/textures/cabin_walls/cabin_wall_3/Tiles035_2K-JPG_Color.jpg",
+            map: "/textures/cabin_walls/cabin_wall_3/Tiles035_2K-JPG_Color.jpg",
+            color: "",
             displayColor: "#ADD8E6",
           },
         },
@@ -150,8 +209,8 @@ export const wallsCategories = [
           Beige: {
             productDisplay:
               "/textures/cabin_walls/cabin_wall_4/Tiles109_2K-JPG_Color.jpg",
-            color:
-              "/textures/cabin_walls/cabin_wall_4/Tiles109_2K-JPG_Color.jpg",
+            map: "/textures/cabin_walls/cabin_wall_4/Tiles109_2K-JPG_Color.jpg",
+            color: "",
             displayColor: "#C2B280",
           },
         },
@@ -170,8 +229,8 @@ export const wallsCategories = [
           White: {
             productDisplay:
               "/textures/cabin_walls/cabin_wall_5/Tiles040_2K-JPG_Color.jpg",
-            color:
-              "/textures/cabin_walls/cabin_wall_5/Tiles040_2K-JPG_Color.jpg",
+            map: "/textures/cabin_walls/cabin_wall_5/Tiles040_2K-JPG_Color.jpg",
+            color: "",
             displayColor: "#D3D3D3",
           },
         },
@@ -190,8 +249,8 @@ export const wallsCategories = [
           Sand: {
             productDisplay:
               "/textures/cabin_walls/cabin_wall_1/Marble020_2K-JPG_Color.jpg",
-            color:
-              "/textures/cabin_walls/cabin_wall_1/Marble020_2K-JPG_Color.jpg",
+            map: "/textures/cabin_walls/cabin_wall_1/Marble020_2K-JPG_Color.jpg",
+            color: "",
             displayColor: "#C2B280",
           },
         },

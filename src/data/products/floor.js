@@ -17,7 +17,8 @@ export const floorCategories = [
           White: {
             productDisplay:
               "/textures/tiles/floor_tile_2/Tiles043_1K-JPG_Color.jpg",
-            color: "/textures/tiles/floor_tile_2/Tiles043_1K-JPG_Color.jpg",
+            map: "/textures/tiles/floor_tile_2/Tiles043_1K-JPG_Color.jpg",
+            color: "",
             displayColor: "#ADD8E6",
           },
         },
@@ -35,7 +36,8 @@ export const floorCategories = [
           Black: {
             productDisplay:
               "/textures/tiles/floor_tile_3/Tiles052_1K-JPG_Color.jpg",
-            color: "/textures/tiles/floor_tile_3/Tiles052_1K-JPG_Color.jpg",
+            map: "/textures/tiles/floor_tile_3/Tiles052_1K-JPG_Color.jpg",
+            color: "",
             displayColor: "#ADD8E6",
           },
         },
@@ -53,7 +55,8 @@ export const floorCategories = [
           White: {
             productDisplay:
               "/textures/tiles/floor_tile_4/Tiles054_1K-JPG_Color.jpg",
-            color: "/textures/tiles/floor_tile_4/Tiles054_1K-JPG_Color.jpg",
+            map: "/textures/tiles/floor_tile_4/Tiles054_1K-JPG_Color.jpg",
+            color: "",
             displayColor: "#ADD8E6",
           },
         },
@@ -71,7 +74,8 @@ export const floorCategories = [
           Desert: {
             productDisplay:
               "/textures/tiles/floor_tile_5/Tiles049_1K-JPG_Color.jpg",
-            color: "/textures/tiles/floor_tile_5/Tiles049_1K-JPG_Color.jpg",
+            map: "/textures/tiles/floor_tile_5/Tiles049_1K-JPG_Color.jpg",
+            color: "",
             displayColor: "#ADD8E6",
           },
         },
@@ -89,7 +93,8 @@ export const floorCategories = [
           Desert: {
             productDisplay:
               "/textures/tiles/floor_tile_6/Tiles051_1K-JPG_Color.jpg",
-            color: "/textures/tiles/floor_tile_6/Tiles051_1K-JPG_Color.jpg",
+            map: "/textures/tiles/floor_tile_6/Tiles051_1K-JPG_Color.jpg",
+            color: "",
             displayColor: "#ADD8E6",
           },
         },

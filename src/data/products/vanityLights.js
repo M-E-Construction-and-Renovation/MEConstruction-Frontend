@@ -10,7 +10,7 @@ export const lightsCategories = [
           premium: ["White"],
         },
         glb: "/models/lights/light-1.glb",
-        position: [-0.97, 2.3, -3.1],
+        position: [-1.2, 2.3, -3.5],
         rotation: [0, Math.PI / 2, 0],
         scale: [1, 1, 1],
         roughness: 0.2, // glossy ceramic
@@ -34,7 +34,7 @@ export const lightsCategories = [
           premium: ["White"],
         },
         glb: "/models/lights/light-2.glb",
-        position: [-1.055, 2.3, -3.1],
+        position: [-1.2, 2.3, -3.5],
         rotation: [0, Math.PI / 2, 0],
         scale: [1, 1, 1],
         roughness: 0.2, // glossy ceramic
@@ -58,7 +58,7 @@ export const lightsCategories = [
           premium: ["White"],
         },
         glb: "/models/lights/light-3.glb",
-        position: [-1.04, 2.3, -3.1],
+        position: [-1.2, 2.3, -3.5],
         rotation: [0, Math.PI / 2, 0],
         scale: [1, 1, 1],
         roughness: 0.2, // glossy ceramic
@@ -82,7 +82,7 @@ export const lightsCategories = [
           standard: ["Gray/Gold"],
         },
         glb: "/models/lights/light-4.glb",
-        position: [-1.04, 2.3, -3.1],
+        position: [-1.2, 2.3, -3.5],
         rotation: [0, Math.PI / 2, 0],
         scale: [1, 1, 1],
         roughness: 0.2, // glossy ceramic
@@ -105,7 +105,7 @@ export const lightsCategories = [
           basic: ["White"],
         },
         glb: "/models/lights/light-5.glb",
-        position: [-1.12, 2.3, -3.1],
+        position: [-1.2, 2.3, -3.5],
         rotation: [0, Math.PI / 2, 0],
         scale: [1, 1, 1],
         roughness: 0.2, // glossy ceramic
@@ -129,7 +129,7 @@ export const lightsCategories = [
           standard: ["Black/Gold"],
         },
         glb: "/models/lights/light-7.glb",
-        position: [-1, 2.3, -3.4],
+        position: [-1.2, 2.3, -3.5],
         rotation: [0, Math.PI / 2, 0],
         scale: [1, 1, 1],
         roughness: 0.2, // glossy ceramic
@@ -153,7 +153,7 @@ export const lightsCategories = [
           basic: ["Gold"],
         },
         glb: "/models/lights/light-8.glb",
-        position: [-1.05, 2.3, -3.4],
+        position: [-1.2, 2.3, -3.5],
         rotation: [0, Math.PI / 2, 0],
         scale: [1, 1, 1],
         roughness: 0.2, // glossy ceramic
@@ -165,6 +165,101 @@ export const lightsCategories = [
           Gold: {
             productDisplay:
               "https://lights.com/cdn/shop/files/LC004941_WB_Alt4_1500.jpg?v=1761160724&width=1214",
+            color: "",
+            displayColor: "#ffffff",
+          },
+        },
+      },
+      {
+        id: "vl8",
+        name: "Brizo - Odin Light Sconce",
+        tiers: {
+          premium: ["Chrome"],
+        },
+        glb: "/models/lights/brizo-odin-light.glb",
+        position: [-1.2, 2.3, -3.5],
+        rotation: [0, Math.PI / 2, 0],
+        scale: [0.4, 0.4, 0.4],
+        displayByColor: {
+          Chrome: {
+            productDisplay:
+              "https://media.brizo.com/elvis/OnWhite/lg/697075-PC-B1.png",
+            color: "",
+            displayColor: "#EBECF0",
+          },
+        },
+      },
+      {
+        id: "vl9",
+        name: "Brizo - Virage Light Sconce",
+        tiers: {
+          premium: ["Champagne Gold"],
+        },
+        glb: "/models/lights/brizo-virage-light.glb",
+        position: [-1.2, 2.3, -3.5],
+        rotation: [0, Math.PI / 2, 0],
+        scale: [0.45, 0.35, 0.25],
+        displayByColor: {
+          "Champagne Gold": {
+            productDisplay:
+              "https://media.brizo.com/elvis/OnWhite/lg/697030-GL-B1.png",
+            color: "",
+            displayColor: "#FFD700",
+          },
+        },
+      },
+      {
+        id: "vl10",
+        name: "Kuzco - Luminaire Light",
+        tiers: {
+          standard: ["Black"],
+        },
+        glb: "/models/lights/kuzco-luminaire.glb",
+        position: [-1.2, 2.3, -3.5],
+        rotation: [0, Math.PI / 2, 0],
+        scale: [0.7, 0.7, 0.7],
+        displayByColor: {
+          Black: {
+            productDisplay:
+              "https://kuzcolighting.com/cdn/shop/files/REZZ_VL63425-BK_02.jpg?v=1724961525&width=1946",
+            color: "",
+            displayColor: "#000000",
+          },
+        },
+      },
+      {
+        id: "vl11",
+        name: "Livex Lighting",
+        tiers: {
+          standard: ["Black"],
+        },
+        glb: "/models/lights/livex-lighting.glb",
+        position: [-1.2, 2.3, -3.5],
+        rotation: [0, Math.PI / 2, 0],
+        scale: [0.4, 0.4, 0.4],
+        displayByColor: {
+          Black: {
+            productDisplay:
+              "https://livexlightinglights.com/dw/image/v2/BHCF_PRD/on/demandware.static/-/Sites-master-catalog-lny/default/dw6891cc6b/brand/lvx/productimages/10104-04_02.jpg?sw=495&sh=495&sm=fit&sfrm=jpg",
+            color: "",
+            displayColor: "#000000",
+          },
+        },
+      },
+      {
+        id: "vl12",
+        name: "Brivolart Led Light",
+        tiers: {
+          basic: ["White"],
+        },
+        glb: "/models/lights/brivolart-led-light.glb",
+        position: [-1.2, 2.3, -3.5],
+        rotation: [0, Math.PI / 2, 0],
+        scale: [1, 1, 1],
+        displayByColor: {
+          White: {
+            productDisplay:
+              "https://m.media-amazon.com/images/I/61nuSWUEVIL.jpg",
             color: "",
             displayColor: "#ffffff",
           },

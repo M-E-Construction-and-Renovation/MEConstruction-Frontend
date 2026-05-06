@@ -14,16 +14,16 @@ export const vanityShelvesCategories = [
             rotation: [0, Math.PI / 2, 0], // facing inward
             // scale: [1, 1, 1],
             sinkCoords: [[-1.15, 0.85, -3.5]],
-            mirrorCoords: [[-1.17, 1.7, -3.5]],
-            lightCoords: [[-1.21, 2.3, -3.45]],
+            mirrorCoords: [[0, 1.7, -3.5]],
+            lightCoords: [[-1.2, 2.3, -3.5]],
           },
           front: {
             offset: [-0.99, 0, -1.53], // absolute world position on left side wall
             rotation: [0, Math.PI / 2, 0], // facing inward (toward center)
             // scale: [1, 1, 1],
             sinkCoords: [[-1.15, 0.85, -2.15]],
-            mirrorCoords: [[-1.17, 1.7, -2.1]],
-            lightCoords: [[-1.21, 2.3, -2.05]],
+            mirrorCoords: [[0, 1.7, -2.1]],
+            lightCoords: [[-1.2, 2.3, -2.1]],
           },
         },
         tiers: {
@@ -57,16 +57,16 @@ export const vanityShelvesCategories = [
             rotation: [0, Math.PI / 2, 0], // facing inward
             // scale: [1, 1, 1],
             sinkCoords: [[-1.15, 0.85, -3.53]],
-            mirrorCoords: [[-1.17, 1.7, -3.5]],
-            lightCoords: [[-1.21, 2.3, -3.45]],
+            mirrorCoords: [[0, 1.7, -3.5]],
+            lightCoords: [[-1.2, 2.3, -3.5]],
           },
           front: {
             offset: [-0.64, 0, -1.65], // absolute world position on left side wall
             rotation: [0, Math.PI / 2, 0], // facing inward (toward center)
             // scale: [1, 1, 1],
             sinkCoords: [[-1.15, 0.85, -2.15]],
-            mirrorCoords: [[-1.17, 1.7, -2.1]],
-            lightCoords: [[-1.21, 2.3, -2.05]],
+            mirrorCoords: [[0, 1.7, -2.1]],
+            lightCoords: [[-1.2, 2.3, -2.1]],
           },
         },
         tiers: {
@@ -100,16 +100,16 @@ export const vanityShelvesCategories = [
             rotation: [0, Math.PI / 2, 0], // facing inward
             // scale: [1, 1, 1],
             sinkCoords: [[-1.15, 0.85, -3.53]],
-            mirrorCoords: [[-1.17, 1.7, -3.5]],
-            lightCoords: [[-1.21, 2.3, -3.45]],
+            mirrorCoords: [[0, 1.7, -3.53]],
+            lightCoords: [[-1.2, 2.3, -3.53]],
           },
           front: {
             offset: [-0.64, 0, -1.65], // absolute world position on left side wall
             rotation: [0, Math.PI / 2, 0], // facing inward (toward center)
             // scale: [1, 1, 1],
             sinkCoords: [[-1.15, 0.85, -2.15]],
-            mirrorCoords: [[-1.17, 1.7, -2.1]],
-            lightCoords: [[-1.21, 2.3, -2.05]],
+            mirrorCoords: [[0, 1.7, -2.1]],
+            lightCoords: [[-1.2, 2.3, -2.1]],
           },
         },
         tiers: {
@@ -143,16 +143,16 @@ export const vanityShelvesCategories = [
             rotation: [0, Math.PI / 2, 0], // facing inward
             // scale: [1, 1, 1],
             sinkCoords: [[-1.15, 0.85, -3.54]],
-            mirrorCoords: [[-1.17, 1.7, -3.5]],
-            lightCoords: [[-1.21, 2.3, -3.45]],
+            mirrorCoords: [[0, 1.7, -3.53]],
+            lightCoords: [[-1.2, 2.3, -3.53]],
           },
           front: {
             offset: [-0.64, 0, -1.65], // absolute world position on left side wall
             rotation: [0, Math.PI / 2, 0], // facing inward (toward center)
             // scale: [1, 1, 1],
             sinkCoords: [[-1.15, 0.85, -2.15]],
-            mirrorCoords: [[-1.17, 1.7, -2.1]],
-            lightCoords: [[-1.21, 2.3, -2.05]],
+            mirrorCoords: [[0, 1.7, -2.1]],
+            lightCoords: [[-1.2, 2.3, -2.1]],
           },
         },
         tiers: {
@@ -186,16 +186,16 @@ export const vanityShelvesCategories = [
             rotation: [0, Math.PI / 2, 0], // facing inward
             // scale: [1, 1, 1],
             sinkCoords: [[-1.15, 0.85, -3.33]],
-            mirrorCoords: [[-1.17, 1.7, -3.3]],
-            lightCoords: [[-1.21, 2.3, -3.3]],
+            mirrorCoords: [[0, 1.7, -3.35]],
+            lightCoords: [[-1.2, 2.3, -3.35]],
           },
           front: {
             offset: [-0.64, 0, -1.65], // absolute world position on left side wall
             rotation: [0, Math.PI / 2, 0], // facing inward (toward center)
             // scale: [1, 1, 1],
             sinkCoords: [[-1.15, 0.85, -2.15]],
-            mirrorCoords: [[-1.17, 1.7, -2.1]],
-            lightCoords: [[-1.21, 2.3, -2.05]],
+            mirrorCoords: [[0, 1.7, -2.13]],
+            lightCoords: [[-1.2, 2.3, -2.13]],
           },
         },
         tiers: {
@@ -229,16 +229,16 @@ export const vanityShelvesCategories = [
             rotation: [0, Math.PI / 2, 0], // facing inward
             // scale: [1, 1, 1],
             sinkCoords: [[-1.15, 0.85, -3.55]],
-            mirrorCoords: [[-1.17, 1.7, -3.5]],
-            lightCoords: [[-1.21, 2.3, -3.5]],
+            mirrorCoords: [[0, 1.7, -3.55]],
+            lightCoords: [[-1.2, 2.3, -3.55]],
           },
           front: {
             offset: [-0.64, 0, -2], // absolute world position on left side wall
             rotation: [0, Math.PI / 2, 0], // facing inward (toward center)
             // scale: [1, 1, 1],
             sinkCoords: [[-1.15, 0.85, -2.5]],
-            mirrorCoords: [[-1.17, 1.7, -2.5]],
-            lightCoords: [[-1.21, 2.3, -2.5]],
+            mirrorCoords: [[0, 1.7, -2.48]],
+            lightCoords: [[-1.2, 2.3, -2.48]],
           },
         },
         tiers: {
@@ -275,8 +275,8 @@ export const vanityShelvesCategories = [
               [-1.17, 0.85, -3.3],
               [-1.17, 0.85, -3.8],
             ],
-            mirrorCoords: [[-1.17, 1.7, -3.5]],
-            lightCoords: [[-1.21, 2.3, -3.55]],
+            mirrorCoords: [[0, 1.7, -3.55]],
+            lightCoords: [[-1.2, 2.3, -3.55]],
           },
           front: {
             offset: [-0.64, 0, -1.65], // absolute world position on left side wall
@@ -286,8 +286,8 @@ export const vanityShelvesCategories = [
               [-1.17, 0.85, -2.1],
               [-1.17, 0.85, -2.6],
             ],
-            mirrorCoords: [[-1.17, 1.7, -2.3]],
-            lightCoords: [[-1.21, 2.3, -2.35]],
+            mirrorCoords: [[0, 1.7, -2.35]],
+            lightCoords: [[-1.2, 2.3, -2.35]],
           },
         },
         tiers: {
@@ -328,8 +328,8 @@ export const vanityShelvesCategories = [
               [-1.1, 0.87, -3.11],
               [-1.1, 0.87, -3.89],
             ],
-            mirrorCoords: [[-1.17, 1.7, -3.5]],
-            lightCoords: [[-1.21, 2.3, -3.4]],
+            mirrorCoords: [[0, 1.7, -3.5]],
+            lightCoords: [[-1.2, 2.3, -3.5]],
           },
           front: {
             offset: [-0.91, 0, -2.3], // absolute world position on left side wall
@@ -339,8 +339,8 @@ export const vanityShelvesCategories = [
               [-1.1, 0.87, -2.7],
               [-1.1, 0.87, -1.93],
             ],
-            mirrorCoords: [[-1.17, 1.7, -2.3]],
-            lightCoords: [[-1.21, 2.3, -2.3]],
+            mirrorCoords: [[0, 1.7, -2.3]],
+            lightCoords: [[-1.2, 2.3, -2.3]],
           },
         },
         tiers: {

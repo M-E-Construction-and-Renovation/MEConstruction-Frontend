@@ -77,25 +77,32 @@ function BathroomModel({
 
   const initialTextures = {
     floorTexture: {
+      color: "",
       map: "/textures/tiles/floor_tile_1/Tiles107_2K-JPG_Color.jpg",
       normalMap: "/textures/tiles/floor_tile_1/Tiles107_2K-JPG_NormalGL.jpg",
       roughnessMap:
         "/textures/tiles/floor_tile_1/Tiles107_2K-JPG_Roughness.jpg",
     },
     wallTexture: {
-      map: "/textures/walls/wall_tile_6/Concrete048_1K-JPG_Color.jpg",
+      color: "#8E8E8E",
+      // map: "/textures/walls/wall_tile_6/Concrete048_1K-JPG_Color.jpg",
+      map: null,
       normalMap: "/textures/walls/wall_tile_6/Concrete048_1K-JPG_NormalGL.jpg",
       roughnessMap:
         "/textures/walls/wall_tile_6/Concrete048_1K-JPG_Roughness.jpg",
     },
     cabinWallTexture: {
-      map: "/textures/walls/wall_tile_6/Concrete048_1K-JPG_Color.jpg",
+      color: "#8E8E8E",
+      // map: "/textures/walls/wall_tile_6/Concrete048_1K-JPG_Color.jpg",
+      map: null,
       normalMap: "/textures/walls/wall_tile_6/Concrete048_1K-JPG_NormalGL.jpg",
       roughnessMap:
         "/textures/walls/wall_tile_6/Concrete048_1K-JPG_Roughness.jpg",
     },
     ceilingTexture: {
-      map: "/textures/ceilings/ceiling_1/Plastic013A_2K-JPG_Color.jpg",
+      color: "",
+      // map: "/textures/ceilings/ceiling_1/Plastic013A_2K-JPG_Color.jpg",
+      map: "/textures/walls/wall_tile_6/Concrete048_1K-JPG_Color.jpg",
       normalMap: "/textures/ceilings/ceiling_1/Plastic013A_2K-JPG_NormalGL.jpg",
       roughnessMap:
         "/textures/ceilings/ceiling_1/Plastic013A_2K-JPG_Roughness.jpg",
@@ -115,10 +122,14 @@ function BathroomModel({
         );
 
         if (product) {
-          const color = product.displayByColor?.[selected.color]?.color;
+          const selectedProductColor = product.displayByColor?.[selected.color];
+
+          const map = selectedProductColor?.map;
+          const color = selectedProductColor?.color;
 
           result[key] = {
-            map: color || product.map || initialTextures[key].map,
+            map,
+            color,
             normalMap: product.normalMap || initialTextures[key].normalMap,
             roughnessMap:
               product.roughnessMap || initialTextures[key].roughnessMap,
@@ -127,70 +138,72 @@ function BathroomModel({
         }
       }
 
-      // fallback
       result[key] = initialTextures[key];
     });
 
     return result;
   }, [filteredTextures, selectedProducts]);
 
-  const { floorTexture, wallTexture, cabinWallTexture, ceilingTexture } =
-    textures;
+  // Collect all active image URLs into one object for the hook
+  const allTextureUrls = useMemo(() => {
+    const urls = {};
+    Object.keys(textures).forEach((key) => {
+      if (textures[key].map) urls[`${key}_map`] = textures[key].map;
+      if (textures[key].normalMap)
+        urls[`${key}_normal`] = textures[key].normalMap;
+      if (textures[key].roughnessMap)
+        urls[`${key}_rough`] = textures[key].roughnessMap;
+    });
+    return urls;
+  }, [textures]);
 
-  // 1. Load textures (hooks handle the Suspense automatically)
-  const floorMaps = useTexture(floorTexture || initialTextures.floorTexture);
-
-  const wallMaps = useTexture(wallTexture || initialTextures.wallTexture);
-
-  const ceilingMaps = useTexture(
-    ceilingTexture || initialTextures.ceilingTexture,
-  );
-
-  const cabinWallMaps = useTexture(
-    cabinWallTexture || initialTextures.cabinWallTexture,
-  );
+  // This hook handles the suspense and loading of everything at once
+  const loadedMaps = useTexture(allTextureUrls);
 
   const bathroomMaterials = useMemo(() => {
-    // 1. Quick exit if data isn't ready
-    if (!cabinWallMaps.map || !wallMaps.map || !ceilingMaps.map) return null;
+    const prepare = (key) => {
+      const config = textures[key];
 
-    // 2. Helper to process texture sets
-    const prepareMaterial = (textureSet, repeatX = 2, repeatY = 2) => {
-      const maps = {};
+      // FIX: Only get the map from loadedMaps if config says a map should exist
+      const map = config.map ? loadedMaps[`${key}_map`]?.clone() : null;
 
-      // List of map types we want to clone and adjust
-      ["map", "normalMap", "roughnessMap"].forEach((type) => {
-        if (textureSet[type]) {
-          const cloned = textureSet[type].clone();
-          cloned.wrapS = cloned.wrapT = THREE.RepeatWrapping;
-          cloned.repeat.set(repeatX, repeatY);
-          maps[type] = cloned;
+      // const map = loadedMaps[`${key}_map`]?.clone();
+      const normalMap = loadedMaps[`${key}_normal`]?.clone();
+      const roughnessMap = loadedMaps[`${key}_rough`]?.clone();
+
+      // Apply tiling if map exists
+      [map, normalMap, roughnessMap].forEach((m) => {
+        if (m) {
+          m.wrapS = m.wrapT = THREE.RepeatWrapping;
+          m.repeat.set(2, 2);
+          m.needsUpdate = true; // Ensure Three.js updates the change
         }
       });
 
+      // Determine the resolved color:
+      // - If a color is explicitly set (hex), use it
+      // - If a map is used (no color), reset to white so it doesn't tint the map
+      const resolvedColor =
+        config.color && config.color !== "" ? config.color : "#ffffff";
+
       return (
         <meshStandardMaterial
-          map={maps.map}
-          normalMap={maps.normalMap}
-          roughnessMap={maps.roughnessMap}
+          key={`${key}-${config.color || "nocolor"}-${config.map || "nomap"}`} // 👈 Forces remount
+          color={resolvedColor}
+          map={map} // If Hex was used, map is null
+          normalMap={normalMap}
+          roughnessMap={roughnessMap}
         />
       );
     };
 
-    // 3. Define your mappings
-    const materialConfigs = {
-      cabinWallMaterial: cabinWallMaps,
-      wallMaterial: wallMaps,
-      ceilingMaterial: ceilingMaps,
-      // floorMaterial: floorMaps, <-- Adding new ones is now one line
+    return {
+      wallMaterial: prepare("wallTexture"),
+      cabinWallMaterial: prepare("cabinWallTexture"),
+      ceilingMaterial: prepare("ceilingTexture"),
+      floorMaterial: prepare("floorTexture"),
     };
-
-    // 4. Iterate and build the final object
-    return Object.entries(materialConfigs).reduce((acc, [key, mapSet]) => {
-      acc[key] = prepareMaterial(mapSet);
-      return acc;
-    }, {});
-  }, [cabinWallMaps, wallMaps, ceilingMaps]); // Don't forget to add wallMaps to dependencies!
+  }, [loadedMaps, textures]);
 
   const clonedScene = useMemo(() => {
     const clone = scene.clone(true);
@@ -209,7 +222,7 @@ function BathroomModel({
 
   useLayoutEffect(() => {
     // 1. List the names of all objects you want to hide/disable
-    const objectsToHide = ["back_wall", "side_walls", "ceiling"];
+    const objectsToHide = ["back_wall", "side_walls", "ceiling", "floor"];
 
     objectsToHide.forEach((name) => {
       const obj = clonedScene.getObjectByName(name);
@@ -221,38 +234,6 @@ function BathroomModel({
       }
     });
   }, [clonedScene]);
-
-  useLayoutEffect(() => {
-    // Apply material config
-    clonedScene.traverse((child) => {
-      if (child.name === "floor") {
-        child.traverse((mesh) => {
-          if (!mesh.isMesh || !mesh.material) return;
-          const mat = mesh.material;
-
-          if (floorMaps.map) {
-            // 1. Enable Wrapping (Necessary for tiling)
-            floorMaps.map.wrapS = floorMaps.map.wrapT = THREE.RepeatWrapping;
-            // 2. Set the Repeat [X, Y]
-            // Values higher than 1 make the pattern smaller (tiling more)
-            // Values lower than 1 stretch the pattern
-            floorMaps.map.repeat.set(4, 4);
-            mat.map = floorMaps.map;
-            mat.map.flipY = false;
-          }
-          if (floorMaps.roughnessMap) mat.roughnessMap = floorMaps.roughnessMap;
-
-          if (floorMaps.normalMap) {
-            floorMaps.normalMap.wrapS = floorMaps.normalMap.wrapT =
-              THREE.RepeatWrapping;
-            floorMaps.normalMap.repeat.set(4, 4);
-            mat.normalMap = floorMaps.normalMap;
-          }
-          mat.needsUpdate = true;
-        });
-      }
-    });
-  }, [clonedScene, floorMaps]);
 
   return (
     <group>
@@ -277,6 +258,12 @@ function BathroomModel({
           name: "ceiling",
           geometry: nodes.ceiling.geometry,
           material: bathroomMaterials.ceilingMaterial,
+          hasNiches: false,
+        },
+        {
+          name: "floor",
+          geometry: nodes.floor.geometry,
+          material: bathroomMaterials.floorMaterial,
           hasNiches: false,
         },
       ].map((wall) => (
@@ -315,7 +302,7 @@ function Product({
   position = [0, 0, 0],
   rotation = [0, 0, 0],
   scale = [1, 1, 1],
-  color = "#ffffff",
+  color = "",
   roughness = 0.0,
   metalness = 0.0,
   clearcoat = 0.0,
@@ -369,7 +356,8 @@ function Product({
     // Legacy: mirrors
     if (categoryId === "mirrors" && mirrorCoords) {
       return {
-        positions: mirrorCoords,
+        // positions: mirrorCoords,
+        positions: mirrorCoords.map((item) => [position[0], item[1], item[2]]),
         rotation,
         scale,
         shouldFlip: flipped,
@@ -468,20 +456,21 @@ function Product({
   useLayoutEffect(() => {
     instances.forEach(({ clone }) => {
       clone.traverse((child) => {
-        if (!child.isMesh || !child.material) return;
+        if (!child.isMesh || !child.material || child.name.includes("skip"))
+          return;
         const mat = child.material;
         child.castShadow = true;
         child.receiveShadow = true;
 
         if (color) mat.color.set(color || "#EFF2F3").convertSRGBToLinear();
-        mat.roughness = roughness;
-        mat.metalness = metalness;
+        if (roughness) mat.roughness = roughness;
+        if (metalness) mat.metalness = metalness;
 
         if ("clearcoat" in mat) {
           mat.clearcoat = clearcoat;
           mat.clearcoatRoughness = clearcoatRoughness;
         }
-        mat.envMapIntensity = envMapIntensity;
+        if (envMapIntensity) mat.envMapIntensity = envMapIntensity;
         mat.needsUpdate = true;
       });
     });
@@ -530,6 +519,7 @@ function Product({
                 transparent={false}
                 depthWrite={true}
                 side={THREE.DoubleSide}
+                clipBias={0.01}
               />
             </mesh>
           )}
@@ -657,8 +647,6 @@ export default function BathroomScene({
       return { sinkCoords, mirrorCoords, lightCoords };
     } else return null;
 
-    // console.log(sinkCoords);
-
     // if (!sinkCoords) return null;
 
     // // Apply flip to sink coords the same way Product component does it
@@ -781,11 +769,11 @@ export default function BathroomScene({
         <ambientLight intensity={1} />
 
         {/* 2. The Main Light Source */}
-        <InteriorLight intensity={10} />
+        <InteriorLight intensity={7} />
         {/* 3. Secondary Light Source */}
         <InteriorLight
           position={[0.08, 2.96, -1.6]}
-          intensity={5}
+          intensity={3.5}
           castShadow={false}
         />
 
@@ -800,6 +788,8 @@ export default function BathroomScene({
           maxPolarAngle={Math.PI / 1.9} // ~95°
           minAzimuthAngle={-Math.PI / 13.3}
           maxAzimuthAngle={Math.PI / 13.3}
+          // minAzimuthAngle={-16}
+          // maxAzimuthAngle={16}
         />
       </Canvas>
     </div>
