@@ -9,6 +9,7 @@ import {
   Check,
   ChevronDown,
   ChevronUp,
+  SwitchCamera,
 } from "lucide-react";
 import BathroomScene from "./bathroomScene";
 import EmailModal from "./email-modal";
@@ -32,6 +33,9 @@ const ConfigurePage = ({
 }) => {
   const router = useRouter();
   const [isDrawerOpen, setIsDrawerOpen] = useState(true);
+
+  // Add this state at the top of BathroomScene
+  const [mode, setMode] = useState("orbit"); // 'orbit' | 'fpv'
 
   const selectedShape = useMemo(() => {
     return selectedProducts["tubFronts/showerPans"]?.shape ?? null;
@@ -60,6 +64,16 @@ const ConfigurePage = ({
             <span className="hidden sm:inline font-bold">Back</span>
           </Button>
 
+          <Button
+            variant="secondary"
+            className="gap-2 shadow-lg pointer-events-auto backdrop-blur-md bg-white/70 border-none xl:bg-white"
+            onClick={() => {
+              mode === "orbit" ? setMode("fpv") : setMode("orbit");
+            }}
+          >
+            <SwitchCamera className="h-6 w-6" />
+          </Button>
+
           <div className="flex gap-2 pointer-events-auto xl:hidden">
             <Button
               variant="secondary"
@@ -79,6 +93,7 @@ const ConfigurePage = ({
             selectedProducts={selectedProducts}
             categories={categories}
             plumbing={plumbing}
+            mode={mode}
           />
         </div>
 
@@ -93,7 +108,7 @@ const ConfigurePage = ({
         >
           {/* DESKTOP HEADER (Only visible on XL) */}
           <div className="hidden xl:flex items-center justify-between p-4 border-b bg-background sticky top-0 z-10">
-            <h2 className="font-bold text-lg">Configure Design</h2>
+            <h2 className="font-bold text-lg">Design your own 3D Bathroom</h2>
             <div className="flex gap-2">
               <Button
                 variant="outline"

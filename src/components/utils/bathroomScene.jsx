@@ -1,7 +1,7 @@
 "use client";
 
 import * as THREE from "three";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useThree } from "@react-three/fiber";
 import {
   OrbitControls,
   useGLTF,
@@ -11,7 +11,7 @@ import {
   MeshReflectorMaterial,
 } from "@react-three/drei";
 import { EffectComposer, N8AO } from "@react-three/postprocessing";
-import { useLayoutEffect, useMemo, useEffect, useState } from "react";
+import { useLayoutEffect, useMemo, useEffect, useState, useRef } from "react";
 
 import { Geometry, Base, Subtraction } from "@react-three/csg";
 
@@ -580,10 +580,111 @@ function useWindowSize() {
   return size;
 }
 
+function FirstPersonLook({
+  minYaw = -0.5,
+  maxYaw = 0.5,
+  minPitch = -0.3, // look down limit
+  maxPitch = 0.3, // look up limit
+}) {
+  const { camera, gl } = useThree();
+  const isDragging = useRef(false);
+  const prevX = useRef(0);
+  const prevY = useRef(0);
+  const yaw = useRef(0);
+  const pitch = useRef(0);
+
+  useEffect(() => {
+    // Set initial FPV position
+    camera.position.set(0, 1.5, -3); // pull back to standing position
+    camera.rotation.order = "YXZ";
+    camera.rotation.set(0, 0, 0);
+    yaw.current = 0;
+    pitch.current = 0;
+
+    // Reset camera to orbit position on unmount
+    return () => {
+      camera.position.set(0, 3, 2); // pull back and up — adjust to taste
+      camera.rotation.set(0, 0, 0);
+    };
+  }, [camera]);
+
+  useEffect(() => {
+    const canvas = gl.domElement;
+
+    const handleLook = (deltaX, deltaY) => {
+      yaw.current -= deltaX * 0.003;
+      yaw.current = Math.max(-maxYaw, Math.min(maxYaw, yaw.current));
+
+      pitch.current -= deltaY * 0.003;
+      pitch.current = Math.max(minPitch, Math.min(maxPitch, pitch.current));
+
+      // Apply pitch first, then yaw — order matters!
+      camera.rotation.order = "YXZ";
+      camera.rotation.set(pitch.current, yaw.current, 0);
+    };
+
+    const onMouseDown = (e) => {
+      isDragging.current = true;
+      prevX.current = e.clientX;
+      prevY.current = e.clientY;
+    };
+
+    const onMouseMove = (e) => {
+      if (!isDragging.current) return;
+      handleLook(e.clientX - prevX.current, e.clientY - prevY.current);
+      prevX.current = e.clientX;
+      prevY.current = e.clientY;
+    };
+
+    const onMouseUp = () => {
+      isDragging.current = false;
+    };
+
+    const onTouchStart = (e) => {
+      isDragging.current = true;
+      prevX.current = e.touches[0].clientX;
+      prevY.current = e.touches[0].clientY;
+    };
+
+    const onTouchMove = (e) => {
+      if (!isDragging.current) return;
+      handleLook(
+        e.touches[0].clientX - prevX.current,
+        e.touches[0].clientY - prevY.current,
+      );
+      prevX.current = e.touches[0].clientX;
+      prevY.current = e.touches[0].clientY;
+    };
+
+    const onTouchEnd = () => {
+      isDragging.current = false;
+    };
+
+    canvas.addEventListener("mousedown", onMouseDown);
+    window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("mouseup", onMouseUp);
+    canvas.addEventListener("touchstart", onTouchStart);
+    window.addEventListener("touchmove", onTouchMove);
+    window.addEventListener("touchend", onTouchEnd);
+
+    return () => {
+      canvas.removeEventListener("mousedown", onMouseDown);
+      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("mouseup", onMouseUp);
+      canvas.removeEventListener("touchstart", onTouchStart);
+      window.removeEventListener("touchmove", onTouchMove);
+      window.removeEventListener("touchend", onTouchEnd);
+    };
+  }, [camera, gl]);
+
+  return null;
+}
+
 export default function BathroomScene({
   selectedProducts = {},
   categories = [],
   plumbing = "",
+  mode = "orbit",
 }) {
   const { width } = useWindowSize(); // This will trigger a re-render on resize/rotateconst { width } = useWindowSize(); // This will trigger a re-render on resize/rotate
 
@@ -777,20 +878,30 @@ export default function BathroomScene({
           castShadow={false}
         />
 
-        <OrbitControls
-          makeDefault
-          target={[0, 1.5, -4]}
-          // enablePan={true}
-          enablePan={false}
-          minDistance={1}
-          maxDistance={4.5}
-          minPolarAngle={Math.PI / 2.5} // 45°
-          maxPolarAngle={Math.PI / 1.9} // ~95°
-          minAzimuthAngle={-Math.PI / 13.3}
-          maxAzimuthAngle={Math.PI / 13.3}
-          // minAzimuthAngle={-16}
-          // maxAzimuthAngle={16}
-        />
+        {mode === "orbit" ? (
+          <OrbitControls
+            key="orbit"
+            makeDefault
+            target={[0, 1.5, -4]}
+            // enablePan={true}
+            enablePan={false}
+            minDistance={1}
+            maxDistance={4.5}
+            minPolarAngle={Math.PI / 2.5} // 45°
+            maxPolarAngle={Math.PI / 1.9} // ~95°
+            minAzimuthAngle={-Math.PI / 13.3}
+            maxAzimuthAngle={Math.PI / 13.3}
+            // minAzimuthAngle={-16}
+            // maxAzimuthAngle={16}
+          />
+        ) : (
+          <FirstPersonLook
+            minYaw={-2}
+            maxYaw={2} // left/right ~30°
+            minPitch={-0.8}
+            maxPitch={0.8} // up/down ~17°
+          />
+        )}
       </Canvas>
     </div>
   );

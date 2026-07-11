@@ -10,7 +10,7 @@ import allCategories from "@/data/products";
 export default function GLTFPreloader() {
   useEffect(() => {
     preloadGLB("/models/bathroom.glb");
-    preloadFromCategories(allCategories);
+    // preloadFromCategories(allCategories);
   }, []);
 
   return null;
