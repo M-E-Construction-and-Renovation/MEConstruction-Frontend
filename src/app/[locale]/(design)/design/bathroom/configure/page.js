@@ -102,9 +102,6 @@ export default function DesignTool() {
     }
   };
 
-  const handleShareDesign = () =>
-    alert("Design shared! Link copied to clipboard.");
-
   // const categories = allCategories.filter((category) =>
   //   category.shapesAllowed.includes(shape)
   // );
@@ -274,7 +271,6 @@ export default function DesignTool() {
         <ConfigurePage
           handleResetDesign={handleResetDesign}
           handleSaveDesign={handleSaveDesign}
-          handleShareDesign={handleShareDesign}
           categories={allCategories}
           activeTab={activeTab}
           selectedProducts={selectedProducts}

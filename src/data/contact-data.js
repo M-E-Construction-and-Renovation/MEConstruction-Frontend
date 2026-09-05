@@ -16,12 +16,16 @@ export const secondaryEmail = "admin@meconstructionrenovations.com";
 export const socials = [
   {
     id: "facebook",
+    // Icon-only links need an accessible name; without one a screen reader
+    // announces the bare URL.
+    label: "M&E Construction on Facebook",
     icon: FaFacebook,
     link: "https://www.facebook.com/meconstructionrenovations",
     target: "_blank",
   },
   {
     id: "instagram",
+    label: "M&E Construction on Instagram",
     icon: FaInstagram,
     link: "https://www.instagram.com/mandeandme",
     target: "_blank",

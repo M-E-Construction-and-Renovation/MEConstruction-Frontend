@@ -89,11 +89,9 @@ export default function ContactPage() {
       const data = await res.json();
 
       if (!res.ok) {
-        if (data.error?.title?.includes("Member Exists")) {
-          toast.info("This email is already subscribed.");
-        } else {
-          toast.error(data.error?.title ?? "Something went wrong.");
-        }
+        // The API upserts, so an existing subscriber is a success, not an error;
+        // the old "Member Exists" branch was unreachable.
+        toast.error(data.error?.title ?? "Something went wrong.");
         errorReported = true;
         trackEvent(GA_EVENTS.FORM_ERROR, {
           form_id: FORM_ID,

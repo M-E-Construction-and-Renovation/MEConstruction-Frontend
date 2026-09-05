@@ -5,9 +5,16 @@ import supabase from "../../client";
 export const dynamic = "force-dynamic";
 
 export async function GET(request) {
-  // 1. Check the Vercel Cron Secret (Standard Security)
+  // Fail closed. Without this guard, an unset CRON_SECRET makes the expected
+  // header the literal string "Bearer undefined", which anyone can send.
+  const secret = process.env.CRON_SECRET;
+  if (!secret) {
+    console.error("CRON_SECRET is not configured");
+    return new Response("Unauthorized", { status: 401 });
+  }
+
   const authHeader = request.headers.get("authorization");
-  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+  if (authHeader !== `Bearer ${secret}`) {
     return new Response("Unauthorized", { status: 401 });
   }
 

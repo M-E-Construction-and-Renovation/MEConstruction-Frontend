@@ -13,41 +13,61 @@ export function UpperHeader({ locale, upperHeader }) {
   return (
     <div className="bg-primary/95 backdrop-blur-md text-primary-foreground">
       <div className=" mx-auto px-4 md:px-10">
-        <div className="flex items-center justify-between h-12">
-          <div className="flex items-center gap-6">
+        <div className="flex items-center justify-between h-12 gap-2">
+          {/* Sized down at mobile: at 375px the number used to wrap onto two
+              lines inside a 48px bar, and so did the appointment link. */}
+          <div className="flex items-center gap-3 sm:gap-6 min-w-0">
             <ContactLink
               method="phone"
               placement="upper_header"
               href={`tel:${contactNumber.value}`}
-              className="flex items-center gap-2 hover:opacity-80 transition-opacity animate-beat hover:underline text-center"
+              className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm md:text-base whitespace-nowrap hover:opacity-80 transition-opacity hover:underline"
             >
-              <Phone className="h-8 w-8" />
+              <Phone
+                aria-hidden="true"
+                className="h-5 w-5 sm:h-7 sm:w-7 shrink-0"
+              />
               {contactNumber.displayValue}
             </ContactLink>
-            <span>OR</span>
+
+            {/* Decorative separator between two independent actions; it costs
+                more horizontal room than it earns on a phone. */}
+            <span aria-hidden="true" className="hidden sm:inline">
+              OR
+            </span>
+
             <ContactLink
               method="calendly"
               placement="upper_header"
               href={calendly.href}
               target="_blank"
-              className="flex items-center gap-2 hover:opacity-80 transition-opacity animate-beat hover:underline text-center"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm md:text-base whitespace-nowrap hover:opacity-80 transition-opacity hover:underline"
             >
-              <Calendar className="h-8 w-8" />
+              <Calendar
+                aria-hidden="true"
+                className="h-5 w-5 sm:h-7 sm:w-7 shrink-0"
+              />
               {upperHeader.calendlyText}
             </ContactLink>
             <div className="hidden md:flex gap-2 justify-center items-center">
               {socials.map((social) => (
-                <Link key={social.id} href={social.link} target={social.target}>
-                  <Button variant="outline" size="icon">
-                    <social.icon className="h-8 w-8" />
-                  </Button>
-                </Link>
+                <Button key={social.id} variant="outline" size="icon" asChild>
+                  <Link
+                    href={social.link}
+                    target={social.target}
+                    rel="noopener noreferrer"
+                    aria-label={social.label}
+                  >
+                    <social.icon aria-hidden="true" className="h-5 w-5" />
+                  </Link>
+                </Button>
               ))}
             </div>
           </div>
 
           {/* Right: Contact Info */}
-          <div className="flex items-center gap-6 text-sm">
+          <div className="flex items-center gap-2 sm:gap-6 text-sm shrink-0">
             <div className="hidden md:flex">
               <LanguageSwitcher currentLocale={locale} />
             </div>

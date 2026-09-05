@@ -15,6 +15,14 @@ import { GA_EVENTS, trackEvent } from "@/lib/analytics";
 // Long enough that a settled query is reported once, instead of once per keystroke.
 const SEARCH_TRACK_DELAY_MS = 900;
 
+const escapeRegExp = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+// Section ids in the message files already carry their "#", so these join
+// directly. Concatenating with a "/" produced "//#hero" for homepage results —
+// a protocol-relative URL that sent the visitor off the site entirely.
+const resultHref = (item) =>
+  item.path ? `${item.path}${item.id ?? ""}` : null;
+
 const messages = { en, es };
 
 export default function SiteSearch() {
@@ -29,6 +37,7 @@ export default function SiteSearch() {
 
   const translations = messages[locale] || messages.en;
 
+  const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
 
@@ -79,10 +88,19 @@ export default function SiteSearch() {
   }, [query, results.length]);
 
   const highlightText = (text, query) => {
-    if (!query) return text;
-    const regex = new RegExp(`(${query})`, "gi");
-    return text.split(regex).map((part, i) =>
-      regex.test(part) ? (
+    const term = query.trim();
+    if (!term) return text;
+
+    // The search box feeds straight into a RegExp, so anything the user types
+    // has to be escaped first: a single "(" used to throw and take the whole
+    // popover down with it.
+    const pattern = new RegExp(`(${escapeRegExp(term)})`, "i");
+    const lowerTerm = term.toLowerCase();
+
+    // Compared by value rather than with regex.test(), which is stateful under
+    // the /g flag and was skipping every second match.
+    return text.split(pattern).map((part, i) =>
+      part.toLowerCase() === lowerTerm ? (
         <mark
           key={i}
           className="bg-accent/30 text-foreground font-semibold rounded-sm"
@@ -96,14 +114,15 @@ export default function SiteSearch() {
   };
 
   return (
-    <Popover.Root>
+    <Popover.Root open={open} onOpenChange={setOpen}>
       <Popover.Trigger asChild>
         <Button
           variant="ghost"
           size="icon"
+          aria-label={locale === "es" ? "Buscar en el sitio" : "Search the site"}
           className="hover:opacity-80 transition-opacity"
         >
-          <Search className="h-4 w-4" />
+          <Search aria-hidden="true" className="h-4 w-4" />
         </Button>
       </Popover.Trigger>
 
@@ -138,21 +157,23 @@ export default function SiteSearch() {
               </p>
             )}
 
-            {results.map(({ item }, i) => (
-              <div
-                key={i}
-                className="px-2 py-2 rounded-md hover:bg-muted transition-colors"
-              >
-                <Link href={`${item.path}/${item.id}`} target="_blank">
+            {results.map(({ item }, i) => {
+              const href = resultHref(item);
+              if (!href) return null;
+
+              return (
+                <Link
+                  key={i}
+                  href={href}
+                  onClick={() => setOpen(false)}
+                  className="block px-2 py-2 rounded-md hover:bg-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                >
                   <p className="text-sm leading-tight">
                     {highlightText(item.text, query)}
                   </p>
-                  {/* <p className="text-xs text-muted-foreground truncate">
-                  {item.key}
-                </p> */}
                 </Link>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           <Popover.Arrow className="fill-popover" />

@@ -1,108 +1,84 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import supabase from "../../client";
+import { upsertSubscriber } from "@/lib/mailchimp";
+import { checkRateLimit, clientIp, tooManyRequests } from "@/lib/rate-limit";
 
-// 1. Zod schema
+// A saved design is one row per email, and selectedProducts was an unbounded
+// `record(string, any)` — so the route accepted arbitrarily large JSON straight
+// into the client's database. Bounded here instead.
+const MAX_SELECTED_PRODUCTS = 60;
+const MAX_PAYLOAD_BYTES = 128 * 1024;
+
 const saveProjectSchema = z.object({
-  email: z.email("Email not valid"),
-  // shape: z.string().min(1, "Shape is required"),
-  plumbing: z.string().min(1, "Plumbing is required"),
+  email: z.email("Email not valid").max(254),
+  plumbing: z.string().trim().min(1, "Plumbing is required").max(64),
   selectedProducts: z
-    .record(z.string(), z.any())
-    .default({})
+    .record(z.string().max(120), z.any())
     .refine((obj) => Object.keys(obj).length > 0, {
       message: "You must select at least one product",
+    })
+    .refine((obj) => Object.keys(obj).length <= MAX_SELECTED_PRODUCTS, {
+      message: "Too many products selected",
     }),
-  firstName: z.string().optional(),
-  lastName: z.string().optional(),
-  phone: z.string().optional(),
-  zip: z.string().optional(),
+  firstName: z.string().trim().max(100).optional(),
+  lastName: z.string().trim().max(100).optional(),
+  phone: z.string().trim().max(32).optional(),
+  zip: z.string().trim().max(16).optional(),
 });
 
-// 2. Mailchimp subscription helper
-async function subscribeToMailchimp({
-  email,
-  firstName,
-  lastName,
-  phone,
-  zip,
-}) {
-  const data = {
-    email_address: email,
-    status_if_new: "subscribed",
-    status: "subscribed",
-    merge_fields: {
-      FNAME: firstName || "",
-      LNAME: lastName || "",
-      PHONE: phone || "",
-      ZIP: zip || "",
-    },
-  };
-
-  const subscriberHash = Buffer.from(email.trim().toLowerCase()).toString(
-    "base64",
-  ); // Mailchimp expects MD5 hash in v3, adjust if needed
-  const subscriberUrl = `https://${process.env.MAILCHIMP_SERVER_PREFIX}.api.mailchimp.com/3.0/lists/${process.env.MAILCHIMP_LIST_ID}/members/${subscriberHash}`;
-
-  const response = await fetch(subscriberUrl, {
-    method: "PUT",
-    headers: {
-      Authorization: `apikey ${process.env.MAILCHIMP_API_KEY}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
-
-  const result = await response.json();
-  if (!response.ok) {
-    console.error("Mailchimp error:", result);
-    return { success: false, result };
-  }
-  return { success: true, result };
-}
-
-// 3. POST endpoint
 export async function POST(req) {
-  try {
-    const body = await req.json();
+  const { allowed, retryAfter } = checkRateLimit(`save-project:${clientIp(req)}`, {
+    limit: 20,
+    windowMs: 60_000,
+  });
+  if (!allowed) return tooManyRequests(retryAfter);
 
-    // Validate input
-    const parsed = saveProjectSchema.safeParse(body);
+  try {
+    const raw = await req.text();
+
+    if (raw.length > MAX_PAYLOAD_BYTES) {
+      return NextResponse.json(
+        { success: false, message: "Design is too large to save." },
+        { status: 413 }
+      );
+    }
+
+    const parsed = saveProjectSchema.safeParse(JSON.parse(raw));
+
     if (!parsed.success) {
-      const errorTree = z.treeifyError(parsed.error);
-      const formattedErrors = Object.entries(errorTree.properties || {})
-        .flatMap(([_, value]) => value.errors || [])
-        .map((msg) => ({ message: msg }));
+      const formattedErrors = parsed.error.issues.map((issue) => ({
+        message: issue.message,
+      }));
 
       return NextResponse.json(
         { success: false, errors: formattedErrors },
-        { status: 400 },
+        { status: 400 }
       );
     }
 
     const validatedData = parsed.data;
 
-    // 1️⃣ Save or update project in Supabase
     const { data, error } = await supabase
       .from("projects")
       .upsert(validatedData, { onConflict: "email" })
-      .select();
+      .select("email, plumbing, selectedProducts");
+
     if (error) throw error;
 
-    // 2️⃣ Subscribe user to Mailchimp
-    const mailchimpResult = await subscribeToMailchimp(validatedData);
-    if (!mailchimpResult.success) {
-      console.warn("Mailchimp subscription failed", mailchimpResult.result);
-      // We can still return success for the project save, just warn
+    // A failed subscribe must not fail the save — the visitor's design is the
+    // thing they asked us to keep.
+    const mailchimp = await upsertSubscriber(validatedData);
+    if (!mailchimp.ok) {
+      console.warn("Mailchimp subscription failed during design save");
     }
 
-    return NextResponse.json({ success: true, project: data[0] });
+    return NextResponse.json({ success: true, project: data?.[0] ?? null });
   } catch (error) {
-    console.error(error);
+    console.error("save-project route error:", error);
     return NextResponse.json(
-      // { success: false, message: error.message || "Something went wrong" },
       { success: false, message: "Failed to save. Something went wrong" },
-      { status: 500 },
+      { status: 500 }
     );
   }
 }

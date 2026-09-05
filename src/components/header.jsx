@@ -1,15 +1,9 @@
 "use client";
 
 import { Button } from "./ui/button";
-import {
-  Menu,
-  Phone,
-  MapPin,
-  ChevronDown,
-  ChevronRight,
-  X,
-} from "lucide-react";
-import { useState } from "react";
+import { Menu, ChevronDown, ChevronRight, X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { openModal } from "@/store/quoteModalSlice";
 import {
@@ -24,39 +18,32 @@ import { socials } from "@/data/contact-data";
 
 import LanguageSwitcher from "./utils/language-switcher";
 
+// Single source of truth for both the desktop dropdowns and the mobile
+// accordion. They used to be written out twice, which is how the design tool
+// ended up with two different labels and how the mobile menu drifted a
+// breakpoint away from the button that opens it.
 export const desktopNavItems = [
   {
     id: "about",
     label: "About",
-    items: aboutMenuItems, // already imported in your header
+    items: aboutMenuItems,
     images: [
-      {
-        src: "/images/modern-bathroom-renovation.png",
-        alt: "About",
-      },
-      {
-        src: "/images/bathroom-installation-team.jpg",
-        alt: "Our Team",
-      },
+      { src: "/images/modern-bathroom-renovation.png", alt: "About" },
+      { src: "/images/bathroom-installation-team.jpg", alt: "Our Team" },
     ],
   },
   {
     id: "design",
     label: "Try Our Design Tool",
+    href: "/design",
   },
   {
     id: "solutions",
     label: "Solutions",
     items: solutionsMenuItems,
     images: [
-      {
-        src: "/images/luxury-bathtub.png",
-        alt: "Bathtub",
-      },
-      {
-        src: "/images/walk-in-shower.jpg",
-        alt: "Shower",
-      },
+      { src: "/images/luxury-bathtub.png", alt: "Bathtub" },
+      { src: "/images/walk-in-shower.jpg", alt: "Shower" },
     ],
   },
   {
@@ -64,14 +51,8 @@ export const desktopNavItems = [
     label: "Inspiration",
     items: inspirationMenuItems,
     images: [
-      {
-        src: "/images/bathroom-design-inspiration.jpg",
-        alt: "Design",
-      },
-      {
-        src: "/images/modern-bathroom-colors.jpg",
-        alt: "Colors",
-      },
+      { src: "/images/bathroom-design-inspiration.jpg", alt: "Design" },
+      { src: "/images/modern-bathroom-colors.jpg", alt: "Colors" },
     ],
   },
   {
@@ -79,151 +60,205 @@ export const desktopNavItems = [
     label: "Resources",
     items: resourcesMenuItems,
     images: [
-      {
-        src: "/images/bathroom-guide-book.jpg",
-        alt: "Guide",
-      },
-      {
-        src: "/images/bathroom-consultation.jpg",
-        alt: "Consultation",
-      },
+      { src: "/images/bathroom-guide-book.jpg", alt: "Guide" },
+      { src: "/images/bathroom-consultation.jpg", alt: "Consultation" },
     ],
   },
 ];
 
+const focusRing =
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-primary rounded-sm";
+
 export function Header({ locale }) {
   const dispatch = useDispatch();
+  const pathname = usePathname();
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [expandedMobileMenu, setExpandedMobileMenu] = useState(null);
 
+  const navRef = useRef(null);
+
+  // Safety net for anything that navigates without going through closeMobileMenu
+  // — a locale switch, a browser back button, a link added later.
+  useEffect(() => {
+    setMobileMenuOpen(false);
+    setActiveDropdown(null);
+    setExpandedMobileMenu(null);
+  }, [pathname]);
+
+  // Escape closes an open dropdown, and a click outside the nav dismisses it.
+  // Without these the only way to close a hover-opened panel is to find it with
+  // the pointer again, which keyboard users cannot do at all.
+  useEffect(() => {
+    if (!activeDropdown) return;
+
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") setActiveDropdown(null);
+    };
+    const onPointerDown = (event) => {
+      if (!navRef.current?.contains(event.target)) setActiveDropdown(null);
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    document.addEventListener("pointerdown", onPointerDown);
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.removeEventListener("pointerdown", onPointerDown);
+    };
+  }, [activeDropdown]);
+
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false);
+    setExpandedMobileMenu(null);
+  };
+
   return (
     <header className="bg-gradient-to-b from-primary/90 to-primary/80 shadow-sm text-primary-foreground">
-      {/* <header className="shadow-sm"> */}
-      {/* Main Navigation */}
       <div className="backdrop-blur-md border-b-primary">
         <div className="mx-auto px-4 md:px-10">
-          <div className="flex h-22 sm:h-26 items-center justify-between">
+          <div className="flex h-22 sm:h-26 items-center justify-between gap-4">
             {/* Logo */}
-            <div className="flex items-center">
-              <Link
-                href="/"
-                className="text-4xl font-bold text-center flex flex-col text-accent"
-              >
-                <Image
-                  src="/images/transparent-logo2.png"
-                  alt="M&E Construction & Renovation LLC Logo"
-                  width={9999}
-                  height={9999}
-                  priority
-                  className="h-20 sm:h-24 w-auto object-contain"
-                />
-              </Link>
-            </div>
+            <Link
+              href="/"
+              aria-label="M&E Construction and Renovations, home"
+              className={`flex items-center ${focusRing}`}
+            >
+              <Image
+                src="/images/transparent-logo2.png"
+                alt="M&E Construction & Renovation LLC"
+                width={785}
+                height={318}
+                priority
+                className="h-20 sm:h-24 w-auto object-contain"
+              />
+            </Link>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-8 h-full">
-              {/* About Dropdown */}
+            {/* Desktop navigation */}
+            <nav
+              ref={navRef}
+              aria-label="Main"
+              className="hidden lg:flex items-center gap-6 xl:gap-8 h-full"
+            >
               {desktopNavItems.map((nav) => {
-                const isDesignPage = nav.id === "design";
-
-                return isDesignPage ? (
-                  <div key={nav.id} className="relative">
-                    <Link href="/design" target="_blank">
-                      <button className="flex items-center gap-1 text-sm md:text-lg font-medium hover:text-accent transition-colors py-6 hover:cursor-pointer">
-                        {nav.label}
-                      </button>
+                if (nav.href) {
+                  return (
+                    <Link
+                      key={nav.id}
+                      href={nav.href}
+                      className={`flex items-center text-base xl:text-lg font-medium hover:text-accent transition-colors py-6 ${focusRing}`}
+                    >
+                      {nav.label}
                     </Link>
-                  </div>
-                ) : (
+                  );
+                }
+
+                const isOpen = activeDropdown === nav.id;
+                const panelId = `nav-panel-${nav.id}`;
+
+                return (
                   <div
                     key={nav.id}
                     className="relative h-full"
                     onMouseEnter={() => setActiveDropdown(nav.id)}
                     onMouseLeave={() => setActiveDropdown(null)}
                   >
-                    <button className="h-full flex items-center gap-1 text-sm md:text-lg font-medium hover:text-accent transition-colors py-6">
+                    <button
+                      type="button"
+                      aria-expanded={isOpen}
+                      aria-controls={panelId}
+                      onClick={() => setActiveDropdown(isOpen ? null : nav.id)}
+                      onFocus={() => setActiveDropdown(nav.id)}
+                      className={`h-full flex items-center gap-1 text-base xl:text-lg font-medium hover:text-accent transition-colors py-6 ${focusRing}`}
+                    >
                       {nav.label}
-                      <ChevronDown className="h-5 w-5" />
+                      <ChevronDown
+                        aria-hidden="true"
+                        className={`h-5 w-5 transition-transform duration-200 ${
+                          isOpen ? "rotate-180" : ""
+                        }`}
+                      />
                     </button>
 
-                    {/* Dropdown Menu */}
-                    <div
-                      className={`fixed left-0 right-0 pt-0 transition-all duration-300 ease-in-out ${
-                        activeDropdown === nav.id
-                          ? "opacity-100 visible translate-y-0"
-                          : "opacity-0 invisible -translate-y-0 pointer-events-none"
-                      }`}
-                    >
-                      <div className="bg-background border-b shadow-lg">
-                        <div className="container mx-auto px-4 py-8">
-                          <div className="flex gap-8 max-w-6xl mx-auto">
-                            {/* Left Menu Items */}
-                            <div className="flex-1 grid grid-cols-1 gap-x-8 gap-y-4">
-                              {nav.items.map((item) => (
-                                <Link
-                                  key={item.label}
-                                  href={item.href}
-                                  className="text-base text-primary hover:underline transition-all duration-200 py-2 hover:translate-x-1"
-                                >
-                                  <span className="font-bold text-lg">
-                                    {item.label}
-                                  </span>
-                                  : {item.detail}
-                                </Link>
-                              ))}
-                            </div>
+                    {/* Mounted only while open. Previously all four panels sat
+                        in the DOM permanently, which meant every page shipped
+                        four dropdowns' worth of links and images, and a
+                        half-finished opacity transition could leave one
+                        translucent over the hero. */}
+                    {isOpen && (
+                      <div
+                        id={panelId}
+                        className="fixed left-0 right-0 animate-dropdown"
+                      >
+                        <div className="bg-background border-b shadow-lg">
+                          <div className="container mx-auto px-4 py-8">
+                            <div className="flex gap-8 max-w-6xl mx-auto">
+                              <ul className="flex-1 grid grid-cols-1 gap-x-8 gap-y-2">
+                                {nav.items.map((item) => (
+                                  <li key={item.label}>
+                                    <Link
+                                      href={item.href}
+                                      onClick={() => setActiveDropdown(null)}
+                                      className="block text-base text-primary hover:underline transition-all duration-200 py-2 hover:translate-x-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
+                                    >
+                                      <span className="font-bold text-lg">
+                                        {item.label}
+                                      </span>
+                                      : {item.detail}
+                                    </Link>
+                                  </li>
+                                ))}
+                              </ul>
 
-                            {/* Right Images */}
-                            <div className="flex gap-4">
-                              {nav.images.map((img, index) => (
-                                <div
-                                  key={index}
-                                  className="w-64 h-64 bg-muted rounded-lg overflow-hidden flex-shrink-0"
-                                >
-                                  <Image
-                                    src={img.src}
-                                    alt={img.alt}
-                                    width={300}
-                                    height={300}
-                                    priority
-                                    className="object-cover w-full h-full"
-                                  />
-                                </div>
-                              ))}
+                              <div className="hidden xl:flex gap-4">
+                                {nav.images.map((img) => (
+                                  <div
+                                    key={img.src}
+                                    className="w-64 h-64 bg-muted rounded-lg overflow-hidden flex-shrink-0"
+                                  >
+                                    <Image
+                                      src={img.src}
+                                      alt=""
+                                      width={300}
+                                      height={300}
+                                      loading="lazy"
+                                      className="object-cover w-full h-full"
+                                    />
+                                  </div>
+                                ))}
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
+                    )}
                   </div>
                 );
               })}
             </nav>
 
-            {/* CTA Button */}
-            <div className="hidden xl:flex">
-              <Button
-                onClick={() => dispatch(openModal("header_desktop"))}
-                size="lg"
-                className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold animate-beat"
-              >
-                GET A FREE QUOTE
-              </Button>
-            </div>
+            {/* Desktop CTA — appears with the desktop nav, not 256px later */}
+            <Button
+              onClick={() => dispatch(openModal("header_desktop"))}
+              className="hidden lg:inline-flex bg-accent hover:bg-accent/90 text-accent-foreground font-semibold animate-beat px-4 xl:px-6 h-11 text-sm xl:text-base whitespace-nowrap"
+            >
+              GET A FREE QUOTE
+            </Button>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile menu button */}
             <Button
               variant="ghost"
               size="icon"
               className="lg:hidden"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-menu"
+              onClick={() => setMobileMenuOpen((open) => !open)}
             >
               {mobileMenuOpen ? (
-                <X className="h-6 w-6" />
+                <X aria-hidden="true" className="h-6 w-6" />
               ) : (
-                <Menu className="h-6 w-6" />
+                <Menu aria-hidden="true" className="h-6 w-6" />
               )}
             </Button>
           </div>
@@ -231,171 +266,100 @@ export function Header({ locale }) {
       </div>
 
       {mobileMenuOpen && (
-        <div className="border-t xl:hidden bg-background max-h-[calc(100vh-8rem)] overflow-y-auto text-primary">
+        <div
+          id="mobile-menu"
+          className="border-t lg:hidden bg-background max-h-[calc(100dvh-8.5rem)] overflow-y-auto text-primary"
+        >
           <div className="container mx-auto px-4 py-4">
-            <nav className="flex flex-col gap-2">
-              {/* About with Submenu */}
-              <div className="border-b pb-2">
-                <button
-                  onClick={() =>
-                    setExpandedMobileMenu(
-                      expandedMobileMenu === "about" ? null : "about",
-                    )
-                  }
-                  className="flex items-center justify-between w-full text-sm font-medium transition-colors py-2"
-                >
-                  About
-                  <ChevronRight
-                    className={`h-4 w-4 transition-transform ${
-                      expandedMobileMenu === "about" ? "rotate-90" : ""
-                    }`}
-                  />
-                </button>
-                {expandedMobileMenu === "about" && (
-                  <div className="pl-4 mt-2 space-y-2">
-                    {aboutMenuItems.map((item) => (
-                      <Link
-                        key={item.label}
-                        href={item.href}
-                        className="block text-sm text-muted-foreground py-1"
-                      >
-                        {item.label}
-                      </Link>
-                    ))}
+            <nav aria-label="Mobile" className="flex flex-col gap-2">
+              {desktopNavItems.map((nav) => {
+                if (nav.href) {
+                  return (
+                    <Link
+                      key={nav.id}
+                      href={nav.href}
+                      onClick={closeMobileMenu}
+                      className="flex items-center min-h-11 text-base font-medium transition-colors py-2 border-b"
+                    >
+                      {nav.label}
+                    </Link>
+                  );
+                }
+
+                const isExpanded = expandedMobileMenu === nav.id;
+                const sectionId = `mobile-section-${nav.id}`;
+
+                return (
+                  <div key={nav.id} className="border-b pb-2">
+                    <button
+                      type="button"
+                      aria-expanded={isExpanded}
+                      aria-controls={sectionId}
+                      onClick={() =>
+                        setExpandedMobileMenu(isExpanded ? null : nav.id)
+                      }
+                      className="flex items-center justify-between w-full min-h-11 text-base font-medium transition-colors py-2"
+                    >
+                      {nav.label}
+                      <ChevronRight
+                        aria-hidden="true"
+                        className={`h-4 w-4 transition-transform duration-200 ${
+                          isExpanded ? "rotate-90" : ""
+                        }`}
+                      />
+                    </button>
+
+                    {isExpanded && (
+                      <ul id={sectionId} className="pl-4 mt-1 space-y-1">
+                        {nav.items.map((item) => (
+                          <li key={item.label}>
+                            <Link
+                              href={item.href}
+                              onClick={closeMobileMenu}
+                              className="flex items-center min-h-11 text-sm text-muted-foreground py-2"
+                            >
+                              {item.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
-                )}
-              </div>
+                );
+              })}
 
-              {/* Design Your Own Bath */}
-              <Link
-                href="/design"
-                className="text-sm font-medium transition-colors py-2 border-b"
-              >
-                Design Your Own Bath
-              </Link>
-
-              {/* Solutions with Submenu */}
-              <div className="border-b pb-2">
-                <button
-                  onClick={() =>
-                    setExpandedMobileMenu(
-                      expandedMobileMenu === "solutions" ? null : "solutions",
-                    )
-                  }
-                  className="flex items-center justify-between w-full text-sm font-medium transition-colors py-2"
-                >
-                  Solutions
-                  <ChevronRight
-                    className={`h-4 w-4 transition-transform ${
-                      expandedMobileMenu === "solutions" ? "rotate-90" : ""
-                    }`}
-                  />
-                </button>
-                {expandedMobileMenu === "solutions" && (
-                  <div className="pl-4 mt-2 space-y-2">
-                    {solutionsMenuItems.map((item) => (
-                      <Link
-                        key={item.label}
-                        href={item.href}
-                        className="block text-sm text-muted-foreground py-1"
-                      >
-                        {item.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              {/* Inspiration with Submenu */}
-              <div className="border-b pb-2">
-                <button
-                  onClick={() =>
-                    setExpandedMobileMenu(
-                      expandedMobileMenu === "inspiration"
-                        ? null
-                        : "inspiration",
-                    )
-                  }
-                  className="flex items-center justify-between w-full text-sm font-medium transition-colors py-2"
-                >
-                  Inspiration
-                  <ChevronRight
-                    className={`h-4 w-4 transition-transform ${
-                      expandedMobileMenu === "inspiration" ? "rotate-90" : ""
-                    }`}
-                  />
-                </button>
-                {expandedMobileMenu === "inspiration" && (
-                  <div className="pl-4 mt-2 space-y-2">
-                    {inspirationMenuItems.map((item) => (
-                      <Link
-                        key={item.label}
-                        href={item.href}
-                        className="block text-sm text-muted-foreground py-1"
-                      >
-                        {item.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              {/* Resources with Submenu */}
-              <div className="border-b pb-2">
-                <button
-                  onClick={() =>
-                    setExpandedMobileMenu(
-                      expandedMobileMenu === "resources" ? null : "resources",
-                    )
-                  }
-                  className="flex items-center justify-between w-full text-sm font-medium transition-colors py-2"
-                >
-                  Resources
-                  <ChevronRight
-                    className={`h-4 w-4 transition-transform ${
-                      expandedMobileMenu === "resources" ? "rotate-90" : ""
-                    }`}
-                  />
-                </button>
-                {expandedMobileMenu === "resources" && (
-                  <div className="pl-4 mt-2 space-y-2">
-                    {resourcesMenuItems.map((item) => (
-                      <Link
-                        key={item.label}
-                        href={item.href}
-                        className="block text-sm text-muted-foreground py-1"
-                      >
-                        {item.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              {/* Mobile CTA Button */}
               <Button
                 size="lg"
                 className="bg-accent hover:bg-accent/90 text-accent-foreground mt-4 w-full"
-                onClick={() => dispatch(openModal("header_mobile"))}
+                onClick={() => {
+                  closeMobileMenu();
+                  dispatch(openModal("header_mobile"));
+                }}
               >
                 GET A FREE QUOTE
               </Button>
 
-              {/* Mobile Contact Info */}
               <div className="flex flex-col gap-3 mt-4 pt-4 border-t md:hidden">
                 <LanguageSwitcher currentLocale={locale} />
 
                 <div className="flex gap-2 justify-center">
                   {socials.map((social) => (
-                    <Link
+                    <Button
                       key={social.id}
-                      href={social.link}
-                      target={social.target}
+                      variant="outline"
+                      size="icon"
+                      asChild
                     >
-                      <Button variant="outline" size="icon">
-                        <social.icon className="h-8 w-8" />
-                      </Button>
-                    </Link>
+                      <Link
+                        href={social.link}
+                        target={social.target}
+                        rel="noopener noreferrer"
+                        aria-label={social.label}
+                        onClick={closeMobileMenu}
+                      >
+                        <social.icon aria-hidden="true" className="h-8 w-8" />
+                      </Link>
+                    </Button>
                   ))}
                 </div>
               </div>

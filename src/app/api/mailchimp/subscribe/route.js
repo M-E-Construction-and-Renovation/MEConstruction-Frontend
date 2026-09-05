@@ -1,87 +1,46 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
+import { upsertSubscriber } from "@/lib/mailchimp";
+import { checkRateLimit, clientIp, tooManyRequests } from "@/lib/rate-limit";
 
-// Define schema for input validation
+// Lengths are capped so the route cannot be used to push arbitrary payloads into
+// the client's Mailchimp audience.
 const FormSchema = z.object({
-  firstName: z.string().optional(),
-  lastName: z.string().optional(),
-  email: z.email("Valid email is required"),
-  phone: z.string().optional(),
-  zip: z.string().optional(),
-  //   recaptchaToken: z.string().optional(),
+  firstName: z.string().trim().max(100).optional(),
+  lastName: z.string().trim().max(100).optional(),
+  email: z.email("Valid email is required").max(254),
+  phone: z.string().trim().max(32).optional(),
+  zip: z.string().trim().max(16).optional(),
 });
 
-// Helper: Verify reCAPTCHA --STAND BY
-async function verifyRecaptcha(token) {
-  if (!token) return false;
-  try {
-    const res = await fetch("https://www.google.com/recaptcha/api/siteverify", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${token}`,
-    });
-    const data = await res.json();
-    return data.success && data.score >= 0.5;
-  } catch {
-    return false;
-  }
-}
-
 export async function POST(req) {
+  // This endpoint writes to the client's audience, so it is the obvious target
+  // for list poisoning. Five submissions a minute is far above what a real
+  // visitor filling in a quote form ever needs.
+  const { allowed, retryAfter } = checkRateLimit(
+    `subscribe:${clientIp(req)}`,
+    { limit: 5, windowMs: 60_000 }
+  );
+  if (!allowed) return tooManyRequests(retryAfter);
+
   try {
     const body = await req.json();
 
-    // Validate input
     const parsed = FormSchema.safeParse(body);
     if (!parsed.success) {
-      const errorTree = z.treeifyError(parsed.error);
-
-      return NextResponse.json({ error: errorTree }, { status: 400 });
+      return NextResponse.json(
+        { error: { title: "Please check the details you entered." } },
+        { status: 400 }
+      );
     }
 
-    const { email, firstName, lastName, phone, zip } = parsed.data;
+    const result = await upsertSubscriber(parsed.data);
 
-    // Verify reCAPTCHA --STAND BY
-    // const isHuman = await verifyRecaptcha(recaptchaToken);
-    // if (!isHuman) {
-    //   return NextResponse.json({ error: "Failed human verification" }, { status: 400 });
-    // }
-
-    // Prepare Mailchimp payload
-    const data = {
-      email_address: email,
-      status_if_new: "subscribed", // handles duplicates gracefully
-      status: "subscribed",
-      merge_fields: {
-        FNAME: firstName || "",
-        LNAME: lastName || "",
-        PHONE: phone || "",
-        ZIP: zip || "",
-      },
-    };
-
-    // Upsert subscriber (add/update if exists)
-    const subscriberHash = email.trim().toLowerCase();
-    const subscriberUrl = `https://${
-      process.env.MAILCHIMP_SERVER_PREFIX
-    }.api.mailchimp.com/3.0/lists/${
-      process.env.MAILCHIMP_LIST_ID
-    }/members/${btoa(subscriberHash)}`;
-
-    const response = await fetch(subscriberUrl, {
-      method: "PUT", // PUT lets us add or update existing member
-      headers: {
-        Authorization: `apikey ${process.env.MAILCHIMP_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-
-    const result = await response.json();
-
-    if (!response.ok) {
-      console.error("Mailchimp error:", result);
-      return NextResponse.json({ error: result }, { status: response.status });
+    if (!result.ok) {
+      return NextResponse.json(
+        { error: { title: "We could not save your details. Please try again." } },
+        { status: 502 }
+      );
     }
 
     return NextResponse.json(
@@ -89,9 +48,9 @@ export async function POST(req) {
       { status: 200 }
     );
   } catch (err) {
-    console.error(err);
+    console.error("subscribe route error:", err);
     return NextResponse.json(
-      { error: "Internal server error" },
+      { error: { title: "Something went wrong. Please try again." } },
       { status: 500 }
     );
   }
