@@ -1,14 +1,24 @@
 "use client";
 import * as Dialog from "@radix-ui/react-dialog";
 import { X } from "lucide-react";
+import { useEffect } from "react";
 import QuoteForm from "./quote-form";
 import { useSelector, useDispatch } from "react-redux";
 import { closeModal } from "@/store/quoteModalSlice";
+import { GA_EVENTS, trackEvent } from "@/lib/analytics";
 
 export default function QuoteModal() {
   const dispatch = useDispatch();
 
   const isOpen = useSelector((state) => state.modal.isOpen);
+  const source = useSelector((state) => state.modal.source);
+
+  // Tracked here rather than at each of the ~17 CTAs, so the funnel cannot drift
+  // out of sync when a new CTA is added.
+  useEffect(() => {
+    if (!isOpen) return;
+    trackEvent(GA_EVENTS.QUOTE_MODAL_OPEN, { cta_source: source });
+  }, [isOpen, source]);
 
   return (
     <Dialog.Root open={isOpen} onOpenChange={() => dispatch(closeModal())}>

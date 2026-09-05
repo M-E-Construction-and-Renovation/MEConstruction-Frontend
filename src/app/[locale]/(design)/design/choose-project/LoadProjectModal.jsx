@@ -4,6 +4,7 @@ import * as React from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import { GA_EVENTS, trackEvent } from "@/lib/analytics";
 
 export default function LoadProjectModal({ open, setOpen }) {
   const router = useRouter();
@@ -37,6 +38,8 @@ export default function LoadProjectModal({ open, setOpen }) {
         setIsLoading(false);
         return;
       }
+
+      trackEvent(GA_EVENTS.DESIGN_PROJECT_LOAD);
 
       const project = data.projects;
       // const bathroomType = [

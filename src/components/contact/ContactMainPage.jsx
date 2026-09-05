@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Button } from "../ui/button";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
@@ -14,9 +14,17 @@ import {
   contactNumber,
   socials,
 } from "@/data/contact-data";
+import { GA_EVENTS, trackEvent } from "@/lib/analytics";
+import ContactLink from "../analytics/contact-link";
+
+const FORM_ID = "contact_page";
 
 export default function ContactPage() {
   const { toast } = useToast();
+
+  // Same manual instrumentation as the quote modal: this form also submits with
+  // preventDefault + fetch, which enhanced measurement cannot see.
+  const hasStarted = useRef(false);
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -29,7 +37,15 @@ export default function ContactPage() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const markFormStarted = () => {
+    if (hasStarted.current) return;
+    hasStarted.current = true;
+    trackEvent(GA_EVENTS.FORM_START, { form_id: FORM_ID });
+  };
+
   const handleInputChange = (e) => {
+    markFormStarted();
+
     const { name, value, type, checked } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -38,6 +54,8 @@ export default function ContactPage() {
   };
 
   const handlePhoneChange = (value) => {
+    markFormStarted();
+
     setFormData((prev) => ({
       ...prev,
       phone: value || "",
@@ -49,10 +67,15 @@ export default function ContactPage() {
 
     if (!formData.consent) {
       toast.error("Please accept the consent notice to continue.");
+      trackEvent(GA_EVENTS.FORM_ERROR, {
+        form_id: FORM_ID,
+        error_type: "consent_missing",
+      });
       return;
     }
 
     setIsSubmitting(true);
+    let errorReported = false;
 
     try {
       const { consent, ...payload } = formData;
@@ -71,10 +94,22 @@ export default function ContactPage() {
         } else {
           toast.error(data.error?.title ?? "Something went wrong.");
         }
+        errorReported = true;
+        trackEvent(GA_EVENTS.FORM_ERROR, {
+          form_id: FORM_ID,
+          error_type: "submit_rejected",
+          status: res.status,
+        });
+
         throw new Error(data.error?.title ?? "Something went wrong.");
       }
 
       toast.success("Thank you! You're successfully subscribed.");
+
+      trackEvent(GA_EVENTS.GENERATE_LEAD, {
+        form_id: FORM_ID,
+        method: "contact_page",
+      });
 
       setFormData({
         firstName: "",
@@ -84,8 +119,15 @@ export default function ContactPage() {
         zip: "",
         consent: false,
       });
+      hasStarted.current = false;
     } catch (error) {
       console.log(error);
+      if (!errorReported) {
+        trackEvent(GA_EVENTS.FORM_ERROR, {
+          form_id: FORM_ID,
+          error_type: "network_error",
+        });
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -117,12 +159,14 @@ export default function ContactPage() {
             <MailIcon className="w-10 h-10 text-primary" />
             <div>
               <h3 className="text-lg font-semibold">Email Us Directly!</h3>
-              <a
+              <ContactLink
+                method="email"
+                placement="contact_page_primary"
                 href={`mailto:${primaryEmail}`}
                 className="text-primary underline hover:text-primary/80"
               >
                 {primaryEmail}
-              </a>
+              </ContactLink>
             </div>
           </div>
 
@@ -132,12 +176,14 @@ export default function ContactPage() {
               <h3 className="text-lg font-semibold">
                 Email Us Through Our Admins!
               </h3>
-              <a
+              <ContactLink
+                method="email"
+                placement="contact_page_admin"
                 href={`mailto:${secondaryEmail}`}
                 className="text-primary underline hover:text-primary/80"
               >
                 {secondaryEmail}
-              </a>
+              </ContactLink>
             </div>
           </div>
 
@@ -146,12 +192,14 @@ export default function ContactPage() {
             <PhoneIcon className="w-10 h-10 text-accent" />
             <div>
               <h3 className="text-lg font-semibold">Call Us Today!</h3>
-              <a
+              <ContactLink
+                method="phone"
+                placement="contact_page"
                 href={`tel:${contactNumber.value}`}
                 className="text-accent underline hover:text-accent/80"
               >
                 {contactNumber.displayValue}
-              </a>
+              </ContactLink>
             </div>
           </div>
 

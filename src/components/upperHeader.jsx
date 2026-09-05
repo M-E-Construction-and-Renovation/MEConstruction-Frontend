@@ -7,6 +7,7 @@ import Link from "next/link";
 import { Button } from "./ui/button";
 import { socials } from "@/data/contact-data";
 import { calendly } from "@/data/contact-data";
+import ContactLink from "./analytics/contact-link";
 
 export function UpperHeader({ locale, upperHeader }) {
   return (
@@ -14,22 +15,26 @@ export function UpperHeader({ locale, upperHeader }) {
       <div className=" mx-auto px-4 md:px-10">
         <div className="flex items-center justify-between h-12">
           <div className="flex items-center gap-6">
-            <a
+            <ContactLink
+              method="phone"
+              placement="upper_header"
               href={`tel:${contactNumber.value}`}
               className="flex items-center gap-2 hover:opacity-80 transition-opacity animate-beat hover:underline text-center"
             >
               <Phone className="h-8 w-8" />
               {contactNumber.displayValue}
-            </a>
+            </ContactLink>
             <span>OR</span>
-            <a
+            <ContactLink
+              method="calendly"
+              placement="upper_header"
               href={calendly.href}
               target="_blank"
               className="flex items-center gap-2 hover:opacity-80 transition-opacity animate-beat hover:underline text-center"
             >
               <Calendar className="h-8 w-8" />
               {upperHeader.calendlyText}
-            </a>
+            </ContactLink>
             <div className="hidden md:flex gap-2 justify-center items-center">
               {socials.map((social) => (
                 <Link key={social.id} href={social.link} target={social.target}>

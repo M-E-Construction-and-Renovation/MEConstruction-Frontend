@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useTransition } from "react";
 import { Globe, ChevronDown } from "lucide-react";
 import { Button } from "../ui/button";
+import { GA_EVENTS, trackEvent } from "@/lib/analytics";
 
 // Helper to set a cookie
 const setLocaleCookie = (locale) => {
@@ -24,6 +25,11 @@ export default function LanguageSwitcher({ currentLocale }) {
   ];
 
   const handleChange = (newLocale) => {
+    trackEvent(GA_EVENTS.LANGUAGE_SWITCH, {
+      from_locale: currentLocale,
+      to_locale: newLocale,
+    });
+
     // Set cookie so middleware knows the selected language
     setLocaleCookie(newLocale);
 

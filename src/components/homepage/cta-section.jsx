@@ -5,6 +5,7 @@ import { Phone, Mail } from "lucide-react";
 import { contactNumber, secondaryEmail } from "@/data/contact-data";
 import { useDispatch } from "react-redux";
 import { openModal } from "@/store/quoteModalSlice";
+import ContactLink from "../analytics/contact-link";
 
 export function CtaSection({ cta }) {
   const { headline, subtext, button, contact } = cta;
@@ -28,27 +29,31 @@ export function CtaSection({ cta }) {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
             <div className="flex items-center gap-2 text-lg">
               <Phone className="h-5 w-5" />
-              <a
+              <ContactLink
+                method="phone"
+                placement="closing_cta"
                 href={`tel:${contactNumber.value}`}
                 className="hover:underline font-semibold"
               >
                 {contactNumber.displayValue}
-              </a>
+              </ContactLink>
             </div>
             <div className="hidden sm:block text-primary-foreground/50">|</div>
             <div className="flex items-center gap-2 text-lg">
               <Mail className="h-5 w-5" />
-              <a
+              <ContactLink
+                method="email"
+                placement="closing_cta"
                 href={`mailto:${secondaryEmail}`}
                 className="hover:underline font-semibold"
               >
                 {secondaryEmail}
-              </a>
+              </ContactLink>
             </div>
           </div>
 
           <Button
-            onClick={() => dispatch(openModal())}
+            onClick={() => dispatch(openModal("closing_cta"))}
             size="lg"
             className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold text-xl md:text-4xl px-8 py-8 h-auto animate-beat"
           >

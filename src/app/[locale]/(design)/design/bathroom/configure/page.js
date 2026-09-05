@@ -7,6 +7,7 @@ import ConfigurePage from "@/components/utils/configure-page";
 import { useToast } from "@/components/ui/use-toast";
 
 import { resolvePositionConflicts, resolveInitialPlacement } from "@/lib/utils";
+import { GA_EVENTS, trackEvent } from "@/lib/analytics";
 
 export default function DesignTool() {
   const { toast } = useToast();
@@ -78,6 +79,15 @@ export default function DesignTool() {
 
       if (data.success) {
         toast.success("Design saved successfully!");
+
+        // Saving requires an email address, so this is a lead in everything but
+        // name. Counted separately from generate_lead because the visitor has not
+        // asked to be contacted -- promote it to a key event only if the client
+        // works these the way they work quote requests.
+        trackEvent(GA_EVENTS.DESIGN_PROJECT_SAVE, {
+          plumbing: plumbing || undefined,
+          product_count: Object.keys(selectedProducts || {}).length,
+        });
       } else {
         // data.errors guaranteed to be array of { message } from API
         toast.error(

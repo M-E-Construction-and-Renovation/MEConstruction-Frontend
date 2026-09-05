@@ -2,7 +2,7 @@
 
 import * as Popover from "@radix-ui/react-popover";
 import Fuse from "fuse.js";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import { Search } from "lucide-react";
 import { Button } from "../ui/button";
 import { usePathname } from "next/navigation";
@@ -10,6 +10,10 @@ import en from "../../../messages/en.json";
 import es from "../../../messages/es.json";
 import { flattenMessages } from "@/lib/utils";
 import Link from "next/link";
+import { GA_EVENTS, trackEvent } from "@/lib/analytics";
+
+// Long enough that a settled query is reported once, instead of once per keystroke.
+const SEARCH_TRACK_DELAY_MS = 900;
 
 const messages = { en, es };
 
@@ -54,6 +58,25 @@ export default function SiteSearch() {
     const found = fuse.search(`'${value}`);
     setResults(found);
   };
+
+  // Reported after typing settles, so a query counts once and zero-result
+  // searches are visible as gaps in the site's content.
+  const lastTrackedQuery = useRef("");
+
+  useEffect(() => {
+    const term = query.trim();
+    if (term.length < 2 || term === lastTrackedQuery.current) return;
+
+    const timer = setTimeout(() => {
+      lastTrackedQuery.current = term;
+      trackEvent(GA_EVENTS.SITE_SEARCH, {
+        search_term: term,
+        result_count: results.length,
+      });
+    }, SEARCH_TRACK_DELAY_MS);
+
+    return () => clearTimeout(timer);
+  }, [query, results.length]);
 
   const highlightText = (text, query) => {
     if (!query) return text;

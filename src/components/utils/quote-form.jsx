@@ -1,14 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Button } from "../ui/button";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import Link from "next/link";
 import { useToast } from "../ui/use-toast";
+import { GA_EVENTS, trackEvent } from "@/lib/analytics";
+
+const FORM_ID = "quote_request";
 
 export default function QuoteForm({ onSuccess }) {
   const { toast } = useToast();
+
+  // The form is submitted with preventDefault + fetch, so GA4's enhanced
+  // measurement never sees form_start/form_submit on it. Both are sent manually
+  // below to keep this funnel comparable to the Mailchimp landing page forms,
+  // where enhanced measurement does fire.
+  const hasStarted = useRef(false);
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -21,7 +30,15 @@ export default function QuoteForm({ onSuccess }) {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const markFormStarted = () => {
+    if (hasStarted.current) return;
+    hasStarted.current = true;
+    trackEvent(GA_EVENTS.FORM_START, { form_id: FORM_ID });
+  };
+
   const handleInputChange = (e) => {
+    markFormStarted();
+
     const { name, value, type, checked } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -30,6 +47,8 @@ export default function QuoteForm({ onSuccess }) {
   };
 
   const handlePhoneChange = (value) => {
+    markFormStarted();
+
     setFormData((prev) => ({
       ...prev,
       phone: value || "",
@@ -41,10 +60,15 @@ export default function QuoteForm({ onSuccess }) {
 
     if (!formData.consent) {
       toast.error("Please accept the consent notice to continue.");
+      trackEvent(GA_EVENTS.FORM_ERROR, {
+        form_id: FORM_ID,
+        error_type: "consent_missing",
+      });
       return;
     }
 
     setIsSubmitting(true);
+    let errorReported = false;
 
     try {
       // Remove consent before sending to API
@@ -66,10 +90,27 @@ export default function QuoteForm({ onSuccess }) {
         } else {
           toast.error(data.error?.title ?? "Something went wrong.");
         }
+
+        errorReported = true;
+        trackEvent(GA_EVENTS.FORM_ERROR, {
+          form_id: FORM_ID,
+          error_type: "submit_rejected",
+          status: res.status,
+        });
+
         throw new Error(data.error?.title ?? "Something went wrong.");
       }
 
       toast.success("Thank you! You're successfully subscribed.");
+
+      // The lead conversion. Marked as a key event in GA4, alongside the
+      // Mailchimp landing pages' form_submit, so both sites count leads the same
+      // way. No PII is sent -- GA4 forbids it and the contact details already
+      // live in Mailchimp.
+      trackEvent(GA_EVENTS.GENERATE_LEAD, {
+        form_id: FORM_ID,
+        method: "quote_modal",
+      });
 
       setFormData({
         firstName: "",
@@ -79,10 +120,18 @@ export default function QuoteForm({ onSuccess }) {
         zip: "",
         consent: false,
       });
+      // Re-opening the modal is a new attempt, so it gets its own form_start.
+      hasStarted.current = false;
 
       onSuccess();
     } catch (error) {
       console.log(error);
+      if (!errorReported) {
+        trackEvent(GA_EVENTS.FORM_ERROR, {
+          form_id: FORM_ID,
+          error_type: "network_error",
+        });
+      }
     } finally {
       setIsSubmitting(false);
     }

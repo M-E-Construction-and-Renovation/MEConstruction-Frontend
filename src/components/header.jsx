@@ -205,7 +205,7 @@ export function Header({ locale }) {
             {/* CTA Button */}
             <div className="hidden xl:flex">
               <Button
-                onClick={() => dispatch(openModal())}
+                onClick={() => dispatch(openModal("header_desktop"))}
                 size="lg"
                 className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold animate-beat"
               >
@@ -376,7 +376,7 @@ export function Header({ locale }) {
               <Button
                 size="lg"
                 className="bg-accent hover:bg-accent/90 text-accent-foreground mt-4 w-full"
-                onClick={() => dispatch(openModal())}
+                onClick={() => dispatch(openModal("header_mobile"))}
               >
                 GET A FREE QUOTE
               </Button>

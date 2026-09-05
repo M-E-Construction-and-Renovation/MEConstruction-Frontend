@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ReduxProvider from "./providers/ReduxProvider";
+import GoogleAnalytics from "@/components/analytics/google-analytics";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,6 +28,7 @@ export default function RootLayout({ children }) {
         <main>
           <ReduxProvider>{children}</ReduxProvider>
         </main>
+        <GoogleAnalytics />
       </body>
     </html>
   );
