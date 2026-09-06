@@ -1,294 +1,171 @@
 "use client";
 
-import React, { useState } from "react";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 import Image from "next/image";
+import Reveal from "../motion/reveal";
+import BeforeAfterSlider from "../shared/before-after-slider";
+import {
+  BEFORE_AFTER_CATEGORIES,
+  BEFORE_AFTER_TRANSFORMATIONS,
+} from "@/data/before-after";
 
+const LABELS = { before: "Before", after: "After" };
+
+/**
+ * Category tabs and the comparisons.
+ *
+ * The page used to show the same two or three transformations twice: a "main
+ * viewer" with prev/next buttons and dots, and then an "All Transformations"
+ * grid underneath listing every one of them — including the one already on
+ * screen above. With two or three items per category, the carousel was hiding
+ * content from a list that showed all of it anyway. Every pair is simply on the
+ * page now, which also retires the prev/next controls, the dot row, and the
+ * modal they opened.
+ *
+ * That modal is no loss. It had no dialog role, no label, no Escape handler, no
+ * focus management and no scroll lock — and no close button either, despite the
+ * X icon being imported for one that was never rendered. Its "See After" toggle
+ * flipped between two photographs a beat apart, which is exactly the job the
+ * shared slider does properly. It also used a raw img, so opening a pair
+ * downloaded the full original.
+ *
+ * Comparisons use the drag-to-reveal where the pair is actually matched. One is
+ * not — a portrait before against a landscape after — and a wipe between two
+ * differently framed photographs reads as a mistake, so that one is shown as two
+ * frames side by side, each in its own ratio.
+ *
+ * Category selection was a nested ternary with a commented-out branch for a
+ * "bathtubs" tab that no longer exists, and its final else meant an unknown tab
+ * silently showed basements. It is a lookup now.
+ *
+ * Framer Motion drove the old modal; nothing on the route needs an animation
+ * runtime any more.
+ */
 export const BeforeAfterMain = () => {
-  const [activeTab, setActiveTab] = useState("bathrooms");
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [showingAfter, setShowingAfter] = useState(false);
-
-  const bathroomTransformations = [
-    {
-      id: 1,
-      title: "Outdated Tile to Modern Marble",
-      before: "/images/bathroom-before-1.jpg",
-      after: "/images/bathroom-gallery-5.jpg",
-    },
-    {
-      id: 2,
-      title: "Messy to Neat",
-      before: "/images/bathroom-before-2.jpg",
-      after: "/images/bathroom-after-2.jpg",
-    },
-    {
-      id: 3,
-      title: "Unfinished to Elegant",
-      before: "/images/bathroom-before-3.jpg",
-      after: "/images/bathroom-after-3.jpg",
-    },
-  ];
-
-  const kitchenTransformations = [
-    {
-      id: 1,
-      title: "Modern Kitchen Upgrade",
-      before: "/images/kitchen-solutions-before.jpg",
-      after: "/images/kitchen-solutions-after.jpg",
-    },
-    {
-      id: 2,
-      title: "Functional Layout Transformation",
-      before: "/images/kitchen-actual-before.jpg",
-      after: "/images/kitchen-actual-after.jpg",
-    },
-  ];
-
-  const basementTransformations = [
-    {
-      id: 1,
-      title: "From Raw Space to Elegant Living",
-      before: "/images/basement-actual-before.jpg",
-      after: "/images/basement-actual-after.png",
-    },
-    {
-      id: 2,
-      title: "Functional Layout Transformation",
-      before: "/images/basement-actual-before1.jpg",
-      after: "/images/basement-actual-after1.jpg",
-    },
-  ];
-
-  const transformations =
-    activeTab === "bathrooms"
-      ? bathroomTransformations
-      : // : activeTab === "bathtubs"
-        //   ? bathtubTransformations
-        activeTab === "kitchens"
-        ? kitchenTransformations
-        : basementTransformations;
-
-  const current = transformations[currentIndex];
-
-  const handleNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % transformations.length);
-  };
-
-  const handlePrev = () => {
-    setCurrentIndex(
-      (prev) => (prev - 1 + transformations.length) % transformations.length,
-    );
-  };
-
-  const openModal = (index) => {
-    setCurrentIndex(index);
-    setShowingAfter(false);
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => setIsModalOpen(false);
+  const [activeTab, setActiveTab] = useState(BEFORE_AFTER_CATEGORIES[0].id);
+  const transformations = BEFORE_AFTER_TRANSFORMATIONS[activeTab] ?? [];
 
   return (
     <>
-      <div className="py-4 text-2xl font-bold text-center">
-        Select a Category from our Before & After Gallery
-      </div>
-      {/* ---- TAB SECTION ---- */}
-      <section className="sticky top-[8.5rem] md:top-[9.5rem] z-40 bg-white/90 backdrop-blur-sm border-b border-border py-4">
-        <div className="container mx-auto px-4">
-          <div className="flex gap-2 justify-start md:justify-center overflow-x-auto scrollbar-hide">
-            {["bathrooms", "kitchens", "basements"].map((tab) => (
-              <button
-                key={tab}
-                onClick={() => {
-                  setActiveTab(tab);
-                  setCurrentIndex(0);
-                }}
-                className={`whitespace-nowrap flex-shrink-0 py-2 px-4 rounded-md font-semibold text-sm sm:text-base transition-all duration-300 cursor-pointer ${
-                  activeTab === tab
-                    ? "bg-accent text-accent-foreground shadow-md"
-                    : "bg-secondary text-foreground hover:bg-secondary/80"
-                }`}
-              >
-                {tab.charAt(0).toUpperCase() + tab.slice(1)}
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ---- MAIN TRANSFORMATION VIEWER ---- */}
-      <section className="py-12 md:py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl md:text-4xl font-bold text-center text-primary mb-4">
-              {current.title}
-            </h2>
-
-            <div className="bg-white rounded-lg shadow-xl overflow-hidden mb-8">
-              <div className="grid grid-cols-1 md:grid-cols-2">
-                {/* Before */}
-                <div className="relative aspect-[4/3] overflow-hidden bg-gray-200">
-                  <Image
-                    src={current.before || "/placeholder.svg"}
-                    alt="Before"
-                    fill
-                    priority
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute top-3 left-3 bg-gray-800 text-white px-3 py-1 rounded-md font-bold text-sm">
-                    BEFORE
-                  </div>
-                </div>
-
-                {/* After */}
-                <div className="relative aspect-[4/3] overflow-hidden bg-gray-200">
-                  <Image
-                    src={current.after || "/placeholder.svg"}
-                    alt="After"
-                    fill
-                    priority
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute top-3 right-3 bg-accent text-accent-foreground px-3 py-1 rounded-md font-bold text-sm">
-                    AFTER
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Navigation Controls */}
-            <div className="flex items-center justify-between flex-wrap gap-4">
-              <button
-                onClick={handlePrev}
-                className="flex items-center gap-2 px-5 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition font-semibold"
-              >
-                <ChevronLeft className="h-5 w-5" /> Previous
-              </button>
-
-              <div className="text-center flex-1">
-                <p className="text-base font-semibold text-primary">
-                  {currentIndex + 1} of {transformations.length}
-                </p>
-                <div className="flex gap-2 mt-2 justify-center">
-                  {transformations.map((_, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => setCurrentIndex(idx)}
-                      className={`h-2 rounded-full transition-all ${
-                        idx === currentIndex
-                          ? "bg-accent w-8"
-                          : "bg-gray-300 w-2"
-                      }`}
-                    />
-                  ))}
-                </div>
-              </div>
-
-              <button
-                onClick={handleNext}
-                className="flex items-center gap-2 px-5 py-2 bg-accent text-accent-foreground rounded-md hover:bg-accent/90 transition font-semibold"
-              >
-                Next <ChevronRight className="h-5 w-5" />
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ---- TRANSFORMATION GRID ---- */}
-      <section className="py-12 md:py-20 bg-gradient-to-br from-primary/5 via-accent/10 to-primary/5">
-        <div className="container mx-auto px-4">
-          <h2 className="text-2xl md:text-4xl font-bold text-center text-primary mb-10">
-            All Transformations
-          </h2>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
-            {transformations.map((t, i) => (
-              <div
-                key={t.id}
-                onClick={() => openModal(i)}
-                className="group rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer bg-white"
-              >
-                <div className="grid grid-cols-2">
-                  <div className="relative aspect-[4/3] overflow-hidden bg-gray-200">
-                    <Image
-                      src={t.before || "/placeholder.svg"}
-                      alt="Before"
-                      fill
-                      priority
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                  <div className="relative aspect-[4/3] overflow-hidden bg-gray-200">
-                    <Image
-                      src={t.after || "/placeholder.svg"}
-                      alt="After"
-                      fill
-                      priority
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                </div>
-                <div className="p-3">
-                  <h3 className="font-bold text-primary text-sm sm:text-base group-hover:text-accent transition-colors">
-                    {t.title}
-                  </h3>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ---- MODAL ---- */}
-      <AnimatePresence>
-        {isModalOpen && (
-          <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={closeModal}
+      <section
+        aria-label="Transformation categories"
+        className="rule-hairline sticky top-[calc(var(--nav-h)+var(--bar-plate-drop))] z-40 border-b bg-background/95 backdrop-blur-sm"
+      >
+        <div className="mx-auto w-full max-w-[1400px] px-4 md:px-10">
+          <div
+            role="tablist"
+            aria-label="Room type"
+            className="flex overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           >
-            <motion.div
-              key={showingAfter ? current.after : current.before}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.4 }}
-              className="relative w-full max-w-5xl"
-              onClick={(e) => e.stopPropagation()} // stops click from bubbling
-            >
-              <img
-                src={showingAfter ? current.after : current.before}
-                alt={showingAfter ? "After" : "Before"}
-                className="w-full h-auto max-h-[85vh] object-cover rounded-lg"
-              />
-              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-4">
-                {!showingAfter ? (
-                  <button
-                    onClick={() => setShowingAfter(true)}
-                    className="px-6 py-2 bg-accent text-accent-foreground rounded-md font-semibold hover:bg-accent/90 transition"
-                  >
-                    See After
-                  </button>
-                ) : (
-                  <button
-                    onClick={() => setShowingAfter(false)}
-                    className="px-6 py-2 bg-gray-800 text-white rounded-md font-semibold hover:bg-gray-700 transition"
-                  >
-                    Back to Before
-                  </button>
-                )}
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            {BEFORE_AFTER_CATEGORIES.map((category) => {
+              const isActive = activeTab === category.id;
+              return (
+                <button
+                  key={category.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={isActive}
+                  aria-controls="transformations"
+                  tabIndex={isActive ? 0 : -1}
+                  onClick={() => setActiveTab(category.id)}
+                  className={`shrink-0 border-b-2 px-5 py-4 text-sm font-semibold tracking-tight whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
+                    isActive
+                      ? "border-accent text-accent"
+                      : "border-transparent text-muted-foreground hover:text-primary"
+                  }`}
+                >
+                  {category.label}
+                  <span className="ml-2 text-xs font-normal opacity-70">
+                    {BEFORE_AFTER_TRANSFORMATIONS[category.id].length}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section id="transformations" className="bg-background py-12 md:py-16">
+        <div className="mx-auto w-full max-w-[1400px] px-4 md:px-10">
+          <ol className="rule-hairline border-t">
+            {transformations.map((item, index) => (
+              <Reveal
+                as="li"
+                key={item.id}
+                delay={Math.min(index * 60, 180)}
+                className="rule-hairline grid gap-8 border-b py-12 lg:grid-cols-12 lg:gap-14"
+              >
+                <div className="lg:col-span-4 lg:self-center">
+                  <p className="type-eyebrow text-muted-foreground">
+                    {String(index + 1).padStart(2, "0")} /{" "}
+                    {String(transformations.length).padStart(2, "0")}
+                  </p>
+                  <h2 className="type-display mt-4 text-[clamp(1.5rem,2.4vw,2.25rem)] text-primary">
+                    {item.title}
+                  </h2>
+                  <p className="measure mt-4 text-sm leading-relaxed text-muted-foreground">
+                    {item.matched
+                      ? "Drag the handle across to wipe between before and after."
+                      : "Shown side by side — these two were photographed from different positions."}
+                  </p>
+                </div>
+
+                <div className="lg:col-span-8">
+                  {item.matched ? (
+                    <BeforeAfterSlider
+                      before={{
+                        src: item.before,
+                        alt: `${item.title}, before`,
+                      }}
+                      after={{ src: item.after, alt: `${item.title}, after` }}
+                      labels={LABELS}
+                      subject={item.title.toLowerCase()}
+                      className="mx-auto max-w-[520px]"
+                      style={{ aspectRatio: item.aspect }}
+                      sizes="(min-width: 1024px) 520px, 100vw"
+                    />
+                  ) : (
+                    <div className="grid grid-cols-2 gap-3">
+                      {[
+                        {
+                          label: LABELS.before,
+                          src: item.before,
+                          aspect: item.beforeAspect,
+                        },
+                        {
+                          label: LABELS.after,
+                          src: item.after,
+                          aspect: item.afterAspect,
+                        },
+                      ].map((shot) => (
+                        <figure key={shot.label} className="relative">
+                          <div
+                            className="relative overflow-hidden bg-muted"
+                            style={{ aspectRatio: shot.aspect }}
+                          >
+                            <Image
+                              src={shot.src}
+                              alt={`${item.title}, ${shot.label.toLowerCase()}`}
+                              fill
+                              loading="lazy"
+                              sizes="(min-width: 1024px) 34vw, 45vw"
+                              quality={85}
+                              className="object-cover"
+                            />
+                          </div>
+                          <figcaption className="type-eyebrow absolute top-3 left-3 bg-primary/85 px-3 py-1.5 text-white">
+                            {shot.label}
+                          </figcaption>
+                        </figure>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </Reveal>
+            ))}
+          </ol>
+        </div>
+      </section>
     </>
   );
 };

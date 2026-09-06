@@ -1,144 +1,99 @@
-"use client";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import QuoteButton from "../ui/quote-button";
+import Reveal from "../motion/reveal";
+import BeforeAfterSlider from "../shared/before-after-slider";
 
-import { useState } from "react";
-import Image from "next/image";
-import { Button } from "../ui/button";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useDispatch } from "react-redux";
-import { openModal } from "@/store/quoteModalSlice";
-
+/**
+ * One bathtub, before and after.
+ *
+ * This was built as a carousel — dot navigation, activeIndex state, a
+ * commented-out pair of prev/next arrows — over a transformations array with
+ * exactly one entry. So it rendered a single dot that switched to the slide it
+ * was already on, and shipped useState, two unused Chevron imports and twenty
+ * lines of dead commented markup to do it.
+ *
+ * Unlike the shower page, this pair is genuinely matched: 1440x1795 before and
+ * 1440x1800 after, the same aspect and the same framing. That is exactly what
+ * the drag-to-reveal needs, so it uses the shared slider rather than two
+ * frames side by side.
+ *
+ * The "Before"/"After" badges were absolutely positioned inside frames with no
+ * position of their own, so they resolved against the outer card and both sat
+ * at the bottom of the whole block. The shared slider positions them properly.
+ *
+ * The images were declared width 300 by height 400 and then stretched with
+ * w-full h-full, so next/image built its srcset for a 300px box and the browser
+ * upscaled whatever it got.
+ *
+ * The gallery link was a raw anchor to an internal route, which forces a full
+ * page reload and throws away the client-side router. It is a Link now.
+ */
 export function BathtubBeforeAfter({ beforeAfter }) {
-  const {
-    sectionTitle,
-    sectionSubtitle,
-    description,
-    labels,
-    transformations,
-  } = beforeAfter;
+  const { sectionTitle, sectionSubtitle, description, labels, transformations } =
+    beforeAfter;
 
-  const dispatch = useDispatch();
-
-  const [activeIndex, setActiveIndex] = useState(0);
+  const pair = transformations[0];
 
   return (
-    <section
-      id="before-after"
-      className="py-16 md:py-24 bg-gradient-to-b from-slate-100 via-white to-slate-50"
-    >
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6 animate-in fade-in slide-in-from-left duration-700">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground">
-              {sectionTitle}
-            </h2>
-
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              {sectionSubtitle}
-            </p>
-
-            <p className="text-base text-muted-foreground leading-relaxed">
-              {description}
-            </p>
-
-            <Button
-              size="lg"
-              className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold"
-              onClick={() => dispatch(openModal())}
+    <section id="before-after" className="bg-tinted py-16 md:py-24">
+      <div className="mx-auto w-full max-w-[1400px] px-4 md:px-10">
+        <div className="rule-hairline grid gap-10 border-t pt-10 lg:grid-cols-12 lg:gap-14">
+          <div className="lg:col-span-6 lg:self-center">
+            <Reveal
+              as="h2"
+              className="type-display text-[clamp(2rem,3.6vw,3.25rem)] text-primary"
             >
-              {labels.button}
-            </Button>
+              {sectionTitle}
+            </Reveal>
 
-            <p className="text-muted-foreground text-sm">
-              <a
+            <Reveal
+              as="p"
+              delay={80}
+              className="measure mt-6 text-base leading-relaxed text-muted-foreground"
+            >
+              {sectionSubtitle}
+            </Reveal>
+
+            <Reveal
+              as="p"
+              delay={130}
+              className="measure mt-5 text-sm leading-relaxed text-muted-foreground"
+            >
+              {description}
+            </Reveal>
+
+            <Reveal delay={190} className="mt-8">
+              <QuoteButton source="bathtub_before_after" label={labels.button} />
+            </Reveal>
+
+            <Reveal delay={230} className="mt-6">
+              <Link
                 href="/gallery"
-                target="_blank"
-                className="text-accent hover:underline font-semibold"
+                className="group inline-flex items-center text-sm font-semibold text-accent underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               >
-                <span className="text-accent">{labels.link}</span>
-              </a>
+                {labels.link}
+                <ArrowRight
+                  aria-hidden="true"
+                  className="ml-2 h-4 w-4 shrink-0 transition-transform duration-200 ease-out group-hover:translate-x-1"
+                />
+              </Link>
+            </Reveal>
+          </div>
+
+          <Reveal delay={160} className="lg:col-span-6">
+            <BeforeAfterSlider
+              before={{ src: pair.beforeImage, alt: `${pair.title} before` }}
+              after={{ src: pair.afterImage, alt: `${pair.title} after` }}
+              labels={labels}
+              subject="bathtub"
+              className="mx-auto aspect-[4/5] max-w-[500px]"
+              sizes="(min-width: 1024px) 500px, 100vw"
+            />
+            <p className="type-eyebrow mt-4 text-center text-muted-foreground">
+              {pair.title}
             </p>
-          </div>
-
-          <div className="space-y-6">
-            <div className="group relative rounded-2xl overflow-hidden shadow-md bg-slate-200">
-              <div className="grid grid-cols-2 gap-1 p-1 h-96">
-                <div className="rounded-lg overflow-hidden">
-                  <Image
-                    src={
-                      transformations[activeIndex].beforeImage ||
-                      "/placeholder.svg"
-                    }
-                    alt={transformations[activeIndex].title}
-                    width={300}
-                    height={400}
-                    priority
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute bottom-3 left-3 bg-slate-700 text-white px-3 py-1 rounded-lg text-sm font-semibold">
-                    {labels.before}
-                  </div>
-                </div>
-                <div className="rounded-lg overflow-hidden">
-                  <Image
-                    src={
-                      transformations[activeIndex].afterImage ||
-                      "/placeholder.svg"
-                    }
-                    alt={transformations[activeIndex].title}
-                    width={300}
-                    height={400}
-                    priority
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute bottom-3 right-3 bg-primary text-white px-3 py-1 rounded-lg text-sm font-semibold">
-                    {labels.after}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="text-center">
-              <p className="text-muted-foreground mb-3">
-                {transformations[activeIndex].title}
-              </p>
-
-              <div className="flex gap-2 justify-center">
-                {transformations.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setActiveIndex(index)}
-                    className={`h-2 rounded-full transition-all duration-300 ${
-                      index === activeIndex
-                        ? "bg-primary w-8"
-                        : "bg-slate-300 w-2 hover:bg-slate-400"
-                    }`}
-                  />
-                ))}
-              </div>
-            </div>
-
-            {/* <div className="flex gap-3 justify-center">
-              <button
-                onClick={() =>
-                  setActiveIndex(
-                    (activeIndex - 1 + transformations.length) %
-                      transformations.length,
-                  )
-                }
-                className="p-3 rounded-full bg-slate-100 hover:bg-slate-200 transition-colors"
-              >
-                <ChevronLeft className="h-5 w-5" />
-              </button>
-              <button
-                onClick={() =>
-                  setActiveIndex((activeIndex + 1) % transformations.length)
-                }
-                className="p-3 rounded-full bg-slate-100 hover:bg-slate-200 transition-colors"
-              >
-                <ChevronRight className="h-5 w-5" />
-              </button>
-            </div> */}
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

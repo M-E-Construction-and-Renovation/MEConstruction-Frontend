@@ -2,59 +2,82 @@ import Link from "next/link";
 import { Button } from "../ui/button";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import Reveal from "../motion/reveal";
 
+/**
+ * Three finished projects, and the way through to the rest.
+ *
+ * The frames were `aspect-video` over sources that are portrait or square
+ * (750x1000, 1200x1600, 1600x1200), so two of the three were cropped to a
+ * letterbox strip through the middle of the room. A 4:3 frame keeps far more of
+ * each photograph and still lines the three up.
+ *
+ * The content carries an `alt` for every project and the component ignored it,
+ * using the title instead — so a screen reader heard the caption twice and
+ * never heard what was in the picture.
+ *
+ * All three also had `priority`, which is three below-the-fold preloads
+ * competing with the hero.
+ */
 export function BathroomGallery({ gallery }) {
   const { sectionTitle, sectionSubtitle, projects, link } = gallery;
 
   return (
-    <section
-      id="gallery"
-      className="py-20 md:py-32 bg-gradient-to-br from-accent/5 via-primary/10 to-accent/5"
-    >
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+    <section id="gallery" className="bg-background py-16 md:py-24">
+      <div className="mx-auto w-full max-w-[1400px] px-4 md:px-10">
+        <div className="rule-hairline grid gap-6 border-t pt-8 md:grid-cols-12">
+          <Reveal
+            as="h2"
+            className="type-display text-[clamp(2rem,3.6vw,3.25rem)] text-primary md:col-span-5"
+          >
             {sectionTitle}
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          </Reveal>
+          <Reveal
+            as="p"
+            delay={80}
+            className="measure self-end text-base leading-relaxed text-muted-foreground md:col-span-7"
+          >
             {sectionSubtitle}
-          </p>
+          </Reveal>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
+        <ul className="mt-12 grid gap-6 md:grid-cols-3">
           {projects.map((project, index) => (
-            <div
-              key={index}
-              className="rounded-xl overflow-hidden bg-white group shadow-md hover:shadow-xl transition-all duration-300 border border-slate-100"
+            <Reveal
+              as="li"
+              key={project.title}
+              delay={Math.min(index * 80, 160)}
+              className="group"
             >
-              <div className="relative aspect-video overflow-hidden">
+              <div className="relative aspect-[4/3] overflow-hidden bg-muted">
                 <Image
-                  src={project.image || "/placeholder.svg"}
-                  alt={project.title}
+                  src={project.image}
+                  alt={project.alt ?? project.title}
                   fill
-                  priority
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                  sizes="(min-width: 768px) 31vw, 100vw"
+                  quality={85}
+                  className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                 />
               </div>
-              <div className="p-6">
-                <h3 className="font-semibold text-lg text-primary">
-                  {project.title}
-                </h3>
-              </div>
-            </div>
+              <h3 className="type-display mt-4 text-lg text-primary">
+                {project.title}
+              </h3>
+            </Reveal>
           ))}
-        </div>
+        </ul>
 
-        <div className="text-center">
-          <Link href="/before-after" target="_blank">
-            <Button
-              size="lg"
-              className="bg-accent hover:bg-accent/90 text-accent-foreground gap-2 text-base px-8 mx-auto"
-            >
-              {link} <ArrowRight className="h-5 w-5" />
-            </Button>
-          </Link>
-        </div>
+        <Reveal delay={200} className="mt-12">
+          <Button variant="cta" size="xl" asChild className="group">
+            <Link href="/before-after">
+              {link}
+              <ArrowRight
+                aria-hidden="true"
+                className="ml-2 h-5 w-5 transition-transform duration-200 ease-out group-hover:translate-x-1"
+              />
+            </Link>
+          </Button>
+        </Reveal>
       </div>
     </section>
   );

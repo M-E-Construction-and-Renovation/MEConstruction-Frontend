@@ -1,80 +1,104 @@
 import Link from "next/link";
-import { Button } from "../ui/button";
-import { Card } from "../ui/card";
-import * as LucideIcons from "lucide-react";
-import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import { ArrowRight, HelpCircle, ImageIcon, Pencil } from "lucide-react";
+import { Button } from "../ui/button";
+import Reveal from "../motion/reveal";
+
+/**
+ * Two ways further in: the gallery, and the before/after page.
+ *
+ * Both CTAs pointed into a /basement-inspiration/* section that does not exist
+ * — /gallery and /before-after under that prefix each returned 404, in both
+ * locales. Repointed in the content to the real routes, which is what the card
+ * copy promises anyway.
+ *
+ * Both card images were also unreachable: the files on disk are
+ * basement-gallery.PNG and basement-solutions-before-after.PNG with an
+ * uppercase extension, while the content asked for .png. Windows does not care;
+ * Next's static serving and the Linux filesystem this deploys to both do, so
+ * they 404'd in production. The files are renamed to lowercase.
+ *
+ * The photographs were declared width 400 by height 300 over sources that are
+ * 1569x813 and 998x521, then stretched to fill an h-64 box, so next/image built
+ * a srcset for a 400px box and the browser scaled up whatever arrived. Real
+ * frames with sizes hints now, lazy rather than priority.
+ *
+ * A "color" gradient from the content file sat over each image at 20% opacity
+ * and behind each icon: blue-to-cyan, on a navy-and-orange site. The scrim is
+ * neutral now and the icons use the accent.
+ */
+const ICONS = { ImageIcon, Pencil };
 
 export function BasementInspiration({ inspiration }) {
   const { sectionTitle, sectionSubtitle, cards } = inspiration;
 
   return (
-    <section
-      id="inspiration"
-      className="py-16 md:py-24 bg-gradient-to-br from-accent/5 via-primary/10 to-accent/5"
-    >
-      <div className="container mx-auto px-4 max-w-6xl">
-        <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+    <section id="inspiration" className="bg-background py-16 md:py-24">
+      <div className="mx-auto w-full max-w-[1400px] px-4 md:px-10">
+        <div className="rule-hairline grid gap-6 border-t pt-8 md:grid-cols-12">
+          <Reveal
+            as="h2"
+            className="type-display text-[clamp(2rem,3.6vw,3.25rem)] text-primary md:col-span-5"
+          >
             {sectionTitle}
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          </Reveal>
+          <Reveal
+            as="p"
+            delay={80}
+            className="measure self-end text-base leading-relaxed text-muted-foreground md:col-span-7"
+          >
             {sectionSubtitle}
-          </p>
+          </Reveal>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="mt-12 grid gap-6 md:grid-cols-2 md:gap-8">
           {cards.map((card, index) => {
-            const Icon = LucideIcons[card.icon] || LucideIcons.HelpCircle;
+            const Icon = ICONS[card.icon] ?? HelpCircle;
 
             return (
-              <Card
-                key={index}
-                className="group overflow-hidden hover:shadow-md transition-all duration-500 border-0 animate-in fade-in slide-in-from-bottom"
-                style={{ animationDelay: `${index * 150}ms` }}
+              <Reveal
+                key={card.title}
+                delay={Math.min(index * 90, 180)}
+                className="group relative isolate flex min-h-[420px] flex-col justify-end overflow-hidden bg-primary p-8 md:min-h-[460px]"
               >
-                <div className="relative h-64 overflow-hidden bg-slate-200">
-                  <Image
-                    src={card.image || "/placeholder.svg"}
-                    alt={card.title}
-                    width={400}
-                    height={300}
-                    priority
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-br ${card.color} opacity-20 group-hover:opacity-30 transition-opacity duration-500`}
-                  />
-                </div>
+                <Image
+                  src={card.image}
+                  alt=""
+                  fill
+                  loading="lazy"
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                  quality={85}
+                  className="-z-10 object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                />
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-0 -z-10 bg-gradient-to-t from-black/90 via-black/55 to-black/10"
+                />
 
-                <div className="p-6 space-y-4">
-                  <div className="flex items-start gap-3">
-                    <div
-                      className={`p-2 rounded-lg bg-gradient-to-br ${card.color} text-white`}
-                    >
-                      <Icon className="h-5 w-5" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-foreground">
-                        {card.title}
-                      </h3>
-                    </div>
-                  </div>
+                <Icon
+                  aria-hidden="true"
+                  strokeWidth={1.5}
+                  className="h-8 w-8 text-accent"
+                />
+                <h3 className="type-display mt-4 text-2xl text-white md:text-3xl">
+                  {card.title}
+                </h3>
+                <p className="measure mt-3 text-sm leading-relaxed text-white/80">
+                  {card.description}
+                </p>
 
-                  <p className="text-muted-foreground leading-relaxed">
-                    {card.description}
-                  </p>
-                  <Link href={card.href} target="_blank">
-                    <Button
-                      size="lg"
-                      className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold group"
-                    >
+                <div className="mt-7">
+                  <Button variant="cta" asChild>
+                    <Link href={card.href}>
                       {card.label}
-                      <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                    </Button>
-                  </Link>
+                      <ArrowRight
+                        aria-hidden="true"
+                        className="ml-2 h-4 w-4 transition-transform duration-200 ease-out group-hover:translate-x-1"
+                      />
+                    </Link>
+                  </Button>
                 </div>
-              </Card>
+              </Reveal>
             );
           })}
         </div>

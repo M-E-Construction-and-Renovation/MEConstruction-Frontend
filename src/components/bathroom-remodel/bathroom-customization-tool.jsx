@@ -2,7 +2,18 @@ import { Button } from "../ui/button";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import Reveal from "../motion/reveal";
 
+/**
+ * The design tool, pitched.
+ *
+ * The photograph is 1200x1600 — 3:4 portrait — and was being rendered in an
+ * `aspect-square` frame, so a quarter of its height was cropped away for no
+ * reason. The frame matches the source now.
+ *
+ * `<Link><Button>` again produced an `<a>` around a `<button>`; `asChild`
+ * renders a single anchor.
+ */
 export function BathroomCustomizationTool({ customization }) {
   const {
     badge,
@@ -15,52 +26,75 @@ export function BathroomCustomizationTool({ customization }) {
   } = customization;
 
   return (
-    <section
-      id="customization"
-      className="py-20 md:py-32 bg-gradient-to-br from-accent/5 via-primary/10 to-accent/5"
-    >
-      <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Left Image */}
-          <div className="order-2 md:order-1">
-            <div className="relative aspect-square rounded-2xl overflow-hidden shadow-2xl">
+    <section id="customization" className="bg-background py-16 md:py-24">
+      <div className="mx-auto w-full max-w-[1400px] px-4 md:px-10">
+        <div className="rule-hairline grid gap-10 border-t pt-10 lg:grid-cols-12 lg:gap-14">
+          <Reveal className="lg:col-span-5">
+            <div className="relative aspect-[3/4] overflow-hidden bg-muted">
               <Image
                 src={image.src}
                 alt={image.alt}
                 fill
-                priority
-                className="w-full h-full object-cover"
+                loading="lazy"
+                sizes="(min-width: 1024px) 40vw, 100vw"
+                quality={85}
+                className="object-cover"
               />
             </div>
-          </div>
+          </Reveal>
 
-          {/* Right Content */}
-          <div className="order-1 md:order-2">
-            <span className="text-accent font-semibold tracking-wide text-sm">
+          <div className="lg:col-span-7 lg:self-center">
+            <Reveal
+              as="p"
+              className="type-eyebrow flex items-center gap-3 text-accent"
+            >
+              <span className="h-px w-8 bg-accent" aria-hidden="true" />
               {badge}
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bold mt-3 mb-6">
-              {sectionTitle}
-            </h2>
-            <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-              {sectionSubtitle}
-            </p>
-            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              {description}
-            </p>
+            </Reveal>
 
-            <p className="text-lg font-semibold text-primary mb-8">
+            <Reveal
+              as="h2"
+              delay={70}
+              className="type-display mt-6 text-[clamp(2rem,3.6vw,3.25rem)] text-primary"
+            >
+              {sectionTitle}
+            </Reveal>
+
+            <Reveal
+              as="p"
+              delay={120}
+              className="measure mt-6 text-base leading-relaxed text-muted-foreground"
+            >
+              {sectionSubtitle}
+            </Reveal>
+
+            <Reveal
+              as="p"
+              delay={160}
+              className="measure mt-5 text-base leading-relaxed text-muted-foreground"
+            >
+              {description}
+            </Reveal>
+
+            <Reveal
+              as="p"
+              delay={200}
+              className="type-display mt-8 text-xl text-primary"
+            >
               {highlight}
-            </p>
-            <Link href="/design" target="_blank">
-              <Button
-                size="lg"
-                className="bg-accent hover:bg-accent/90 text-accent-foreground gap-2 text-base px-8"
-              >
-                {link}
-                <ArrowRight className="h-5 w-5" />
+            </Reveal>
+
+            <Reveal delay={240} className="mt-8">
+              <Button variant="cta" size="xl" asChild className="group">
+                <Link href="/design">
+                  {link}
+                  <ArrowRight
+                    aria-hidden="true"
+                    className="ml-2 h-5 w-5 transition-transform duration-200 ease-out group-hover:translate-x-1"
+                  />
+                </Link>
               </Button>
-            </Link>
+            </Reveal>
           </div>
         </div>
       </div>

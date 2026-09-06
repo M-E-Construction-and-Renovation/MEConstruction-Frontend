@@ -1,19 +1,62 @@
 "use client";
 
-import React, { useState, Suspense, useMemo } from "react";
+import { Suspense, useCallback, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
 import {
-  ChevronLeft,
-  RotateCcw,
-  Check,
   ChevronDown,
+  ChevronLeft,
   ChevronUp,
+  PackageOpen,
+  RotateCcw,
   SwitchCamera,
 } from "lucide-react";
 import BathroomScene from "./bathroomScene";
 import EmailModal from "./email-modal";
+import CategoryTabs from "../design/configurator/category-tabs";
+import SegmentedControl from "../design/configurator/segmented-control";
+import ProductCard from "../design/configurator/product-card";
 
+const TIERS = [
+  { label: "Basic", value: "basic" },
+  { label: "Standard", value: "standard" },
+  { label: "Premium", value: "premium" },
+];
+
+const FLIP_OPTIONS = [
+  { label: "Left", value: false },
+  { label: "Right", value: true },
+];
+
+function LoadingPanel({ message }) {
+  return (
+    <div
+      role="status"
+      aria-live="polite"
+      className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-background"
+    >
+      <div
+        aria-hidden="true"
+        className="mb-4 h-12 w-12 animate-spin rounded-full border-4 border-border border-t-accent"
+      />
+      <p className="text-base text-muted-foreground">{message}</p>
+    </div>
+  );
+}
+
+/**
+ * Configurator shell.
+ *
+ * Was a single 341-line component rendering the toolbar, the 3D scene, the
+ * drawer, the category tabs, the tier switch, the flip/placement switches and
+ * the product grid — with the variant controls built inside an inline IIFE in
+ * the middle of the JSX. Split into named pieces so each one can be read, and
+ * so the grid can be memoised independently of the scene.
+ *
+ * The palette here was almost entirely off-system: slate-200/500/700/800,
+ * gray-700, green-500, blue-600 and raw white, none of which exist in the
+ * design tokens. Now on the same tokens as the rest of the site.
+ */
 const ConfigurePage = ({
   handleResetDesign = () => {},
   handleSaveDesign = () => {},
@@ -33,62 +76,153 @@ const ConfigurePage = ({
 }) => {
   const router = useRouter();
   const [isDrawerOpen, setIsDrawerOpen] = useState(true);
-
-  // Add this state at the top of BathroomScene
   const [mode, setMode] = useState("orbit"); // 'orbit' | 'fpv'
 
-  const selectedShape = useMemo(() => {
-    return selectedProducts["tubFronts/showerPans"]?.shape ?? null;
-  }, [selectedProducts]);
+  const selectedShape = selectedProducts["tubFronts/showerPans"]?.shape ?? null;
+  const selection = selectedProducts[activeTab];
+
+  const activeProduct = useMemo(
+    () =>
+      currentCategory?.products?.find((p) => p.id === selection?.productId) ??
+      null,
+    [currentCategory, selection?.productId]
+  );
+
+  /**
+   * Filtering used to run inside the render map with a bare `return;` for
+   * non-matching products, so the list iterated everything and emitted
+   * undefined holes. Computed once here instead, which also gives the empty
+   * state something real to test.
+   */
+  const visibleProducts = useMemo(() => {
+    const products = currentCategory?.products ?? [];
+
+    return products.filter((product) => {
+      if (!(product.tiers?.[activeTier]?.length > 0)) return false;
+
+      const shapeConstrained =
+        currentCategory.id !== "tubFronts/showerPans" &&
+        selectedShape &&
+        product.shape?.length > 0;
+
+      if (shapeConstrained && !product.shape.includes(selectedShape)) {
+        return false;
+      }
+      return true;
+    });
+  }, [currentCategory, activeTier, selectedShape]);
+
+  const selectedCount = Object.keys(selectedProducts).length;
+
+  // Stable identities so the memoised cards do not re-render on every change.
+  const onSelect = useCallback(
+    (productId, color, shape) => {
+      handleProductSelect(productId, color, shape);
+      setIsDrawerOpen(false);
+    },
+    [handleProductSelect]
+  );
+
+  const onSelectColor = useCallback(
+    (productId, color) => {
+      handleProductSelect(productId, color);
+      setIsDrawerOpen(false);
+    },
+    [handleProductSelect]
+  );
+
+  const onUnselect = useCallback(
+    (productId) => handleUnselectProduct(productId),
+    [handleUnselectProduct]
+  );
+
+  /**
+   * Rebuilt inline in the JSX on every render, which handed SegmentedControl a
+   * new array and a new callback each time and made its memo() useless.
+   */
+  const placementOptions = useMemo(
+    () =>
+      Object.keys(activeProduct?.positionOptions ?? {}).map((opt) => ({
+        label: opt,
+        value: opt,
+      })),
+    [activeProduct]
+  );
+
+  /**
+   * 240px suits the two- and three-option products (toilets, vanity shelves,
+   * grab bars) and is what shipped. Wall niches offer five placements, which do
+   * not fit 240px at any density, so those take the full row instead.
+   */
+  const placementClass =
+    placementOptions.length > 3 ? "w-full" : "w-full max-w-[240px]";
+
+  const onFlip = useCallback(
+    (v) => {
+      handleFlipProduct(v);
+      setIsDrawerOpen(false);
+    },
+    [handleFlipProduct]
+  );
+
+  const onPlacement = useCallback(
+    (v) => {
+      handlePlacementChange(v);
+      setIsDrawerOpen(false);
+    },
+    [handlePlacementChange]
+  );
 
   return (
-    <Suspense
-      fallback={
-        <div className="fixed inset-0 flex flex-col items-center justify-center bg-white z-50">
-          <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-blue-600 mb-4"></div>
-          <p className="text-lg font-medium text-gray-700">
-            Loading Design Tool...
-          </p>
-        </div>
-      }
-    >
-      <div className="flex flex-col xl:flex-row h-dvh w-full overflow-hidden bg-background">
-        {/* --- 1. TOOLBAR (Floating on Mobile, Integrated on Desktop) --- */}
-        <div className="absolute xl:fixed top-4 left-4 right-4 xl:right-auto xl:w-[calc(66.66%-2rem)] z-30 flex justify-between items-center pointer-events-none">
+    <Suspense fallback={<LoadingPanel message="Loading design tool…" />}>
+      <div className="flex h-dvh w-full flex-col overflow-hidden bg-background xl:flex-row">
+        {/* --- Scene toolbar --- */}
+        <div className="pointer-events-none absolute top-4 right-4 left-4 z-30 flex items-center justify-between gap-2 xl:fixed xl:right-auto xl:w-[calc(66.66%-2rem)]">
           <Button
             variant="secondary"
-            className="gap-2 shadow-lg pointer-events-auto backdrop-blur-md bg-white/70 border-none xl:bg-white"
+            className="pointer-events-auto gap-2 border border-border bg-background/85 backdrop-blur-md"
             onClick={() => router.back()}
           >
-            <ChevronLeft className="h-4 w-4" />
-            <span className="hidden sm:inline font-bold">Back</span>
+            <ChevronLeft aria-hidden="true" className="h-4 w-4" />
+            <span className="hidden font-semibold sm:inline">Back</span>
           </Button>
 
-          <Button
-            variant="secondary"
-            className="gap-2 shadow-lg pointer-events-auto backdrop-blur-md bg-white/70 border-none xl:bg-white"
-            onClick={() => {
-              mode === "orbit" ? setMode("fpv") : setMode("orbit");
-            }}
-          >
-            <SwitchCamera className="h-6 w-6" />
-          </Button>
-
-          <div className="flex gap-2 pointer-events-auto xl:hidden">
+          <div className="pointer-events-auto flex gap-2">
             <Button
               variant="secondary"
-              className="shadow-lg backdrop-blur-md bg-white/70 border-none"
-              onClick={handleResetDesign}
+              size="icon"
+              aria-label={
+                mode === "orbit"
+                  ? "Switch to walk-through view"
+                  : "Switch to orbit view"
+              }
+              aria-pressed={mode === "fpv"}
+              className="border border-border bg-background/85 backdrop-blur-md"
+              onClick={() => setMode(mode === "orbit" ? "fpv" : "orbit")}
             >
-              <RotateCcw className="h-4 w-4" />
+              <SwitchCamera aria-hidden="true" className="h-5 w-5" />
             </Button>
-            <EmailModal onSave={handleSaveDesign} projectEmail={projectEmail} />
+
+            <div className="flex gap-2 xl:hidden">
+              <Button
+                variant="secondary"
+                size="icon"
+                aria-label="Reset design"
+                className="border border-border bg-background/85 backdrop-blur-md"
+                onClick={handleResetDesign}
+              >
+                <RotateCcw aria-hidden="true" className="h-4 w-4" />
+              </Button>
+              <EmailModal
+                onSave={handleSaveDesign}
+                projectEmail={projectEmail}
+              />
+            </div>
           </div>
         </div>
 
-        {/* --- 2. PREVIEW SECTION (3D Scene) --- */}
-        {/* On Mobile: Full screen (absolute) | On Desktop: 2/3 width (relative) */}
-        <div className="absolute inset-0 xl:relative xl:w-2/3 h-full z-0 bg-muted">
+        {/* --- 3D scene --- */}
+        <div className="absolute inset-0 z-0 h-full bg-muted xl:relative xl:w-2/3">
           <BathroomScene
             selectedProducts={selectedProducts}
             categories={categories}
@@ -97,26 +231,32 @@ const ConfigurePage = ({
           />
         </div>
 
-        {/* --- 3. UI SECTION (Floating Drawer on Mobile, Sidebar on Desktop) --- */}
+        {/* --- Picker: drawer on mobile, sidebar on desktop --- */}
         <div
-          className={`
-          absolute bottom-0 left-0 right-0 z-20 transition-transform duration-500 ease-in-out pointer-events-none
-          pb-[env(safe-area-inset-bottom,0.5rem)]
-          xl:relative xl:w-1/3 xl:h-full xl:translate-y-0 xl:pointer-events-auto xl:pb-0 xl:border-l xl:bg-background xl:flex xl:flex-col
-          ${isDrawerOpen ? "translate-y-0" : "translate-y-[calc(100%-45px)]"}
-        `}
+          className={`pointer-events-none absolute right-0 bottom-0 left-0 z-20 pb-[env(safe-area-inset-bottom,0.5rem)] transition-transform duration-500 ease-in-out xl:pointer-events-auto xl:relative xl:flex xl:h-full xl:w-1/3 xl:translate-y-0 xl:flex-col xl:border-l xl:border-border xl:bg-background xl:pb-0 ${
+            isDrawerOpen ? "translate-y-0" : "translate-y-[calc(100%-45px)]"
+          }`}
         >
-          {/* DESKTOP HEADER (Only visible on XL) */}
-          <div className="hidden xl:flex items-center justify-between p-4 border-b bg-background sticky top-0 z-10">
-            <h2 className="font-bold text-lg">Design your own 3D Bathroom</h2>
-            <div className="flex gap-2">
+          {/* Desktop header */}
+          <div className="rule-hairline sticky top-0 z-10 hidden items-center justify-between gap-3 border-b bg-background p-4 xl:flex">
+            <div className="min-w-0">
+              <h2 className="type-display text-lg text-primary">
+                Design your bathroom
+              </h2>
+              <p className="type-eyebrow mt-1 text-muted-foreground">
+                {selectedCount === 0
+                  ? "Nothing selected yet"
+                  : `${selectedCount} item${selectedCount === 1 ? "" : "s"} selected`}
+              </p>
+            </div>
+            <div className="flex shrink-0 gap-2">
               <Button
                 variant="outline"
                 size="sm"
                 onClick={handleResetDesign}
                 className="gap-2"
               >
-                <RotateCcw className="h-4 w-4" /> Reset
+                <RotateCcw aria-hidden="true" className="h-4 w-4" /> Reset
               </Button>
               <EmailModal
                 onSave={handleSaveDesign}
@@ -125,211 +265,112 @@ const ConfigurePage = ({
             </div>
           </div>
 
-          <div className="w-full max-w-4xl mx-auto px-2 xl:px-0 xl:max-w-none flex flex-col items-center xl:items-stretch xl:h-full">
-            {/* MOBILE TOGGLE ARROW (Hidden on XL) */}
+          <div className="mx-auto flex w-full max-w-4xl flex-col items-center px-2 xl:h-full xl:max-w-none xl:items-stretch xl:px-0">
+            {/* Mobile drawer handle */}
             <button
+              type="button"
               onClick={() => setIsDrawerOpen(!isDrawerOpen)}
-              className="xl:hidden pointer-events-auto flex items-center justify-center w-12 h-8 mb-1 bg-accent backdrop-blur-md rounded-t-xl shadow-md border-x border-t border-white/40 text-white"
+              aria-expanded={isDrawerOpen}
+              aria-controls="configurator-panel"
+              aria-label={isDrawerOpen ? "Collapse options" : "Expand options"}
+              className="pointer-events-auto mb-1 flex h-8 w-12 items-center justify-center rounded-t-xl bg-accent text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent xl:hidden"
             >
               {isDrawerOpen ? (
-                <ChevronDown className="h-5 w-5" />
+                <ChevronDown aria-hidden="true" className="h-5 w-5" />
               ) : (
-                <ChevronUp className="h-5 w-5" />
+                <ChevronUp aria-hidden="true" className="h-5 w-5" />
               )}
             </button>
 
-            {/* MAIN UI CONTENT */}
-            <div className="pointer-events-auto w-full flex flex-col gap-2 xl:gap-0 xl:h-full xl:overflow-hidden bg-white/10 backdrop-blur-2xl xl:backdrop-blur-none xl:bg-background rounded-[2.5rem] xl:rounded-none p-4 xl:p-0 shadow-2xl xl:shadow-none border border-white/40 xl:border-none">
-              {/* CATEGORIES (Pills on mobile, Tabs on desktop) */}
-              <div className="flex xl:grid xl:grid-cols-3 gap-2 p-2 xl:p-4 overflow-x-auto xl:overflow-x-visible xl:border-b [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-                {categories.map((category) => {
-                  const isActive = activeTab === category.id;
-                  return (
-                    <button
-                      key={category.id}
-                      onClick={() => handleCategoryChange(category.id)}
-                      className={`cursor-pointer relative flex-shrink-0 px-5 py-2.5 xl:px-3 xl:py-2 rounded-full xl:rounded-md text-xs font-bold transition-all shadow-md xl:shadow-none ${
-                        isActive
-                          ? "bg-primary text-white scale-105 xl:scale-100"
-                          : "bg-white/90 xl:bg-muted text-slate-700 hover:bg-muted/80"
-                      }`}
-                    >
-                      {category.label}
-                      {!!selectedProducts[category.id] && (
-                        <span className="absolute -top-1 -right-1 xl:top-1 xl:right-1 bg-green-500 rounded-full p-0.5 border-2 border-white">
-                          <Check className="h-3 w-3 text-white" />
-                        </span>
-                      )}
-                    </button>
-                  );
-                })}
-              </div>
+            <div
+              id="configurator-panel"
+              className="pointer-events-auto flex w-full flex-col gap-2 rounded-t-2xl border border-border bg-background/95 backdrop-blur-xl xl:h-full xl:gap-0 xl:overflow-hidden xl:rounded-none xl:border-none xl:bg-background xl:backdrop-blur-none"
+            >
+              <CategoryTabs
+                categories={categories}
+                activeTab={activeTab}
+                selectedProducts={selectedProducts}
+                onChange={handleCategoryChange}
+              />
 
-              {/* TIER TOGGLE */}
-              <div className="flex justify-center xl:p-4 xl:bg-slate-50 border-y">
-                <div className="flex p-1 bg-slate-200/40 xl:bg-slate-200 rounded-full w-full max-w-[280px] xl:max-w-none">
-                  {["basic", "standard", "premium"].map((tier) => (
-                    <button
-                      key={tier}
-                      onClick={() => setActiveTier(tier)}
-                      className={`cursor-pointer flex-1 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${
-                        activeTier === tier
-                          ? "bg-white shadow-sm text-primary"
-                          : "text-slate-500"
-                      }`}
-                    >
-                      {tier}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* FLIP AND PLACEMENT TOGGLE — only shown for products with allowFlip or allowPosition */}
-              {(() => {
-                const selected = selectedProducts[activeTab];
-                const product = currentCategory?.products.find(
-                  (p) => p.id === selected?.productId,
-                );
-
-                // if (product?.allowFlip) {
-                return (
-                  <div className="flex justify-center px-4 py-2 border-b gap-4">
-                    {product?.allowFlip && (
-                      <div className="flex p-1 bg-slate-200/40 xl:bg-slate-200 rounded-full w-full max-w-[180px] xl:max-w-[220px]">
-                        {[
-                          { label: "Left", value: false },
-                          { label: "Right", value: true },
-                        ].map(({ label, value }) => (
-                          <button
-                            key={label}
-                            onClick={() => {
-                              handleFlipProduct(value);
-                              setIsDrawerOpen(false);
-                            }}
-                            className={`cursor-pointer flex-1 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${
-                              (selected?.flipped ?? false) === value
-                                ? "bg-white shadow-sm text-primary"
-                                : "text-slate-500"
-                            }`}
-                          >
-                            {label}
-                          </button>
-                        ))}
-                      </div>
-                    )}
-                    {product?.allowPosition && (
-                      <div className="flex p-1 bg-slate-200/40 xl:bg-slate-200 rounded-full w-full max-w-[220px] xl:max-w-[260px]">
-                        {Object.keys(product.positionOptions).map((opt) => (
-                          <button
-                            key={opt}
-                            onClick={() => {
-                              handlePlacementChange(opt);
-                              setIsDrawerOpen(false);
-                            }}
-                            className={`cursor-pointer flex-1 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${
-                              (selected?.placement ?? "center") === opt
-                                ? "bg-white shadow-sm text-primary"
-                                : "text-slate-500"
-                            }`}
-                          >
-                            {opt}
-                          </button>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                );
-              })()}
-
-              {/* PRODUCT LIST (Horizontal on mobile, Vertical Grid on desktop) */}
-              <div className="flex xl:grid xl:grid-cols-3 gap-4 xl:gap-3 p-1 xl:p-4 overflow-x-auto xl:overflow-y-auto snap-x xl:snap-none [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-                {currentCategory?.products
-                  .filter((p) => p.tiers?.[activeTier]?.length > 0)
-                  .map((product) => {
-                    if (
-                      currentCategory.id !== "tubFronts/showerPans" &&
-                      selectedShape &&
-                      product.shape?.length > 0 &&
-                      !product.shape?.includes(selectedShape)
-                    )
-                      return;
-
-                    const isSelected =
-                      selectedProducts[activeTab]?.productId === product.id &&
-                      product.tiers[activeTier]?.includes(
-                        selectedProducts[activeTab]?.color,
-                      );
-
-                    const currentSelectedColor = isSelected
-                      ? selectedProducts[activeTab]?.color
-                      : (product.tiers?.[activeTier]?.[0] ?? "");
-
-                    return (
-                      <div
-                        key={product.id}
-                        onClick={() => {
-                          if (isSelected) {
-                            handleUnselectProduct(product.id);
-                          } else {
-                            handleProductSelect(
-                              product.id,
-                              currentSelectedColor,
-                              product?.shape,
-                            );
-                            setIsDrawerOpen(false);
-                          }
-                        }}
-                        className={`cursor-pointer flex-shrink-0 w-32 xl:w-auto snap-center p-3 rounded-2xl xl:rounded-lg transition-all border-2 ${
-                          isSelected
-                            ? "bg-white xl:bg-primary/5 border-primary shadow-xl xl:shadow-none"
-                            : "bg-transparent border-transparent xl:border-muted hover:border-primary/30"
-                        }`}
-                      >
-                        <div className="aspect-square rounded-xl xl:rounded-md overflow-hidden mb-2 bg-slate-100">
-                          <img
-                            src={
-                              product.displayByColor?.[currentSelectedColor]
-                                ?.productDisplay
-                            }
-                            alt={product.name}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                        <p className="text-[10px] xl:text-xs font-bold text-slate-800 leading-tight mb-2">
-                          {product.name}
-                        </p>
-
-                        <div className="flex gap-1.5 flex-wrap">
-                          {product.tiers?.[activeTier]?.map((color) => (
-                            <button
-                              key={color}
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                handleProductSelect(product.id, color);
-                                setIsDrawerOpen(false);
-                              }}
-                              className={`cursor-pointer w-3.5 h-3.5 rounded-full border border-slate-300 transition-all ${
-                                selectedProducts[activeTab]?.color === color &&
-                                isSelected
-                                  ? "ring-2 ring-primary ring-offset-1 scale-110"
-                                  : "hover:scale-110"
-                              }`}
-                              style={{
-                                backgroundColor:
-                                  product.displayByColor[color].displayColor ||
-                                  "#ffffff",
-                              }}
-                            />
-                          ))}
-                        </div>
-                      </div>
-                    );
-                  })}
-                <div
-                  className="hidden xl:block xl:h-[60px] xl:col-span-3 pointer-events-none"
-                  aria-hidden="true"
+              <div className="rule-hairline border-y px-3 py-3 xl:px-4">
+                <SegmentedControl
+                  label="Product tier"
+                  options={TIERS}
+                  value={activeTier}
+                  onChange={setActiveTier}
                 />
               </div>
+
+              {/* Variant controls, only when the selected product supports them */}
+              {(activeProduct?.allowFlip || activeProduct?.allowPosition) && (
+                <div className="rule-hairline flex flex-wrap justify-center gap-3 border-b px-3 py-3 xl:px-4">
+                  {activeProduct?.allowFlip && (
+                    <SegmentedControl
+                      label="Orientation"
+                      options={FLIP_OPTIONS}
+                      value={selection?.flipped ?? false}
+                      onChange={onFlip}
+                      className="w-full max-w-[200px]"
+                    />
+                  )}
+
+                  {activeProduct?.allowPosition && (
+                    <SegmentedControl
+                      label="Placement"
+                      options={placementOptions}
+                      value={selection?.placement ?? "center"}
+                      onChange={onPlacement}
+                      className={placementClass}
+                    />
+                  )}
+                </div>
+              )}
+
+              {/* Products */}
+              {visibleProducts.length === 0 ? (
+                <div className="flex flex-col items-center gap-3 px-6 py-10 text-center">
+                  <PackageOpen
+                    aria-hidden="true"
+                    className="h-7 w-7 text-muted-foreground"
+                    strokeWidth={1.5}
+                  />
+                  <p className="text-sm text-muted-foreground">
+                    Nothing in this category at the{" "}
+                    <span className="font-semibold text-primary">
+                      {activeTier}
+                    </span>{" "}
+                    tier
+                    {selectedShape ? " for the layout you picked" : ""}. Try
+                    another tier.
+                  </p>
+                </div>
+              ) : (
+                <div className="flex snap-x gap-3 overflow-x-auto p-2 [scrollbar-width:none] xl:grid xl:grid-cols-3 xl:snap-none xl:overflow-y-auto xl:p-4 [&::-webkit-scrollbar]:hidden">
+                  {visibleProducts.map((product) => {
+                    const isSelected =
+                      selection?.productId === product.id &&
+                      product.tiers[activeTier]?.includes(selection?.color);
+
+                    return (
+                      <ProductCard
+                        key={product.id}
+                        product={product}
+                        activeTier={activeTier}
+                        isSelected={isSelected}
+                        selectedColor={selection?.color}
+                        onSelect={onSelect}
+                        onUnselect={onUnselect}
+                        onSelectColor={onSelectColor}
+                      />
+                    );
+                  })}
+                  <div
+                    className="pointer-events-none hidden xl:col-span-3 xl:block xl:h-[60px]"
+                    aria-hidden="true"
+                  />
+                </div>
+              )}
             </div>
           </div>
         </div>

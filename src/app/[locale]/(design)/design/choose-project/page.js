@@ -3,94 +3,121 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 import LoadProjectModal from "./LoadProjectModal";
+import DesignStepHeader from "@/components/design/design-step-header";
 
+/**
+ * Step one: start fresh, or reopen a saved design.
+ *
+ * The heading used `bg-clip-text text-transparent` over a gradient — gradient
+ * text, which the design system does not use anywhere else and which loses its
+ * colour entirely if the background fails to paint. Emphasis here comes from
+ * size and weight like every other heading on the site.
+ */
 export default function ChooseProject() {
   const [modalOpen, setModalOpen] = useState(false);
 
   const projectOptions = [
     {
       id: "start-designing",
-      label: "Start New Design",
-      subLabel: "Begin with a fresh canvas",
+      label: "Start a new design",
+      subLabel: "Begin from an empty room and build it up",
       href: "/design/bathroom/plumbing",
       image: "/images/modern-bathtub-design.jpg",
     },
     {
       id: "existing",
-      label: "Resume Project",
-      subLabel: "Pick up where you left off",
-      href: "#",
+      label: "Resume a saved design",
+      subLabel: "Reopen it with the email you saved it under",
       image: "/images/bathroom-project-files.jpg",
     },
   ];
 
   return (
-    // min-h-screen ensures it fills the viewport, py-12 gives breathing room on mobile
-    <div className="min-h-screen w-full flex flex-col bg-background py-8 md:py-12 px-4 overflow-auto">
-      <div className="flex-1 flex flex-col justify-center items-center max-w-6xl mx-auto w-full">
-        {/* Header Section */}
-        <div className="text-center mb-10 md:mb-16">
-          <h1 className="text-4xl md:text-6xl font-black tracking-tight mb-4 bg-gradient-to-b from-foreground to-foreground/70 bg-clip-text text-transparent">
-            Design Your Space
-          </h1>
-          <p className="text-muted-foreground text-base md:text-xl max-w-md mx-auto">
-            Choose an option below to begin your bathroom transformation.
+    <div className="flex h-full flex-col overflow-y-auto bg-background">
+      <DesignStepHeader step={1} title="Choose a project" />
+
+      <div className="flex flex-1 items-center">
+        <div className="mx-auto w-full max-w-[1400px] px-4 py-12 md:px-10 md:py-16">
+          <p className="type-eyebrow flex items-center gap-3 text-accent">
+            <span
+              className="animate-rule-draw h-px w-8 bg-accent"
+              aria-hidden="true"
+            />
+            Step one
           </p>
-        </div>
 
-        {/* Project Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 w-full">
-          {projectOptions.map((project) => {
-            const isExisting = project.id === "existing";
+          <div className="mt-6 grid gap-6 md:grid-cols-12 md:items-end">
+            <h1 className="type-display text-[clamp(2.25rem,4.4vw,3.75rem)] text-primary md:col-span-6">
+              Design your space
+            </h1>
+            <p className="measure text-base leading-relaxed text-muted-foreground md:col-span-6">
+              Start something new, or pick up a design you already saved.
+            </p>
+          </div>
 
-            // Shared Card Content to keep DRY
-            const CardContent = (
-              <div className="group relative flex flex-col h-full">
-                <div className="relative aspect-[16/10] md:aspect-[2/2] overflow-hidden rounded-2xl mb-6 shadow-sm border border-border transition-all duration-500 group-hover:shadow-2xl group-hover:-translate-y-2">
-                  <Image
-                    src={project.image}
-                    alt={project.label}
-                    fill
-                    priority
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-60 group-hover:opacity-40 transition-opacity" />
+          <ul className="rule-hairline mt-12 grid border-t md:grid-cols-2">
+            {projectOptions.map((project, index) => {
+              const isExisting = project.id === "existing";
 
-                  {/* Mobile-only label overlay (optional) */}
-                  <div className="absolute bottom-4 left-4 right-4 md:hidden">
-                    <p className="text-white font-bold text-lg">
-                      {project.label}
-                    </p>
-                  </div>
-                </div>
+              const inner = (
+                <>
+                  <span className="relative block aspect-[4/3] overflow-hidden bg-muted">
+                    <Image
+                      src={project.image}
+                      alt=""
+                      fill
+                      loading="lazy"
+                      sizes="(min-width: 768px) 46vw, 100vw"
+                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+                    />
+                  </span>
 
-                <div className="text-center md:text-left px-2">
-                  <h3 className="text-2xl font-bold mb-1 group-hover:text-primary transition-colors">
-                    {project.label}
-                  </h3>
-                  <p className="text-muted-foreground text-sm md:text-base">
-                    {project.subLabel}
-                  </p>
-                </div>
-              </div>
-            );
+                  <span className="rule-hairline mt-6 flex items-start justify-between gap-6 border-t pt-5">
+                    <span>
+                      <span className="type-display block text-[1.35rem] text-primary transition-colors group-hover:text-accent group-focus-visible:text-accent">
+                        {project.label}
+                      </span>
+                      <span className="mt-2 block text-sm leading-relaxed text-muted-foreground">
+                        {project.subLabel}
+                      </span>
+                    </span>
+                    <ArrowRight
+                      aria-hidden="true"
+                      className="mt-1 h-5 w-5 shrink-0 -translate-x-1 text-accent opacity-0 transition-all duration-200 ease-out group-hover:translate-x-0 group-hover:opacity-100 group-focus-visible:translate-x-0 group-focus-visible:opacity-100"
+                    />
+                  </span>
+                </>
+              );
 
-            return isExisting ? (
-              <button
-                key={project.id}
-                className="w-full text-left focus:outline-none cursor-pointer"
-                onClick={() => setModalOpen(true)}
-              >
-                {CardContent}
-              </button>
-            ) : (
-              <Link key={project.id} href={project.href} className="w-full">
-                {CardContent}
-              </Link>
-            );
-          })}
+              const shared =
+                "group block w-full text-left focus-visible:outline-none";
+
+              return (
+                <li
+                  key={project.id}
+                  className={`rule-hairline border-b py-8 md:py-10 ${
+                    index === 1 ? "md:border-l md:pl-10" : "md:pr-10"
+                  }`}
+                >
+                  {isExisting ? (
+                    <button
+                      type="button"
+                      className={shared}
+                      onClick={() => setModalOpen(true)}
+                    >
+                      {inner}
+                    </button>
+                  ) : (
+                    <Link href={project.href} className={shared}>
+                      {inner}
+                    </Link>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
         </div>
       </div>
 

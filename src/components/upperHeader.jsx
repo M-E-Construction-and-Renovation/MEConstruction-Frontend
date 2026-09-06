@@ -9,32 +9,59 @@ import { socials } from "@/data/contact-data";
 import { calendly } from "@/data/contact-data";
 import ContactLink from "./analytics/contact-link";
 
+/**
+ * Utility bar above the main navigation.
+ *
+ * Rebuilt around a priority ladder rather than a single row that everything
+ * crowds into. Previously the socials and the language switcher both appeared
+ * at `md`, while the type stepped up at the same breakpoint — so at 768px the
+ * bar's contents ran 45px wider than the bar and "Set An Appointment!" printed
+ * straight through the language switcher.
+ *
+ * Order of appearance, most important first:
+ *   always   phone, search        — the two things a visitor comes here to do
+ *   sm+      book an appointment
+ *   lg+      language, socials    — only once the row is genuinely wide
+ *
+ * Everything hidden below lg is reachable in the mobile menu, so nothing is
+ * lost; it is only deferred until there is room for it.
+ */
 export function UpperHeader({ locale, upperHeader }) {
   return (
-    <div className="bg-primary/95 backdrop-blur-md text-primary-foreground">
-      <div className=" mx-auto px-4 md:px-10">
-        <div className="flex items-center justify-between h-12 gap-2">
-          {/* Sized down at mobile: at 375px the number used to wrap onto two
-              lines inside a 48px bar, and so did the appointment link. */}
-          <div className="flex items-center gap-3 sm:gap-6 min-w-0">
+    /*
+      A shade darker than the bar below, so the block reads as a utility strip
+      above the navigation rather than one tall slab. No bottom border — the
+      main bar's lit top edge is the divider.
+
+      Opaque, for the same reason the bar is: translucency over a blur made this
+      strip take its colour from whatever happened to be behind it, which at the
+      top of the page is the page's own background and further down is the
+      content. It changed shade as you scrolled.
+    */
+    <div className="relative bg-[oklch(0.228_0.08_250)] text-primary-foreground">
+      <div className="mx-auto px-4 md:px-10">
+        <div className="flex h-12 items-center justify-between gap-3">
+          {/* Primary actions */}
+          <div className="flex min-w-0 items-center gap-3 sm:gap-5">
             <ContactLink
               method="phone"
               placement="upper_header"
               href={`tel:${contactNumber.value}`}
-              className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm md:text-base whitespace-nowrap hover:opacity-80 transition-opacity hover:underline"
+              className="flex shrink-0 items-center gap-2 py-3 text-xs whitespace-nowrap transition-colors hover:text-accent focus-visible:text-accent focus-visible:outline-none sm:text-sm xl:text-base"
             >
               <Phone
                 aria-hidden="true"
-                className="h-5 w-5 sm:h-7 sm:w-7 shrink-0"
+                className="h-4 w-4 shrink-0 sm:h-5 sm:w-5"
               />
               {contactNumber.displayValue}
             </ContactLink>
 
-            {/* Decorative separator between two independent actions; it costs
-                more horizontal room than it earns on a phone. */}
-            <span aria-hidden="true" className="hidden sm:inline">
-              OR
-            </span>
+            {/* Hairline divider, in the same grammar as the section rules —
+                replaces the word "OR", which cost real width to say nothing. */}
+            <span
+              aria-hidden="true"
+              className="hidden h-4 w-px bg-white/25 sm:block"
+            />
 
             <ContactLink
               method="calendly"
@@ -42,34 +69,46 @@ export function UpperHeader({ locale, upperHeader }) {
               href={calendly.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm md:text-base whitespace-nowrap hover:opacity-80 transition-opacity hover:underline"
+              className="hidden shrink-0 items-center gap-2 py-3 text-xs whitespace-nowrap transition-colors hover:text-accent focus-visible:text-accent focus-visible:outline-none sm:flex sm:text-sm xl:text-base"
             >
               <Calendar
                 aria-hidden="true"
-                className="h-5 w-5 sm:h-7 sm:w-7 shrink-0"
+                className="h-4 w-4 shrink-0 sm:h-5 sm:w-5"
               />
               {upperHeader.calendlyText}
             </ContactLink>
-            <div className="hidden md:flex gap-2 justify-center items-center">
+          </div>
+
+          {/* Secondary: appears only once the bar is wide enough to hold it */}
+          <div className="flex shrink-0 items-center gap-2 lg:gap-4">
+            <div className="hidden lg:flex">
+              <LanguageSwitcher currentLocale={locale} />
+            </div>
+
+            <span
+              aria-hidden="true"
+              className="hidden h-4 w-px bg-white/25 lg:block"
+            />
+
+            <div className="hidden items-center gap-1.5 lg:flex">
               {socials.map((social) => (
-                <Button key={social.id} variant="outline" size="icon" asChild>
+                <Button
+                  key={social.id}
+                  variant="ghost"
+                  size="icon"
+                  asChild
+                  className="h-9 w-9 hover:bg-white/10"
+                >
                   <Link
                     href={social.link}
                     target={social.target}
                     rel="noopener noreferrer"
                     aria-label={social.label}
                   >
-                    <social.icon aria-hidden="true" className="h-5 w-5" />
+                    <social.icon aria-hidden="true" className="h-4 w-4" />
                   </Link>
                 </Button>
               ))}
-            </div>
-          </div>
-
-          {/* Right: Contact Info */}
-          <div className="flex items-center gap-2 sm:gap-6 text-sm shrink-0">
-            <div className="hidden md:flex">
-              <LanguageSwitcher currentLocale={locale} />
             </div>
 
             <SiteSearch />

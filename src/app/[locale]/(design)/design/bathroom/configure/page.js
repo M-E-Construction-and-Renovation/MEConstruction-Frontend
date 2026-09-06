@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useState, useEffect, Suspense } from "react";
+import { useCallback, useState, useEffect, Suspense } from "react";
 import allCategories from "@/data/products";
 import ConfigurePage from "@/components/utils/configure-page";
 import { useToast } from "@/components/ui/use-toast";
@@ -15,8 +15,6 @@ export default function DesignTool() {
   const searchParams = useSearchParams();
   const plumbing = searchParams.get("plumbing") || "left";
   const email = searchParams.get("email") || "";
-
-  // const shape = "tub";
 
   const [activeTab, setActiveTab] = useState("tubFronts/showerPans");
   const [activeTier, setActiveTier] = useState("premium");
@@ -102,154 +100,159 @@ export default function DesignTool() {
     }
   };
 
-  // const categories = allCategories.filter((category) =>
-  //   category.shapesAllowed.includes(shape)
-  // );
-
   const currentCategory =
     allCategories.find((c) => c.id === activeTab) || "tubFronts/showerPans";
 
-  const handleCategoryChange = (categoryId) => {
-    setActiveTab(categoryId);
-    const selectedInCategory = selectedProducts[categoryId];
+  const handleCategoryChange = useCallback(
+    (categoryId) => {
+      setActiveTab(categoryId);
+      const selectedInCategory = selectedProducts[categoryId];
 
-    if (selectedInCategory) {
-      const category = allCategories.find((c) => c.id === categoryId);
-      const product = category?.products.find(
-        (p) => p.id === selectedInCategory.productId,
-      );
+      if (selectedInCategory) {
+        const category = allCategories.find((c) => c.id === categoryId);
+        const product = category?.products.find(
+          (p) => p.id === selectedInCategory.productId,
+        );
 
-      if (product) {
-        // Determine the tier based on the selected color
-        const selectedColor = selectedInCategory.color;
-        let tierFound = "basic"; // fallback
+        if (product) {
+          // Determine the tier based on the selected color
+          const selectedColor = selectedInCategory.color;
+          let tierFound = "basic"; // fallback
 
-        for (const [tierName, colors] of Object.entries(product.tiers || {})) {
-          if (colors.includes(selectedColor)) {
-            tierFound = tierName;
-            break;
+          for (const [tierName, colors] of Object.entries(
+            product.tiers || {},
+          )) {
+            if (colors.includes(selectedColor)) {
+              tierFound = tierName;
+              break;
+            }
           }
+
+          setActiveTier(tierFound);
+        }
+      } else {
+        setActiveTier("premium");
+      }
+    },
+    [selectedProducts],
+  );
+
+  const handleProductSelect = useCallback(
+    (productId, color, shape, flipped = false, placement = "center") => {
+      setSelectedProducts((prev) => {
+        const existing = prev[activeTab];
+        const effectiveFlipped = existing?.flipped ?? flipped;
+
+        // Normalize placement: if this product has positionOptions and current
+        // placement isn't valid for it, snap to its first option
+        const rawPlacement = existing?.placement ?? placement;
+        const effectivePlacement = resolveInitialPlacement(
+          activeTab,
+          productId,
+          rawPlacement,
+          allCategories,
+        );
+
+        let newPrev = prev;
+
+        if (activeTab === "tubFronts/showerPans") {
+          // Keep shape-dependent products only if they support the newly selected shape
+          newPrev = Object.fromEntries(
+            Object.entries(prev).filter(([key, value]) => {
+              if (key === "tubFronts/showerPans") return false; // always replace base
+
+              const category = allCategories.find((c) => c.id === key);
+              const product = category?.products.find(
+                (p) => p.id === value.productId,
+              );
+
+              // No shape constraint = always keep (tiles, niches, etc.)
+              if (!product?.shape || product.shape.length === 0) return true;
+
+              // Has shape constraint = only keep if new shape is supported
+              return product.shape.includes(shape);
+            }),
+          );
         }
 
-        setActiveTier(tierFound);
-      }
-    } else {
-      setActiveTier("premium");
-    }
-  };
+        const updated = {
+          ...newPrev,
+          [activeTab]: {
+            productId,
+            color,
+            shape,
+            flipped: effectiveFlipped,
+            placement: effectivePlacement,
+          },
+        };
 
-  const handleProductSelect = (
-    productId,
-    color,
-    shape,
-    flipped = false,
-    placement = "center",
-  ) => {
-    setSelectedProducts((prev) => {
-      const existing = prev[activeTab];
-      const effectiveFlipped = existing?.flipped ?? flipped;
+        return resolvePositionConflicts(updated, activeTab, allCategories);
+      });
+    },
+    [activeTab],
+  );
 
-      // Normalize placement: if this product has positionOptions and current
-      // placement isn't valid for it, snap to its first option
-      const rawPlacement = existing?.placement ?? placement;
-      const effectivePlacement = resolveInitialPlacement(
-        activeTab,
-        productId,
-        rawPlacement,
-        allCategories,
-      );
+  const handleUnselectProduct = useCallback(
+    (productId) => {
+      setSelectedProducts((prev) => {
+        const selected = prev[activeTab];
 
-      let newPrev = prev;
+        // If no selected product for this tab, do nothing
+        if (!selected) return prev;
 
-      if (activeTab === "tubFronts/showerPans") {
-        // Keep shape-dependent products only if they support the newly selected shape
-        newPrev = Object.fromEntries(
-          Object.entries(prev).filter(([key, value]) => {
-            if (key === "tubFronts/showerPans") return false; // always replace base
+        // If the product matches, remove the key from object
+        if (selected.productId === productId) {
+          const { [activeTab]: _, ...rest } = prev;
+          return rest;
+        }
 
-            const category = allCategories.find((c) => c.id === key);
-            const product = category?.products.find(
-              (p) => p.id === value.productId,
-            );
-
-            // No shape constraint = always keep (tiles, niches, etc.)
-            if (!product?.shape || product.shape.length === 0) return true;
-
-            // Has shape constraint = only keep if new shape is supported
-            return product.shape.includes(shape);
-          }),
-        );
-      }
-
-      const updated = {
-        // ...prev,
-        ...newPrev,
-        [activeTab]: {
-          productId,
-          color,
-          shape,
-          flipped: effectiveFlipped,
-          placement: effectivePlacement,
-        },
-      };
-
-      return resolvePositionConflicts(updated, activeTab, allCategories);
-    });
-  };
-
-  const handleUnselectProduct = (productId) => {
-    setSelectedProducts((prev) => {
-      const selected = prev[activeTab];
-
-      // If no selected product for this tab, do nothing
-      if (!selected) return prev;
-
-      // If the product matches, remove the key from object
-      if (selected.productId === productId) {
-        const { [activeTab]: _, ...rest } = prev;
-        return rest;
-      }
-
-      // If it doesn't match, return previous state
-      return prev;
-    });
-  };
+        // If it doesn't match, return previous state
+        return prev;
+      });
+    },
+    [activeTab],
+  );
 
   // Dedicated flip toggle handler (flipping position with rotation) (inverting)
-  const handleFlipProduct = (flipped) => {
-    // setSelectedProducts((prev) => ({
-    //   ...prev,
-    //   [activeTab]: { ...prev[activeTab], flipped },
-    // }));
-    setSelectedProducts((prev) => {
-      const updated = {
-        ...prev,
-        [activeTab]: { ...prev[activeTab], flipped },
-      };
-      return resolvePositionConflicts(updated, activeTab, allCategories);
-    });
-  };
+  const handleFlipProduct = useCallback(
+    (flipped) => {
+      setSelectedProducts((prev) => {
+        const updated = {
+          ...prev,
+          [activeTab]: { ...prev[activeTab], flipped },
+        };
+        return resolvePositionConflicts(updated, activeTab, allCategories);
+      });
+    },
+    [activeTab],
+  );
 
   // Dedicated placement handler (for moving products with position choices)
-  const handlePlacementChange = (placement) => {
-    // setSelectedProducts((prev) => ({
-    //   ...prev,
-    //   [activeTab]: { ...prev[activeTab], placement },
-    // }));
-    setSelectedProducts((prev) => {
-      const updated = {
-        ...prev,
-        [activeTab]: { ...prev[activeTab], placement },
-      };
-      return resolvePositionConflicts(updated, activeTab, allCategories);
-    });
-  };
+  const handlePlacementChange = useCallback(
+    (placement) => {
+      setSelectedProducts((prev) => {
+        const updated = {
+          ...prev,
+          [activeTab]: { ...prev[activeTab], placement },
+        };
+        return resolvePositionConflicts(updated, activeTab, allCategories);
+      });
+    },
+    [activeTab],
+  );
 
   if (loadingProject) {
     return (
-      <div className="fixed inset-0 flex flex-col items-center justify-center bg-white z-50">
-        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-blue-600 mb-4"></div>
-        <p className="text-lg font-medium text-gray-700">
+      <div
+        role="status"
+        aria-live="polite"
+        className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-background"
+      >
+        <div
+          aria-hidden="true"
+          className="mb-4 h-16 w-16 animate-spin rounded-full border-4 border-border border-t-accent"
+        />
+        <p className="text-lg font-medium text-muted-foreground">
           Loading saved project...
         </p>
       </div>
@@ -260,9 +263,16 @@ export default function DesignTool() {
     <div className="fixed inset-0 h-dvh w-screen overflow-hidden">
       <Suspense
         fallback={
-          <div className="fixed inset-0 flex flex-col items-center justify-center bg-white z-50">
-            <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-blue-600 mb-4"></div>
-            <p className="text-lg font-medium text-gray-700">
+          <div
+            role="status"
+            aria-live="polite"
+            className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-background"
+          >
+            <div
+              aria-hidden="true"
+              className="mb-4 h-16 w-16 animate-spin rounded-full border-4 border-border border-t-accent"
+            />
+            <p className="text-lg font-medium text-muted-foreground">
               Loading Design Tool...
             </p>
           </div>
@@ -283,7 +293,6 @@ export default function DesignTool() {
           handleFlipProduct={handleFlipProduct}
           handlePlacementChange={handlePlacementChange}
           plumbing={plumbing}
-          // shape={shape}
           projectEmail={email}
         />
       </Suspense>

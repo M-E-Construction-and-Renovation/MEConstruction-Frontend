@@ -1,72 +1,94 @@
-import { Card } from "../ui/card";
-import { Button } from "../ui/button";
-import * as LucideIcons from "lucide-react";
-import { ArrowRight } from "lucide-react";
+import {
+  Accessibility,
+  ArrowRight,
+  Droplets,
+  HelpCircle,
+  LogIn,
+} from "lucide-react";
 import Link from "next/link";
+import Reveal from "../motion/reveal";
+
+/**
+ * The three shower jobs this firm takes on.
+ *
+ * The cards were headed by a 160px block of `from-blue-500 to-cyan-500`
+ * gradient carried in the content file — blues and cyans on a navy-and-orange
+ * site, and the only place those hues appear. The gradients do render (Tailwind
+ * v4 scans the message files), they are simply off-system, so the icon sits on
+ * the page's own ground now and the `color` keys in the content go unused.
+ *
+ * `<Link><Button>` rendered an `<a>` around a `<button>`: invalid, and two
+ * keyboard stops for one control.
+ *
+ * Entrance came from `animate-in fade-in slide-in-from-bottom`, classes from
+ * tw-animate-css whose import is commented out in globals.css — they resolved
+ * to nothing, so the `animationDelay` styles staggered an animation that never
+ * ran. Reveal does it for real.
+ */
+const ICONS = { Droplets, LogIn, Accessibility };
 
 export function ShowerTypes({ types }) {
   const { sectionTitle, sectionSubtitle, cards } = types;
 
   return (
-    <section
-      id="types"
-      className="py-16 md:py-24 bg-gradient-to-br from-slate-50 via-white to-slate-100"
-    >
-      <div className="container mx-auto px-4 max-w-6xl">
-        <div className="text-center mb-12 md:mb-16 animate-in fade-in duration-700">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+    <section id="types" className="bg-background py-16 md:py-24">
+      <div className="mx-auto w-full max-w-[1400px] px-4 md:px-10">
+        <div className="rule-hairline grid gap-6 border-t pt-8 md:grid-cols-12">
+          <Reveal
+            as="h2"
+            className="type-display text-[clamp(2rem,3.6vw,3.25rem)] text-primary md:col-span-5"
+          >
             {sectionTitle}
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          </Reveal>
+          <Reveal
+            as="p"
+            delay={80}
+            className="measure self-end text-base leading-relaxed text-muted-foreground md:col-span-7"
+          >
             {sectionSubtitle}
-          </p>
+          </Reveal>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        <ul className="rule-hairline mt-12 grid border-t md:grid-cols-3">
           {cards.map((type, index) => {
-            const Icon = LucideIcons[type.icon] || LucideIcons.HelpCircle;
+            const Icon = ICONS[type.icon] ?? HelpCircle;
 
             return (
-              <Card
-                key={index}
-                className="group overflow-hidden hover:shadow-xl transition-all duration-500 border-0 animate-in fade-in slide-in-from-bottom"
-                style={{ animationDelay: `${index * 100}ms` }}
+              <Reveal
+                as="li"
+                key={type.title}
+                delay={Math.min(index * 70, 210)}
+                className="rule-hairline flex flex-col border-b py-8 md:border-b-0 md:border-l md:py-10 md:pl-8 md:first:border-l-0 md:first:pl-0 md:pr-8"
               >
-                <div className="flex flex-col h-full">
-                  <div
-                    className={`h-40 bg-gradient-to-br ${type.color} relative overflow-hidden`}
-                  >
-                    <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity">
-                      <Icon className="w-24 h-24 absolute -top-4 -right-4 text-white/40" />
-                    </div>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <Icon className="w-16 h-16 text-white opacity-80 group-hover:scale-110 transition-transform duration-500" />
-                    </div>
-                  </div>
+                <span className="type-eyebrow text-muted-foreground">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <Icon
+                  aria-hidden="true"
+                  strokeWidth={1.5}
+                  className="mt-4 h-8 w-8 text-accent"
+                />
+                <h3 className="type-display mt-4 text-xl text-primary">
+                  {type.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  {type.description}
+                </p>
 
-                  <div className="p-6 space-y-4 flex flex-col flex-grow">
-                    <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
-                      {type.title}
-                    </h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      {type.description}
-                    </p>
-                    <Link
-                      href={type.href}
-                      target="_blank"
-                      className="mt-auto w-full text-primary text-center"
-                    >
-                      <Button variant="ghost">
-                        {type.cta}
-                        <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
-                      </Button>
-                    </Link>
-                  </div>
-                </div>
-              </Card>
+                <Link
+                  href={type.href}
+                  className="group/link mt-6 inline-flex items-center text-sm font-semibold text-accent underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                >
+                  {type.cta}
+                  <ArrowRight
+                    aria-hidden="true"
+                    className="ml-2 h-4 w-4 transition-transform duration-200 ease-out group-hover/link:translate-x-1"
+                  />
+                </Link>
+              </Reveal>
             );
           })}
-        </div>
+        </ul>
       </div>
     </section>
   );

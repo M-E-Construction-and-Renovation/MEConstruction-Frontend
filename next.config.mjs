@@ -34,6 +34,14 @@ const securityHeaders = [
 const nextConfig = {
   poweredByHeader: false,
 
+  images: {
+    // Next 16 will reject any `quality` prop not declared here. These are the
+    // values used across the redesign: photographic heroes sit at 80-85, the
+    // before/after pairs and the configurator screenshot go higher because
+    // they carry fine detail that compression smears.
+    qualities: [75, 80, 82, 85, 88, 90],
+  },
+
   async headers() {
     return [
       {

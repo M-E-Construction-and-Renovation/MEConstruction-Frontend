@@ -3,110 +3,130 @@
 import { Button } from "../ui/button";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
-import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { openModal } from "@/store/quoteModalSlice";
 import Link from "next/link";
+import Reveal from "../motion/reveal";
 
+/**
+ * Page hero.
+ *
+ * A content bug first: the second highlight rendered
+ * `highlights.highlight1.description`, so "No Demolition" was captioned
+ * "Stress-Free Process" and its own "Clean & Simple" never appeared on the
+ * page, in either locale. Fixed.
+ *
+ * The photograph deliberately stays in a frame rather than going full-bleed
+ * like the homepage, bathroom-remodel and advantages heroes. It is 1024x1024,
+ * and a full-bleed hero at a 1440px viewport wants ~2880px for a 2x display —
+ * it would be upscaled nearly 3x and look exactly as soft as the heroes we
+ * already had to fix. In a half-width column it is asked for ~660px instead,
+ * which it can actually carry. A larger shower photograph would let this page
+ * adopt the same full-bleed treatment as the others.
+ *
+ * The source is square, so the frame is square and nothing is cropped.
+ *
+ * Entrance was two setTimeout timers, which left the hero invisible until
+ * JavaScript ran with no reduced-motion path. Reveal handles both.
+ */
 export function ShowerHero({ hero }) {
   const { sectionTitle, sectionSubtitle, badge, image, labels, highlights } =
     hero;
-
   const dispatch = useDispatch();
 
-  const [isTextVisible, setIsTextVisible] = useState(false);
-  const [isImageVisible, setIsImageVisible] = useState(false);
-
-  useEffect(() => {
-    const textTimer = setTimeout(() => setIsTextVisible(true), 100);
-    const imageTimer = setTimeout(() => setIsImageVisible(true), 200);
-    return () => {
-      clearTimeout(textTimer);
-      clearTimeout(imageTimer);
-    };
-  }, []);
+  const stats = [highlights.highlight1, highlights.highlight2];
 
   return (
     <section
       id="hero"
-      className="relative w-full flex items-center justify-center overflow-hidden bg-primary/5"
+      className="relative isolate overflow-hidden bg-primary text-primary-foreground"
     >
-      {/* Background Image */}
-      <div
-        className={`absolute inset-0 transition-all duration-1000 ease-out ${
-          isImageVisible ? "opacity-100 scale-100" : "opacity-0 scale-105"
-        }`}
-      >
-        <Image
-          src={image.src}
-          alt={image.alt}
-          fill
-          className="object-cover absolute inset-0"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/85 via-primary/75 to-primary/60" />
-      </div>
-
-      {/* Content */}
-      <div className="relative container mx-auto px-4 py-16 md:py-28 grid grid-cols-1 md:grid-cols-2 gap-12 items-center z-30">
-        <div
-          className={`text-left space-y-6 transition-all duration-700 ease-out ${
-            isTextVisible
-              ? "translate-y-0 opacity-100"
-              : "translate-y-8 opacity-0"
-          }`}
-        >
-          <div className="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-white text-sm font-medium">
+      <div className="mx-auto grid w-full max-w-[1400px] gap-10 px-4 py-16 md:px-10 md:py-24 lg:grid-cols-12 lg:gap-14">
+        <div className="lg:col-span-6 lg:self-center">
+          <Reveal
+            as="p"
+            className="type-eyebrow flex items-center gap-3 text-accent"
+          >
+            <span
+              className="animate-rule-draw h-px w-8 bg-accent"
+              aria-hidden="true"
+            />
             {badge}
-          </div>
+          </Reveal>
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+          <Reveal
+            as="h1"
+            delay={70}
+            className="type-display mt-6 max-w-[14ch] text-[clamp(2.25rem,4.4vw,4rem)] text-white"
+          >
             {sectionTitle}
-          </h1>
+          </Reveal>
 
-          <p className="text-lg text-white/90 max-w-xl">{sectionSubtitle}</p>
+          <Reveal
+            as="p"
+            delay={140}
+            className="measure mt-7 text-base leading-relaxed text-white/80"
+          >
+            {sectionSubtitle}
+          </Reveal>
 
-          <div className="flex flex-col sm:flex-row gap-4 pt-4">
-            <Link href="/design" target="_blank">
-              <Button
-                size="lg"
-                className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold group"
-              >
-                {labels.link}
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </Link>
-
+          <Reveal delay={200} className="mt-9 flex flex-col gap-3 sm:flex-row">
             <Button
-              size="lg"
-              variant="outline"
-              className="border-white text-white hover:bg-white/10 bg-transparent"
-              onClick={() => dispatch(openModal())}
+              variant="cta"
+              size="xl"
+              onClick={() => dispatch(openModal("shower_hero"))}
+              className="group animate-cta-pulse"
             >
               {labels.button}
+              <ArrowRight
+                aria-hidden="true"
+                className="ml-2 h-5 w-5 transition-transform duration-200 ease-out group-hover:translate-x-1"
+              />
             </Button>
-          </div>
-          <div className="flex gap-6 pt-8">
-            <div className="flex flex-col gap-1">
-              <span className="text-2xl font-bold text-white">
-                {" "}
-                {highlights.highlight1.title}
-              </span>
-              <span className="text-sm text-white/80">
-                {highlights.highlight1.description}
-              </span>
-            </div>
-            <div className="h-12 w-px bg-white/30" />
-            <div className="flex flex-col gap-1">
-              <span className="text-2xl font-bold text-white">
-                {highlights.highlight2.title}
-              </span>
-              <span className="text-sm text-white/80">
-                {highlights.highlight1.description}
-              </span>
-            </div>
-          </div>
+
+            <Button variant="ctaQuiet" size="xl" asChild>
+              <Link href="/design">{labels.link}</Link>
+            </Button>
+          </Reveal>
+
+          <Reveal
+            as="dl"
+            delay={260}
+            className="mt-10 grid max-w-md grid-cols-2 border-t border-white/20"
+          >
+            {stats.map((stat, index) => (
+              <div
+                key={stat.title}
+                className={`py-5 ${
+                  index === 0
+                    ? "pr-6"
+                    : "border-l border-white/20 pl-6"
+                }`}
+              >
+                <dt className="type-display text-2xl text-white">
+                  {stat.title}
+                </dt>
+                <dd className="mt-1 text-sm text-white/70">
+                  {stat.description}
+                </dd>
+              </div>
+            ))}
+          </Reveal>
         </div>
+
+        <Reveal delay={220} className="lg:col-span-6 lg:self-center">
+          <div className="relative aspect-square overflow-hidden bg-primary/50">
+            <Image
+              src={image.src}
+              alt={image.alt}
+              fill
+              priority
+              sizes="(min-width: 1024px) 46vw, 100vw"
+              quality={85}
+              className="object-cover"
+            />
+          </div>
+        </Reveal>
       </div>
     </section>
   );

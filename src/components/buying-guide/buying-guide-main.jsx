@@ -1,305 +1,212 @@
-import React from "react";
-import { CheckCircle2, Lightbulb, DollarSign, AlertCircle } from "lucide-react";
+import { AlertCircle, Check } from "lucide-react";
+import Reveal from "../motion/reveal";
+import {
+  BATHTUB_GUIDE,
+  BUDGET_GUIDE,
+  BUYING_TIPS,
+  SHOWER_GUIDE,
+} from "@/data/buying-guide";
+
+/**
+ * The guide itself.
+ *
+ * Every entry used to be its own hand-written block of JSX inside one 305-line
+ * component; they are rendered from data now, so the four sections share one
+ * set of markup and a new fixture type is a line in a file rather than twelve
+ * lines of nested divs.
+ *
+ * Two things were being read aloud that should not have been. Each tip was
+ * headed with a literal check-mark character before its name, which a screen
+ * reader announces ("check mark measure accurately"); the tick is an icon now,
+ * hidden from assistive tech. The hidden-costs list typed its own bullet
+ * characters into each item, so every line was announced as "bullet plumbing
+ * upgrades or rerouting" on top of the list semantics it already had.
+ *
+ * Prices came at the end of a sentence. They are set apart now, which is both
+ * easier to scan and the reason they could be lifted out of the prose.
+ *
+ * The section anchors match the ids the hero's contents links point at.
+ */
+
+function SectionHeader({ title, lead, tone = "light" }) {
+  const dark = tone === "dark";
+
+  return (
+    <div
+      className={`grid gap-6 border-t pt-8 md:grid-cols-12 ${
+        dark ? "border-white/20" : "rule-hairline"
+      }`}
+    >
+      <Reveal
+        as="h2"
+        className={`type-display text-[clamp(2rem,3.6vw,3.25rem)] md:col-span-5 ${
+          dark ? "text-white" : "text-primary"
+        }`}
+      >
+        {title}
+      </Reveal>
+      <Reveal
+        as="p"
+        delay={80}
+        className={`measure self-end text-base leading-relaxed md:col-span-7 ${
+          dark ? "text-white/70" : "text-muted-foreground"
+        }`}
+      >
+        {lead}
+      </Reveal>
+    </div>
+  );
+}
+
+function EntryList({ items, showPrice = false }) {
+  return (
+    <ul className="rule-hairline grid border-t sm:grid-cols-2 sm:gap-x-10 lg:grid-cols-3 lg:gap-x-12">
+      {items.map((item, index) => (
+        <Reveal
+          as="li"
+          key={item.name}
+          delay={Math.min(index * 55, 240)}
+          className="rule-hairline flex flex-col border-b py-7"
+        >
+          <h4 className="type-display text-lg text-primary">{item.name}</h4>
+          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+            {item.description}
+          </p>
+          {showPrice && item.priceFrom && (
+            <p className="type-eyebrow mt-4 text-accent">
+              From {item.priceFrom}
+            </p>
+          )}
+        </Reveal>
+      ))}
+    </ul>
+  );
+}
+
+function Subheading({ children }) {
+  return (
+    <h3 className="type-eyebrow mt-14 mb-6 text-muted-foreground">{children}</h3>
+  );
+}
 
 export const BuyingGuideMain = () => {
   return (
-    <section className="py-16 md:py-24 bg-background">
-      <div className="container mx-auto px-4 max-w-4xl">
-        {/* Section 1: Shower Guide */}
-        <div className="mb-16 bg-white rounded-lg shadow-lg p-8 border-l-4 border-accent">
-          <h2 className="text-3xl font-bold text-primary mb-6">
-            Shower Solutions Guide
-          </h2>
-
-          <div className="space-y-6">
-            <div>
-              <h3 className="text-xl font-bold text-primary mb-3 flex items-center gap-2">
-                <CheckCircle2 className="h-6 w-6 text-accent" />
-                Shower Types
-              </h3>
-              <div className="space-y-4 ml-8">
-                <div>
-                  <h4 className="font-bold text-primary mb-2">
-                    Walk-In Showers
-                  </h4>
-                  <p className="text-muted-foreground">
-                    Open design offers easy access and spacious feel. Perfect
-                    for modern bathrooms and accessibility needs. Starting at
-                    $2,500
-                  </p>
-                </div>
-                <div>
-                  <h4 className="font-bold text-primary mb-2">
-                    Enclosed Showers
-                  </h4>
-                  <p className="text-muted-foreground">
-                    Classic design with doors or curtains. Great for water
-                    containment and traditional aesthetics. Starting at $1,800
-                  </p>
-                </div>
-                <div>
-                  <h4 className="font-bold text-primary mb-2">
-                    Corner Showers
-                  </h4>
-                  <p className="text-muted-foreground">
-                    Space-saving solution ideal for compact bathrooms. Maximizes
-                    corner space efficiently. Starting at $1,500
-                  </p>
-                </div>
-                <div>
-                  <h4 className="font-bold text-primary mb-2">Spa Showers</h4>
-                  <p className="text-muted-foreground">
-                    Luxury option with multiple jets and rainfall heads.
-                    Features body sprays, steam, and massage functions. Starting
-                    at $4,000
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-xl font-bold text-primary mb-3 flex items-center gap-2">
-                <Lightbulb className="h-6 w-6 text-accent" />
-                Material Options
-              </h3>
-              <div className="space-y-3 ml-8">
-                <p className="text-muted-foreground">
-                  <span className="font-bold text-primary">Ceramic Tile:</span>{" "}
-                  Durable, versatile, wide range of styles. Requires proper
-                  grout maintenance.
-                </p>
-                <p className="text-muted-foreground">
-                  <span className="font-bold text-primary">Natural Stone:</span>{" "}
-                  Premium look, luxurious feel. Higher cost, requires regular
-                  sealing.
-                </p>
-                <p className="text-muted-foreground">
-                  <span className="font-bold text-primary">
-                    Acrylic Panels:
-                  </span>{" "}
-                  Budget-friendly, easy maintenance, modern appearance. Less
-                  durable than tile.
-                </p>
-                <p className="text-muted-foreground">
-                  <span className="font-bold text-primary">
-                    Glass Enclosures:
-                  </span>{" "}
-                  Contemporary look, easy to clean. Can show water spots,
-                  requires frameless installation.
-                </p>
-              </div>
-            </div>
-          </div>
+    <>
+      <section id={SHOWER_GUIDE.id} className="bg-background py-16 md:py-24">
+        <div className="mx-auto w-full max-w-[1400px] px-4 md:px-10">
+          <SectionHeader
+            title={SHOWER_GUIDE.title}
+            lead="Four ways to build a shower, and what each one is good at. Prices are a starting point, not a quote."
+          />
+          <Subheading>Shower types</Subheading>
+          <EntryList items={SHOWER_GUIDE.types} showPrice />
+          <Subheading>Material options</Subheading>
+          <EntryList items={SHOWER_GUIDE.materials} />
         </div>
+      </section>
 
-        {/* Section 2: Bathtub Guide */}
-        <div className="mb-16 bg-white rounded-lg shadow-lg p-8 border-l-4 border-accent">
-          <h2 className="text-3xl font-bold text-primary mb-6">
-            Bathtub Solutions Guide
-          </h2>
-
-          <div className="space-y-6">
-            <div>
-              <h3 className="text-xl font-bold text-primary mb-3 flex items-center gap-2">
-                <CheckCircle2 className="h-6 w-6 text-accent" />
-                Bathtub Types
-              </h3>
-              <div className="space-y-4 ml-8">
-                <div>
-                  <h4 className="font-bold text-primary mb-2">
-                    Freestanding Tubs
-                  </h4>
-                  <p className="text-muted-foreground">
-                    Statement piece that works standalone. Creates focal point
-                    in bathroom. Starting at $2,000
-                  </p>
-                </div>
-                <div>
-                  <h4 className="font-bold text-primary mb-2">Built-In Tubs</h4>
-                  <p className="text-muted-foreground">
-                    Surround installation provides structured look. Great space
-                    efficiency and customization. Starting at $1,200
-                  </p>
-                </div>
-                <div>
-                  <h4 className="font-bold text-primary mb-2">Corner Tubs</h4>
-                  <p className="text-muted-foreground">
-                    Maximizes corner space, often larger capacity. Ideal for
-                    compact bathrooms seeking comfort. Starting at $1,500
-                  </p>
-                </div>
-                <div>
-                  <h4 className="font-bold text-primary mb-2">Soaking Tubs</h4>
-                  <p className="text-muted-foreground">
-                    Deep design for ultimate relaxation. Ideal for spa-like
-                    experience and luxurious bathrooms. Starting at $2,500
-                  </p>
-                </div>
-                <div>
-                  <h4 className="font-bold text-primary mb-2">
-                    Whirlpool/Jetted Tubs
-                  </h4>
-                  <p className="text-muted-foreground">
-                    Therapeutic jets for massage and relaxation. Premium comfort
-                    features and health benefits. Starting at $3,500
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-xl font-bold text-primary mb-3 flex items-center gap-2">
-                <Lightbulb className="h-6 w-6 text-accent" />
-                Material Options
-              </h3>
-              <div className="space-y-3 ml-8">
-                <p className="text-muted-foreground">
-                  <span className="font-bold text-primary">Acrylic:</span> Most
-                  popular, affordable, warm to touch, easy maintenance. Highly
-                  customizable.
-                </p>
-                <p className="text-muted-foreground">
-                  <span className="font-bold text-primary">Fiberglass:</span>{" "}
-                  Budget option, lightweight, durable. Limited color and style
-                  options.
-                </p>
-                <p className="text-muted-foreground">
-                  <span className="font-bold text-primary">Cast Iron:</span>{" "}
-                  Premium quality, excellent heat retention, extremely durable.
-                  Heavy, requires professional installation.
-                </p>
-                <p className="text-muted-foreground">
-                  <span className="font-bold text-primary">Natural Stone:</span>{" "}
-                  Luxurious appearance, unique character. Higher cost and
-                  maintenance requirements.
-                </p>
-              </div>
-            </div>
-          </div>
+      <section id={BATHTUB_GUIDE.id} className="bg-tinted py-16 md:py-24">
+        <div className="mx-auto w-full max-w-[1400px] px-4 md:px-10">
+          <SectionHeader
+            title={BATHTUB_GUIDE.title}
+            lead="Five shapes of tub, and the four materials they are made from. What you pick here drives most of the budget."
+          />
+          <Subheading>Bathtub types</Subheading>
+          <EntryList items={BATHTUB_GUIDE.types} showPrice />
+          <Subheading>Material options</Subheading>
+          <EntryList items={BATHTUB_GUIDE.materials} />
         </div>
+      </section>
 
-        {/* Section 3: Budget Planning */}
-        <div className="mb-16 bg-white rounded-lg shadow-lg p-8 border-l-4 border-accent">
-          <h2 className="text-3xl font-bold text-primary mb-6 flex items-center gap-2">
-            <DollarSign className="h-8 w-8 text-accent" />
-            Budget Planning
-          </h2>
+      <section
+        id={BUDGET_GUIDE.id}
+        className="bg-primary py-16 text-primary-foreground md:py-24"
+      >
+        <div className="mx-auto w-full max-w-[1400px] px-4 md:px-10">
+          <SectionHeader
+            title={BUDGET_GUIDE.title}
+            lead="Three broad tiers, and the costs that turn up after the quote is signed if nobody looked for them."
+            tone="dark"
+          />
 
-          <div className="space-y-4">
-            <div className="bg-gradient-to-r from-accent/10 to-accent/30 p-6 rounded-lg">
-              <h3 className="font-bold text-primary mb-2">Budget Options</h3>
-              <p className="text-muted-foreground mb-3">
-                <span className="font-bold">
-                  Basic Renovation: $3,000 - $6,000
+          <ol className="mt-12 grid border-t border-white/20 md:grid-cols-3">
+            {BUDGET_GUIDE.tiers.map((tier, index) => (
+              <Reveal
+                as="li"
+                key={tier.name}
+                delay={Math.min(index * 70, 210)}
+                className="flex flex-col border-b border-white/20 py-8 md:border-b-0 md:border-l md:border-white/20 md:py-10 md:pl-8 md:pr-8 md:first:border-l-0 md:first:pl-0"
+              >
+                <span className="type-eyebrow text-white/50">
+                  {String(index + 1).padStart(2, "0")}
                 </span>
-                <br />
-                Standard fixtures, basic materials, essential upgrades
-              </p>
-            </div>
+                <h3 className="type-display mt-4 text-xl text-white">
+                  {tier.name}
+                </h3>
+                <p className="type-display mt-2 text-2xl text-accent">
+                  {tier.range}
+                </p>
+                <p className="mt-3 text-sm leading-relaxed text-white/70">
+                  {tier.description}
+                </p>
+              </Reveal>
+            ))}
+          </ol>
 
-            <div className="bg-gradient-to-r from-accent/10 to-accent/30 p-6 rounded-lg">
-              <h3 className="font-bold text-primary mb-2">
-                Mid-Range: $6,000 - $12,000
-              </h3>
-              <p className="text-muted-foreground mb-3">
-                Quality fixtures, premium materials, custom design touches
-              </p>
-            </div>
-
-            <div className="bg-gradient-to-r from-accent/10 to-accent/30 p-6 rounded-lg">
-              <h3 className="font-bold text-primary mb-2">
-                Luxury Renovation: $12,000+
-              </h3>
-              <p className="text-muted-foreground mb-3">
-                Premium everything, custom solutions, spa-like features
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-8 p-6 bg-gradient-to-r from-accent/10 to-accent/30 rounded-lg">
-            <h3 className="font-bold text-primary mb-3 flex items-center gap-2">
-              <AlertCircle className="h-5 w-5 text-accent" />
-              Hidden Costs to Consider
+          <Reveal delay={220} className="mt-14 border-t border-white/20 pt-8">
+            <h3 className="type-display flex items-center gap-3 text-xl text-white">
+              <AlertCircle
+                aria-hidden="true"
+                strokeWidth={1.5}
+                className="h-6 w-6 shrink-0 text-accent"
+              />
+              Hidden costs to consider
             </h3>
-            <ul className="space-y-2 text-muted-foreground">
-              <li>• Plumbing upgrades or rerouting</li>
-              <li>• Structural repairs or water damage</li>
-              <li>• Electrical work for new fixtures</li>
-              <li>• Floor reinforcement or damage repair</li>
-              <li>• Ventilation system upgrades</li>
+            <ul className="mt-6 grid gap-x-10 sm:grid-cols-2 lg:grid-cols-3">
+              {BUDGET_GUIDE.hiddenCosts.map((cost) => (
+                <li
+                  key={cost}
+                  className="border-b border-white/20 py-4 text-sm text-white/70"
+                >
+                  {cost}
+                </li>
+              ))}
             </ul>
-          </div>
+          </Reveal>
         </div>
+      </section>
 
-        {/* Section 4: Buying Tips */}
-        <div className="mb-16 bg-white rounded-lg shadow-lg p-8 border-l-4 border-accent">
-          <h2 className="text-3xl font-bold text-primary mb-6">
-            Expert Buying Tips
-          </h2>
+      <section id={BUYING_TIPS.id} className="bg-background py-16 md:py-24">
+        <div className="mx-auto w-full max-w-[1400px] px-4 md:px-10">
+          <SectionHeader
+            title={BUYING_TIPS.title}
+            lead="Six things our crews wish every homeowner had settled before the first quote."
+          />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-gradient-to-br from-accent/10 to-accent/30 p-6 rounded-lg">
-              <h3 className="font-bold text-primary mb-3">
-                ✓ Measure Accurately
-              </h3>
-              <p className="text-muted-foreground">
-                Get precise measurements of your bathroom space. This ensures
-                perfect fit and prevents costly mistakes.
-              </p>
-            </div>
-
-            <div className="bg-gradient-to-br from-accent/10 to-accent/30 p-6 rounded-lg">
-              <h3 className="font-bold text-primary mb-3">
-                ✓ Know Your Plumbing
-              </h3>
-              <p className="text-muted-foreground">
-                Understand existing plumbing layout. Some changes may require
-                additional work and expense.
-              </p>
-            </div>
-
-            <div className="bg-gradient-to-br from-accent/10 to-accent/30 p-6 rounded-lg">
-              <h3 className="font-bold text-primary mb-3">
-                ✓ Plan for Ventilation
-              </h3>
-              <p className="text-muted-foreground">
-                Proper ventilation prevents moisture problems. Ensure your
-                system handles bathroom humidity.
-              </p>
-            </div>
-
-            <div className="bg-gradient-to-br from-accent/10 to-accent/30 p-6 rounded-lg">
-              <h3 className="font-bold text-primary mb-3">
-                ✓ Choose Quality Fixtures
-              </h3>
-              <p className="text-muted-foreground">
-                Invest in durable fixtures. Quality hardware lasts longer and
-                reduces future maintenance costs.
-              </p>
-            </div>
-
-            <div className="bg-gradient-to-br from-accent/10 to-accent/30 p-6 rounded-lg">
-              <h3 className="font-bold text-primary mb-3">
-                ✓ Consider Accessibility
-              </h3>
-              <p className="text-muted-foreground">
-                Plan for current and future needs. Grab bars, wider doors, and
-                walk-in options add value.
-              </p>
-            </div>
-
-            <div className="bg-gradient-to-br from-accent/10 to-accent/30 p-6 rounded-lg">
-              <h3 className="font-bold text-primary mb-3">
-                ✓ Get Multiple Quotes
-              </h3>
-              <p className="text-muted-foreground">
-                Compare options and pricing. Professional consultation helps you
-                understand true value and costs.
-              </p>
-            </div>
-          </div>
+          <ul className="rule-hairline mt-12 grid border-t sm:grid-cols-2 sm:gap-x-10 lg:grid-cols-3 lg:gap-x-12">
+            {BUYING_TIPS.items.map((tip, index) => (
+              <Reveal
+                as="li"
+                key={tip.name}
+                delay={Math.min(index * 55, 240)}
+                className="rule-hairline flex flex-col border-b py-7"
+              >
+                <h3 className="type-display flex items-start gap-2.5 text-lg text-primary">
+                  <Check
+                    aria-hidden="true"
+                    strokeWidth={3}
+                    className="mt-1 h-4 w-4 shrink-0 text-accent"
+                  />
+                  {tip.name}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  {tip.description}
+                </p>
+              </Reveal>
+            ))}
+          </ul>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };

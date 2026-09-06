@@ -1,35 +1,51 @@
-import React from "react";
+import Reveal from "../motion/reveal";
 
+/**
+ * The three numbers the company is built on.
+ *
+ * These were set at 3xl inside small rounded cards on an accent gradient — the
+ * most quotable content on the page, rendered at the scale of a caption. Here
+ * they run at display size across a hairline-ruled row, which is what a figure
+ * is for.
+ */
 const OurFoundationSetcion = ({ foundation }) => {
   const { sectionTitle, sectionSubtitle, items } = foundation;
 
   return (
-    <section
-      id="foundation"
-      className="py-16 md:py-24 bg-gradient-to-r from-accent/10 to-accent/5"
-    >
-      <div className="container mx-auto px-4 text-center">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
+    <section id="foundation" className="bg-primary py-16 text-primary-foreground md:py-24">
+      <div className="mx-auto w-full max-w-[1400px] px-4 md:px-10">
+        <div className="grid gap-6 border-t border-white/20 pt-8 md:grid-cols-12">
+          <Reveal
+            as="h2"
+            className="type-display text-[clamp(2rem,3.6vw,3.25rem)] text-white md:col-span-5"
+          >
             {sectionTitle}
-          </h2>
-          <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-8 font-semibold">
+          </Reveal>
+          <Reveal
+            as="p"
+            delay={80}
+            className="measure self-end text-base leading-relaxed text-white/75 md:col-span-7"
+          >
             {sectionSubtitle}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            {items.map(({ title, description }) => (
-              <div
-                key={title}
-                className="flex-1 p-6 bg-card rounded-lg shadow-md"
-              >
-                <div className="text-accent font-bold text-3xl mb-2">
-                  {title}
-                </div>
-                <p className="text-muted-foreground">{description}</p>
-              </div>
-            ))}
-          </div>
+          </Reveal>
         </div>
+
+        <dl className="mt-14 grid border-t border-white/20 sm:grid-cols-3">
+          {items.map((item, index) => (
+            <Reveal
+              key={item.title}
+              delay={index * 90}
+              className="border-b border-white/20 py-8 sm:border-b-0 sm:border-l sm:border-white/20 sm:px-8 sm:first:border-l-0 sm:first:pl-0 md:py-10"
+            >
+              <dt className="type-display text-[clamp(2.75rem,5vw,4.25rem)] text-accent">
+                {item.title}
+              </dt>
+              <dd className="type-eyebrow mt-3 text-white/75">
+                {item.description}
+              </dd>
+            </Reveal>
+          ))}
+        </dl>
       </div>
     </section>
   );

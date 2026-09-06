@@ -39,11 +39,11 @@
       },
       "images": [
         {
-          "src": "/images/bathroom-gallery-8.jpg",
+          "src": "/images/renovated-bathroom.jpg",
           "title": "Baño"
         },
         {
-          "src": "/images/kitchen-wood-contemporary.jpg",
+          "src": "/images/kitchen-modern-minimalist.jpg",
           "title": "Cocina"
         },
         {
@@ -52,7 +52,6 @@
         }
       ]
     },
-
     "features": {
       "id": "#features",
       "path": "/",
@@ -80,7 +79,6 @@
         }
       ]
     },
-
     "solutions": {
       "id": "#solutions",
       "path": "/",
@@ -159,7 +157,6 @@
         }
       ]
     },
-
     "advantages": {
       "id": "#advantages",
       "path": "/",
@@ -188,7 +185,6 @@
         }
       ]
     },
-
     "gallery": {
       "id": "#gallery",
       "path": "/",
@@ -214,7 +210,6 @@
         }
       ]
     },
-
     "reviews": {
       "id": "#reviews",
       "path": "/",
@@ -269,7 +264,6 @@
       ]
     }
   },
-
   "cta": {
     "id": "#cta",
     "path": "/",
@@ -357,9 +351,18 @@
       },
       "button": "Reserva una consulta gratuita",
       "categories": [
-        { "id": "bathroom", "label": "Baño" },
-        { "id": "kitchen", "label": "Cocina" },
-        { "id": "basement", "label": "Sótano" }
+        {
+          "id": "bathroom",
+          "label": "Baño"
+        },
+        {
+          "id": "kitchen",
+          "label": "Cocina"
+        },
+        {
+          "id": "basement",
+          "label": "Sótano"
+        }
       ],
       "images": {
         "bathroom": {
@@ -385,9 +388,10 @@
         {
           "title": "Prueba nuestra herramienta de diseño",
           "description": "Visualiza tu baño ideal antes de la instalación",
-          "image": "/images/bathroom-design-tool-interface.jpg",
-          "alt": "Herramienta de diseño",
+          "image": "/images/design-tool-image.PNG",
+          "alt": "The M&E bathroom configurator interface",
           "icon": "Palette",
+          "href": "/design",
           "bgGradient": "from-accent/20 to-accent-secondary/20"
         },
         {
@@ -396,6 +400,7 @@
           "image": "/images/bathroom-accessories-and-customization-options.jpg",
           "alt": "Personalización",
           "icon": "Wrench",
+          "href": "/bathroom-remodel",
           "bgGradient": "from-accent-secondary/20 to-accent/20"
         }
       ]
@@ -449,7 +454,6 @@
       ]
     }
   },
-
   "ourStory": {
     "hero": {
       "id": "#hero",
@@ -556,7 +560,6 @@
       ]
     }
   },
-
   "bathroomRemodel": {
     "hero": {
       "id": "#hero",
@@ -637,7 +640,7 @@
           "title": "Galería",
           "description": "Mira cientos de opciones de baño y ducha para que se adapten perfectamente a tu estilo.",
           "image": {
-            "src": "/images/modern-luxury-bathroom-renovation-before-and-after.jpg",
+            "src": "/images/modern-luxury-bathroom-with-elegant-fixtures.jpg",
             "alt": "Galería de baños"
           },
           "cta": {
@@ -772,7 +775,6 @@
       ]
     }
   },
-
   "showerSolutions": {
     "hero": {
       "id": "#hero",
@@ -1026,7 +1028,6 @@
       ]
     }
   },
-
   "bathtubSolutions": {
     "hero": {
       "id": "#hero",
@@ -1290,7 +1291,6 @@
       ]
     }
   },
-
   "kitchenSolutions": {
     "hero": {
       "id": "#hero",
@@ -1328,7 +1328,7 @@
           "description": "Actualiza tu cocina con elegantes encimeras, gabinetes y electrodomésticos para un aspecto y sensación contemporáneos.",
           "cta": "Explorar Diseños",
           "color": "from-blue-500 to-cyan-500",
-          "href": "/kitchen-inspiration/modern"
+          "href": "/gallery"
         },
         {
           "icon": "Layout",
@@ -1336,7 +1336,7 @@
           "description": "Maximiza el espacio y la eficiencia con distribuciones diseñadas para tus necesidades de cocina y entretenimiento.",
           "cta": "Ver Antes y Después",
           "color": "from-teal-500 to-blue-500",
-          "href": "/kitchen-inspiration/layouts"
+          "href": "/before-after"
         },
         {
           "icon": "Users",
@@ -1344,7 +1344,7 @@
           "description": "Diseños funcionales y elegantes que hacen que cocinar, comer y pasar tiempo en familia sea seguro y agradable.",
           "cta": "Descubrir Más",
           "color": "from-cyan-500 to-sky-500",
-          "href": "/kitchen-inspiration/family-friendly"
+          "href": "/gallery"
         }
       ]
     },
@@ -1494,7 +1494,7 @@
           "title": "Galería de Fotos de Cocina",
           "description": "Navega por cientos de diseños y distribuciones de cocina impresionantes para inspirar tu proyecto.",
           "label": "Explorar Galería",
-          "href": "/kitchen-inspiration/gallery",
+          "href": "/gallery",
           "image": "/images/kitchen-gallery.png",
           "color": "from-orange-500 to-yellow-500"
         },
@@ -1503,7 +1503,7 @@
           "title": "Mira nuestro Antes y Después",
           "description": "Ve transformaciones reales de cocinas y inspírate con nuestros proyectos completados, de cocinas anticuadas a modernas y funcionales.",
           "label": "Ver Transformaciones",
-          "href": "/kitchen-inspiration/before-after",
+          "href": "/before-after",
           "image": "/images/kitchen-solutions-before-after.png",
           "color": "from-yellow-500 to-amber-500"
         }
@@ -1558,7 +1558,6 @@
       ]
     }
   },
-
   "basementSolutions": {
     "hero": {
       "id": "#hero",
@@ -1567,7 +1566,7 @@
       "sectionSubtitle": "De un almacenamiento sin terminar a un refugio elegante y cómodo: nuestras soluciones de acabado de sótanos convierten cada rincón de tu hogar en un espacio funcional y habitable. Ya sea una sala familiar, oficina o área de entretenimiento, lo hacemos moderno y acogedor.",
       "badge": "Acabado y Renovación de Sótanos",
       "image": {
-        "src": "/images/basement-modern.png",
+        "src": "/images/basement-gallery-2.jpg",
         "alt": "Renovación moderna de sótano terminado"
       },
       "labels": {
@@ -1596,7 +1595,7 @@
           "description": "Transforma tu sótano sin terminar en un espacio habitable funcional: sala familiar, área de medios o oficina en casa.",
           "cta": "Explorar Diseños",
           "color": "from-blue-500 to-cyan-500",
-          "href": "/basement-inspiration/full-finishing"
+          "href": "/gallery"
         },
         {
           "icon": "Users",
@@ -1604,7 +1603,7 @@
           "description": "Crea zonas de entretenimiento acogedoras con bares, salones o salas de juegos para familia y amigos.",
           "cta": "Ver Antes y Después",
           "color": "from-teal-500 to-blue-500",
-          "href": "/basement-inspiration/entertainment"
+          "href": "/before-after"
         },
         {
           "icon": "Coffee",
@@ -1612,7 +1611,7 @@
           "description": "Diseña áreas multifuncionales que combinen trabajo, almacenamiento y relajación sin esfuerzo.",
           "cta": "Descubrir Más",
           "color": "from-cyan-500 to-sky-500",
-          "href": "/basement-inspiration/flex-spaces"
+          "href": "/gallery"
         }
       ]
     },
@@ -1762,7 +1761,7 @@
           "title": "Galería de Fotos de Sótanos",
           "description": "Navega por cientos de diseños, distribuciones y acabados de sótano impresionantes para inspirar tu proyecto.",
           "label": "Explorar Galería",
-          "href": "/basement-inspiration/gallery",
+          "href": "/gallery",
           "image": "/images/basement-gallery.png",
           "color": "from-blue-500 to-cyan-500"
         },
@@ -1771,7 +1770,7 @@
           "title": "Ver Transformaciones Antes y Después",
           "description": "Consulta proyectos reales de acabado de sótanos y observa cómo convertimos espacios sin terminar en áreas habitables funcionales y con estilo.",
           "label": "Ver Transformaciones",
-          "href": "/basement-inspiration/before-after",
+          "href": "/before-after",
           "image": "/images/basement-solutions-before-after.png",
           "color": "from-cyan-500 to-teal-500"
         }

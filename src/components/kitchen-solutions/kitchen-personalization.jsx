@@ -1,68 +1,94 @@
-import Link from "next/link";
-import { Button } from "../ui/button";
-import { Card } from "../ui/card";
-import * as LucideIcons from "lucide-react";
+import { HelpCircle, Palette, Settings, Zap } from "lucide-react";
+import QuoteButton from "../ui/quote-button";
+import Reveal from "../motion/reveal";
+
+/**
+ * What can be personalised, and the way to ask for it.
+ *
+ * The call to action here said "Get a Free Quote" and linked to /design — the
+ * configurator, which only supports bathrooms. So the one button on this
+ * section promised a quote and delivered a bathroom design tool. It opens the
+ * quote modal now, which is what its own label says it does.
+ *
+ * The section also carried two decorative blurred circles behind it — a 40x40
+ * accent blob and a 40x40 primary blob at 10% opacity under blur-3xl — two
+ * extra composited layers producing a smudge nobody can identify. Gone.
+ *
+ * The cards were white gradient panels floating on navy; they are ruled columns
+ * on the ground itself now.
+ */
+const ICONS = { Palette, Settings, Zap };
 
 export function KitchenPersonalization({ personalization }) {
   const { badge, sectionTitle, sectionSubtitle, features, cta } =
     personalization;
-  return (
-    <section
-      id="personalization"
-      className="py-16 md:py-24 bg-gradient-to-r from-primary/80 via-primary/100 to-primary/80 relative overflow-hidden"
-    >
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-20 left-10 w-40 h-40 bg-accent rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-40 h-40 bg-primary rounded-full blur-3xl" />
-      </div>
 
-      <div className="container mx-auto px-4 relative z-10 max-w-6xl">
-        <div className="text-center mb-12 md:mb-16">
-          <div className="inline-block px-4 py-2 bg-accent rounded-full text-primary text-sm font-semibold mb-4">
+  return (
+    <section id="personalization" className="bg-background py-16 md:py-24">
+      <div className="mx-auto w-full max-w-[1400px] px-4 md:px-10">
+        <div className="rule-hairline border-t pt-8">
+          <Reveal
+            as="p"
+            className="type-eyebrow flex items-center gap-3 text-accent"
+          >
+            <span className="h-px w-8 bg-accent" aria-hidden="true" />
             {badge}
+          </Reveal>
+
+          <div className="mt-6 grid gap-6 md:grid-cols-12">
+            <Reveal
+              as="h2"
+              delay={70}
+              className="type-display text-[clamp(2rem,3.6vw,3.25rem)] text-primary md:col-span-5"
+            >
+              {sectionTitle}
+            </Reveal>
+            <Reveal
+              as="p"
+              delay={120}
+              className="measure self-end text-base leading-relaxed text-muted-foreground md:col-span-7"
+            >
+              {sectionSubtitle}
+            </Reveal>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-accent mb-4">
-            {sectionTitle}
-          </h2>
-          <p className="text-lg text-white max-w-2xl mx-auto">
-            {sectionSubtitle}
-          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-12">
+        <ul className="rule-hairline mt-12 grid border-t md:grid-cols-3">
           {features.map((feature, index) => {
-            const Icon = LucideIcons[feature.icon] || LucideIcons.HelpCircle;
+            const Icon = ICONS[feature.icon] ?? HelpCircle;
 
             return (
-              <Card
-                key={index}
-                className="group p-8 border-0 bg-gradient-to-br from-white/90 to-white/50 backdrop-blur-sm hover:shadow-xl transition-all duration-300"
+              <Reveal
+                as="li"
+                key={feature.title}
+                delay={Math.min(index * 70, 210)}
+                className="rule-hairline flex flex-col border-b py-8 md:border-b-0 md:border-l md:py-10 md:pl-8 md:first:border-l-0 md:first:pl-0 md:pr-8"
               >
-                <div className="flex flex-col items-center text-center gap-4">
-                  <div className="p-4 bg-gradient-to-br from-primary/10 to-accent/10 rounded-full group-hover:from-primary/20 group-hover:to-accent/20 transition-colors">
-                    <Icon className="h-8 w-8 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-bold text-foreground">
-                    {feature.title}
-                  </h3>
-                  <p className="text-muted-foreground">{feature.description}</p>
-                </div>
-              </Card>
+                <Icon
+                  aria-hidden="true"
+                  strokeWidth={1.5}
+                  className="h-8 w-8 text-accent"
+                />
+                <h3 className="type-display mt-4 text-xl text-primary">
+                  {feature.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  {feature.description}
+                </p>
+              </Reveal>
             );
           })}
-        </div>
+        </ul>
 
-        <div className="text-center">
-          <p className="text-lg text-white mb-6">{cta.text}</p>
-          <Link href="/design" target="_blank">
-            <Button
-              size="lg"
-              className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold"
-            >
-              {cta.button}
-            </Button>
-          </Link>
-        </div>
+        <Reveal
+          delay={200}
+          className="rule-hairline mt-12 flex flex-col gap-6 border-t pt-8 sm:flex-row sm:items-center sm:justify-between"
+        >
+          <p className="type-display text-xl text-primary">{cta.text}</p>
+          <div className="shrink-0">
+            <QuoteButton source="kitchen_personalization" label={cta.button} />
+          </div>
+        </Reveal>
       </div>
     </section>
   );

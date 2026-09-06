@@ -1,42 +1,73 @@
-import React from "react";
 import Image from "next/image";
+import Reveal from "../motion/reveal";
 
+/**
+ * Third-party accreditations.
+ *
+ * These are credentials, so they should read as a register rather than as
+ * decoration: hairline cells on a plain ground, each logo given room on white
+ * so the badge art keeps its own colours. The previous version put every badge
+ * on an accent gradient inside a rounded, shadowed card in a five-column
+ * masonry — which tinted the logos and made six credentials look like an
+ * advert.
+ *
+ * All six also carried `priority`, so six below-the-fold badges competed with
+ * the hero for bandwidth.
+ */
 const AwardsSection = ({ awards }) => {
   const { sectionTitle, sectionSubtitle, items } = awards;
 
   return (
-    <section id="awards" className="py-16 md:py-24 lg:py-32 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
+    <section id="awards" className="bg-background py-16 md:py-24">
+      <div className="mx-auto w-full max-w-[1400px] px-4 md:px-10">
+        <div className="rule-hairline grid gap-6 border-t pt-8 md:grid-cols-12">
+          <Reveal
+            as="h2"
+            className="type-display text-[clamp(2rem,3.6vw,3.25rem)] text-primary md:col-span-5"
+          >
             {sectionTitle}
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          </Reveal>
+          <Reveal
+            as="p"
+            delay={80}
+            className="measure self-end text-base leading-relaxed text-muted-foreground md:col-span-7"
+          >
             {sectionSubtitle}
-          </p>
+          </Reveal>
         </div>
-        <div className="columns-1 sm:columns-2 lg:columns-4 xl:columns-5 gap-6 space-y-6">
+
+        <ul className="rule-hairline mt-12 grid border-t sm:grid-cols-2 lg:grid-cols-3">
           {items.map((item, index) => (
-            <div
-              key={index}
-              className="break-inside-avoid flex flex-col justify-between p-6 rounded-lg border border-accent/20 bg-gradient-to-b from-accent/20 to-accent/5 shadow-md mb-6"
+            <Reveal
+              as="li"
+              key={item.title}
+              delay={Math.min(index * 60, 300)}
+              className="rule-hairline flex flex-col gap-5 border-b p-7 sm:[&:nth-child(2n)]:border-l lg:[&:nth-child(2n)]:border-l-0 lg:[&:not(:nth-child(3n+1))]:border-l"
             >
-              <h3 className="text-lg font-semibold text-foreground mb-2">
-                {item.title}
-              </h3>
-              <div className="relative w-30 h-30 mx-auto my-2">
+              {/* White plate: these badges are drawn for a light ground, and the
+                  page's off-white would dull them. */}
+              <span className="flex h-24 w-24 shrink-0 items-center justify-center bg-white p-3">
                 <Image
                   src={item.src}
                   alt={item.alt}
-                  fill
-                  priority
-                  className="aspect-square object-contain"
+                  width={96}
+                  height={96}
+                  loading="lazy"
+                  className="h-full w-full object-contain"
                 />
-              </div>
-              <p className="text-muted-foreground">{item.description}</p>
-            </div>
+              </span>
+
+              <span>
+                <span className="block font-semibold tracking-tight text-primary">
+                  {item.title}
+                </span>
+                <span className="mt-2 block text-sm leading-relaxed text-muted-foreground">
+                  {item.description}
+                </span>
+              </span>
+            </Reveal>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );

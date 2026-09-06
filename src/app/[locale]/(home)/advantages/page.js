@@ -1,9 +1,9 @@
 import React from "react";
 import { AdvantagesHero } from "../../../../components/advantages/advantages-hero";
-import { AdvantagesCarousel } from "../../../../components/advantages/advantages-carousel";
+import { AdvantagesList } from "../../../../components/advantages/advantages-list";
 import { BeforeAfterSection } from "../../../../components/advantages/before-after-section";
 import { DesignToolCards } from "../../../../components/advantages/design-tool-cards";
-import { FaqSection } from "../../../../components/advantages/faq-section";
+import { FaqSection } from "@/components/shared/faq-section";
 
 export const metadata = {
   title: "Why Choose M&E Construction and Renovations LLC",
@@ -25,7 +25,7 @@ const page = async ({ params }) => {
   return (
     <div className="min-h-screen">
       <AdvantagesHero hero={hero} />
-      <AdvantagesCarousel carousel={carousel} />
+      <AdvantagesList carousel={carousel} />
       <BeforeAfterSection beforeAfter={beforeAfter} />
       <DesignToolCards explore={explore} />
       <FaqSection faq={faq} />

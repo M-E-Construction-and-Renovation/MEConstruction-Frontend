@@ -1,52 +1,72 @@
-import * as LucideIcons from "lucide-react";
+import { CheckCircle2, HelpCircle, Shield, Sparkles, Zap } from "lucide-react";
+import Reveal from "../motion/reveal";
+
+/**
+ * Four reasons the system works, on the navy ground.
+ *
+ * Icons were pulled from `import * as LucideIcons` indexed by a content string;
+ * named explicitly now so the four this component can render are visible at the
+ * top of the file and a typo in the content falls back predictably.
+ *
+ * The staggered entrance used `animate-in fade-in slide-in-from-bottom` from
+ * tw-animate-css, which is not imported — the `animationDelay` styles were
+ * pacing an animation that did not exist.
+ */
+const ICONS = { CheckCircle2, Shield, Sparkles, Zap };
 
 export function ShowerFeatures({ features }) {
-  const { sectionTitle, sectionSubtitle } = features;
+  const { sectionTitle, sectionSubtitle, features: items } = features;
 
   return (
     <section
       id="features"
-      className="py-16 md:py-24 bg-gradient-to-br from-primary/5 via-accent/10 to-primary/5"
+      className="bg-primary py-16 text-primary-foreground md:py-24"
     >
-      <div className="container mx-auto px-4 max-w-6xl">
-        <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+      <div className="mx-auto w-full max-w-[1400px] px-4 md:px-10">
+        <div className="grid gap-6 border-t border-white/20 pt-8 md:grid-cols-12">
+          <Reveal
+            as="h2"
+            className="type-display text-[clamp(2rem,3.6vw,3.25rem)] text-white md:col-span-6"
+          >
             {sectionTitle}
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          </Reveal>
+          <Reveal
+            as="p"
+            delay={80}
+            className="measure self-end text-base leading-relaxed text-white/70 md:col-span-6"
+          >
             {sectionSubtitle}
-          </p>
+          </Reveal>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {features.features.map((feature, index) => {
-            const Icon = LucideIcons[feature.icon] || LucideIcons.HelpCircle;
+        <ul className="mt-12 grid gap-px border-t border-white/20 md:grid-cols-2">
+          {items.map((feature, index) => {
+            const Icon = ICONS[feature.icon] ?? HelpCircle;
 
             return (
-              <div
-                key={index}
-                className="group p-6 rounded-xl border border-primary/10 hover:border-primary/30 bg-gradient-to-br from-white to-slate-50 hover:shadow-lg transition-all duration-500 animate-in fade-in slide-in-from-bottom"
-                style={{ animationDelay: `${index * 100}ms` }}
+              <Reveal
+                as="li"
+                key={feature.title}
+                delay={Math.min(index * 70, 210)}
+                className="flex gap-5 border-b border-white/20 py-8 md:even:border-l md:even:border-white/20 md:even:pl-8 md:odd:pr-8"
               >
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0">
-                    <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-gradient-to-br from-primary to-accent text-white group-hover:scale-110 transition-transform duration-500">
-                      <Icon className="h-6 w-6" />
-                    </div>
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
-                      {feature.title}
-                    </h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      {feature.description}
-                    </p>
-                  </div>
+                <Icon
+                  aria-hidden="true"
+                  strokeWidth={1.5}
+                  className="mt-1 h-7 w-7 shrink-0 text-accent"
+                />
+                <div>
+                  <h3 className="type-display text-xl text-white">
+                    {feature.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-white/70">
+                    {feature.description}
+                  </p>
                 </div>
-              </div>
+              </Reveal>
             );
           })}
-        </div>
+        </ul>
       </div>
     </section>
   );

@@ -3,6 +3,144 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/*
+ * Height of the sticky nav block: the upper bar plus the header, which sit
+ * together in one `sticky top-0` wrapper.
+ *
+ * Anything that has to clear the nav needs this number, and three places were
+ * each carrying their own copy of it — the mobile menu scrim, the mobile menu's
+ * max-height, and the gallery's category bar. They did not agree: the header
+ * switched at sm (640px) and the gallery at md (768px), so between those two
+ * widths the nav covered the top 16px of the gallery's tabs. Measured, not
+ * guessed: nav 152px, bar top 136px at a 700px viewport.
+ */
+:root {
+  /*
+   * The nav block: a 48px utility bar plus the main bar, and a plate that
+   * carries the logo below it.
+   *
+   * The client wants the logo large; a large logo used to mean a tall bar, with
+   * the nav row and the quote button pushed apart to make room for a graphic
+   * they have nothing to do with. So the two are separated — the bar is only as
+   * tall as its own contents need, and the logo sits on a plate that drops
+   * below it and overhangs the page.
+   *
+   * --nav-h is the bar's height alone, because that is what the page has to
+   * clear; the plate simply hangs past it.
+   */
+  --nav-h: 108px;
+  --bar-plate-w: 208px;
+  --bar-plate-drop: 28px;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --nav-h: 116px;
+    --bar-plate-w: 236px;
+    --bar-plate-drop: 30px;
+  }
+}
+
+/*
+ * The container's side padding steps from 1rem to 2.5rem at md, which moves the
+ * logo 24px right without making the plate any wider. Measured at 768px: the
+ * logo's right edge landed at 237 against a 236px plate, so it hung a pixel
+ * past its own plate. The plate widens with it.
+ */
+@media (min-width: 768px) {
+  :root {
+    --bar-plate-w: 260px;
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --nav-h: 124px;
+    --bar-plate-w: 300px;
+    --bar-plate-drop: 40px;
+  }
+}
+
+/*
+ * The bar's glass, and the plate's.
+ *
+ * They must be two elements: the shape has an outer corner to round, and
+ * clip-path — which could cut it from one box — has no corner radius. But two
+ * elements meant two backgrounds, and the seam showed: the strip carried an
+ * accent bloom that the plate did not, so the plate read as a flatter, cooler
+ * navy than the bar directly above it.
+ *
+ * They share one background image now, sized to the full block and to the
+ * viewport width, so the gradient and the bloom are the same picture in both.
+ * The plate simply offsets it upward by the bar's height, continuing the image
+ * where the strip stops. Sizing horizontally in vw rather than percent is what
+ * keeps the bloom aligned: the plate is a few hundred pixels wide and the strip
+ * is the whole viewport, so a percentage would place the bloom differently in
+ * each.
+ *
+ * The tint is opaque, and that is a deliberate reversal. It was translucent
+ * over a backdrop-blur, which looked right once the page was scrolled — but at
+ * the very top of the page the two elements sit over different things. The bar
+ * occupies the nav's own layout box, where there is nothing behind it but the
+ * page's light background; the plate overhangs the first 40px of the content,
+ * which on most pages is a dark photograph. Same tint, two backdrops, two
+ * colours — the plate read noticeably darker than the bar until you scrolled.
+ *
+ * No alpha value fixes that, because the difference is in what is behind them.
+ * So the gradient is opaque and steps in lightness rather than in alpha, which
+ * keeps the top-lit-to-bottom-dark falloff without borrowing anything from the
+ * page. The bloom and the lit top edge do the rest of the work.
+ */
+.nav-glass {
+  --nav-bar-h: calc(var(--nav-h) - 48px);
+  background-image:
+    radial-gradient(
+      120% 160% at 10% -40%,
+      oklch(0.65 0.18 45 / 0.22),
+      transparent 58%
+    ),
+    /*
+     * The gradient finishes exactly where the bar does, so everything from the
+     * bar's bottom edge down through the plate is one flat colour.
+     *
+     * It used to run the full height of the block, which meant the bar painted
+     * the top of a gradient and the plate painted the bottom of the same
+     * gradient — mathematically continuous, but each element dithers its own
+     * gradient independently, and the two patterns do not line up. The result
+     * was a faint hairline along the seam, visible at 1280x800 among others.
+     * Flat meeting flat cannot disagree.
+     */
+    linear-gradient(
+      to bottom,
+      oklch(0.293 0.076 250) 0,
+      oklch(0.243 0.08 250) var(--nav-bar-h),
+      oklch(0.243 0.08 250) 100%
+    );
+  background-repeat: no-repeat;
+  background-size: 100vw calc(var(--nav-bar-h) + var(--bar-plate-drop));
+  background-position: 0 0;
+}
+
+.nav-glass-drop {
+  height: var(--bar-plate-drop);
+  width: var(--bar-plate-w);
+  border-bottom-right-radius: var(--bar-plate-drop);
+  /* Continue the same image from where the bar stopped. */
+  background-position: 0 calc(-1 * var(--nav-bar-h));
+}
+
+/*
+ * Anything an in-page link points at sits underneath the sticky nav, so the
+ * browser has to be told to stop short of it. Without this the target lands at
+ * the very top of the viewport and the nav covers it: measured on the buying
+ * guide, every one of the four contents links put its heading at y=149 with the
+ * nav occupying 0-152px, so the heading you clicked was the one thing you could
+ * not see. The extra 1.5rem is breathing room rather than a flush edge.
+ */
+:target {
+  scroll-margin-top: calc(var(--nav-h) + 1.5rem);
+}
+
 /* :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -194,20 +332,6 @@
     animation: beat 1.3s ease-in-out infinite;
   }
 
-  /* Bounce X animation */
-  @keyframes bounceX {
-    0%,
-    100% {
-      transform: translateX(0);
-    }
-    50% {
-      transform: translateX(10px);
-    }
-  }
-
-  .animate-bounce-x {
-    animation: bounceX 1.3s infinite;
-  }
 
   /* Nav dropdowns mount on open rather than sitting hidden in the DOM, so they
      need an entrance of their own. Short, because it fires on hover. */
@@ -225,6 +349,233 @@
   .animate-dropdown {
     animation: dropdownIn 0.18s ease-out forwards;
   }
+
+  /* Attention motion for the page's primary action only — the hero and the
+     closing CTA. A slow breath plus a widening glow, paused on hover so the
+     hover state reads cleanly. Deliberately NOT on the `cta` variant itself:
+     the solutions list uses that variant five times, and five pulsing buttons
+     is the noise this replaced. */
+  @keyframes ctaPulse {
+    0%,
+    100% {
+      transform: scale(1);
+      box-shadow: 0 6px 20px -6px oklch(0.65 0.18 45 / 0.55);
+    }
+    50% {
+      transform: scale(1.022);
+      box-shadow: 0 12px 34px -6px oklch(0.65 0.18 45 / 0.95);
+    }
+  }
+
+  .animate-cta-pulse {
+    animation: ctaPulse 2.6s ease-in-out infinite;
+  }
+
+  .animate-cta-pulse:hover,
+  .animate-cta-pulse:focus-visible {
+    animation-play-state: paused;
+  }
+
+  /* Hero life. Both devices are slow enough to read as atmosphere rather than
+     as an effect competing with the copy.
+
+     A drifting scale on the background photograph, so the room feels inhabited
+     rather than pinned to the page. 28s over 6% of travel never reads as a
+     zoom, and `alternate` avoids the jump a looping keyframe makes. */
+  @keyframes heroDrift {
+    from {
+      transform: scale(1.02);
+    }
+    to {
+      transform: scale(1.08);
+    }
+  }
+
+  .animate-hero-drift {
+    animation: heroDrift 28s ease-in-out infinite alternate;
+  }
+
+  /* The headline arrives a word at a time, so the sentence is built rather than
+     dropped in whole. 55ms apart settles the line before it can be read. */
+  @keyframes heroWordIn {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 0.45em, 0);
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  .animate-hero-word {
+    display: inline-block;
+    opacity: 0;
+    animation: heroWordIn 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: calc(120ms + var(--w, 0) * 55ms);
+  }
+
+  /* The accent rule draws itself out from the left, in step with the eyebrow. */
+  @keyframes ruleDraw {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+
+  .animate-rule-draw {
+    transform-origin: left center;
+    animation: ruleDraw 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  /* Mobile menu. The panel drops from under the header bar and its rows follow
+     in sequence, so the eye is led down the list instead of the whole sheet
+     appearing at once. */
+  @keyframes mobileMenuIn {
+    from {
+      opacity: 0;
+      transform: translate3d(0, -10px, 0);
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @keyframes mobileMenuRowIn {
+    from {
+      opacity: 0;
+      transform: translate3d(0, -6px, 0);
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @keyframes mobileScrimIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .animate-mobile-menu {
+    animation: mobileMenuIn 0.26s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-mobile-scrim {
+    animation: mobileScrimIn 0.26s ease-out forwards;
+  }
+
+  .animate-mobile-row {
+    opacity: 0;
+    animation: mobileMenuRowIn 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: calc(60ms + var(--row, 0) * 45ms);
+  }
+
+  /* Hamburger / close icon swap. */
+  .icon-swap-enter {
+    animation: mobileMenuRowIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+}
+
+@layer utilities {
+  /* Scroll reveal. The hidden start state is plain CSS; a <noscript> override
+     in the root layout restores visibility when JavaScript is off. This
+     replaced a script that stamped a class onto <html> before hydration, which
+     React correctly flagged as a server/client attribute mismatch. */
+  [data-reveal="hidden"] {
+    opacity: 0;
+    transform: translate3d(0, var(--reveal-y, 20px), 0);
+  }
+
+  [data-reveal] {
+    transition:
+      opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  [data-reveal="shown"] {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Editorial display type. Tight tracking and a hard optical ceiling: the
+     headline is the loudest thing on the page and must not run away on a
+     wide monitor. */
+  .type-display {
+    font-family: var(--font-archivo), var(--font-geist-sans), system-ui,
+      sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 0.95;
+    text-wrap: balance;
+  }
+
+  .type-eyebrow {
+    font-family: var(--font-geist-mono), ui-monospace, monospace;
+    font-size: 0.6875rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  /*
+   * Navigation labels. Archivo, the same face the dropdown panels already use
+   * for their item titles — so a top-level label and the panel it opens are set
+   * in the same type rather than two different families a few pixels apart.
+   *
+   * Not .type-display: that carries a 0.95 line-height and text-wrap:balance for
+   * headlines at 4rem, neither of which belongs on a 15px nav row.
+   */
+  .type-nav {
+    font-family: var(--font-archivo), var(--font-geist-sans), system-ui,
+      sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.012em;
+  }
+
+  /*
+   * Action labels: the header's quote button, and anything else that should
+   * read as a control rather than a sentence. Same mono face as the eyebrows,
+   * so the bar's loudest element is still speaking the site's language.
+   *
+   * The uppercasing lives here rather than in the markup, so the text stays
+   * sentence case in the DOM — some screen readers spell out all-caps words
+   * letter by letter.
+   */
+  .type-action {
+    font-family: var(--font-geist-mono), ui-monospace, monospace;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  /* Body measure. Long-form paragraphs stay inside a comfortable line length
+     instead of stretching the full container on desktop. */
+  .measure {
+    max-width: 62ch;
+  }
+
+  /* The hairline that carries the architectural grammar: section edges, meta
+     rows, list dividers. One weight everywhere. */
+  .rule-hairline {
+    border-color: color-mix(in oklch, var(--foreground) 14%, transparent);
+  }
+
+  /* Warm stone tint for light sections that should sit back a step from the
+     off-white ground. Written as an explicit oklch value rather than a
+     color-mix of the tokens: mixing them resolved to a pink cast in the
+     browser, which is nowhere in this palette. Same hue family as
+     --background (106), one step darker and slightly more saturated. */
+  .bg-tinted {
+    background-color: oklch(0.963 0.009 100);
+  }
 }
 
 /* The site had no reduced-motion handling at all, while running two infinite
@@ -233,15 +584,43 @@
    changes stay legible, and only the perpetual motion is removed. */
 @media (prefers-reduced-motion: reduce) {
   .animate-beat,
-  .animate-bounce-x {
+  .animate-cta-pulse,
+  .animate-hero-drift {
+    animation: none;
+  }
+
+  /* Words and the rule still land, they just do not travel or stagger. */
+  .animate-hero-word,
+  .animate-rule-draw {
+    opacity: 1;
+    transform: none;
     animation: none;
   }
 
   .animate-fade-in-up,
   .animate-slide-in-up,
-  .animate-dropdown {
+  .animate-dropdown,
+  .animate-mobile-menu,
+  .icon-swap-enter {
     animation-name: fadeIn;
     animation-duration: 0.2s;
+  }
+
+  /* Rows appear together rather than in sequence; the stagger is the part that
+     reads as motion, the visibility is the part that carries meaning. */
+  .animate-mobile-row {
+    animation-name: fadeIn;
+    animation-duration: 0.2s;
+    animation-delay: 0ms;
+  }
+
+  /* Reveals fade without travelling; the state change stays legible. */
+  [data-reveal="hidden"] {
+    transform: none;
+  }
+
+  [data-reveal] {
+    transition-duration: 0.2s;
   }
 
   html {

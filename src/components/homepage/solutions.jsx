@@ -1,102 +1,108 @@
-import Link from "next/link";
-import { Button } from "../ui/button";
-import { Card, CardContent } from "../ui/card";
-import { ArrowRight, Check } from "lucide-react";
-import Image from "next/image";
+"use client";
 
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, Check } from "lucide-react";
+import { Button } from "../ui/button";
+import Reveal from "../motion/reveal";
+import Parallax from "../motion/parallax";
+
+/**
+ * The work, as an editorial index rather than a card grid.
+ *
+ * Each solution gets a full row with a large photograph — a renovation is
+ * bought on the strength of finished rooms, so the picture is the argument and
+ * the copy annotates it. Rows alternate sides to keep the scroll from settling
+ * into a rhythm you stop reading.
+ */
 export function Solutions({ solutions }) {
   const { sectionTitle, sectionSubtitle, cards } = solutions;
 
   return (
-    // <section id="solutions" className="py-16 md:py-24">
-    <section
-      id="solutions"
-      className="py-16 md:py-24 bg-[radial-gradient(circle_at_center,_#f5f7fa,_#eef1f5)]"
-    >
-      <div className="container mx-auto px-4">
-        <div className="mb-12 text-center">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl mb-4 text-balance">
+    <section id="solutions" className="bg-tinted py-16 md:py-24">
+      <div className="mx-auto w-full max-w-[1400px] px-4 md:px-10">
+        {/* Section head */}
+        <div className="rule-hairline grid gap-6 border-t pt-8 md:grid-cols-12">
+          <Reveal as="h2" className="type-display text-[clamp(2rem,4vw,3.5rem)] text-primary md:col-span-7">
             {sectionTitle}
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
+          </Reveal>
+          <Reveal
+            as="p"
+            delay={80}
+            className="measure self-end text-base leading-relaxed text-muted-foreground md:col-span-5"
+          >
             {sectionSubtitle}
-          </p>
+          </Reveal>
         </div>
 
-        <div className="grid gap-8 lg:gap-12">
-          {cards.map((solution, index) => (
-            // <Card key={index} className="overflow-hidden">
-            <Card
-              key={index}
-              className="overflow-hidden rounded-2xl border border-gray-200 shadow-[0_4px_20px_rgba(0,0,0,0.06)] bg-white"
-            >
-              <CardContent className="p-0">
+        {/* Index */}
+        <div className="mt-16 md:mt-24">
+          {cards.map((card, index) => {
+            const flipped = index % 2 === 1;
+
+            return (
+              <Reveal
+                key={card.title}
+                className="rule-hairline grid items-center gap-8 border-t py-12 md:grid-cols-12 md:gap-12 md:py-16 lg:gap-16"
+              >
+                {/* Photograph */}
                 <div
-                  className={`grid lg:grid-cols-2 ${
-                    index % 2 === 1 ? "lg:grid-flow-dense" : ""
+                  className={`relative aspect-[4/3] overflow-hidden bg-muted md:col-span-7 ${
+                    flipped ? "md:order-2" : ""
                   }`}
                 >
-                  <div
-                    className={`relative aspect-[4/3] overflow-hidden ${
-                      index % 2 === 1 ? "lg:col-start-2" : ""
-                    }`}
-                  >
+                  <Parallax distance={48} className="absolute inset-0 -top-[8%] h-[116%] w-full">
                     <Image
-                      src={solution.image}
-                      alt={solution.title}
+                      src={card.image}
+                      alt={card.title}
                       fill
-                      priority
-                      sizes="(min-width: 1024px) 50vw, 100vw"
-                      className="h-full w-full object-cover scale-105 hover:scale-110 transition-all duration-500"
+                      loading="lazy"
+                      sizes="(min-width: 768px) 58vw, 100vw"
+                      className="object-cover"
                     />
-
-                    <div className="absolute top-4 left-4">
-                      {/* <span className="inline-flex items-center rounded-full bg-accent/90 px-3 py-1 text-sm font-medium text-accent-foreground shadow">
-                        {solution.tag}
-                      </span> */}
-                      <span className="animate-beat inline-flex items-center rounded-full bg-accent/90 px-3 py-1 text-sm font-medium text-accent-foreground shadow">
-                        {solution.tag}
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="text-center flex flex-col justify-center gap-10 p-6 lg:p-12">
-                    <div>
-                      <h3 className="text-2xl font-bold mb-3 md:text-3xl xl:text-6xl">
-                        {solution.title}
-                      </h3>
-                      <p className="text-muted-foreground text-pretty md:text-xl xl:text-2xl">
-                        {solution.description}
-                      </p>
-                    </div>
-
-                    <ul className="w-fit mx-auto space-y-3">
-                      {solution.features.map((feature, featureIndex) => (
-                        <li
-                          key={featureIndex}
-                          className="flex items-start gap-3"
-                        >
-                          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-success-primary bg-success-primary/10 mt-0.5">
-                            <Check className="h-6 w-6 text-success-primary" />
-                          </div>
-                          <span className="text-sm md:text-lg">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    <div className="animate-bounce">
-                      <Link href={solution.href} target="_blank">
-                        <Button className="gap-2 md:text-lg" variant="primary">
-                          {solution.ctaText}
-                          <ArrowRight className="h-6 w-6" />
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
+                  </Parallax>
                 </div>
-              </CardContent>
-            </Card>
-          ))}
+
+                {/* Annotation */}
+                <div className={`md:col-span-5 ${flipped ? "md:order-1" : ""}`}>
+                  <p className="type-eyebrow text-accent">{card.tag}</p>
+
+                  <h3 className="type-display mt-4 text-[clamp(1.65rem,2.6vw,2.5rem)] text-primary">
+                    {card.title}
+                  </h3>
+
+                  <p className="measure mt-4 text-base leading-relaxed text-muted-foreground">
+                    {card.description}
+                  </p>
+
+                  <ul className="rule-hairline mt-7 border-t">
+                    {card.features.map((feature) => (
+                      <li
+                        key={feature}
+                        className="rule-hairline flex items-start gap-3 border-b py-2.5 text-sm text-primary/85"
+                      >
+                        <Check
+                          aria-hidden="true"
+                          className="mt-0.5 h-4 w-4 shrink-0 text-accent"
+                        />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <Button variant="cta" size="lg" asChild className="group mt-8">
+                    <Link href={card.href}>
+                      {card.ctaText}
+                      <ArrowRight
+                        aria-hidden="true"
+                        className="ml-2 h-4 w-4 transition-transform duration-200 ease-out group-hover:translate-x-1"
+                      />
+                    </Link>
+                  </Button>
+                </div>
+              </Reveal>
+            );
+          })}
         </div>
       </div>
     </section>

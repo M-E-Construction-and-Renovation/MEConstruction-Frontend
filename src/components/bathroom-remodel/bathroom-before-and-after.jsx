@@ -1,11 +1,25 @@
-"use client";
+import QuoteButton from "../ui/quote-button";
+import Reveal from "../motion/reveal";
+import BeforeAfterSlider from "../shared/before-after-slider";
 
-import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { useDispatch } from "react-redux";
-import { openModal } from "@/store/quoteModalSlice";
-import Image from "next/image";
-
+/**
+ * Before/after comparison.
+ *
+ * The drag-to-reveal is kept — for a renovation firm it is the most persuasive
+ * thing on the page — but the frame itself now comes from the shared slider
+ * rather than a third hand-rolled copy of the same clip-path and range input.
+ *
+ * The frame was the other problem here. Both photographs are 1440x1795 — 4:5
+ * portrait — and were being poured into an aspect-[4/3] landscape box, so
+ * object-cover matched the width and threw away roughly two fifths of the
+ * height, cropping through the middle of the room.
+ *
+ * Both images also carried priority, which competes with the hero for the
+ * preload budget on a section below the fold. The shared slider loads lazily.
+ *
+ * With the quote button isolated as its own client component, this section is
+ * server-rendered.
+ */
 export function BathroomBeforeAfter({ beforeAfter }) {
   const {
     sectionTitle,
@@ -16,100 +30,55 @@ export function BathroomBeforeAfter({ beforeAfter }) {
     beforeAfterImages,
   } = beforeAfter;
 
-  const dispatch = useDispatch();
-
-  const [sliderPosition, setSliderPosition] = useState(50);
-
-  const handleSliderChange = (e) => {
-    setSliderPosition(Number(e.target.value));
-  };
-
   return (
-    <section id="before-after" className="py-20 md:py-32 bg-secondary/30">
-      <div className="container mx-auto px-4">
-        <div>
-          {/* Header */}
-          <div className="mb-12 grid md:grid-cols-2 gap-12">
-            <div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                {sectionTitle}
-              </h2>
-              <h3 className="text-lg md:text-xl font-semibold mb-4">
-                {sectionSubtitle}
-              </h3>
+    <section
+      id="before-after"
+      className="bg-primary py-16 text-primary-foreground md:py-24"
+    >
+      <div className="mx-auto w-full max-w-[1400px] px-4 md:px-10">
+        <div className="grid gap-6 border-t border-white/20 pt-8 md:grid-cols-12">
+          <Reveal
+            as="h2"
+            className="type-display text-[clamp(2rem,3.6vw,3.25rem)] text-white md:col-span-6"
+          >
+            {sectionTitle}
+          </Reveal>
+          <Reveal
+            as="p"
+            delay={80}
+            className="measure self-end text-base leading-relaxed text-white/70 md:col-span-6"
+          >
+            {sectionSubtitle}
+          </Reveal>
+        </div>
 
-              {descriptions.map((description, index) => (
-                <p
-                  key={index}
-                  className="text-lg text-muted-foreground mb-6 leading-relaxed"
-                >
-                  {description}
-                </p>
-              ))}
-
-              <Button
-                size="lg"
-                className="bg-accent hover:bg-accent/90 text-accent-foreground gap-2 text-base w-fit"
-                onClick={() => dispatch(openModal())}
+        <div className="mt-12 grid gap-10 lg:grid-cols-12 lg:gap-14">
+          <div className="lg:col-span-6 lg:self-center">
+            {descriptions.map((description, index) => (
+              <Reveal
+                as="p"
+                key={description.slice(0, 40)}
+                delay={Math.min(index * 60, 180)}
+                className="measure mb-5 text-sm leading-relaxed text-white/70 md:text-base"
               >
-                {button}
-              </Button>
-            </div>
+                {description}
+              </Reveal>
+            ))}
 
-            {/* Before/After Slider */}
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-muted shadow-xl">
-              <div className="absolute inset-0">
-                <Image
-                  src={beforeAfterImages.after.src}
-                  alt={beforeAfterImages.after.alt}
-                  fill
-                  priority
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              <div
-                className="absolute inset-0 overflow-hidden"
-                style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
-              >
-                <Image
-                  src={beforeAfterImages.before.src}
-                  alt={beforeAfterImages.before.alt}
-                  fill
-                  priority
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              <div className="absolute top-4 left-4 bg-slate-900/80 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold text-white">
-                {labels.before}
-              </div>
-              <div className="absolute top-4 right-4 bg-slate-900/80 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold text-white">
-                {labels.after}
-              </div>
-
-              <div
-                className="absolute top-0 bottom-0 w-1.5 bg-accent cursor-ew-resize shadow-lg"
-                style={{ left: `${sliderPosition}%` }}
-              >
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-accent rounded-full shadow-xl flex items-center justify-center border-4 border-white">
-                  <div className="flex gap-1.5">
-                    <div className="w-0.5 h-5 bg-white" />
-                    <div className="w-0.5 h-5 bg-white" />
-                  </div>
-                </div>
-              </div>
-
-              <input
-                type="range"
-                min="0"
-                max="100"
-                value={sliderPosition}
-                onChange={handleSliderChange}
-                className="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize"
-              />
-            </div>
+            <Reveal delay={220} className="mt-8">
+              <QuoteButton source="bathroom_before_after" label={button} />
+            </Reveal>
           </div>
+
+          <Reveal delay={160} className="lg:col-span-6">
+            <BeforeAfterSlider
+              before={beforeAfterImages.before}
+              after={beforeAfterImages.after}
+              labels={labels}
+              subject="bathroom"
+              className="mx-auto aspect-[4/5] max-w-[520px]"
+            />
+          </Reveal>
         </div>
       </div>
     </section>

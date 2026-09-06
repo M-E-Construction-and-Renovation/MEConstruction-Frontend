@@ -1,144 +1,135 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
-import { Button } from "../ui/button";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useDispatch } from "react-redux";
-import { openModal } from "@/store/quoteModalSlice";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import QuoteButton from "../ui/quote-button";
+import Reveal from "../motion/reveal";
+import BeforeAfterSlider from "../shared/before-after-slider";
 
+/**
+ * Two basement transformations, compared.
+ *
+ * Like kitchen — and unlike shower and bathtub, whose "carousels" ran over an
+ * array of exactly one — there really are two pairs here, so switching between
+ * them is worth keeping. What it wore was not: unlabelled dot buttons with no
+ * accessible name and no aria-current, plus an equally anonymous pair of arrow
+ * buttons. It is a tablist now, named by the transformation titles that were
+ * already in the content and previously shown only as a caption underneath.
+ *
+ * The two pairs are internally matched but not matched to each other: the first
+ * is square (736x736 before, 1024x1024 after) and the second is 3:4 portrait
+ * (1536x2048 both). A 4:5 frame splits the difference — it crops the sides of
+ * the square pair a little and the top and bottom of the portrait pair a
+ * little, rather than mangling either one. A consistent aspect across pairs
+ * would be better.
+ *
+ * The key on the slider forces a remount when the pair changes, so the reveal
+ * starts at the middle again rather than carrying the previous position onto a
+ * different photograph.
+ *
+ * The images were declared width 300 by height 400 and then stretched with
+ * w-full h-full, so next/image built its srcset for a 300px box. The badges
+ * were absolutely positioned inside frames with no position of their own, so
+ * they resolved against the outer card.
+ */
 export function BasementBeforeAfter({ beforeAfter }) {
-  const {
-    sectionTitle,
-    sectionSubtitle,
-    description,
-    labels,
-    transformations,
-  } = beforeAfter;
+  const { sectionTitle, sectionSubtitle, description, labels, transformations } =
+    beforeAfter;
 
-  const dispatch = useDispatch();
-
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [active, setActive] = useState(0);
+  const pair = transformations[active];
 
   return (
-    <section
-      id="before-after"
-      className="py-16 md:py-24 bg-gradient-to-b from-slate-100 via-white to-slate-50"
-    >
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6 animate-in fade-in slide-in-from-left duration-700">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground">
-              {sectionTitle}
-            </h2>
-
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              {sectionSubtitle}
-            </p>
-
-            <p className="text-base text-muted-foreground leading-relaxed">
-              {description}
-            </p>
-
-            <Button
-              size="lg"
-              className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold"
-              onClick={() => dispatch(openModal())}
+    <section id="before-after" className="bg-tinted py-16 md:py-24">
+      <div className="mx-auto w-full max-w-[1400px] px-4 md:px-10">
+        <div className="rule-hairline grid gap-10 border-t pt-10 lg:grid-cols-12 lg:gap-14">
+          <div className="lg:col-span-6 lg:self-center">
+            <Reveal
+              as="h2"
+              className="type-display text-[clamp(2rem,3.6vw,3.25rem)] text-primary"
             >
-              {labels.button}
-            </Button>
+              {sectionTitle}
+            </Reveal>
 
-            <p className="text-muted-foreground text-sm">
-              <a
+            <Reveal
+              as="p"
+              delay={80}
+              className="measure mt-6 text-base leading-relaxed text-muted-foreground"
+            >
+              {sectionSubtitle}
+            </Reveal>
+
+            <Reveal
+              as="p"
+              delay={130}
+              className="measure mt-5 text-sm leading-relaxed text-muted-foreground"
+            >
+              {description}
+            </Reveal>
+
+            <Reveal delay={190} className="mt-8">
+              <QuoteButton
+                source="basement_before_after"
+                label={labels.button}
+              />
+            </Reveal>
+
+            <Reveal delay={230} className="mt-6">
+              <Link
                 href="/gallery"
-                target="_blank"
-                className="text-accent hover:underline font-semibold"
+                className="group inline-flex items-center text-sm font-semibold text-accent underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               >
-                <span className="text-accent">{labels.link}</span>
-              </a>
-            </p>
+                {labels.link}
+                <ArrowRight
+                  aria-hidden="true"
+                  className="ml-2 h-4 w-4 shrink-0 transition-transform duration-200 ease-out group-hover:translate-x-1"
+                />
+              </Link>
+            </Reveal>
           </div>
 
-          <div className="space-y-6">
-            <div className="group relative rounded-2xl overflow-hidden shadow-md bg-slate-200">
-              <div className="grid grid-cols-2 gap-1 p-1 h-96">
-                <div className="rounded-lg overflow-hidden">
-                  <Image
-                    src={
-                      transformations[activeIndex].beforeImage ||
-                      "/placeholder.svg"
-                    }
-                    alt={transformations[activeIndex].title}
-                    width={300}
-                    height={400}
-                    priority
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute bottom-3 left-3 bg-slate-700 text-white px-3 py-1 rounded-lg text-sm font-semibold">
-                    {labels.before}
-                  </div>
-                </div>
-                <div className="rounded-lg overflow-hidden">
-                  <Image
-                    src={
-                      transformations[activeIndex].afterImage ||
-                      "/placeholder.svg"
-                    }
-                    alt={transformations[activeIndex].title}
-                    width={300}
-                    height={400}
-                    priority
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute bottom-3 right-3 bg-primary text-white px-3 py-1 rounded-lg text-sm font-semibold">
-                    {labels.after}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="text-center">
-              <p className="text-muted-foreground mb-3">
-                {transformations[activeIndex].title}
-              </p>
-
-              <div className="flex gap-2 justify-center">
-                {transformations.map((_, index) => (
+          <Reveal delay={160} className="lg:col-span-6">
+            <div
+              role="tablist"
+              aria-label="Basement transformations"
+              className="rule-hairline flex border-t"
+            >
+              {transformations.map((item, index) => {
+                const isActive = index === active;
+                return (
                   <button
-                    key={index}
-                    onClick={() => setActiveIndex(index)}
-                    className={`h-2 rounded-full transition-all duration-300 ${
-                      index === activeIndex
-                        ? "bg-primary w-8"
-                        : "bg-slate-300 w-2 hover:bg-slate-400"
+                    key={item.title}
+                    type="button"
+                    role="tab"
+                    aria-selected={isActive}
+                    aria-controls="before-after-panel"
+                    tabIndex={isActive ? 0 : -1}
+                    onClick={() => setActive(index)}
+                    className={`-mt-px border-t-2 px-4 py-3 text-left text-xs font-semibold tracking-tight transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent sm:text-sm ${
+                      isActive
+                        ? "border-accent text-accent"
+                        : "border-transparent text-muted-foreground hover:text-primary"
                     }`}
-                  />
-                ))}
-              </div>
+                  >
+                    {item.title}
+                  </button>
+                );
+              })}
             </div>
 
-            <div className="flex gap-3 justify-center">
-              <button
-                onClick={() =>
-                  setActiveIndex(
-                    (activeIndex - 1 + transformations.length) %
-                      transformations.length,
-                  )
-                }
-                className="p-3 rounded-full bg-slate-100 hover:bg-slate-200 transition-colors"
-              >
-                <ChevronLeft className="h-5 w-5" />
-              </button>
-              <button
-                onClick={() =>
-                  setActiveIndex((activeIndex + 1) % transformations.length)
-                }
-                className="p-3 rounded-full bg-slate-100 hover:bg-slate-200 transition-colors"
-              >
-                <ChevronRight className="h-5 w-5" />
-              </button>
+            <div id="before-after-panel" className="mt-6">
+              <BeforeAfterSlider
+                key={pair.title}
+                before={{ src: pair.beforeImage, alt: `${pair.title} before` }}
+                after={{ src: pair.afterImage, alt: `${pair.title} after` }}
+                labels={labels}
+                subject="basement"
+                className="mx-auto aspect-[4/5] max-w-[460px]"
+                sizes="(min-width: 1024px) 460px, 100vw"
+              />
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

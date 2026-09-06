@@ -39,11 +39,11 @@
       },
       "images": [
         {
-          "src": "/images/bathroom-gallery-8.jpg",
+          "src": "/images/renovated-bathroom.jpg",
           "title": "Bathroom"
         },
         {
-          "src": "/images/kitchen-wood-contemporary.jpg",
+          "src": "/images/kitchen-modern-minimalist.jpg",
           "title": "Kitchen"
         },
         {
@@ -52,7 +52,6 @@
         }
       ]
     },
-
     "features": {
       "id": "#features",
       "path": "/",
@@ -80,7 +79,6 @@
         }
       ]
     },
-
     "solutions": {
       "id": "#solutions",
       "path": "/",
@@ -159,7 +157,6 @@
         }
       ]
     },
-
     "advantages": {
       "id": "#advantages",
       "path": "/",
@@ -188,7 +185,6 @@
         }
       ]
     },
-
     "gallery": {
       "id": "#gallery",
       "path": "/",
@@ -214,7 +210,6 @@
         }
       ]
     },
-
     "reviews": {
       "id": "#reviews",
       "path": "/",
@@ -269,7 +264,6 @@
       ]
     }
   },
-
   "cta": {
     "id": "#cta",
     "path": "/",
@@ -281,7 +275,6 @@
       "emailLabel": "Email Us"
     }
   },
-
   "advantages": {
     "hero": {
       "id": "#hero",
@@ -358,9 +351,18 @@
       },
       "button": "Book a Free Consultation",
       "categories": [
-        { "id": "bathroom", "label": "Bathroom" },
-        { "id": "kitchen", "label": "Kitchen" },
-        { "id": "basement", "label": "Basement" }
+        {
+          "id": "bathroom",
+          "label": "Bathroom"
+        },
+        {
+          "id": "kitchen",
+          "label": "Kitchen"
+        },
+        {
+          "id": "basement",
+          "label": "Basement"
+        }
       ],
       "images": {
         "bathroom": {
@@ -377,7 +379,6 @@
         }
       }
     },
-
     "explore": {
       "id": "#explore",
       "path": "/advantages",
@@ -387,11 +388,10 @@
         {
           "title": "Try Our Design Tool",
           "description": "Visualize your dream bathroom before installation",
-          "image": "/images/bathroom-design-tool-interface.jpg",
-          "alt": "Design Tool",
+          "image": "/images/design-tool-image.PNG",
+          "alt": "The M&E bathroom configurator interface",
           "icon": "Palette",
           "href": "/design",
-          "target": "_blank",
           "bgGradient": "from-accent/20 to-accent-secondary/20"
         },
         {
@@ -401,12 +401,10 @@
           "alt": "Customization",
           "icon": "Wrench",
           "href": "/bathroom-remodel",
-          "target": "_blank",
           "bgGradient": "from-accent-secondary/20 to-accent/20"
         }
       ]
     },
-
     "faq": {
       "id": "#faq",
       "path": "/advantages",
@@ -456,7 +454,6 @@
       ]
     }
   },
-
   "ourStory": {
     "hero": {
       "id": "#hero",
@@ -466,7 +463,6 @@
       "description": "Established in 2022, M&E Construction & Renovations has quickly become a trusted name in residential and commercial remodeling, delivering exceptional craftsmanship and innovative solutions that transform homes and businesses.",
       "button": "Get Free Quote"
     },
-
     "mission": {
       "id": "#mission",
       "path": "/our-story",
@@ -479,7 +475,6 @@
         "alt": "Home renovation"
       }
     },
-
     "foundation": {
       "id": "#foundation",
       "path": "/our-story",
@@ -500,7 +495,6 @@
         }
       ]
     },
-
     "awards": {
       "id": "#awards",
       "path": "/our-story",
@@ -545,7 +539,6 @@
         }
       ]
     },
-
     "coreValues": {
       "id": "#core-values",
       "path": "/our-story",
@@ -567,7 +560,6 @@
       ]
     }
   },
-
   "bathroomRemodel": {
     "hero": {
       "id": "#hero",
@@ -580,18 +572,15 @@
         "Designed for Every Need",
         "A Beautiful New Look Without the Mess"
       ],
-
       "labels": {
         "button": "Get a free quote",
         "link": "Try our design tool"
       },
-
       "image": {
         "src": "/images/renovated-bathroom.jpg",
         "alt": "Beautiful renovated bathroom"
       }
     },
-
     "features": {
       "id": "#features",
       "path": "/bathroom-remodel",
@@ -615,7 +604,6 @@
         }
       ]
     },
-
     "beforeAfter": {
       "id": "#before-after",
       "path": "/bathroom-remodel",
@@ -642,7 +630,6 @@
         }
       }
     },
-
     "inspiration": {
       "id": "#inspiration",
       "path": "/bathroom-remodel",
@@ -653,7 +640,7 @@
           "title": "Gallery",
           "description": "View hundreds of bath and shower options to perfectly fit your style.",
           "image": {
-            "src": "/images/modern-luxury-bathroom-renovation-before-and-after.jpg",
+            "src": "/images/modern-luxury-bathroom-with-elegant-fixtures.jpg",
             "alt": "Bathroom gallery"
           },
           "cta": {
@@ -677,7 +664,6 @@
         }
       ]
     },
-
     "customization": {
       "id": "#customization",
       "path": "/bathroom-remodel",
@@ -692,7 +678,6 @@
       },
       "link": "TRY OUR DESIGN TOOL"
     },
-
     "process": {
       "id": "#process",
       "path": "/bathroom-remodel",
@@ -717,7 +702,6 @@
         }
       ]
     },
-
     "gallery": {
       "id": "#gallery",
       "path": "/bathroom-remodel",
@@ -742,7 +726,6 @@
       ],
       "link": "See Our Gallery"
     },
-
     "faq": {
       "id": "#faq",
       "path": "/bathroom-remodel",
@@ -792,7 +775,6 @@
       ]
     }
   },
-
   "showerSolutions": {
     "hero": {
       "id": "#hero",
@@ -804,8 +786,10 @@
         "src": "/images/modern-luxury-shower-with-rainfall-showerhead-and-.jpg",
         "alt": "Luxury shower installation"
       },
-      "labels": { "link": "Try our Design Tool", "button": "Get a free quote" },
-
+      "labels": {
+        "link": "Try our Design Tool",
+        "button": "Get a free quote"
+      },
       "highlights": {
         "highlight1": {
           "title": "Hassle-Free",
@@ -817,7 +801,6 @@
         }
       }
     },
-
     "types": {
       "id": "#types",
       "path": "/shower-solutions",
@@ -850,7 +833,6 @@
         }
       ]
     },
-
     "features": {
       "id": "#features",
       "path": "/shower-solutions",
@@ -879,7 +861,6 @@
         }
       ]
     },
-
     "beforeAfter": {
       "id": "#before-after",
       "path": "/shower-solutions",
@@ -900,7 +881,6 @@
         }
       ]
     },
-
     "personalization": {
       "id": "#personalization",
       "path": "/shower-solutions",
@@ -929,7 +909,6 @@
         "button": "Try Our Design Tool"
       }
     },
-
     "process": {
       "id": "#process",
       "path": "/shower-solutions",
@@ -974,7 +953,6 @@
         }
       ]
     },
-
     "inspiration": {
       "id": "#inspiration",
       "path": "/shower-solutions",
@@ -985,10 +963,8 @@
           "icon": "ImageIcon",
           "title": "Photo Gallery",
           "description": "View hundreds of beautiful shower styles and designs to inspire your project.",
-
           "label": "Explore Gallery",
           "href": "/gallery",
-
           "image": "/images/modern-shower-design-gallery.jpg",
           "color": "from-blue-500 to-cyan-500"
         },
@@ -996,7 +972,6 @@
           "icon": "Pencil",
           "title": "Design Your Shower",
           "description": "Use our interactive design tool to customize and visualize your perfect shower.",
-
           "label": "Start Designing",
           "href": "/design",
           "image": "/images/shower-design-tool-interface.jpg",
@@ -1004,7 +979,6 @@
         }
       ]
     },
-
     "faq": {
       "id": "#faq",
       "path": "/shower-solutions",
@@ -1054,7 +1028,6 @@
       ]
     }
   },
-
   "bathtubSolutions": {
     "hero": {
       "id": "#hero",
@@ -1081,7 +1054,6 @@
         }
       }
     },
-
     "types": {
       "id": "#types",
       "path": "/bathtub-solutions",
@@ -1114,7 +1086,6 @@
         }
       ]
     },
-
     "features": {
       "id": "#features",
       "path": "/bathtub-solutions",
@@ -1153,7 +1124,6 @@
         }
       ]
     },
-
     "beforeAfter": {
       "id": "#before-after",
       "path": "/bathtub-solutions",
@@ -1174,7 +1144,6 @@
         }
       ]
     },
-
     "personalization": {
       "id": "#personalization",
       "path": "/bathtub-solutions",
@@ -1203,7 +1172,6 @@
         "button": "Try Our Design Tool"
       }
     },
-
     "process": {
       "id": "#process",
       "path": "/bathtub-solutions",
@@ -1248,7 +1216,6 @@
         }
       ]
     },
-
     "inspiration": {
       "id": "#inspiration",
       "path": "/bathtub-solutions",
@@ -1275,7 +1242,6 @@
         }
       ]
     },
-
     "faq": {
       "id": "#faq",
       "path": "/bathtub-solutions",
@@ -1325,7 +1291,6 @@
       ]
     }
   },
-
   "kitchenSolutions": {
     "hero": {
       "id": "#hero",
@@ -1351,7 +1316,6 @@
         }
       }
     },
-
     "types": {
       "id": "#types",
       "path": "/kitchen-solutions",
@@ -1364,7 +1328,7 @@
           "description": "Upgrade your kitchen with sleek countertops, cabinetry, and appliances for a contemporary look and feel.",
           "cta": "Explore Designs",
           "color": "from-blue-500 to-cyan-500",
-          "href": "/kitchen-inspiration/modern"
+          "href": "/gallery"
         },
         {
           "icon": "Layout",
@@ -1372,7 +1336,7 @@
           "description": "Maximize space and efficiency with custom layouts designed to fit your cooking and entertaining needs.",
           "cta": "See Before and After",
           "color": "from-teal-500 to-blue-500",
-          "href": "/kitchen-inspiration/layouts"
+          "href": "/before-after"
         },
         {
           "icon": "Users",
@@ -1380,11 +1344,10 @@
           "description": "Functional and stylish designs that make cooking, dining, and family time enjoyable and safe.",
           "cta": "Discover More",
           "color": "from-cyan-500 to-sky-500",
-          "href": "/kitchen-inspiration/family-friendly"
+          "href": "/gallery"
         }
       ]
     },
-
     "features": {
       "id": "#features",
       "path": "/kitchen-solutions",
@@ -1423,7 +1386,6 @@
         }
       ]
     },
-
     "beforeAfter": {
       "id": "#before-after",
       "path": "/kitchen-solutions",
@@ -1449,7 +1411,6 @@
         }
       ]
     },
-
     "personalization": {
       "id": "#personalization",
       "path": "/kitchen-solutions",
@@ -1478,7 +1439,6 @@
         "button": "Get a Free Quote"
       }
     },
-
     "process": {
       "id": "#process",
       "path": "/kitchen-solutions",
@@ -1523,7 +1483,6 @@
         }
       ]
     },
-
     "inspiration": {
       "id": "#inspiration",
       "path": "/kitchen-solutions",
@@ -1535,7 +1494,7 @@
           "title": "Kitchen Photo Gallery",
           "description": "Browse hundreds of stunning kitchen designs and layouts to inspire your renovation project.",
           "label": "Explore Gallery",
-          "href": "/kitchen-inspiration/gallery",
+          "href": "/gallery",
           "image": "/images/kitchen-gallery.png",
           "color": "from-orange-500 to-yellow-500"
         },
@@ -1544,13 +1503,12 @@
           "title": "Check out our Before and After",
           "description": "See real kitchen transformations and get inspired by our completed projects, from outdated to modern, functional kitchens.",
           "label": "View Transformations",
-          "href": "/kitchen-inspiration/before-after",
+          "href": "/before-after",
           "image": "/images/kitchen-solutions-before-after.png",
           "color": "from-yellow-500 to-amber-500"
         }
       ]
     },
-
     "faq": {
       "id": "#faq",
       "path": "/kitchen-solutions",
@@ -1600,7 +1558,6 @@
       ]
     }
   },
-
   "basementSolutions": {
     "hero": {
       "id": "#hero",
@@ -1609,7 +1566,7 @@
       "sectionSubtitle": "From unfinished storage to a stylish and comfortable retreat — our basement finishing solutions turn every corner of your home into a functional, livable space. Whether it’s a family room, home office, or entertainment area, we make it modern and inviting.",
       "badge": "Basement Finishing & Renovation",
       "image": {
-        "src": "/images/basement-modern.png",
+        "src": "/images/basement-gallery-2.jpg",
         "alt": "Finished modern basement renovation"
       },
       "labels": {
@@ -1626,7 +1583,6 @@
         }
       }
     },
-
     "types": {
       "id": "#types",
       "path": "/basement-solutions",
@@ -1639,7 +1595,7 @@
           "description": "Transform your unfinished basement into a functional living space — family room, media area, or home office.",
           "cta": "Explore Designs",
           "color": "from-blue-500 to-cyan-500",
-          "href": "/basement-inspiration/full-finishing"
+          "href": "/gallery"
         },
         {
           "icon": "Users",
@@ -1647,7 +1603,7 @@
           "description": "Create inviting entertainment zones with bars, lounges, or game rooms for family and friends.",
           "cta": "See Before and After",
           "color": "from-teal-500 to-blue-500",
-          "href": "/basement-inspiration/entertainment"
+          "href": "/before-after"
         },
         {
           "icon": "Coffee",
@@ -1655,11 +1611,10 @@
           "description": "Design multi-purpose basement areas that combine work, storage, and relaxation seamlessly.",
           "cta": "Discover More",
           "color": "from-cyan-500 to-sky-500",
-          "href": "/basement-inspiration/flex-spaces"
+          "href": "/gallery"
         }
       ]
     },
-
     "features": {
       "id": "#features",
       "path": "/basement-solutions",
@@ -1698,7 +1653,6 @@
         }
       ]
     },
-
     "beforeAfter": {
       "id": "#before-after",
       "path": "/basement-solutions",
@@ -1724,7 +1678,6 @@
         }
       ]
     },
-
     "personalization": {
       "id": "#personalization",
       "path": "/basement-solutions",
@@ -1753,7 +1706,6 @@
         "button": "Get a Free Quote"
       }
     },
-
     "process": {
       "id": "#process",
       "path": "/basement-solutions",
@@ -1798,7 +1750,6 @@
         }
       ]
     },
-
     "inspiration": {
       "id": "#inspiration",
       "path": "/basement-solutions",
@@ -1810,7 +1761,7 @@
           "title": "Basement Photo Gallery",
           "description": "Browse hundreds of stunning basement designs, layouts, and finishes to inspire your renovation project.",
           "label": "Explore Gallery",
-          "href": "/basement-inspiration/gallery",
+          "href": "/gallery",
           "image": "/images/basement-gallery.png",
           "color": "from-blue-500 to-cyan-500"
         },
@@ -1819,13 +1770,12 @@
           "title": "See Before and After Transformations",
           "description": "Check out real basement finishing projects and see how we turn unfinished spaces into functional, stylish living areas.",
           "label": "View Transformations",
-          "href": "/basement-inspiration/before-after",
+          "href": "/before-after",
           "image": "/images/basement-solutions-before-after.png",
           "color": "from-cyan-500 to-teal-500"
         }
       ]
     },
-
     "faq": {
       "id": "#faq",
       "path": "/basement-solutions",

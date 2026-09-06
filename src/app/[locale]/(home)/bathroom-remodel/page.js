@@ -1,22 +1,21 @@
-import React from "react";
 import { BathroomHero } from "@/components/bathroom-remodel/bathroom-hero";
 import { BathroomFeatures } from "@/components/bathroom-remodel/bathroom-features";
 import { BathroomBeforeAfter } from "@/components/bathroom-remodel/bathroom-before-and-after";
 import { BathroomInspiration } from "@/components/bathroom-remodel/bathroom-inspiration";
 import { BathroomCustomizationTool } from "@/components/bathroom-remodel/bathroom-customization-tool";
-import { BathroomProcessCarousel } from "@/components/bathroom-remodel/bathroom-process-carousel";
+import { BathroomProcess } from "@/components/bathroom-remodel/bathroom-process";
 import { BathroomGallery } from "@/components/bathroom-remodel/bathroom-gallery";
-import { FaqSection } from "@/components/bathroom-remodel/bathroom-faq";
+import { FaqSection } from "@/components/shared/faq-section";
 
 export const metadata = {
   title: "Bathroom Remodeling by M&E Construction and Renovations LLC",
   description:
     "Transform your outdated bathroom into a modern, functional space with M&E Construction and Renovations LLC. Our expert team delivers customized bathroom remodels that combine style, comfort, and efficiency.",
 };
+
 const page = async ({ params }) => {
   const { locale } = await params;
 
-  // Load all raw JSON data
   const messages = (await import(`../../../../../messages/${locale}.json`))
     .default;
 
@@ -33,6 +32,11 @@ const page = async ({ params }) => {
     },
   } = messages;
 
+  /**
+   * Grounds alternate so no two adjacent sections share one: photograph, page,
+   * navy, tinted, page, navy, page, tinted. It is what keeps a long page from
+   * reading as one undifferentiated scroll.
+   */
   return (
     <div className="min-h-screen">
       <BathroomHero hero={hero} />
@@ -40,7 +44,7 @@ const page = async ({ params }) => {
       <BathroomBeforeAfter beforeAfter={beforeAfter} />
       <BathroomInspiration inspiration={inspiration} />
       <BathroomCustomizationTool customization={customization} />
-      <BathroomProcessCarousel process={process} />
+      <BathroomProcess process={process} />
       <BathroomGallery gallery={gallery} />
       <FaqSection faq={faq} />
     </div>

@@ -1,12 +1,11 @@
-import React from "react";
 import { BasementHero } from "@/components/basement-solutions/basement-hero";
 import { BasementTypes } from "@/components/basement-solutions/basement-types";
 import { BasementFeatures } from "@/components/basement-solutions/basement-features";
 import { BasementBeforeAfter } from "@/components/basement-solutions/basement-before-and-after";
 import { BasementPersonalization } from "@/components/basement-solutions/basement-personalization";
-import { BasementProcessCarousel } from "@/components/basement-solutions/basement-process-carousel";
+import { BasementProcess } from "@/components/basement-solutions/basement-process";
 import { BasementInspiration } from "@/components/basement-solutions/basement-inspiration";
-import { FaqSection } from "@/components/basement-solutions/basement-faq";
+import { FaqSection } from "@/components/shared/faq-section";
 
 export const metadata = {
   title:
@@ -18,7 +17,6 @@ export const metadata = {
 const page = async ({ params }) => {
   const { locale } = await params;
 
-  // Load all raw JSON data
   const messages = (await import(`../../../../../messages/${locale}.json`))
     .default;
 
@@ -35,6 +33,10 @@ const page = async ({ params }) => {
     },
   } = messages;
 
+  /**
+   * Grounds alternate so no two adjacent sections share one: navy, page, navy,
+   * tinted, page, navy, page, tinted.
+   */
   return (
     <div className="min-h-screen">
       <BasementHero hero={hero} />
@@ -42,7 +44,7 @@ const page = async ({ params }) => {
       <BasementFeatures features={features} />
       <BasementBeforeAfter beforeAfter={beforeAfter} />
       <BasementPersonalization personalization={personalization} />
-      <BasementProcessCarousel process={process} />
+      <BasementProcess process={process} />
       <BasementInspiration inspiration={inspiration} />
       <FaqSection faq={faq} />
     </div>

@@ -6,19 +6,42 @@ import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { useToast } from "../ui/use-toast";
 import Link from "next/link";
-import { MailIcon, PhoneIcon } from "lucide-react";
-import { FaFacebook, FaInstagram } from "react-icons/fa";
+import { ArrowRight, Calendar, Mail, MapPin, Phone } from "lucide-react";
 import {
   primaryEmail,
   secondaryEmail,
   contactNumber,
+  calendly,
   socials,
 } from "@/data/contact-data";
 import { GA_EVENTS, trackEvent } from "@/lib/analytics";
 import ContactLink from "../analytics/contact-link";
+import Reveal from "../motion/reveal";
 
 const FORM_ID = "contact_page";
 
+const inputClass =
+  "w-full border border-input bg-background px-4 py-2.5 text-base transition-colors focus:border-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-accent";
+
+const labelClass = "type-eyebrow mb-2 block text-muted-foreground";
+
+/**
+ * Contact page.
+ *
+ * The form here posts to the same endpoint as the quote modal and collects the
+ * same fields — name, email, phone, zip — but was headed "Subscribe to Our
+ * Newsletter" with a "Subscribe" button, and confirmed with "You're
+ * successfully subscribed". A visitor who came to ask for a quote was being
+ * told they had joined a mailing list. Relabelled to what it actually does;
+ * nothing about the submission changed.
+ *
+ * The section headings were "Our Contact Cards" and "Our Social Card" — naming
+ * the UI component rather than what the visitor gets from it.
+ *
+ * Note: every string on this page is hardcoded English rather than coming from
+ * messages/*.json, so /es renders it untranslated. Left as-is because moving it
+ * would mean authoring Spanish marketing copy.
+ */
 export default function ContactPage() {
   const { toast } = useToast();
 
@@ -102,7 +125,7 @@ export default function ContactPage() {
         throw new Error(data.error?.title ?? "Something went wrong.");
       }
 
-      toast.success("Thank you! You're successfully subscribed.");
+      toast.success("Thank you — we'll be in touch shortly.");
 
       trackEvent(GA_EVENTS.GENERATE_LEAD, {
         form_id: FORM_ID,
@@ -131,235 +154,338 @@ export default function ContactPage() {
     }
   };
 
+  // Every route in is a row, ordered by how quickly it reaches a human.
+  const CHANNELS = [
+    {
+      icon: Phone,
+      label: "Call us",
+      value: contactNumber.displayValue,
+      href: `tel:${contactNumber.value}`,
+      method: "phone",
+      placement: "contact_page",
+      note: "Fastest way to reach the team",
+    },
+    {
+      icon: Calendar,
+      label: "Book a consultation",
+      value: "Pick a time that suits you",
+      href: calendly.href,
+      method: "calendly",
+      placement: "contact_page",
+      external: true,
+      note: "On-site visit, no obligation",
+    },
+    {
+      icon: Mail,
+      label: "Email Marc directly",
+      value: primaryEmail,
+      href: `mailto:${primaryEmail}`,
+      method: "email",
+      placement: "contact_page_primary",
+    },
+    {
+      icon: Mail,
+      label: "Email our admin team",
+      value: secondaryEmail,
+      href: `mailto:${secondaryEmail}`,
+      method: "email",
+      placement: "contact_page_admin",
+    },
+  ];
+
   return (
-    <div className="container mx-auto p-6 md:p-12">
-      <h1 className="text-4xl font-bold mb-5 text-center text-primary">
-        Get in Touch with M&E Construction
-      </h1>
+    <>
+      {/* ---- Page head ---- */}
+      <section className="bg-primary py-16 text-primary-foreground md:py-20">
+        <div className="mx-auto w-full max-w-[1400px] px-4 md:px-10">
+          <Reveal
+            as="p"
+            className="type-eyebrow flex items-center gap-3 text-accent"
+          >
+            <span
+              className="animate-rule-draw h-px w-8 bg-accent"
+              aria-hidden="true"
+            />
+            Get in touch
+          </Reveal>
 
-      <p className="px-4 mb-10 text-center">
-        We would love to hear from you! Whether it is a bathroom upgrade, shower
-        installation, or general inquiry, our team is here to help every step of
-        the way.
-      </p>
-
-      <div className="flex flex-col md:flex-row gap-12">
-        {/* Left Column - Contact Info */}
-        <div className="md:w-1/2 flex flex-col gap-6">
-          <h2 className="text-2xl text-primary font-bold text-center">
-            Our Contact Cards
-          </h2>
-          <p className="text-center px-2">
-            You can reach out and send us a message through these contact cards.
-          </p>
-          {/* Email Card */}
-          <div className="flex items-center gap-4 p-6 bg-gradient-to-r from-primary/20 to-primary/10 rounded-xl shadow hover:shadow-lg transition-shadow">
-            <MailIcon className="w-10 h-10 text-primary" />
-            <div>
-              <h3 className="text-lg font-semibold">Email Us Directly!</h3>
-              <ContactLink
-                method="email"
-                placement="contact_page_primary"
-                href={`mailto:${primaryEmail}`}
-                className="text-primary underline hover:text-primary/80"
-              >
-                {primaryEmail}
-              </ContactLink>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-4 p-6 bg-gradient-to-r from-primary/20 to-primary/10 rounded-xl shadow hover:shadow-lg transition-shadow">
-            <MailIcon className="w-10 h-10 text-primary" />
-            <div>
-              <h3 className="text-lg font-semibold">
-                Email Us Through Our Admins!
-              </h3>
-              <ContactLink
-                method="email"
-                placement="contact_page_admin"
-                href={`mailto:${secondaryEmail}`}
-                className="text-primary underline hover:text-primary/80"
-              >
-                {secondaryEmail}
-              </ContactLink>
-            </div>
-          </div>
-
-          {/* Phone Card */}
-          <div className="flex items-center gap-4 p-6 bg-gradient-to-r from-accent/20 to-accent/10 rounded-xl shadow hover:shadow-lg transition-shadow">
-            <PhoneIcon className="w-10 h-10 text-accent" />
-            <div>
-              <h3 className="text-lg font-semibold">Call Us Today!</h3>
-              <ContactLink
-                method="phone"
-                placement="contact_page"
-                href={`tel:${contactNumber.value}`}
-                className="text-accent underline hover:text-accent/80"
-              >
-                {contactNumber.displayValue}
-              </ContactLink>
-            </div>
-          </div>
-
-          <h2 className="text-2xl text-primary font-bold text-center">
-            Our Social Card
-          </h2>
-          <p className="text-center px-2">
-            You can visit and see our social media activities or reach out and
-            send us a message through these social card.
-          </p>
-          {/* Social Card */}
-          <div className="flex flex-col gap-3 p-6 bg-gradient-to-br from-primary/80 via-primary/100 to-primary/80 rounded-xl shadow hover:shadow-lg transition-shadow">
-            <h3 className="text-lg text-accent font-bold">
-              Follow us on these social media platforms!
-            </h3>
-            <div className="flex gap-4 mt-2 text-white">
-              {socials.map((social) => (
-                <Link key={social.id} href={social.link} target={social.target}>
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    className="w-16 h-16 p-4 flex items-center justify-center"
-                  >
-                    <social.icon className="h-8 w-8 md:h-10 md:w-10" />
-                  </Button>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Right Column - Subscription Form */}
-        <div className="md:w-1/2 bg-muted/50 border border-muted rounded-xl p-6 md:p-12 shadow-lg">
-          <h2 className="text-2xl font-semibold mb-6 text-center md:text-left text-primary">
-            Subscribe to Our Newsletter
-          </h2>
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium mb-2">
-                  First Name *
-                </label>
-                <input
-                  type="text"
-                  name="firstName"
-                  value={formData.firstName}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-4 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background"
-                  placeholder="John"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-2">
-                  Last Name *
-                </label>
-                <input
-                  type="text"
-                  name="lastName"
-                  value={formData.lastName}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-4 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background"
-                  placeholder="Doe"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium mb-2">Email *</label>
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleInputChange}
-                required
-                className="w-full px-4 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background"
-                placeholder="john@example.com"
-              />
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium mb-2">
-                  Phone Number *
-                </label>
-                <PhoneInput
-                  international
-                  countryCallingCodeEditable={false}
-                  defaultCountry="US"
-                  value={formData.phone}
-                  onChange={handlePhoneChange}
-                  required
-                  className="w-full px-4 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background"
-                  placeholder="Enter phone number"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium mb-2">
-                  Zip Code *
-                </label>
-                <input
-                  type="text"
-                  name="zip"
-                  value={formData.zip}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-4 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background"
-                  placeholder="12345"
-                />
-              </div>
-            </div>
-
-            <div className="bg-muted/50 border border-muted rounded-lg p-4">
-              <label className="flex gap-3 cursor-pointer">
-                <input
-                  type="checkbox"
-                  name="consent"
-                  checked={formData.consent}
-                  onChange={handleInputChange}
-                  className="mt-1 w-5 h-5 rounded border-input cursor-pointer"
-                />
-                <span className="text-sm text-muted-foreground leading-relaxed">
-                  By clicking "Submit," you are providing your electronic
-                  signature as consent for us to contact you via phone, email,
-                  or text message — including the use of automated technology —
-                  regarding our products and services. You also consent to the
-                  collection and use of your personal information in accordance
-                  with our{" "}
-                  <Link
-                    href="/privacy-policy"
-                    target="_blank"
-                    className="underline font-bold"
-                  >
-                    Privacy Policy
-                  </Link>{" "}
-                  and{" "}
-                  <Link
-                    href="/terms-and-conditions"
-                    target="_blank"
-                    className="underline font-bold"
-                  >
-                    Terms of Service
-                  </Link>
-                  . Your consent is not a condition of purchase, and you may
-                  withdraw it at any time by contacting us or unsubscribing from
-                  future communications.
-                </span>
-              </label>
-            </div>
-
-            <Button
-              type="submit"
-              disabled={isSubmitting || !formData.consent}
-              className="w-full bg-accent hover:bg-accent/90 text-accent-foreground font-semibold py-3"
+          {/* Headline left, supporting copy right — the same section-head grid
+              the rest of the site uses. A single left-aligned stack left the
+              right half of the band empty. */}
+          <div className="mt-6 grid gap-6 md:grid-cols-12 md:items-end">
+            <Reveal
+              as="h1"
+              delay={70}
+              className="type-display text-[clamp(2.5rem,5.4vw,4.5rem)] text-white md:col-span-7"
             >
-              {isSubmitting ? "Submitting..." : "Subscribe"}
-            </Button>
-          </form>
+              Let&rsquo;s talk about your project.
+            </Reveal>
+
+            <Reveal
+              as="p"
+              delay={140}
+              className="measure text-base leading-relaxed text-white/85 md:col-span-5"
+            >
+              Whether it&rsquo;s a bathroom upgrade, a kitchen remodel or
+              finishing a basement, tell us what you have in mind and
+              we&rsquo;ll come back with a plan and a price.
+            </Reveal>
+          </div>
+
+          <Reveal
+            delay={200}
+            className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-white/20 pt-6"
+          >
+            <span className="type-eyebrow flex items-center gap-2 text-white/75">
+              <MapPin aria-hidden="true" className="h-4 w-4 text-accent" />
+              Northbrook, Illinois
+            </span>
+            <span
+              aria-hidden="true"
+              className="hidden h-3 w-px bg-white/30 sm:block"
+            />
+            <span className="type-eyebrow text-white/75">
+              17 communities served
+            </span>
+          </Reveal>
         </div>
-      </div>
-    </div>
+      </section>
+
+      {/* ---- Channels + form ---- */}
+      <section className="bg-background py-16 md:py-24">
+        <div className="mx-auto grid w-full max-w-[1400px] gap-12 px-4 md:px-10 lg:grid-cols-12 lg:gap-16">
+          {/* Ways in */}
+          <div className="lg:col-span-5">
+            <Reveal
+              as="h2"
+              className="type-display text-[clamp(1.65rem,2.6vw,2.25rem)] text-primary"
+            >
+              Ways to reach us
+            </Reveal>
+
+            <ul className="rule-hairline mt-8 border-t">
+              {CHANNELS.map((c) => (
+                <li key={c.label} className="rule-hairline border-b">
+                  <ContactLink
+                    method={c.method}
+                    placement={c.placement}
+                    href={c.href}
+                    {...(c.external
+                      ? { target: "_blank", rel: "noopener noreferrer" }
+                      : {})}
+                    className="group flex items-start gap-4 py-5 focus-visible:outline-none"
+                  >
+                    <c.icon
+                      aria-hidden="true"
+                      className="mt-0.5 h-5 w-5 shrink-0 text-accent"
+                      strokeWidth={1.5}
+                    />
+                    <span className="min-w-0 flex-1">
+                      <span className="type-eyebrow block text-muted-foreground">
+                        {c.label}
+                      </span>
+                      <span className="mt-1.5 block break-words text-base text-primary transition-colors group-hover:text-accent group-focus-visible:text-accent">
+                        {c.value}
+                      </span>
+                      {c.note ? (
+                        <span className="mt-1 block text-sm text-muted-foreground">
+                          {c.note}
+                        </span>
+                      ) : null}
+                    </span>
+                    <ArrowRight
+                      aria-hidden="true"
+                      className="mt-1 h-4 w-4 shrink-0 -translate-x-1 text-accent opacity-0 transition-all duration-200 ease-out group-hover:translate-x-0 group-hover:opacity-100 group-focus-visible:translate-x-0 group-focus-visible:opacity-100"
+                    />
+                  </ContactLink>
+                </li>
+              ))}
+            </ul>
+
+            <Reveal delay={120} className="mt-10">
+              <p className="type-eyebrow text-muted-foreground">Follow along</p>
+              <div className="mt-4 flex gap-2">
+                {socials.map((social) => (
+                  <Button
+                    key={social.id}
+                    variant="ghost"
+                    size="icon"
+                    asChild
+                    className="h-11 w-11 hover:bg-primary/10"
+                  >
+                    <Link
+                      href={social.link}
+                      target={social.target}
+                      rel="noopener noreferrer"
+                      aria-label={social.label}
+                    >
+                      <social.icon aria-hidden="true" className="h-5 w-5" />
+                    </Link>
+                  </Button>
+                ))}
+              </div>
+            </Reveal>
+          </div>
+
+          {/* Form */}
+          <Reveal delay={100} className="lg:col-span-7">
+            <div className="rule-hairline border-t bg-tinted p-6 md:p-10">
+              <h2 className="type-display text-[clamp(1.65rem,2.6vw,2.25rem)] text-primary">
+                Request a free quote
+              </h2>
+              <p className="measure mt-3 text-sm leading-relaxed text-muted-foreground">
+                Send us your details and we&rsquo;ll get back to you. No
+                obligation, and your information is never shared.
+              </p>
+
+              <form onSubmit={handleSubmit} className="mt-8 space-y-6">
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                  <div>
+                    <label htmlFor="firstName" className={labelClass}>
+                      First name *
+                    </label>
+                    <input
+                      id="firstName"
+                      type="text"
+                      name="firstName"
+                      value={formData.firstName}
+                      onChange={handleInputChange}
+                      required
+                      autoComplete="given-name"
+                      className={inputClass}
+                      placeholder="John"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="lastName" className={labelClass}>
+                      Last name *
+                    </label>
+                    <input
+                      id="lastName"
+                      type="text"
+                      name="lastName"
+                      value={formData.lastName}
+                      onChange={handleInputChange}
+                      required
+                      autoComplete="family-name"
+                      className={inputClass}
+                      placeholder="Doe"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="email" className={labelClass}>
+                    Email *
+                  </label>
+                  <input
+                    id="email"
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
+                    autoComplete="email"
+                    className={inputClass}
+                    placeholder="john@example.com"
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                  <div>
+                    <label htmlFor="phone" className={labelClass}>
+                      Phone number *
+                    </label>
+                    <PhoneInput
+                      id="phone"
+                      international
+                      countryCallingCodeEditable={false}
+                      defaultCountry="US"
+                      value={formData.phone}
+                      onChange={handlePhoneChange}
+                      required
+                      className={inputClass}
+                      placeholder="Enter phone number"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="zip" className={labelClass}>
+                      Installation zip code *
+                    </label>
+                    <input
+                      id="zip"
+                      type="text"
+                      name="zip"
+                      inputMode="numeric"
+                      autoComplete="postal-code"
+                      value={formData.zip}
+                      onChange={handleInputChange}
+                      required
+                      className={inputClass}
+                      placeholder="12345"
+                    />
+                  </div>
+                </div>
+
+                <div className="rule-hairline border-t pt-5">
+                  <label className="flex cursor-pointer gap-3">
+                    <input
+                      type="checkbox"
+                      name="consent"
+                      checked={formData.consent}
+                      onChange={handleInputChange}
+                      className="mt-1 h-5 w-5 shrink-0 cursor-pointer border-input"
+                    />
+                    <span className="text-sm leading-relaxed text-muted-foreground">
+                      By clicking &ldquo;Request my quote,&rdquo; you are
+                      providing your electronic signature as consent for us to
+                      contact you via phone, email, or text message — including
+                      the use of automated technology — regarding our products
+                      and services. You also consent to the collection and use
+                      of your personal information in accordance with our{" "}
+                      <Link
+                        href="/privacy-policy"
+                        target="_blank"
+                        className="font-semibold underline underline-offset-2"
+                      >
+                        Privacy Policy
+                      </Link>{" "}
+                      and{" "}
+                      <Link
+                        href="/terms-and-conditions"
+                        target="_blank"
+                        className="font-semibold underline underline-offset-2"
+                      >
+                        Terms of Service
+                      </Link>
+                      . Your consent is not a condition of purchase, and you may
+                      withdraw it at any time by contacting us or unsubscribing
+                      from future communications.
+                    </span>
+                  </label>
+                </div>
+
+                <Button
+                  type="submit"
+                  variant="cta"
+                  size="xl"
+                  disabled={isSubmitting || !formData.consent}
+                  className="group w-full"
+                >
+                  {isSubmitting ? "Sending…" : "Request my quote"}
+                  {!isSubmitting && (
+                    <ArrowRight
+                      aria-hidden="true"
+                      className="ml-2 h-5 w-5 transition-transform duration-200 ease-out group-hover:translate-x-1"
+                    />
+                  )}
+                </Button>
+              </form>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+    </>
   );
 }

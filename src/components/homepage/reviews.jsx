@@ -1,114 +1,106 @@
-import { Card, CardContent } from "../ui/card";
-import { Star, CheckCheck } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { reviewsPlatforms } from "@/data/contact-data";
-import Link from "next/link";
+"use client";
 
+import { Star } from "lucide-react";
+import Link from "next/link";
+import { reviewsPlatforms } from "@/data/contact-data";
+import Reveal from "../motion/reveal";
+
+/**
+ * Testimonials as an editorial column, not a carousel of equal cards.
+ *
+ * These reviews are wildly different lengths — two sentences against a full
+ * paragraph — so a uniform grid either truncates the substantial ones or leaves
+ * the short ones stranded in whitespace. A masonry column lets each quote be
+ * the length it actually is, and the longest ones are the persuasive ones.
+ */
 export function Reviews({ reviews }) {
   const { sectionTitle, rating, items } = reviews;
 
   return (
-    <section id="reviews" className="py-16 md:py-24 overflow-hidden">
-      <div className="relative container mx-auto px-4">
-        <Star
-          className="animate-ping absolute -top-14 -right-14 h-64 w-64 text-accent/10"
-          strokeWidth={1}
-        />
-        <Star
-          className="animate-ping absolute -bottom-14 -left-14 h-64 w-64 text-accent/10"
-          strokeWidth={1}
-        />
-        <div className="mb-12 text-center">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl mb-4 text-balance">
+    <section id="reviews" className="bg-tinted py-16 md:py-24">
+      <div className="mx-auto w-full max-w-[1400px] px-4 md:px-10">
+        <div className="rule-hairline grid gap-6 border-t pt-8 md:grid-cols-12 md:items-end">
+          <Reveal
+            as="h2"
+            className="type-display text-[clamp(2rem,4vw,3.5rem)] text-primary md:col-span-7"
+          >
             {sectionTitle}
-          </h2>
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <div className="flex">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="h-5 w-5 fill-accent text-accent" />
-              ))}
-            </div>
-            <span className="text-lg font-semibold">{rating.score}</span>
-            <span className="text-muted-foreground">{rating.summary}</span>
-          </div>
+          </Reveal>
+
+          <Reveal delay={80} className="md:col-span-5 md:text-right">
+            <p className="flex items-baseline gap-3 md:justify-end">
+              <span className="type-display text-5xl text-accent">
+                {rating.score}
+              </span>
+              <span className="flex gap-0.5" aria-hidden="true">
+                {[0, 1, 2, 3, 4].map((i) => (
+                  <Star
+                    key={i}
+                    className="h-4 w-4 fill-accent text-accent"
+                    strokeWidth={0}
+                  />
+                ))}
+              </span>
+            </p>
+            <p className="mt-1 text-sm text-muted-foreground">
+              {rating.summary}
+            </p>
+          </Reveal>
         </div>
 
-        <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+        {/* CSS columns give a true masonry flow without a layout library. */}
+        <div className="mt-14 gap-6 md:mt-16 md:columns-2 lg:columns-3">
           {items.map((review, index) => (
-            <Card
-              key={index}
-              className="relative overflow-hidden rounded-2xl border hover:shadow-lg break-inside-avoid"
+            <Reveal
+              key={`${review.name}-${index}`}
+              delay={(index % 3) * 70}
+              className="mb-6 break-inside-avoid bg-background p-7"
             >
-              <CardContent className="p-6 relative z-10 flex flex-col">
-                {/* Rating */}
+              <span className="flex gap-0.5" aria-hidden="true">
+                {Array.from({ length: review.rating }).map((_, i) => (
+                  <Star
+                    key={i}
+                    className="h-3.5 w-3.5 fill-accent text-accent"
+                    strokeWidth={0}
+                  />
+                ))}
+              </span>
 
-                <div className="flex justify-between">
-                  <div className="mb-4 flex">
-                    {[...Array(review.rating)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className="h-4 w-4 fill-accent text-accent"
-                      />
-                    ))}
-                  </div>
-                  <p className="text-muted-foreground">{review.date}</p>
-                </div>
+              <blockquote className="mt-4 text-[0.95rem] leading-relaxed text-primary/85">
+                {review.text}
+              </blockquote>
 
-                <hr className="text-primary" />
-
-                {/* Review */}
-                <p className="my-2 text-lg text-pretty text-muted-foreground">
-                  {review.text}
-                </p>
-
-                <hr className="text-primary" />
-
-                {/* Reviewer */}
-                <div className="flex items-center gap-3 mt-6">
-                  <Avatar className="aspect-square border border-primary">
-                    {review.avatar ? (
-                      <AvatarImage src={review.avatar} alt={review.name} />
-                    ) : (
-                      <AvatarFallback>
-                        {review.name.charAt(0).toUpperCase()}
-                      </AvatarFallback>
-                    )}
-                  </Avatar>
-
-                  <div>
-                    <p className="font-semibold flex items-center gap-1 text-xl">
-                      {review.name}{" "}
-                      <CheckCheck className="h-8 w-8 text-accent" />
-                    </p>
-                    <p className="text-lg text-muted-foreground">
-                      {review.location}
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+              <footer className="rule-hairline mt-5 flex items-baseline justify-between border-t pt-4">
+                <cite className="text-sm font-semibold not-italic tracking-tight text-primary">
+                  {review.name}
+                </cite>
+                <span className="type-eyebrow text-muted-foreground">
+                  {review.location} · {review.date}
+                </span>
+              </footer>
+            </Reveal>
           ))}
         </div>
 
-        <div className="mt-12 text-center">
-          <p className="text-2xl text-muted-foreground mb-8">
-            Check out more of our reviews and what they say about us on Angi and
-            Yelp!
-          </p>
-
-          <div className="flex flex-col md:flex-row justify-center gap-4">
-            {reviewsPlatforms.map((review, index) => (
-              <Link
-                key={review.id}
-                href={review.link}
-                target={review.target}
-                className="text-xl px-6 py-3 bg-accent text-white font-semibold rounded-xl shadow hover:bg-accent/90 transition underline"
-              >
-                <p className="animate-bounce">{review.text}</p>
-              </Link>
-            ))}
-          </div>
-        </div>
+        <Reveal
+          delay={160}
+          className="rule-hairline mt-12 flex flex-wrap items-center gap-x-8 gap-y-3 border-t pt-6"
+        >
+          <span className="type-eyebrow text-muted-foreground">
+            Verified elsewhere
+          </span>
+          {reviewsPlatforms.map((platform) => (
+            <Link
+              key={platform.id}
+              href={platform.link}
+              target={platform.target}
+              rel="noopener noreferrer"
+              className="text-sm text-primary underline-offset-4 transition-colors hover:text-accent hover:underline focus-visible:text-accent focus-visible:outline-none"
+            >
+              {platform.text}
+            </Link>
+          ))}
+        </Reveal>
       </div>
     </section>
   );

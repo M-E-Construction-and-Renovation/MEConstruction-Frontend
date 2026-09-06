@@ -20,11 +20,30 @@ const buttonVariants = cva(
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "underline-offset-4 hover:underline text-primary",
         primary: "bg-accent hover:bg-accent/90 text-accent-foreground",
+
+        // The page's single loudest control. Weight, a real offset+blur shadow
+        // that deepens on hover, and a press state — so the primary action
+        // reads as the primary action without needing an infinite pulse to
+        // attract the eye.
+        cta:
+          "bg-accent text-accent-foreground font-semibold tracking-tight " +
+          "shadow-[0_6px_20px_-6px_oklch(0.65_0.18_45_/_0.65)] " +
+          "hover:bg-accent/92 hover:shadow-[0_10px_28px_-6px_oklch(0.65_0.18_45_/_0.75)] " +
+          "hover:-translate-y-0.5 active:translate-y-0 active:shadow-[0_3px_10px_-4px_oklch(0.65_0.18_45_/_0.7)] " +
+          "transition-[background-color,box-shadow,transform] duration-200 ease-out",
+
+        // Companion to `cta` on a dark photographic ground: reads as a control
+        // without competing with the orange.
+        ctaQuiet:
+          "border border-white/35 text-white bg-white/8 backdrop-blur-[2px] " +
+          "hover:bg-white hover:text-primary hover:border-white " +
+          "transition-[background-color,color,border-color] duration-200 ease-out",
       },
       size: {
         default: "h-10 px-4 py-2",
         sm: "h-9 px-3 rounded-md",
         lg: "h-11 px-8 rounded-md",
+        xl: "h-14 px-8 text-base rounded-md",
         icon: "h-10 w-10",
       },
     },
