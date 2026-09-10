@@ -484,7 +484,7 @@ export default function ContactPage() {
                   {!isSubmitting && (
                     <ArrowRight
                       aria-hidden="true"
-                      className="ml-2 h-5 w-5 transition-transform duration-200 ease-out group-hover:translate-x-1"
+                      className="animate-cta-arrow ml-2 h-5 w-5 transition-transform duration-200 ease-out group-hover:translate-x-1"
                     />
                   )}
                 </Button>

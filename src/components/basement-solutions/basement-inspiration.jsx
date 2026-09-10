@@ -93,7 +93,7 @@ export function BasementInspiration({ inspiration }) {
                       {card.label}
                       <ArrowRight
                         aria-hidden="true"
-                        className="ml-2 h-4 w-4 transition-transform duration-200 ease-out group-hover:translate-x-1"
+                        className="animate-cta-arrow ml-2 h-4 w-4 transition-transform duration-200 ease-out group-hover:translate-x-1"
                       />
                     </Link>
                   </Button>

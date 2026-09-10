@@ -24,6 +24,10 @@ export default function QuoteButton({
   variant = "cta",
   size = "xl",
   withArrow = true,
+  // The arrow's own idle travel. On by default so the control reads as "go"
+  // without a pointer near it; turn it off where a button sits inside dense
+  // content and the motion would compete rather than lead.
+  animateArrow = true,
   className = "",
 }) {
   const dispatch = useDispatch();
@@ -39,7 +43,9 @@ export default function QuoteButton({
       {withArrow && (
         <ArrowRight
           aria-hidden="true"
-          className="ml-2 h-5 w-5 transition-transform duration-200 ease-out group-hover:translate-x-1"
+          className={`ml-2 h-5 w-5 transition-transform duration-200 ease-out group-hover:translate-x-1 ${
+            animateArrow ? "animate-cta-arrow" : ""
+          }`}
         />
       )}
     </Button>

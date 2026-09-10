@@ -127,7 +127,7 @@ export function DesignTool() {
                 Start designing — it&rsquo;s free
                 <ArrowRight
                   aria-hidden="true"
-                  className="ml-2 h-5 w-5 transition-transform duration-200 ease-out group-hover:translate-x-1"
+                  className="animate-cta-arrow ml-2 h-5 w-5 transition-transform duration-200 ease-out group-hover:translate-x-1"
                 />
               </Link>
             </Button>

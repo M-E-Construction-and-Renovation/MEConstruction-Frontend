@@ -351,19 +351,35 @@
   }
 
   /* Attention motion for the page's primary action only — the hero and the
-     closing CTA. A slow breath plus a widening glow, paused on hover so the
-     hover state reads cleanly. Deliberately NOT on the `cta` variant itself:
-     the solutions list uses that variant five times, and five pulsing buttons
-     is the noise this replaced. */
+     closing CTA. Client asked for the button to glow and swell repeatedly, so
+     this is deliberately louder than a hint: a 4.5% swell against a halo that
+     blooms from nothing to 30px of spread.
+
+     Two shadows do two jobs. The offset one is the button's existing depth and
+     keeps it sitting on the page; the second has no offset and grows its blur
+     and spread, which is what reads as a glow rather than as a bigger drop
+     shadow. Animating box-shadow is cheap enough here because it is a handful
+     of elements, not a list.
+
+     Still deliberately NOT on the `cta` variant itself: the solutions list uses
+     that variant five times, and five swelling buttons is noise, not emphasis.
+     Opt in per placement with `animate-cta-pulse`.
+
+     Paused on hover and focus so the hover state reads cleanly, and the swell
+     does not fight the -translate-y the variant already applies. */
   @keyframes ctaPulse {
     0%,
     100% {
       transform: scale(1);
-      box-shadow: 0 6px 20px -6px oklch(0.65 0.18 45 / 0.55);
+      box-shadow:
+        0 6px 20px -6px oklch(0.65 0.18 45 / 0.55),
+        0 0 0 0 oklch(0.72 0.19 45 / 0);
     }
     50% {
-      transform: scale(1.022);
-      box-shadow: 0 12px 34px -6px oklch(0.65 0.18 45 / 0.95);
+      transform: scale(1.045);
+      box-shadow:
+        0 14px 38px -6px oklch(0.65 0.18 45 / 0.95),
+        0 0 30px 8px oklch(0.72 0.19 45 / 0.55);
     }
   }
 
@@ -374,6 +390,137 @@
   .animate-cta-pulse:hover,
   .animate-cta-pulse:focus-visible {
     animation-play-state: paused;
+  }
+
+  /* The arrow travels on its own, so the control reads as "go" even when the
+     pointer is nowhere near it.
+
+     1.3s is exactly half the pulse, which phase-locks the two: the arrow makes
+     two trips per swell and they always meet at rest. Any other ratio drifts
+     and starts to look broken.
+
+     On hover the animation is removed outright rather than paused — a running
+     animation wins over the variant's `group-hover:translate-x-1`, and a paused
+     one still wins, so the hover slide would never appear. With `none` the
+     transition takes over cleanly. */
+  @keyframes ctaArrow {
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(0.3rem);
+    }
+  }
+
+  .animate-cta-arrow {
+    animation: ctaArrow 1.3s ease-in-out infinite;
+  }
+
+  .group:hover .animate-cta-arrow,
+  .group:focus-visible .animate-cta-arrow {
+    animation: none;
+  }
+
+  /* Two quieter tiers below the hero pulse, so every control on the page reads
+     as clickable without twenty-seven buttons all swelling at once.
+
+     All three tiers share the 2.6s period on purpose. Desynchronised loops on
+     one page read as chaos; a single shared rhythm reads as intent, and the
+     eye stops treating each one as a separate event.
+
+     Tier 2 — `cta` buttons that are not the hero. Glow only, no swell: the
+     halo is what draws the eye, and the scale is what makes a wall of them
+     feel cheap. */
+  @keyframes ctaBreathe {
+    0%,
+    100% {
+      box-shadow:
+        0 6px 20px -6px oklch(0.65 0.18 45 / 0.55),
+        0 0 0 0 oklch(0.72 0.19 45 / 0);
+    }
+    50% {
+      box-shadow:
+        0 8px 24px -6px oklch(0.65 0.18 45 / 0.7),
+        0 0 18px 4px oklch(0.72 0.19 45 / 0.4);
+    }
+  }
+
+  .animate-cta-breathe {
+    animation: ctaBreathe 2.6s ease-in-out infinite;
+  }
+
+  /* Tier 3 — secondary controls. An accent ring that grows out of the button's
+     own edge and fades back. No shadow and no scale, so it stays legible on a
+     dark photograph and on a light panel without needing a variant of its own. */
+  @keyframes ctaLift {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 oklch(0.65 0.18 45 / 0);
+    }
+    50% {
+      box-shadow: 0 0 0 3px oklch(0.65 0.18 45 / 0.22);
+    }
+  }
+
+  .animate-cta-lift {
+    animation: ctaLift 2.6s ease-in-out infinite;
+  }
+
+  .animate-cta-breathe:hover,
+  .animate-cta-breathe:focus-visible,
+  .animate-cta-lift:hover,
+  .animate-cta-lift:focus-visible {
+    animation-play-state: paused;
+  }
+
+  /* Tier 4 — text links on the dark utility strip: the phone number and "set an
+     appointment". These are type with an icon, not button shapes, so the ring
+     the other tiers use would draw a glowing rectangle around a line of text.
+
+     Instead the type itself warms to the accent and picks up a halo. Lucide
+     icons paint with `currentColor`, so the icon travels with the text off one
+     declaration — no second animation to keep in sync.
+
+     `animation: none` on hover rather than a pause, because the strip's own
+     `hover:text-accent` is a colour and a running animation outranks it; paused
+     mid-cycle the link would stick at whatever shade it happened to be on. */
+  @keyframes ctaGlint {
+    0%,
+    100% {
+      color: oklch(0.985 0.002 250);
+      text-shadow: 0 0 0 oklch(0.72 0.19 45 / 0);
+    }
+    50% {
+      color: oklch(0.78 0.16 45);
+      text-shadow: 0 0 14px oklch(0.72 0.19 45 / 0.5);
+    }
+  }
+
+  .animate-cta-glint {
+    animation: ctaGlint 2.6s ease-in-out infinite;
+  }
+
+  .animate-cta-glint:hover,
+  .animate-cta-glint:focus-visible {
+    animation: none;
+  }
+
+  /* The footer is a directory, not a place to be sold to, and its controls
+     (social icons, the newsletter submit) would turn a quiet closing band into
+     a light show. Same for anything inside an open nav dropdown. Scoped here
+     rather than by prop so nothing new can opt itself in by accident. */
+  footer .animate-cta-pulse,
+  footer .animate-cta-breathe,
+  footer .animate-cta-lift,
+  footer .animate-cta-arrow,
+  footer .animate-cta-glint,
+  .animate-dropdown .animate-cta-pulse,
+  .animate-dropdown .animate-cta-breathe,
+  .animate-dropdown .animate-cta-lift,
+  .animate-dropdown .animate-cta-arrow,
+  .animate-dropdown .animate-cta-glint {
+    animation: none;
   }
 
   /* Hero life. Both devices are slow enough to read as atmosphere rather than
@@ -585,6 +732,10 @@
 @media (prefers-reduced-motion: reduce) {
   .animate-beat,
   .animate-cta-pulse,
+  .animate-cta-breathe,
+  .animate-cta-lift,
+  .animate-cta-arrow,
+  .animate-cta-glint,
   .animate-hero-drift {
     animation: none;
   }

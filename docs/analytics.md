@@ -265,6 +265,40 @@ also covers the `generate_lead` the app sends directly. Confirm it appears under
 One key event fed by both sites means the conversion count in any report is the
 real total rather than half of it.
 
+### What a Mailchimp landing page can and cannot report
+
+Mailchimp accepts a pasted measurement ID and nothing else, so its pages get
+**enhanced measurement only**. Worth knowing precisely, because the gaps are
+invisible in reports:
+
+| Action on a Mailchimp landing page | Reported |
+| --- | --- |
+| Page view | yes |
+| Scroll to 90% | yes |
+| Form submission | yes — `form_submit`, renamed to `generate_lead` by the rule above |
+| Click through to another page | as a `page_view` of the destination |
+| File download, embedded video | yes |
+| Tap on a `tel:` link | **no** |
+| Which specific button was clicked | **no** |
+
+A button on one of those pages therefore splits three ways: one that submits a
+form counts as a lead; one that navigates shows up as the destination's page
+view, and because both hosts sit under one configured domain, `www.` → `home.`
+is treated as internal rather than as leaving the site; one that dials a phone
+number is invisible.
+
+**The dependency to check:** the rule in this section only works if `form_submit`
+is actually being sent, which comes from **Form interactions** inside enhanced
+measurement (section 2.3, the same panel as the browser-history setting).
+Default-on for new properties, but confirm it — with it off, Mailchimp form
+submissions never become leads and nothing surfaces the reason.
+
+**The asymmetry to remember when reading reports:** the main site reports which
+CTA fired (`cta_source`, `placement`, `method`); Mailchimp reports that *a* form
+was submitted. Never compare phone intent across the two — the main site counts
+taps and Mailchimp cannot, so any such comparison understates Mailchimp
+completely rather than slightly.
+
 ### Custom dimensions
 
 **One dimension per parameter** — the *Event parameter* field takes a single

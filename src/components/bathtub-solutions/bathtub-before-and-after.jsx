@@ -75,7 +75,7 @@ export function BathtubBeforeAfter({ beforeAfter }) {
                 {labels.link}
                 <ArrowRight
                   aria-hidden="true"
-                  className="ml-2 h-4 w-4 shrink-0 transition-transform duration-200 ease-out group-hover:translate-x-1"
+                  className="animate-cta-arrow ml-2 h-4 w-4 shrink-0 transition-transform duration-200 ease-out group-hover:translate-x-1"
                 />
               </Link>
             </Reveal>

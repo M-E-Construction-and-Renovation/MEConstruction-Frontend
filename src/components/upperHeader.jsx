@@ -47,7 +47,7 @@ export function UpperHeader({ locale, upperHeader }) {
               method="phone"
               placement="upper_header"
               href={`tel:${contactNumber.value}`}
-              className="flex shrink-0 items-center gap-2 py-3 text-xs whitespace-nowrap transition-colors hover:text-accent focus-visible:text-accent focus-visible:outline-none sm:text-sm xl:text-base"
+              className="animate-cta-glint flex shrink-0 items-center gap-2 py-3 text-xs whitespace-nowrap transition-colors hover:text-accent focus-visible:text-accent focus-visible:outline-none sm:text-sm xl:text-base"
             >
               <Phone
                 aria-hidden="true"
@@ -69,7 +69,7 @@ export function UpperHeader({ locale, upperHeader }) {
               href={calendly.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden shrink-0 items-center gap-2 py-3 text-xs whitespace-nowrap transition-colors hover:text-accent focus-visible:text-accent focus-visible:outline-none sm:flex sm:text-sm xl:text-base"
+              className="animate-cta-glint hidden shrink-0 items-center gap-2 py-3 text-xs whitespace-nowrap transition-colors hover:text-accent focus-visible:text-accent focus-visible:outline-none sm:flex sm:text-sm xl:text-base"
             >
               <Calendar
                 aria-hidden="true"

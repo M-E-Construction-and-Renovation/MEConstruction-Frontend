@@ -54,13 +54,49 @@ const buttonVariants = cva(
   },
 );
 
+/**
+ * Idle attention motion, by tier.
+ *
+ * The client asked for every control on the page to read as clickable without
+ * being hovered. Applied here rather than at each call site so the tier follows
+ * from what a button *is* — 27 `cta` usages cannot drift out of step with each
+ * other, and a new button gets the right treatment for free.
+ *
+ * `ghost` and `link` are deliberately absent: they are utility controls (close
+ * buttons, dropdown triggers, inline text links), and motion on them reads as a
+ * malfunction rather than an invitation.
+ */
+const motionByVariant = {
+  cta: "animate-cta-breathe",
+  primary: "animate-cta-breathe",
+  ctaQuiet: "animate-cta-lift",
+  secondary: "animate-cta-lift",
+  outline: "animate-cta-lift",
+};
+
+// `default` is intentionally not in the map. The only three buttons using it are
+// chrome, not calls to action -- the language switcher, the footer's newsletter
+// submit, and the design tool's floating control -- and a pulsing language
+// switcher reads as a bug.
+
 const Button = React.forwardRef(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
+  (
+    { className, variant, size, asChild = false, noMotion = false, ...props },
+    ref,
+  ) => {
     const Comp = asChild ? Slot : "button";
+
+    // The hero tier is opted into by class at the call site and is louder than
+    // anything this map assigns, so it wins outright -- both set `animation`,
+    // and two of those on one element is a coin toss decided by source order.
+    const claimed =
+      noMotion || (className && className.includes("animate-cta-pulse"));
+    const motion = claimed ? "" : (motionByVariant[variant] ?? "");
+
     return (
       <Comp
         ref={ref}
-        className={cn(buttonVariants({ variant, size, className }))}
+        className={cn(buttonVariants({ variant, size, className }), motion)}
         {...props}
       />
     );
