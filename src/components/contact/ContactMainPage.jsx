@@ -14,7 +14,12 @@ import {
   calendly,
   socials,
 } from "@/data/contact-data";
-import { GA_EVENTS, trackEvent } from "@/lib/analytics";
+import {
+  GA_EVENTS,
+  LEAD_CURRENCY,
+  LEAD_VALUE,
+  trackEvent,
+} from "@/lib/analytics";
 import ContactLink from "../analytics/contact-link";
 import Reveal from "../motion/reveal";
 
@@ -130,6 +135,8 @@ export default function ContactPage() {
       trackEvent(GA_EVENTS.GENERATE_LEAD, {
         form_id: FORM_ID,
         method: "contact_page",
+        value: LEAD_VALUE,
+        currency: LEAD_CURRENCY,
       });
 
       setFormData({

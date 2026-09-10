@@ -35,6 +35,26 @@ export const GA_EVENTS = {
   SITE_SEARCH: "search",
 };
 
+/**
+ * Monetary value attached to every `generate_lead`.
+ *
+ * GA4 lists `value` and `currency` as recommended parameters on `generate_lead`,
+ * and Google Ads needs them for value-based bidding (Target ROAS) rather than
+ * plain conversion counting. There are also reports that as of April 2026 GA4
+ * stops counting `generate_lead` as a key event when they are absent -- which
+ * would silently break the Ads import in section 7b of docs/analytics.md. Not
+ * confirmed in Google's own documentation, but sending them is correct either
+ * way and costs nothing.
+ *
+ * The client no longer runs Google Ads, so the value-based-bidding argument for
+ * a real figure is moot for now and the placeholder is fine. If they resume
+ * advertising, replace it with average job value x close rate BEFORE enabling
+ * Target ROAS -- a placeholder makes value-based bidding meaningless while
+ * keeping conversion counts correct, which is the worst way to be wrong.
+ */
+export const LEAD_VALUE = 1;
+export const LEAD_CURRENCY = "USD";
+
 const LOCALES = ["en", "es"];
 
 /**

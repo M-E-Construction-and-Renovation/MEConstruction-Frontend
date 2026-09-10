@@ -6,7 +6,12 @@ import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import Link from "next/link";
 import { useToast } from "../ui/use-toast";
-import { GA_EVENTS, trackEvent } from "@/lib/analytics";
+import {
+  GA_EVENTS,
+  LEAD_CURRENCY,
+  LEAD_VALUE,
+  trackEvent,
+} from "@/lib/analytics";
 
 const FORM_ID = "quote_request";
 
@@ -108,6 +113,8 @@ export default function QuoteForm({ onSuccess }) {
       trackEvent(GA_EVENTS.GENERATE_LEAD, {
         form_id: FORM_ID,
         method: "quote_modal",
+        value: LEAD_VALUE,
+        currency: LEAD_CURRENCY,
       });
 
       setFormData({
