@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import supabase from "../../client";
 import { checkRateLimit, clientIp, tooManyRequests } from "@/lib/rate-limit";
+import { emailField } from "@/lib/email";
 
 // A saved design is one row per email, and selectedProducts was an unbounded
 // `record(string, any)` — so the route accepted arbitrarily large JSON straight
@@ -10,7 +11,10 @@ const MAX_SELECTED_PRODUCTS = 60;
 const MAX_PAYLOAD_BYTES = 128 * 1024;
 
 const saveProjectSchema = z.object({
-  email: z.email("Email not valid").max(254),
+  // Normalised here, not at the call site: this row is looked up by the lead
+  // gate using a lowercased address, and storing mixed case made the "resume
+  // your saved design" offer miss.
+  email: emailField("Email not valid"),
   plumbing: z.string().trim().min(1, "Plumbing is required").max(64),
   selectedProducts: z
     .record(z.string().max(120), z.any())

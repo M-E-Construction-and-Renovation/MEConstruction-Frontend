@@ -2,13 +2,14 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { upsertSubscriber } from "@/lib/mailchimp";
 import { checkRateLimit, clientIp, tooManyRequests } from "@/lib/rate-limit";
+import { emailField } from "@/lib/email";
 
 // Lengths are capped so the route cannot be used to push arbitrary payloads into
 // the client's Mailchimp audience.
 const FormSchema = z.object({
   firstName: z.string().trim().max(100).optional(),
   lastName: z.string().trim().max(100).optional(),
-  email: z.email("Valid email is required").max(254),
+  email: emailField("Valid email is required"),
   phone: z.string().trim().max(32).optional(),
   zip: z.string().trim().max(16).optional(),
 });

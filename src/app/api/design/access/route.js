@@ -4,6 +4,7 @@ import supabase from "../../client";
 import { upsertSubscriber } from "@/lib/mailchimp";
 import { checkRateLimit, clientIp, tooManyRequests } from "@/lib/rate-limit";
 import { COOKIE_NAME, createGateToken, gateCookieOptions } from "@/lib/design-gate";
+import { emailField } from "@/lib/email";
 
 /**
  * The design tool's lead gate.
@@ -40,7 +41,7 @@ const DISPOSABLE_DOMAINS = new Set([
 ]);
 
 const AccessSchema = z.object({
-  email: z.email("Please enter a valid email address.").max(254),
+  email: emailField("Please enter a valid email address."),
   firstName: z.string().trim().max(100).optional(),
   subscribe: z.boolean().optional(),
 });
@@ -64,8 +65,8 @@ export async function POST(req) {
       );
     }
 
-    const email = parsed.data.email.trim().toLowerCase();
-    const { firstName, subscribe } = parsed.data;
+    // Already trimmed and lowercased by `emailField`.
+    const { email, firstName, subscribe } = parsed.data;
 
     const domain = email.split("@")[1] ?? "";
     if (DISPOSABLE_DOMAINS.has(domain)) {

@@ -2,9 +2,10 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import supabase from "../../client";
 import { checkRateLimit, clientIp, tooManyRequests } from "@/lib/rate-limit";
+import { emailField } from "@/lib/email";
 
 const QuerySchema = z.object({
-  email: z.email("Valid email required").max(254),
+  email: emailField("Valid email required"),
 });
 
 // The saved-design flow deliberately has no login: a visitor types the email they

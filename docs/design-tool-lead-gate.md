@@ -45,7 +45,8 @@ alter table design_leads enable row level security;
 ```
 
 Column names are quoted because the API sends camelCase, matching the existing
-`projects` table.
+`projects` table. Postgres folds unquoted identifiers to lowercase, so `firstName`
+would silently become `firstname` and every insert would fail.
 
 No policies are added: the API uses the service-role key, which bypasses RLS.
 Enabling RLS with no policy means the anon key can read nothing — which is what
@@ -54,6 +55,25 @@ you want for a table of lead email addresses.
 **Until this table exists** the gate still works. The insert fails, the failure is
 logged as `design-access: lead upsert failed`, and the visitor is let through —
 losing a lead row is bad, refusing entry because a table is missing is worse.
+
+### 3. Normalise existing emails (one time)
+
+Addresses are the only thing joining a `projects` row to a `design_leads` row to
+a Mailchimp contact -- there is no account or id. So they have to be stored the
+same way everywhere, and they were not: the gate lowercased before looking for a
+saved design while `save-project` stored whatever casing the visitor typed.
+Anyone who saved as `Jordan.Test@Example.com` was told they had no saved design.
+
+The code now normalises in one place (`src/lib/email.js`, used by every route
+that accepts an address). Rows written before that need fixing:
+
+```sql
+update projects set email = lower(trim(email)) where email <> lower(trim(email));
+```
+
+If that fails on a duplicate key, two rows differ only by casing -- the same
+person with two designs. Merge them by hand and rerun; the failure is the
+useful part.
 
 ---
 
