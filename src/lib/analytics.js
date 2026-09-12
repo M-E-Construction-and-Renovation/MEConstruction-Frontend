@@ -28,6 +28,8 @@ export const GA_EVENTS = {
   // Direct contact
   CONTACT_CLICK: "contact_click",
   // Design tool (this app only -- no Mailchimp equivalent)
+  DESIGN_GATE_VIEW: "design_gate_view",
+  DESIGN_GATE_SUBMIT: "design_gate_submit",
   DESIGN_PROJECT_SAVE: "design_project_save",
   DESIGN_PROJECT_LOAD: "design_project_load",
   // Site behaviour

@@ -10,6 +10,14 @@ export default function EmailModal({ onSave, projectEmail = "" }) {
   const [email, setEmail] = React.useState(projectEmail ?? "");
   const [isLoading, setIsLoading] = React.useState(false);
 
+  // `projectEmail` now arrives after mount -- the configurator fetches it from
+  // the gate cookie via /api/design/session, so useState's initial value is
+  // empty and would stay empty. Adopt it when it lands, but never over
+  // something the visitor has typed.
+  React.useEffect(() => {
+    if (projectEmail) setEmail((current) => current || projectEmail);
+  }, [projectEmail]);
+
   const handleSave = async (e) => {
     e.preventDefault();
     setIsLoading(true);

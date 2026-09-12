@@ -14,7 +14,34 @@ export default function DesignTool() {
 
   const searchParams = useSearchParams();
   const plumbing = searchParams.get("plumbing") || "left";
-  const email = searchParams.get("email") || "";
+
+  // `?email=` is still honoured for links shared before the lead gate existed,
+  // but it is no longer how the tool learns who you are: a real address in a
+  // query string lands in browser history, the back button and any referrer
+  // log. The gate puts it in an httpOnly cookie instead, and this reads it back
+  // through /api/design/session.
+  const legacyEmail = searchParams.get("email") || "";
+  const wantsResume = searchParams.get("resume") === "1";
+  const [sessionEmail, setSessionEmail] = useState("");
+  const email = legacyEmail || sessionEmail;
+
+  useEffect(() => {
+    if (legacyEmail) return;
+
+    let cancelled = false;
+    fetch("/api/design/session")
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (!cancelled && data?.email) setSessionEmail(data.email);
+      })
+      .catch(() => {
+        // No session is an ordinary state -- the visitor simply starts fresh.
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [legacyEmail]);
 
   const [activeTab, setActiveTab] = useState("tubFronts/showerPans");
   const [activeTier, setActiveTier] = useState("premium");
@@ -24,6 +51,10 @@ export default function DesignTool() {
   // Fetch existing design if email exists
   useEffect(() => {
     if (!email) return;
+    // A legacy `?email=` link is itself the request to load. Otherwise the
+    // visitor must have picked "Resume my design" at the gate -- someone who
+    // chose "Start a new design" should not have the old one reinstated.
+    if (!legacyEmail && !wantsResume) return;
 
     const fetchProject = async () => {
       setLoadingProject(true);
@@ -52,7 +83,7 @@ export default function DesignTool() {
     };
 
     fetchProject();
-  }, [email, toast]);
+  }, [email, legacyEmail, wantsResume, toast]);
 
   const handleResetDesign = () => setSelectedProducts({});
 

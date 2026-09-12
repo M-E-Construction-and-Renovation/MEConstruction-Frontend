@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import supabase from "../../client";
-import { upsertSubscriber } from "@/lib/mailchimp";
 import { checkRateLimit, clientIp, tooManyRequests } from "@/lib/rate-limit";
 
 // A saved design is one row per email, and selectedProducts was an unbounded
@@ -66,12 +65,11 @@ export async function POST(req) {
 
     if (error) throw error;
 
-    // A failed subscribe must not fail the save — the visitor's design is the
-    // thing they asked us to keep.
-    const mailchimp = await upsertSubscriber(validatedData);
-    if (!mailchimp.ok) {
-      console.warn("Mailchimp subscription failed during design save");
-    }
+    // Deliberately does NOT subscribe. Saving a design is not a request for
+    // marketing email, and this route used to add every saver to the audience
+    // silently. Consent is now asked once, with an unticked box, at the design
+    // tool's lead gate (/api/design/access) -- the same way the quote form asks.
+    // One place to answer for, and nobody on the list who did not opt in.
 
     return NextResponse.json({ success: true, project: data?.[0] ?? null });
   } catch (error) {

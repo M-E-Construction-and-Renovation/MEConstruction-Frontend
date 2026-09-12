@@ -32,7 +32,7 @@ export default function PlumbingConfiguration() {
 
   return (
     <div className="flex h-full flex-col overflow-y-auto bg-background">
-      <DesignStepHeader step={2} title="Plumbing position" />
+      <DesignStepHeader step={2} totalSteps={4} title="Plumbing position" />
 
       <div className="flex flex-1 items-center">
         <div className="mx-auto w-full max-w-[1400px] px-4 py-12 md:px-10 md:py-16">
