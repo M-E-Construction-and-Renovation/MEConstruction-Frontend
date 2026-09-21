@@ -459,8 +459,8 @@
       "id": "#hero",
       "path": "/our-story",
       "headline": "Our Story",
-      "title": "Building Trust Since 2022",
-      "description": "Established in 2022, M&E Construction & Renovations has quickly become a trusted name in residential and commercial remodeling, delivering exceptional craftsmanship and innovative solutions that transform homes and businesses.",
+      "title": "Building Trust Since 2014",
+      "description": "Established in 2014, M&E Construction & Renovations has become a trusted name in residential and commercial remodeling, delivering exceptional craftsmanship and innovative solutions that transform homes and businesses.",
       "button": "Get Free Quote"
     },
     "mission": {
@@ -479,10 +479,10 @@
       "id": "#foundation",
       "path": "/our-story",
       "sectionTitle": "Our Foundation",
-      "sectionSubtitle": "Since 2022, we've been committed to transforming residential and commercial spaces with exceptional craftsmanship and innovative design solutions that exceed expectations.",
+      "sectionSubtitle": "Since 2014, we've been committed to transforming residential and commercial spaces with exceptional craftsmanship and innovative design solutions that exceed expectations.",
       "items": [
         {
-          "title": "2022",
+          "title": "2014",
           "description": "Company Established"
         },
         {
